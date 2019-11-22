@@ -77,16 +77,13 @@ $get_data = $_GET;
 /*pagination - end*/      
 
 ?>
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
         <?php
             include('inc/meta-header-new.php'); 
         ?>        
         <title>Lattes USP - Resultado da busca por trabalhos</title>
-        <script src="inc/uikit/js/components/accordion.min.js"></script>
-        <script src="inc/uikit/js/components/pagination.min.js"></script>
-        <script src="inc/uikit/js/components/datepicker.min.js"></script>
-        <script src="inc/uikit/js/components/tooltip.min.js"></script>
         
         <script src="http://cdn.jsdelivr.net/g/filesaver.js"></script>
         <script>
@@ -102,91 +99,226 @@ $get_data = $_GET;
         
     </head>
     <body>
-        <div class="uk-container">
-            <?php include('inc/navbar.php'); ?>        
-	        <div class="uk-width-1-1@s uk-width-1-1@m">	    
-                <nav class="uk-navbar-container uk-margin" uk-navbar>
-                    <div class="nav-overlay uk-navbar-left">
-                        <a class="uk-navbar-item uk-logo" uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#">Clique para uma nova pesquisa</a>        
-                    </div>
-                    <div class="nav-overlay uk-navbar-right">
-                        <a class="uk-navbar-toggle" uk-search-icon uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#"></a>
-                    </div>
 
-                    <div class="nav-overlay uk-navbar-left uk-flex-1" hidden>
-                    <div class="uk-navbar-item uk-width-expand">
-                        <form class="uk-search uk-search-navbar uk-width-1-1">
-                        <input type="hidden" name="fields[]" value="name">
-                        <input type="hidden" name="fields[]" value="author.person.name">
-                        <input type="hidden" name="fields[]" value="authorUSP.name">
-                        <input type="hidden" name="fields[]" value="about">
-                        <input type="hidden" name="fields[]" value="description"> 	    
-                        <input class="uk-search-input" type="search" name="search[]" placeholder="Nova pesquisa" autofocus>
-                        </form>
-                    </div>
-                        <a class="uk-navbar-toggle" uk-close uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#"></a>
-                    </div>
-                </nav>
-	    </div>
+        <!-- NAV -->
+        <?php require 'inc/navbar.php'; ?>
+        <!-- /NAV -->
+        <br/><br/><br/><br/>
 
-	    <div class="uk-width-1-1@s uk-width-1-1@m">
-	    
-        <!-- List of filters - Start -->
-        <?php if (!empty($_SERVER["QUERY_STRING"])) : ?>
-        <p class="uk-margin-top" uk-margin>
-            <a class="uk-button uk-button-default uk-button-small" href="index.php">Começar novamente</a>	
-            <?php 
-            if (!empty($_GET["search"])) {
-                foreach ($_GET["search"] as $querySearch) {
-                    $querySearchArray[] = $querySearch;
-                    $name_field = explode(":", $querySearch);
-                    $querySearch = str_replace($name_field[0].":", "", $querySearch);
-                    $diff["search"] = array_diff($_GET["search"], $querySearchArray);
-                    $url_push = $_SERVER['SERVER_NAME'].$_SERVER["SCRIPT_NAME"].'?'.http_build_query($diff);
-                    echo '<a class="uk-button uk-button-default uk-button-small" href="http://'.$url_push.'">'.$querySearch.' <span uk-icon="icon: close; ratio: 1"></span></a>';
-                    unset($querySearchArray);
-                }
-            }
-                
-            if (!empty($_GET["filter"])) {
-                foreach ($_GET["filter"] as $filters) {
-                    $filters_array[] = $filters;
-                    $name_field = explode(":", $filters);
-                    $filters = str_replace($name_field[0].":", "", $filters);
-                    $diff["filter"] = array_diff($_GET["filter"], $filters_array);
-                    $url_push = $_SERVER['SERVER_NAME'].$_SERVER["SCRIPT_NAME"].'?'.http_build_query($diff);
-                    echo '<a class="uk-button uk-button-primary uk-button-small" href="http://'.$url_push.'">Filtrado por: '.$filters.' <span uk-icon="icon: close; ratio: 1"></span></a>';
-                    unset($filters_array);
-                }
-            }
-            
-            if (!empty($_GET["notFilter"])) {
-                foreach ($_GET["notFilter"] as $notFilters) {
-                    $notFiltersArray[] = $notFilters;
-                    $name_field = explode(":", $notFilters);
-                    $notFilters = str_replace($name_field[0].":", "", $notFilters);
-                    $diff["notFilter"] = array_diff($_GET["notFilter"], $notFiltersArray);
-                    $url_push = $_SERVER['SERVER_NAME'].$_SERVER["SCRIPT_NAME"].'?'.http_build_query($diff);
-                    echo '<a class="uk-button uk-button-danger uk-button-small" href="http://'.$url_push.'">Ocultando: '.$notFilters.' <span uk-icon="icon: close; ratio: 1"></span></a>';
-                    unset($notFiltersArray);
-                }
-            }                 
-            ?>
-            
-        </p>
-        <?php endif;?> 
-        <!-- List of filters - End -->
-	    
-	    </div>	
-        <div class="uk-grid-divider" uk-grid>
-        <div class="uk-width-1-4@s uk-width-2-6@m">  
-        
-            <div class="uk-panel uk-panel-box">
+        <main role="main">
+            <div class="container">
+
+            <div class="row">
+                <div class="col-8">    
+
+                    <!-- Navegador de resultados - Início -->
+                    <?php ui::pagination($page, $total, $limit); ?>
+                    <!-- Navegador de resultados - Fim -->   
+
+                    <?php foreach ($cursor["hits"]["hits"] as $r) : ?>
+                        <?php if (empty($r["_source"]['datePublished'])) {
+                            $r["_source"]['datePublished'] = "";
+                        }
+                        ?>
+                        <li>
+                            <div class="uk-grid-divider uk-padding-small" uk-grid>
+                                <div class="uk-width-1-5@m">                        
+                                    <div class="uk-panel uk-h6 uk-text-break">
+                                        <a href="result_trabalhos.php?type[]=<?php echo $r["_source"]['tipo'];?>"><?php echo ucfirst(strtolower($r["_source"]['tipo']));?></a>
+                                    </div>
+                                    <form class="uk-form" method="post">
+                                        <?php if(isset($r["_source"]["concluido"])) : ?>
+                                            <?php if($r["_source"]["concluido"]== "Sim") : ?>    
+                                                
+                                                    <label><input type='hidden' value='Não' name="<?php echo $r['_id'];?>"></label>                                     
+                                                    <label><input type="checkbox" name="<?php echo $r['_id'];?>" value='Sim' checked>Concluído</label>
+                                            
+                                            <?php else : ?>
+                                                
+                                                    <label><input type='hidden' value='Não' name="<?php echo $r['_id'];?>"></label>                                     
+                                                    <label><input type="checkbox" name="<?php echo $r['_id'];?>" value='Sim'>Concluído</label>
+                                                
+                                            <?php endif; ?>                                    
+                                        <?php else : ?>
+                                                
+                                                    <label><input type='hidden' value='Não' name="<?php echo $r['_id'];?>"></label>                                     
+                                                    <label><input type="checkbox" name="<?php echo $r['_id'];?>" value='Sim'>Concluído</label>
+                                                
+                                        <?php endif; ?>
+                                        <button class="uk-button-primary">Marcar como concluído</button>
+                                    </form>                                     
+                                </div>
+                                <div class="uk-width-4-5@m">
+                                    <article class="uk-article">
+                                    <p class="uk-text-lead uk-margin-remove" style="font-size:115%"><?php echo ($r["_source"]['name']);?> (<?php echo $r["_source"]['datePublished']; ?>)</p> 
+                                    <ul class="uk-list">
+                                        <li class="uk-h6">
+                                            Autores:
+                                            <?php if (!empty($r["_source"]['author'])) : ?>
+                                            <?php foreach ($r["_source"]['author'] as $autores) {
+                                                $authors_array[]='<a href="result_trabalhos.php?filter[]=author.person.name:&quot;'.$autores["person"]["name"].'&quot;">'.$autores["person"]["name"].'</a>';
+                                            } 
+                                            $array_aut = implode(", ",$authors_array);
+                                            unset($authors_array);
+                                            print_r($array_aut);
+                                            ?>
+                                            
+                                            
+                                            <?php endif; ?>                           
+                                        </li>
+                                        
+                                        <?php if (!empty($r["_source"]['artigoPublicado'])) : ?>
+                                            <li class="uk-h6">In: <a href="result_trabalhos.php?filter[]=periodico.titulo_do_periodico:&quot;<?php echo $r["_source"]['artigoPublicado']['tituloDoPeriodicoOuRevista'];?>&quot;"><?php echo $r["_source"]['artigoPublicado']['tituloDoPeriodicoOuRevista'];?></a></li>
+                                            <li class="uk-h6">ISSN: <a href="result_trabalhos.php?filter[]=periodico.issn:&quot;<?php echo $r["_source"]['artigoPublicado']['issn'];?>&quot;"><?php echo $r["_source"]['artigoPublicado']['issn'];?></a></li>                                        
+                                        <?php endif; ?>
+                                        
+                                        <?php if (!empty($r["_source"]['doi'])) : ?>
+                                            <li class="uk-h6"><p>DOI: <a href="https://doi.org/<?php echo $r["_source"]['doi'];?>"><?php echo $r["_source"]['doi'];?></a></p>
+                                            <p><a href="doi_to_elastic.php?doi=<?php echo $r['_source']['doi'];?>&tag=<?php echo $r['_source']['tag'][0];?>">Coletar dados da Crossref</a></p></li>                                        
+                                        <?php endif; ?>                                        
+                                        
+                                        <li class="uk-h6">
+                                            Assuntos:
+                                            <?php if (!empty($r["_source"]['palavras_chave'])) : ?>
+                                            <?php foreach ($r["_source"]['palavras_chave'] as $assunto) : ?>
+                                                <a href="result_trabalhos.php?filter[]=palavras_chave:&quot;<?php echo $assunto;?>&quot;"><?php echo $assunto;?></a>
+                                            <?php endforeach;?>
+                                            <?php endif; ?>
+                                        </li>
+                                        
+                                        <?php if (!empty($r["_source"]['ids_match'])) : ?>  
+                                        <?php foreach ($r["_source"]['ids_match'] as $id_match) : ?>
+                                            <?php compararRegistros::match_id($id_match["id_match"], $id_match["nota"]);?>
+                                        <?php endforeach;?>
+                                        <?php endif; ?>
+                                        
+                                        <?php 
+                                        if ($instituicao == "USP") {
+                                            DadosExternos::query_bdpi($r["_source"]['name'], $r["_source"]['datePublished'], $r['_id']);
+                                        }
+                                        ?>        
+                                        
+                                        <li class="uk-h6">
+                                            <!-- This is a button toggling the modal -->
+                                            <button uk-toggle="target: #<?php echo $r['_id']; ?>" type="button">Ver em tabela</button>
+
+                                            <!-- This is the modal -->
+                                            <div id="<?php echo $r['_id']; ?>" uk-modal>
+                                                <div class="uk-modal-dialog uk-modal-body">
+                                                    <h2 class="uk-modal-title">Tabela</h2>
+                                                    <table class="uk-table">
+                                                        <caption></caption>
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Titulo</th>
+                                                                <th>Autores</th>
+                                                                <th>Ano</th>
+                                                                <th>Idioma</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td><?php echo ($r["_source"]['name']);?></td>
+                                                                <td><?php echo ($array_aut);?></td>
+                                                                <td><?php echo $r["_source"]['datePublished']; ?></td>
+                                                                <td><?php echo $r["_source"]['language']; ?></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>                                                
+                                                    <button class="uk-modal-close" type="button"></button>
+                                                </div>
+                                            </div>                                    
+                                        
+                                        </li>
+
+
+                                        <li class="uk-h6">
+                                        <?php
+                                        
+                                        if (isset($dspaceRest)) { 
+                                            echo '<form action="dspaceConnect.php" method="get">
+                                                <input type="hidden" name="createRecord" value="true" />
+                                                <input type="hidden" name="_id" value="'.$r['_id'].'" />
+                                                <button class="uk-button uk-button-danger" name="btn_submit">Criar registro no DSpace</button>
+                                                </form>';  
+                                        }
+                                        
+                                        ?>
+                                        </li>
+                                        <li class="uk-h6">
+                                            <a href="tools/export.php?search[]=_id:<?php echo $r['_id'] ?>&format=alephseq" class="uk-margin-top">Exportar Alephseq</a>
+                                        </li>
+                                        <li class="uk-h6">
+                                            <a href="editor.php?_id=<?php echo $r['_id'] ?>" class="uk-margin-top">Editar registro</a>
+                                        </li>                                    
+                                        
+                                        <p><a href="#" class="uk-margin-top" uk-toggle="target: #citacao<?php echo  $r['_id'];?>">Ver todos os dados deste registro</a></p>
+                                        <div id="citacao<?php echo  $r['_id'];?>" hidden>                                        
+                                            <li class="uk-h6"> 
+                                                <table class="uk-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Nome do campo</th>
+                                                            <th>Valor</th>
+                                                        </tr>
+                                                    </thead>    
+                                                    <tbody>
+                                                        <?php foreach ($r["_source"] as $key => $value) {
+                                                                echo '<tr><td>'.$key.'</td><td>';
+                                                                if (is_array($value)) {
+                                                                    foreach ($value as $valor) {
+                                                                        if (is_array($valor)) {
+                                                                                foreach ($valor as $valor1) {
+                                                                                    //echo ''.$valor1.'';
+                                                                                }
+                                                                            } else {
+                                                                                echo ''.$valor.''; 
+                                                                            }
+                                                                        }
+
+                                                                } else {
+                                                                    echo ''.$value.'';
+                                                                }
+                                                                echo '</td>';
+                                                                echo '</tr>';
+                                                        };?>
+                                                    </tbody>
+                                                </table>
+                                            </li>
+                                        </div>    
+                                            
+                                    </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        <?php endforeach;?>
+
+
+                        <!-- Navegador de resultados - Início -->
+                        <?php ui::pagination($page, $total, $limit); ?>
+                        <!-- Navegador de resultados - Fim -->  
+
+                </div>
+                <div class="col-4">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 
                 <hr>
-                <h3 class="uk-panel-title">Refinar meus resultados</h3>    
-                <ul class="uk-nav uk-nav-side uk-nav-parent-icon uk-margin-top" data-uk-nav="{multiple:true}">
-                    <hr>
+                <h3>Refinar meus resultados</h3>    
+                <hr>
                 <?php
                     $facets = new facets();
                     $facets->query = $result_get['query'];
@@ -204,7 +336,6 @@ $get_data = $_GET;
                     $facets->facet("USP.codpes",100,"Número USP",null,"_term",$_GET);
                     $facets->facet("USP.unidadeUSP",100,"Unidade USP",null,"_term",$_GET);
                     
-                    echo '<hr><li>Informações da publicação</li>';
                     $facets->facet("country",200,"País de publicação",null,"_term",$_GET);
                     $facets->facet("datePublished",120,"Ano de publicação","desc","_term",$_GET);
                     $facets->facet("language",40,"Idioma",null,"_term",$_GET);
@@ -212,17 +343,14 @@ $get_data = $_GET;
                     $facets->facet("about",100,"Palavras-chave",null,"_term",$_GET);
                     $facets->facet("agencia_de_fomento",100,"Agências de fomento",null,"_term",$_GET);
 
-                    echo '<hr><li>Lattes</li>';
                     $facets->facet("Lattes.flagRelevancia",100,"Relevância",null,"_term",$_GET);
                     $facets->facet("Lattes.flagDivulgacaoCientifica",100,"Divulgação científica",null,"_term",$_GET);
                     
-                    echo '<hr><li>Área do conhecimento</li>';
                     $facets->facet("area_do_conhecimento.nomeGrandeAreaDoConhecimento", 100, "Nome da Grande Área do Conhecimento", null, "_term", $_GET);
                     $facets->facet("area_do_conhecimento.nomeDaAreaDoConhecimento", 100, "Nome da Área do Conhecimento", null, "_term", $_GET);
                     $facets->facet("area_do_conhecimento.nomeDaSubAreaDoConhecimento", 100, "Nome da Sub Área do Conhecimento", null, "_term", $_GET);
                     $facets->facet("area_do_conhecimento.nomeDaEspecialidade", 100, "Nome da Especialidade", null, "_term", $_GET);
                     
-                    echo '<hr><li>Eventos</li>';
                     $facets->facet("trabalhoEmEventos.classificacaoDoEvento", 100, "Classificação do evento", null, "_term", $_GET); 
                     $facets->facet("EducationEvent.name", 100, "Nome do evento", null, "_term", $_GET);
                     $facets->facet("publisher.organization.location", 100, "Cidade do evento", null, "_term", $_GET);
@@ -232,66 +360,55 @@ $get_data = $_GET;
                     $facets->facet("trabalhoEmEventos.nomeDaEditora", 100, "Editora dos anais", null, "_term", $_GET);
                     $facets->facet("trabalhoEmEventos.cidadeDaEditora", 100, "Cidade da editora", null, "_term", $_GET);
 
-                    echo '<hr><li>Mídias sociais e blogs</li>';
                     $facets->facet("midiaSocialWebsiteBlog.formacao_maxima", 100, "Formação máxima - Blogs e mídias sociais", null, "_term", $_GET);
                     
-                    echo '<hr><li>Periódicos</li>';
                     $facets->facet("isPartOf.name", 100, "Título do periódico", null, "_term", $_GET);
 
-                    echo '<hr><li>Concluído</li>';
                     $facets->facet("concluido", 100, "Concluído", null, "_term", $_GET);
                     $facets->facet("bdpi.existe", 100, "Está no DEDALUS?", null, "_term", $_GET);
 
                 ?>
                 </ul>
-                    <?php if (!empty($_SESSION['oauthuserdata'])) : ?>
-                        <h3 class="uk-panel-title uk-margin-top">Informações administrativas</h3>
-                        <ul class="uk-nav uk-nav-side uk-nav-parent-icon uk-margin-top" data-uk-nav="{multiple:true}">
-                        <hr>
-                        <?php         
+                <!-- Limitar por data - Início -->
+                <form action="result.php?" method="GET">
+                    <h5 class="mt-3">Filtrar por ano de publicação</h5>
+                    <?php 
+                        parse_str($_SERVER["QUERY_STRING"], $parsedQuery);
+                        foreach ($parsedQuery as $k => $v) {
+                            if (is_array($v)) {
+                                foreach ($v as $v_unit) {
+                                    echo '<input type="hidden" name="'.$k.'[]" value="'.htmlentities($v_unit).'">';
+                                }
+                            } else {
+                                if ($k == "initialYear") {
+                                    $initialYearValue = $v;
+                                } elseif ($k == "finalYear") {
+                                    $finalYearValue = $v;
+                                } else {
+                                    echo '<input type="hidden" name="'.$k.'" value="'.htmlentities($v).'">';
+                                }                                    
+                            }
+                        }
 
-                        ?>
-                        </ul>
-                    <?php endif; ?>
-                <hr>
-                        <!-- Limitar por data - Início -->
-                        <form class="uk-text-small">
-                            <fieldset>
-                                <legend><?php echo 'Limitar por data'; ?></legend>
-                                <script>
-                                    $( function() {
-                                    $( "#limitar-data" ).slider({
-                                    range: true,
-                                    min: 1900,
-                                    max: 2030,
-                                    values: [ 1900, 2030 ],
-                                    slide: function( event, ui ) {
-                                        $( "#date" ).val( "datePublished:[" + ui.values[ 0 ] + " TO " + ui.values[ 1 ] + "]" );
-                                    }
-                                    });
-                                    $( "#date" ).val( "datePublished:[" + $( "#limitar-data" ).slider( "values", 0 ) +
-                                    " TO " + $( "#limitar-data" ).slider( "values", 1 ) + "]");
-                                    } );
-                                </script>
-                                <p>
-                                <label for="date"><?php echo 'Selecionar período de tempo'; ?>:</label>
-                                <input class="uk-input" type="text" id="date" readonly style="border:0; color:#f6931f;" name="search[]">
-                                </p>        
-                                <div id="limitar-data" class="uk-margin-bottom"></div>
-                                <?php if (!empty($_GET["search"])) : ?>
-                                    <?php foreach($_GET["search"] as $search_expression): ?>
-                                        <input type="hidden" name="search[]" value="<?php echo str_replace('"', '&quot;', $search_expression); ?>">
-                                    <?php endforeach; ?>
-                                <?php endif; ?>
-                                <?php if (!empty($_GET["filter"])) : ?>
-                                    <?php foreach($_GET["filter"] as $filter_expression): ?>
-                                        <input type="hidden" name="filter[]" value="<?php echo str_replace('"', '&quot;', $filter_expression); ?>">
-                                    <?php endforeach; ?>
-                                <?php endif; ?>                                
-                                <button class="uk-button uk-button-primary uk-button-small"><?php echo 'Limitar datas'; ?></button>
-                            </fieldset>        
-                        </form>
-                        <!-- Limitar por data - Fim -->
+                        if (!isset($initialYearValue)) {
+                            $initialYearValue = "";
+                        }                            
+                        if (!isset($finalYearValue)) {
+                            $finalYearValue = "";
+                        }
+
+                    ?>
+                    <div class="form-group">
+                        <label for="initialYear">Ano inicial</label>
+                        <input type="text" class="form-control" id="initialYear" name="initialYear" pattern="\d{4}" placeholder="Ex. 2010" value="<?php echo $initialYearValue; ?>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="finalYear">Ano final</label>
+                        <input type="text" class="form-control" id="finalYear" name="finalYear" pattern="\d{4}" placeholder="Ex. 2020" value="<?php echo $finalYearValue; ?>">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Filtrar</button>
+                </form>   
+                <!-- Limitar por data - Fim -->
                 <hr>     
                         
             </div>
@@ -299,192 +416,13 @@ $get_data = $_GET;
                 
         <div class="uk-width-3-4@s uk-width-4-6@m">
         
-            <!-- Navegador de resultados - Início -->
-            <?php ui::pagination($page, $total, $limit); ?>
-            <!-- Navegador de resultados - Fim -->                    
+                 
                     
             <hr class="uk-grid-divider">           
                     
             <div class="uk-width-1-1 uk-margin-top uk-description-list-line">                        
                 <ul class="uk-list uk-list-divider">
                    
-                <?php foreach ($cursor["hits"]["hits"] as $r) : ?>
-                    <?php if (empty($r["_source"]['datePublished'])) {
-                        $r["_source"]['datePublished'] = "";
-                    }
-                    ?>
-                    <li>
-                        <div class="uk-grid-divider uk-padding-small" uk-grid>
-                            <div class="uk-width-1-5@m">                        
-                                <div class="uk-panel uk-h6 uk-text-break">
-                                    <a href="result_trabalhos.php?type[]=<?php echo $r["_source"]['tipo'];?>"><?php echo ucfirst(strtolower($r["_source"]['tipo']));?></a>
-                                </div>
-                                <form class="uk-form" method="post">
-                                    <?php if(isset($r["_source"]["concluido"])) : ?>
-                                        <?php if($r["_source"]["concluido"]== "Sim") : ?>    
-                                            
-                                                <label><input type='hidden' value='Não' name="<?php echo $r['_id'];?>"></label>                                     
-                                                <label><input type="checkbox" name="<?php echo $r['_id'];?>" value='Sim' checked>Concluído</label>
-                                           
-                                        <?php else : ?>
-                                            
-                                                <label><input type='hidden' value='Não' name="<?php echo $r['_id'];?>"></label>                                     
-                                                <label><input type="checkbox" name="<?php echo $r['_id'];?>" value='Sim'>Concluído</label>
-                                            
-                                        <?php endif; ?>                                    
-                                    <?php else : ?>
-                                            
-                                                <label><input type='hidden' value='Não' name="<?php echo $r['_id'];?>"></label>                                     
-                                                <label><input type="checkbox" name="<?php echo $r['_id'];?>" value='Sim'>Concluído</label>
-                                            
-                                    <?php endif; ?>
-                                    <button class="uk-button-primary">Marcar como concluído</button>
-                                </form>                                     
-                            </div>
-                            <div class="uk-width-4-5@m">
-                                <article class="uk-article">
-                                <p class="uk-text-lead uk-margin-remove" style="font-size:115%"><?php echo ($r["_source"]['name']);?> (<?php echo $r["_source"]['datePublished']; ?>)</p> 
-                                <ul class="uk-list">
-                                    <li class="uk-h6">
-                                        Autores:
-                                        <?php if (!empty($r["_source"]['author'])) : ?>
-                                        <?php foreach ($r["_source"]['author'] as $autores) {
-                                            $authors_array[]='<a href="result_trabalhos.php?filter[]=author.person.name:&quot;'.$autores["person"]["name"].'&quot;">'.$autores["person"]["name"].'</a>';
-                                        } 
-                                        $array_aut = implode(", ",$authors_array);
-                                        unset($authors_array);
-                                        print_r($array_aut);
-                                        ?>
-                                        
-                                        
-                                        <?php endif; ?>                           
-                                    </li>
-                                    
-                                    <?php if (!empty($r["_source"]['artigoPublicado'])) : ?>
-                                        <li class="uk-h6">In: <a href="result_trabalhos.php?filter[]=periodico.titulo_do_periodico:&quot;<?php echo $r["_source"]['artigoPublicado']['tituloDoPeriodicoOuRevista'];?>&quot;"><?php echo $r["_source"]['artigoPublicado']['tituloDoPeriodicoOuRevista'];?></a></li>
-                                        <li class="uk-h6">ISSN: <a href="result_trabalhos.php?filter[]=periodico.issn:&quot;<?php echo $r["_source"]['artigoPublicado']['issn'];?>&quot;"><?php echo $r["_source"]['artigoPublicado']['issn'];?></a></li>                                        
-                                    <?php endif; ?>
-                                    
-                                    <?php if (!empty($r["_source"]['doi'])) : ?>
-                                        <li class="uk-h6"><p>DOI: <a href="https://doi.org/<?php echo $r["_source"]['doi'];?>"><?php echo $r["_source"]['doi'];?></a></p>
-                                        <p><a href="doi_to_elastic.php?doi=<?php echo $r['_source']['doi'];?>&tag=<?php echo $r['_source']['tag'][0];?>">Coletar dados da Crossref</a></p></li>                                        
-                                    <?php endif; ?>                                        
-                                    
-                                    <li class="uk-h6">
-                                        Assuntos:
-                                        <?php if (!empty($r["_source"]['palavras_chave'])) : ?>
-                                        <?php foreach ($r["_source"]['palavras_chave'] as $assunto) : ?>
-                                            <a href="result_trabalhos.php?filter[]=palavras_chave:&quot;<?php echo $assunto;?>&quot;"><?php echo $assunto;?></a>
-                                        <?php endforeach;?>
-                                        <?php endif; ?>
-                                    </li>
-                                    
-                                    <?php if (!empty($r["_source"]['ids_match'])) : ?>  
-                                    <?php foreach ($r["_source"]['ids_match'] as $id_match) : ?>
-                                        <?php compararRegistros::match_id($id_match["id_match"], $id_match["nota"]);?>
-                                    <?php endforeach;?>
-                                    <?php endif; ?>
-                                    
-                                    <?php 
-                                    if ($instituicao == "USP") {
-                                        DadosExternos::query_bdpi($r["_source"]['name'], $r["_source"]['datePublished'], $r['_id']);
-                                    }
-                                    ?>        
-                                    
-                                    <li class="uk-h6">
-                                        <!-- This is a button toggling the modal -->
-                                        <button uk-toggle="target: #<?php echo $r['_id']; ?>" type="button">Ver em tabela</button>
-
-                                        <!-- This is the modal -->
-                                        <div id="<?php echo $r['_id']; ?>" uk-modal>
-                                            <div class="uk-modal-dialog uk-modal-body">
-                                                <h2 class="uk-modal-title">Tabela</h2>
-                                                <table class="uk-table">
-                                                    <caption></caption>
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Titulo</th>
-                                                            <th>Autores</th>
-                                                            <th>Ano</th>
-                                                            <th>Idioma</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td><?php echo ($r["_source"]['name']);?></td>
-                                                            <td><?php echo ($array_aut);?></td>
-                                                            <td><?php echo $r["_source"]['datePublished']; ?></td>
-                                                            <td><?php echo $r["_source"]['language']; ?></td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>                                                
-                                                <button class="uk-modal-close" type="button"></button>
-                                            </div>
-                                        </div>                                    
-                                    
-                                    </li>
-
-
-                                    <li class="uk-h6">
-                                    <?php
-                                    
-                                    if (isset($dspaceRest)) { 
-                                        echo '<form action="dspaceConnect.php" method="get">
-                                              <input type="hidden" name="createRecord" value="true" />
-                                              <input type="hidden" name="_id" value="'.$r['_id'].'" />
-                                              <button class="uk-button uk-button-danger" name="btn_submit">Criar registro no DSpace</button>
-                                              </form>';  
-                                    }
-                                    
-                                    ?>
-                                    </li>
-                                    <li class="uk-h6">
-                                        <a href="tools/export.php?search[]=_id:<?php echo $r['_id'] ?>&format=alephseq" class="uk-margin-top">Exportar Alephseq</a>
-                                    </li>
-                                    <li class="uk-h6">
-                                        <a href="editor.php?_id=<?php echo $r['_id'] ?>" class="uk-margin-top">Editar registro</a>
-                                    </li>                                    
-                                    
-                                    <p><a href="#" class="uk-margin-top" uk-toggle="target: #citacao<?php echo  $r['_id'];?>">Ver todos os dados deste registro</a></p>
-                                    <div id="citacao<?php echo  $r['_id'];?>" hidden>                                        
-                                        <li class="uk-h6"> 
-                                            <table class="uk-table">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Nome do campo</th>
-                                                        <th>Valor</th>
-                                                    </tr>
-                                                </thead>    
-                                                <tbody>
-                                                    <?php foreach ($r["_source"] as $key => $value) {
-                                                            echo '<tr><td>'.$key.'</td><td>';
-                                                            if (is_array($value)) {
-                                                                foreach ($value as $valor) {
-                                                                    if (is_array($valor)) {
-                                                                            foreach ($valor as $valor1) {
-                                                                                //echo ''.$valor1.'';
-                                                                            }
-                                                                        } else {
-                                                                            echo ''.$valor.''; 
-                                                                        }
-                                                                    }
-
-                                                            } else {
-                                                                echo ''.$value.'';
-                                                            }
-                                                            echo '</td>';
-                                                            echo '</tr>';
-                                                    };?>
-                                                </tbody>
-                                            </table>
-                                        </li>
-                                    </div>    
-                                        
-                                </ul>
-                                </div>
-                            </div>
-                        </li>
-                    <?php endforeach;?>
                     </ul>
                     </div>
                     <hr class="uk-grid-divider">
