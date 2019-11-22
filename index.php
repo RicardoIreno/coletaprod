@@ -9,7 +9,7 @@
             /* Define variables */
             define('authorUSP','authorUSP');
         ?> 
-        <title>Coleta Produção USP</title>
+        <title><?php echo $branch ?></title>
         <!-- Facebook Tags - START -->
         <meta property="og:locale" content="pt_BR">
         <meta property="og:url" content="http://coletaprod.sibi.usp.br/coletaprod">
@@ -31,8 +31,8 @@
 
     <?php isset($error_connection_message) ? print_r($error_connection_message) : "" ?>
 
-    <h1 class="uk-heading-line uk-text-center uk-margin-top"><span>Coleta Produção USP</span></h1>
-    <p>Coleta produção de diversas fontes para preenchimento do Cadastro de Produção Intelectual, para uso interno das Bibliotecas da Universidade de São Paulo</p>
+    <h1 class="uk-heading-line uk-text-center uk-margin-top"><span><?php echo $branch ?></span></h1>
+    <p>Coleta produção de diversas fontes para preenchimento do Cadastro de Produção Intelectual, para uso interno da Biblioteca da Escola de Comunicações e Artes da Universidade de São Paulo</p>
     <br/><br/>
     <ul class="uk-subnav uk-subnav-pill" uk-switcher>
         <li><a href="#">Pesquisa</a></li>
