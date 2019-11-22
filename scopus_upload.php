@@ -81,7 +81,7 @@ if (isset($_FILES['file'])) {
     while (($row = fgetcsv($fh, 8192, ",")) !== false) {
         $doc = Record::Build($row, $rowNum, $_POST["tag"]);
         if (!is_null($doc["doc"]["name"]) & !is_null($doc["doc"]["datePublished"])) {
-            $doc["doc"]["bdpi"] = DadosExternos::query_bdpi_index($doc["doc"]["name"], $doc["doc"]["datePublished"]);
+            //$doc["doc"]["bdpi"] = DadosExternos::query_bdpi_index($doc["doc"]["name"], $doc["doc"]["datePublished"]);
         }
         $sha256 = hash('sha256', ''.$doc["doc"]["source_id"].'');
         //print_r($doc);

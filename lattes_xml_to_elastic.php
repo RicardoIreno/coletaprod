@@ -501,8 +501,8 @@ if (isset($curriculo->{'DADOS-GERAIS'}->{'FORMACAO-ACADEMICA-TITULACAO'}->{'LIVR
     $doc_curriculo_array["doc_as_upsert"] = true;
     
     $identificador = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};                
-    $resultado_curriculo = Elasticsearch::store_record($identificador, $doc_curriculo_array);
-    print_r($resultado_curriculo);
+    //$resultado_curriculo = Elasticsearch::store_record($identificador, $doc_curriculo_array);
+    //print_r($resultado_curriculo);
 
 
 
@@ -585,7 +585,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TRABALHOS-EM-EVENTOS'})) {
         $sha_array[] = $doc["doc"]["pageEnd"];
         $sha256 = hash('sha256', ''.implode("", $sha_array).'');
 
-        $doc["doc"]["bdpi"] = DadosExternos::query_bdpi_index($doc["doc"]["name"], $doc["doc"]["datePublished"]);
+        //$doc["doc"]["bdpi"] = DadosExternos::query_bdpi_index($doc["doc"]["name"], $doc["doc"]["datePublished"]);
         $doc["doc"]["concluido"] = "Não";
         $doc["doc_as_upsert"] = true;
 
@@ -686,7 +686,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'ARTIGOS-PUBLICADOS'})) {
         }
 
 
-        $doc["doc"]["bdpi"] = DadosExternos::query_bdpi_index($doc["doc"]["name"], $doc["doc"]["datePublished"]);
+        //$doc["doc"]["bdpi"] = DadosExternos::query_bdpi_index($doc["doc"]["name"], $doc["doc"]["datePublished"]);
         $doc["doc"]["concluido"] = "Não";
         $doc["doc_as_upsert"] = true;
 
@@ -788,7 +788,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'LIVROS-E-CAPITULOS'})) {
             }
 
 
-            $doc["doc"]["bdpi"] = DadosExternos::query_bdpi_index($doc["doc"]["name"], $doc["doc"]["datePublished"]);
+            //$doc["doc"]["bdpi"] = DadosExternos::query_bdpi_index($doc["doc"]["name"], $doc["doc"]["datePublished"]);
             $doc["doc"]["concluido"] = "Não";
             $doc["doc_as_upsert"] = true;
 
@@ -881,7 +881,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'LIVROS-E-CAPITULOS'})) {
             $sha_array[] = $doc["doc"]["isPartOf"]["name"];
             $sha256 = hash('sha256', ''.implode("", $sha_array).'');
 
-            $doc["doc"]["bdpi"] = DadosExternos::query_bdpi_index($doc["doc"]["name"], $doc["doc"]["datePublished"]);
+            //$doc["doc"]["bdpi"] = DadosExternos::query_bdpi_index($doc["doc"]["name"], $doc["doc"]["datePublished"]);
             $doc["doc"]["concluido"] = "Não";
             $doc["doc_as_upsert"] = true;
 
@@ -984,7 +984,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TEXTOS-EM-JORNAIS-OU-REVISTA
         }
 
 
-        $doc["doc"]["bdpi"] = DadosExternos::query_bdpi_index($doc["doc"]["name"], $doc["doc"]["datePublished"]);
+        //$doc["doc"]["bdpi"] = DadosExternos::query_bdpi_index($doc["doc"]["name"], $doc["doc"]["datePublished"]);
         $doc["doc"]["concluido"] = "Não";
         $doc["doc_as_upsert"] = true;
 
@@ -1082,7 +1082,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
             }
 
 
-            $doc["doc"]["bdpi"] = DadosExternos::query_bdpi_index($doc["doc"]["name"], $doc["doc"]["datePublished"]);
+            //$doc["doc"]["bdpi"] = DadosExternos::query_bdpi_index($doc["doc"]["name"], $doc["doc"]["datePublished"]);
             $doc["doc"]["concluido"] = "Não";
             $doc["doc_as_upsert"] = true;
 
@@ -1180,7 +1180,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
             }
 
 
-            $doc["doc"]["bdpi"] = DadosExternos::query_bdpi_index($doc["doc"]["name"], $doc["doc"]["datePublished"]);
+            //$doc["doc"]["bdpi"] = DadosExternos::query_bdpi_index($doc["doc"]["name"], $doc["doc"]["datePublished"]);
             $doc["doc"]["concluido"] = "Não";
             $doc["doc_as_upsert"] = true;
 
@@ -1280,7 +1280,7 @@ if (isset($curriculo->{'PRODUCAO-TECNICA'})) {
             }
 
 
-            $doc["doc"]["bdpi"] = DadosExternos::query_bdpi_index($doc["doc"]["name"], $doc["doc"]["datePublished"]);
+            //$doc["doc"]["bdpi"] = DadosExternos::query_bdpi_index($doc["doc"]["name"], $doc["doc"]["datePublished"]);
             $doc["doc"]["concluido"] = "Não";
             $doc["doc_as_upsert"] = true;
 
@@ -1369,7 +1369,7 @@ if (isset($curriculo->{'PRODUCAO-TECNICA'})) {
             }
 
 
-            $doc["doc"]["bdpi"] = DadosExternos::query_bdpi_index($doc["doc"]["name"], $doc["doc"]["datePublished"]);
+            //$doc["doc"]["bdpi"] = DadosExternos::query_bdpi_index($doc["doc"]["name"], $doc["doc"]["datePublished"]);
             $doc["doc"]["concluido"] = "Não";
             $doc["doc_as_upsert"] = true;
 
@@ -1476,7 +1476,7 @@ if (isset($curriculo->{'OUTRA-PRODUCAO'})) {
                 }
 
 
-                $doc["doc"]["bdpi"] = DadosExternos::query_bdpi_index($doc["doc"]["name"], $doc["doc"]["datePublished"]);
+                //$doc["doc"]["bdpi"] = DadosExternos::query_bdpi_index($doc["doc"]["name"], $doc["doc"]["datePublished"]);
                 $doc["doc"]["concluido"] = "Não";
                 $doc["doc_as_upsert"] = true;
 

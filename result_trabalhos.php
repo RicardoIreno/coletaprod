@@ -20,7 +20,7 @@ if (isset($_GET["filter"])) {
 } else {
     $_GET["filter"][] = "type:\"Work\"";
 }
-$result_get = get::analisa_get($_GET);
+$result_get = Requests::getParser($_GET);
 $query = $result_get['query'];
 $limit = $result_get['limit'];
 $page = $result_get['page'];
@@ -32,7 +32,6 @@ $skip = $result_get['skip'];
 
 $params = [];
 $params["index"] = $index;
-$params["type"] = $type;
 $params["size"] = $limit;
 $params["from"] = $skip;
 $params["body"] = $query;
@@ -102,7 +101,7 @@ $get_data = $_GET;
         <!-- List of filters - Start -->
         <?php if (!empty($_SERVER["QUERY_STRING"])) : ?>
         <p class="uk-margin-top" uk-margin>
-            <a class="uk-button uk-button-default uk-button-small" href="index.php"><?php echo $t->gettext('Começar novamente'); ?></a>	
+            <a class="uk-button uk-button-default uk-button-small" href="index.php">Começar novamente</a>	
             <?php 
             if (!empty($_GET["search"])) {
                 foreach ($_GET["search"] as $querySearch) {
@@ -160,55 +159,55 @@ $get_data = $_GET;
                     $facets->query = $query;
 
                     if (!isset($_GET["search"])) {
-                        $_GET["search"] = null;                                    
+                        $_GET = null;                                    
                     }                       
                     
-                    $facets->facet("Lattes.natureza", 100, "Natureza", null, "_term", $_GET["search"]);
-                    $facets->facet("tipo", 100, "Tipo de material", null, "_term", $_GET["search"]);
-                    $facets->facet("tag", 100, "Tag", null, "_term", $_GET["search"]);
+                    $facets->facet("Lattes.natureza", 100, "Natureza", null, "_term", $_GET);
+                    $facets->facet("tipo", 100, "Tipo de material", null, "_term", $_GET);
+                    $facets->facet("tag", 100, "Tag", null, "_term", $_GET);
                     
-                    $facets->facet("author.person.name", 100, "Nome completo do autor", null, "_term", $_GET["search"]);
-                    $facets->facet("lattes_ids", 100, "Número do lattes", null, "_term", $_GET["search"]);
-                    $facets->facet("USP.codpes",100,"Número USP",null,"_term",$_GET["search"]);
-                    $facets->facet("USP.unidadeUSP",100,"Unidade USP",null,"_term",$_GET["search"]);
+                    $facets->facet("author.person.name", 100, "Nome completo do autor", null, "_term", $_GET);
+                    $facets->facet("lattes_ids", 100, "Número do lattes", null, "_term", $_GET);
+                    $facets->facet("USP.codpes",100,"Número USP",null,"_term",$_GET);
+                    $facets->facet("USP.unidadeUSP",100,"Unidade USP",null,"_term",$_GET);
                     
                     echo '<hr><li>Informações da publicação</li>';
-                    $facets->facet("country",200,"País de publicação",null,"_term",$_GET["search"]);
-                    $facets->facet("datePublished",120,"Ano de publicação","desc","_term",$_GET["search"]);
-                    $facets->facet("language",40,"Idioma",null,"_term",$_GET["search"]);
-                    $facets->facet("Lattes.meioDeDivulgacao",100,"Meio de divulgação",null,"_term",$_GET["search"]);
-                    $facets->facet("about",100,"Palavras-chave",null,"_term",$_GET["search"]);
-                    $facets->facet("agencia_de_fomento",100,"Agências de fomento",null,"_term",$_GET["search"]);
+                    $facets->facet("country",200,"País de publicação",null,"_term",$_GET);
+                    $facets->facet("datePublished",120,"Ano de publicação","desc","_term",$_GET);
+                    $facets->facet("language",40,"Idioma",null,"_term",$_GET);
+                    $facets->facet("Lattes.meioDeDivulgacao",100,"Meio de divulgação",null,"_term",$_GET);
+                    $facets->facet("about",100,"Palavras-chave",null,"_term",$_GET);
+                    $facets->facet("agencia_de_fomento",100,"Agências de fomento",null,"_term",$_GET);
 
                     echo '<hr><li>Lattes</li>';
-                    $facets->facet("Lattes.flagRelevancia",100,"Relevância",null,"_term",$_GET["search"]);
-                    $facets->facet("Lattes.flagDivulgacaoCientifica",100,"Divulgação científica",null,"_term",$_GET["search"]);
+                    $facets->facet("Lattes.flagRelevancia",100,"Relevância",null,"_term",$_GET);
+                    $facets->facet("Lattes.flagDivulgacaoCientifica",100,"Divulgação científica",null,"_term",$_GET);
                     
                     echo '<hr><li>Área do conhecimento</li>';
-                    $facets->facet("area_do_conhecimento.nomeGrandeAreaDoConhecimento", 100, "Nome da Grande Área do Conhecimento", null, "_term", $_GET["search"]);
-                    $facets->facet("area_do_conhecimento.nomeDaAreaDoConhecimento", 100, "Nome da Área do Conhecimento", null, "_term", $_GET["search"]);
-                    $facets->facet("area_do_conhecimento.nomeDaSubAreaDoConhecimento", 100, "Nome da Sub Área do Conhecimento", null, "_term", $_GET["search"]);
-                    $facets->facet("area_do_conhecimento.nomeDaEspecialidade", 100, "Nome da Especialidade", null, "_term", $_GET["search"]);
+                    $facets->facet("area_do_conhecimento.nomeGrandeAreaDoConhecimento", 100, "Nome da Grande Área do Conhecimento", null, "_term", $_GET);
+                    $facets->facet("area_do_conhecimento.nomeDaAreaDoConhecimento", 100, "Nome da Área do Conhecimento", null, "_term", $_GET);
+                    $facets->facet("area_do_conhecimento.nomeDaSubAreaDoConhecimento", 100, "Nome da Sub Área do Conhecimento", null, "_term", $_GET);
+                    $facets->facet("area_do_conhecimento.nomeDaEspecialidade", 100, "Nome da Especialidade", null, "_term", $_GET);
                     
                     echo '<hr><li>Eventos</li>';
-                    $facets->facet("trabalhoEmEventos.classificacaoDoEvento", 100, "Classificação do evento", null, "_term", $_GET["search"]); 
-                    $facets->facet("EducationEvent.name", 100, "Nome do evento", null, "_term", $_GET["search"]);
-                    $facets->facet("publisher.organization.location", 100, "Cidade do evento", null, "_term", $_GET["search"]);
-                    $facets->facet("trabalhoEmEventos.anoDeRealizacao", 100, "Ano de realização do evento", null, "_term", $_GET["search"]);
-                    $facets->facet("trabalhoEmEventos.tituloDosAnaisOuProceedings", 100, "Título dos anais", null, "_term", $_GET["search"]);
-                    $facets->facet("trabalhoEmEventos.isbn", 100, "ISBN dos anais", null, "_term", $_GET["search"]);
-                    $facets->facet("trabalhoEmEventos.nomeDaEditora", 100, "Editora dos anais", null, "_term", $_GET["search"]);
-                    $facets->facet("trabalhoEmEventos.cidadeDaEditora", 100, "Cidade da editora", null, "_term", $_GET["search"]);
+                    $facets->facet("trabalhoEmEventos.classificacaoDoEvento", 100, "Classificação do evento", null, "_term", $_GET); 
+                    $facets->facet("EducationEvent.name", 100, "Nome do evento", null, "_term", $_GET);
+                    $facets->facet("publisher.organization.location", 100, "Cidade do evento", null, "_term", $_GET);
+                    $facets->facet("trabalhoEmEventos.anoDeRealizacao", 100, "Ano de realização do evento", null, "_term", $_GET);
+                    $facets->facet("trabalhoEmEventos.tituloDosAnaisOuProceedings", 100, "Título dos anais", null, "_term", $_GET);
+                    $facets->facet("trabalhoEmEventos.isbn", 100, "ISBN dos anais", null, "_term", $_GET);
+                    $facets->facet("trabalhoEmEventos.nomeDaEditora", 100, "Editora dos anais", null, "_term", $_GET);
+                    $facets->facet("trabalhoEmEventos.cidadeDaEditora", 100, "Cidade da editora", null, "_term", $_GET);
 
                     echo '<hr><li>Mídias sociais e blogs</li>';
-                    $facets->facet("midiaSocialWebsiteBlog.formacao_maxima", 100, "Formação máxima - Blogs e mídias sociais", null, "_term", $_GET["search"]);
+                    $facets->facet("midiaSocialWebsiteBlog.formacao_maxima", 100, "Formação máxima - Blogs e mídias sociais", null, "_term", $_GET);
                     
                     echo '<hr><li>Periódicos</li>';
-                    $facets->facet("isPartOf.name", 100, "Título do periódico", null, "_term", $_GET["search"]);
+                    $facets->facet("isPartOf.name", 100, "Título do periódico", null, "_term", $_GET);
 
                     echo '<hr><li>Concluído</li>';
-                    $facets->facet("concluido", 100, "Concluído", null, "_term", $_GET["search"]);
-                    $facets->facet("bdpi.existe", 100, "Está no DEDALUS?", null, "_term", $_GET["search"]);
+                    $facets->facet("concluido", 100, "Concluído", null, "_term", $_GET);
+                    $facets->facet("bdpi.existe", 100, "Está no DEDALUS?", null, "_term", $_GET);
 
                 ?>
                 </ul>
@@ -268,7 +267,7 @@ $get_data = $_GET;
         <div class="uk-width-3-4@s uk-width-4-6@m">
         
             <!-- Navegador de resultados - Início -->
-            <?php ui::pagination($page, $total, $limit, $t); ?>
+            <?php ui::pagination($page, $total, $limit); ?>
             <!-- Navegador de resultados - Fim -->                    
                     
             <hr class="uk-grid-divider">           
