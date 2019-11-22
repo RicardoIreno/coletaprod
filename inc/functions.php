@@ -3,7 +3,7 @@
  * Arquivo de classes e funções do ColetaProd
  */
 include('config.php');
-include('functions_core/functions_core.php');
+include('elasticfind/elasticfind.php');
 
 /* Load libraries for PHP composer */ 
 require (__DIR__.'/../vendor/autoload.php'); 
