@@ -13,6 +13,7 @@ if (!empty($_POST)) {
     sleep(6);
     header("Refresh:0");
 }
+
 if (isset($_GET["filter"])) {
     if (!in_array("type:\"Work\"", $_GET["filter"])) {
         $_GET["filter"][] = "type:\"Work\"";
@@ -20,24 +21,56 @@ if (isset($_GET["filter"])) {
 } else {
     $_GET["filter"][] = "type:\"Work\"";
 }
+
+
+
+if (isset($fields)) {
+    $_GET["fields"] = $fields;
+}
 $result_get = Requests::getParser($_GET);
-$query = $result_get['query'];
 $limit = $result_get['limit'];
 $page = $result_get['page'];
-$skip = $result_get['skip'];
-
-//$query['sort'] = [
-//    ['datePublished' => ['order' => 'desc']],
-//];
-
 $params = [];
 $params["index"] = $index;
+$params["body"] = $result_get['query'];
+$cursorTotal = $client->count($params);
+$total = $cursorTotal["count"];
+if (isset($_GET["sort"])) {
+    $result_get['query']["sort"][$_GET["sort"]]["unmapped_type"] = "long";
+    $result_get['query']["sort"][$_GET["sort"]]["missing"] = "_last";
+    $result_get['query']["sort"][$_GET["sort"]]["order"] = "desc";
+    $result_get['query']["sort"][$_GET["sort"]]["mode"] = "max";
+} else {
+    $result_get['query']['sort']['datePublished.keyword']['order'] = "desc";
+    $result_get['query']["sort"]["_uid"]["unmapped_type"] = "long";
+    $result_get['query']["sort"]["_uid"]["missing"] = "_last";
+    $result_get['query']["sort"]["_uid"]["order"] = "desc";
+    $result_get['query']["sort"]["_uid"]["mode"] = "max";
+}
+$params["body"] = $result_get['query'];
 $params["size"] = $limit;
-$params["from"] = $skip;
-$params["body"] = $query;
-
+$params["from"] = $result_get['skip'];
 $cursor = $client->search($params);
-$total = $cursor["hits"]["total"];
+
+
+// $result_get = Requests::getParser($_GET);
+// $query = $result_get['query'];
+// $limit = $result_get['limit'];
+// $page = $result_get['page'];
+// $skip = $result_get['skip'];
+
+// //$query['sort'] = [
+// //    ['datePublished' => ['order' => 'desc']],
+// //];
+
+// $params = [];
+// $params["index"] = $index;
+// $params["size"] = $limit;
+// $params["from"] = $skip;
+// $params["body"] = $query;
+
+// $cursor = $client->search($params);
+// $total = $cursor["hits"]["total"];
 
 /*pagination - start*/
 $get_data = $_GET;    
@@ -158,7 +191,7 @@ $get_data = $_GET;
                     $facets = new facets();
                     $facets->query = $query;
 
-                    if (!isset($_GET["search"])) {
+                    if (!isset($_GET)) {
                         $_GET = null;                                    
                     }                       
                     
