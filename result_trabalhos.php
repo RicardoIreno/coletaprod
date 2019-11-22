@@ -80,7 +80,7 @@ $get_data = $_GET;
 <html>
     <head>
         <?php
-            include('inc/meta-header.php'); 
+            include('inc/meta-header-new.php'); 
         ?>        
         <title>Lattes USP - Resultado da busca por trabalhos</title>
         <script src="inc/uikit/js/components/accordion.min.js"></script>

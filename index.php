@@ -45,7 +45,7 @@
                 <div class="uk-margin" uk-grid>
                     <label class="uk-form-label" for="form-stacked-text">Pesquisa por trabalho - <a href="result_trabalhos.php">Ver todos</a></label>                    
                     <div class="uk-form-controls">
-                        <input type="text" placeholder="Pesquise por termo ou título" class="uk-input uk-form-width-large" name="search[]">
+                        <input type="text" placeholder="Pesquise por termo ou título" class="uk-input uk-form-width-large" name="search">
                     </div>
                     <div>
                         <button class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom">Buscar</button>
@@ -77,7 +77,7 @@
                 <div class="uk-margin" uk-grid>
                     <label class="uk-form-label" for="form-stacked-text">Pesquisa por autor - <a href="result_autores.php">Ver todos</a></label>
                     <div class="uk-form-controls">
-                        <input type="text" placeholder="Pesquise por nome do autor ou número USP" class="uk-input uk-form-width-large" name="search[]">
+                        <input type="text" placeholder="Pesquise por nome do autor ou número USP" class="uk-input uk-form-width-large" name="search">
                         <input type="hidden" name="fields[]" value="nome_completo">                                
                         <input type="hidden" name="fields[]" value="nome_em_citacoes_bibliograficas">
                         <input type="hidden" name="fields[]" value="endereco.endereco_profissional.nomeInstituicaoEmpresa">                                            
