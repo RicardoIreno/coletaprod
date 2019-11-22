@@ -98,7 +98,7 @@ if (isset($_FILES['file'])) {
 
         //print_r($doc);
         //if (!is_null($sha256)) {
-            $resultado_wos = elasticsearch::elastic_update($sha256, $type, $doc);
+            $resultado_wos = Elasticsearch::update($sha256, $doc);
         //}
         //print_r($resultado_wos);
         print_r($doc["doc"]["source_id"]);

@@ -8,7 +8,7 @@ if (!empty($_POST)) {
     foreach ($_POST as $key=>$value) {            
         $var_concluido["doc"]["concluido"] = $value;
         $var_concluido["doc"]["doc_as_upsert"] = true; 
-        elasticsearch::elastic_update($key, $type, $var_concluido);
+        Elasticsearch::update($key, $var_concluido);
     }
     sleep(6);
     header("Refresh:0");

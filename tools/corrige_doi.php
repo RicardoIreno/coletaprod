@@ -89,7 +89,7 @@
             $doc["doc"]["corrigedoi"] = "Não";
         }
         $doc["doc_as_upsert"] = true;       
-        $result_elastic = elasticsearch::elastic_update($original_id, $type, $doc);
+        $result_elastic = Elasticsearch::update($original_id, $doc);
     }
    
     header("Refresh: 0");

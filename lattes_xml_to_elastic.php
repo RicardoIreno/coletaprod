@@ -501,7 +501,7 @@ if (isset($curriculo->{'DADOS-GERAIS'}->{'FORMACAO-ACADEMICA-TITULACAO'}->{'LIVR
     $doc_curriculo_array["doc_as_upsert"] = true;
     
     $identificador = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};                
-    $resultado_curriculo = elasticsearch::store_record($identificador, "trabalhos", $doc_curriculo_array);
+    $resultado_curriculo = Elasticsearch::store_record($identificador, $doc_curriculo_array);
     print_r($resultado_curriculo);
 
 
@@ -590,7 +590,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TRABALHOS-EM-EVENTOS'})) {
         $doc["doc_as_upsert"] = true;
 
         // Armazenar registro
-        $resultado = elasticsearch::elastic_update($sha256, "trabalhos", $doc);
+        $resultado = Elasticsearch::update($sha256, $doc);
         echo "<br/>";
         print_r($resultado);
         echo "<br/><br/>";
@@ -691,7 +691,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'ARTIGOS-PUBLICADOS'})) {
         $doc["doc_as_upsert"] = true;
 
         // Armazenar registro
-        $resultado = elasticsearch::elastic_update($sha256, "trabalhos", $doc);
+        $resultado = Elasticsearch::update($sha256, $doc);
         echo "<br/>";
         print_r($resultado);
         echo "<br/><br/>";
@@ -793,7 +793,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'LIVROS-E-CAPITULOS'})) {
             $doc["doc_as_upsert"] = true;
 
             // Armazenar registro
-            $resultado = elasticsearch::elastic_update($sha256, "trabalhos", $doc);
+            $resultado = Elasticsearch::update($sha256, $doc);
             echo "<br/>";
             print_r($resultado);
             echo "<br/><br/>";
@@ -886,7 +886,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'LIVROS-E-CAPITULOS'})) {
             $doc["doc_as_upsert"] = true;
 
             // Armazenar registro
-            $resultado = elasticsearch::elastic_update($sha256, "trabalhos", $doc);
+            $resultado = Elasticsearch::update($sha256, $doc);
             echo "<br/>";
             print_r($resultado);
             echo "<br/><br/>";
@@ -989,7 +989,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TEXTOS-EM-JORNAIS-OU-REVISTA
         $doc["doc_as_upsert"] = true;
 
         // Armazenar registro
-        $resultado = elasticsearch::elastic_update($sha256, "trabalhos", $doc);
+        $resultado = Elasticsearch::update($sha256, $doc);
         echo "<br/>";
         print_r($resultado);
         echo "<br/><br/>";
@@ -1087,7 +1087,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
             $doc["doc_as_upsert"] = true;
 
             // Armazenar registro
-            $resultado = elasticsearch::elastic_update($sha256, "trabalhos", $doc);
+            $resultado = Elasticsearch::update($sha256, $doc);
             echo "<br/>";
             print_r($resultado);
             echo "<br/><br/>";
@@ -1185,7 +1185,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
             $doc["doc_as_upsert"] = true;
 
             // Armazenar registro
-            $resultado = elasticsearch::elastic_update($sha256, "trabalhos", $doc);
+            $resultado = Elasticsearch::update($sha256, $doc);
             echo "<br/>";
             print_r($resultado);
             echo "<br/><br/>";
@@ -1285,7 +1285,7 @@ if (isset($curriculo->{'PRODUCAO-TECNICA'})) {
             $doc["doc_as_upsert"] = true;
 
             // Armazenar registro
-            $resultado = elasticsearch::elastic_update($sha256, "trabalhos", $doc);
+            $resultado = Elasticsearch::update($sha256, $doc);
             echo "<br/>";
             print_r($resultado);
             echo "<br/><br/>";
@@ -1374,7 +1374,7 @@ if (isset($curriculo->{'PRODUCAO-TECNICA'})) {
             $doc["doc_as_upsert"] = true;
 
             // Armazenar registro
-            $resultado = elasticsearch::elastic_update($sha256, "trabalhos", $doc);
+            $resultado = Elasticsearch::update($sha256, $doc);
             echo "<br/>";
             print_r($resultado);
             echo "<br/><br/>";
@@ -1481,7 +1481,7 @@ if (isset($curriculo->{'OUTRA-PRODUCAO'})) {
                 $doc["doc_as_upsert"] = true;
 
                 // Armazenar registro
-                $resultado = elasticsearch::elastic_update($sha256, "trabalhos", $doc);
+                $resultado = Elasticsearch::update($sha256, $doc);
                 echo "<br/>";
                 print_r($resultado);
                 echo "<br/><br/>";

@@ -8,7 +8,7 @@ echo "<br/><br/>";
 
 $cookies = DSpaceREST::loginREST();
 
-$cursor = elasticsearch::elastic_get($_REQUEST['_id'], $type, null);
+$cursor = Elasticsearch::get($_REQUEST['_id'], null);
 
 print_r($cursor);
 echo "<br/><br/>";

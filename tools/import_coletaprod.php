@@ -28,7 +28,7 @@ foreach ($cursor["hits"]["hits"] as $r) {
     unset($doc["doc"]["match"]);
     $doc["doc"]["match"]["tag"][] = "Lattes";
     $doc["doc_as_upsert"] = true;
-    $result_elastic = elasticsearch::elastic_update($r["_id"], $type, $doc);
+    $result_elastic = Elasticsearch::update($r["_id"], $doc);
 }
 
 while (isset($cursor['hits']['hits']) && count($cursor['hits']['hits']) > 0) {
@@ -46,7 +46,7 @@ while (isset($cursor['hits']['hits']) && count($cursor['hits']['hits']) > 0) {
         unset($doc["doc"]["match"]);
         $doc["doc"]["match"]["tag"][] = "Lattes";
         $doc["doc_as_upsert"] = true;
-        $result_elastic = elasticsearch::elastic_update($r["_id"], $type, $doc);
+        $result_elastic = Elasticsearch::update($r["_id"], $doc);
     }
 
 }

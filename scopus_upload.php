@@ -86,7 +86,7 @@ if (isset($_FILES['file'])) {
         $sha256 = hash('sha256', ''.$doc["doc"]["source_id"].'');
         //print_r($doc);
         if (!is_null($sha256)) {
-            $resultado_scopus = elasticsearch::elastic_update($sha256, $type, $doc);
+            $resultado_scopus = Elasticsearch::update($sha256, $doc);
         }
         print_r($resultado_scopus);
         print_r($doc["doc"]["source_id"]);

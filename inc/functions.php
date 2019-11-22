@@ -124,7 +124,7 @@ class compararRegistros {
                 }
             }
         ';    
-        $response = elasticsearch::elastic_search($type,NULL,$size,$body);
+        $response = Elasticsearch::search(null, $size, $body);
         return $response; 
     }    
     
@@ -185,7 +185,7 @@ class compararRegistros {
         }
         ';
         $type = "trabalhos";
-        $response = elasticsearch::elastic_search($type,NULL,NULL,$body);
+        $response = Elasticsearch::search(null, null, $body);
         return $response;
     }
     
@@ -246,7 +246,7 @@ class compararRegistros {
         ';   
 
         $type = "trabalhos";
-        $response = elasticsearch::elastic_search($type,NULL,NULL,$body);
+        $response = Elasticsearch::search(null, null, $body);
         return $response;
     }
 
@@ -290,7 +290,7 @@ class compararRegistros {
         }
         '; 
         $type = "trabalhos";
-        $response = elasticsearch::elastic_search($type,NULL,NULL,$body);
+        $response = Elasticsearch::search(null, null, $body);
         return $response;
     }
     
@@ -334,7 +334,7 @@ class compararRegistros {
             }
         ';
         $type = "trabalhos";
-        $response = elasticsearch::elastic_search($type,NULL,NULL,$body);
+        $response = Elasticsearch::search(null, null, $body);
         return $response;
     }
     
@@ -378,13 +378,13 @@ class compararRegistros {
         }
         ';
         $type = "trabalhos";
-        $response = elasticsearch::elastic_search($type,NULL,NULL,$body);
+        $response = Elasticsearch::search(null, null, $body);
         return $response;
     }    
 
     public static function match_id ($_id,$nota) {
         $fields = ['titulo','tipo','ano'];
-        $response = elasticsearch::elastic_get($_id,"trabalhos",$fields);
+        $response = Elasticsearch::get($_id, $fields);
 
         echo '<div class="uk-alert uk-alert-danger">';
         echo '<h3>Registros similares no Coleta Produção USP</h3>';
@@ -596,11 +596,11 @@ class DadosExternos {
             $doc["doc"]["bdpi"]["existe"] = "Sim";
             $doc["doc_as_upsert"] = true;
             //print_r($doc);
-            $result_elastic = elasticsearch::elastic_update($sha256, "trabalhos", $doc);
+            $result_elastic = Elasticsearch::update($sha256, $doc);
         } else {
             $doc["doc"]["bdpi"]["existe"] = "Não";
             $doc["doc_as_upsert"] = true;
-            $result_elastic = elasticsearch::elastic_update($sha256, "trabalhos", $doc);
+            $result_elastic = Elasticsearch::update($sha256, $doc);
         }
         return $data;
     }
@@ -784,7 +784,7 @@ class DadosExternos {
 
         $body = json_encode($doc_obra_array, JSON_UNESCAPED_UNICODE); 
 
-        $resultado_crossref = elasticsearch::store_record($sha256, "trabalhos", $body);
+        $resultado_crossref = Elasticsearch::store_record($sha256, $body);
         print_r($resultado_crossref);
     }    
     
@@ -818,7 +818,7 @@ class processaLattes {
                 $doc_tese["doc_as_upsert"] = true;
                 $sha256_tese = hash('sha256', ''.$id_lattes.$curso["sequenciaFormacao"].'');
                 $doc_tese_json = json_encode($doc_tese, JSON_UNESCAPED_UNICODE);
-                elasticsearch::elastic_update($sha256_tese,"teses",$doc_tese_json);                
+                Elasticsearch::update($sha256_tese, $doc_tese_json);                
             }
         }
 

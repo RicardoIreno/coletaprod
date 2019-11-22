@@ -13,7 +13,7 @@
             $query["doc"]["datePublished"] = $_POST["datePublished"];
             $query["doc"]["publisher"]["organization"]["name"] = $_POST["publisher_organization_name"];
             $query["doc_as_upsert"] = true;
-            $resultado = elasticsearch::elastic_update($_POST["_id"], $type, $query);
+            $resultado = Elasticsearch::update($_POST["_id"], $query);
             //print_r($resultado);
             sleep(5); 
             echo '<script>window.location = \'result_trabalhos.php?filter[]=name:"'.$_POST["name"].'"\'</script>';

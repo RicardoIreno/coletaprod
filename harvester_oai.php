@@ -75,7 +75,7 @@ if (isset($_GET["oai"])) {
                 //var_dump($query);
                 //echo "<br/><br/>";
 
-                $resultado = elasticsearch::elastic_update($sha256, $type, $query);
+                $resultado = Elasticsearch::update($sha256, $query);
                 //print_r($resultado);
                 unset($query);
                 flush();                
@@ -142,7 +142,7 @@ if (isset($_GET["oai"])) {
                     $query["doc"]["relation"][]=(string)$self_uri->attributes('http://www.w3.org/1999/xlink');
                 }
                 //print_r($query);
-                $resultado = elasticsearch::elastic_update($sha256,$type,$query);
+                $resultado = Elasticsearch::update($sha256, $query);
                 print_r($resultado);
                 unset($query);
                 flush();
@@ -279,7 +279,7 @@ if (isset($_GET["oai"])) {
           //echo '<br/><br/>';
           //print_r($query);
 
-          $resultado = elasticsearch::elastic_update($sha256, $type, $query);
+          $resultado = Elasticsearch::update($sha256, $query);
           //print_r($resultado);
           unset($query);
           flush();
@@ -348,7 +348,7 @@ if (isset($_GET["oai"])) {
                     $query["doc"]["url_principal"] = (string)$rec->{'metadata'}->{'rfc1807'}->{'id'};
                     $query["doc"]["relation"][]=(string)$rec->{'metadata'}->{'rfc1807'}->{'id'};
                     $query["doc_as_upsert"] = true;
-                    $resultado = elasticsearch::elastic_update($sha256,$type,$query);
+                    $resultado = Elasticsearch::update($sha256, $query);
                     print_r($resultado);
                     unset($query);
                     flush();

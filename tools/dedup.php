@@ -43,7 +43,7 @@ while (isset($cursor['hits']['hits']) && count($cursor['hits']['hits']) > 0) {
             $sha256 = hash('sha256', ''.$r["_source"]["name"].'');
         }
         $doc["doc_as_upsert"] = true;
-        $result_elastic = elasticsearch::elastic_update($sha256, $type, $doc, $newIndex);
+        $result_elastic = Elasticsearch::update($sha256, $doc, $newIndex);
         //print_r($result_elastic);
         //echo "<br/><br/><br/>";
     }

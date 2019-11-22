@@ -74,7 +74,7 @@
         $doc["doc_as_upsert"] = true;
         //echo "<br/><br/><br/><br/>";
         //print_r($doc);
-        $result_elastic = elasticsearch::elastic_update($original_id, $type, $doc);
+        $result_elastic = Elasticsearch::update($original_id, $doc);
         //print_r($result_elastic);
 
     }
@@ -111,7 +111,7 @@
         $doc["doc"]["match"]["count"] = count($result_matchTag_final);
         $doc["doc"]["match"]["string"] = implode(" - ", $result_matchTag_final);
         $doc["doc_as_upsert"] = true;
-        $result_elastic = elasticsearch::elastic_update($original_id, $type, $doc);
+        $result_elastic = Elasticsearch::update($original_id, $doc);
     }
 
     function comparaprod($title, $author_name, $year, $original_id, $matchTagArray)
@@ -175,7 +175,7 @@
         $doc["doc"]["match"]["count"] = count($result_matchTag_final);
         $doc["doc"]["match"]["string"] = implode(" - ", $result_matchTag_final);
         $doc["doc_as_upsert"] = true;
-        $result_elastic = elasticsearch::elastic_update($original_id, $type, $doc);
+        $result_elastic = Elasticsearch::update($original_id, $doc);
     }
 
     header("Refresh: 0");

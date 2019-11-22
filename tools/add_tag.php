@@ -31,7 +31,7 @@
         $doc["doc_as_upsert"] = true;
         $sysno = $r["_id"];
         $type = "trabalhos";
-        $result_elastic = elasticsearch::elastic_update($sysno, $type, $doc);
+        $result_elastic = Elasticsearch::update($sysno, $doc);
         print_r($result_elastic); 
 
     }
