@@ -417,7 +417,7 @@ class paginaInicial {
             }        
         ';    
         $size = 0;
-        $response = elasticsearch::elastic_search("trabalhos", null, $size, $body);
+        $response = Elasticsearch::search(null, $size, $body);
         return number_format($response['hits']['total'], 0, ',', '.');
     } 
 
@@ -430,7 +430,7 @@ class paginaInicial {
             }          
         ';
         $size = 0;
-        $response = elasticsearch::elastic_search($type,NULL,$size,$body);
+        $response = Elasticsearch::search(null, $size, $body);
         return number_format($response['hits']['total'],0,',','.');
     }
     
@@ -459,7 +459,6 @@ class paginaInicial {
 
         $params = [
             'index' => $index,
-            'type' => 'trabalhos',
             'size'=> 0,
             'body' => $query
         ];    
@@ -496,7 +495,6 @@ class paginaInicial {
 
         $params = [
             'index' => $index,
-            'type' => 'trabalhos',
             'size'=> 0,
             'body' => $query
         ];    
@@ -533,7 +531,6 @@ class paginaInicial {
 
         $params = [
             'index' => $index,
-            'type' => 'trabalhos',
             'size'=> 0,
             'body' => $query
         ];    
