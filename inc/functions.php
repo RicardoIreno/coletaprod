@@ -77,10 +77,10 @@ if (!empty($_GET['locale'])) {
 }
 
 
-use Gettext\Translator;
+//use Gettext\Translator;
 
 //Create the translator instance
-$t = new Translator();
+//$t = new Translator();
 
 if ($_SESSION['localeToUse'] == 'pt_BR') {
     //$t->loadTranslations(__DIR__.'/../Locale/pt_BR/LC_MESSAGES/pt_BR.php');

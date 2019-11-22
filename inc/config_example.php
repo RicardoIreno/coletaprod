@@ -32,3 +32,4 @@
     /* Load Elasticsearch Client for BDPI */ 
 	//$client_bdpi = \Elasticsearch\ClientBuilder::create()->setHosts($host_bdpi)->build(); 
 
+?>
