@@ -189,7 +189,7 @@ $get_data = $_GET;
                     <hr>
                 <?php
                     $facets = new facets();
-                    $facets->query = $query;
+                    $facets->query = $result_get['query'];
 
                     if (!isset($_GET)) {
                         $_GET = null;                                    
