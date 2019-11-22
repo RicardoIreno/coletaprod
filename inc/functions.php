@@ -416,9 +416,9 @@ class paginaInicial {
                 }
             }        
         ';    
-        $size = 0;
+        $size = 0;        
         $response = Elasticsearch::search(null, $size, $body);
-        return number_format($response['hits']['total'], 0, ',', '.');
+        return number_format($response['hits']['total']['value'], 0, ',', '.');
     } 
 
     static function contar_registros_match ($type) {
@@ -431,7 +431,7 @@ class paginaInicial {
         ';
         $size = 0;
         $response = Elasticsearch::search(null, $size, $body);
-        return number_format($response['hits']['total'],0,',','.');
+        return number_format($response['hits']['total']['value'],0,',','.');
     }
     
     static function fonte_inicio() {
