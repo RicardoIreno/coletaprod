@@ -414,38 +414,10 @@ $get_data = $_GET;
             </div>
         </div>
                 
-        <div class="uk-width-3-4@s uk-width-4-6@m">
-        
-                 
-                    
-            <hr class="uk-grid-divider">           
-                    
-            <div class="uk-width-1-1 uk-margin-top uk-description-list-line">                        
-                <ul class="uk-list uk-list-divider">
-                   
-                    </ul>
-                    </div>
-                    <hr class="uk-grid-divider">
-                    <!-- Navegador de resultados - Início -->
-                    <?php ui::pagination($page, $total, $limit, $t); ?>
-                    <!-- Navegador de resultados - Fim --> 
-                    
-                </div>
-            </div>
-            <hr class="uk-grid-divider">
-<?php include('inc/footer.php'); ?>          
+
+        <?php include('inc/footer.php'); ?>
+
         </div>
-                
-
-
-        <script>
-        $('[data-uk-pagination]').on('select.uk.pagination', function(e, pageIndex){
-            var url = window.location.href.split('&page')[0];
-            window.location=url +'&page='+ (pageIndex+1);
-        });
-        </script>    
-
-<?php include('inc/offcanvas.php'); ?>         
         
     </body>
 </html>
