@@ -120,12 +120,48 @@ $get_data = $_GET;
                             $r["_source"]['datePublished'] = "";
                         }
                         ?>
-                        <li>
-                            <div class="uk-grid-divider uk-padding-small" uk-grid>
-                                <div class="uk-width-1-5@m">                        
-                                    <div class="uk-panel uk-h6 uk-text-break">
-                                        <a href="result_trabalhos.php?type[]=<?php echo $r["_source"]['tipo'];?>"><?php echo ucfirst(strtolower($r["_source"]['tipo']));?></a>
-                                    </div>
+
+                        <div class="card">
+                            <div class="card-body">
+
+                                <h6 class="card-subtitle mb-2 text-muted"><?php echo $r["_source"]['tipo'];?>
+                                <h5 class="card-title"><a class="text-dark" href="<?php echo $r['_source']['url']; ?>"><?php echo $r["_source"]['name']; ?> (<?php echo $r["_source"]['datePublished'];?>)</a></h5>
+
+                                <p class="text-muted"><b>Autores:</b>
+                                    <?php if (!empty($r["_source"]['author'])) : ?>
+                                        <?php foreach ($r["_source"]['author'] as $autores) {
+                                            $authors_array[]='<a href="result_trabalhos.php?filter[]=author.person.name:&quot;'.$autores["person"]["name"].'&quot;">'.$autores["person"]["name"].'</a>';
+                                        } 
+                                        $array_aut = implode(", ",$authors_array);
+                                        unset($authors_array);
+                                        print_r($array_aut);
+                                        ?>
+                                    <?php endif; ?>
+                                </p>
+                                
+                                <!--
+                                        <?php if (!empty($r["_source"]['artigoPublicado'])) : ?>
+                                            <li class="uk-h6">In: <a href="result_trabalhos.php?filter[]=periodico.titulo_do_periodico:&quot;<?php echo $r["_source"]['artigoPublicado']['tituloDoPeriodicoOuRevista'];?>&quot;"><?php echo $r["_source"]['artigoPublicado']['tituloDoPeriodicoOuRevista'];?></a></li>
+                                            <li class="uk-h6">ISSN: <a href="result_trabalhos.php?filter[]=periodico.issn:&quot;<?php echo $r["_source"]['artigoPublicado']['issn'];?>&quot;"><?php echo $r["_source"]['artigoPublicado']['issn'];?></a></li>                                        
+                                        <?php endif; ?>
+                                        
+                                        <?php if (!empty($r["_source"]['doi'])) : ?>
+                                            <p class="text-muted"><b>DOI:</b>    <a href="https://doi.org/<?php echo $r["_source"]['doi'];?>"><?php echo $r["_source"]['doi'];?></a></p>
+                                            <p><a href="doi_to_elastic.php?doi=<?php echo $r['_source']['doi'];?>&tag=<?php echo $r['_source']['tag'][0];?>">Coletar dados da Crossref</a></p>                                        
+                                        <?php endif; ?>                                        
+                                        
+                                        <?php if (!empty($r["_source"]['ids_match'])) : ?>  
+                                        <?php foreach ($r["_source"]['ids_match'] as $id_match) : ?>
+                                            <?php compararRegistros::match_id($id_match["id_match"], $id_match["nota"]);?>
+                                        <?php endforeach;?>
+                                        <?php endif; ?>
+                                        
+                                        <?php 
+                                        if ($instituicao == "USP") {
+                                            DadosExternos::query_bdpi($r["_source"]['name'], $r["_source"]['datePublished'], $r['_id']);
+                                        }
+                                        ?>  
+
                                     <form class="uk-form" method="post">
                                         <?php if(isset($r["_source"]["concluido"])) : ?>
                                             <?php if($r["_source"]["concluido"]== "Sim") : ?>    
@@ -146,63 +182,11 @@ $get_data = $_GET;
                                                 
                                         <?php endif; ?>
                                         <button class="uk-button-primary">Marcar como concluído</button>
-                                    </form>                                     
-                                </div>
-                                <div class="uk-width-4-5@m">
-                                    <article class="uk-article">
-                                    <p class="uk-text-lead uk-margin-remove" style="font-size:115%"><?php echo ($r["_source"]['name']);?> (<?php echo $r["_source"]['datePublished']; ?>)</p> 
-                                    <ul class="uk-list">
-                                        <li class="uk-h6">
-                                            Autores:
-                                            <?php if (!empty($r["_source"]['author'])) : ?>
-                                            <?php foreach ($r["_source"]['author'] as $autores) {
-                                                $authors_array[]='<a href="result_trabalhos.php?filter[]=author.person.name:&quot;'.$autores["person"]["name"].'&quot;">'.$autores["person"]["name"].'</a>';
-                                            } 
-                                            $array_aut = implode(", ",$authors_array);
-                                            unset($authors_array);
-                                            print_r($array_aut);
-                                            ?>
-                                            
-                                            
-                                            <?php endif; ?>                           
-                                        </li>
-                                        
-                                        <?php if (!empty($r["_source"]['artigoPublicado'])) : ?>
-                                            <li class="uk-h6">In: <a href="result_trabalhos.php?filter[]=periodico.titulo_do_periodico:&quot;<?php echo $r["_source"]['artigoPublicado']['tituloDoPeriodicoOuRevista'];?>&quot;"><?php echo $r["_source"]['artigoPublicado']['tituloDoPeriodicoOuRevista'];?></a></li>
-                                            <li class="uk-h6">ISSN: <a href="result_trabalhos.php?filter[]=periodico.issn:&quot;<?php echo $r["_source"]['artigoPublicado']['issn'];?>&quot;"><?php echo $r["_source"]['artigoPublicado']['issn'];?></a></li>                                        
-                                        <?php endif; ?>
-                                        
-                                        <?php if (!empty($r["_source"]['doi'])) : ?>
-                                            <li class="uk-h6"><p>DOI: <a href="https://doi.org/<?php echo $r["_source"]['doi'];?>"><?php echo $r["_source"]['doi'];?></a></p>
-                                            <p><a href="doi_to_elastic.php?doi=<?php echo $r['_source']['doi'];?>&tag=<?php echo $r['_source']['tag'][0];?>">Coletar dados da Crossref</a></p></li>                                        
-                                        <?php endif; ?>                                        
+                                    </form>                                                  
                                         
                                         <li class="uk-h6">
-                                            Assuntos:
-                                            <?php if (!empty($r["_source"]['palavras_chave'])) : ?>
-                                            <?php foreach ($r["_source"]['palavras_chave'] as $assunto) : ?>
-                                                <a href="result_trabalhos.php?filter[]=palavras_chave:&quot;<?php echo $assunto;?>&quot;"><?php echo $assunto;?></a>
-                                            <?php endforeach;?>
-                                            <?php endif; ?>
-                                        </li>
-                                        
-                                        <?php if (!empty($r["_source"]['ids_match'])) : ?>  
-                                        <?php foreach ($r["_source"]['ids_match'] as $id_match) : ?>
-                                            <?php compararRegistros::match_id($id_match["id_match"], $id_match["nota"]);?>
-                                        <?php endforeach;?>
-                                        <?php endif; ?>
-                                        
-                                        <?php 
-                                        if ($instituicao == "USP") {
-                                            DadosExternos::query_bdpi($r["_source"]['name'], $r["_source"]['datePublished'], $r['_id']);
-                                        }
-                                        ?>        
-                                        
-                                        <li class="uk-h6">
-                                            <!-- This is a button toggling the modal -->
                                             <button uk-toggle="target: #<?php echo $r['_id']; ?>" type="button">Ver em tabela</button>
 
-                                            <!-- This is the modal -->
                                             <div id="<?php echo $r['_id']; ?>" uk-modal>
                                                 <div class="uk-modal-dialog uk-modal-body">
                                                     <h2 class="uk-modal-title">Tabela</h2>
@@ -288,9 +272,11 @@ $get_data = $_GET;
                                         </div>    
                                             
                                     </ul>
-                                    </div>
-                                </div>
-                            </li>
+                            -->
+
+
+                            </div>
+                        </div>
                         <?php endforeach;?>
 
 
