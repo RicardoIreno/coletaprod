@@ -119,7 +119,7 @@ if (isset($_FILES['file'])) {
 }
 
 sleep(5);
-echo '<script>window.location = \'result_trabalhos.php?filter[]=type:"Work"&filter[]=tag:"'.$_POST["tag"].'"\'</script>';
+echo '<script>window.location = \'result.php?filter[]=type:"Work"&filter[]=tag:"'.$_POST["tag"].'"\'</script>';
 
 class Record
 {

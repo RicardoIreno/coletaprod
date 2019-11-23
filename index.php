@@ -41,9 +41,9 @@
 
     <ul class="uk-switcher uk-margin">
         <li>
-            <form class="uk-form-stacked" action="result_trabalhos.php" method="get">
+            <form class="uk-form-stacked" action="result.php" method="get">
                 <div class="uk-margin" uk-grid>
-                    <label class="uk-form-label" for="form-stacked-text">Pesquisa por trabalho - <a href="result_trabalhos.php">Ver todos</a></label>                    
+                    <label class="uk-form-label" for="form-stacked-text">Pesquisa por trabalho - <a href="result.php">Ver todos</a></label>                    
                     <div class="uk-form-controls">
                         <input type="text" placeholder="Pesquise por termo ou título" class="uk-input uk-form-width-large" name="search">
                     </div>
@@ -52,7 +52,7 @@
                     </div>
                 </div>
             </form>
-            <form class="uk-form-stacked" action="result_trabalhos.php" method="get">
+            <form class="uk-form-stacked" action="result.php" method="get">
                 <div class="uk-margin" uk-grid>
                     <label class="uk-form-label" for="form-stacked-text">Pesquisa por TAG</label>
                     <div class="uk-form-controls">
@@ -62,7 +62,7 @@
                         <button class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom">Buscar TAG</button>
                     </div>    
             </form>
-            <form class="uk-form-stacked" action="result_trabalhos.php" method="get">
+            <form class="uk-form-stacked" action="result.php" method="get">
                 <div class="uk-margin" uk-grid>
                     <label class="uk-form-label" for="form-stacked-text">Pesquisa por Número USP</label>
                     <div class="uk-form-controls">
@@ -87,7 +87,7 @@
                     </div>    
                 </div>
             </form> 
-            <p><a href="result_trabalhos.php?notFilter[]=doi:%22%22&search[]=-_exists_:bdpi.doi_bdpi&filter[]=bdpi.existe:%22Sim%22">Inconsistência: Trabalhos com DOI no Lattes e não preenchido no DEDALUS</a></p>       
+            <p><a href="result.php?notFilter[]=doi:%22%22&search[]=-_exists_:bdpi.doi_bdpi&filter[]=bdpi.existe:%22Sim%22">Inconsistência: Trabalhos com DOI no Lattes e não preenchido no DEDALUS</a></p>       
         </li>
         <li>
         

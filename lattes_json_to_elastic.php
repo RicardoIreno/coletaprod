@@ -321,5 +321,5 @@
     </body>
 </html>
 <?php if (!isset($_GET["path_download"])) :?>
-    <?php sleep(5); echo '<script>window.location = \'result_trabalhos.php?search[]=lattes_ids.keyword:"'.$cursor["docs"][0]["numeroIdentificador"].'"\'</script>'; ?>
+    <?php sleep(5); echo '<script>window.location = \'result.php?search[]=lattes_ids.keyword:"'.$cursor["docs"][0]["numeroIdentificador"].'"\'</script>'; ?>
 <?php endif; ?>

@@ -189,7 +189,7 @@
                             <li><a href="#"><span class="uk-margin-small-right" uk-pagination-previous></span>Anterior</a></li>
                         <?php else :?>
                             <?php $get_data["page"] = $page-1 ; ?>
-                            <li><a href="result_trabalhos.php?<?php echo http_build_query($get_data); ?>"><span class="uk-margin-small-right" uk-pagination-previous></span> Anterior</a></li>
+                            <li><a href="result.php?<?php echo http_build_query($get_data); ?>"><span class="uk-margin-small-right" uk-pagination-previous></span> Anterior</a></li>
                         <?php endif; ?>
                     </ul>    
                 </div>
@@ -200,7 +200,7 @@
                     <ul class="uk-pagination">
                         <?php if ($total/$limit > $page): ?>
                             <?php $get_data["page"] = $page+1 ; ?>
-                            <li class="uk-margin-auto-left"><a href="result_trabalhos.php?<?php echo http_build_query($get_data); ?>">Próxima <span class="uk-margin-small-left" uk-pagination-next></span></a></li>
+                            <li class="uk-margin-auto-left"><a href="result.php?<?php echo http_build_query($get_data); ?>">Próxima <span class="uk-margin-small-left" uk-pagination-next></span></a></li>
                         <?php else :?>
                             <li class="uk-margin-auto-left"><a href="#">Próxima <span class="uk-margin-small-left" uk-pagination-next></span></a></li>
                         <?php endif; ?>
@@ -226,7 +226,7 @@
                                     
                                     <ul class="uk-list">
                                         <li class="uk-margin-top uk-h4">
-                                            <strong><?php echo '<a href="result_trabalhos.php?search[]=lattes_ids.keyword:&quot;'.$r["_id"].'&quot;">'.$r["_source"]['nome_completo'].'</a>';?></strong>
+                                            <strong><?php echo '<a href="result.php?search[]=lattes_ids.keyword:&quot;'.$r["_id"].'&quot;">'.$r["_source"]['nome_completo'].'</a>';?></strong>
                                         </li>
                                         <?php if (isset($r["_source"]['resumo_cv'])): ?>
                                         <li>                                            
@@ -255,7 +255,7 @@
                             <li><a href="#"><span class="uk-margin-small-right" uk-pagination-previous></span>Anterior</a></li>
                         <?php else :?>
                             <?php $get_data["page"] = $page-1 ; ?>
-                            <li><a href="result_trabalhos.php?<?php echo http_build_query($get_data); ?>"><span class="uk-margin-small-right" uk-pagination-previous></span> Anterior</a></li>
+                            <li><a href="result.php?<?php echo http_build_query($get_data); ?>"><span class="uk-margin-small-right" uk-pagination-previous></span> Anterior</a></li>
                         <?php endif; ?>
                     </ul>    
                 </div>
@@ -266,7 +266,7 @@
                     <ul class="uk-pagination">
                         <?php if ($total/$limit > $page): ?>
                             <?php $get_data["page"] = $page+1 ; ?>
-                            <li class="uk-margin-auto-left"><a href="result_trabalhos.php?<?php echo http_build_query($get_data); ?>">Próxima <span class="uk-margin-small-left" uk-pagination-next></span></a></li>
+                            <li class="uk-margin-auto-left"><a href="result.php?<?php echo http_build_query($get_data); ?>">Próxima <span class="uk-margin-small-left" uk-pagination-next></span></a></li>
                         <?php else :?>
                             <li class="uk-margin-auto-left"><a href="#">Próxima <span class="uk-margin-small-left" uk-pagination-next></span></a></li>
                         <?php endif; ?>

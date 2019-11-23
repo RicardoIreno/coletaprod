@@ -16,7 +16,7 @@
             $resultado = Elasticsearch::update($_POST["_id"], $query);
             //print_r($resultado);
             sleep(5); 
-            echo '<script>window.location = \'result_trabalhos.php?filter[]=name:"'.$_POST["name"].'"\'</script>';
+            echo '<script>window.location = \'result.php?filter[]=name:"'.$_POST["name"].'"\'</script>';
         }
 
     

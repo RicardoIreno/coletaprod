@@ -130,7 +130,7 @@ $get_data = $_GET;
                                 <p class="text-muted"><b>Autores:</b>
                                     <?php if (!empty($r["_source"]['author'])) : ?>
                                         <?php foreach ($r["_source"]['author'] as $autores) {
-                                            $authors_array[]='<a href="result_trabalhos.php?filter[]=author.person.name:&quot;'.$autores["person"]["name"].'&quot;">'.$autores["person"]["name"].'</a>';
+                                            $authors_array[]='<a href="result.php?filter[]=author.person.name:&quot;'.$autores["person"]["name"].'&quot;">'.$autores["person"]["name"].'</a>';
                                         } 
                                         $array_aut = implode(", ",$authors_array);
                                         unset($authors_array);
@@ -141,8 +141,8 @@ $get_data = $_GET;
                                 
                                 <!--
                                         <?php if (!empty($r["_source"]['artigoPublicado'])) : ?>
-                                            <li class="uk-h6">In: <a href="result_trabalhos.php?filter[]=periodico.titulo_do_periodico:&quot;<?php echo $r["_source"]['artigoPublicado']['tituloDoPeriodicoOuRevista'];?>&quot;"><?php echo $r["_source"]['artigoPublicado']['tituloDoPeriodicoOuRevista'];?></a></li>
-                                            <li class="uk-h6">ISSN: <a href="result_trabalhos.php?filter[]=periodico.issn:&quot;<?php echo $r["_source"]['artigoPublicado']['issn'];?>&quot;"><?php echo $r["_source"]['artigoPublicado']['issn'];?></a></li>                                        
+                                            <li class="uk-h6">In: <a href="result.php?filter[]=periodico.titulo_do_periodico:&quot;<?php echo $r["_source"]['artigoPublicado']['tituloDoPeriodicoOuRevista'];?>&quot;"><?php echo $r["_source"]['artigoPublicado']['tituloDoPeriodicoOuRevista'];?></a></li>
+                                            <li class="uk-h6">ISSN: <a href="result.php?filter[]=periodico.issn:&quot;<?php echo $r["_source"]['artigoPublicado']['issn'];?>&quot;"><?php echo $r["_source"]['artigoPublicado']['issn'];?></a></li>                                        
                                         <?php endif; ?>
                                         
                                         <?php if (!empty($r["_source"]['doi'])) : ?>

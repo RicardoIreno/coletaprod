@@ -388,7 +388,7 @@ class compararRegistros {
 
         echo '<div class="uk-alert uk-alert-danger">';
         echo '<h3>Registros similares no Coleta Produção USP</h3>';
-            echo '<p><a href="result_trabalhos.php?&search[]=+_id:&quot;'.$_id.'&quot;">'.$response["_source"]["tipo"].' - '.$response["_source"]["titulo"].' ('.$response["_source"]["ano"].') - Nota de proximidade: '.$nota.'</a></p>';
+            echo '<p><a href="result.php?&search[]=+_id:&quot;'.$_id.'&quot;">'.$response["_source"]["tipo"].' - '.$response["_source"]["titulo"].' ('.$response["_source"]["ano"].') - Nota de proximidade: '.$nota.'</a></p>';
         echo '</div>';
 
     }    
@@ -465,7 +465,7 @@ class paginaInicial {
 
         $response = $client->search($params);
         foreach ($response["aggregations"]["group_by_state"]["buckets"] as $facets) {
-            echo '<li><a href="result_trabalhos.php?filter[]=type:&quot;Work&quot;&filter[]=source:&quot;'.$facets['key'].'&quot;">'.$facets['key'].' ('.number_format($facets['doc_count'],0,',','.').')</a></li>';
+            echo '<li><a href="result.php?filter[]=type:&quot;Work&quot;&filter[]=source:&quot;'.$facets['key'].'&quot;">'.$facets['key'].' ('.number_format($facets['doc_count'],0,',','.').')</a></li>';
         }   
 
     }
@@ -501,7 +501,7 @@ class paginaInicial {
 
         $response = $client->search($params);
         foreach ($response["aggregations"]["group_by_state"]["buckets"] as $facets) {
-            echo '<li><a href="result_trabalhos.php?filter[]=type:&quot;Work&quot;&filter[]=tipo:&quot;'.$facets['key'].'&quot;">'.$facets['key'].' ('.number_format($facets['doc_count'],0,',','.').')</a></li>';
+            echo '<li><a href="result.php?filter[]=type:&quot;Work&quot;&filter[]=tipo:&quot;'.$facets['key'].'&quot;">'.$facets['key'].' ('.number_format($facets['doc_count'],0,',','.').')</a></li>';
         }   
 
     }
@@ -537,7 +537,7 @@ class paginaInicial {
 
         $response = $client->search($params);
         foreach ($response["aggregations"]["group_by_state"]["buckets"] as $facets) {
-            echo '<li><a href="result_trabalhos.php?filter[]=type:&quot;Work&quot;&filter[]=USP.unidadeUSP:&quot;'.$facets['key'].'&quot;">'.$facets['key'].' ('.number_format($facets['doc_count'],0,',','.').')</a></li>';
+            echo '<li><a href="result.php?filter[]=type:&quot;Work&quot;&filter[]=USP.unidadeUSP:&quot;'.$facets['key'].'&quot;">'.$facets['key'].' ('.number_format($facets['doc_count'],0,',','.').')</a></li>';
         }   
 
     }           
@@ -1458,6 +1458,13 @@ class Exporters
         $record_blob = implode("\\n", $record);
 
         return $record_blob;
+
+    }
+
+}
+
+
+?>     return $record_blob;
 
     }
 

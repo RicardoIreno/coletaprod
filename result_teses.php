@@ -55,7 +55,7 @@
                     
 
 <div class="uk-panel uk-panel-box">
-    <form class="uk-form" method="get" action="result_trabalhos.php">
+    <form class="uk-form" method="get" action="result.php">
     <fieldset>
         
         <?php if (!empty($_GET["search"])) : ?>
@@ -164,7 +164,7 @@
                             <div class="uk-grid uk-flex-middle" data-uk-grid-   margin="">
                                 <div class="uk-width-medium-2-10 uk-row-first">
                                     <div class="uk-panel uk-h6 uk-text-break">
-                                        <a href="result_trabalhos.php?type[]=<?php echo $r["_source"]["tese"]["nivel"];?>"><?php echo ucfirst(strtolower($r["_source"]["tese"]["nivel"]));?></a>
+                                        <a href="result.php?type[]=<?php echo $r["_source"]["tese"]["nivel"];?>"><?php echo ucfirst(strtolower($r["_source"]["tese"]["nivel"]));?></a>
                                     </div>
                                     
                                 </div>
