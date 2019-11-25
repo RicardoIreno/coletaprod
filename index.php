@@ -303,8 +303,8 @@
             <div class="col-md-3">
                 <h2 class="uk-h3">Alguns números</h2>
                 <ul class="list-group">
-                    <li><?php echo paginaInicial::contar_tipo_de_registro("Work"); ?> registros</li> 
-                    <li><?php echo paginaInicial::contar_tipo_de_registro("Curriculum"); ?> currículos</li>
+                    <li class="list-group-item"><?php echo paginaInicial::contar_tipo_de_registro("Work"); ?> registros</li> 
+                    <li class="list-group-item"><?php echo paginaInicial::contar_tipo_de_registro("Curriculum"); ?> currículos</li>
                 </ul>     
             </div>          
         </div>
