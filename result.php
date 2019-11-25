@@ -52,26 +52,6 @@ $params["size"] = $limit;
 $params["from"] = $result_get['skip'];
 $cursor = $client->search($params);
 
-
-// $result_get = Requests::getParser($_GET);
-// $query = $result_get['query'];
-// $limit = $result_get['limit'];
-// $page = $result_get['page'];
-// $skip = $result_get['skip'];
-
-// //$query['sort'] = [
-// //    ['datePublished' => ['order' => 'desc']],
-// //];
-
-// $params = [];
-// $params["index"] = $index;
-// $params["size"] = $limit;
-// $params["from"] = $skip;
-// $params["body"] = $query;
-
-// $cursor = $client->search($params);
-// $total = $cursor["hits"]["total"];
-
 /*pagination - start*/
 $get_data = $_GET;    
 /*pagination - end*/      
@@ -229,21 +209,6 @@ $get_data = $_GET;
 
                 </div>
                 <div class="col-4">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 
                 <hr>
                 <h3>Refinar meus resultados</h3>    

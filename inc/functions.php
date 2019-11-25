@@ -537,7 +537,7 @@ class paginaInicial {
 
         $response = $client->search($params);
         foreach ($response["aggregations"]["group_by_state"]["buckets"] as $facets) {
-            echo '<li class="list-group-item"><a href="result.php?filter[]=type:&quot;Work&quot;&filter[]=USP.unidadeUSP:&quot;'.$facets['key'].'&quot;">'.$facets['key'].' ('.number_format($facets['doc_count'],0,',','.').')</a></li>';
+            echo '<li class="list-group-item"><a href="result.php?filter[]=type:&quot;Work&quot;&filter[]='.$field.':&quot;'.$facets['key'].'&quot;">'.$facets['key'].' ('.number_format($facets['doc_count'],0,',','.').')</a></li>';
         }   
 
     }           
@@ -549,10 +549,11 @@ class paginaInicial {
  */
 class DadosExternos {
     
-    static function query_bdpi($query_title,$query_year,$sha256) 
+    static function query_bdpi($query_title, $query_year, $sha256) 
     {  
         
         global $client_bdpi;
+        global $index_bdpi;
         
         $query_title =  str_replace('"', '', $query_title);
         $query["min_score"] = 50;
@@ -569,19 +570,18 @@ class DadosExternos {
 
         $params = [];
 
-        $params["index"] = "bdpi";
-        $params["type"] = "producao";
+        $params["index"] = $index_bdpi;
         //$params["_source"] = $fields;
         //$params["size"] = $size;
         $params["body"] = $query;
 
         $data = $client_bdpi->search($params);
 
-        if ($data["hits"]["total"] > 0) {
-            echo '<div class="uk-alert">';
-            echo '<h3>Registros similares no DEDALUS</h3>';
+        if ($data["hits"]["total"]["value"] > 0) {
+            echo '<div class="alert alert-info" role="alert">';
+            echo '<h5>Registros similares no DEDALUS</h5>';
             foreach ($data["hits"]["hits"] as $match) {
-                echo '<p>Nota de proximidade: '.$match["_score"].' - <a href="http://bdpi.usp.br/single.php?_id='.$match["_id"].'" target="_blank">'.$match["_source"]["type"].' - '.$match["_source"]["name"].' ('.$match["_source"]["datePublished"].')</a><br/> Autores: ';   
+                echo '<p>Nota de proximidade: '.$match["_score"].' - <a href="http://localhost/ecafind/item/'.$match["_id"].'" target="_blank">'.$match["_source"]["type"].' - '.$match["_source"]["name"].' ('.$match["_source"]["datePublished"].')</a><br/> Autores: ';   
                 foreach ($match["_source"]['author'] as $autores) {
                     echo ''.$autores['person']['name'].', ';
                 }
