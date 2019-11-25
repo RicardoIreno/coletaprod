@@ -451,9 +451,7 @@ if (isset($curriculo->{'DADOS-GERAIS'}->{'FORMACAO-ACADEMICA-TITULACAO'})) {
             $doc_curriculo_array["doc"]["formacao_academica_titulacao_livreDocencia"][] = $formacao_array;
             unset($formacao_array);
         }
-    }     
-
-
+    }
 }
         
    
@@ -501,10 +499,8 @@ if (isset($curriculo->{'DADOS-GERAIS'}->{'FORMACAO-ACADEMICA-TITULACAO'}->{'LIVR
     $doc_curriculo_array["doc_as_upsert"] = true;
     
     $identificador = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};                
-    //$resultado_curriculo = Elasticsearch::storeRecord($identificador, $doc_curriculo_array);
+    $resultado_curriculo = Elasticsearch::update($identificador, $doc_curriculo_array, $index_cv);
     //print_r($resultado_curriculo);
-
-
 
 //Parser de Trabalhos-em-Eventos
 
