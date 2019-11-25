@@ -201,7 +201,16 @@ $get_data = $_GET;
                                         ?>
                                         
                                         <a href="tools/export.php?search[]=_id:<?php echo $r['_id'] ?>&format=alephseq" class="btn btn-secondary">Exportar Alephseq</a>
-                                        <a href="editor.php?_id=<?php echo $r['_id'] ?>" class="btn btn-warning">Editar registro</a>
+
+
+                                        <form class="form-signin" method="post" action="editor/index.php">
+                                            <?php
+                                                $jsonRecord = json_encode($r["_source"]);                                        
+                                            ?>
+                                            <input type="hidden" id="rppbci_id" name="rppbci_id" value="<?php echo $r["_id"] ?>">
+                                            <input type="hidden" id="record" name="record" value="<?php echo urlencode($jsonRecord) ?>">
+                                            <button class="btn btn-warning" type="submit">Editar registro</button>
+                                        </form>
 
                                     </div>
 
