@@ -1463,12 +1463,4 @@ class Exporters
 
 }
 
-
-?>     return $record_blob;
-
-    }
-
-}
-
-
 ?>

@@ -418,7 +418,6 @@ if ($_GET["format"] == "table") {
 
     $params = [];
     $params["index"] = $index;
-    $params["type"] = $type;
     $params["size"] = 10000;
     $params["from"] = $skip;
     $params["body"] = $query; 
