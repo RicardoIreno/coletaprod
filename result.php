@@ -139,29 +139,31 @@ $get_data = $_GET;
                                     <?php endif; ?>
                                 </p>
                                 
-                                <!--
-                                        <?php if (!empty($r["_source"]['artigoPublicado'])) : ?>
-                                            <li class="uk-h6">In: <a href="result.php?filter[]=periodico.titulo_do_periodico:&quot;<?php echo $r["_source"]['artigoPublicado']['tituloDoPeriodicoOuRevista'];?>&quot;"><?php echo $r["_source"]['artigoPublicado']['tituloDoPeriodicoOuRevista'];?></a></li>
-                                            <li class="uk-h6">ISSN: <a href="result.php?filter[]=periodico.issn:&quot;<?php echo $r["_source"]['artigoPublicado']['issn'];?>&quot;"><?php echo $r["_source"]['artigoPublicado']['issn'];?></a></li>                                        
-                                        <?php endif; ?>
-                                        
-                                        <?php if (!empty($r["_source"]['doi'])) : ?>
-                                            <p class="text-muted"><b>DOI:</b>    <a href="https://doi.org/<?php echo $r["_source"]['doi'];?>"><?php echo $r["_source"]['doi'];?></a></p>
-                                            <p><a href="doi_to_elastic.php?doi=<?php echo $r['_source']['doi'];?>&tag=<?php echo $r['_source']['tag'][0];?>">Coletar dados da Crossref</a></p>                                        
-                                        <?php endif; ?>                                        
-                                        
-                                        <?php if (!empty($r["_source"]['ids_match'])) : ?>  
-                                        <?php foreach ($r["_source"]['ids_match'] as $id_match) : ?>
-                                            <?php compararRegistros::match_id($id_match["id_match"], $id_match["nota"]);?>
-                                        <?php endforeach;?>
-                                        <?php endif; ?>
+   
+                                <?php if (!empty($r["_source"]['isPartOf']['name'])) : ?>                                        
+                                    <p class="text-muted"><b>In:</b> <a href="result.php?filter[]=periodico.titulo_do_periodico:&quot;<?php echo $r["_source"]['isPartOf']['name'];?>&quot;"><?php echo $r["_source"]['isPartOf']['name'];?></a></p>
+                                <?php endif; ?>
+                                <?php if (!empty($r["_source"]['isPartOf']['issn'])) : ?>
+                                    <p class="text-muted"><b>ISSN:</b> <a href="result.php?filter[]=periodico.issn:&quot;<?php echo $r["_source"]['isPartOf']['issn'];?>&quot;"><?php echo $r["_source"]['isPartOf']['issn'];?></a></li>                                        
+                                <?php endif; ?>
+                                
+                                <?php if (!empty($r["_source"]['doi'])) : ?>
+                                    <p class="text-muted"><b>DOI:</b>    <a href="https://doi.org/<?php echo $r["_source"]['doi'];?>"><?php echo $r["_source"]['doi'];?></a></p>
+                                    <p><a href="doi_to_elastic.php?doi=<?php echo $r['_source']['doi'];?>&tag=<?php echo $r['_source']['tag'][0];?>">Coletar dados da Crossref</a></p>                                        
+                                <?php endif; ?>                                        
+                                
+                                <?php if (!empty($r["_source"]['ids_match'])) : ?>  
+                                    <?php foreach ($r["_source"]['ids_match'] as $id_match) : ?>
+                                        <?php compararRegistros::match_id($id_match["id_match"], $id_match["nota"]);?>
+                                    <?php endforeach;?>
+                                <?php endif; ?>
                                         
                                         <?php 
                                         if ($instituicao == "USP") {
                                             DadosExternos::query_bdpi($r["_source"]['name'], $r["_source"]['datePublished'], $r['_id']);
                                         }
                                         ?>  
-
+<!--
                                     <form class="uk-form" method="post">
                                         <?php if(isset($r["_source"]["concluido"])) : ?>
                                             <?php if($r["_source"]["concluido"]== "Sim") : ?>    
