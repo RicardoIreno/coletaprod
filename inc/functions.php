@@ -5,9 +5,6 @@
 include('config.php');
 include('elasticfind/elasticfind.php');
 
-/* Load libraries for PHP composer */ 
-require (__DIR__.'/../vendor/autoload.php'); 
-
 /* Connect to Elasticsearch */
 try {
     $client = \Elasticsearch\ClientBuilder::create()->setHosts($hosts)->build(); 
@@ -21,9 +18,7 @@ try {
 /* Create index if not exists */
 if (isset($testIndex) && $testIndex == false) {
     Elasticsearch::createIndex($index, $client);
-    sleep(10);
     Elasticsearch::mappingsIndex($index, $client);
-    sleep(10);
     Elasticsearch::createIndex($index_cv, $client);
 }
 
