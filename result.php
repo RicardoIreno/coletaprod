@@ -213,7 +213,7 @@ $get_data = $_GET;
                                             ?>
                                             <input type="hidden" id="coletaprod_id" name="coletaprod_id" value="<?php echo $r["_id"] ?>">
                                             <input type="hidden" id="record" name="record" value="<?php echo urlencode($jsonRecord) ?>">
-                                            <button class="btn btn-warning" type="submit">Editar registro</button>
+                                            <button class="btn btn-warning" type="submit">Editar antes de exportar</button>
                                         </form>
 
                                     </div>
