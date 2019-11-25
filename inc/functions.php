@@ -439,7 +439,7 @@ class compararRegistros {
  */
 class paginaInicial {
     
-    static function contar_tipo_de_registro($type) 
+    static function contar_tipo_de_registro($type, $index_cv = null) 
     {
         $body = '
             {
@@ -455,7 +455,7 @@ class paginaInicial {
             }        
         ';    
         $size = 0;        
-        $response = Elasticsearch::search(null, $size, $body);
+        $response = Elasticsearch::search(null, $size, $body, $index_cv);
         return number_format($response['hits']['total']['value'], 0, ',', '.');
     } 
 
@@ -621,8 +621,9 @@ class DadosExternos {
             foreach ($data["hits"]["hits"] as $match) {
                 echo '<p>Nota de proximidade: '.$match["_score"].' - <a href="http://localhost/ecafind/item/'.$match["_id"].'" target="_blank">'.$match["_source"]["type"].' - '.$match["_source"]["name"].' ('.$match["_source"]["datePublished"].')</a><br/> Autores: ';   
                 foreach ($match["_source"]['author'] as $autores) {
-                    echo ''.$autores['person']['name'].', ';
+                    $autArray[] = $autores['person']['name'];
                 }
+                echo implode("; ",$autArray);
                 if (isset($match["_source"]["doi"])) {
                     echo '<p>DOI: '.$match["_source"]["doi"].'</p>';
                     $doc["doc"]["bdpi"]["doi_bdpi"] = $match["_source"]["doi"];
