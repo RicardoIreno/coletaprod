@@ -5,14 +5,16 @@
     ini_set('display_startup_errors', 1); 
     error_reporting(E_ALL);
 
+    $branch = "Nome";
+    $branch_description = "Descrição";
+    $url_base = "http://localhost/coletaprod";
+
     // Definir Instituição
     $instituicao = "";
 
 	/* Endereço do server, sem http:// */ 
 	$server = 'localhost'; 
-	$hosts = [
-		'localhost' 
-	];
+	$hosts = ['localhost'];
 
     /* Endereço da BDPI - Para o comparador */
 	// $host_bdpi = [
@@ -20,7 +22,7 @@
 	// ];
 
     /* Configurações do Elasticsearch */
-    $index = "";
+    $index = "coletaprod";
     $type = "trabalhos";
 
 	/* Load libraries for PHP composer */ 

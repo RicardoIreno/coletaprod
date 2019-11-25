@@ -22,7 +22,7 @@
     
         /* Define variables */
         $elasticsearch = new elasticsearch();
-        $cursor = $elasticsearch->elastic_get($_REQUEST["_id"], "trabalhos", null);
+        $cursor = $elasticsearch->get($_REQUEST["_id"], null);
         ?> 
         <title>Editor - Coleta Produção USP</title>        
     </head>

@@ -36,7 +36,7 @@
     <div class="jumbotron">
         <div class="container">
             <h1 class="display-5 mt-3"><?php echo $branch; ?></h1>
-            <p>Coleta produção de diversas fontes para preenchimento do Cadastro de Produção Intelectual, para uso interno da Biblioteca da Escola de Comunicações e Artes da Universidade de São Paulo</p>
+            <p><?php echo $branch_description; ?></p>
 
             <?php isset($error_connection_message) ? print_r($error_connection_message) : "" ?>
 
