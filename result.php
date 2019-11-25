@@ -211,7 +211,7 @@ $get_data = $_GET;
                                             <?php
                                                 $jsonRecord = json_encode($r["_source"]);                                        
                                             ?>
-                                            <input type="hidden" id="rppbci_id" name="rppbci_id" value="<?php echo $r["_id"] ?>">
+                                            <input type="hidden" id="coletaprod_id" name="coletaprod_id" value="<?php echo $r["_id"] ?>">
                                             <input type="hidden" id="record" name="record" value="<?php echo urlencode($jsonRecord) ?>">
                                             <button class="btn btn-warning" type="submit">Editar registro</button>
                                         </form>
