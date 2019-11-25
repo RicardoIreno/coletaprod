@@ -38,7 +38,9 @@
             <h1 class="display-5 mt-3"><?php echo $branch; ?></h1>
             <p>Coleta produção de diversas fontes para preenchimento do Cadastro de Produção Intelectual, para uso interno da Biblioteca da Escola de Comunicações e Artes da Universidade de São Paulo</p>
 
-            <!-- Extra large modal -->
+            <?php isset($error_connection_message) ? print_r($error_connection_message) : "" ?>
+
+            <!-- Modal Inclusão -->
             <button type="button" class="btn btn-warning" data-toggle="modal" data-target=".bd-example-modal-xl">Inclusão</button>
 
             <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
@@ -231,130 +233,42 @@
         </div>
     </div>    
 
-
-
-
-
-              
-<div class="uk-container">
-
-    <?php isset($error_connection_message) ? print_r($error_connection_message) : "" ?>
-
-    <h1 class="uk-heading-line uk-text-center uk-margin-top"><span><?php echo $branch ?></span></h1>
-    <p></p>
-    <br/><br/>
-    <ul class="uk-subnav uk-subnav-pill" uk-switcher>
-        <li><a href="#">Pesquisa</a></li>
-        <li><a href="#">Inclusão</a></li>
-    </ul>
-
-    <ul class="uk-switcher uk-margin">
-        <li>
-            <form class="uk-form-stacked" action="result.php" method="get">
-                <div class="uk-margin" uk-grid>
-                    <label class="uk-form-label" for="form-stacked-text">Pesquisa por trabalho - <a href="result.php">Ver todos</a></label>                    
-                    <div class="uk-form-controls">
-                        <input type="text" placeholder="Pesquise por termo ou título" class="uk-input uk-form-width-large" name="search">
-                    </div>
-                    <div>
-                        <button class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom">Buscar</button>
-                    </div>
-                </div>
-            </form>
-            <form class="uk-form-stacked" action="result.php" method="get">
-                <div class="uk-margin" uk-grid>
-                    <label class="uk-form-label" for="form-stacked-text">Pesquisa por TAG</label>
-                    <div class="uk-form-controls">
-                        <input type="text" placeholder="Pesquise por tag" class="uk-input uk-form-width-large" name="filter[]" value="tag:">
-                    </div>
-                    <div>
-                        <button class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom">Buscar TAG</button>
-                    </div>    
-            </form>
-            <form class="uk-form-stacked" action="result.php" method="get">
-                <div class="uk-margin" uk-grid>
-                    <label class="uk-form-label" for="form-stacked-text">Pesquisa por Número USP</label>
-                    <div class="uk-form-controls">
-                        <input type="text" placeholder="Pesquise por Número USP" class="uk-input uk-form-width-large" name="filter[]" value="USP.codpes:">
-                    </div>
-                    <div>
-                        <button class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom">Buscar Número USP</button>
-                    </div>    
-            </form>            
-            <br/>
-            <form class="uk-form-stacked" action="result_autores.php" method="get">
-                <div class="uk-margin" uk-grid>
-                    <label class="uk-form-label" for="form-stacked-text">Pesquisa por autor - <a href="result_autores.php">Ver todos</a></label>
-                    <div class="uk-form-controls">
-                        <input type="text" placeholder="Pesquise por nome do autor ou número USP" class="uk-input uk-form-width-large" name="search">
-                        <input type="hidden" name="fields[]" value="nome_completo">                                
-                        <input type="hidden" name="fields[]" value="nome_em_citacoes_bibliograficas">
-                        <input type="hidden" name="fields[]" value="endereco.endereco_profissional.nomeInstituicaoEmpresa">                                            
-                    </div>
-                    <div>
-                        <button class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom">Buscar</button>                
-                    </div>    
-                </div>
-            </form> 
-            <p><a href="result.php?notFilter[]=doi:%22%22&search[]=-_exists_:bdpi.doi_bdpi&filter[]=bdpi.existe:%22Sim%22">Inconsistência: Trabalhos com DOI no Lattes e não preenchido no DEDALUS</a></p>       
-        </li>
-        <li>
-        
-                               
-
-
-        </li>
-    </ul>
-
-</div>
-
-<div class="uk-section uk-container">
-    <h1 class="uk-heading-line uk-text-center"><span>Estatísticas</span></h1>
-    <div class="uk-child-width-expand@s uk-text-center" uk-grid>
-        <div>
-            <div class="uk-card">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
                 <h2 class="uk-h3">Unidade USP</h2>
-                <ul class="uk-list uk-list-striped">
+                <ul class="list-group">
                     <?php paginaInicial::unidadeUSP_inicio(); ?>
-                </ul>                    
+                </ul>
+                <h2>Departamentos</h2>
+                <ul class="list-group">
+                    <?php  ?>
+                </ul>          
             </div>
-        </div>
-        <div>
-            <div class="uk-card">
+            <div class="col-md-3">
                 <h2 class="uk-h3">Tipo de material</h2>
-                <ul class="uk-list uk-list-striped">
+                <ul class="list-group">
                     <?php paginaInicial::tipo_inicio(); ?>
-                </ul>                    
-            </div>
-        </div>        
-        <div>
-            <div class="uk-card">
+                </ul>
+            </div>        
+            <div class="col-md-3">
                 <h2 class="uk-h3">Fonte</h2>
-                <ul class="uk-list uk-list-striped">
+                <ul class="list-group">
                     <?php paginaInicial::fonte_inicio(); ?> 
-                </ul>                    
+                </ul>    
             </div>
+            <div class="col-md-3">
+                <h2 class="uk-h3">Alguns números</h2>
+                <ul class="list-group">
+                    <li><?php echo paginaInicial::contar_tipo_de_registro("Work"); ?> registros</li> 
+                    <li><?php echo paginaInicial::contar_tipo_de_registro("Curriculum"); ?> currículos</li>
+                </ul>     
+            </div>          
         </div>
-        <div>
-            <div class="uk-card">
-                        <h2 class="uk-h3">Alguns números</h2>
-                        <ul class="uk-list uk-list-striped">
-                            <li><?php echo paginaInicial::contar_tipo_de_registro("Work"); ?> registros</li> 
-                            <li><?php echo paginaInicial::contar_tipo_de_registro("Curriculum"); ?> currículos</li>
-                        </ul>    
-            </div>
-        </div>
-    </div>           
-</div> 
-        
-        <div class="uk-container uk-container-center uk-margin-large-bottom">
-        
-        <hr class="uk-grid-divider">
+    </div>
+
 
         <?php include('inc/footer.php'); ?>
-        
-        
-<?php include('inc/offcanvas.php'); ?>
             
         
     </body>
