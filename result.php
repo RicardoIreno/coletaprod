@@ -158,124 +158,52 @@ $get_data = $_GET;
                                     <?php endforeach;?>
                                 <?php endif; ?>
                                         
-                                        <?php 
-                                        if ($instituicao == "USP") {
-                                            DadosExternos::query_bdpi($r["_source"]['name'], $r["_source"]['datePublished'], $r['_id']);
-                                        }
-                                        ?>  
-<!--
-                                    <form class="uk-form" method="post">
-                                        <?php if(isset($r["_source"]["concluido"])) : ?>
-                                            <?php if($r["_source"]["concluido"]== "Sim") : ?>    
+                                <?php 
+                                if ($instituicao == "USP") {
+                                    DadosExternos::query_bdpi($r["_source"]['name'], $r["_source"]['datePublished'], $r['_id']);
+                                }
+                                ?>  
+
+           
+
+                                    <div class="btn-group mt-3" role="group" aria-label="Botoes">
+
+                                        <form method="post">
+                                            <?php if(isset($r["_source"]["concluido"])) : ?>
+                                                <?php if($r["_source"]["concluido"]== "Sim") : ?>                                                  
+                                                    
+                                                        <label><input type='hidden' value='Não' name="<?php echo $r['_id'];?>"></label>      
+                                                        <button class="btn btn-primary">Desmarcar como concluído</button>
                                                 
-                                                    <label><input type='hidden' value='Não' name="<?php echo $r['_id'];?>"></label>                                     
-                                                    <label><input type="checkbox" name="<?php echo $r['_id'];?>" value='Sim' checked>Concluído</label>
-                                            
+                                                <?php else : ?>
+                                                    
+                                                        <label><input type='hidden' value='Sim' name="<?php echo $r['_id'];?>"></label>
+                                                        <button class="btn btn-primary">Marcar como concluído</button>
+                                                    
+                                                <?php endif; ?>                                    
                                             <?php else : ?>
-                                                
-                                                    <label><input type='hidden' value='Não' name="<?php echo $r['_id'];?>"></label>                                     
-                                                    <label><input type="checkbox" name="<?php echo $r['_id'];?>" value='Sim'>Concluído</label>
-                                                
-                                            <?php endif; ?>                                    
-                                        <?php else : ?>
-                                                
-                                                    <label><input type='hidden' value='Não' name="<?php echo $r['_id'];?>"></label>                                     
-                                                    <label><input type="checkbox" name="<?php echo $r['_id'];?>" value='Sim'>Concluído</label>
-                                                
-                                        <?php endif; ?>
-                                        <button class="uk-button-primary">Marcar como concluído</button>
-                                    </form>                                                  
+                                                    
+                                                        <label><input type='hidden' value='Sim' name="<?php echo $r['_id'];?>"></label>
+                                                        <button class="btn btn-primary">Marcar como concluído</button>
+                                                    
+                                            <?php endif; ?>
+                                            
+                                        </form>                                       
                                         
-                                        <li class="uk-h6">
-                                            <button uk-toggle="target: #<?php echo $r['_id']; ?>" type="button">Ver em tabela</button>
-
-                                            <div id="<?php echo $r['_id']; ?>" uk-modal>
-                                                <div class="uk-modal-dialog uk-modal-body">
-                                                    <h2 class="uk-modal-title">Tabela</h2>
-                                                    <table class="uk-table">
-                                                        <caption></caption>
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Titulo</th>
-                                                                <th>Autores</th>
-                                                                <th>Ano</th>
-                                                                <th>Idioma</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td><?php echo ($r["_source"]['name']);?></td>
-                                                                <td><?php echo ($array_aut);?></td>
-                                                                <td><?php echo $r["_source"]['datePublished']; ?></td>
-                                                                <td><?php echo $r["_source"]['language']; ?></td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>                                                
-                                                    <button class="uk-modal-close" type="button"></button>
-                                                </div>
-                                            </div>                                    
-                                        
-                                        </li>
-
-
-                                        <li class="uk-h6">
-                                        <?php
-                                        
+                                        <?php                                        
                                         if (isset($dspaceRest)) { 
                                             echo '<form action="dspaceConnect.php" method="get">
                                                 <input type="hidden" name="createRecord" value="true" />
                                                 <input type="hidden" name="_id" value="'.$r['_id'].'" />
                                                 <button class="uk-button uk-button-danger" name="btn_submit">Criar registro no DSpace</button>
                                                 </form>';  
-                                        }
-                                        
+                                        }                                        
                                         ?>
-                                        </li>
-                                        <li class="uk-h6">
-                                            <a href="tools/export.php?search[]=_id:<?php echo $r['_id'] ?>&format=alephseq" class="uk-margin-top">Exportar Alephseq</a>
-                                        </li>
-                                        <li class="uk-h6">
-                                            <a href="editor.php?_id=<?php echo $r['_id'] ?>" class="uk-margin-top">Editar registro</a>
-                                        </li>                                    
                                         
-                                        <p><a href="#" class="uk-margin-top" uk-toggle="target: #citacao<?php echo  $r['_id'];?>">Ver todos os dados deste registro</a></p>
-                                        <div id="citacao<?php echo  $r['_id'];?>" hidden>                                        
-                                            <li class="uk-h6"> 
-                                                <table class="uk-table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Nome do campo</th>
-                                                            <th>Valor</th>
-                                                        </tr>
-                                                    </thead>    
-                                                    <tbody>
-                                                        <?php foreach ($r["_source"] as $key => $value) {
-                                                                echo '<tr><td>'.$key.'</td><td>';
-                                                                if (is_array($value)) {
-                                                                    foreach ($value as $valor) {
-                                                                        if (is_array($valor)) {
-                                                                                foreach ($valor as $valor1) {
-                                                                                    //echo ''.$valor1.'';
-                                                                                }
-                                                                            } else {
-                                                                                echo ''.$valor.''; 
-                                                                            }
-                                                                        }
+                                        <a href="tools/export.php?search[]=_id:<?php echo $r['_id'] ?>&format=alephseq" class="btn btn-secondary">Exportar Alephseq</a>
+                                        <a href="editor.php?_id=<?php echo $r['_id'] ?>" class="btn btn-warning">Editar registro</a>
 
-                                                                } else {
-                                                                    echo ''.$value.'';
-                                                                }
-                                                                echo '</td>';
-                                                                echo '</tr>';
-                                                        };?>
-                                                    </tbody>
-                                                </table>
-                                            </li>
-                                        </div>    
-                                            
-                                    </ul>
-                            -->
-
+                                    </div>
 
                             </div>
                         </div>
