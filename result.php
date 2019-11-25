@@ -127,6 +127,10 @@ $get_data = $_GET;
                                 <h6 class="card-subtitle mb-2 text-muted"><?php echo $r["_source"]['tipo'];?>
                                 <h5 class="card-title"><a class="text-dark" href="<?php echo $r['_source']['url']; ?>"><?php echo $r["_source"]['name']; ?> (<?php echo $r["_source"]['datePublished'];?>)</a></h5>
 
+                                <?php
+                                    ($r["_source"]["concluido"] == "Sim" ? print_r('<span class="badge badge-warning">Concluído</span>') : false)
+                                ?>
+
                                 <p class="text-muted"><b>Autores:</b>
                                     <?php if (!empty($r["_source"]['author'])) : ?>
                                         <?php foreach ($r["_source"]['author'] as $autores) {
@@ -170,7 +174,7 @@ $get_data = $_GET;
 
                                         <form method="post">
                                             <?php if(isset($r["_source"]["concluido"])) : ?>
-                                                <?php if($r["_source"]["concluido"]== "Sim") : ?>                                                  
+                                                <?php if($r["_source"]["concluido"] == "Sim") : ?>                                                  
                                                     
                                                         <label><input type='hidden' value='Não' name="<?php echo $r['_id'];?>"></label>      
                                                         <button class="btn btn-primary">Desmarcar como concluído</button>
