@@ -20,82 +20,26 @@ try {
 
 /* Create index if not exists */
 if (isset($testIndex) && $testIndex == false) {
-    $createIndexParams = [
-        'index' => $index,
-        'body' => [
-            'settings' => [
-                'number_of_shards' => 1,
-                'number_of_replicas' => 0,
-                'analysis' => [
-                    'filter' => [
-                        'portuguese_stop' => [
-                            'type' => 'stop',
-                            'stopwords' => 'portuguese'
-                        ],
-                        'my_ascii_folding' => [
-                            'type' => 'asciifolding',
-                            'preserve_original' => true
-                        ],
-                        'portuguese_stemmer' => [
-                            'type' => 'stemmer',
-                            'language' =>  'light_portuguese'
-                        ]
-                    ],
-                    'analyzer' => [
-                        'portuguese' => [
-                            'tokenizer' => 'standard',
-                            'filter' =>  [ 
-                                'standard', 
-                                'lowercase', 
-                                'my_ascii_folding',
-                                'portuguese_stop',
-                                'portuguese_stemmer'
-                            ]
-                        ]
-                    ]
-                ]
-            ]
-        ]
-    ];
-    $responseCreateIndex = $client->indices()->create($createIndexParams);
-    $createIndexCVParams = [
-        'index' => $index_cv,
-        'body' => [
-            'settings' => [
-                'number_of_shards' => 1,
-                'number_of_replicas' => 0,
-                'analysis' => [
-                    'filter' => [
-                        'portuguese_stop' => [
-                            'type' => 'stop',
-                            'stopwords' => 'portuguese'
-                        ],
-                        'my_ascii_folding' => [
-                            'type' => 'asciifolding',
-                            'preserve_original' => true
-                        ],
-                        'portuguese_stemmer' => [
-                            'type' => 'stemmer',
-                            'language' =>  'light_portuguese'
-                        ]
-                    ],
-                    'analyzer' => [
-                        'portuguese' => [
-                            'tokenizer' => 'standard',
-                            'filter' =>  [ 
-                                'standard', 
-                                'lowercase', 
-                                'my_ascii_folding',
-                                'portuguese_stop',
-                                'portuguese_stemmer'
-                            ]
-                        ]
-                    ]
-                ]
-            ]
-        ]
-    ];
-    $responseCreateIndexCV = $client->indices()->create($createIndexCVParams);    
+    Elasticsearch::createIndex($index, $client);
+    sleep(10);
+    Elasticsearch::mappingsIndex($index, $client);
+    sleep(10);
+    Elasticsearch::createIndex($index_cv, $client);
+}
+
+/* Connect to Elasticsearch */
+try {
+    $client = \Elasticsearch\ClientBuilder::create()->setHosts($hosts)->build();
+    //print("<pre>".print_r($client,true)."</pre>");
+    $indexParams['index']  = $index_cv;   
+    $testIndexCV = $client->indices()->exists($indexParams);
+} catch (Exception $e) {    
+    $error_connection_message = '<div class="alert alert-danger" role="alert">Elasticsearch não foi encontrado.</div>';
+}
+
+/* Create index if not exists */
+if (isset($testIndexCV) && $testIndexCV == false) {
+    Elasticsearch::createIndex($index_cv, $client);
 }
 
 /* Definição de idioma */
