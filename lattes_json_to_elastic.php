@@ -200,7 +200,7 @@
     $doc_curriculo_array["doc_as_upsert"] = true;
     $body =  json_encode($doc_curriculo_array, JSON_UNESCAPED_UNICODE);
                 
-    $resultado_curriculo = Elasticsearch::store_record($cursor["docs"][0]["numeroIdentificador"], $body);
+    $resultado_curriculo = Elasticsearch::storeRecord($cursor["docs"][0]["numeroIdentificador"], $body);
     print_r($resultado_curriculo);
 
                 

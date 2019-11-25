@@ -784,7 +784,7 @@ class DadosExternos {
 
         $body = json_encode($doc_obra_array, JSON_UNESCAPED_UNICODE); 
 
-        $resultado_crossref = Elasticsearch::store_record($sha256, $body);
+        $resultado_crossref = Elasticsearch::storeRecord($sha256, $body);
         print_r($resultado_crossref);
     }    
     
