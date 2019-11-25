@@ -3,7 +3,13 @@
  * Arquivo de classes e funções do ColetaProd
  */
 include('config.php');
-include('elasticfind/elasticfind.php');
+if (file_exists('elasticfind/elasticfind.php')) {
+    include 'elasticfind/elasticfind.php';
+} elseif (file_exists('../elasticfind/elasticfind.php')) {
+    include '../elasticfind/elasticfind.php';
+} else {
+    include '../../elasticfind/elasticfind.php';
+}
 
 /* Connect to Elasticsearch */
 try {
@@ -18,8 +24,7 @@ try {
 /* Create index if not exists */
 if (isset($testIndex) && $testIndex == false) {
     Elasticsearch::createIndex($index, $client);
-    Elasticsearch::mappingsIndex($index, $client);
-    Elasticsearch::createIndex($index_cv, $client);
+    //Elasticsearch::mappingsIndex($index, $client);
 }
 
 /* Connect to Elasticsearch */
