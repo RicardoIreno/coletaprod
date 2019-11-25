@@ -279,13 +279,13 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-                <h2 class="uk-h3">Unidade USP</h2>
+                <h2 class="uk-h3">Unidade</h2>
                 <ul class="list-group">
-                    <?php paginaInicial::unidadeUSP_inicio(); ?>
+                    <?php paginaInicial::unidadeUSP_inicio("USP.unidadeUSP"); ?>
                 </ul>
-                <h2>Departamentos</h2>
+                <h2>Tags</h2>
                 <ul class="list-group">
-                    <?php  ?>
+                    <?php paginaInicial::unidadeUSP_inicio("tag"); ?>
                 </ul>          
             </div>
             <div class="col-md-3">

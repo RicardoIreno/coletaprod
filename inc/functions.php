@@ -506,7 +506,7 @@ class paginaInicial {
 
     }
 
-    static function unidadeUSP_inicio() {
+    static function unidadeUSP_inicio($field) {
         global $client;
         global $index;
         $query = '{
@@ -522,7 +522,7 @@ class paginaInicial {
             "aggs": {
                 "group_by_state": {
                     "terms": {
-                        "field": "USP.unidadeUSP.keyword",                    
+                        "field": "'.$field.'.keyword",                    
                         "size" : 200
                     }
                 }
