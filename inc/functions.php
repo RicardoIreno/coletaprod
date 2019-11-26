@@ -728,7 +728,7 @@ class DadosExternos {
             $doc_obra_array["doc"]["subtitulo"] = $data["message"]["subtitle"][0];
         }    
         if (isset($data["message"]["published-online"]["date-parts"][0][0])) {
-            $doc_obra_array["doc"]["datePublished"] = $data["message"]["published-online"]["date-parts"][0][0];
+            $doc_obra_array["doc"]["datePublished"] = (string)$data["message"]["published-online"]["date-parts"][0][0];
         } elseif (isset($data["message"]["published-print"]["date-parts"][0][0])) {
             $doc_obra_array["doc"]["datePublished"] = $data["message"]["published-print"]["date-parts"][0][0];
         }    
