@@ -55,7 +55,7 @@
     <!-- /NAV --> 
 
     <div class="jumbotron">
-        <div class="container bg-light p-5 rounded">
+        <div class="container bg-light p-5 rounded mt-5">
             <h1 class="display-5"><?php echo $branch; ?></h1>
             <p><?php echo $branch_description; ?></p>
 
