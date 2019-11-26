@@ -105,7 +105,7 @@ $get_data = $_GET;
                             <div class="card-body">
 
                                 <h6 class="card-subtitle mb-2 text-muted"><?php echo $r["_source"]['tipo'];?>
-                                <h5 class="card-title"><a class="text-dark" href="<?php echo $r['_source']['url']; ?>"><?php echo $r["_source"]['name']; ?> (<?php echo $r["_source"]['datePublished'];?>)</a></h5>
+                                <h5 class="card-title text-dark"><?php echo $r["_source"]['name']; ?> (<?php echo $r["_source"]['datePublished'];?>)</h5>
 
                                 <?php
                                     ($r["_source"]["concluido"] == "Sim" ? print_r('<span class="badge badge-warning">Concluído</span>') : false)
@@ -134,7 +134,11 @@ $get_data = $_GET;
                                 <?php if (!empty($r["_source"]['doi'])) : ?>
                                     <p class="text-muted"><b>DOI:</b>    <a href="https://doi.org/<?php echo $r["_source"]['doi'];?>"><?php echo $r["_source"]['doi'];?></a></p>
                                     <p><a href="doi_to_elastic.php?doi=<?php echo $r['_source']['doi'];?>&tag=<?php echo $r['_source']['tag'][0];?>">Coletar dados da Crossref</a></p>                                        
-                                <?php endif; ?>                                        
+                                <?php endif; ?>
+
+                                <?php if (!empty($r["_source"]['url'])) : ?>
+                                    <p class="text-muted"><b>URL:</b> <a href="<?php echo str_replace("]", "", str_replace("[", "", $r["_source"]['url'])); ?>"><?php echo str_replace("]", "", str_replace("[", "", $r["_source"]['url']));?></a></p>
+                                <?php endif; ?>                                                                             
                                 
                                 <?php if (!empty($r["_source"]['ids_match'])) : ?>  
                                     <?php foreach ($r["_source"]['ids_match'] as $id_match) : ?>
