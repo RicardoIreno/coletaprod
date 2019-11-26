@@ -96,6 +96,8 @@ $get_data = $_GET;
                     <!-- Navegador de resultados - Fim -->   
 
                     <?php foreach ($cursor["hits"]["hits"] as $r) : ?>
+
+                        <?php //print_r($r); ?>
                         <?php if (empty($r["_source"]['datePublished'])) {
                             $r["_source"]['datePublished'] = "";
                         }
@@ -104,7 +106,7 @@ $get_data = $_GET;
                         <div class="card">
                             <div class="card-body">
 
-                                <h6 class="card-subtitle mb-2 text-muted"><?php echo $r["_source"]['tipo'];?>
+                                <h6 class="card-subtitle mb-2 text-muted"><?php echo $r["_source"]['tipo'];?> | <?php echo $r["_source"]['source'];?></h6>
                                 <h5 class="card-title text-dark"><?php echo $r["_source"]['name']; ?> (<?php echo $r["_source"]['datePublished'];?>)</h5>
 
                                 <?php
@@ -130,6 +132,9 @@ $get_data = $_GET;
                                 <?php if (!empty($r["_source"]['isPartOf']['issn'])) : ?>
                                     <p class="text-muted"><b>ISSN:</b> <a href="result.php?filter[]=isPartOf.issn:&quot;<?php echo $r["_source"]['isPartOf']['issn'];?>&quot;"><?php echo $r["_source"]['isPartOf']['issn'];?></a></li>                                        
                                 <?php endif; ?>
+                                <?php if (!empty($r["_source"]['EducationEvent']['name'])) : ?>
+                                    <p class="text-muted"><b>Nome do evento:</b> <?php echo $r["_source"]['EducationEvent']['name'];?></p>
+                                <?php endif; ?>                                   
                                 
                                 <?php if (!empty($r["_source"]['doi'])) : ?>
                                     <p class="text-muted"><b>DOI:</b>    <a href="https://doi.org/<?php echo $r["_source"]['doi'];?>"><?php echo $r["_source"]['doi'];?></a></p>
