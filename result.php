@@ -65,18 +65,6 @@ $get_data = $_GET;
         ?>        
         <title>Lattes USP - Resultado da busca por trabalhos</title>
         
-        <script src="http://cdn.jsdelivr.net/g/filesaver.js"></script>
-        <script>
-              function SaveAsFile(t,f,m) {
-                    try {
-                        var b = new Blob([t],{type:m});
-                        saveAs(b, f);
-                    } catch (e) {
-                        window.open("data:"+m+"," + encodeURIComponent(t), '_blank','');
-                    }
-                }
-        </script>         
-        
     </head>
     <body>
 
@@ -137,7 +125,7 @@ $get_data = $_GET;
                                 <?php endif; ?>                                   
                                 
                                 <?php if (!empty($r["_source"]['doi'])) : ?>
-                                    <p class="text-muted"><b>DOI:</b>    <a href="https://doi.org/<?php echo $r["_source"]['doi'];?>"><?php echo $r["_source"]['doi'];?></a></p>
+                                    <p class="text-muted"><b>DOI:</b>    <a href="https://doi.org/<?php echo $r["_source"]['doi'];?>"><span id="<?php echo $r['_id'] ?>"><?php echo $r["_source"]['doi'];?></span></a> <button class="btn btn-info" onclick="copyToClipboard('#<?=$r['_id']?>')">Copiar DOI</button></p>
                                     <p><a href="doi_to_elastic.php?doi=<?php echo $r['_source']['doi'];?>&tag=<?php echo $r['_source']['tag'][0];?>">Coletar dados da Crossref</a></p>                                        
                                 <?php endif; ?>
 
@@ -321,6 +309,16 @@ $get_data = $_GET;
         <?php include('inc/footer.php'); ?>
 
         </div>
+
+        <script>
+            function copyToClipboard(element) {
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val($(element).text()).select();
+            document.execCommand("copy");
+            $temp.remove();
+            }
+        </script>
         
     </body>
 </html>
