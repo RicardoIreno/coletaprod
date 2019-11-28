@@ -42,6 +42,21 @@ if (isset($testIndexCV) && $testIndexCV == false) {
     Elasticsearch::createIndex($index_cv, $client);
 }
 
+/* Connect to Source */
+try {
+    $client = \Elasticsearch\ClientBuilder::create()->setHosts($hosts)->build();
+    //print("<pre>".print_r($client,true)."</pre>");
+    $indexParams['index']  = $index_source;   
+    $testIndexSource = $client->indices()->exists($indexParams);
+} catch (Exception $e) {    
+    $error_connection_message = '<div class="alert alert-danger" role="alert">Elasticsearch não foi encontrado.</div>';
+}
+
+/* Create index of source if not exists */
+if (isset($testIndexSource) && $testIndexSource == false) {
+    Elasticsearch::createIndex($index_source, $client);
+}
+
 /* Definição de idioma */
 
 if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {

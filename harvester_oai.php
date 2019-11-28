@@ -75,7 +75,7 @@ if (isset($_GET["oai"])) {
                 //var_dump($query);
                 //echo "<br/><br/>";
 
-                $resultado = Elasticsearch::update($sha256, $query);
+                $resultado = Elasticsearch::update($sha256, $query, $index_source);
                 //print_r($resultado);
                 unset($query);
                 flush();                
@@ -104,8 +104,8 @@ if (isset($_GET["oai"])) {
                 $query["doc"]["tag"] = $_GET['tag'];
                 $query["doc"]["harvester_id"] = (string)$rec->{'header'}->{'identifier'};
                 $query["doc"]["tipo"] = (string)$rec->{'metadata'}->{'article'}->{'front'}->{'article-meta'}->{'article-categories'}->{'subj-group'}->{'subject'};
-                $query["doc"]["titulo"] = str_replace('"','',(string)$rec->{'metadata'}->{'article'}->{'front'}->{'article-meta'}->{'title-group'}->{'article-title'});
-                $query["doc"]["ano"] = (string)$rec->{'metadata'}->{'article'}->{'front'}->{'article-meta'}->{'pub-date'}[0]->{'year'};
+                $query["doc"]["name"] = str_replace('"','',(string)$rec->{'metadata'}->{'article'}->{'front'}->{'article-meta'}->{'title-group'}->{'article-title'});
+                $query["doc"]["datePublished"] = (string)$rec->{'metadata'}->{'article'}->{'front'}->{'article-meta'}->{'pub-date'}[0]->{'year'};
                 $query["doc"]["doi"] = (string)$rec->{'metadata'}->{'article'}->{'front'}->{'article-meta'}->{'article-id'}[1];
                 $query["doc"]["resumo"] = str_replace('"','',(string)$rec->{'metadata'}->{'article'}->{'front'}->{'article-meta'}->{'abstract'}->{'p'});
                 // Palavras-chave
@@ -142,7 +142,7 @@ if (isset($_GET["oai"])) {
                     $query["doc"]["relation"][]=(string)$self_uri->attributes('http://www.w3.org/1999/xlink');
                 }
                 //print_r($query);
-                $resultado = Elasticsearch::update($sha256, $query);
+                $resultado = Elasticsearch::update($sha256, $query, $index_source);
                 print_r($resultado);
                 unset($query);
                 flush();
@@ -279,7 +279,7 @@ if (isset($_GET["oai"])) {
           //echo '<br/><br/>';
           //print_r($query);
 
-          $resultado = Elasticsearch::update($sha256, $query);
+          $resultado = Elasticsearch::update($sha256, $query, $index_source);
           //print_r($resultado);
           unset($query);
           flush();
@@ -348,7 +348,7 @@ if (isset($_GET["oai"])) {
                     $query["doc"]["url_principal"] = (string)$rec->{'metadata'}->{'rfc1807'}->{'id'};
                     $query["doc"]["relation"][]=(string)$rec->{'metadata'}->{'rfc1807'}->{'id'};
                     $query["doc_as_upsert"] = true;
-                    $resultado = Elasticsearch::update($sha256, $query);
+                    $resultado = Elasticsearch::update($sha256, $query, $index_source);
                     print_r($resultado);
                     unset($query);
                     flush();
