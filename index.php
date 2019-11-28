@@ -274,7 +274,7 @@
                                 <option selected>Formato de metadados ...</option>
                                 <option value="oai_dc">oai_dc</option>
                                 <option value="nlm">nlm</option>
-                                <option value="oai_marcxml">oai_marcxml</option>
+                                <option value="dim">dim</option>
                             </select>                 
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="submit">Coletar OAI</button>

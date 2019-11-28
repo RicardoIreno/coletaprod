@@ -1,5 +1,6 @@
 <?php
 
+chdir('../');
 require 'inc/config.php';
 require 'inc/functions.php';
 
@@ -88,15 +89,6 @@ if (isset($_GET["oai"])) {
                 }
                 
                 $query["doc"]["harvester_id"] = (string)$rec->{'header'}->{'identifier'};
-                if (isset($_GET["area"])) {
-                    $query["doc"]["area"] = $_GET["area"];
-                }
-                if (isset($_GET["areaChild"])) {
-                    $query["doc"]["areaChild"] = $_GET["areaChild"];
-                }
-                if (isset($_GET["corrente"])) {
-                    $query["doc"]["corrente"] = $_GET["corrente"];
-                }
                 $query["doc"]["originalType"] = (string)$rec->{'metadata'}->{'article'}->{'front'}->{'article-meta'}->{'article-categories'}->{'subj-group'}->{'subject'};
                 $query["doc"]["name"] = str_replace('"', '', (string)$rec->{'metadata'}->{'article'}->{'front'}->{'article-meta'}->{'title-group'}->{'article-title'});
                 $query["doc"]["datePublished"] = (string)$rec->{'metadata'}->{'article'}->{'front'}->{'article-meta'}->{'pub-date'}[1]->{'year'};
@@ -163,7 +155,7 @@ if (isset($_GET["oai"])) {
                 if (isset($_GET["typeOfContent"])) {
                     $query["doc"]["type"] = $_GET["typeOfContent"];
                 } else {
-                    $query["doc"]["type"] = "Artigo";
+                    $query["doc"]["type"] = "Work";
                 }
                 
                 $query["doc_as_upsert"] = true;
@@ -317,7 +309,7 @@ if (isset($_GET["oai"])) {
             if (isset($_GET["typeOfContent"])) {
                 $query["doc"]["type"] = $_GET["typeOfContent"];
             } else {
-                $query["doc"]["type"] = "Artigo";
+                $query["doc"]["type"] = "Work";
             }
             $query["doc_as_upsert"] = true;
             unset($author);
@@ -347,15 +339,6 @@ if (isset($_GET["oai"])) {
 
                 $query["doc"]["set"] = (string)$rec->{'header'}->{'setSpec'};
                 $query["doc"]["harvester_id"] = (string)$rec->{'header'}->{'identifier'};
-                if (isset($_GET["area"])) {
-                    $query["doc"]["area"] = $_GET["area"];
-                }
-                if (isset($_GET["areaChild"])) {
-                    $query["doc"]["areaChild"] = $_GET["areaChild"];
-                }
-                if (isset($_GET["corrente"])) {
-                    $query["doc"]["corrente"] = $_GET["corrente"];
-                }
                 $query["doc"]["originalType"] = (string)$rec->{'metadata'}->{'rfc1807'}->{'type'}[0];
                 $query["doc"]["name"] = str_replace('"', '', (string)$rec->{'metadata'}->{'rfc1807'}->{'title'});
                 $query["doc"]["datePublished"] = substr((string)$rec->{'metadata'}->{'rfc1807'}->{'date'}, 0, 4);
@@ -372,7 +355,6 @@ if (isset($_GET["oai"])) {
                         }
                     }
                 }
-
 
                 $i = 0;
                 foreach ($rec->{'metadata'}->{'rfc1807'}->{'author'} as $autor) {
@@ -413,7 +395,7 @@ if (isset($_GET["oai"])) {
                 if (isset($_GET["typeOfContent"])) {
                     $query["doc"]["type"] = $_GET["typeOfContent"];
                 } else {
-                    $query["doc"]["type"] = "Artigo";
+                    $query["doc"]["type"] = "Work";
                 }
                 $query["doc_as_upsert"] = true;
 
@@ -425,6 +407,79 @@ if (isset($_GET["oai"])) {
 
             }
         }
+
+    } elseif ($_GET["metadataFormat"] == "dim") {
+        if (isset($_GET["set"])) {
+            $recs = $myEndpoint->listRecords('dim', null, null, $_GET["set"]);
+        } else {
+            $recs = $myEndpoint->listRecords('dim');
+        }
+        foreach ($recs as $rec) {
+            $data = $rec->metadata->children('http://www.dspace.org/xmlns/dspace/dim');
+            $rows = $data->children('http://www.dspace.org/xmlns/dspace/dim');
+            foreach ($rec->metadata->children('http://www.dspace.org/xmlns/dspace/dim') as $test) {
+                $i = 0;
+                foreach ($test->field as $field) {
+                    if ($field->attributes()->element == "title" && empty($field->attributes()->qualifier)) {
+                        $query["doc"]["name"] = (string)$field;
+                    }
+                    if ($field->attributes()->element == "subject") {
+                        $query["doc"]["about"][] = (string)$field;
+                    }
+                    if ($field->attributes()->element == "date" && $field->attributes()->qualifier == "issued") {
+                        $query["doc"]["datePublished"] = substr((string)$field, 0, 4);
+                    }
+                    if ($field->attributes()->element == "identifier" && $field->attributes()->qualifier == "doi") {
+                        $query["doc"]["doi"] = (string)$field;
+                    }
+                    if ($field->attributes()->element == "relation" && $field->attributes()->qualifier == "ispartof") {
+                        $query["doc"]["isPartOf"]["name"] = (string)$field;
+                    }
+                    if ($field->attributes()->element == "jtitle") {
+                        $query["doc"]["isPartOf"]["name"] = (string)$field;
+                    }
+                    if ($field->attributes()->element == "identifier" && $field->attributes()->qualifier == "issn") {
+                        $query["doc"]["isPartOf"]["issn"] = (string)$field;
+                    }
+                    if ($field->attributes()->element == "description" && $field->attributes()->qualifier == "abstract") {
+                        $query["doc"]["description"][] = (string)$field;
+                    }
+                    if ($field->attributes()->element == "contributor" && $field->attributes()->qualifier == "author") {
+                        $author[$i]["person"]["name"] = (string)$field;
+                    }
+                    if ($field->attributes()->element == "type") {
+                        $query["doc"]["type"] = (string)$field;
+                    }
+                    if ($field->attributes()->element == "publisher" && empty($field->attributes()->qualifier)) {
+                        $query["doc"]["publisher"]["organization"]["name"] = (string)$field;
+                    }
+                    if ($field->attributes()->element == "publisher" && $field->attributes()->qualifier == "place") {
+                        $query["doc"]["publisher"]["organization"]["location"] = (string)$field;
+                    }
+                    if ($field->attributes()->element == "language" && $field->attributes()->qualifier == "iso") {
+                        $query["doc"]["language"][] = (string)$field;
+                    }
+                    $i++;
+                }
+            }
+            $id = (string)$rec->header->identifier;
+            $query["doc"]["base"][] = $_GET["name"];
+            $query["doc"]["type"] = "Work";
+            $query["doc"]["unidadeUSP"] = (array)$rec->header->setSpec;
+            $query["doc"]["identifier"] = (string)$rec->header->identifier;
+            if (isset($author)) {
+                $query["doc"]["author"] = $author;
+                unset($author);
+            }
+            $query["doc_as_upsert"] = true;
+            $resultado = Elasticsearch::update($id, $query, $index_source);
+            //print_r($resultado);
+            //print_r($query);
+            unset($query);
+            flush();
+            //break;
+        }        
+
     } else {
         echo "Formato de metadados não definido"; 
     }
@@ -436,10 +491,10 @@ if (isset($_GET["oai"])) {
     $delete_repository = Elasticsearch::delete($_GET["delete"], $type, $index_source);
     print_r($delete_repository);
     echo '<br/>';
-    $body["query"]["query_string"]["query"] = 'source.keyword:"'.$_GET["delete_name"].'"';
-    print_r($body);
+    $query["query"]["query_string"]["query"] = 'source.keyword:"'.$_GET["delete_name"].'"';
+    print_r($query);
     echo '<br/><br/>';
-    $delete_records = Elasticsearch::elastic_delete_by_query("journals", $body, $index_source);
+    $delete_records = Elasticsearch::elastic_delete_by_query("journals", $query, $index_source);
     print_r($delete_records);
 
 
