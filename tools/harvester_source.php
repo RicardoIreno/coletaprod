@@ -4,6 +4,12 @@ chdir('../');
 require 'inc/config.php';
 require 'inc/functions.php';
 
+function clean($string) {
+    $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
+ 
+    return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
+ }
+
 
 if (isset($_GET["oai"])) {
 
@@ -53,7 +59,7 @@ if (isset($_GET["oai"])) {
     $body_repository["doc"]["type"] = "journal";
     $body_repository["doc_as_upsert"] = true;
 
-    $insert_repository_result = Elasticsearch::update($body_repository["doc"]["url"], $body_repository, $index_source);
+    $insert_repository_result = Elasticsearch::update(clean($body_repository["doc"]["url"]), $body_repository, $index_source);
     
     // Store repository data - Fim
 
@@ -314,7 +320,7 @@ if (isset($_GET["oai"])) {
             $query["doc_as_upsert"] = true;
             unset($author);
             //print_r($query);
-            $resultado = Elasticsearch::update($id, $query, $index_source);
+            $resultado = Elasticsearch::update(clean($id), $query, $index_source);
             //print_r($resultado);
             //print_r($query);
             unset($query);

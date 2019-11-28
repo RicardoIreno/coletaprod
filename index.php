@@ -262,16 +262,15 @@
 
                     <h1 class="display-5 mt-3">Fonte para comparativo</h1>
 
-                    <form class="m-3" action="tools/harvester_source.php" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+                    <form class="m-3" action="tools/harvester_source.php" method="get">
                         <legend>Harvesting OAI-PMH</legend>
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">OAI-PMH</span>
                             </div>
-                            <input type="text" placeholder="URL do OAI-PMH" class="form-control" name="oai">      
-                            <input type="text" placeholder="TAG para formar um grupo" class="form-control" name="tag">
-                            <select class="form-control" id="format" name="metadataPrefix">
-                                <option selected>Formato de metadados ...</option>
+                            <input type="text" placeholder="URL do OAI-PMH" class="form-control" name="oai">  
+                            <select class="form-control" id="format" name="metadataFormat">
+                                <option selected>Formato</option>
                                 <option value="oai_dc">oai_dc</option>
                                 <option value="nlm">nlm</option>
                                 <option value="dim">dim</option>
@@ -303,7 +302,9 @@
                 
                 </div>
             </div>
-            </div>
+            </div>            
+
+            <a class="btn btn-info" href="result_source.php">Ver registros na fonte</a>
 
 
 

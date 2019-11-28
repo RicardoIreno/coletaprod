@@ -80,7 +80,7 @@ $get_data = $_GET;
                 <div class="col-8">    
 
                     <!-- Navegador de resultados - Início -->
-                    <?php ui::pagination($page, $total, $limit); ?>
+                    <?php ui::pagination($page, $total, $limit, "result_source.php"); ?>
                     <!-- Navegador de resultados - Fim -->   
 
                     <?php foreach ($cursor["hits"]["hits"] as $r) : ?>
@@ -94,12 +94,8 @@ $get_data = $_GET;
                         <div class="card">
                             <div class="card-body">
 
-                                <h6 class="card-subtitle mb-2 text-muted"><?php echo $r["_source"]['tipo'];?> | <?php echo $r["_source"]['source'];?></h6>
+                                <h6 class="card-subtitle mb-2 text-muted"><?php echo $r["_source"]['source'];?></h6>
                                 <h5 class="card-title text-dark"><?php echo $r["_source"]['name']; ?> (<?php echo $r["_source"]['datePublished'];?>)</h5>
-
-                                <?php
-                                    ($r["_source"]["concluido"] == "Sim" ? print_r('<span class="badge badge-warning">Concluído</span>') : false)
-                                ?>
 
                                 <p class="text-muted"><b>Autores:</b>
                                     <?php if (!empty($r["_source"]['author'])) : ?>
@@ -136,63 +132,10 @@ $get_data = $_GET;
                                     <?php foreach ($r["_source"]['ids_match'] as $id_match) : ?>
                                         <?php compararRegistros::match_id($id_match["id_match"], $id_match["nota"]);?>
                                     <?php endforeach;?>
-                                <?php endif; ?>
-                                        
-                                <?php 
-                                if ($instituicao == "USP") {
-                                    DadosExternos::query_bdpi($r["_source"]['name'], $r["_source"]['datePublished'], $r['_id']);
-                                }
-                                ?>  
-
-           
-
-                                    <div class="btn-group mt-3" role="group" aria-label="Botoes">
-
-                                        <form method="post">
-                                            <?php if(isset($r["_source"]["concluido"])) : ?>
-                                                <?php if($r["_source"]["concluido"] == "Sim") : ?>                                                  
-                                                    
-                                                        <label><input type='hidden' value='Não' name="<?php echo $r['_id'];?>"></label>      
-                                                        <button class="btn btn-primary">Desmarcar como concluído</button>
-                                                
-                                                <?php else : ?>
-                                                    
-                                                        <label><input type='hidden' value='Sim' name="<?php echo $r['_id'];?>"></label>
-                                                        <button class="btn btn-primary">Marcar como concluído</button>
-                                                    
-                                                <?php endif; ?>                                    
-                                            <?php else : ?>
-                                                    
-                                                        <label><input type='hidden' value='Sim' name="<?php echo $r['_id'];?>"></label>
-                                                        <button class="btn btn-primary">Marcar como concluído</button>
-                                                    
-                                            <?php endif; ?>
-                                            
-                                        </form>                                       
-                                        
-                                        <?php                                        
-                                        if (isset($dspaceRest)) { 
-                                            echo '<form action="dspaceConnect.php" method="get">
-                                                <input type="hidden" name="createRecord" value="true" />
-                                                <input type="hidden" name="_id" value="'.$r['_id'].'" />
-                                                <button class="uk-button uk-button-danger" name="btn_submit">Criar registro no DSpace</button>
-                                                </form>';  
-                                        }                                        
-                                        ?>
-                                        
-                                        <a href="tools/export.php?search[]=_id:<?php echo $r['_id'] ?>&format=alephseq" class="btn btn-secondary">Exportar Alephseq</a>
+                                <?php endif; ?>                                     
 
 
-                                        <form class="form-signin" method="post" action="editor/index.php">
-                                            <?php
-                                                $jsonRecord = json_encode($r["_source"]);                                        
-                                            ?>
-                                            <input type="hidden" id="coletaprod_id" name="coletaprod_id" value="<?php echo $r["_id"] ?>">
-                                            <input type="hidden" id="record" name="record" value="<?php echo urlencode($jsonRecord) ?>">
-                                            <button class="btn btn-warning" type="submit">Editar antes de exportar</button>
-                                        </form>
-
-                                    </div>
+                  
 
                             </div>
                         </div>
@@ -200,7 +143,7 @@ $get_data = $_GET;
 
 
                         <!-- Navegador de resultados - Início -->
-                        <?php ui::pagination($page, $total, $limit); ?>
+                        <?php ui::pagination($page, $total, $limit, "result_source.php"); ?>
                         <!-- Navegador de resultados - Fim -->  
 
                 </div>
@@ -217,24 +160,10 @@ $get_data = $_GET;
                         $_GET = null;                                    
                     }                       
                     
-                    $facets->facet("Lattes.natureza", 100, "Natureza", null, "_term", $_GET);
-                    $facets->facet("tipo", 100, "Tipo de material", null, "_term", $_GET);
-                    $facets->facet("tag", 100, "Tag", null, "_term", $_GET);
-                    
-                    $facets->facet("author.person.name", 100, "Nome completo do autor", null, "_term", $_GET);
-                    $facets->facet("lattes_ids", 100, "Número do lattes", null, "_term", $_GET);
-                    $facets->facet("USP.codpes",100,"Número USP",null,"_term",$_GET);
-                    $facets->facet("USP.unidadeUSP",100,"Unidade USP",null,"_term",$_GET);
-                    
-                    $facets->facet("country",200,"País de publicação",null,"_term",$_GET);
-                    $facets->facet("datePublished",120,"Ano de publicação","desc","_term",$_GET);
-                    $facets->facet("language",40,"Idioma",null,"_term",$_GET);
-                    $facets->facet("Lattes.meioDeDivulgacao",100,"Meio de divulgação",null,"_term",$_GET);
-                    $facets->facet("about",100,"Palavras-chave",null,"_term",$_GET);
-                    $facets->facet("agencia_de_fomento",100,"Agências de fomento",null,"_term",$_GET);
-
-                    $facets->facet("Lattes.flagRelevancia",100,"Relevância",null,"_term",$_GET);
-                    $facets->facet("Lattes.flagDivulgacaoCientifica",100,"Divulgação científica",null,"_term",$_GET);
+                    $facets->facet("author.person.name", 100, "Nome completo do autor", null, "_term", $_GET, $index_source);
+                    $facets->facet("datePublished", 120, "Ano de publicação", "desc", "_term", $_GET, $index_source);
+                    $facets->facet("language", 40, "Idioma", null, "_term", $_GET, $index_source);
+                    $facets->facet("about", 100, "Palavras-chave", null, "_term", $_GET, $index_source);
                     
                     $facets->facet("area_do_conhecimento.nomeGrandeAreaDoConhecimento", 100, "Nome da Grande Área do Conhecimento", null, "_term", $_GET);
                     $facets->facet("area_do_conhecimento.nomeDaAreaDoConhecimento", 100, "Nome da Área do Conhecimento", null, "_term", $_GET);
