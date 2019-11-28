@@ -384,7 +384,7 @@
                 <ul class="list-group">
                     <li class="list-group-item"><?php echo paginaInicial::contar_tipo_de_registro("Work"); ?> registros</li> 
                     <li class="list-group-item"><?php echo paginaInicial::contar_tipo_de_registro("Curriculum", $index_cv); ?> currículos</li>
-                    <li class="list-group-item"><?php echo paginaInicial::contar_tipo_de_registro("Work", $index_source); ?> registros na fonte</li>
+                    <li class="list-group-item"><?php echo paginaInicial::contar_registros_indice($index_source); ?> registros na fonte</li>
                 </ul>     
             </div>          
         </div>

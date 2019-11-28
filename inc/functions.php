@@ -397,6 +397,15 @@ class compararRegistros {
  * Funções executadas na página principal
  */
 class paginaInicial {
+
+    static function contar_registros_indice($index) 
+    {
+        global $client;  
+        $params = [];
+        $params["index"] = $index;
+        $response = $client->count($params);
+        return number_format($response['count'], 0, ',', '.');
+    }     
     
     static function contar_tipo_de_registro($type, $index_cv = null) 
     {
