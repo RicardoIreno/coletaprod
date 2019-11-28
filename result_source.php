@@ -14,13 +14,13 @@ if (!empty($_POST)) {
     header("Refresh:0");
 }
 
-if (isset($_GET["filter"])) {
-    if (!in_array("type:\"Work\"", $_GET["filter"])) {
-        $_GET["filter"][] = "type:\"Work\"";
-    }
-} else {
-    $_GET["filter"][] = "type:\"Work\"";
-}
+// if (isset($_GET["filter"])) {
+//     if (!in_array("type:\"Work\"", $_GET["filter"])) {
+//         $_GET["filter"][] = "type:\"Work\"";
+//     }
+// } else {
+//     $_GET["filter"][] = "type:\"Work\"";
+// }
 
 
 
@@ -94,7 +94,7 @@ $get_data = $_GET;
                         <div class="card">
                             <div class="card-body">
 
-                                <h6 class="card-subtitle mb-2 text-muted"><?php echo $r["_source"]['source'];?></h6>
+                                <h6 class="card-subtitle mb-2 text-muted"><?php isset($r["_source"]['source']) ? $r["_source"]['source'] : ""; ?></h6>
                                 <h5 class="card-title text-dark"><?php echo $r["_source"]['name']; ?> (<?php echo $r["_source"]['datePublished'];?>)</h5>
 
                                 <p class="text-muted"><b>Autores:</b>
