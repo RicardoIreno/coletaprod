@@ -225,6 +225,7 @@ $get_data = $_GET;
                     $facets->facet("lattes_ids", 100, "Número do lattes", null, "_term", $_GET);
                     $facets->facet("USP.codpes",100,"Número USP",null,"_term",$_GET);
                     $facets->facet("USP.unidadeUSP",100,"Unidade USP",null,"_term",$_GET);
+                    $facets->facet("USP.tipvin", 100, "Tipo de vínculo", null, "_term", $_GET);
                     
                     $facets->facet("country",200,"País de publicação",null,"_term",$_GET);
                     $facets->facet("datePublished",120,"Ano de publicação","desc","_term",$_GET);

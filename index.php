@@ -100,7 +100,8 @@
                             </div>
                             <input type="text" placeholder="TAG para formar um grupo" class="form-control" name="tag">
                             <input type="text" placeholder="Número USP" class="form-control" name="codpes">                            
-                            <input type="text" placeholder="Unidade USP" class="form-control" name="unidadeUSP">
+                            <input type="hidden" placeholder="Unidade USP" class="form-control" name="unidadeUSP" value="ECA">
+                            <input type="text" placeholder="Tipo de vínculo" class="form-control" name="tipvin">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="submit">Incluir</button>
                             </div>    
