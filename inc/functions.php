@@ -588,6 +588,7 @@ class DadosExternos {
                     $doc["doc"]["bdpi"]["doi_bdpi"] = $match["_source"]["doi"];
                 } 
                 echo '</p>';
+                unset($autArray);
             }
             echo '</div>';            
 
