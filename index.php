@@ -262,7 +262,7 @@
 
                     <h1 class="display-5 mt-3">Fonte para comparativo</h1>
 
-                    <form class="m-3" action="harvester_oai.php" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+                    <form class="m-3" action="tools/harvester_source.php" method="post" accept-charset="utf-8" enctype="multipart/form-data">
                         <legend>Harvesting OAI-PMH</legend>
                         <div class="input-group">
                             <div class="input-group-prepend">
