@@ -5,11 +5,3 @@
     -->
     <br/><br/><br/><br/><br/><br/>
 </div>
-<script>
-  $.validate({
-      lang : 'pt',
-      modules : 'sanitize',
-      modules : 'file'
-  });  
-</script>
-<script src="https://getuikit.com/migrate.min.js"></script>
