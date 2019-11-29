@@ -204,23 +204,25 @@
                             <button class="uk-button-primary" name="btn_submit">Incluir</button><br/>                                    
                         </fieldset>
                     </form>
-                    <br/>
-                    <form class="uk-form-stacked" action="z3950.php" method="get" accept-charset="utf-8">
-                        <div class="uk-margin" uk-grid>
-                        <label class="uk-form-label" for="form-stacked-text">Consulta no Z39.50</a></label>
-                            <div class="uk-form-controls">
-                                <input type="text" placeholder="Insira um ISBN válido" class="uk-input uk-form-width-large" name="isbn" size="13"><br/>
-                                <input type="text" placeholder="Ou número do sistema" class="uk-input uk-form-width-large" name="sysno" size="13"><br/>
-                                <input type="text" placeholder="Ou pesquisar por título" class="uk-input uk-form-width-large" name="title" size="200"><br/>
-                                <input type="text" placeholder="e autor" class="uk-input uk-form-width-large" name="author" size="100"><br/>
-                                <input type="text" placeholder="e ano" class="uk-input uk-form-width-large" name="year" size="4"><br/>
+
+                    -->
+                    <form class="m-3" action="z3950.php" method="get" accept-charset="utf-8">
+                        <legend>Consulta no Z39.50</legend>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Z39.50</span>
                             </div>
-                            <div>    
-                                <button class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom" name="btn_submit">Pesquisa Z39.50</button><br/>
-                            </div>
-                            <div><p>A busca só aceita 2 critérios simultâneos nos campos de titulo, autor e ano</p></div>                                
+                                <input type="text" placeholder="Insira um ISBN válido" class="form-control" name="isbn" size="13"><br/>
+                                <input type="text" placeholder="Ou número do sistema" class="form-control" name="sysno" size="13"><br/>
+                                <input type="text" placeholder="Ou pesquisar por título" class="form-control" name="title" size="200"><br/>
+                                <input type="text" placeholder="e autor" class="form-control" name="author" size="100"><br/>
+                                <input type="text" placeholder="e ano" class="form-control" name="year" size="4"><br/>
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit">Pesquisa Z39.50</button>
+                            </div>    
                         </div>
                     </form>
+                    <!--
                     <br/>
                     <form class="uk-form" action="grobid.php" method="post" accept-charset="utf-8" enctype="multipart/form-data">
                         <fieldset data-uk-margin>
