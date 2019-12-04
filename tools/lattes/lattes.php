@@ -8,7 +8,7 @@
     exit;
   }
   //$stmt = $dbh->prepare("SELECT * FROM V_PESSOA_LATTES WHERE codpes = '90029' ORDER BY nompes");
-  $stmt = $dbh->prepare("SELECT * FROM V_PESSOA_LATTES ORDER BY nompes");
+  $stmt = $dbh->prepare("SELECT * FROM V_PESSOA_LATTES");
   $stmt->execute();
   while ($row = $stmt->fetch()) {
     unlink("zip.zip");
