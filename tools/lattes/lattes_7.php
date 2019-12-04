@@ -8,7 +8,8 @@
     exit;
   }
   //$stmt = $dbh->prepare("SELECT * FROM V_PESSOA_LATTES WHERE codpes = '90029' ORDER BY nompes");
-  $stmt = $dbh->prepare("SELECT * FROM V_PESSOA_LATTES");
+  $date = date('Y-m-d', strtotime("-7 day"));
+  $stmt = $dbh->prepare("SELECT * FROM V_PESSOA_LATTES WHERE dtaultalt >= '$date'");
   $stmt->execute();
   while ($row = $stmt->fetch()) {
     unlink("zip.zip");
@@ -29,8 +30,7 @@
       $output = shell_exec('curl -X POST -F "file=@'.__DIR__.'/curriculo.xml" -F "codpes='.$row["codpes"].'" -F "unidadeUSP=ECA" -F "tag='.trim($row["nomabvset"]).'" -F "tipvin='.$row["tipvinext"].'" http://localhost/coletaprod/lattes_xml_to_elastic.php');
     } else {
       $output = shell_exec('curl -X POST -F "file=@'.__DIR__.'/curriculo.xml" -F "codpes='.$row["codpes"].'" -F "unidadeUSP=ECA" -F "tag='.trim($row["nomcur"]).'" -F "tipvin='.$row["tipvinext"].'" http://localhost/coletaprod/lattes_xml_to_elastic.php');
-    }
-    
+    }    
     //echo "<pre>$output</pre>";
     //var_dump($row);
   }
