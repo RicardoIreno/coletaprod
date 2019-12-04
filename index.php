@@ -98,9 +98,9 @@
                                 <input type="file" class="custom-file-input" id="fileXML" aria-describedby="fileXML" name="file">
                                 <label class="custom-file-label" for="fileXML">Escolha o arquivo</label>
                             </div>
-                            <input type="text" placeholder="TAG para formar um grupo" class="form-control" name="tag">
-                            <input type="text" placeholder="Número USP" class="form-control" name="codpes">                            
-                            <input type="hidden" placeholder="Unidade USP" class="form-control" name="unidadeUSP" value="ECA">
+                            <input type="text" placeholder="TAG" class="form-control" name="tag">
+                            <input type="text" placeholder="Identificador" class="form-control" name="codpes">                            
+                            <input type="text" placeholder="Unidade" class="form-control" name="unidade">
                             <input type="text" placeholder="Tipo de vínculo" class="form-control" name="tipvin">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="submit">Incluir</button>
