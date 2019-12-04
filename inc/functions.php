@@ -683,6 +683,8 @@ class DadosExternos {
         curl_close($ch);
     }
 
+
+
     static function coleta_json_download_lattes($id_lattes) {
 
         $result = file_get_contents($id_lattes);
@@ -690,6 +692,15 @@ class DadosExternos {
         return $data;
 
     }
+
+    static function query_openlibrary($isbn) {
+        $isbn = trim($isbn);        
+        $url = "https://openlibrary.org/api/books?bibkeys=ISBN:$isbn&jscmd=details&format=json";
+        $json = file_get_contents($url);
+        $data = json_decode($json, true);
+        return $data; 
+    }
+
 
     static function query_doi($doi, $tag) 
     {
