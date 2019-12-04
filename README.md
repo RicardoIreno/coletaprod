@@ -9,12 +9,12 @@ Fontes possíveis:
 
 ## Dependencias
 
-1. Elasticsearch 5 ou superior
-* Dependências do PHP: php5-cgi | php5-curl
+1. Elasticsearch 7.4 ou superior
+* Dependências do PHP: php-cgi | php-curl
 
 ## Clonar repositórios
 
-git clone https://github.com/SIBiUSP/coletaprod.git
+git clone https://github.com/trmurakami/coletaprod.git
 
 ## Instalação
 
@@ -30,9 +30,9 @@ git submodule update
 
 Editar suas configurações em config.php
 
-## Rodar os comandos inc/mappings.elasticsearch
+## Criar indices
 
-Rodar os comandos de criação do índice e mapeamento dos tipos disponíveis no arquivo inc/mappings.elasticsearch
+Rodar o sistema pela primeira vez para criar os indices
 
 ## Comandos para rodar via linha de comando (Se necessário)
 
