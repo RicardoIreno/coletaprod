@@ -24,7 +24,27 @@
                 //$type = "isbn";
                 $resultISBN = DadosExternos::query_openlibrary($_GET["isbn"]);
                 if (!empty($resultISBN)) {
-                    print_r($resultISBN);
+                    print("<pre>".print_r($resultISBN, true)."</pre>");
+
+                    echo "<br/><br/>";
+
+                    foreach ($resultISBN as $recordISBN) {
+                        $record["name"] = $recordISBN["details"]["title"];
+
+                    }
+
+                    echo "<br/><br/>";
+
+                    print("<pre>".print_r($record, true)."</pre>");
+
+                    $jsonRecord = json_encode($record);
+                    echo '                    
+                        <form class="form-signin" method="post" action="editor/index.php">
+                            <input type="hidden" id="record" name="record" value="'.urlencode($jsonRecord).'">
+                            <button class="btn btn-warning" type="submit">Editar antes de exportar</button>
+                        </form>                    
+                    ';
+
                 } else {
                     echo "ISBN não foi encontrado na Base OpenLibrary";
                 }
