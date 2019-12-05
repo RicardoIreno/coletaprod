@@ -131,7 +131,7 @@ if ($_GET["format"] == "table") {
                 }
 
                 foreach ($r["_source"]['authorUSP'] as $unidadesUSP_aut) {
-                    $unidadesUSP_array[]= $unidadesUSP_aut["unidadeUSP"];          
+                    $unidadesUSP_array[]= $unidadesUSP_aut["unidade"];          
                 }
                 $fields[] = implode(";",$unidadesUSP_array);
                 unset($unidadesUSP_array);

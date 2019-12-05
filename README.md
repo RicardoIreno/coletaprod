@@ -40,7 +40,7 @@ php5-cgi -f lattes_json_to_elastic.php id_lattes=XXXXXXXX
 
 php5-cgi -f lattes_json_to_elastic.php path_download=XXXXXXXX
 
-php5-cgi -f lattes_json_to_elastic.php id_lattes=XXXXX tag[]=XXXX unidadeUSP[]=XXX codpes=XXXXXX
+php5-cgi -f lattes_json_to_elastic.php id_lattes=XXXXX tag[]=XXXX unidade[]=XXX codpes=XXXXXX
 
 ## Rodar documentação
 

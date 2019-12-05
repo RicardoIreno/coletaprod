@@ -142,7 +142,7 @@
                     $facets->facet("autores.nomeCompletoDoAutor",100,"Nome completo do autor",null,"_term",$_GET["search"]);
                     $facets->facet("lattes_ids",100,"Número do lattes",null,"_term",$_GET["search"]);
                     $facets->facet("codpes",100,"Número USP",null,"_term",$_GET["search"]);
-                    $facets->facet("unidadeUSP",100,"Unidade USP",null,"_term",$_GET["search"]);
+                    $facets->facet("unidade",100,"Unidade",null,"_term",$_GET["search"]);
                     
                     echo '<hr><li>Informações da publicação</li>';
                     $facets->facet("pais",200,"País de publicação",null,"_term",$_GET["search"]);

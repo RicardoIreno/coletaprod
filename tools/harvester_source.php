@@ -471,7 +471,7 @@ if (isset($_GET["oai"])) {
             $id = (string)$rec->header->identifier;
             $query["doc"]["base"][] = $_GET["name"];
             $query["doc"]["type"] = "Work";
-            $query["doc"]["unidadeUSP"] = (array)$rec->header->setSpec;
+            $query["doc"]["unidade"] = (array)$rec->header->setSpec;
             $query["doc"]["identifier"] = (string)$rec->header->identifier;
             if (isset($author)) {
                 $query["doc"]["author"] = $author;

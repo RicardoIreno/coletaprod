@@ -80,7 +80,7 @@
                             <input type="text" placeholder="Insira o ID do Curriculo" class="form-control" name="id_lattes" data-validation="required">
                             <input type="text" placeholder="TAG para formar um grupo" class="form-control" name="tag">
                             <input type="text" placeholder="Número USP" class="form-control" name="codpes">                            
-                            <input type="text" placeholder="Unidade USP" class="form-control" name="unidadeUSP">
+                            <input type="text" placeholder="Unidade USP" class="form-control" name="unidade">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="submit">Enviar</button>
                             </div>    
@@ -379,7 +379,7 @@
             <div class="col-md-3">
                 <h2 class="uk-h3">Unidade</h2>
                 <ul class="list-group">
-                    <?php paginaInicial::unidadeUSP_inicio("USP.unidadeUSP"); ?>
+                    <?php paginaInicial::unidadeUSP_inicio("USP.unidade"); ?>
                 </ul>
                 <h2>Tags</h2>
                 <ul class="list-group">
