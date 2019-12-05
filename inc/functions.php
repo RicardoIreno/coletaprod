@@ -512,7 +512,7 @@ class paginaInicial {
 
     }
 
-    static function unidadeUSP_inicio($field) {
+    static function unidade_inicio($field) {
         global $client;
         global $index;
         $query = '{
@@ -845,7 +845,7 @@ class processaLattes {
         return $doc_curriculo_array;
     }    
 
-    static function processaObra($obra,$tipo_de_obra,$tag,$id_lattes,$unidadeUSP,$codpes) {
+    static function processaObra($obra, $tipo_de_obra, $tag, $id_lattes, $unidade, $codpes) {
         switch ($tipo_de_obra) {
 
             case "trabalhoEmEventos":
@@ -947,7 +947,7 @@ class processaLattes {
         $doc_obra_array["doc"]["source"] = "Base Lattes";
         $doc_obra_array["doc"]["lattes_ids"][] = $id_lattes;
         $doc_obra_array["doc"]["tag"][] = $tag;
-        $doc_obra_array["doc"]["unidadeUSP"][] = $unidadeUSP;
+        $doc_obra_array["doc"]["unidade"][] = $unidade;
         $doc_obra_array["doc"]["codpes"] = $codpes;       
 
         $titulos_array = ["tituloDoTrabalho","tituloDoArtigo","tituloDoLivro","tituloDoCapituloDoLivro","tituloDoTexto"];

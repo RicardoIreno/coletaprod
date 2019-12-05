@@ -28,8 +28,8 @@
     if (!isset($_GET['codpes'])){
         $_GET['codpes'] = null;
     }            
-    if (!isset($_GET['unidadeUSP'])){
-        $_GET['unidadeUSP'] = null;
+    if (!isset($_GET['unidade'])){
+        $_GET['unidade'] = null;
     }
                 
     if (isset($_GET["id_lattes"])) {
@@ -48,7 +48,7 @@
     $doc_curriculo_array = [];
     $doc_curriculo_array["doc"]["source"] = "Base Lattes";
     $doc_curriculo_array["doc"]["tag"] = $_GET['tag'];
-    $doc_curriculo_array["doc"]["unidadeUSP"][] = $_GET['unidadeUSP'];
+    $doc_curriculo_array["doc"]["unidade"][] = $_GET['unidade'];
     $doc_curriculo_array["doc"]["codpes"] = $_GET['codpes'];            
     $doc_curriculo_array["doc"]["data_atualizacao"] = substr($cursor["docs"][0]["dataAtualizacao"],4,4)."-".substr($cursor["docs"][0]["dataAtualizacao"],2,2);
     $doc_curriculo_array["doc"]["nome_completo"] = $cursor["docs"][0]["dadosGerais"]["nomeCompleto"];
@@ -208,7 +208,7 @@
 
     if (isset($cursor["docs"][0]["producaoBibliografica"]["trabalhosEmEventos"])) {
         foreach ($cursor["docs"][0]["producaoBibliografica"]["trabalhosEmEventos"]["trabalhoEmEventos"] as $obra) {
-            $resultadoProcessaObra = processaLattes::processaObra($obra,"trabalhoEmEventos",$_GET['tag'],$cursor["docs"][0]["numeroIdentificador"],$_GET['unidadeUSP'],$_GET['codpes']);            
+            $resultadoProcessaObra = processaLattes::processaObra($obra,"trabalhoEmEventos",$_GET['tag'],$cursor["docs"][0]["numeroIdentificador"],$_GET['unidade'],$_GET['codpes']);            
             // Armazenar registro
             $resultado_evento = Elasticsearch::update($resultadoProcessaObra["sha256"], $resultadoProcessaObra["body"]);
             print_r($resultado_evento);
@@ -221,7 +221,7 @@
 
     if (isset($cursor["docs"][0]["producaoBibliografica"]["artigosPublicados"])) {
         foreach ($cursor["docs"][0]["producaoBibliografica"]["artigosPublicados"]["artigoPublicado"] as $obra) {
-            $resultadoProcessaObra = processaLattes::processaObra($obra,"artigoPublicado",$_GET['tag'],$cursor["docs"][0]["numeroIdentificador"],$_GET['unidadeUSP'],$_GET['codpes']);
+            $resultadoProcessaObra = processaLattes::processaObra($obra,"artigoPublicado",$_GET['tag'],$cursor["docs"][0]["numeroIdentificador"],$_GET['unidade'],$_GET['codpes']);
             // Armazenar registro
             $resultado_artigo = Elasticsearch::update($resultadoProcessaObra["sha256"], $resultadoProcessaObra["body"]);
             print_r($resultado_artigo);
@@ -234,7 +234,7 @@
 
     if (isset($cursor["docs"][0]["producaoBibliografica"]["livrosECapitulos"]["livrosPublicadosOuOrganizados"])) {
         foreach ($cursor["docs"][0]["producaoBibliografica"]["livrosECapitulos"]["livrosPublicadosOuOrganizados"]["livroPublicadoOuOrganizado"] as $obra) {
-            $resultadoProcessaObra = processaLattes::processaObra($obra,"livrosPublicadosOuOrganizado",$_GET['tag'],$cursor["docs"][0]["numeroIdentificador"],$_GET['unidadeUSP'],$_GET['codpes']);
+            $resultadoProcessaObra = processaLattes::processaObra($obra,"livrosPublicadosOuOrganizado",$_GET['tag'],$cursor["docs"][0]["numeroIdentificador"],$_GET['unidade'],$_GET['codpes']);
             // Armazenar registro
             $resultado_livro = Elasticsearch::update($resultadoProcessaObra["sha256"], $resultadoProcessaObra["body"]);
             print_r($resultado_livro);
@@ -247,7 +247,7 @@
 
     if (isset($cursor["docs"][0]["producaoBibliografica"]["livrosECapitulos"]["capitulosDeLivrosPublicados"])) {
         foreach ($cursor["docs"][0]["producaoBibliografica"]["livrosECapitulos"]["capitulosDeLivrosPublicados"]["capituloDeLivroPublicado"] as $obra) {
-            $resultadoProcessaObra = processaLattes::processaObra($obra,"capituloDeLivroPublicado",$_GET['tag'],$cursor["docs"][0]["numeroIdentificador"],$_GET['unidadeUSP'],$_GET['codpes']);
+            $resultadoProcessaObra = processaLattes::processaObra($obra,"capituloDeLivroPublicado",$_GET['tag'],$cursor["docs"][0]["numeroIdentificador"],$_GET['unidade'],$_GET['codpes']);
             // Armazenar registro
             $resultado_cap_livro = Elasticsearch::update($resultadoProcessaObra["sha256"], $resultadoProcessaObra["body"]);
             print_r($resultado_cap_livro);
@@ -260,7 +260,7 @@
 
     if (isset($cursor["docs"][0]["producaoBibliografica"]["textosEmJornaisOuRevistas"]["textoEmJornalOuRevista"])) {
         foreach ($cursor["docs"][0]["producaoBibliografica"]["textosEmJornaisOuRevistas"]["textoEmJornalOuRevista"] as $texto) {
-            $resultadoProcessaObra = processaLattes::processaObra($texto,"textoEmJornalOuRevista",$_GET['tag'],$cursor["docs"][0]["numeroIdentificador"],$_GET['unidadeUSP'],$_GET['codpes']);
+            $resultadoProcessaObra = processaLattes::processaObra($texto,"textoEmJornalOuRevista",$_GET['tag'],$cursor["docs"][0]["numeroIdentificador"],$_GET['unidade'],$_GET['codpes']);
             // Armazenar registro
             $resultado_texto = Elasticsearch::update($resultadoProcessaObra["sha256"], $resultadoProcessaObra["body"]);
             print_r($resultado_texto);
@@ -274,7 +274,7 @@
 
     if (isset($cursor["docs"][0]["producaoTecnica"]["demaisTiposDeProducaoTecnica"]["midiaSocialWebsiteBlog"])) {
         foreach ($cursor["docs"][0]["producaoTecnica"]["demaisTiposDeProducaoTecnica"]["midiaSocialWebsiteBlog"] as $obra) {
-            $resultadoProcessaObra = processaLattes::processaObra($obra,"midiaSocialWebsiteBlog",$_GET['tag'],$cursor["docs"][0]["numeroIdentificador"],$_GET['unidadeUSP'],$_GET['codpes']);
+            $resultadoProcessaObra = processaLattes::processaObra($obra,"midiaSocialWebsiteBlog",$_GET['tag'],$cursor["docs"][0]["numeroIdentificador"],$_GET['unidade'],$_GET['codpes']);
             print_r($resultadoProcessaObra["body"]);
             $resultadoProcessaObra["body"]["doc"]["midiaSocialWebsiteBlog"]["formacao_maxima"] = $doc_curriculo_array["doc"]["formacao_maxima"];
             
@@ -290,7 +290,7 @@
 
     if (isset($cursor["docs"][0]["outraProducao"]["producaoArtisticaCultural"])) {
         foreach ($cursor["docs"][0]["outraProducao"]["producaoArtisticaCultural"]["outraProducaoArtisticaCultural"] as $obra) {
-            $resultadoProcessaObra = processaLattes::processaObra($obra,"outraProducaoArtisticaCultural",$_GET['tag'],$cursor["docs"][0]["numeroIdentificador"],$_GET['unidadeUSP'],$_GET['codpes']);
+            $resultadoProcessaObra = processaLattes::processaObra($obra,"outraProducaoArtisticaCultural",$_GET['tag'],$cursor["docs"][0]["numeroIdentificador"],$_GET['unidade'],$_GET['codpes']);
             // Armazenar registro
             $resultado_outraprodart = Elasticsearch::update($resultadoProcessaObra["sha256"], $resultadoProcessaObra["body"]);
             print_r($resultado_outraprodart);
@@ -299,7 +299,7 @@
         }
         
         foreach ($cursor["docs"][0]["outraProducao"]["producaoArtisticaCultural"]["artesVisuais"] as $obra) {
-            $resultadoProcessaObra = processaLattes::processaObra($obra,"artesVisuais",$_GET['tag'],$cursor["docs"][0]["numeroIdentificador"],$_GET['unidadeUSP'],$_GET['codpes']);
+            $resultadoProcessaObra = processaLattes::processaObra($obra,"artesVisuais",$_GET['tag'],$cursor["docs"][0]["numeroIdentificador"],$_GET['unidade'],$_GET['codpes']);
             // Armazenar registro
             $resultado_artesvisuais = Elasticsearch::update($resultadoProcessaObra["sha256"], $resultadoProcessaObra["body"]);
             print_r($resultado_artesvisuais);

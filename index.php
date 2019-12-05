@@ -379,11 +379,11 @@
             <div class="col-md-3">
                 <h2 class="uk-h3">Unidade</h2>
                 <ul class="list-group">
-                    <?php paginaInicial::unidadeUSP_inicio("USP.unidade"); ?>
+                    <?php paginaInicial::unidade_inicio("USP.unidade"); ?>
                 </ul>
                 <h2>Tags</h2>
                 <ul class="list-group">
-                    <?php paginaInicial::unidadeUSP_inicio("tag"); ?>
+                    <?php paginaInicial::unidade_inicio("tag"); ?>
                 </ul>          
             </div>
             <div class="col-md-3">

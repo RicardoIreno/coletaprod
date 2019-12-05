@@ -17,7 +17,7 @@ $params["index"] = $index;
 $params["type"] = $type;
 $params["size"] = 50;
 $params["scroll"] = "30s";
-//$params["_source"] = ["doi","name","author","datePublished","type","language","country","isPartOf","unidadeUSP","releasedEvent","USP.titleSearchCrossrefDOI"];
+//$params["_source"] = ["doi","name","author","datePublished","type","language","country","isPartOf","unidade","releasedEvent","USP.titleSearchCrossrefDOI"];
 $params["body"] = $query;
 
 $cursor = $client->search($params);
