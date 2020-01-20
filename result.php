@@ -97,8 +97,11 @@ $get_data = $_GET;
                                 <h6 class="card-subtitle mb-2 text-muted"><?php echo $r["_source"]['tipo'];?> | <?php echo $r["_source"]['source'];?></h6>
                                 <h5 class="card-title text-dark"><?php echo $r["_source"]['name']; ?> (<?php echo $r["_source"]['datePublished'];?>)</h5>
 
+
                                 <?php
-                                    ($r["_source"]["concluido"] == "Sim" ? print_r('<span class="badge badge-warning">Concluído</span>') : false)
+                                    if (!empty($r["_source"]["concluido"])) {
+                                        $r["_source"]["concluido"] == "Sim" ? print_r('<span class="badge badge-warning">Concluído</span>') : false;
+                                    }
                                 ?>
 
                                 <p class="text-muted"><b>Autores:</b>
