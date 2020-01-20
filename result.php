@@ -224,6 +224,7 @@ $get_data = $_GET;
                     $facets->facet("tipo", 100, "Tipo de material", null, "_term", $_GET);
                     $facets->facet("tag", 100, "Tag", null, "_term", $_GET);
                     $facets->facet("match.tag", 100, "Tag de correspondência", null, "_term", $_GET);
+                    $facets->facet("match.string", 100, "Tag de correspondência", null, "_term", $_GET);
                     
                     $facets->facet("author.person.name", 100, "Nome completo do autor", null, "_term", $_GET);
                     $facets->facet("lattes_ids", 100, "Número do lattes", null, "_term", $_GET);
