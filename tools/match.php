@@ -6,20 +6,19 @@
     require 'inc/config.php';
     require 'inc/functions.php';
 
-    $query["query"]["query_string"]["query"] = "-_exists_:match.string AND _exists_:match.tag AND datePublished:[2007 TO 2016]";
+    $query["query"]["query_string"]["query"] = "-_exists_:match.string AND _exists_:match.tag";
     $query['sort'] = [
         ['datePublished.keyword' => ['order' => 'desc']],
     ];
 
     $params = [];
     $params["index"] = $index;
-    $params["type"] = $type;
     $params["size"] = 100;
     $params["_source"] = ["doi","match.tag","name","author","datePublished"];
     $params["body"] = $query;
 
     $cursor = $client->search($params);
-    $total = $cursor["hits"]["total"];
+    $total = $cursor["hits"]["total"]["value"];
 
     echo 'Registros faltantes: '.$total.'';
     echo '<br/><br/>';
@@ -42,7 +41,6 @@
 
     function query_coletaprod_doi($doi, $original_id, $matchTagArray)
     {
-        //echo "<br/><br/><br/>TEM DOI<br/>";
         global $index;
         global $type;
         global $client;
@@ -53,8 +51,8 @@
         $params["size"] = 100;
         $params["body"] = $query;
         $cursor = $client->search($params);
-        $total = $cursor["hits"]["total"];
-        //echo "Resultado total com DOI: $total";
+        $total = $cursor["hits"]["total"]["value"];
+        echo "Resultado total com DOI: $total";
 
         $result_matchTag = $matchTagArray;
         foreach ($cursor["hits"]["hits"] as $r) {
@@ -92,7 +90,7 @@
         $params["size"] = 10;
         $params["body"] = $query;
         $cursor = $client->search($params);
-        $total = $cursor["hits"]["total"];
+        $total = $cursor["hits"]["total"]["value"];
 
 
         $result_matchTag = $matchTagArray;
@@ -111,14 +109,15 @@
         $doc["doc"]["match"]["count"] = count($result_matchTag_final);
         $doc["doc"]["match"]["string"] = implode(" - ", $result_matchTag_final);
         $doc["doc_as_upsert"] = true;
+        //print_r($doc);
         $result_elastic = Elasticsearch::update($original_id, $doc);
     }
 
     function comparaprod($title, $author_name, $year, $original_id, $matchTagArray)
     {
         global $index;
-        global $type;
         global $client;
+        $cleanTitle = preg_replace('/[\x00-\x1F\x7F]/', '', $title);
 
         $query = '
         {
@@ -128,7 +127,7 @@
                     "should": [
                         {
                             "multi_match" : {
-                                "query":      "'.str_replace('"', '', $title).'",
+                                "query":      "'.str_replace('"', '', $cleanTitle).'",
                                 "type":       "cross_fields",
                                 "fields":     [ "name" ],
                                 "minimum_should_match": "90%"
@@ -149,14 +148,12 @@
         }
         ';
 
-
         $params = [];
         $params["index"] = $index;
-        $params["type"] = $type;
         $params["size"] = 1000;
         $params["body"] = $query;
         $cursor = $client->search($params);
-        $total = $cursor["hits"]["total"];
+        $total = $cursor["hits"]["total"]["value"];
 
 
         $result_matchTag = $matchTagArray;
@@ -175,6 +172,7 @@
         $doc["doc"]["match"]["count"] = count($result_matchTag_final);
         $doc["doc"]["match"]["string"] = implode(" - ", $result_matchTag_final);
         $doc["doc_as_upsert"] = true;
+        //print_r($doc);
         $result_elastic = Elasticsearch::update($original_id, $doc);
     }
 
