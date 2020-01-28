@@ -305,7 +305,10 @@ $get_data = $_GET;
                     <button type="submit" class="btn btn-primary">Filtrar</button>
                 </form>   
                 <!-- Limitar por data - Fim -->
-                <hr>     
+                <hr>
+                <h3>Exportar</h3>
+                <a href="tools/export.php?<?php echo $_SERVER["QUERY_STRING"] ?>&format=ris">Exportar em formato RIS</a>
+                <hr>                   
                         
             </div>
         </div>
