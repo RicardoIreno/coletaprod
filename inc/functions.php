@@ -845,7 +845,7 @@ class processaLattes {
         return $doc_curriculo_array;
     }    
 
-    static function processaObra($obra, $tipo_de_obra, $tag, $id_lattes, $unidade, $codpes) {
+    static function processaObra($obra, $tipo_de_obra, $tag, $id_lattes, $unidade, $numfuncional) {
         switch ($tipo_de_obra) {
 
             case "trabalhoEmEventos":
@@ -948,7 +948,7 @@ class processaLattes {
         $doc_obra_array["doc"]["lattes_ids"][] = $id_lattes;
         $doc_obra_array["doc"]["tag"][] = $tag;
         $doc_obra_array["doc"]["unidade"][] = $unidade;
-        $doc_obra_array["doc"]["codpes"] = $codpes;       
+        $doc_obra_array["doc"]["numfuncional"] = $numfuncional;       
 
         $titulos_array = ["tituloDoTrabalho","tituloDoArtigo","tituloDoLivro","tituloDoCapituloDoLivro","tituloDoTexto"];
         $ano_array = ["anoDoTrabalho","anoDoArtigo","anoDoTexto"];
