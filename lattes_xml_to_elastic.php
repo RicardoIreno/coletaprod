@@ -4,8 +4,8 @@ require 'inc/config.php';
 require 'inc/functions.php';
 
 
-if (!isset($_POST['codpes'])) {
-    $_POST['codpes'] = null;
+if (!isset($_POST['numfuncional'])) {
+    $_POST['numfuncional'] = null;
 }            
 if (!isset($_GET['unidade'])) {
     $_POST['unidade'] = null;
@@ -128,7 +128,8 @@ $doc_curriculo_array["doc"]["source"] = "Base Lattes";
 $doc_curriculo_array["doc"]["type"] = "Curriculum";
 $doc_curriculo_array["doc"]["tag"] = $_REQUEST['tag'];
 $doc_curriculo_array["doc"]["unidade"][] = $_REQUEST['unidade'];
-$doc_curriculo_array["doc"]["codpes"] = $_REQUEST['codpes'];
+$doc_curriculo_array["doc"]["departamento"][] = $_REQUEST['departamento'];
+$doc_curriculo_array["doc"]["numfuncional"] = $_REQUEST['numfuncional'];
 if (isset($_REQUEST['tipvin'])) {
     $doc_curriculo_array["doc"]["tipvin"] = $_REQUEST['tipvin'];
 }
@@ -516,10 +517,11 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TRABALHOS-EM-EVENTOS'})) {
         $doc["doc"]["source"] = "Base Lattes";
         $doc["doc"]["lattes_ids"][] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
         $doc["doc"]["tag"][] = $_REQUEST['tag'];
-        $doc["doc"]["USP"]["unidade"][] = $_REQUEST['unidade'];
-        $doc["doc"]["USP"]["codpes"] = $_REQUEST['codpes'];
+        $doc["doc"]["Instituicao"]["unidade"][] = $_REQUEST['unidade'];
+        $doc["doc"]["Instituicao"]["departamento"][] = $_REQUEST['departamento'];
+        $doc["doc"]["Instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
         if (isset($_REQUEST['tipvin'])) {
-            $doc["doc"]["USP"]["tipvin"] = $_REQUEST['tipvin'];
+            $doc["doc"]["Instituicao"]["tipvin"] = $_REQUEST['tipvin'];
         }        
         $doc["doc"]["datePublished"] = $dadosBasicosDoTrabalho['@attributes']["ANO-DO-TRABALHO"];
         $doc["doc"]["name"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-DO-TRABALHO"];
@@ -617,10 +619,11 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'ARTIGOS-PUBLICADOS'})) {
         $doc["doc"]["source"] = "Base Lattes";
         $doc["doc"]["lattes_ids"][] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
         $doc["doc"]["tag"][] = $_REQUEST['tag'];
-        $doc["doc"]["USP"]["unidade"][] = $_REQUEST['unidade'];
-        $doc["doc"]["USP"]["codpes"] = $_REQUEST['codpes'];
+        $doc["doc"]["Instituicao"]["unidade"][] = $_REQUEST['unidade'];
+        $doc["doc"]["Instituicao"]["departamento"][] = $_REQUEST['departamento'];
+        $doc["doc"]["Instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
         if (isset($_REQUEST['tipvin'])) {
-            $doc["doc"]["USP"]["tipvin"] = $_REQUEST['tipvin'];
+            $doc["doc"]["Instituicao"]["tipvin"] = $_REQUEST['tipvin'];
         }      
         $doc["doc"]["datePublished"] = $dadosBasicosDoTrabalho['@attributes']["ANO-DO-ARTIGO"];
         $doc["doc"]["name"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-DO-ARTIGO"];
@@ -719,10 +722,11 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'LIVROS-E-CAPITULOS'})) {
             $doc["doc"]["source"] = "Base Lattes";
             $doc["doc"]["lattes_ids"][] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
             $doc["doc"]["tag"][] = $_REQUEST['tag'];
-            $doc["doc"]["USP"]["unidade"][] = $_REQUEST['unidade'];
-            $doc["doc"]["USP"]["codpes"] = $_REQUEST['codpes'];
+            $doc["doc"]["Instituicao"]["unidade"][] = $_REQUEST['unidade'];
+            $doc["doc"]["Instituicao"]["departamento"][] = $_REQUEST['departamento'];
+            $doc["doc"]["Instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
             if (isset($_REQUEST['tipvin'])) {
-                $doc["doc"]["USP"]["tipvin"] = $_REQUEST['tipvin'];
+                $doc["doc"]["Instituicao"]["tipvin"] = $_REQUEST['tipvin'];
             }      
             $doc["doc"]["Lattes"]["tipo"] = $dadosBasicosDoTrabalho['@attributes']["TIPO"];
             $doc["doc"]["datePublished"] = $dadosBasicosDoTrabalho['@attributes']["ANO"];
@@ -819,10 +823,11 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'LIVROS-E-CAPITULOS'})) {
             $doc["doc"]["source"] = "Base Lattes";
             $doc["doc"]["lattes_ids"][] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
             $doc["doc"]["tag"][] = $_REQUEST['tag'];
-            $doc["doc"]["USP"]["unidade"][] = $_REQUEST['unidade'];
-            $doc["doc"]["USP"]["codpes"] = $_REQUEST['codpes'];
+            $doc["doc"]["Instituicao"]["unidade"][] = $_REQUEST['unidade'];
+            $doc["doc"]["Instituicao"]["departamento"][] = $_REQUEST['departamento'];
+            $doc["doc"]["Instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
             if (isset($_REQUEST['tipvin'])) {
-                $doc["doc"]["USP"]["tipvin"] = $_REQUEST['tipvin'];
+                $doc["doc"]["Instituicao"]["tipvin"] = $_REQUEST['tipvin'];
             }
             $doc["doc"]["Lattes"]["tipo"] = $dadosBasicosDoTrabalho['@attributes']["TIPO"];
             $doc["doc"]["name"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-DO-CAPITULO-DO-LIVRO"];
@@ -916,10 +921,11 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TEXTOS-EM-JORNAIS-OU-REVISTA
         $doc["doc"]["source"] = "Base Lattes";
         $doc["doc"]["lattes_ids"][] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
         $doc["doc"]["tag"][] = $_REQUEST['tag'];
-        $doc["doc"]["USP"]["unidade"][] = $_REQUEST['unidade'];
-        $doc["doc"]["USP"]["codpes"] = $_REQUEST['codpes'];
+        $doc["doc"]["Instituicao"]["unidade"][] = $_REQUEST['unidade'];
+        $doc["doc"]["Instituicao"]["departamento"][] = $_REQUEST['departamento'];
+        $doc["doc"]["Instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
         if (isset($_REQUEST['tipvin'])) {
-            $doc["doc"]["USP"]["tipvin"] = $_REQUEST['tipvin'];
+            $doc["doc"]["Instituicao"]["tipvin"] = $_REQUEST['tipvin'];
         }      
         $doc["doc"]["Lattes"]["natureza"] = $dadosBasicosDoTrabalho['@attributes']['NATUREZA'];        
         $doc["doc"]["name"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-DO-TEXTO"];
@@ -1018,10 +1024,11 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
             $doc["doc"]["source"] = "Base Lattes";
             $doc["doc"]["lattes_ids"][] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
             $doc["doc"]["tag"][] = $_REQUEST['tag'];
-            $doc["doc"]["USP"]["unidade"][] = $_REQUEST['unidade'];
-            $doc["doc"]["USP"]["codpes"] = $_REQUEST['codpes'];
+            $doc["doc"]["Instituicao"]["unidade"][] = $_REQUEST['unidade'];
+            $doc["doc"]["Instituicao"]["departamento"][] = $_REQUEST['departamento'];
+            $doc["doc"]["Instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
             if (isset($_REQUEST['tipvin'])) {
-                $doc["doc"]["USP"]["tipvin"] = $_REQUEST['tipvin'];
+                $doc["doc"]["Instituicao"]["tipvin"] = $_REQUEST['tipvin'];
             }      
             $doc["doc"]["Lattes"]["natureza"] = $dadosBasicosDoTrabalho['@attributes']['NATUREZA'];        
             $doc["doc"]["name"] = $dadosBasicosDoTrabalho['@attributes']["TITULO"];
@@ -1111,10 +1118,11 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
             $doc["doc"]["source"] = "Base Lattes";
             $doc["doc"]["lattes_ids"][] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
             $doc["doc"]["tag"][] = $_REQUEST['tag'];
-            $doc["doc"]["USP"]["unidade"][] = $_REQUEST['unidade'];
-            $doc["doc"]["USP"]["codpes"] = $_REQUEST['codpes'];
+            $doc["doc"]["Instituicao"]["unidade"][] = $_REQUEST['unidade'];
+            $doc["doc"]["Instituicao"]["departamento"][] = $_REQUEST['departamento'];
+            $doc["doc"]["Instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
             if (isset($_REQUEST['tipvin'])) {
-                $doc["doc"]["USP"]["tipvin"] = $_REQUEST['tipvin'];
+                $doc["doc"]["Instituicao"]["tipvin"] = $_REQUEST['tipvin'];
             }      
             $doc["doc"]["Lattes"]["natureza"] = $dadosBasicosDoTrabalho['@attributes']['NATUREZA'];        
             $doc["doc"]["name"] = $dadosBasicosDoTrabalho['@attributes']["TITULO"];
@@ -1215,10 +1223,11 @@ if (isset($curriculo->{'PRODUCAO-TECNICA'})) {
             $doc["doc"]["source"] = "Base Lattes";
             $doc["doc"]["lattes_ids"][] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
             $doc["doc"]["tag"][] = $_REQUEST['tag'];
-            $doc["doc"]["USP"]["unidade"][] = $_REQUEST['unidade'];
-            $doc["doc"]["USP"]["codpes"] = $_REQUEST['codpes'];
+            $doc["doc"]["Instituicao"]["unidade"][] = $_REQUEST['unidade'];
+            $doc["doc"]["Instituicao"]["departamento"][] = $_REQUEST['departamento'];
+            $doc["doc"]["Instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
             if (isset($_REQUEST['tipvin'])) {
-                $doc["doc"]["USP"]["tipvin"] = $_REQUEST['tipvin'];
+                $doc["doc"]["Instituicao"]["tipvin"] = $_REQUEST['tipvin'];
             }      
             $doc["doc"]["Lattes"]["natureza"] = $dadosBasicosDoTrabalho['@attributes']['NATUREZA'];        
             $doc["doc"]["name"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-DO-SOFTWARE"];
@@ -1309,10 +1318,11 @@ if (isset($curriculo->{'PRODUCAO-TECNICA'})) {
             $doc["doc"]["source"] = "Base Lattes";
             $doc["doc"]["lattes_ids"][] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
             $doc["doc"]["tag"][] = $_REQUEST['tag'];
-            $doc["doc"]["USP"]["unidade"][] = $_REQUEST['unidade'];
-            $doc["doc"]["USP"]["codpes"] = $_REQUEST['codpes'];
+            $doc["doc"]["Instituicao"]["unidade"][] = $_REQUEST['unidade'];
+            $doc["doc"]["Instituicao"]["departamento"][] = $_REQUEST['departamento'];
+            $doc["doc"]["Instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
             if (isset($_REQUEST['tipvin'])) {
-                $doc["doc"]["USP"]["tipvin"] = $_REQUEST['tipvin'];
+                $doc["doc"]["Instituicao"]["tipvin"] = $_REQUEST['tipvin'];
             }             
             $doc["doc"]["name"] = $dadosBasicosDoTrabalho['@attributes']["TITULO"];
             $doc["doc"]["datePublished"] = $dadosBasicosDoTrabalho['@attributes']["ANO-DESENVOLVIMENTO"];
@@ -1406,10 +1416,11 @@ if (isset($curriculo->{'OUTRA-PRODUCAO'})) {
                 $doc["doc"]["source"] = "Base Lattes";
                 $doc["doc"]["lattes_ids"][] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
                 $doc["doc"]["tag"][] = $_REQUEST['tag'];
-                $doc["doc"]["USP"]["unidade"][] = $_REQUEST['unidade'];
-                $doc["doc"]["USP"]["codpes"] = $_REQUEST['codpes'];
+                $doc["doc"]["Instituicao"]["unidade"][] = $_REQUEST['unidade'];
+                $doc["doc"]["Instituicao"]["departamento"][] = $_REQUEST['departamento'];
+                $doc["doc"]["Instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
                 if (isset($_REQUEST['tipvin'])) {
-                    $doc["doc"]["USP"]["tipvin"] = $_REQUEST['tipvin'];
+                    $doc["doc"]["Instituicao"]["tipvin"] = $_REQUEST['tipvin'];
                 }      
                 $doc["doc"]["Lattes"]["natureza"] = $dadosBasicosDoTrabalho['@attributes']['NATUREZA'];        
                 $doc["doc"]["name"] = $dadosBasicosDoTrabalho['@attributes']["TITULO"];
