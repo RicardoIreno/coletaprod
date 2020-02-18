@@ -12,11 +12,11 @@
         <title><?php echo $branch ?></title>
         <!-- Facebook Tags - START -->
         <meta property="og:locale" content="pt_BR">
-        <meta property="og:url" content="http://coletaprod.sibi.usp.br/coletaprod">
-        <meta property="og:title" content="Coleta Produção ECA/USP - Página Principal">
-        <meta property="og:site_name" content="Coleta Produção ECA/USP">
-        <meta property="og:description" content="Sistema de coleta de produção em diversas fontes.">
-        <meta property="og:image" content="http://www.imagens.usp.br/wp-content/uploads/USP.jpg">
+        <meta property="og:url" content="<?php echo $url_base ?>">
+        <meta property="og:title" content="<?php echo $branch ?> - Página Principal">
+        <meta property="og:site_name" content="<?php echo $branch ?>">
+        <meta property="og:description" content="<?php echo $branch_description ?>">
+        <meta property="og:image" content="<?php echo $facebook_image ?>">
         <meta property="og:image:type" content="image/jpeg">
         <meta property="og:image:width" content="800"> 
         <meta property="og:image:height" content="600"> 
@@ -79,7 +79,7 @@
                             </div>
                             <input type="text" placeholder="Insira o ID do Curriculo" class="form-control" name="id_lattes" data-validation="required">
                             <input type="text" placeholder="TAG para formar um grupo" class="form-control" name="tag">
-                            <input type="text" placeholder="Número USP" class="form-control" name="codpes">                            
+                            <input type="text" placeholder="Número funcional" class="form-control" name="numfuncional">                            
                             <input type="text" placeholder="Unidade USP" class="form-control" name="unidade">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="submit">Enviar</button>
@@ -99,8 +99,9 @@
                                 <label class="custom-file-label" for="fileXML">Escolha o arquivo</label>
                             </div>
                             <input type="text" placeholder="TAG" class="form-control" name="tag">
-                            <input type="text" placeholder="Identificador" class="form-control" name="codpes">                            
+                            <input type="text" placeholder="Identificador" class="form-control" name="numfuncional">                            
                             <input type="text" placeholder="Unidade" class="form-control" name="unidade">
+                            <input type="text" placeholder="Departamento" class="form-control" name="departamento">
                             <input type="text" placeholder="Tipo de vínculo" class="form-control" name="tipvin">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="submit">Incluir</button>
@@ -350,19 +351,10 @@
                     </div>
                 </div>
             </form>
-            <form class="mt-3" action="result.php" method="get">
-                <label for="codpesSearch">Pesquisa por Número USP</label>
-                <div class="input-group">                    
-                    <input type="text" placeholder="Pesquise por tag" class="form-control" id="codpesSearch" name="filter[]" value="USP.codpes:">
-                    <div class="input-group-append">
-                        <button type="submit" class="btn btn-primary">Buscar Número USP</button>
-                    </div>
-                </div>
-            </form>
             <form class="mt-3" action="result_autores.php" method="get">
                 <label for="authorSearch">Pesquisa por autor - <a href="result_autores.php">Ver todos</a></label>
                 <div class="input-group">
-                    <input type="text" placeholder="Pesquise por nome do autor ou número USP" class="form-control" id="authorSearch" name="search">
+                    <input type="text" placeholder="Pesquise por nome do autor ou Número funcional" class="form-control" id="authorSearch" name="search">
                     <input type="hidden" name="fields[]" value="nome_completo">                                
                     <input type="hidden" name="fields[]" value="nome_em_citacoes_bibliograficas">
                     <input type="hidden" name="fields[]" value="endereco.endereco_profissional.nomeInstituicaoEmpresa">
@@ -379,12 +371,16 @@
             <div class="col-md-3">
                 <h2 class="uk-h3">Unidade</h2>
                 <ul class="list-group">
-                    <?php paginaInicial::unidade_inicio("USP.unidade"); ?>
+                    <?php paginaInicial::unidade_inicio("Instituicao.unidade"); ?>
+                </ul>
+                <h2>Departamento</h2>
+                <ul class="list-group">
+                    <?php paginaInicial::unidade_inicio("Instituicao.departamento"); ?>
                 </ul>
                 <h2>Tags</h2>
                 <ul class="list-group">
                     <?php paginaInicial::unidade_inicio("tag"); ?>
-                </ul>          
+                </ul>                        
             </div>
             <div class="col-md-3">
                 <h2 class="uk-h3">Tipo de material</h2>
