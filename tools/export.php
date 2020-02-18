@@ -39,7 +39,7 @@ if ($_GET["format"] == "table") {
         $cursor = $client->search($params);
         $total = $cursor["hits"]["total"];
 
-        $content[] = "Sysno\tDOI\tTítulo\tAutores\tFonte da publicação\tPaginação\tAno de publicação\tISSN\tLocal de publicação\tEditora\tNome do evento\tTipo de Material\tAutores USP\tNúmero USP\tUnidades USP\tDepartamentos\tQualis 2013/2016\tJCR - Journal Impact Factor - 2016\tCitescore - 2016";
+        $content[] = "Sysno\tDOI\tTítulo\tAutores\tFonte da publicação\tPaginação\tAno de publicação\tISSN\tLocal de publicação\tEditora\tNome do evento\tTipo de Material\tAutores USP\tNúmero funcional\tUnidades USP\tDepartamentos\tQualis 2013/2016\tJCR - Journal Impact Factor - 2016\tCitescore - 2016";
         
         foreach ($cursor["hits"]["hits"] as $r){
 
@@ -121,8 +121,8 @@ if ($_GET["format"] == "table") {
                 unset($authorsUSP_array);
 
                 foreach ($r["_source"]['authorUSP'] as $numUSP) {
-                    if (!empty($numUSP["codpes"])) {
-                        $numUSP_array[]= $numUSP["codpes"]; 
+                    if (!empty($numUSP["numfuncional"])) {
+                        $numUSP_array[]= $numUSP["numfuncional"]; 
                     }               
                 }
                 if (!empty($numUSP_array)) {
@@ -218,7 +218,7 @@ if ($_GET["format"] == "table") {
             $total = $cursor["hits"]["total"];
            
     
-            echo "Sysno\tNúmero de chamada completo\tNúmero USP\tNome Citação (946a)\tNome Citação (100a)\tNome Orientador (700a)\tNúm USP Orientador (946o)\tÁrea de concentração\tPrograma Grau\tIdioma\tTítulo\tResumo português\tAssuntos português\tTítulo inglês\tResumo inglês\tAno de impressão\tLocal de impressão\tData defesa\tURL\n";
+            echo "Sysno\tNúmero de chamada completo\tNúmero funcional\tNome Citação (946a)\tNome Citação (100a)\tNome Orientador (700a)\tNúm USP Orientador (946o)\tÁrea de concentração\tPrograma Grau\tIdioma\tTítulo\tResumo português\tAssuntos português\tTítulo inglês\tResumo inglês\tAno de impressão\tLocal de impressão\tData defesa\tURL\n";
 
             foreach ($cursor["hits"]["hits"] as $r) {
     
@@ -226,8 +226,8 @@ if ($_GET["format"] == "table") {
                 $fields[] = "Não foi possível coletar";
 
                 foreach ($r["_source"]['authorUSP'] as $numUSP_aut) {
-                    if (isset($numUSP_aut["codpes"])) {
-                        $fields[] = $numUSP_aut["codpes"];
+                    if (isset($numUSP_aut["numfuncional"])) {
+                        $fields[] = $numUSP_aut["numfuncional"];
                     } else {
                         $fields[] = "Não preenchido corretamente";
                     }
@@ -251,15 +251,15 @@ if ($_GET["format"] == "table") {
                     $fields[] = "Não preenchido";
                 }
                
-                if (isset($r["_source"]['USP']['codpesOrientador'])) {
-                    foreach ($r["_source"]['USP']['codpesOrientador'] as $codpesOrientador) {
-                        $array_codpesOrientador[] = $codpesOrientador;
+                if (isset($r["_source"]['USP']['numfuncionalOrientador'])) {
+                    foreach ($r["_source"]['USP']['numfuncionalOrientador'] as $numfuncionalOrientador) {
+                        $array_numfuncionalOrientador[] = $numfuncionalOrientador;
                     }
                 }    
-                if (isset($array_codpesOrientador)) {
-                    $array_codpesOrientadores = implode("; ", $array_codpesOrientador);
-                    unset($array_codpesOrientador);
-                    $fields[] = $array_codpesOrientadores;       
+                if (isset($array_numfuncionalOrientador)) {
+                    $array_numfuncionalOrientadores = implode("; ", $array_numfuncionalOrientador);
+                    unset($array_numfuncionalOrientador);
+                    $fields[] = $array_numfuncionalOrientadores;       
                 } else {
                     $fields[] = "Não preenchido";
                 }
