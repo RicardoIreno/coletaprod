@@ -45,7 +45,7 @@
         <?php
             include('inc/meta-header.php'); 
         ?>        
-        <title>Lattes USP - Resultado da busca por trabalhos</title>
+        <title>Lattes - Resultado da busca por trabalhos</title>
         <script src="inc/uikit/js/components/accordion.min.js"></script>
         <script src="inc/uikit/js/components/pagination.min.js"></script>
         <script src="inc/uikit/js/components/datepicker.min.js"></script>

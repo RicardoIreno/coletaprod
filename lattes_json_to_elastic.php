@@ -12,7 +12,7 @@
         ;      
 
         ?> 
-        <title>Conversor do arquivo JSON da Plataforma Lattes para o ElasticSearch - Coleta Produção USP</title>
+        <title>Conversor do arquivo JSON da Plataforma Lattes para o ElasticSearch - Coleta Produção</title>
         
     </head>
 

@@ -80,7 +80,7 @@
                             <input type="text" placeholder="Insira o ID do Curriculo" class="form-control" name="id_lattes" data-validation="required">
                             <input type="text" placeholder="TAG para formar um grupo" class="form-control" name="tag">
                             <input type="text" placeholder="Número funcional" class="form-control" name="numfuncional">                            
-                            <input type="text" placeholder="Unidade USP" class="form-control" name="unidade">
+                            <input type="text" placeholder="Unidade" class="form-control" name="unidade">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="submit">Enviar</button>
                             </div>    
