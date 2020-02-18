@@ -478,7 +478,7 @@ if (isset($_GET["oai"])) {
                 unset($author);
             }
             $query["doc_as_upsert"] = true;
-            $resultado = Elasticsearch::update($id, $query, $index_source);
+            $resultado = Elasticsearch::update(clean($id), $query, $index_source);
             //print_r($resultado);
             //print_r($query);
             unset($query);
