@@ -57,7 +57,7 @@ $get_data = $_GET;
         <?php
             include('inc/meta-header-new.php'); 
         ?>        
-        <title>Lattes USP - Resultado da busca por trabalhos</title>
+        <title>Lattes - Resultado da busca por trabalhos</title>
         
         <script src="http://cdn.jsdelivr.net/g/filesaver.js"></script>
         <script>

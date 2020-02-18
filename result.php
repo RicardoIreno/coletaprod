@@ -63,7 +63,7 @@ $get_data = $_GET;
         <?php
             include('inc/meta-header-new.php'); 
         ?>        
-        <title>Lattes USP - Resultado da busca por trabalhos</title>
+        <title>Coletaprod - Resultado da busca por trabalhos</title>
         
     </head>
     <body>
