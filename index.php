@@ -99,7 +99,7 @@
                                 <label class="custom-file-label" for="fileXML">Escolha o arquivo</label>
                             </div>
                             <input type="text" placeholder="TAG" class="form-control" name="tag">
-                            <input type="text" placeholder="Identificador" class="form-control" name="numfuncional">                            
+                            <input type="text" placeholder="Núm. funcional" class="form-control" name="numfuncional">                            
                             <input type="text" placeholder="Unidade" class="form-control" name="unidade">
                             <input type="text" placeholder="Departamento" class="form-control" name="departamento">
                             <input type="text" placeholder="Tipo de vínculo" class="form-control" name="tipvin">
