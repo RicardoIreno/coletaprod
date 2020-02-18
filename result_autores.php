@@ -127,7 +127,7 @@ $get_data = $_GET;
                         $_GET = null;                                    
                     }
                     
-                    $facets->facet("codpes", 100, "Número USP", null, "_term", $_GET, $index_cv);
+                    $facets->facet("numfuncional", 100, "Número funcional", null, "_term", $_GET, $index_cv);
                     $facets->facet("tag", 100, "Tag", null, "_term", $_GET, $index_cv);
                     $facets->facet("nacionalidade", 100, "Nacionalidade", null, "_term", $_GET, $index_cv);
                     $facets->facet("pais_de_nascimento", 100, "País de nascimento", null, "_term", $_GET, $index_cv);

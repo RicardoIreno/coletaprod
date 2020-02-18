@@ -9,6 +9,7 @@
     $branch_description = "Coleta produção de diversas fontes para preenchimento do Cadastro de Produção Intelectual, para uso interno da Biblioteca da Escola de Comunicações e Artes da Universidade de São Paulo";
     $url_base = "http://localhost/coletaprod";
     $background_1 = "http://imagens.usp.br/wp-content/uploads/Faculdade-de-Direito-312-15-Foto-Marcos-Santos-028.jpg";
+    $facebook_image = "";
 
     // Definir Instituição
     $instituicao = "USP";
