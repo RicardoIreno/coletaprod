@@ -178,7 +178,7 @@ $get_data = $_GET;
                                             echo '<form action="dspaceConnect.php" method="get">
                                                 <input type="hidden" name="createRecord" value="true" />
                                                 <input type="hidden" name="_id" value="'.$r['_id'].'" />
-                                                <button class="uk-button uk-button-danger" name="btn_submit">Criar registro no DSpace</button>
+                                                <button class="btn btn-secondary" name="btn_submit">Criar registro no DSpace</button>
                                                 </form>';  
                                         }                                        
                                         ?>
