@@ -235,10 +235,10 @@ $get_data = $_GET;
                     $facets->facet("match.string", 100, "Tag de correspondência", null, "_term", $_GET);
                     
                     $facets->facet("author.person.name", 100, "Nome completo do autor", null, "_term", $_GET);
-                    $facets->facet("lattes_ids", 100, "Número do lattes", null, "_term", $_GET);
-                    $facets->facet("USP.numfuncional",100,"Número funcional",null,"_term",$_GET);
-                    $facets->facet("USP.unidade",100,"Unidade USP",null,"_term",$_GET);
-                    $facets->facet("USP.tipvin", 100, "Tipo de vínculo", null, "_term", $_GET);
+                    $facets->facet("lattes_ids", 100, "Número do lattes", null, "_term", $_GET);                    
+                    $facets->facet("Instituicao.unidade",100,"Unidade",null,"_term",$_GET);
+                    $facets->facet("Instituicao.departamento",100,"Departamento",null,"_term",$_GET);
+                    $facets->facet("Instituicao.tipvin", 100, "Tipo de vínculo", null, "_term", $_GET);
                     
                     $facets->facet("country",200,"País de publicação",null,"_term",$_GET);
                     $facets->facet("datePublished",120,"Ano de publicação","desc","_term",$_GET);
