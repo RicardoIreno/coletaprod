@@ -183,7 +183,12 @@ $get_data = $_GET;
                                         }                                        
                                         ?>
                                         
-                                        <a href="tools/export.php?search[]=_id:<?php echo $r['_id'] ?>&format=alephseq" class="btn btn-secondary">Exportar Alephseq</a>
+                                        <?php 
+                                        if ($instituicao == "USP") {
+                                            echo '<a href="tools/export.php?search[]=_id:'.$r['_id'].'&format=alephseq" class="btn btn-secondary">Exportar Alephseq</a>';
+                                        }
+                                        ?>
+                                        
 
 
                                         <form class="form-signin" method="post" action="editor/index.php">
