@@ -146,7 +146,7 @@ $get_data = $_GET;
                                     DadosExternos::query_bdpi($r["_source"]['name'], $r["_source"]['datePublished'], $r['_id']);
                                 }
                                 if (isset($index_source)) {
-                                    DadosExternos::query_bdpi($r["_source"]['name'], $r["_source"]['datePublished'], $r['_id']);
+                                    DadosExternos::querySource($r["_source"]['name'], $r["_source"]['datePublished'], $r['_id']);
                                 }                            
                                 ?>  
 
