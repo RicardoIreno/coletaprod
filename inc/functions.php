@@ -576,7 +576,7 @@ class DadosExternos {
 
         $params = [];
 
-        $params["index"] = $index_bdpi;
+        $params["index"] = $index_source;
         //$params["_source"] = $fields;
         //$params["size"] = $size;
         $params["body"] = $query;
