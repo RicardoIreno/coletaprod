@@ -269,7 +269,7 @@ $get_data = $_GET;
                     $facets->facet("isPartOf.name", 100, "Título do periódico", null, "_term", $_GET);
 
                     $facets->facet("concluido", 100, "Concluído", null, "_term", $_GET);
-                    $facets->facet("bdpi.existe", 100, "Está no DEDALUS?", null, "_term", $_GET);
+                    $facets->facet("bdpi.existe", 100, "Está na FONTE?", null, "_term", $_GET);
 
                 ?>
                 </ul>

@@ -585,7 +585,7 @@ class DadosExternos {
 
         if ($data["hits"]["total"]["value"] > 0) {
             echo '<div class="alert alert-info" role="alert">';
-            echo '<h5>Registros similares no DEDALUS</h5>';
+            echo '<h5>Registros similares na FONTE</h5>';
             foreach ($data["hits"]["hits"] as $match) {
                 echo '<p>Nota de proximidade: '.$match["_score"].' - <a href="http://localhost/coletaprod/item/'.$match["_id"].'" target="_blank">'.$match["_source"]["type"].' - '.$match["_source"]["name"].' ('.$match["_source"]["datePublished"].')</a><br/> Autores: ';   
                 foreach ($match["_source"]['author'] as $autores) {
@@ -643,7 +643,7 @@ class DadosExternos {
 
         if ($data["hits"]["total"]["value"] > 0) {
             echo '<div class="alert alert-info" role="alert">';
-            echo '<h5>Registros similares no DEDALUS</h5>';
+            echo '<h5>Registros similares na DEDALUS</h5>';
             foreach ($data["hits"]["hits"] as $match) {
                 echo '<p>Nota de proximidade: '.$match["_score"].' - <a href="http://localhost/ecafind/item/'.$match["_id"].'" target="_blank">'.$match["_source"]["type"].' - '.$match["_source"]["name"].' ('.$match["_source"]["datePublished"].')</a><br/> Autores: ';   
                 foreach ($match["_source"]['author'] as $autores) {
