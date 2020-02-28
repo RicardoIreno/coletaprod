@@ -290,7 +290,7 @@ if (isset($_GET["oai"])) {
             $query["doc"]["numAutores"] = $i;
 
             if (isset($rows->date)) {
-                $query["doc"]["datePublished"] = substr((string)$rows->date, 0, 4);
+                $query["doc"]["datePublished"] = substr((string)$rows->date[2], 0, 4);
             }
 
             if (isset($rows->relation)) {
