@@ -403,6 +403,7 @@
                     $content[] = createTableDspace($r);
                 }
             }
+            print_r($content);
             echo implode("\n", $content);
 
         }
