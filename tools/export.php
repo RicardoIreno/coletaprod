@@ -386,7 +386,7 @@
             $content[] = "id\tcollection\tdc.title";
 
             foreach ($cursor["hits"]["hits"] as $r) {
-                $content = createTableDspace($r);
+                $content[] = createTableDspace($r);
             }
 
 
@@ -400,7 +400,7 @@
                 );
 
                 foreach ($cursor["hits"]["hits"] as $r) {
-                    $content = createTableDspace($r);
+                    $content[] = createTableDspace($r);
                 }
             }
             echo implode("\n", $content);
