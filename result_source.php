@@ -160,27 +160,14 @@ $get_data = $_GET;
                         $_GET = null;                                    
                     }                       
                     
-                    $facets->facet("tipo", 100, "Tipo de material", null, "_term", $_GET);
+                    $facets->facet("tipo", 100, "Tipo de material", null, "_term", $_GET, $index_source);
                     $facets->facet("author.person.name", 100, "Nome completo do autor", null, "_term", $_GET, $index_source);
                     $facets->facet("datePublished", 120, "Ano de publicação", "desc", "_term", $_GET, $index_source);
                     $facets->facet("language", 40, "Idioma", null, "_term", $_GET, $index_source);
                     $facets->facet("about", 100, "Palavras-chave", null, "_term", $_GET, $index_source);
-                    
-                    $facets->facet("trabalhoEmEventos.classificacaoDoEvento", 100, "Classificação do evento", null, "_term", $_GET); 
-                    $facets->facet("EducationEvent.name", 100, "Nome do evento", null, "_term", $_GET);
-                    $facets->facet("publisher.organization.location", 100, "Cidade do evento", null, "_term", $_GET);
-                    $facets->facet("trabalhoEmEventos.anoDeRealizacao", 100, "Ano de realização do evento", null, "_term", $_GET);
-                    $facets->facet("trabalhoEmEventos.tituloDosAnaisOuProceedings", 100, "Título dos anais", null, "_term", $_GET);
-                    $facets->facet("trabalhoEmEventos.isbn", 100, "ISBN dos anais", null, "_term", $_GET);
-                    $facets->facet("trabalhoEmEventos.nomeDaEditora", 100, "Editora dos anais", null, "_term", $_GET);
-                    $facets->facet("trabalhoEmEventos.cidadeDaEditora", 100, "Cidade da editora", null, "_term", $_GET);
-
-                    $facets->facet("midiaSocialWebsiteBlog.formacao_maxima", 100, "Formação máxima - Blogs e mídias sociais", null, "_term", $_GET);
-                    
-                    $facets->facet("isPartOf.name", 100, "Título do periódico", null, "_term", $_GET);
-
-                    $facets->facet("concluido", 100, "Concluído", null, "_term", $_GET);
-                    $facets->facet("bdpi.existe", 100, "Está na FONTE?", null, "_term", $_GET);
+                    $facets->facet("publisher.organization.name", 100, "Editora", null, "_term", $_GET, $index_source);
+                    $facets->facet("isPartOf.name", 100, "Título do periódico", null, "_term", $_GET, $index_source);
+                    $facets->facet("isPartOf.issn", 50, "ISSN", null, "_term", $_GET, $index_source);
 
                 ?>
                 </ul>
