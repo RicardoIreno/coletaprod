@@ -367,7 +367,6 @@
     
             $params = [];
             $params["index"] = $index;
-            $params["type"] = $type;
             $params["size"] = 4000;
             $params["from"] = $skip;
             $params["body"] = $query; 
