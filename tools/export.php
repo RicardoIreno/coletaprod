@@ -336,6 +336,17 @@
 
     } elseif ($_GET["format"] == "dspace") {
 
+
+        function createTableDspace($r) {
+            unset($fields);
+            $fields[] = $r['_id'];
+            $fields[] = "collection";
+            $fields[] = $r["_source"]['name'];
+            $content[] = implode("\t", $fields);
+            unset($fields);
+            return $content;
+        }
+
         $file="export_bdpi.tsv";
         header('Content-type: text/tab-separated-values; charset=utf-8');
         header("Content-Disposition: attachment; filename=$file");
@@ -375,14 +386,7 @@
             $content[] = "id\tcollection\tdc.title";
 
             foreach ($cursor["hits"]["hits"] as $r) {
-                unset($fields);
-
-                $fields[] = $r['_id'];
-                $fields[] = "collection";
-                $fields[] = $r["_source"]['name'];
-
-                $content[] = implode("\t", $fields);
-                unset($fields);
+                $content = createTableDspace($r);
             }
 
 
@@ -396,15 +400,7 @@
                 );
 
                 foreach ($cursor["hits"]["hits"] as $r) {
-                    unset($fields);
-
-                    $fields[] = $r['_id'];
-                    $fields[] = "collection";
-                    $fields[] = $r["_source"]['name'];
-    
-                    $content[] = implode("\t", $fields);
-                    unset($fields);
-
+                    $content = createTableDspace($r);
                 }
             }
             echo implode("\n", $content);
