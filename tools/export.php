@@ -345,15 +345,24 @@
         // Include essencial files
         include('inc/config.php'); 
         include('inc/functions.php');
-    
-        if (!empty($_GET)) {
 
+
+
+        $file = "export_bdpi.tsv";
+        header('Content-type: text/tab-separated-values; charset=utf-8');
+        header("Content-Disposition: attachment; filename=$file");
+
+        // Set directory to ROOT
+        chdir('../');
+        // Include essencial files
+        include 'inc/config.php';
+
+        if (!empty($_GET)) {
             $result_get = Requests::getParser($_GET);
-            $query = $result_get['query'];  
+            $query = $result_get['query'];
             $limit = $result_get['limit'];
             $page = $result_get['page'];
             $skip = $result_get['skip'];
-
 
             if (isset($_GET["sort"])) {
                 $query['sort'] = [
@@ -364,50 +373,54 @@
                     ['datePublished.keyword' => ['order' => 'desc']],
                 ];
             }
-    
+
             $params = [];
             $params["index"] = $index;
-            $params["size"] = 4000;
-            $params["from"] = $skip;
-            $params["body"] = $query; 
-    
+            $params["type"] = $type;
+            $params["size"] = 50;
+            $params["scroll"] = "30s";
+            $params["body"] = $query;
+
             $cursor = $client->search($params);
             $total = $cursor["hits"]["total"];
-           
-    
-            echo "id\tcollection\tdc.title\n";
+
+            $content[] = "id\tcollection\tdc.title";
 
             foreach ($cursor["hits"]["hits"] as $r) {
-    
+                unset($fields);
+
                 $fields[] = $r['_id'];
                 $fields[] = "collection";
+                $fields[] = $r["_source"]['name'];
 
-                $fields[] = $r["_source"]['name'];                
-                
-                // foreach ($r["_source"]['author'] as $authors) {
-                //     if (empty($authors["person"]["potentialAction"])) {
-                //         $fields[] = $authors["person"]["name"];
-                //     } else {
-                //         $orientadores_array[] = $authors["person"]["name"]; 
-                //     }
-                // }
-                // if (isset($orientadores_array)) {
-                //     $array_orientadores = implode("; ", $orientadores_array);
-                //     unset($orientadores_array);
-                //     $fields[] = $array_orientadores;       
-                // } else {
-                //     $fields[] = "Não preenchido";
-                // }             
- 
-                
-                echo implode("\t", $fields)."\n";
-                flush();
-
+                $content[] = implode("\t", $fields);
                 unset($fields);
-            
             }
-            // echo implode("\n", $content);            
+
+
+            while (isset($cursor['hits']['hits']) && count($cursor['hits']['hits']) > 0) {
+                $scroll_id = $cursor['_scroll_id'];
+                $cursor = $client->scroll(
+                    [
+                    "scroll_id" => $scroll_id,
+                    "scroll" => "30s"
+                    ]
+                );
+
+                foreach ($cursor["hits"]["hits"] as $r) {
+                    unset($fields);
+
+                    $fields[] = $r['_id'];
+                    $fields[] = "collection";
+                    $fields[] = $r["_source"]['name'];
     
+                    $content[] = implode("\t", $fields);
+                    unset($fields);
+
+                }
+            }
+            echo implode("\n", $content);
+
         }
 
     } elseif($_GET["format"] == "ris") {
