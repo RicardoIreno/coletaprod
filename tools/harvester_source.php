@@ -456,6 +456,9 @@ if (isset($_GET["oai"])) {
                     if ($field->attributes()->element == "type") {
                         $query["doc"]["type"] = (string)$field;
                     }
+                    if ($field->attributes()->element == "type") {
+                        $query["doc"]["tipo"] = (string)$field;
+                    }                    
                     if ($field->attributes()->element == "publisher" && empty($field->attributes()->qualifier)) {
                         $query["doc"]["publisher"]["organization"]["name"] = (string)$field;
                     }
