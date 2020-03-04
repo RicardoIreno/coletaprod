@@ -146,7 +146,7 @@ $get_data = $_GET;
                                     DadosExternos::query_bdpi($r["_source"]['name'], $r["_source"]['datePublished'], $r['_id']);
                                 }
                                 if (isset($index_source)) {
-                                    DadosExternos::query_bdpi($r["_source"]['name'], $r["_source"]['datePublished'], $r['_id']);
+                                    DadosExternos::querySource($r["_source"]['name'], $r["_source"]['datePublished'], $r['_id']);
                                 }                            
                                 ?>  
 
@@ -269,7 +269,7 @@ $get_data = $_GET;
                     $facets->facet("isPartOf.name", 100, "Título do periódico", null, "_term", $_GET);
 
                     $facets->facet("concluido", 100, "Concluído", null, "_term", $_GET);
-                    $facets->facet("bdpi.existe", 100, "Está no DEDALUS?", null, "_term", $_GET);
+                    $facets->facet("bdpi.existe", 100, "Está na FONTE?", null, "_term", $_GET);
 
                 ?>
                 </ul>

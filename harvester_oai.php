@@ -42,7 +42,7 @@ if (isset($_GET["oai"])) {
                 $query["doc"]["tag"] = $_GET['tag'];
                 $query["doc"]["source"] = $_GET['source'];
                 $query["doc"]["name"] =  (string)$rows->title[0];
-                $query["doc"]["datePublished"] = substr((string)$rows->date[0], 0, 4);
+                $query["doc"]["datePublished"] = substr((string)$rows->date[2], 0, 4);
                 $query["doc"]["language"][] = (string)$rows->language[0];
 
                 $i = 0;
