@@ -342,7 +342,7 @@
             $fields[] = $r['_id'];
             $fields[] = "collection";
             $fields[] = $r["_source"]['name'];
-            $content[] = implode("\t", $fields);
+            $content = implode("\t", $fields);
             unset($fields);
             return $content;
         }
