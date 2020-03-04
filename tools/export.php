@@ -346,17 +346,6 @@
         include('inc/config.php'); 
         include('inc/functions.php');
 
-
-
-        $file = "export_bdpi.tsv";
-        header('Content-type: text/tab-separated-values; charset=utf-8');
-        header("Content-Disposition: attachment; filename=$file");
-
-        // Set directory to ROOT
-        chdir('../');
-        // Include essencial files
-        include 'inc/config.php';
-
         if (!empty($_GET)) {
             $result_get = Requests::getParser($_GET);
             $query = $result_get['query'];
@@ -376,7 +365,6 @@
 
             $params = [];
             $params["index"] = $index;
-            $params["type"] = $type;
             $params["size"] = 50;
             $params["scroll"] = "30s";
             $params["body"] = $query;
