@@ -422,7 +422,7 @@ if (isset($_GET["oai"])) {
         }
         foreach ($recs as $rec) {
             $data = $rec->metadata->children('http://www.dspace.org/xmlns/dspace/dim');
-            $rows = $data->children('http://www.dspace.org/xmlns/dspace/dim');
+            //$rows = $data->children('http://www.dspace.org/xmlns/dspace/dim');
             foreach ($rec->metadata->children('http://www.dspace.org/xmlns/dspace/dim') as $test) {
                 $i = 0;
                 foreach ($test->field as $field) {
