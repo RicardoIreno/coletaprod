@@ -315,7 +315,8 @@ $get_data = $_GET;
                 <!-- Limitar por data - Fim -->
                 <hr>
                 <h3>Exportar</h3>
-                <a href="tools/export.php?<?php echo $_SERVER["QUERY_STRING"] ?>&format=ris">Exportar em formato RIS</a>
+                <p><a href="tools/export.php?<?php echo $_SERVER["QUERY_STRING"] ?>&format=ris">Exportar em formato RIS</a></p>
+                <p><a href="tools/export.php?<?php echo $_SERVER["QUERY_STRING"] ?>&format=dspace">Exportar em formato CSV para o DSpace</a></p>
                 <hr>                   
                         
             </div>
