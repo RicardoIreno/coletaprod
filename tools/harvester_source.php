@@ -469,7 +469,7 @@ if (isset($_GET["oai"])) {
                 }
             }
             $id = (string)$rec->header->identifier;
-            $query["doc"]["base"][] = $_GET["name"];
+            $query["doc"]["origin"] = "OAI-PHM";
             $query["doc"]["type"] = "Work";
             $query["doc"]["unidade"] = (array)$rec->header->setSpec;
             $query["doc"]["identifier"] = (string)$rec->header->identifier;

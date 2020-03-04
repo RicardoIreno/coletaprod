@@ -288,7 +288,8 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">OAI-PMH</span>
                             </div>
-                            <input type="text" placeholder="URL do OAI-PMH" class="form-control" name="oai">  
+                            <input type="text" placeholder="URL do OAI-PMH" class="form-control" name="oai">
+                            <input type="text" placeholder="Set (Opcional)" class="form-control" name="set">  
                             <select class="form-control" id="format" name="metadataFormat">
                                 <option selected>Formato</option>
                                 <option value="oai_dc">oai_dc</option>
