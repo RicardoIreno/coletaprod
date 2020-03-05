@@ -421,11 +421,11 @@ if (isset($_GET["oai"])) {
             $recs = $myEndpoint->listRecords('dim');
         }
         foreach ($recs as $rec) {
-            $data = $rec->metadata->children('http://www.dspace.org/xmlns/dspace/dim');
+            //$data = $rec->metadata->children('http://www.dspace.org/xmlns/dspace/dim');
             //$rows = $data->children('http://www.dspace.org/xmlns/dspace/dim');
-            foreach ($rec->metadata->children('http://www.dspace.org/xmlns/dspace/dim') as $test) {
+            foreach ($rec->metadata->children('http://www.dspace.org/xmlns/dspace/dim') as $record) {
                 $i = 0;
-                foreach ($test->field as $field) {
+                foreach ($record->field as $field) {
                     if ($field->attributes()->element == "title" && empty($field->attributes()->qualifier)) {
                         $query["doc"]["name"] = (string)$field;
                     }
@@ -514,6 +514,7 @@ if (isset($_GET["oai"])) {
             //print_r($resultado);
             //print_r($query);
             unset($query);
+            unset($record);
             flush();
             sleep(1);
             //break;
