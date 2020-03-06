@@ -516,7 +516,6 @@ if (isset($_GET["oai"])) {
             unset($query);
             unset($record);
             flush();
-            sleep(1);
             //break;
         }        
 
