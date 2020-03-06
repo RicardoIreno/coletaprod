@@ -456,9 +456,9 @@ if (isset($_GET["oai"])) {
                     if ($field->attributes()->element == "identifier" && $field->attributes()->qualifier == "citation") {
                         $query["doc"]["citation"] = (string)$field;
                     }                                            
-                    if ($field->attributes()->element == "description" && $field->attributes()->qualifier == "abstract") {
-                        $query["doc"]["description"][] = (string)$field;
-                    }
+                    // if ($field->attributes()->element == "description" && $field->attributes()->qualifier == "abstract") {
+                    //     $query["doc"]["description"][] = (string)$field;
+                    // }
                     if ($field->attributes()->element == "description" && $field->attributes()->qualifier == "source") {
                         $query["doc"]["source"] = (string)$field;
                     }                    
