@@ -517,22 +517,22 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TRABALHOS-EM-EVENTOS'})) {
         $doc["doc"]["source"] = "Base Lattes";
         $doc["doc"]["lattes_ids"][] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
         $doc["doc"]["tag"][] = $_REQUEST['tag'];
-        $doc["doc"]["Instituicao"]["unidade"][] = $_REQUEST['unidade'];
-        $doc["doc"]["Instituicao"]["departamento"][] = $_REQUEST['departamento'];
-        $doc["doc"]["Instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
+        $doc["doc"]["instituicao"]["unidade"][] = $_REQUEST['unidade'];
+        $doc["doc"]["instituicao"]["departamento"][] = $_REQUEST['departamento'];
+        $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
         if (isset($_REQUEST['tipvin'])) {
-            $doc["doc"]["Instituicao"]["tipvin"] = $_REQUEST['tipvin'];
+            $doc["doc"]["instituicao"]["tipvin"] = $_REQUEST['tipvin'];
         }        
         $doc["doc"]["datePublished"] = $dadosBasicosDoTrabalho['@attributes']["ANO-DO-TRABALHO"];
         $doc["doc"]["name"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-DO-TRABALHO"];
-        $doc["doc"]["Lattes"]["natureza"] = $dadosBasicosDoTrabalho['@attributes']['NATUREZA'];
+        $doc["doc"]["lattes"]["natureza"] = $dadosBasicosDoTrabalho['@attributes']['NATUREZA'];
         $doc["doc"]["country"] = $dadosBasicosDoTrabalho['@attributes']["PAIS-DO-EVENTO"];
         $doc["doc"]["language"] = $dadosBasicosDoTrabalho['@attributes']["IDIOMA"];
-        $doc["doc"]["Lattes"]["meioDeDivulgacao"] = $dadosBasicosDoTrabalho['@attributes']["MEIO-DE-DIVULGACAO"];
+        $doc["doc"]["lattes"]["meioDeDivulgacao"] = $dadosBasicosDoTrabalho['@attributes']["MEIO-DE-DIVULGACAO"];
         $doc["doc"]["url"] = $dadosBasicosDoTrabalho['@attributes']["HOME-PAGE-DO-TRABALHO"];
-        $doc["doc"]["Lattes"]["flagRelevancia"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-RELEVANCIA"];
+        $doc["doc"]["lattes"]["flagRelevancia"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-RELEVANCIA"];
         $doc["doc"]["doi"] = $dadosBasicosDoTrabalho['@attributes']["DOI"];
-        $doc["doc"]["Lattes"]["flagDivulgacaoCientifica"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-DIVULGACAO-CIENTIFICA"];
+        $doc["doc"]["lattes"]["flagDivulgacaoCientifica"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-DIVULGACAO-CIENTIFICA"];
 
         $doc["doc"]["detalhamentoDoTrabalho"]["classificacaoDoEvento"] = $detalhamentoDoTrabalho['@attributes']["CLASSIFICACAO-DO-EVENTO"];
         $doc["doc"]["EducationEvent"]["name"] = $detalhamentoDoTrabalho['@attributes']["NOME-DO-EVENTO"];
@@ -574,7 +574,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TRABALHOS-EM-EVENTOS'})) {
         // Constroi sha256
         $sha_array[] = $doc["doc"]["lattes_ids"][0];
         $sha_array[] = $doc["doc"]["tipo"];
-        $sha_array[] = $doc["doc"]["Lattes"]["natureza"];
+        $sha_array[] = $doc["doc"]["lattes"]["natureza"];
         $sha_array[] = $doc["doc"]["name"];
         $sha_array[] = $doc["doc"]["datePublished"];
         $sha_array[] = $doc["doc"]["country"];
@@ -619,23 +619,23 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'ARTIGOS-PUBLICADOS'})) {
         $doc["doc"]["source"] = "Base Lattes";
         $doc["doc"]["lattes_ids"][] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
         $doc["doc"]["tag"][] = $_REQUEST['tag'];
-        $doc["doc"]["Instituicao"]["unidade"][] = $_REQUEST['unidade'];
-        $doc["doc"]["Instituicao"]["departamento"][] = $_REQUEST['departamento'];
-        $doc["doc"]["Instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
+        $doc["doc"]["instituicao"]["unidade"][] = $_REQUEST['unidade'];
+        $doc["doc"]["instituicao"]["departamento"][] = $_REQUEST['departamento'];
+        $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
         if (isset($_REQUEST['tipvin'])) {
-            $doc["doc"]["Instituicao"]["tipvin"] = $_REQUEST['tipvin'];
+            $doc["doc"]["instituicao"]["tipvin"] = $_REQUEST['tipvin'];
         }      
         $doc["doc"]["datePublished"] = $dadosBasicosDoTrabalho['@attributes']["ANO-DO-ARTIGO"];
         $doc["doc"]["name"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-DO-ARTIGO"];
-        $doc["doc"]["Lattes"]["natureza"] = $dadosBasicosDoTrabalho['@attributes']['NATUREZA'];
+        $doc["doc"]["lattes"]["natureza"] = $dadosBasicosDoTrabalho['@attributes']['NATUREZA'];
         $doc["doc"]["country"] = $dadosBasicosDoTrabalho['@attributes']["PAIS-DE-PUBLICACAO"];
         $doc["doc"]["language"] = $dadosBasicosDoTrabalho['@attributes']["IDIOMA"];
-        $doc["doc"]["Lattes"]["meioDeDivulgacao"] = $dadosBasicosDoTrabalho['@attributes']["MEIO-DE-DIVULGACAO"];
+        $doc["doc"]["lattes"]["meioDeDivulgacao"] = $dadosBasicosDoTrabalho['@attributes']["MEIO-DE-DIVULGACAO"];
         $doc["doc"]["url"] = $dadosBasicosDoTrabalho['@attributes']["HOME-PAGE-DO-TRABALHO"];
-        $doc["doc"]["Lattes"]["flagRelevancia"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-RELEVANCIA"];
+        $doc["doc"]["lattes"]["flagRelevancia"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-RELEVANCIA"];
         $doc["doc"]["doi"] = $dadosBasicosDoTrabalho['@attributes']["DOI"];
         $doc["doc"]["alternateName"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-DO-ARTIGO-INGLES"];
-        $doc["doc"]["Lattes"]["flagDivulgacaoCientifica"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-DIVULGACAO-CIENTIFICA"];
+        $doc["doc"]["lattes"]["flagDivulgacaoCientifica"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-DIVULGACAO-CIENTIFICA"];
 
         $doc["doc"]["publisher"]["organization"]["location"] = $detalhamentoDoTrabalho['@attributes']["LOCAL-DE-PUBLICACAO"];
         $doc["doc"]["isPartOf"]["name"] = $detalhamentoDoTrabalho['@attributes']["TITULO-DO-PERIODICO-OU-REVISTA"];
@@ -675,7 +675,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'ARTIGOS-PUBLICADOS'})) {
         } else {
             $sha_array[] = $doc["doc"]["lattes_ids"][0];
             $sha_array[] = $doc["doc"]["tipo"];
-            $sha_array[] = $doc["doc"]["Lattes"]["natureza"];
+            $sha_array[] = $doc["doc"]["lattes"]["natureza"];
             $sha_array[] = $doc["doc"]["name"];
             $sha_array[] = $doc["doc"]["datePublished"];
             $sha_array[] = $doc["doc"]["isPartOf"]["name"];
@@ -722,24 +722,24 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'LIVROS-E-CAPITULOS'})) {
             $doc["doc"]["source"] = "Base Lattes";
             $doc["doc"]["lattes_ids"][] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
             $doc["doc"]["tag"][] = $_REQUEST['tag'];
-            $doc["doc"]["Instituicao"]["unidade"][] = $_REQUEST['unidade'];
-            $doc["doc"]["Instituicao"]["departamento"][] = $_REQUEST['departamento'];
-            $doc["doc"]["Instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
+            $doc["doc"]["instituicao"]["unidade"][] = $_REQUEST['unidade'];
+            $doc["doc"]["instituicao"]["departamento"][] = $_REQUEST['departamento'];
+            $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
             if (isset($_REQUEST['tipvin'])) {
-                $doc["doc"]["Instituicao"]["tipvin"] = $_REQUEST['tipvin'];
+                $doc["doc"]["instituicao"]["tipvin"] = $_REQUEST['tipvin'];
             }      
-            $doc["doc"]["Lattes"]["tipo"] = $dadosBasicosDoTrabalho['@attributes']["TIPO"];
+            $doc["doc"]["lattes"]["tipo"] = $dadosBasicosDoTrabalho['@attributes']["TIPO"];
             $doc["doc"]["datePublished"] = $dadosBasicosDoTrabalho['@attributes']["ANO"];
             $doc["doc"]["name"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-DO-LIVRO"];
-            $doc["doc"]["Lattes"]["natureza"] = $dadosBasicosDoTrabalho['@attributes']['NATUREZA'];
+            $doc["doc"]["lattes"]["natureza"] = $dadosBasicosDoTrabalho['@attributes']['NATUREZA'];
             $doc["doc"]["country"] = $dadosBasicosDoTrabalho['@attributes']["PAIS-DE-PUBLICACAO"];
             $doc["doc"]["language"] = $dadosBasicosDoTrabalho['@attributes']["IDIOMA"];
-            $doc["doc"]["Lattes"]["meioDeDivulgacao"] = $dadosBasicosDoTrabalho['@attributes']["MEIO-DE-DIVULGACAO"];
+            $doc["doc"]["lattes"]["meioDeDivulgacao"] = $dadosBasicosDoTrabalho['@attributes']["MEIO-DE-DIVULGACAO"];
             $doc["doc"]["url"] = $dadosBasicosDoTrabalho['@attributes']["HOME-PAGE-DO-TRABALHO"];
-            $doc["doc"]["Lattes"]["flagRelevancia"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-RELEVANCIA"];
+            $doc["doc"]["lattes"]["flagRelevancia"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-RELEVANCIA"];
             $doc["doc"]["doi"] = $dadosBasicosDoTrabalho['@attributes']["DOI"];
             $doc["doc"]["alternateName"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-DO-LIVRO-INGLES"];
-            $doc["doc"]["Lattes"]["flagDivulgacaoCientifica"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-DIVULGACAO-CIENTIFICA"];
+            $doc["doc"]["lattes"]["flagDivulgacaoCientifica"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-DIVULGACAO-CIENTIFICA"];
 
             $doc["doc"]["detalhamentoDoLivro"]["numeroDeVolumes"] = $detalhamentoDoTrabalho['@attributes']["NUMERO-DE-VOLUMES"];
             $doc["doc"]["numberOfPages"] = $detalhamentoDoTrabalho['@attributes']["NUMERO-DE-PAGINAS"];
@@ -780,7 +780,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'LIVROS-E-CAPITULOS'})) {
             } else {
                 $sha_array[] = $doc["doc"]["lattes_ids"][0];
                 $sha_array[] = $doc["doc"]["tipo"];
-                $sha_array[] = $doc["doc"]["Lattes"]["natureza"];
+                $sha_array[] = $doc["doc"]["lattes"]["natureza"];
                 $sha_array[] = $doc["doc"]["name"];
                 $sha_array[] = $doc["doc"]["datePublished"];
                 $sha_array[] = $doc["doc"]["bookEdition"];
@@ -823,23 +823,23 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'LIVROS-E-CAPITULOS'})) {
             $doc["doc"]["source"] = "Base Lattes";
             $doc["doc"]["lattes_ids"][] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
             $doc["doc"]["tag"][] = $_REQUEST['tag'];
-            $doc["doc"]["Instituicao"]["unidade"][] = $_REQUEST['unidade'];
-            $doc["doc"]["Instituicao"]["departamento"][] = $_REQUEST['departamento'];
-            $doc["doc"]["Instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
+            $doc["doc"]["instituicao"]["unidade"][] = $_REQUEST['unidade'];
+            $doc["doc"]["instituicao"]["departamento"][] = $_REQUEST['departamento'];
+            $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
             if (isset($_REQUEST['tipvin'])) {
-                $doc["doc"]["Instituicao"]["tipvin"] = $_REQUEST['tipvin'];
+                $doc["doc"]["instituicao"]["tipvin"] = $_REQUEST['tipvin'];
             }
-            $doc["doc"]["Lattes"]["tipo"] = $dadosBasicosDoTrabalho['@attributes']["TIPO"];
+            $doc["doc"]["lattes"]["tipo"] = $dadosBasicosDoTrabalho['@attributes']["TIPO"];
             $doc["doc"]["name"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-DO-CAPITULO-DO-LIVRO"];
             $doc["doc"]["datePublished"] = $dadosBasicosDoTrabalho['@attributes']["ANO"];            
             $doc["doc"]["country"] = $dadosBasicosDoTrabalho['@attributes']["PAIS-DE-PUBLICACAO"];
             $doc["doc"]["language"] = $dadosBasicosDoTrabalho['@attributes']["IDIOMA"];
-            $doc["doc"]["Lattes"]["meioDeDivulgacao"] = $dadosBasicosDoTrabalho['@attributes']["MEIO-DE-DIVULGACAO"];
+            $doc["doc"]["lattes"]["meioDeDivulgacao"] = $dadosBasicosDoTrabalho['@attributes']["MEIO-DE-DIVULGACAO"];
             $doc["doc"]["url"] = $dadosBasicosDoTrabalho['@attributes']["HOME-PAGE-DO-TRABALHO"];
-            $doc["doc"]["Lattes"]["flagRelevancia"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-RELEVANCIA"];
+            $doc["doc"]["lattes"]["flagRelevancia"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-RELEVANCIA"];
             $doc["doc"]["doi"] = $dadosBasicosDoTrabalho['@attributes']["DOI"];
             $doc["doc"]["alternateName"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-DO-CAPITULO-DO-LIVRO-INGLES"];
-            $doc["doc"]["Lattes"]["flagDivulgacaoCientifica"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-DIVULGACAO-CIENTIFICA"];
+            $doc["doc"]["lattes"]["flagDivulgacaoCientifica"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-DIVULGACAO-CIENTIFICA"];
 
             $doc["doc"]["isPartOf"]["name"] = $detalhamentoDoTrabalho['@attributes']["TITULO-DO-LIVRO"];
             $doc["doc"]["pageStart"] = $detalhamentoDoTrabalho['@attributes']["PAGINA-INICIAL"];
@@ -876,7 +876,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'LIVROS-E-CAPITULOS'})) {
 
             $sha_array[] = $doc["doc"]["lattes_ids"][0];
             $sha_array[] = $doc["doc"]["tipo"];
-            $sha_array[] = $doc["doc"]["Lattes"]["natureza"];
+            $sha_array[] = $doc["doc"]["lattes"]["natureza"];
             $sha_array[] = $doc["doc"]["name"];
             $sha_array[] = $doc["doc"]["datePublished"];
             $sha_array[] = $doc["doc"]["isPartOf"]["name"];
@@ -921,23 +921,23 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TEXTOS-EM-JORNAIS-OU-REVISTA
         $doc["doc"]["source"] = "Base Lattes";
         $doc["doc"]["lattes_ids"][] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
         $doc["doc"]["tag"][] = $_REQUEST['tag'];
-        $doc["doc"]["Instituicao"]["unidade"][] = $_REQUEST['unidade'];
-        $doc["doc"]["Instituicao"]["departamento"][] = $_REQUEST['departamento'];
-        $doc["doc"]["Instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
+        $doc["doc"]["instituicao"]["unidade"][] = $_REQUEST['unidade'];
+        $doc["doc"]["instituicao"]["departamento"][] = $_REQUEST['departamento'];
+        $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
         if (isset($_REQUEST['tipvin'])) {
-            $doc["doc"]["Instituicao"]["tipvin"] = $_REQUEST['tipvin'];
+            $doc["doc"]["instituicao"]["tipvin"] = $_REQUEST['tipvin'];
         }      
-        $doc["doc"]["Lattes"]["natureza"] = $dadosBasicosDoTrabalho['@attributes']['NATUREZA'];        
+        $doc["doc"]["lattes"]["natureza"] = $dadosBasicosDoTrabalho['@attributes']['NATUREZA'];        
         $doc["doc"]["name"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-DO-TEXTO"];
         $doc["doc"]["datePublished"] = $dadosBasicosDoTrabalho['@attributes']["ANO-DO-TEXTO"];
         $doc["doc"]["country"] = $dadosBasicosDoTrabalho['@attributes']["PAIS-DE-PUBLICACAO"];
         $doc["doc"]["language"] = $dadosBasicosDoTrabalho['@attributes']["IDIOMA"];
-        $doc["doc"]["Lattes"]["meioDeDivulgacao"] = $dadosBasicosDoTrabalho['@attributes']["MEIO-DE-DIVULGACAO"];
+        $doc["doc"]["lattes"]["meioDeDivulgacao"] = $dadosBasicosDoTrabalho['@attributes']["MEIO-DE-DIVULGACAO"];
         $doc["doc"]["url"] = $dadosBasicosDoTrabalho['@attributes']["HOME-PAGE-DO-TRABALHO"];
-        $doc["doc"]["Lattes"]["flagRelevancia"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-RELEVANCIA"];
+        $doc["doc"]["lattes"]["flagRelevancia"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-RELEVANCIA"];
         $doc["doc"]["doi"] = $dadosBasicosDoTrabalho['@attributes']["DOI"];
         $doc["doc"]["alternateName"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-DO-TEXTO-INGLES"];
-        $doc["doc"]["Lattes"]["flagDivulgacaoCientifica"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-DIVULGACAO-CIENTIFICA"];
+        $doc["doc"]["lattes"]["flagDivulgacaoCientifica"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-DIVULGACAO-CIENTIFICA"];
 
         $doc["doc"]["isPartOf"]["name"] = $detalhamentoDoTrabalho['@attributes']["TITULO-DO-JORNAL-OU-REVISTA"];
         $doc["doc"]["isPartOf"]["issn"] = $detalhamentoDoTrabalho['@attributes']["ISSN"];
@@ -976,7 +976,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TEXTOS-EM-JORNAIS-OU-REVISTA
         } else {
             $sha_array[] = $doc["doc"]["lattes_ids"][0];
             $sha_array[] = $doc["doc"]["tipo"];
-            $sha_array[] = $doc["doc"]["Lattes"]["natureza"];
+            $sha_array[] = $doc["doc"]["lattes"]["natureza"];
             $sha_array[] = $doc["doc"]["name"];
             $sha_array[] = $doc["doc"]["datePublished"];
             $sha_array[] = $doc["doc"]["isPartOf"]["name"];
@@ -1024,20 +1024,20 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
             $doc["doc"]["source"] = "Base Lattes";
             $doc["doc"]["lattes_ids"][] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
             $doc["doc"]["tag"][] = $_REQUEST['tag'];
-            $doc["doc"]["Instituicao"]["unidade"][] = $_REQUEST['unidade'];
-            $doc["doc"]["Instituicao"]["departamento"][] = $_REQUEST['departamento'];
-            $doc["doc"]["Instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
+            $doc["doc"]["instituicao"]["unidade"][] = $_REQUEST['unidade'];
+            $doc["doc"]["instituicao"]["departamento"][] = $_REQUEST['departamento'];
+            $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
             if (isset($_REQUEST['tipvin'])) {
-                $doc["doc"]["Instituicao"]["tipvin"] = $_REQUEST['tipvin'];
+                $doc["doc"]["instituicao"]["tipvin"] = $_REQUEST['tipvin'];
             }      
-            $doc["doc"]["Lattes"]["natureza"] = $dadosBasicosDoTrabalho['@attributes']['NATUREZA'];        
+            $doc["doc"]["lattes"]["natureza"] = $dadosBasicosDoTrabalho['@attributes']['NATUREZA'];        
             $doc["doc"]["name"] = $dadosBasicosDoTrabalho['@attributes']["TITULO"];
             $doc["doc"]["datePublished"] = $dadosBasicosDoTrabalho['@attributes']["ANO"];
             $doc["doc"]["country"] = $dadosBasicosDoTrabalho['@attributes']["PAIS-DE-PUBLICACAO"];
             $doc["doc"]["language"] = $dadosBasicosDoTrabalho['@attributes']["IDIOMA"];
-            $doc["doc"]["Lattes"]["meioDeDivulgacao"] = $dadosBasicosDoTrabalho['@attributes']["MEIO-DE-DIVULGACAO"];
+            $doc["doc"]["lattes"]["meioDeDivulgacao"] = $dadosBasicosDoTrabalho['@attributes']["MEIO-DE-DIVULGACAO"];
             $doc["doc"]["url"] = $dadosBasicosDoTrabalho['@attributes']["HOME-PAGE-DO-TRABALHO"];
-            $doc["doc"]["Lattes"]["flagRelevancia"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-RELEVANCIA"];
+            $doc["doc"]["lattes"]["flagRelevancia"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-RELEVANCIA"];
             $doc["doc"]["doi"] = $dadosBasicosDoTrabalho['@attributes']["DOI"];
             $doc["doc"]["alternateName"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-INGLES"];
 
@@ -1045,7 +1045,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
             $doc["doc"]["publisher"]["organization"]["name"] = $detalhamentoDoTrabalho['@attributes']["EDITORA"];
             $doc["doc"]["publisher"]["organization"]["location"] = $detalhamentoDoTrabalho['@attributes']["CIDADE-DA-EDITORA"];
             $doc["doc"]["numberOfPages"] = $detalhamentoDoTrabalho['@attributes']["NUMERO-DE-PAGINAS"];
-            $doc["doc"]["Lattes"]["numeroDoCatalogo"] = $detalhamentoDoTrabalho['@attributes']["NUMERO-DO-CATALOGO"];
+            $doc["doc"]["lattes"]["numeroDoCatalogo"] = $detalhamentoDoTrabalho['@attributes']["NUMERO-DO-CATALOGO"];
             
 
             if (!empty($obra["AUTORES"])) {
@@ -1077,7 +1077,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
             } else {
                 $sha_array[] = $doc["doc"]["lattes_ids"][0];
                 $sha_array[] = $doc["doc"]["tipo"];                
-                $sha_array[] = $doc["doc"]["Lattes"]["natureza"];
+                $sha_array[] = $doc["doc"]["lattes"]["natureza"];
                 $sha_array[] = $doc["doc"]["name"];
                 $sha_array[] = $doc["doc"]["datePublished"];
                 $sha_array[] = $doc["doc"]["url"];
@@ -1118,20 +1118,20 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
             $doc["doc"]["source"] = "Base Lattes";
             $doc["doc"]["lattes_ids"][] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
             $doc["doc"]["tag"][] = $_REQUEST['tag'];
-            $doc["doc"]["Instituicao"]["unidade"][] = $_REQUEST['unidade'];
-            $doc["doc"]["Instituicao"]["departamento"][] = $_REQUEST['departamento'];
-            $doc["doc"]["Instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
+            $doc["doc"]["instituicao"]["unidade"][] = $_REQUEST['unidade'];
+            $doc["doc"]["instituicao"]["departamento"][] = $_REQUEST['departamento'];
+            $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
             if (isset($_REQUEST['tipvin'])) {
-                $doc["doc"]["Instituicao"]["tipvin"] = $_REQUEST['tipvin'];
+                $doc["doc"]["instituicao"]["tipvin"] = $_REQUEST['tipvin'];
             }      
-            $doc["doc"]["Lattes"]["natureza"] = $dadosBasicosDoTrabalho['@attributes']['NATUREZA'];        
+            $doc["doc"]["lattes"]["natureza"] = $dadosBasicosDoTrabalho['@attributes']['NATUREZA'];        
             $doc["doc"]["name"] = $dadosBasicosDoTrabalho['@attributes']["TITULO"];
             $doc["doc"]["datePublished"] = $dadosBasicosDoTrabalho['@attributes']["ANO"];
             $doc["doc"]["country"] = $dadosBasicosDoTrabalho['@attributes']["PAIS-DE-PUBLICACAO"];
             $doc["doc"]["language"] = $dadosBasicosDoTrabalho['@attributes']["IDIOMA"];
-            $doc["doc"]["Lattes"]["meioDeDivulgacao"] = $dadosBasicosDoTrabalho['@attributes']["MEIO-DE-DIVULGACAO"];
+            $doc["doc"]["lattes"]["meioDeDivulgacao"] = $dadosBasicosDoTrabalho['@attributes']["MEIO-DE-DIVULGACAO"];
             $doc["doc"]["url"] = $dadosBasicosDoTrabalho['@attributes']["HOME-PAGE-DO-TRABALHO"];
-            $doc["doc"]["Lattes"]["flagRelevancia"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-RELEVANCIA"];
+            $doc["doc"]["lattes"]["flagRelevancia"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-RELEVANCIA"];
             $doc["doc"]["doi"] = $dadosBasicosDoTrabalho['@attributes']["DOI"];
             $doc["doc"]["alternateName"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-INGLES"];
 
@@ -1176,7 +1176,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
             } else {
                 $sha_array[] = $doc["doc"]["lattes_ids"][0];
                 $sha_array[] = $doc["doc"]["tipo"];                
-                $sha_array[] = $doc["doc"]["Lattes"]["natureza"];
+                $sha_array[] = $doc["doc"]["lattes"]["natureza"];
                 $sha_array[] = $doc["doc"]["name"];
                 $sha_array[] = $doc["doc"]["datePublished"];
                 $sha_array[] = $doc["doc"]["url"];
@@ -1223,30 +1223,30 @@ if (isset($curriculo->{'PRODUCAO-TECNICA'})) {
             $doc["doc"]["source"] = "Base Lattes";
             $doc["doc"]["lattes_ids"][] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
             $doc["doc"]["tag"][] = $_REQUEST['tag'];
-            $doc["doc"]["Instituicao"]["unidade"][] = $_REQUEST['unidade'];
-            $doc["doc"]["Instituicao"]["departamento"][] = $_REQUEST['departamento'];
-            $doc["doc"]["Instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
+            $doc["doc"]["instituicao"]["unidade"][] = $_REQUEST['unidade'];
+            $doc["doc"]["instituicao"]["departamento"][] = $_REQUEST['departamento'];
+            $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
             if (isset($_REQUEST['tipvin'])) {
-                $doc["doc"]["Instituicao"]["tipvin"] = $_REQUEST['tipvin'];
+                $doc["doc"]["instituicao"]["tipvin"] = $_REQUEST['tipvin'];
             }      
-            $doc["doc"]["Lattes"]["natureza"] = $dadosBasicosDoTrabalho['@attributes']['NATUREZA'];        
+            $doc["doc"]["lattes"]["natureza"] = $dadosBasicosDoTrabalho['@attributes']['NATUREZA'];        
             $doc["doc"]["name"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-DO-SOFTWARE"];
             $doc["doc"]["datePublished"] = $dadosBasicosDoTrabalho['@attributes']["ANO"];
             $doc["doc"]["country"] = $dadosBasicosDoTrabalho['@attributes']["PAIS"];
             $doc["doc"]["language"] = $dadosBasicosDoTrabalho['@attributes']["IDIOMA"];
-            $doc["doc"]["Lattes"]["meioDeDivulgacao"] = $dadosBasicosDoTrabalho['@attributes']["MEIO-DE-DIVULGACAO"];
+            $doc["doc"]["lattes"]["meioDeDivulgacao"] = $dadosBasicosDoTrabalho['@attributes']["MEIO-DE-DIVULGACAO"];
             $doc["doc"]["url"] = $dadosBasicosDoTrabalho['@attributes']["HOME-PAGE-DO-TRABALHO"];
-            $doc["doc"]["Lattes"]["flagRelevancia"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-RELEVANCIA"];
+            $doc["doc"]["lattes"]["flagRelevancia"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-RELEVANCIA"];
             $doc["doc"]["doi"] = $dadosBasicosDoTrabalho['@attributes']["DOI"];
             $doc["doc"]["alternateName"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-DO-SOFTWARE-INGLES"];
-            $doc["doc"]["Lattes"]["flagDivulgacaoCientifica"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-DIVULGACAO-CIENTIFICA"];
-            $doc["doc"]["Lattes"]["flagPotencialInovacao"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-POTENCIAL-INOVACAO"];
+            $doc["doc"]["lattes"]["flagDivulgacaoCientifica"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-DIVULGACAO-CIENTIFICA"];
+            $doc["doc"]["lattes"]["flagPotencialInovacao"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-POTENCIAL-INOVACAO"];
 
-            $doc["doc"]["Lattes"]["finalidade"] = $detalhamentoDoTrabalho['@attributes']["FINALIDADE"];
-            $doc["doc"]["Lattes"]["plataforma"] = $detalhamentoDoTrabalho['@attributes']["PLATAFORMA"];
-            $doc["doc"]["Lattes"]["ambiente"] = $detalhamentoDoTrabalho['@attributes']["AMBIENTE"];
-            $doc["doc"]["Lattes"]["disponibilidade"] = $detalhamentoDoTrabalho['@attributes']["DISPONIBILIDADE"];            
-            $doc["doc"]["Lattes"]["instituicaoFinanciadora"] = $detalhamentoDoTrabalho['@attributes']["INSTITUICAO-FINANCIADORA"];
+            $doc["doc"]["lattes"]["finalidade"] = $detalhamentoDoTrabalho['@attributes']["FINALIDADE"];
+            $doc["doc"]["lattes"]["plataforma"] = $detalhamentoDoTrabalho['@attributes']["PLATAFORMA"];
+            $doc["doc"]["lattes"]["ambiente"] = $detalhamentoDoTrabalho['@attributes']["AMBIENTE"];
+            $doc["doc"]["lattes"]["disponibilidade"] = $detalhamentoDoTrabalho['@attributes']["DISPONIBILIDADE"];            
+            $doc["doc"]["lattes"]["instituicaoFinanciadora"] = $detalhamentoDoTrabalho['@attributes']["INSTITUICAO-FINANCIADORA"];
 
             if (!empty($obra["AUTORES"])) {
                 $array_result = processaAutoresLattes($obra["AUTORES"]);
@@ -1277,7 +1277,7 @@ if (isset($curriculo->{'PRODUCAO-TECNICA'})) {
             } else {
                 $sha_array[] = $doc["doc"]["lattes_ids"][0];
                 $sha_array[] = $doc["doc"]["tipo"];                
-                $sha_array[] = $doc["doc"]["Lattes"]["natureza"];
+                $sha_array[] = $doc["doc"]["lattes"]["natureza"];
                 $sha_array[] = $doc["doc"]["name"];
                 $sha_array[] = $doc["doc"]["datePublished"];
                 $sha_array[] = $doc["doc"]["url"];
@@ -1318,24 +1318,24 @@ if (isset($curriculo->{'PRODUCAO-TECNICA'})) {
             $doc["doc"]["source"] = "Base Lattes";
             $doc["doc"]["lattes_ids"][] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
             $doc["doc"]["tag"][] = $_REQUEST['tag'];
-            $doc["doc"]["Instituicao"]["unidade"][] = $_REQUEST['unidade'];
-            $doc["doc"]["Instituicao"]["departamento"][] = $_REQUEST['departamento'];
-            $doc["doc"]["Instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
+            $doc["doc"]["instituicao"]["unidade"][] = $_REQUEST['unidade'];
+            $doc["doc"]["instituicao"]["departamento"][] = $_REQUEST['departamento'];
+            $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
             if (isset($_REQUEST['tipvin'])) {
-                $doc["doc"]["Instituicao"]["tipvin"] = $_REQUEST['tipvin'];
+                $doc["doc"]["instituicao"]["tipvin"] = $_REQUEST['tipvin'];
             }             
             $doc["doc"]["name"] = $dadosBasicosDoTrabalho['@attributes']["TITULO"];
             $doc["doc"]["datePublished"] = $dadosBasicosDoTrabalho['@attributes']["ANO-DESENVOLVIMENTO"];
             $doc["doc"]["country"] = $dadosBasicosDoTrabalho['@attributes']["PAIS"];
-            $doc["doc"]["Lattes"]["meioDeDivulgacao"] = $dadosBasicosDoTrabalho['@attributes']["MEIO-DE-DIVULGACAO"];
+            $doc["doc"]["lattes"]["meioDeDivulgacao"] = $dadosBasicosDoTrabalho['@attributes']["MEIO-DE-DIVULGACAO"];
             $doc["doc"]["url"] = $dadosBasicosDoTrabalho['@attributes']["HOME-PAGE"];
-            $doc["doc"]["Lattes"]["flagRelevancia"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-RELEVANCIA"];
+            $doc["doc"]["lattes"]["flagRelevancia"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-RELEVANCIA"];
             $doc["doc"]["alternateName"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-INGLES"];
-            $doc["doc"]["Lattes"]["flagPotencialInovacao"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-POTENCIAL-INOVACAO"];
+            $doc["doc"]["lattes"]["flagPotencialInovacao"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-POTENCIAL-INOVACAO"];
 
-            $doc["doc"]["Lattes"]["finalidade"] = $detalhamentoDoTrabalho['@attributes']["FINALIDADE"];
-            $doc["doc"]["Lattes"]["instituicaoFinanciadora"] = $detalhamentoDoTrabalho['@attributes']["INSTITUICAO-FINANCIADORA"];
-            $doc["doc"]["Lattes"]["categoria"] = $detalhamentoDoTrabalho['@attributes']["CATEGORIA"];
+            $doc["doc"]["lattes"]["finalidade"] = $detalhamentoDoTrabalho['@attributes']["FINALIDADE"];
+            $doc["doc"]["lattes"]["instituicaoFinanciadora"] = $detalhamentoDoTrabalho['@attributes']["INSTITUICAO-FINANCIADORA"];
+            $doc["doc"]["lattes"]["categoria"] = $detalhamentoDoTrabalho['@attributes']["CATEGORIA"];
             
 
             if (!empty($obra["AUTORES"])) {
@@ -1367,7 +1367,7 @@ if (isset($curriculo->{'PRODUCAO-TECNICA'})) {
             } else {
                 $sha_array[] = $doc["doc"]["lattes_ids"][0];
                 $sha_array[] = $doc["doc"]["tipo"];                
-                $sha_array[] = $doc["doc"]["Lattes"]["natureza"];
+                $sha_array[] = $doc["doc"]["lattes"]["natureza"];
                 $sha_array[] = $doc["doc"]["name"];
                 $sha_array[] = $doc["doc"]["datePublished"];
                 $sha_array[] = $doc["doc"]["url"];
@@ -1416,34 +1416,34 @@ if (isset($curriculo->{'OUTRA-PRODUCAO'})) {
                 $doc["doc"]["source"] = "Base Lattes";
                 $doc["doc"]["lattes_ids"][] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
                 $doc["doc"]["tag"][] = $_REQUEST['tag'];
-                $doc["doc"]["Instituicao"]["unidade"][] = $_REQUEST['unidade'];
-                $doc["doc"]["Instituicao"]["departamento"][] = $_REQUEST['departamento'];
-                $doc["doc"]["Instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
+                $doc["doc"]["instituicao"]["unidade"][] = $_REQUEST['unidade'];
+                $doc["doc"]["instituicao"]["departamento"][] = $_REQUEST['departamento'];
+                $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
                 if (isset($_REQUEST['tipvin'])) {
-                    $doc["doc"]["Instituicao"]["tipvin"] = $_REQUEST['tipvin'];
+                    $doc["doc"]["instituicao"]["tipvin"] = $_REQUEST['tipvin'];
                 }      
-                $doc["doc"]["Lattes"]["natureza"] = $dadosBasicosDoTrabalho['@attributes']['NATUREZA'];        
+                $doc["doc"]["lattes"]["natureza"] = $dadosBasicosDoTrabalho['@attributes']['NATUREZA'];        
                 $doc["doc"]["name"] = $dadosBasicosDoTrabalho['@attributes']["TITULO"];
                 $doc["doc"]["datePublished"] = $dadosBasicosDoTrabalho['@attributes']["ANO"];
                 $doc["doc"]["country"] = $dadosBasicosDoTrabalho['@attributes']["PAIS"];
                 $doc["doc"]["language"] = $dadosBasicosDoTrabalho['@attributes']["IDIOMA"];
-                $doc["doc"]["Lattes"]["meioDeDivulgacao"] = $dadosBasicosDoTrabalho['@attributes']["MEIO-DE-DIVULGACAO"];
+                $doc["doc"]["lattes"]["meioDeDivulgacao"] = $dadosBasicosDoTrabalho['@attributes']["MEIO-DE-DIVULGACAO"];
                 $doc["doc"]["url"] = $dadosBasicosDoTrabalho['@attributes']["HOME-PAGE"];
-                $doc["doc"]["Lattes"]["flagRelevancia"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-RELEVANCIA"];
+                $doc["doc"]["lattes"]["flagRelevancia"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-RELEVANCIA"];
                 $doc["doc"]["doi"] = $dadosBasicosDoTrabalho['@attributes']["DOI"];
                 $doc["doc"]["alternateName"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-INGLES"];
 
-                $doc["doc"]["Lattes"]["tipoDeEvento"] = $detalhamentoDoTrabalho['@attributes']["TIPO-DE-EVENTO"];
-                $doc["doc"]["Lattes"]["atividadeDosAutores"] = $detalhamentoDoTrabalho['@attributes']["ATIVIDADE-DOS-AUTORES"];
-                $doc["doc"]["Lattes"]["flagIneditismoDaObra"] = $detalhamentoDoTrabalho['@attributes']["FLAG-INEDITISMO-DA-OBRA"];
-                $doc["doc"]["Lattes"]["premiacao"] = $detalhamentoDoTrabalho['@attributes']["PREMIACAO"];            
-                $doc["doc"]["Lattes"]["obraDeReferencia"] = $detalhamentoDoTrabalho['@attributes']["OBRA-DE-REFERENCIA"];
-                $doc["doc"]["Lattes"]["autorDaObraDeReferencia"] = $detalhamentoDoTrabalho['@attributes']["AUTOR-DA-OBRA-DE-REFERENCIA"];
-                $doc["doc"]["Lattes"]["anoDaObraDeReferencia"] = $detalhamentoDoTrabalho['@attributes']["ANO-DA-OBRA-DE-REFERENCIA"];    
-                $doc["doc"]["Lattes"]["duracaoEmMinutos"] = $detalhamentoDoTrabalho['@attributes']["DURACAO-EM-MINUTOS"]; 
-                $doc["doc"]["Lattes"]["instituicaoPromotoraDoEvento"] = $detalhamentoDoTrabalho['@attributes']["INSTITUICAO-PROMOTORA-DO-EVENTO"]; 
-                $doc["doc"]["Lattes"]["localDoEvento"] = $detalhamentoDoTrabalho['@attributes']["LOCAL-DO-EVENTO"]; 
-                $doc["doc"]["Lattes"]["cidade"] = $detalhamentoDoTrabalho['@attributes']["CIDADE"]; 
+                $doc["doc"]["lattes"]["tipoDeEvento"] = $detalhamentoDoTrabalho['@attributes']["TIPO-DE-EVENTO"];
+                $doc["doc"]["lattes"]["atividadeDosAutores"] = $detalhamentoDoTrabalho['@attributes']["ATIVIDADE-DOS-AUTORES"];
+                $doc["doc"]["lattes"]["flagIneditismoDaObra"] = $detalhamentoDoTrabalho['@attributes']["FLAG-INEDITISMO-DA-OBRA"];
+                $doc["doc"]["lattes"]["premiacao"] = $detalhamentoDoTrabalho['@attributes']["PREMIACAO"];            
+                $doc["doc"]["lattes"]["obraDeReferencia"] = $detalhamentoDoTrabalho['@attributes']["OBRA-DE-REFERENCIA"];
+                $doc["doc"]["lattes"]["autorDaObraDeReferencia"] = $detalhamentoDoTrabalho['@attributes']["AUTOR-DA-OBRA-DE-REFERENCIA"];
+                $doc["doc"]["lattes"]["anoDaObraDeReferencia"] = $detalhamentoDoTrabalho['@attributes']["ANO-DA-OBRA-DE-REFERENCIA"];    
+                $doc["doc"]["lattes"]["duracaoEmMinutos"] = $detalhamentoDoTrabalho['@attributes']["DURACAO-EM-MINUTOS"]; 
+                $doc["doc"]["lattes"]["instituicaoPromotoraDoEvento"] = $detalhamentoDoTrabalho['@attributes']["INSTITUICAO-PROMOTORA-DO-EVENTO"]; 
+                $doc["doc"]["lattes"]["localDoEvento"] = $detalhamentoDoTrabalho['@attributes']["LOCAL-DO-EVENTO"]; 
+                $doc["doc"]["lattes"]["cidade"] = $detalhamentoDoTrabalho['@attributes']["CIDADE"]; 
 
 
                 if (!empty($obra["AUTORES"])) {
@@ -1475,7 +1475,7 @@ if (isset($curriculo->{'OUTRA-PRODUCAO'})) {
                 } else {
                     $sha_array[] = $doc["doc"]["lattes_ids"][0];
                     $sha_array[] = $doc["doc"]["tipo"];                    
-                    $sha_array[] = $doc["doc"]["Lattes"]["natureza"];
+                    $sha_array[] = $doc["doc"]["lattes"]["natureza"];
                     $sha_array[] = $doc["doc"]["name"];
                     $sha_array[] = $doc["doc"]["datePublished"];
                     $sha_array[] = $doc["doc"]["url"];
