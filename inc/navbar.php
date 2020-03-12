@@ -10,6 +10,21 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="index.php">Início <span class="sr-only">(atual)</span></a>
                 </li>
+                <?php if (isset($dashboard_lattes_producoes)): ?>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="dashboard.php?dashboard=lattes_producoes">Produções - Lattes</a>
+                    </li>
+                <?php endif ?>
+                <?php if (isset($dashboard_lattes_cv)): ?>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="dashboard.php?dashboard=lattes_cv">Currículos - Lattes</a>
+                    </li>
+                <?php endif ?>
+                <?php if (isset($dashboard_source)): ?>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="dashboard.php?dashboard=source">Fonte</a>
+                    </li>
+                <?php endif ?>                                                          
             </ul>
             <form class="form-inline my-2 my-lg-0" action="result.php">
                 <input class="form-control mr-sm-2" type="text" placeholder="Pesquisar" aria-label="Pesquisar" name="search">
