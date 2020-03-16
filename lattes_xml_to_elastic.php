@@ -150,7 +150,19 @@ if (isset($curriculo->{'DADOS-GERAIS'}->attributes()->{'SIGLA-PAIS-NACIONALIDADE
 }
 if (isset($curriculo->{'DADOS-GERAIS'}->attributes()->{'PAIS-DE-NACIONALIDADE'})) {
     $doc_curriculo_array["doc"]["pais_de_nacionalidade"] = (string)$curriculo->{'DADOS-GERAIS'}->attributes()->{'PAIS-DE-NACIONALIDADE'};
-}                 
+}
+if (isset($curriculo->{'DADOS-GERAIS'}->attributes()->{'UF-NASCIMENTO'})) {
+    $doc_curriculo_array["doc"]["uf_nascimento"] = (string)$curriculo->{'DADOS-GERAIS'}->attributes()->{'UF-NASCIMENTO'};
+}
+if (isset($curriculo->{'DADOS-GERAIS'}->attributes()->{'CIDADE-NASCIMENTO'})) {
+    $doc_curriculo_array["doc"]["cidade_nascimento"] = (string)$curriculo->{'DADOS-GERAIS'}->attributes()->{'CIDADE-NASCIMENTO'};
+}
+if (isset($curriculo->{'DADOS-GERAIS'}->attributes()->{'DATA-FALECIMENTO'})) {
+    $doc_curriculo_array["doc"]["data_falecimento"] = (string)$curriculo->{'DADOS-GERAIS'}->attributes()->{'DATA-FALECIMENTO'};
+}
+if (isset($curriculo->{'DADOS-GERAIS'}->attributes()->{'ORCID-ID'})) {
+    $doc_curriculo_array["doc"]["orcid_id"] = (string)$curriculo->{'DADOS-GERAIS'}->attributes()->{'ORCID-ID'};
+}                      
 if (isset($curriculo->{'DADOS-GERAIS'}->{'RESUMO-CV'})) {
     $doc_curriculo_array["doc"]["resumo_cv"]["texto_resumo_cv_rh"] = str_replace('"', '\"', (string)$curriculo->{'DADOS-GERAIS'}->{'RESUMO-CV'}->attributes()->{'TEXTO-RESUMO-CV-RH'});
     if (isset($cursor["docs"][0]["dadosGerais"]["resumoCv"]["textoResumoCvRhEn"])) {
