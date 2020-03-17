@@ -3,21 +3,6 @@
 require 'inc/config.php';
 require 'inc/functions.php';
 
-if (!isset($_POST['numfuncional'])) {
-    $_POST['numfuncional'] = null;
-}            
-if (!isset($_GET['unidade'])) {
-    $_POST['unidade'] = null;
-}
-if (!isset($_GET['tag'])) {
-    $_POST['tag'] = null;
-}
-if (!empty($_FILES['file'])) {
-    $curriculo = simplexml_load_file($_FILES['file']['tmp_name']);
-} else {
-    echo "Não foi enviado um arquivo XML";
-}
-
 function processaAutoresLattes($autores_array) 
 {
     $i = 0;
@@ -120,6 +105,42 @@ function processaAreaDoConhecimentoFormacaoLattes($areas_do_conhecimento)
     return $array_result;
     unset($array_result);     
 }  
+
+if (!isset($_POST['numfuncional'])) {
+    $_POST['numfuncional'] = null;
+}            
+if (!isset($_GET['unidade'])) {
+    $_POST['unidade'] = null;
+}
+if (!isset($_GET['tag'])) {
+    $_POST['tag'] = null;
+}
+if ($_FILES['file']['size'] != 0) {
+
+    $curriculo = simplexml_load_file($_FILES['file']['tmp_name']);
+
+} else {
+    echo "Não foi enviado um arquivo XML";    
+    $query["doc"]["unidade"][] = $_REQUEST['unidade'];
+    $query["doc"]["departamento"][] = $_REQUEST['departamento'];
+    $query["doc"]["tag"] = $_REQUEST['tag'];
+    $query["doc"]["tipvin"] = $_REQUEST['tipvin'];
+
+    if (isset($_REQUEST['nome_completo'])) {
+
+        $query["doc"]["lattesID"] = "Lattes ID não encontrado";
+        $query["doc"]["nome_completo"] = $_REQUEST['nome_completo'];
+        $query["doc_as_upsert"] = true;    
+        $id = uniqid(rand(), true);
+        $resultado_curriculo = Elasticsearch::update($id, $query, $index_cv);
+        print_r($resultado_curriculo);
+
+        unset($query);
+
+        exit();
+
+    }
+}
 
 $doc_curriculo_array = [];
 $doc_curriculo_array["doc"]["source"] = "Base Lattes";
@@ -506,12 +527,12 @@ if (isset($curriculo->{'DADOS-GERAIS'}->{'FORMACAO-ACADEMICA-TITULACAO'}->{'LIVR
 //             $i++;
 //         }
 //     }
-            
-    $doc_curriculo_array["doc_as_upsert"] = true;
-    
-    $identificador = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};                
+
+    $identificador = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
+    $doc_curriculo_array["doc"]["lattesID"] = $identificador;            
+    $doc_curriculo_array["doc_as_upsert"] = true;    
+
     $resultado_curriculo = Elasticsearch::update($identificador, $doc_curriculo_array, $index_cv);
-    //print_r($resultado_curriculo);
 
 //Parser de Trabalhos-em-Eventos
 
