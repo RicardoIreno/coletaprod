@@ -12,7 +12,7 @@ if (!isset($_GET['unidade'])) {
 if (!isset($_GET['tag'])) {
     $_POST['tag'] = null;
 }
-if (isset($_FILES['file'])) {
+if (!empty($_FILES['file'])) {
     $curriculo = simplexml_load_file($_FILES['file']['tmp_name']);
 } else {
     echo "Não foi enviado um arquivo XML";
