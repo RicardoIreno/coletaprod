@@ -3,7 +3,6 @@
 require 'inc/config.php';
 require 'inc/functions.php';
 
-
 if (!isset($_POST['numfuncional'])) {
     $_POST['numfuncional'] = null;
 }            
