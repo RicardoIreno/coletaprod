@@ -546,7 +546,41 @@ class paginaInicial {
             echo '<li class="list-group-item"><a href="result.php?filter[]=type:&quot;Work&quot;&filter[]='.$field.':&quot;'.$facets['key'].'&quot;">'.$facets['key'].' ('.number_format($facets['doc_count'],0,',','.').')</a></li>';
         }   
 
-    }           
+    }
+    
+    static function possui_lattes() 
+    {
+        global $index_cv;
+        $body_all = '
+        {
+            "query": {
+                "match_all": {}
+            }
+        }        
+        ';
+        $size = 0;        
+        $response_all = Elasticsearch::search(null, $size, $body_all, $index_cv);
+        $total = number_format($response_all['hits']['total']['value'], 0, ',', '.');
+
+        $body = '
+            {
+                "query": {
+                    "bool": {
+                        "must_not": {
+                            "exists": {
+                                "field": "lattesID"
+                            }
+                        }
+                    }
+                }
+            }         
+        ';    
+        $size = 0;        
+        $response = Elasticsearch::search(null, $size, $body, $index_cv);
+        $total_dont_have_lattes = number_format($response['hits']['total']['value'], 0, ',', '.');
+
+        return ($total_dont_have_lattes / $total) * 100;
+    }     
     
 }
 
