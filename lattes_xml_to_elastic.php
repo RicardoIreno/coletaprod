@@ -121,7 +121,7 @@ if ($_FILES['file']['size'] != 0) {
 
 } else {
     echo "Não foi enviado um arquivo XML";    
-    $query["doc"]["unidade"][] = explode("|", $_REQUEST['unidade']);
+    $query["doc"]["unidade"] = explode("|", $_REQUEST['unidade']);
     $query["doc"]["departamento"][] = explode("|", $_REQUEST['departamento']);
     $query["doc"]["tag"] = $_REQUEST['tag'];
     $query["doc"]["tipvin"] = $_REQUEST['tipvin'];
@@ -146,7 +146,7 @@ $doc_curriculo_array = [];
 $doc_curriculo_array["doc"]["source"] = "Base Lattes";
 $doc_curriculo_array["doc"]["type"] = "Curriculum";
 $doc_curriculo_array["doc"]["tag"] = $_REQUEST['tag'];
-$doc_curriculo_array["doc"]["unidade"][] = explode("|", $_REQUEST['unidade']);
+$doc_curriculo_array["doc"]["unidade"] = explode("|", $_REQUEST['unidade']);
 $doc_curriculo_array["doc"]["departamento"][] = explode("|", $_REQUEST['departamento']);
 $doc_curriculo_array["doc"]["numfuncional"] = $_REQUEST['numfuncional'];
 if (isset($_REQUEST['tipvin'])) {
