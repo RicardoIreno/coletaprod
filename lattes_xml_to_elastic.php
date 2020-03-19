@@ -152,6 +152,30 @@ $doc_curriculo_array["doc"]["numfuncional"] = $_REQUEST['numfuncional'];
 if (isset($_REQUEST['tipvin'])) {
     $doc_curriculo_array["doc"]["tipvin"] = $_REQUEST['tipvin'];
 }
+if (isset($_REQUEST['divisao'])) {
+    $doc_curriculo_array["doc"]["divisao"] = $_REQUEST['divisao'];
+}
+if (isset($_REQUEST['secao'])) {
+    $doc_curriculo_array['doc']['secao'] = $_REQUEST['secao'];
+}
+if (isset($_REQUEST['ppg_nome'])) {
+    $doc_curriculo_array['doc']['ppg_nome'] = $_REQUEST['ppg_nome'];
+}
+if (isset($_REQUEST['genero'])) {
+    $doc_curriculo_array['doc']['genero'] = $_REQUEST['genero'];
+}
+if (isset($_REQUEST['desc_nivel'])) {
+    $doc_curriculo_array['doc']['desc_nivel'] = $_REQUEST['desc_nivel'];
+}
+if (isset($_REQUEST['desc_curso'])) {
+    $doc_curriculo_array['doc']['desc_curso'] = $_REQUEST['desc_curso'];
+}
+if (isset($_REQUEST['campus'])) {
+    $doc_curriculo_array['doc']['campus'] = $_REQUEST['campus'];
+}
+if (isset($_REQUEST['desc_gestora'])) {
+    $doc_curriculo_array['doc']['desc_gestora'] = $_REQUEST['desc_gestora'];
+}
 print_r($curriculo->attributes()->{'DATA-ATUALIZACAO'});            
 $doc_curriculo_array["doc"]["data_atualizacao"] = substr((string)$curriculo->attributes()->{'DATA-ATUALIZACAO'}, 4, 4)."-".substr((string)$curriculo->attributes()->{'DATA-ATUALIZACAO'}, 2, 2);
 echo "<br/>";
