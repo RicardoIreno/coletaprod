@@ -102,7 +102,15 @@
                             <input type="text" placeholder="Núm. funcional" class="form-control" name="numfuncional">                            
                             <input type="text" placeholder="Unidade" class="form-control" name="unidade">
                             <input type="text" placeholder="Departamento" class="form-control" name="departamento">
+                            <input type="text" placeholder="Divisão" class="form-control" name="divisao">
+                            <input type="text" placeholder="Seção" class="form-control" name="secao">
+                            <input type="text" placeholder="Nome do PPG" class="form-control" name="ppg_nome">
                             <input type="text" placeholder="Tipo de vínculo" class="form-control" name="tipvin">
+                            <input type="text" placeholder="Genero" class="form-control" name="genero">
+                            <input type="text" placeholder="Nível" class="form-control" name="desc_nivel">
+                            <input type="text" placeholder="Curso" class="form-control" name="desc_curso">
+                            <input type="text" placeholder="Campus" class="form-control" name="campus">
+                            <input type="text" placeholder="Gestora" class="form-control" name="desc_gestora">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="submit">Incluir</button>
                             </div>    
