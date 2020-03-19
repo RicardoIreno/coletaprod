@@ -11,7 +11,7 @@ if (file_exists('elasticfind/elasticfind.php')) {
     include '../../elasticfind/elasticfind.php';
 }
 
-/* Connect to Elasticsearch */
+/* Connect to Elasticsearch - Index */
 try {
     $client = \Elasticsearch\ClientBuilder::create()->setHosts($hosts)->build(); 
     //print("<pre>".print_r($client,true)."</pre>");
@@ -27,7 +27,7 @@ if (isset($testIndex) && $testIndex == false) {
     //Elasticsearch::mappingsIndex($index, $client);
 }
 
-/* Connect to Elasticsearch */
+/* Connect to Elasticsearch | Index CV */
 try {
     $client = \Elasticsearch\ClientBuilder::create()->setHosts($hosts)->build();
     //print("<pre>".print_r($client,true)."</pre>");
