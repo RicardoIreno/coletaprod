@@ -552,6 +552,20 @@ if (isset($curriculo->{'DADOS-GERAIS'}->{'FORMACAO-ACADEMICA-TITULACAO'}->{'LIVR
 //         }
 //     }
 
+    // Premios - Títulos
+        
+    if (isset($curriculo->{'DADOS-GERAIS'}->{'PREMIOS-TITULOS'})) {
+        foreach ($curriculo->{'DADOS-GERAIS'}->{'PREMIOS-TITULOS'}->{'PREMIO-TITULO'} as $premioTitulo) {
+            $premioTitulo = get_object_vars($premioTitulo);
+            $premioTitulo_array["nomeDoPremioOuTitulo"]=$premioTitulo['@attributes']["NOME-DO-PREMIO-OU-TITULO"];
+            $premioTitulo_array["nomeDaEntidadePromotora"]=$premioTitulo['@attributes']["NOME-DA-ENTIDADE-PROMOTORA"];
+            $premioTitulo_array["anoDaPremiacao"]=$premioTitulo['@attributes']["ANO-DA-PREMIACAO"];
+            $premioTitulo_array["nomeDoPremioOuTituloIngles"]=$premioTitulo['@attributes']["NOME-DO-PREMIO-OU-TITULO-INGLES"];
+            $doc_curriculo_array["doc"]["premios_titulos"][] = $premioTitulo_array;
+            unset($premioTitulo_array);
+        }
+    }
+
     $identificador = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
     $doc_curriculo_array["doc"]["lattesID"] = $identificador;            
     $doc_curriculo_array["doc_as_upsert"] = true;    
