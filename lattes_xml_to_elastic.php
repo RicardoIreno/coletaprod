@@ -532,62 +532,44 @@ if (isset($curriculo->{'DADOS-GERAIS'}->{'FORMACAO-ACADEMICA-TITULACAO'}->{'LIVR
 }
              
                 
-//     // Vinculos profissionais
+
+
+// Idiomas
     
-//     if ($cursor["docs"][0]["dadosGerais"]["atuacoesProfissionais"]) {
-//         $i = 0;
-//         foreach ($cursor["docs"][0]["dadosGerais"]["atuacoesProfissionais"]["atuacaoProfissional"] as $atuacao_profissional) {
-//             $doc_curriculo_array["doc"]["atuacao_profissional"][$i]["codigoInstituicao"] = $atuacao_profissional["codigoInstituicao"];
-//             $doc_curriculo_array["doc"]["atuacao_profissional"][$i]["nomeInstituicao"] = $atuacao_profissional["nomeInstituicao"];
-//             foreach ($atuacao_profissional["vinculos"] as $vinculos) {
-//                 $vinculos_campos = ["tipoDeVinculo","enquadramentoFuncional","cargaHorariaSemanal","flagDedicacaoExclusiva","mesInicio","anoInicio","mesFim","anoFim","flagVinculoEmpregaticio","outroEnquadramentoFuncionalInformado","outroVinculoInformado"];
-//                 foreach ($vinculos_campos as $campos) {
-//                     if (!empty($vinculos[$campos])) {
-//                         $doc_curriculo_array["doc"]["atuacao_profissional"][$i]["vinculos"][$campos] = $vinculos[$campos];
-//                     }
-//                 }
-
-//             }
-//             $i++;
-//         }
-//     }
-
-    // Idiomas
-        
-    if (isset($curriculo->{'DADOS-GERAIS'}->{'IDIOMAS'})) {
-        foreach ($curriculo->{'DADOS-GERAIS'}->{'IDIOMAS'}->{'IDIOMA'} as $idioma) {
-            $idioma = get_object_vars($idioma);
-            $idioma_array["idioma"]=$idioma['@attributes']["IDIOMA"];
-            $idioma_array["descricaoDoIdioma"]=$idioma['@attributes']["DESCRICAO-DO-IDIOMA"];
-            $idioma_array["proficienciaDeLeitura"]=$idioma['@attributes']["PROFICIENCIA-DE-LEITURA"];
-            $idioma_array["proficienciaDeFala"]=$idioma['@attributes']["PROFICIENCIA-DE-FALA"];
-            $idioma_array["proficienciaDeFala"]=$idioma['@attributes']["PROFICIENCIA-DE-FALA"];
-            $idioma_array["proficienciaDeEscrita"]=$idioma['@attributes']["PROFICIENCIA-DE-ESCRITA"];
-            $idioma_array["proficienciaDeCompreensao"]=$idioma['@attributes']["PROFICIENCIA-DE-COMPREENSAO"];
-            $doc_curriculo_array["doc"]["idiomas"][] = $idioma_array;
-            unset($idioma_array);
-        }
+if (isset($curriculo->{'DADOS-GERAIS'}->{'IDIOMAS'})) {
+    foreach ($curriculo->{'DADOS-GERAIS'}->{'IDIOMAS'}->{'IDIOMA'} as $idioma) {
+        $idioma = get_object_vars($idioma);
+        $idioma_array["idioma"]=$idioma['@attributes']["IDIOMA"];
+        $idioma_array["descricaoDoIdioma"]=$idioma['@attributes']["DESCRICAO-DO-IDIOMA"];
+        $idioma_array["proficienciaDeLeitura"]=$idioma['@attributes']["PROFICIENCIA-DE-LEITURA"];
+        $idioma_array["proficienciaDeFala"]=$idioma['@attributes']["PROFICIENCIA-DE-FALA"];
+        $idioma_array["proficienciaDeFala"]=$idioma['@attributes']["PROFICIENCIA-DE-FALA"];
+        $idioma_array["proficienciaDeEscrita"]=$idioma['@attributes']["PROFICIENCIA-DE-ESCRITA"];
+        $idioma_array["proficienciaDeCompreensao"]=$idioma['@attributes']["PROFICIENCIA-DE-COMPREENSAO"];
+        $doc_curriculo_array["doc"]["idiomas"][] = $idioma_array;
+        unset($idioma_array);
     }
+}
 
-    // Premios - Títulos
-        
-    if (isset($curriculo->{'DADOS-GERAIS'}->{'PREMIOS-TITULOS'})) {
-        foreach ($curriculo->{'DADOS-GERAIS'}->{'PREMIOS-TITULOS'}->{'PREMIO-TITULO'} as $premioTitulo) {
-            $premioTitulo = get_object_vars($premioTitulo);
-            $premioTitulo_array["nomeDoPremioOuTitulo"]=$premioTitulo['@attributes']["NOME-DO-PREMIO-OU-TITULO"];
-            $premioTitulo_array["nomeDaEntidadePromotora"]=$premioTitulo['@attributes']["NOME-DA-ENTIDADE-PROMOTORA"];
-            $premioTitulo_array["anoDaPremiacao"]=$premioTitulo['@attributes']["ANO-DA-PREMIACAO"];
-            $premioTitulo_array["nomeDoPremioOuTituloIngles"]=$premioTitulo['@attributes']["NOME-DO-PREMIO-OU-TITULO-INGLES"];
-            $doc_curriculo_array["doc"]["premios_titulos"][] = $premioTitulo_array;
-            unset($premioTitulo_array);
-        }
+// Premios - Títulos
+    
+if (isset($curriculo->{'DADOS-GERAIS'}->{'PREMIOS-TITULOS'})) {
+    foreach ($curriculo->{'DADOS-GERAIS'}->{'PREMIOS-TITULOS'}->{'PREMIO-TITULO'} as $premioTitulo) {
+        $premioTitulo = get_object_vars($premioTitulo);
+        $premioTitulo_array["nomeDoPremioOuTitulo"]=$premioTitulo['@attributes']["NOME-DO-PREMIO-OU-TITULO"];
+        $premioTitulo_array["nomeDaEntidadePromotora"]=$premioTitulo['@attributes']["NOME-DA-ENTIDADE-PROMOTORA"];
+        $premioTitulo_array["anoDaPremiacao"]=$premioTitulo['@attributes']["ANO-DA-PREMIACAO"];
+        $premioTitulo_array["nomeDoPremioOuTituloIngles"]=$premioTitulo['@attributes']["NOME-DO-PREMIO-OU-TITULO-INGLES"];
+        $doc_curriculo_array["doc"]["premios_titulos"][] = $premioTitulo_array;
+        unset($premioTitulo_array);
     }
+}
 
-    $identificador = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
-    $doc_curriculo_array["doc"]["lattesID"] = $identificador;            
-    $doc_curriculo_array["doc_as_upsert"] = true;    
+$identificador = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
+$doc_curriculo_array["doc"]["lattesID"] = $identificador;            
+$doc_curriculo_array["doc_as_upsert"] = true;    
 
-    $resultado_curriculo = Elasticsearch::update($identificador, $doc_curriculo_array, $index_cv);
+$resultado_curriculo = Elasticsearch::update($identificador, $doc_curriculo_array, $index_cv);
 
 //Parser de Trabalhos-em-Eventos
 
