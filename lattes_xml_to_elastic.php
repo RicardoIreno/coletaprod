@@ -552,6 +552,23 @@ if (isset($curriculo->{'DADOS-GERAIS'}->{'FORMACAO-ACADEMICA-TITULACAO'}->{'LIVR
 //         }
 //     }
 
+    // Idiomas
+        
+    if (isset($curriculo->{'DADOS-GERAIS'}->{'IDIOMAS'})) {
+        foreach ($curriculo->{'DADOS-GERAIS'}->{'IDIOMAS'}->{'IDIOMA'} as $idioma) {
+            $idioma = get_object_vars($idioma);
+            $idioma_array["idioma"]=$idioma['@attributes']["IDIOMA"];
+            $idioma_array["descricaoDoIdioma"]=$idioma['@attributes']["DESCRICAO-DO-IDIOMA"];
+            $idioma_array["proficienciaDeLeitura"]=$idioma['@attributes']["PROFICIENCIA-DE-LEITURA"];
+            $idioma_array["proficienciaDeFala"]=$idioma['@attributes']["PROFICIENCIA-DE-FALA"];
+            $idioma_array["proficienciaDeFala"]=$idioma['@attributes']["PROFICIENCIA-DE-FALA"];
+            $idioma_array["proficienciaDeEscrita"]=$idioma['@attributes']["PROFICIENCIA-DE-ESCRITA"];
+            $idioma_array["proficienciaDeCompreensao"]=$idioma['@attributes']["PROFICIENCIA-DE-COMPREENSAO"];
+            $doc_curriculo_array["doc"]["idiomas"][] = $idioma_array;
+            unset($idioma_array);
+        }
+    }
+
     // Premios - Títulos
         
     if (isset($curriculo->{'DADOS-GERAIS'}->{'PREMIOS-TITULOS'})) {
