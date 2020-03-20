@@ -6,10 +6,10 @@ require 'inc/config.php';
 require 'inc/functions.php';
 
 $params = [];
-$params["index"] = $index;
+$params["index"] = $index_cv;
 $params["size"] = 2;
 $params["scroll"] = "30s";
-$params["_source"] = ["author", "doi"];
+//$params["_source"] = ["author", "doi"];
 //$params["body"] = $query;
 
 $cursor = $client->search($params);
