@@ -122,7 +122,7 @@ if ($_FILES['file']['size'] != 0) {
 } else {
     echo "Não foi enviado um arquivo XML";    
     $query["doc"]["unidade"] = explode("|", $_REQUEST['unidade']);
-    $query["doc"]["departamento"][] = explode("|", $_REQUEST['departamento']);
+    $query["doc"]["departamento"] = explode("|", $_REQUEST['departamento']);
     $query["doc"]["tag"] = $_REQUEST['tag'];
     $query["doc"]["tipvin"] = $_REQUEST['tipvin'];
 
@@ -147,19 +147,19 @@ $doc_curriculo_array["doc"]["source"] = "Base Lattes";
 $doc_curriculo_array["doc"]["type"] = "Curriculum";
 $doc_curriculo_array["doc"]["tag"] = $_REQUEST['tag'];
 $doc_curriculo_array["doc"]["unidade"] = explode("|", $_REQUEST['unidade']);
-$doc_curriculo_array["doc"]["departamento"][] = explode("|", $_REQUEST['departamento']);
+$doc_curriculo_array["doc"]["departamento"] = explode("|", $_REQUEST['departamento']);
 $doc_curriculo_array["doc"]["numfuncional"] = $_REQUEST['numfuncional'];
 if (isset($_REQUEST['tipvin'])) {
     $doc_curriculo_array["doc"]["tipvin"] = $_REQUEST['tipvin'];
 }
 if (isset($_REQUEST['divisao'])) {
-    $doc_curriculo_array["doc"]["divisao"] = $_REQUEST['divisao'];
+    $doc_curriculo_array["doc"]["divisao"] = explode("|", $_REQUEST['divisao']);
 }
 if (isset($_REQUEST['secao'])) {
-    $doc_curriculo_array['doc']['secao'] = $_REQUEST['secao'];
+    $doc_curriculo_array['doc']['secao'] = explode("|", $_REQUEST['secao']);
 }
 if (isset($_REQUEST['ppg_nome'])) {
-    $doc_curriculo_array['doc']['ppg_nome'] = $_REQUEST['ppg_nome'];
+    $doc_curriculo_array['doc']['ppg_nome'] = explode("|", $_REQUEST['ppg_nome']);
 }
 if (isset($_REQUEST['genero'])) {
     $doc_curriculo_array['doc']['genero'] = $_REQUEST['genero'];
@@ -592,13 +592,13 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TRABALHOS-EM-EVENTOS'})) {
             $doc["doc"]["instituicao"]["tipvin"] = $_REQUEST['tipvin'];
         }
         if (isset($_REQUEST['divisao'])) {
-            $doc["doc"]["divisao"] = $_REQUEST['divisao'];
+            $doc["doc"]["divisao"] = explode("|", $_REQUEST['divisao']);
         }
         if (isset($_REQUEST['secao'])) {
-            $doc['doc']['secao'] = $_REQUEST['secao'];
+            $doc['doc']['secao'] = explode("|", $_REQUEST['secao']);
         }
         if (isset($_REQUEST['ppg_nome'])) {
-            $doc['doc']['ppg_nome'] = $_REQUEST['ppg_nome'];
+            $doc['doc']['ppg_nome'] = explode("|", $_REQUEST['ppg_nome']);
         }
         if (isset($_REQUEST['genero'])) {
             $doc['doc']['genero'] = $_REQUEST['genero'];
@@ -718,13 +718,13 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'ARTIGOS-PUBLICADOS'})) {
             $doc["doc"]["instituicao"]["tipvin"] = $_REQUEST['tipvin'];
         }
         if (isset($_REQUEST['divisao'])) {
-            $doc["doc"]["divisao"] = $_REQUEST['divisao'];
+            $doc["doc"]["divisao"] = explode("|", $_REQUEST['divisao']);
         }
         if (isset($_REQUEST['secao'])) {
-            $doc['doc']['secao'] = $_REQUEST['secao'];
+            $doc['doc']['secao'] = explode("|", $_REQUEST['secao']);
         }
         if (isset($_REQUEST['ppg_nome'])) {
-            $doc['doc']['ppg_nome'] = $_REQUEST['ppg_nome'];
+            $doc['doc']['ppg_nome'] = explode("|", $_REQUEST['ppg_nome']);
         }
         if (isset($_REQUEST['genero'])) {
             $doc['doc']['genero'] = $_REQUEST['genero'];
@@ -845,13 +845,13 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'LIVROS-E-CAPITULOS'})) {
                 $doc["doc"]["instituicao"]["tipvin"] = $_REQUEST['tipvin'];
             }
             if (isset($_REQUEST['divisao'])) {
-                $doc["doc"]["divisao"] = $_REQUEST['divisao'];
+                $doc["doc"]["divisao"] = explode("|", $_REQUEST['divisao']);
             }
             if (isset($_REQUEST['secao'])) {
-                $doc['doc']['secao'] = $_REQUEST['secao'];
+                $doc['doc']['secao'] = explode("|", $_REQUEST['secao']);
             }
             if (isset($_REQUEST['ppg_nome'])) {
-                $doc['doc']['ppg_nome'] = $_REQUEST['ppg_nome'];
+                $doc['doc']['ppg_nome'] = explode("|", $_REQUEST['ppg_nome']);
             }
             if (isset($_REQUEST['genero'])) {
                 $doc['doc']['genero'] = $_REQUEST['genero'];
@@ -970,13 +970,13 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'LIVROS-E-CAPITULOS'})) {
                 $doc["doc"]["instituicao"]["tipvin"] = $_REQUEST['tipvin'];
             }
             if (isset($_REQUEST['divisao'])) {
-                $doc["doc"]["divisao"] = $_REQUEST['divisao'];
+                $doc["doc"]["divisao"] = explode("|", $_REQUEST['divisao']);
             }
             if (isset($_REQUEST['secao'])) {
-                $doc['doc']['secao'] = $_REQUEST['secao'];
+                $doc['doc']['secao'] = explode("|", $_REQUEST['secao']);
             }
             if (isset($_REQUEST['ppg_nome'])) {
-                $doc['doc']['ppg_nome'] = $_REQUEST['ppg_nome'];
+                $doc['doc']['ppg_nome'] = explode("|", $_REQUEST['ppg_nome']);
             }
             if (isset($_REQUEST['genero'])) {
                 $doc['doc']['genero'] = $_REQUEST['genero'];
@@ -1092,13 +1092,13 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TEXTOS-EM-JORNAIS-OU-REVISTA
             $doc["doc"]["instituicao"]["tipvin"] = $_REQUEST['tipvin'];
         }
         if (isset($_REQUEST['divisao'])) {
-            $doc["doc"]["divisao"] = $_REQUEST['divisao'];
+            $doc["doc"]["divisao"] = explode("|", $_REQUEST['divisao']);
         }
         if (isset($_REQUEST['secao'])) {
-            $doc['doc']['secao'] = $_REQUEST['secao'];
+            $doc['doc']['secao'] = explode("|", $_REQUEST['secao']);
         }
         if (isset($_REQUEST['ppg_nome'])) {
-            $doc['doc']['ppg_nome'] = $_REQUEST['ppg_nome'];
+            $doc['doc']['ppg_nome'] = explode("|", $_REQUEST['ppg_nome']);
         }
         if (isset($_REQUEST['genero'])) {
             $doc['doc']['genero'] = $_REQUEST['genero'];
@@ -1219,13 +1219,13 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
                 $doc["doc"]["instituicao"]["tipvin"] = $_REQUEST['tipvin'];
             }
             if (isset($_REQUEST['divisao'])) {
-                $doc["doc"]["divisao"] = $_REQUEST['divisao'];
+                $doc["doc"]["divisao"] = explode("|", $_REQUEST['divisao']);
             }
             if (isset($_REQUEST['secao'])) {
-                $doc['doc']['secao'] = $_REQUEST['secao'];
+                $doc['doc']['secao'] = explode("|", $_REQUEST['secao']);
             }
             if (isset($_REQUEST['ppg_nome'])) {
-                $doc['doc']['ppg_nome'] = $_REQUEST['ppg_nome'];
+                $doc['doc']['ppg_nome'] = explode("|", $_REQUEST['ppg_nome']);
             }
             if (isset($_REQUEST['genero'])) {
                 $doc['doc']['genero'] = $_REQUEST['genero'];
@@ -1337,13 +1337,13 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
                 $doc["doc"]["instituicao"]["tipvin"] = $_REQUEST['tipvin'];
             }
             if (isset($_REQUEST['divisao'])) {
-                $doc["doc"]["divisao"] = $_REQUEST['divisao'];
+                $doc["doc"]["divisao"] = explode("|", $_REQUEST['divisao']);
             }
             if (isset($_REQUEST['secao'])) {
-                $doc['doc']['secao'] = $_REQUEST['secao'];
+                $doc['doc']['secao'] = explode("|", $_REQUEST['secao']);
             }
             if (isset($_REQUEST['ppg_nome'])) {
-                $doc['doc']['ppg_nome'] = $_REQUEST['ppg_nome'];
+                $doc['doc']['ppg_nome'] = explode("|", $_REQUEST['ppg_nome']);
             }
             if (isset($_REQUEST['genero'])) {
                 $doc['doc']['genero'] = $_REQUEST['genero'];
@@ -1466,13 +1466,13 @@ if (isset($curriculo->{'PRODUCAO-TECNICA'})) {
                 $doc["doc"]["instituicao"]["tipvin"] = $_REQUEST['tipvin'];
             }
             if (isset($_REQUEST['divisao'])) {
-                $doc["doc"]["divisao"] = $_REQUEST['divisao'];
+                $doc["doc"]["divisao"] = explode("|", $_REQUEST['divisao']);
             }
             if (isset($_REQUEST['secao'])) {
-                $doc['doc']['secao'] = $_REQUEST['secao'];
+                $doc['doc']['secao'] = explode("|", $_REQUEST['secao']);
             }
             if (isset($_REQUEST['ppg_nome'])) {
-                $doc['doc']['ppg_nome'] = $_REQUEST['ppg_nome'];
+                $doc['doc']['ppg_nome'] = explode("|", $_REQUEST['ppg_nome']);
             }
             if (isset($_REQUEST['genero'])) {
                 $doc['doc']['genero'] = $_REQUEST['genero'];
@@ -1585,13 +1585,13 @@ if (isset($curriculo->{'PRODUCAO-TECNICA'})) {
                 $doc["doc"]["instituicao"]["tipvin"] = $_REQUEST['tipvin'];
             }
             if (isset($_REQUEST['divisao'])) {
-                $doc["doc"]["divisao"] = $_REQUEST['divisao'];
+                $doc["doc"]["divisao"] = explode("|", $_REQUEST['divisao']);
             }
             if (isset($_REQUEST['secao'])) {
-                $doc['doc']['secao'] = $_REQUEST['secao'];
+                $doc['doc']['secao'] = explode("|", $_REQUEST['secao']);
             }
             if (isset($_REQUEST['ppg_nome'])) {
-                $doc['doc']['ppg_nome'] = $_REQUEST['ppg_nome'];
+                $doc['doc']['ppg_nome'] = explode("|", $_REQUEST['ppg_nome']);
             }
             if (isset($_REQUEST['genero'])) {
                 $doc['doc']['genero'] = $_REQUEST['genero'];
@@ -1707,13 +1707,13 @@ if (isset($curriculo->{'OUTRA-PRODUCAO'})) {
                     $doc["doc"]["instituicao"]["tipvin"] = $_REQUEST['tipvin'];
                 }
                 if (isset($_REQUEST['divisao'])) {
-                    $doc["doc"]["divisao"] = $_REQUEST['divisao'];
+                    $doc["doc"]["divisao"] = explode("|", $_REQUEST['divisao']);
                 }
                 if (isset($_REQUEST['secao'])) {
-                    $doc['doc']['secao'] = $_REQUEST['secao'];
+                    $doc['doc']['secao'] = explode("|", $_REQUEST['secao']);
                 }
                 if (isset($_REQUEST['ppg_nome'])) {
-                    $doc['doc']['ppg_nome'] = $_REQUEST['ppg_nome'];
+                    $doc['doc']['ppg_nome'] = explode("|", $_REQUEST['ppg_nome']);
                 }
                 if (isset($_REQUEST['genero'])) {
                     $doc['doc']['genero'] = $_REQUEST['genero'];
