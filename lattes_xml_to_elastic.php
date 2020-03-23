@@ -120,26 +120,54 @@ if ($_FILES['file']['size'] != 0) {
     $curriculo = simplexml_load_file($_FILES['file']['tmp_name']);
 
 } else {
-    echo "Não foi enviado um arquivo XML";    
-    $query["doc"]["unidade"] = explode("|", $_REQUEST['unidade']);
-    $query["doc"]["departamento"] = explode("|", $_REQUEST['departamento']);
-    $query["doc"]["tag"] = $_REQUEST['tag'];
-    $query["doc"]["tipvin"] = $_REQUEST['tipvin'];
-
-    if (isset($_REQUEST['nome_completo'])) {
-
-        $query["doc"]["lattesID"] = "Lattes ID não encontrado";
-        $query["doc"]["nome_completo"] = $_REQUEST['nome_completo'];
-        $query["doc_as_upsert"] = true;    
-        $id = uniqid(rand(), true);
-        $resultado_curriculo = Elasticsearch::update($id, $query, $index_cv);
-        print_r($resultado_curriculo);
-
-        unset($query);
-
-        exit();
-
+    echo "Não foi enviado um arquivo XML";
+    if (isset($_REQUEST['unidade'])) {    
+        $query["doc"]["unidade"] = explode("|", $_REQUEST['unidade']);
     }
+    if (isset($_REQUEST['departamento'])) {
+        $query["doc"]["departamento"] = explode("|", $_REQUEST['departamento']);
+    }
+    if (isset($_REQUEST['tipvin'])) {
+        $doc_curriculo_array["doc"]["tipvin"] = $_REQUEST['tipvin'];
+    }
+    if (isset($_REQUEST['divisao'])) {
+        $doc_curriculo_array["doc"]["divisao"] = explode("|", $_REQUEST['divisao']);
+    }
+    if (isset($_REQUEST['secao'])) {
+        $doc_curriculo_array['doc']['secao'] = explode("|", $_REQUEST['secao']);
+    }
+    if (isset($_REQUEST['ppg_nome'])) {
+        $doc_curriculo_array['doc']['ppg_nome'] = explode("|", $_REQUEST['ppg_nome']);
+    }
+    if (isset($_REQUEST['genero'])) {
+        $doc_curriculo_array['doc']['genero'] = $_REQUEST['genero'];
+    }
+    if (isset($_REQUEST['desc_nivel'])) {
+        $doc_curriculo_array['doc']['desc_nivel'] = explode("|", $_REQUEST['desc_nivel']);
+    }
+    if (isset($_REQUEST['desc_curso'])) {
+        $doc_curriculo_array['doc']['desc_curso'] = explode("|", $_REQUEST['desc_curso']);
+    }
+    if (isset($_REQUEST['campus'])) {
+        $doc_curriculo_array['doc']['campus'] = explode("|", $_REQUEST['campus']);
+    }
+    if (isset($_REQUEST['desc_gestora'])) {
+        $doc_curriculo_array['doc']['desc_gestora'] = explode("|", $_REQUEST['desc_gestora']);
+    }
+    //$query["doc"]["lattesID"] = "Lattes ID não encontrado";
+    if (isset($_REQUEST['nome_completo'])) {
+        $query["doc"]["nome_completo"] = $_REQUEST['nome_completo'];
+    }
+    $query["doc_as_upsert"] = true;    
+    $id = uniqid(rand(), true);
+    $resultado_curriculo = Elasticsearch::update($id, $query, $index_cv);
+    print_r($resultado_curriculo);
+
+    unset($query);
+
+    exit();
+
+    
 }
 
 $doc_curriculo_array = [];
