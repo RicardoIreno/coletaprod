@@ -542,7 +542,6 @@ class paginaInicial {
         ];    
 
         $response = $client->search($params);
-        print_r($response);
         foreach ($response["aggregations"]["group_by_state"]["buckets"] as $facets) {
             echo '<li class="list-group-item"><a href="result.php?filter[]=type:&quot;Work&quot;&filter[]='.$field.':&quot;'.$facets['key'].'&quot;">'.$facets['key'].' ('.number_format($facets['doc_count'],0,',','.').')</a></li>';
         }   
