@@ -126,6 +126,10 @@ $get_data = $_GET;
                     if (!isset($_GET)) {
                         $_GET = null;                                    
                     }
+
+                    $facets->facet("unidade", 100, "Unidade", null, "_term", $_GET, $index_cv);
+                    $facets->facet("departamento", 100, "Departamento", null, "_term", $_GET, $index_cv);
+                    $facets->facet("tipvin", 100, "Tipo de vínculo", null, "_term", $_GET, $index_cv);
                     
                     $facets->facet("numfuncional", 100, "Número funcional", null, "_term", $_GET, $index_cv);
                     $facets->facet("tag", 100, "Tag", null, "_term", $_GET, $index_cv);
