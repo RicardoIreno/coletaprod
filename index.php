@@ -384,11 +384,11 @@
             <div class="col-md-3">
                 <h2 class="uk-h3">Unidade</h2>
                 <ul class="list-group">
-                    <?php paginaInicial::unidade_inicio("Instituicao.unidade"); ?>
+                    <?php paginaInicial::unidade_inicio("instituicao.unidade"); ?>
                 </ul>
                 <h2>Departamento</h2>
                 <ul class="list-group">
-                    <?php paginaInicial::unidade_inicio("Instituicao.departamento"); ?>
+                    <?php paginaInicial::unidade_inicio("instituicao.departamento"); ?>
                 </ul>
                 <h2>Tags</h2>
                 <ul class="list-group">
