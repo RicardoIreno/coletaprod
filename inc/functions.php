@@ -528,7 +528,7 @@ class paginaInicial {
             "aggs": {
                 "group_by_state": {
                     "terms": {
-                        "field": "'.$field.'.keyword",                    
+                        "field": "'.$field.'",                    
                         "size" : 200
                     }
                 }
