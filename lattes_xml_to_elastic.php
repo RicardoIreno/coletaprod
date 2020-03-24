@@ -613,8 +613,8 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TRABALHOS-EM-EVENTOS'})) {
         $doc["doc"]["source"] = "Base Lattes";
         $doc["doc"]["lattes_ids"][] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
         $doc["doc"]["tag"][] = $_REQUEST['tag'];
-        $doc["doc"]["instituicao"]["unidade"][] = $_REQUEST['unidade'];
-        $doc["doc"]["instituicao"]["departamento"][] = $_REQUEST['departamento'];
+        $doc["doc"]["instituicao"]["unidade"] = explode("|", $_REQUEST['unidade']);
+        $doc["doc"]["instituicao"]["departamento"] = explode("|", $_REQUEST['departamento']);
         $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
         if (isset($_REQUEST['tipvin'])) {
             $doc["doc"]["instituicao"]["tipvin"] = explode("|", $_REQUEST['tipvin']);
@@ -739,8 +739,8 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'ARTIGOS-PUBLICADOS'})) {
         $doc["doc"]["source"] = "Base Lattes";
         $doc["doc"]["lattes_ids"][] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
         $doc["doc"]["tag"][] = $_REQUEST['tag'];
-        $doc["doc"]["instituicao"]["unidade"][] = $_REQUEST['unidade'];
-        $doc["doc"]["instituicao"]["departamento"][] = $_REQUEST['departamento'];
+        $doc["doc"]["instituicao"]["unidade"] = explode("|", $_REQUEST['unidade']);
+        $doc["doc"]["instituicao"]["departamento"] = explode("|", $_REQUEST['departamento']);
         $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
         if (isset($_REQUEST['tipvin'])) {
             $doc["doc"]["instituicao"]["tipvin"] = explode("|", $_REQUEST['tipvin']);
@@ -866,8 +866,8 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'LIVROS-E-CAPITULOS'})) {
             $doc["doc"]["source"] = "Base Lattes";
             $doc["doc"]["lattes_ids"][] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
             $doc["doc"]["tag"][] = $_REQUEST['tag'];
-            $doc["doc"]["instituicao"]["unidade"][] = $_REQUEST['unidade'];
-            $doc["doc"]["instituicao"]["departamento"][] = $_REQUEST['departamento'];
+            $doc["doc"]["instituicao"]["unidade"] = explode("|", $_REQUEST['unidade']);
+            $doc["doc"]["instituicao"]["departamento"] = explode("|", $_REQUEST['departamento']);
             $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
             if (isset($_REQUEST['tipvin'])) {
                 $doc["doc"]["instituicao"]["tipvin"] = explode("|", $_REQUEST['tipvin']);
@@ -991,8 +991,8 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'LIVROS-E-CAPITULOS'})) {
             $doc["doc"]["source"] = "Base Lattes";
             $doc["doc"]["lattes_ids"][] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
             $doc["doc"]["tag"][] = $_REQUEST['tag'];
-            $doc["doc"]["instituicao"]["unidade"][] = $_REQUEST['unidade'];
-            $doc["doc"]["instituicao"]["departamento"][] = $_REQUEST['departamento'];
+            $doc["doc"]["instituicao"]["unidade"] = explode("|", $_REQUEST['unidade']);
+            $doc["doc"]["instituicao"]["departamento"] = explode("|", $_REQUEST['departamento']);
             $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
             if (isset($_REQUEST['tipvin'])) {
                 $doc["doc"]["instituicao"]["tipvin"] = explode("|", $_REQUEST['tipvin']);
@@ -1113,8 +1113,8 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TEXTOS-EM-JORNAIS-OU-REVISTA
         $doc["doc"]["source"] = "Base Lattes";
         $doc["doc"]["lattes_ids"][] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
         $doc["doc"]["tag"][] = $_REQUEST['tag'];
-        $doc["doc"]["instituicao"]["unidade"][] = $_REQUEST['unidade'];
-        $doc["doc"]["instituicao"]["departamento"][] = $_REQUEST['departamento'];
+        $doc["doc"]["instituicao"]["unidade"] = explode("|", $_REQUEST['unidade']);
+        $doc["doc"]["instituicao"]["departamento"] = explode("|", $_REQUEST['departamento']);
         $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
         if (isset($_REQUEST['tipvin'])) {
             $doc["doc"]["instituicao"]["tipvin"] = explode("|", $_REQUEST['tipvin']);
@@ -1240,8 +1240,8 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
             $doc["doc"]["source"] = "Base Lattes";
             $doc["doc"]["lattes_ids"][] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
             $doc["doc"]["tag"][] = $_REQUEST['tag'];
-            $doc["doc"]["instituicao"]["unidade"][] = $_REQUEST['unidade'];
-            $doc["doc"]["instituicao"]["departamento"][] = $_REQUEST['departamento'];
+            $doc["doc"]["instituicao"]["unidade"] = explode("|", $_REQUEST['unidade']);
+            $doc["doc"]["instituicao"]["departamento"] = explode("|", $_REQUEST['departamento']);
             $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
             if (isset($_REQUEST['tipvin'])) {
                 $doc["doc"]["instituicao"]["tipvin"] = explode("|", $_REQUEST['tipvin']);
@@ -1358,8 +1358,8 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
             $doc["doc"]["source"] = "Base Lattes";
             $doc["doc"]["lattes_ids"][] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
             $doc["doc"]["tag"][] = $_REQUEST['tag'];
-            $doc["doc"]["instituicao"]["unidade"][] = $_REQUEST['unidade'];
-            $doc["doc"]["instituicao"]["departamento"][] = $_REQUEST['departamento'];
+            $doc["doc"]["instituicao"]["unidade"] = explode("|", $_REQUEST['unidade']);
+            $doc["doc"]["instituicao"]["departamento"] = explode("|", $_REQUEST['departamento']);
             $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
             if (isset($_REQUEST['tipvin'])) {
                 $doc["doc"]["instituicao"]["tipvin"] = explode("|", $_REQUEST['tipvin']);
@@ -1487,8 +1487,8 @@ if (isset($curriculo->{'PRODUCAO-TECNICA'})) {
             $doc["doc"]["source"] = "Base Lattes";
             $doc["doc"]["lattes_ids"][] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
             $doc["doc"]["tag"][] = $_REQUEST['tag'];
-            $doc["doc"]["instituicao"]["unidade"][] = $_REQUEST['unidade'];
-            $doc["doc"]["instituicao"]["departamento"][] = $_REQUEST['departamento'];
+            $doc["doc"]["instituicao"]["unidade"] = explode("|", $_REQUEST['unidade']);
+            $doc["doc"]["instituicao"]["departamento"] = explode("|", $_REQUEST['departamento']);
             $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
             if (isset($_REQUEST['tipvin'])) {
                 $doc["doc"]["instituicao"]["tipvin"] = explode("|", $_REQUEST['tipvin']);
@@ -1606,8 +1606,8 @@ if (isset($curriculo->{'PRODUCAO-TECNICA'})) {
             $doc["doc"]["source"] = "Base Lattes";
             $doc["doc"]["lattes_ids"][] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
             $doc["doc"]["tag"][] = $_REQUEST['tag'];
-            $doc["doc"]["instituicao"]["unidade"][] = $_REQUEST['unidade'];
-            $doc["doc"]["instituicao"]["departamento"][] = $_REQUEST['departamento'];
+            $doc["doc"]["instituicao"]["unidade"] = explode("|", $_REQUEST['unidade']);
+            $doc["doc"]["instituicao"]["departamento"] = explode("|", $_REQUEST['departamento']);
             $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
             if (isset($_REQUEST['tipvin'])) {
                 $doc["doc"]["instituicao"]["tipvin"] = explode("|", $_REQUEST['tipvin']);
@@ -1728,8 +1728,8 @@ if (isset($curriculo->{'OUTRA-PRODUCAO'})) {
                 $doc["doc"]["source"] = "Base Lattes";
                 $doc["doc"]["lattes_ids"][] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
                 $doc["doc"]["tag"][] = $_REQUEST['tag'];
-                $doc["doc"]["instituicao"]["unidade"][] = $_REQUEST['unidade'];
-                $doc["doc"]["instituicao"]["departamento"][] = $_REQUEST['departamento'];
+                $doc["doc"]["instituicao"]["unidade"] = explode("|", $_REQUEST['unidade']);
+                $doc["doc"]["instituicao"]["departamento"] = explode("|", $_REQUEST['departamento']);
                 $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
                 if (isset($_REQUEST['tipvin'])) {
                     $doc["doc"]["instituicao"]["tipvin"] = explode("|", $_REQUEST['tipvin']);
