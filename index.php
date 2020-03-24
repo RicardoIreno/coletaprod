@@ -390,6 +390,10 @@
                 <ul class="list-group">
                     <?php paginaInicial::unidade_inicio("instituicao.departamento"); ?>
                 </ul>
+                <h2>Tipo de vínculo</h2>
+                <ul class="list-group">
+                    <?php paginaInicial::unidade_inicio("instituicao.tipvin"); ?>
+                </ul>                
                 <h2>Tags</h2>
                 <ul class="list-group">
                     <?php paginaInicial::unidade_inicio("tag"); ?>
