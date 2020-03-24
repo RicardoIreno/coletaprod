@@ -127,9 +127,17 @@ $get_data = $_GET;
                         $_GET = null;                                    
                     }
 
+                    $facets->facet("campus", 100, "Campus", null, "_term", $_GET, $index_cv);
+                    $facets->facet("desc_gestora", 100, "Gestora", null, "_term", $_GET, $index_cv);
                     $facets->facet("unidade", 100, "Unidade", null, "_term", $_GET, $index_cv);
                     $facets->facet("departamento", 100, "Departamento", null, "_term", $_GET, $index_cv);
+                    $facets->facet("divisao", 100, "Divisão", null, "_term", $_GET, $index_cv);
+                    $facets->facet("secao", 100, "Seção", null, "_term", $_GET, $index_cv);
+                    $facets->facet("ppg_nome", 100, "Nome do PPG", null, "_term", $_GET, $index_cv);
                     $facets->facet("tipvin", 100, "Tipo de vínculo", null, "_term", $_GET, $index_cv);
+                    $facets->facet("genero", 100, "Genero", null, "_term", $_GET, $index_cv);
+                    $facets->facet("desc_nivel", 100, "Nível", null, "_term", $_GET, $index_cv);
+                    $facets->facet("desc_curso", 100, "Curso", null, "_term", $_GET, $index_cv);
                     
                     $facets->facet("numfuncional", 100, "Número funcional", null, "_term", $_GET, $index_cv);
                     $facets->facet("tag", 100, "Tag", null, "_term", $_GET, $index_cv);

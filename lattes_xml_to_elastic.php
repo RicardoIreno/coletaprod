@@ -617,7 +617,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TRABALHOS-EM-EVENTOS'})) {
         $doc["doc"]["instituicao"]["departamento"][] = $_REQUEST['departamento'];
         $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
         if (isset($_REQUEST['tipvin'])) {
-            $doc["doc"]["instituicao"]["tipvin"] = $_REQUEST['tipvin'];
+            $doc["doc"]["instituicao"]["tipvin"] = explode("|", $_REQUEST['tipvin']);
         }
         if (isset($_REQUEST['divisao'])) {
             $doc["doc"]["divisao"] = explode("|", $_REQUEST['divisao']);
@@ -743,31 +743,31 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'ARTIGOS-PUBLICADOS'})) {
         $doc["doc"]["instituicao"]["departamento"][] = $_REQUEST['departamento'];
         $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
         if (isset($_REQUEST['tipvin'])) {
-            $doc["doc"]["instituicao"]["tipvin"] = $_REQUEST['tipvin'];
+            $doc["doc"]["instituicao"]["tipvin"] = explode("|", $_REQUEST['tipvin']);
         }
         if (isset($_REQUEST['divisao'])) {
-            $doc["doc"]["divisao"] = explode("|", $_REQUEST['divisao']);
+            $doc["doc"]["instituicao"]["divisao"] = explode("|", $_REQUEST['divisao']);
         }
         if (isset($_REQUEST['secao'])) {
-            $doc['doc']['secao'] = explode("|", $_REQUEST['secao']);
+            $doc['doc']["instituicao"]['secao'] = explode("|", $_REQUEST['secao']);
         }
         if (isset($_REQUEST['ppg_nome'])) {
-            $doc['doc']['ppg_nome'] = explode("|", $_REQUEST['ppg_nome']);
+            $doc['doc']["instituicao"]['ppg_nome'] = explode("|", $_REQUEST['ppg_nome']);
         }
         if (isset($_REQUEST['genero'])) {
-            $doc['doc']['genero'] = $_REQUEST['genero'];
+            $doc['doc']["instituicao"]['genero'] = $_REQUEST['genero'];
         }
         if (isset($_REQUEST['desc_nivel'])) {
-            $doc['doc']['desc_nivel'] = explode("|", $_REQUEST['desc_nivel']);
+            $doc['doc']["instituicao"]['desc_nivel'] = explode("|", $_REQUEST['desc_nivel']);
         }
         if (isset($_REQUEST['desc_curso'])) {
-            $doc['doc']['desc_curso'] = explode("|", $_REQUEST['desc_curso']);
+            $doc['doc']["instituicao"]['desc_curso'] = explode("|", $_REQUEST['desc_curso']);
         }
         if (isset($_REQUEST['campus'])) {
-            $doc['doc']['campus'] = explode("|", $_REQUEST['campus']);
+            $doc['doc']["instituicao"]['campus'] = explode("|", $_REQUEST['campus']);
         }
         if (isset($_REQUEST['desc_gestora'])) {
-            $doc['doc']['desc_gestora'] = explode("|", $_REQUEST['desc_gestora']);
+            $doc['doc']["instituicao"]['desc_gestora'] = explode("|", $_REQUEST['desc_gestora']);
         }                  
         $doc["doc"]["datePublished"] = $dadosBasicosDoTrabalho['@attributes']["ANO-DO-ARTIGO"];
         $doc["doc"]["name"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-DO-ARTIGO"];
@@ -870,31 +870,31 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'LIVROS-E-CAPITULOS'})) {
             $doc["doc"]["instituicao"]["departamento"][] = $_REQUEST['departamento'];
             $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
             if (isset($_REQUEST['tipvin'])) {
-                $doc["doc"]["instituicao"]["tipvin"] = $_REQUEST['tipvin'];
+                $doc["doc"]["instituicao"]["tipvin"] = explode("|", $_REQUEST['tipvin']);
             }
             if (isset($_REQUEST['divisao'])) {
-                $doc["doc"]["divisao"] = explode("|", $_REQUEST['divisao']);
+                $doc["doc"]["instituicao"]["divisao"] = explode("|", $_REQUEST['divisao']);
             }
             if (isset($_REQUEST['secao'])) {
-                $doc['doc']['secao'] = explode("|", $_REQUEST['secao']);
+                $doc['doc']["instituicao"]['secao'] = explode("|", $_REQUEST['secao']);
             }
             if (isset($_REQUEST['ppg_nome'])) {
-                $doc['doc']['ppg_nome'] = explode("|", $_REQUEST['ppg_nome']);
+                $doc['doc']["instituicao"]['ppg_nome'] = explode("|", $_REQUEST['ppg_nome']);
             }
             if (isset($_REQUEST['genero'])) {
-                $doc['doc']['genero'] = $_REQUEST['genero'];
+                $doc['doc']["instituicao"]['genero'] = $_REQUEST['genero'];
             }
             if (isset($_REQUEST['desc_nivel'])) {
-                $doc['doc']['desc_nivel'] = explode("|", $_REQUEST['desc_nivel']);
+                $doc['doc']["instituicao"]['desc_nivel'] = explode("|", $_REQUEST['desc_nivel']);
             }
             if (isset($_REQUEST['desc_curso'])) {
-                $doc['doc']['desc_curso'] = explode("|", $_REQUEST['desc_curso']);
+                $doc['doc']["instituicao"]['desc_curso'] = explode("|", $_REQUEST['desc_curso']);
             }
             if (isset($_REQUEST['campus'])) {
-                $doc['doc']['campus'] = explode("|", $_REQUEST['campus']);
+                $doc['doc']["instituicao"]['campus'] = explode("|", $_REQUEST['campus']);
             }
             if (isset($_REQUEST['desc_gestora'])) {
-                $doc['doc']['desc_gestora'] = explode("|", $_REQUEST['desc_gestora']);
+                $doc['doc']["instituicao"]['desc_gestora'] = explode("|", $_REQUEST['desc_gestora']);
             }                      
             $doc["doc"]["lattes"]["tipo"] = $dadosBasicosDoTrabalho['@attributes']["TIPO"];
             $doc["doc"]["datePublished"] = $dadosBasicosDoTrabalho['@attributes']["ANO"];
@@ -995,31 +995,31 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'LIVROS-E-CAPITULOS'})) {
             $doc["doc"]["instituicao"]["departamento"][] = $_REQUEST['departamento'];
             $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
             if (isset($_REQUEST['tipvin'])) {
-                $doc["doc"]["instituicao"]["tipvin"] = $_REQUEST['tipvin'];
+                $doc["doc"]["instituicao"]["tipvin"] = explode("|", $_REQUEST['tipvin']);
             }
             if (isset($_REQUEST['divisao'])) {
-                $doc["doc"]["divisao"] = explode("|", $_REQUEST['divisao']);
+                $doc["doc"]["instituicao"]["divisao"] = explode("|", $_REQUEST['divisao']);
             }
             if (isset($_REQUEST['secao'])) {
-                $doc['doc']['secao'] = explode("|", $_REQUEST['secao']);
+                $doc['doc']["instituicao"]['secao'] = explode("|", $_REQUEST['secao']);
             }
             if (isset($_REQUEST['ppg_nome'])) {
-                $doc['doc']['ppg_nome'] = explode("|", $_REQUEST['ppg_nome']);
+                $doc['doc']["instituicao"]['ppg_nome'] = explode("|", $_REQUEST['ppg_nome']);
             }
             if (isset($_REQUEST['genero'])) {
-                $doc['doc']['genero'] = $_REQUEST['genero'];
+                $doc['doc']["instituicao"]['genero'] = $_REQUEST['genero'];
             }
             if (isset($_REQUEST['desc_nivel'])) {
-                $doc['doc']['desc_nivel'] = explode("|", $_REQUEST['desc_nivel']);
+                $doc['doc']["instituicao"]['desc_nivel'] = explode("|", $_REQUEST['desc_nivel']);
             }
             if (isset($_REQUEST['desc_curso'])) {
-                $doc['doc']['desc_curso'] = explode("|", $_REQUEST['desc_curso']);
+                $doc['doc']["instituicao"]['desc_curso'] = explode("|", $_REQUEST['desc_curso']);
             }
             if (isset($_REQUEST['campus'])) {
-                $doc['doc']['campus'] = explode("|", $_REQUEST['campus']);
+                $doc['doc']["instituicao"]['campus'] = explode("|", $_REQUEST['campus']);
             }
             if (isset($_REQUEST['desc_gestora'])) {
-                $doc['doc']['desc_gestora'] = explode("|", $_REQUEST['desc_gestora']);
+                $doc['doc']["instituicao"]['desc_gestora'] = explode("|", $_REQUEST['desc_gestora']);
             }                
             $doc["doc"]["lattes"]["tipo"] = $dadosBasicosDoTrabalho['@attributes']["TIPO"];
             $doc["doc"]["name"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-DO-CAPITULO-DO-LIVRO"];
@@ -1117,31 +1117,31 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TEXTOS-EM-JORNAIS-OU-REVISTA
         $doc["doc"]["instituicao"]["departamento"][] = $_REQUEST['departamento'];
         $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
         if (isset($_REQUEST['tipvin'])) {
-            $doc["doc"]["instituicao"]["tipvin"] = $_REQUEST['tipvin'];
+            $doc["doc"]["instituicao"]["tipvin"] = explode("|", $_REQUEST['tipvin']);
         }
         if (isset($_REQUEST['divisao'])) {
-            $doc["doc"]["divisao"] = explode("|", $_REQUEST['divisao']);
+            $doc["doc"]["instituicao"]["divisao"] = explode("|", $_REQUEST['divisao']);
         }
         if (isset($_REQUEST['secao'])) {
-            $doc['doc']['secao'] = explode("|", $_REQUEST['secao']);
+            $doc['doc']["instituicao"]['secao'] = explode("|", $_REQUEST['secao']);
         }
         if (isset($_REQUEST['ppg_nome'])) {
-            $doc['doc']['ppg_nome'] = explode("|", $_REQUEST['ppg_nome']);
+            $doc['doc']["instituicao"]['ppg_nome'] = explode("|", $_REQUEST['ppg_nome']);
         }
         if (isset($_REQUEST['genero'])) {
-            $doc['doc']['genero'] = $_REQUEST['genero'];
+            $doc['doc']["instituicao"]['genero'] = $_REQUEST['genero'];
         }
         if (isset($_REQUEST['desc_nivel'])) {
-            $doc['doc']['desc_nivel'] = explode("|", $_REQUEST['desc_nivel']);
+            $doc['doc']["instituicao"]['desc_nivel'] = explode("|", $_REQUEST['desc_nivel']);
         }
         if (isset($_REQUEST['desc_curso'])) {
-            $doc['doc']['desc_curso'] = explode("|", $_REQUEST['desc_curso']);
+            $doc['doc']["instituicao"]['desc_curso'] = explode("|", $_REQUEST['desc_curso']);
         }
         if (isset($_REQUEST['campus'])) {
-            $doc['doc']['campus'] = explode("|", $_REQUEST['campus']);
+            $doc['doc']["instituicao"]['campus'] = explode("|", $_REQUEST['campus']);
         }
         if (isset($_REQUEST['desc_gestora'])) {
-            $doc['doc']['desc_gestora'] = explode("|", $_REQUEST['desc_gestora']);
+            $doc['doc']["instituicao"]['desc_gestora'] = explode("|", $_REQUEST['desc_gestora']);
         }                  
         $doc["doc"]["lattes"]["natureza"] = $dadosBasicosDoTrabalho['@attributes']['NATUREZA'];        
         $doc["doc"]["name"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-DO-TEXTO"];
@@ -1244,31 +1244,31 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
             $doc["doc"]["instituicao"]["departamento"][] = $_REQUEST['departamento'];
             $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
             if (isset($_REQUEST['tipvin'])) {
-                $doc["doc"]["instituicao"]["tipvin"] = $_REQUEST['tipvin'];
+                $doc["doc"]["instituicao"]["tipvin"] = explode("|", $_REQUEST['tipvin']);
             }
             if (isset($_REQUEST['divisao'])) {
-                $doc["doc"]["divisao"] = explode("|", $_REQUEST['divisao']);
+                $doc["doc"]["instituicao"]["divisao"] = explode("|", $_REQUEST['divisao']);
             }
             if (isset($_REQUEST['secao'])) {
-                $doc['doc']['secao'] = explode("|", $_REQUEST['secao']);
+                $doc['doc']["instituicao"]['secao'] = explode("|", $_REQUEST['secao']);
             }
             if (isset($_REQUEST['ppg_nome'])) {
-                $doc['doc']['ppg_nome'] = explode("|", $_REQUEST['ppg_nome']);
+                $doc['doc']["instituicao"]['ppg_nome'] = explode("|", $_REQUEST['ppg_nome']);
             }
             if (isset($_REQUEST['genero'])) {
-                $doc['doc']['genero'] = $_REQUEST['genero'];
+                $doc['doc']["instituicao"]['genero'] = $_REQUEST['genero'];
             }
             if (isset($_REQUEST['desc_nivel'])) {
-                $doc['doc']['desc_nivel'] = explode("|", $_REQUEST['desc_nivel']);
+                $doc['doc']["instituicao"]['desc_nivel'] = explode("|", $_REQUEST['desc_nivel']);
             }
             if (isset($_REQUEST['desc_curso'])) {
-                $doc['doc']['desc_curso'] = explode("|", $_REQUEST['desc_curso']);
+                $doc['doc']["instituicao"]['desc_curso'] = explode("|", $_REQUEST['desc_curso']);
             }
             if (isset($_REQUEST['campus'])) {
-                $doc['doc']['campus'] = explode("|", $_REQUEST['campus']);
+                $doc['doc']["instituicao"]['campus'] = explode("|", $_REQUEST['campus']);
             }
             if (isset($_REQUEST['desc_gestora'])) {
-                $doc['doc']['desc_gestora'] = explode("|", $_REQUEST['desc_gestora']);
+                $doc['doc']["instituicao"]['desc_gestora'] = explode("|", $_REQUEST['desc_gestora']);
             }                      
             $doc["doc"]["lattes"]["natureza"] = $dadosBasicosDoTrabalho['@attributes']['NATUREZA'];        
             $doc["doc"]["name"] = $dadosBasicosDoTrabalho['@attributes']["TITULO"];
@@ -1362,31 +1362,31 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
             $doc["doc"]["instituicao"]["departamento"][] = $_REQUEST['departamento'];
             $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
             if (isset($_REQUEST['tipvin'])) {
-                $doc["doc"]["instituicao"]["tipvin"] = $_REQUEST['tipvin'];
+                $doc["doc"]["instituicao"]["tipvin"] = explode("|", $_REQUEST['tipvin']);
             }
             if (isset($_REQUEST['divisao'])) {
-                $doc["doc"]["divisao"] = explode("|", $_REQUEST['divisao']);
+                $doc["doc"]["instituicao"]["divisao"] = explode("|", $_REQUEST['divisao']);
             }
             if (isset($_REQUEST['secao'])) {
-                $doc['doc']['secao'] = explode("|", $_REQUEST['secao']);
+                $doc['doc']["instituicao"]['secao'] = explode("|", $_REQUEST['secao']);
             }
             if (isset($_REQUEST['ppg_nome'])) {
-                $doc['doc']['ppg_nome'] = explode("|", $_REQUEST['ppg_nome']);
+                $doc['doc']["instituicao"]['ppg_nome'] = explode("|", $_REQUEST['ppg_nome']);
             }
             if (isset($_REQUEST['genero'])) {
-                $doc['doc']['genero'] = $_REQUEST['genero'];
+                $doc['doc']["instituicao"]['genero'] = $_REQUEST['genero'];
             }
             if (isset($_REQUEST['desc_nivel'])) {
-                $doc['doc']['desc_nivel'] = explode("|", $_REQUEST['desc_nivel']);
+                $doc['doc']["instituicao"]['desc_nivel'] = explode("|", $_REQUEST['desc_nivel']);
             }
             if (isset($_REQUEST['desc_curso'])) {
-                $doc['doc']['desc_curso'] = explode("|", $_REQUEST['desc_curso']);
+                $doc['doc']["instituicao"]['desc_curso'] = explode("|", $_REQUEST['desc_curso']);
             }
             if (isset($_REQUEST['campus'])) {
-                $doc['doc']['campus'] = explode("|", $_REQUEST['campus']);
+                $doc['doc']["instituicao"]['campus'] = explode("|", $_REQUEST['campus']);
             }
             if (isset($_REQUEST['desc_gestora'])) {
-                $doc['doc']['desc_gestora'] = explode("|", $_REQUEST['desc_gestora']);
+                $doc['doc']["instituicao"]['desc_gestora'] = explode("|", $_REQUEST['desc_gestora']);
             }                      
             $doc["doc"]["lattes"]["natureza"] = $dadosBasicosDoTrabalho['@attributes']['NATUREZA'];        
             $doc["doc"]["name"] = $dadosBasicosDoTrabalho['@attributes']["TITULO"];
@@ -1491,31 +1491,31 @@ if (isset($curriculo->{'PRODUCAO-TECNICA'})) {
             $doc["doc"]["instituicao"]["departamento"][] = $_REQUEST['departamento'];
             $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
             if (isset($_REQUEST['tipvin'])) {
-                $doc["doc"]["instituicao"]["tipvin"] = $_REQUEST['tipvin'];
+                $doc["doc"]["instituicao"]["tipvin"] = explode("|", $_REQUEST['tipvin']);
             }
             if (isset($_REQUEST['divisao'])) {
-                $doc["doc"]["divisao"] = explode("|", $_REQUEST['divisao']);
+                $doc["doc"]["instituicao"]["divisao"] = explode("|", $_REQUEST['divisao']);
             }
             if (isset($_REQUEST['secao'])) {
-                $doc['doc']['secao'] = explode("|", $_REQUEST['secao']);
+                $doc['doc']["instituicao"]['secao'] = explode("|", $_REQUEST['secao']);
             }
             if (isset($_REQUEST['ppg_nome'])) {
-                $doc['doc']['ppg_nome'] = explode("|", $_REQUEST['ppg_nome']);
+                $doc['doc']["instituicao"]['ppg_nome'] = explode("|", $_REQUEST['ppg_nome']);
             }
             if (isset($_REQUEST['genero'])) {
-                $doc['doc']['genero'] = $_REQUEST['genero'];
+                $doc['doc']["instituicao"]['genero'] = $_REQUEST['genero'];
             }
             if (isset($_REQUEST['desc_nivel'])) {
-                $doc['doc']['desc_nivel'] = explode("|", $_REQUEST['desc_nivel']);
+                $doc['doc']["instituicao"]['desc_nivel'] = explode("|", $_REQUEST['desc_nivel']);
             }
             if (isset($_REQUEST['desc_curso'])) {
-                $doc['doc']['desc_curso'] = explode("|", $_REQUEST['desc_curso']);
+                $doc['doc']["instituicao"]['desc_curso'] = explode("|", $_REQUEST['desc_curso']);
             }
             if (isset($_REQUEST['campus'])) {
-                $doc['doc']['campus'] = explode("|", $_REQUEST['campus']);
+                $doc['doc']["instituicao"]['campus'] = explode("|", $_REQUEST['campus']);
             }
             if (isset($_REQUEST['desc_gestora'])) {
-                $doc['doc']['desc_gestora'] = explode("|", $_REQUEST['desc_gestora']);
+                $doc['doc']["instituicao"]['desc_gestora'] = explode("|", $_REQUEST['desc_gestora']);
             }                      
             $doc["doc"]["lattes"]["natureza"] = $dadosBasicosDoTrabalho['@attributes']['NATUREZA'];        
             $doc["doc"]["name"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-DO-SOFTWARE"];
@@ -1610,31 +1610,31 @@ if (isset($curriculo->{'PRODUCAO-TECNICA'})) {
             $doc["doc"]["instituicao"]["departamento"][] = $_REQUEST['departamento'];
             $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
             if (isset($_REQUEST['tipvin'])) {
-                $doc["doc"]["instituicao"]["tipvin"] = $_REQUEST['tipvin'];
+                $doc["doc"]["instituicao"]["tipvin"] = explode("|", $_REQUEST['tipvin']);
             }
             if (isset($_REQUEST['divisao'])) {
-                $doc["doc"]["divisao"] = explode("|", $_REQUEST['divisao']);
+                $doc["doc"]["instituicao"]["divisao"] = explode("|", $_REQUEST['divisao']);
             }
             if (isset($_REQUEST['secao'])) {
-                $doc['doc']['secao'] = explode("|", $_REQUEST['secao']);
+                $doc['doc']["instituicao"]['secao'] = explode("|", $_REQUEST['secao']);
             }
             if (isset($_REQUEST['ppg_nome'])) {
-                $doc['doc']['ppg_nome'] = explode("|", $_REQUEST['ppg_nome']);
+                $doc['doc']["instituicao"]['ppg_nome'] = explode("|", $_REQUEST['ppg_nome']);
             }
             if (isset($_REQUEST['genero'])) {
-                $doc['doc']['genero'] = $_REQUEST['genero'];
+                $doc['doc']["instituicao"]['genero'] = $_REQUEST['genero'];
             }
             if (isset($_REQUEST['desc_nivel'])) {
-                $doc['doc']['desc_nivel'] = explode("|", $_REQUEST['desc_nivel']);
+                $doc['doc']["instituicao"]['desc_nivel'] = explode("|", $_REQUEST['desc_nivel']);
             }
             if (isset($_REQUEST['desc_curso'])) {
-                $doc['doc']['desc_curso'] = explode("|", $_REQUEST['desc_curso']);
+                $doc['doc']["instituicao"]['desc_curso'] = explode("|", $_REQUEST['desc_curso']);
             }
             if (isset($_REQUEST['campus'])) {
-                $doc['doc']['campus'] = explode("|", $_REQUEST['campus']);
+                $doc['doc']["instituicao"]['campus'] = explode("|", $_REQUEST['campus']);
             }
             if (isset($_REQUEST['desc_gestora'])) {
-                $doc['doc']['desc_gestora'] = explode("|", $_REQUEST['desc_gestora']);
+                $doc['doc']["instituicao"]['desc_gestora'] = explode("|", $_REQUEST['desc_gestora']);
             }                             
             $doc["doc"]["name"] = $dadosBasicosDoTrabalho['@attributes']["TITULO"];
             $doc["doc"]["datePublished"] = $dadosBasicosDoTrabalho['@attributes']["ANO-DESENVOLVIMENTO"];
@@ -1732,31 +1732,31 @@ if (isset($curriculo->{'OUTRA-PRODUCAO'})) {
                 $doc["doc"]["instituicao"]["departamento"][] = $_REQUEST['departamento'];
                 $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
                 if (isset($_REQUEST['tipvin'])) {
-                    $doc["doc"]["instituicao"]["tipvin"] = $_REQUEST['tipvin'];
+                    $doc["doc"]["instituicao"]["tipvin"] = explode("|", $_REQUEST['tipvin']);
                 }
                 if (isset($_REQUEST['divisao'])) {
-                    $doc["doc"]["divisao"] = explode("|", $_REQUEST['divisao']);
+                    $doc["doc"]["instituicao"]["divisao"] = explode("|", $_REQUEST['divisao']);
                 }
                 if (isset($_REQUEST['secao'])) {
-                    $doc['doc']['secao'] = explode("|", $_REQUEST['secao']);
+                    $doc['doc']["instituicao"]['secao'] = explode("|", $_REQUEST['secao']);
                 }
                 if (isset($_REQUEST['ppg_nome'])) {
-                    $doc['doc']['ppg_nome'] = explode("|", $_REQUEST['ppg_nome']);
+                    $doc['doc']["instituicao"]['ppg_nome'] = explode("|", $_REQUEST['ppg_nome']);
                 }
                 if (isset($_REQUEST['genero'])) {
-                    $doc['doc']['genero'] = $_REQUEST['genero'];
+                    $doc['doc']["instituicao"]['genero'] = $_REQUEST['genero'];
                 }
                 if (isset($_REQUEST['desc_nivel'])) {
-                    $doc['doc']['desc_nivel'] = explode("|", $_REQUEST['desc_nivel']);
+                    $doc['doc']["instituicao"]['desc_nivel'] = explode("|", $_REQUEST['desc_nivel']);
                 }
                 if (isset($_REQUEST['desc_curso'])) {
-                    $doc['doc']['desc_curso'] = explode("|", $_REQUEST['desc_curso']);
+                    $doc['doc']["instituicao"]['desc_curso'] = explode("|", $_REQUEST['desc_curso']);
                 }
                 if (isset($_REQUEST['campus'])) {
-                    $doc['doc']['campus'] = explode("|", $_REQUEST['campus']);
+                    $doc['doc']["instituicao"]['campus'] = explode("|", $_REQUEST['campus']);
                 }
                 if (isset($_REQUEST['desc_gestora'])) {
-                    $doc['doc']['desc_gestora'] = explode("|", $_REQUEST['desc_gestora']);
+                    $doc['doc']["instituicao"]['desc_gestora'] = explode("|", $_REQUEST['desc_gestora']);
                 }                          
                 $doc["doc"]["lattes"]["natureza"] = $dadosBasicosDoTrabalho['@attributes']['NATUREZA'];        
                 $doc["doc"]["name"] = $dadosBasicosDoTrabalho['@attributes']["TITULO"];
