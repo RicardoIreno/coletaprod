@@ -128,7 +128,7 @@ if ($_FILES['file']['size'] != 0) {
         $query["doc"]["departamento"] = explode("|", $_REQUEST['departamento']);
     }
     if (isset($_REQUEST['tipvin'])) {
-        $doc_curriculo_array["doc"]["tipvin"] = $_REQUEST['tipvin'];
+        $doc_curriculo_array["doc"]["tipvin"] = explode("|", $_REQUEST['tipvin']);
     }
     if (isset($_REQUEST['divisao'])) {
         $doc_curriculo_array["doc"]["divisao"] = explode("|", $_REQUEST['divisao']);
@@ -178,7 +178,7 @@ $doc_curriculo_array["doc"]["unidade"] = explode("|", $_REQUEST['unidade']);
 $doc_curriculo_array["doc"]["departamento"] = explode("|", $_REQUEST['departamento']);
 $doc_curriculo_array["doc"]["numfuncional"] = $_REQUEST['numfuncional'];
 if (isset($_REQUEST['tipvin'])) {
-    $doc_curriculo_array["doc"]["tipvin"] = $_REQUEST['tipvin'];
+    $doc_curriculo_array["doc"]["tipvin"] = explode("|", $_REQUEST['tipvin']);
 }
 if (isset($_REQUEST['divisao'])) {
     $doc_curriculo_array["doc"]["divisao"] = explode("|", $_REQUEST['divisao']);
