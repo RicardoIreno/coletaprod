@@ -226,7 +226,19 @@ $get_data = $_GET;
 
                     if (!isset($_GET)) {
                         $_GET = null;                                    
-                    }                       
+                    }   
+                    
+                    $facets->facet("instituicao.campus", 100, "Campus", null, "_term", $_GET);
+                    $facets->facet("instituicao.desc_gestora", 100, "Gestora", null, "_term", $_GET);
+                    $facets->facet("instituicao.unidade", 100, "Unidade", null, "_term", $_GET);
+                    $facets->facet("instituicao.departamento", 100, "Departamento", null, "_term", $_GET);
+                    $facets->facet("instituicao.divisao", 100, "Divisão", null, "_term", $_GET);
+                    $facets->facet("instituicao.secao", 100, "Seção", null, "_term", $_GET);
+                    $facets->facet("instituicao.ppg_nome", 100, "Nome do PPG", null, "_term", $_GET);
+                    $facets->facet("instituicao.tipvin", 100, "Tipo de vínculo", null, "_term", $_GET);
+                    $facets->facet("instituicao.genero", 100, "Genero", null, "_term", $_GET);
+                    $facets->facet("instituicao.desc_nivel", 100, "Nível", null, "_term", $_GET);
+                    $facets->facet("instituicao.desc_curso", 100, "Curso", null, "_term", $_GET);                    
                     
                     $facets->facet("Lattes.natureza", 100, "Natureza", null, "_term", $_GET);
                     $facets->facet("tipo", 100, "Tipo de material", null, "_term", $_GET);
