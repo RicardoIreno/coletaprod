@@ -594,7 +594,8 @@ if (isset($curriculo->{'DADOS-GERAIS'}->{'PREMIOS-TITULOS'})) {
 }
 
 $identificador = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
-$doc_curriculo_array["doc"]["lattesID"] = $identificador;            
+$doc_curriculo_array["doc"]["lattesID"] = $identificador;
+$doc_curriculo_array["doc"]["dataDeColeta"] = date('Y-m-d');             
 $doc_curriculo_array["doc_as_upsert"] = true;    
 
 $resultado_curriculo = Elasticsearch::update($identificador, $doc_curriculo_array, $index_cv);
