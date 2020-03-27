@@ -8,18 +8,24 @@ echo "<br/><br/>";
 
 $cookies = DSpaceREST::loginREST();
 
-$cursor = Elasticsearch::get($_REQUEST['_id'], null);
+print_r($cookies);
 
-print_r($cursor);
-echo "<br/><br/>";
+if (isset($_REQUEST['_id'])){
+    $cursor = Elasticsearch::get($_REQUEST['_id'], null);
+}
 
 if (isset($_REQUEST["createRecord"])) {
     if ($_REQUEST["createRecord"] == "true") {
-        echo "SIM";
-        print_r($cookies);
         
         $dataString = DSpaceREST::buildDC($cursor, $_REQUEST['_id']);
+
+        echo "<br/><br/>";
+        print_r($dataString);
+        echo "<br/><br/>";
+
         $resultCreateItemDSpace = DSpaceREST::createItemDSpace($dataString, $dspaceCollection, $cookies);
+        echo "<br/><br/>";
+        print_r($resultCreateItemDSpace);
         
         // echo "<script type='text/javascript'>
         // $(document).ready(function(){  
