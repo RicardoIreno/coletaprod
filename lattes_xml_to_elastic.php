@@ -128,31 +128,31 @@ if ($_FILES['file']['size'] != 0) {
         $query["doc"]["departamento"] = explode("|", $_REQUEST['departamento']);
     }
     if (isset($_REQUEST['tipvin'])) {
-        $doc_curriculo_array["doc"]["tipvin"] = explode("|", $_REQUEST['tipvin']);
+        $query["doc"]["tipvin"] = explode("|", $_REQUEST['tipvin']);
     }
     if (isset($_REQUEST['divisao'])) {
-        $doc_curriculo_array["doc"]["divisao"] = explode("|", $_REQUEST['divisao']);
+        $query["doc"]["divisao"] = explode("|", $_REQUEST['divisao']);
     }
     if (isset($_REQUEST['secao'])) {
-        $doc_curriculo_array['doc']['secao'] = explode("|", $_REQUEST['secao']);
+        $query['doc']['secao'] = explode("|", $_REQUEST['secao']);
     }
     if (isset($_REQUEST['ppg_nome'])) {
-        $doc_curriculo_array['doc']['ppg_nome'] = explode("|", $_REQUEST['ppg_nome']);
+        $query['doc']['ppg_nome'] = explode("|", $_REQUEST['ppg_nome']);
     }
     if (isset($_REQUEST['genero'])) {
-        $doc_curriculo_array['doc']['genero'] = $_REQUEST['genero'];
+        $query['doc']['genero'] = $_REQUEST['genero'];
     }
     if (isset($_REQUEST['desc_nivel'])) {
-        $doc_curriculo_array['doc']['desc_nivel'] = explode("|", $_REQUEST['desc_nivel']);
+        $query['doc']['desc_nivel'] = explode("|", $_REQUEST['desc_nivel']);
     }
     if (isset($_REQUEST['desc_curso'])) {
-        $doc_curriculo_array['doc']['desc_curso'] = explode("|", $_REQUEST['desc_curso']);
+        $query['doc']['desc_curso'] = explode("|", $_REQUEST['desc_curso']);
     }
     if (isset($_REQUEST['campus'])) {
-        $doc_curriculo_array['doc']['campus'] = explode("|", $_REQUEST['campus']);
+        $query['doc']['campus'] = explode("|", $_REQUEST['campus']);
     }
     if (isset($_REQUEST['desc_gestora'])) {
-        $doc_curriculo_array['doc']['desc_gestora'] = explode("|", $_REQUEST['desc_gestora']);
+        $query['doc']['desc_gestora'] = explode("|", $_REQUEST['desc_gestora']);
     }
     //$query["doc"]["lattesID"] = "Lattes ID não encontrado";
     if (isset($_REQUEST['nome_completo'])) {
