@@ -551,6 +551,7 @@ class paginaInicial {
     static function possui_lattes() 
     {
         global $index_cv;
+        global $client;
         $body_all = '
         {
             "query": {
