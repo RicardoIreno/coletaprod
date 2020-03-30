@@ -575,10 +575,12 @@ class paginaInicial {
                 }
             }         
         ';    
-        $size = 0;        
-        $response = Elasticsearch::search(null, $size, $body, $index_cv);
-        print_r($response);
-        $total_dont_have_lattes = number_format($response['hits']['total']['value'], 0, ',', '.');
+        $size = 0;
+        $cursorTotal = $client->count($body);
+        $total_dont_have_lattes = $cursorTotal["count"];        
+        //$response = Elasticsearch::search(null, $size, $body, $index_cv);
+        //print_r($response);
+        //$total_dont_have_lattes = number_format($response['hits']['total']['value'], 0, ',', '.');
 
         return ($total_dont_have_lattes / $total) * 100;
     }     
