@@ -416,7 +416,7 @@
                 </ul>    
             </div>
             <div class="col-md-3">
-                <h2 class="uk-h3">Alguns números</h2>
+                <h2 class="uk-h3">Estatísticas</h2>
                 <ul class="list-group">
                     <li class="list-group-item"><?php echo paginaInicial::contar_registros_indice($index); ?> registros</li> 
                     <li class="list-group-item"><?php echo paginaInicial::contar_registros_indice($index_cv);; ?> currículos</li>
