@@ -560,7 +560,7 @@ class paginaInicial {
         $cursorTotal = $client->count($body);
         $total_dont_have_lattes = $cursorTotal["count"];      
 
-        return ($total_dont_have_lattes / $total) * 100;
+        return number_format((float)($total_dont_have_lattes / $total) * 100, 2, '.', '');
     }     
     
 }
