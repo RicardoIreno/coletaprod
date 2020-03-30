@@ -552,9 +552,9 @@ class paginaInicial {
     {
         global $index_cv;
         global $client;
-
-        $cursor = $client->count();
-        $total = $cursor["count"];
+        $body["index"] = $index_cv;
+        $cursor = $client->count($body);
+        $total = $cursor["count"];        
 
         $body["body"]["query"]["bool"]["must_not"]["exists"]["field"] = "lattesID";
         $cursorTotal = $client->count($body);
