@@ -389,21 +389,25 @@
                 <h2>Departamento</h2>
                 <ul class="list-group">
                     <?php paginaInicial::unidade_inicio("instituicao.departamento"); ?>
-                </ul>
-                <h2>Tipo de vínculo</h2>
-                <ul class="list-group">
-                    <?php paginaInicial::unidade_inicio("instituicao.tipvin"); ?>
-                </ul>                
+                </ul>         
                 <h2>Tags</h2>
                 <ul class="list-group">
                     <?php paginaInicial::unidade_inicio("tag"); ?>
                 </ul>                        
             </div>
             <div class="col-md-3">
+                <h2>Tipo de vínculo</h2>
+                <ul class="list-group">
+                    <?php paginaInicial::unidade_inicio("instituicao.tipvin"); ?>
+                </ul>                   
                 <h2 class="uk-h3">Tipo de material</h2>
                 <ul class="list-group">
                     <?php paginaInicial::tipo_inicio(); ?>
                 </ul>
+                <h2>Tipo de vínculo</h2>
+                <ul class="list-group">
+                    <?php paginaInicial::unidade_inicio("instituicao.ppg_nome"); ?>
+                </ul>                      
             </div>        
             <div class="col-md-3">
                 <h2 class="uk-h3">Fonte</h2>
