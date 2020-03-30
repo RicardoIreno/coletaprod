@@ -563,20 +563,7 @@ class paginaInicial {
         $response_all = Elasticsearch::search(null, $size, $body_all, $index_cv);
         $total = number_format($response_all['hits']['total']['value'], 0, ',', '.');
 
-        $body = '
-            {
-                "query": {
-                    "bool": {
-                        "must_not": {
-                            "exists": {
-                                "field": "lattesID"
-                            }
-                        }
-                    }
-                }
-            }         
-        ';    
-        $size = 0;
+        $body["body"]["query"]["bool"]["must_not"]["exists"]["field"] = "lattesID";
         $cursorTotal = $client->count($body);
         $total_dont_have_lattes = $cursorTotal["count"];        
         //$response = Elasticsearch::search(null, $size, $body, $index_cv);
