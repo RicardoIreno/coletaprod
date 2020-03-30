@@ -552,25 +552,16 @@ class paginaInicial {
     {
         global $index_cv;
         global $client;
-        $body_all = '
-        {
-            "query": {
-                "match_all": {}
-            }
-        }        
-        ';
-        $size = 0;        
-        $response_all = Elasticsearch::search(null, $size, $body_all, $index_cv);
-        $total = number_format($response_all['hits']['total']['value'], 0, ',', '.');
+
+        $body["body"]["query"]["match_all"][] = "";
+        $cursor = $client->count($body);
+        $total = $cursor["count"];
 
         $body["body"]["query"]["bool"]["must_not"]["exists"]["field"] = "lattesID";
         $cursorTotal = $client->count($body);
-        $total_dont_have_lattes = $cursorTotal["count"];        
-        //$response = Elasticsearch::search(null, $size, $body, $index_cv);
-        //print_r($response);
-        //$total_dont_have_lattes = number_format($response['hits']['total']['value'], 0, ',', '.');
+        $total_dont_have_lattes = $cursorTotal["count"];      
 
-        return ($total_dont_have_lattes / $total) * 100;
+        return ($total_dont_have_lattes / $total);
     }     
     
 }
