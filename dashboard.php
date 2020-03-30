@@ -59,11 +59,11 @@
     <?php if (isset($_REQUEST["dashboard"])) : ?>
 
         <?php if ($_REQUEST["dashboard"] == "lattes_producoes") : ?>
-            <iframe src="<?php echo $dashboard_lattes_producoes ?>" height="4000" width="100%" frameBorder="0" scrolling="no"></iframe>
+            <iframe src="<?php echo $dashboard_lattes_producoes ?>" height="10000" width="100%" frameBorder="0" scrolling="no"></iframe>
         <?php elseif ($_REQUEST["dashboard"] == "lattes_cv") : ?>
-            <iframe src="<?php echo $dashboard_lattes_cv ?>" height="5000" width="100%" frameBorder="0" scrolling="no"></iframe>
+            <iframe src="<?php echo $dashboard_lattes_cv ?>" height="10000" width="100%" frameBorder="0" scrolling="no"></iframe>
         <?php else: ?>
-            <iframe src="<?php echo $dashboard_source ?>" height="6000" width="100%" frameBorder="0" scrolling="no"></iframe>            
+            <iframe src="<?php echo $dashboard_source ?>" height="10000" width="100%" frameBorder="0" scrolling="no"></iframe>            
         <?php endif ?>
 
     <?php else: ?>    
