@@ -565,13 +565,16 @@ class paginaInicial {
         $body = '
             {
                 "query": {
-                    "term": {
-                        "lattesID": {
-                            "value": "Não preenchido"
+                    "bool": {
+                        "must": {
+                            "query_string": {
+                                "fields": ["lattesID"],
+                                "query": "Não preenchido"
+                            }
                         }
                     }
                 }
-            }
+            }         
         ';    
         $size = 0;        
         $response = Elasticsearch::search(null, $size, $body, $index_cv);
