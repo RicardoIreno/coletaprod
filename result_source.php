@@ -160,14 +160,14 @@ $get_data = $_GET;
                         $_GET = null;                                    
                     }                       
                     
-                    $facets->facet("tipo", 100, "Tipo de material", null, "_term", $_GET, $index_source);
-                    $facets->facet("author.person.name", 100, "Nome completo do autor", null, "_term", $_GET, $index_source);
-                    $facets->facet("datePublished", 120, "Ano de publicação", "desc", "_term", $_GET, $index_source);
-                    $facets->facet("language", 40, "Idioma", null, "_term", $_GET, $index_source);
-                    $facets->facet("about", 100, "Palavras-chave", null, "_term", $_GET, $index_source);
-                    $facets->facet("publisher.organization.name", 100, "Editora", null, "_term", $_GET, $index_source);
-                    $facets->facet("isPartOf.name", 100, "Título do periódico", null, "_term", $_GET, $index_source);
-                    $facets->facet("isPartOf.issn", 50, "ISSN", null, "_term", $_GET, $index_source);
+                    $facets->facet(basename(__FILE__), "tipo", 100, "Tipo de material", null, "_term", $_GET, $index_source);
+                    $facets->facet(basename(__FILE__), "author.person.name", 100, "Nome completo do autor", null, "_term", $_GET, $index_source);
+                    $facets->facet(basename(__FILE__), "datePublished", 120, "Ano de publicação", "desc", "_term", $_GET, $index_source);
+                    $facets->facet(basename(__FILE__), "language", 40, "Idioma", null, "_term", $_GET, $index_source);
+                    $facets->facet(basename(__FILE__), "about", 100, "Palavras-chave", null, "_term", $_GET, $index_source);
+                    $facets->facet(basename(__FILE__), "publisher.organization.name", 100, "Editora", null, "_term", $_GET, $index_source);
+                    $facets->facet(basename(__FILE__), "isPartOf.name", 100, "Título do periódico", null, "_term", $_GET, $index_source);
+                    $facets->facet(basename(__FILE__), "isPartOf.issn", 50, "ISSN", null, "_term", $_GET, $index_source);
 
                 ?>
                 </ul>

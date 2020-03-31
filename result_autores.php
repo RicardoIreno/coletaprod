@@ -127,57 +127,57 @@ $get_data = $_GET;
                         $_GET = null;                                    
                     }
 
-                    $facets->facet("campus", 100, "Campus", null, "_term", $_GET, $index_cv);
-                    $facets->facet("desc_gestora", 100, "Gestora", null, "_term", $_GET, $index_cv);
-                    $facets->facet("unidade", 100, "Unidade", null, "_term", $_GET, $index_cv);
-                    $facets->facet("departamento", 100, "Departamento", null, "_term", $_GET, $index_cv);
-                    $facets->facet("divisao", 100, "Divisão", null, "_term", $_GET, $index_cv);
-                    $facets->facet("secao", 100, "Seção", null, "_term", $_GET, $index_cv);
-                    $facets->facet("ppg_nome", 100, "Nome do PPG", null, "_term", $_GET, $index_cv);
-                    $facets->facet("tipvin", 100, "Tipo de vínculo", null, "_term", $_GET, $index_cv);
-                    $facets->facet("genero", 100, "Genero", null, "_term", $_GET, $index_cv);
-                    $facets->facet("desc_nivel", 100, "Nível", null, "_term", $_GET, $index_cv);
-                    $facets->facet("desc_curso", 100, "Curso", null, "_term", $_GET, $index_cv);
+                    $facets->facet(basename(__FILE__), "campus", 100, "Campus", null, "_term", $_GET, $index_cv);
+                    $facets->facet(basename(__FILE__), "desc_gestora", 100, "Gestora", null, "_term", $_GET, $index_cv);
+                    $facets->facet(basename(__FILE__), "unidade", 100, "Unidade", null, "_term", $_GET, $index_cv);
+                    $facets->facet(basename(__FILE__), "departamento", 100, "Departamento", null, "_term", $_GET, $index_cv);
+                    $facets->facet(basename(__FILE__), "divisao", 100, "Divisão", null, "_term", $_GET, $index_cv);
+                    $facets->facet(basename(__FILE__), "secao", 100, "Seção", null, "_term", $_GET, $index_cv);
+                    $facets->facet(basename(__FILE__), "ppg_nome", 100, "Nome do PPG", null, "_term", $_GET, $index_cv);
+                    $facets->facet(basename(__FILE__), "tipvin", 100, "Tipo de vínculo", null, "_term", $_GET, $index_cv);
+                    $facets->facet(basename(__FILE__), "genero", 100, "Genero", null, "_term", $_GET, $index_cv);
+                    $facets->facet(basename(__FILE__), "desc_nivel", 100, "Nível", null, "_term", $_GET, $index_cv);
+                    $facets->facet(basename(__FILE__), "desc_curso", 100, "Curso", null, "_term", $_GET, $index_cv);
                     
-                    $facets->facet("numfuncional", 100, "Número funcional", null, "_term", $_GET, $index_cv);
-                    $facets->facet("tag", 100, "Tag", null, "_term", $_GET, $index_cv);
-                    $facets->facet("nacionalidade", 100, "Nacionalidade", null, "_term", $_GET, $index_cv);
-                    $facets->facet("pais_de_nascimento", 100, "País de nascimento", null, "_term", $_GET, $index_cv);
+                    $facets->facet(basename(__FILE__), "numfuncional", 100, "Número funcional", null, "_term", $_GET, $index_cv);
+                    $facets->facet(basename(__FILE__), "tag", 100, "Tag", null, "_term", $_GET, $index_cv);
+                    $facets->facet(basename(__FILE__), "nacionalidade", 100, "Nacionalidade", null, "_term", $_GET, $index_cv);
+                    $facets->facet(basename(__FILE__), "pais_de_nascimento", 100, "País de nascimento", null, "_term", $_GET, $index_cv);
                             
-                    $facets->facet("endereco.endereco_profissional.nomeInstituicaoEmpresa", 100, "Nome da Instituição ou Empresa", null, "_term", $_GET, $index_cv);
-                    $facets->facet("endereco.endereco_profissional.nomeOrgao", 100, "Nome do orgão", null, "_term", $_GET, $index_cv);
-                    $facets->facet("endereco.endereco_profissional.nomeUnidade", 100, "Nome da unidade", null, "_term", $_GET, $index_cv);
-                    $facets->facet("endereco.endereco_profissional.pais", 100, "País do endereço profissional", null, "_term", $_GET, $index_cv);
-                    $facets->facet("endereco.endereco_profissional.cidade", 100, "Cidade do endereço profissional", null, "_term", $_GET, $index_cv);
+                    $facets->facet(basename(__FILE__), "endereco.endereco_profissional.nomeInstituicaoEmpresa", 100, "Nome da Instituição ou Empresa", null, "_term", $_GET, $index_cv);
+                    $facets->facet(basename(__FILE__), "endereco.endereco_profissional.nomeOrgao", 100, "Nome do orgão", null, "_term", $_GET, $index_cv);
+                    $facets->facet(basename(__FILE__), "endereco.endereco_profissional.nomeUnidade", 100, "Nome da unidade", null, "_term", $_GET, $index_cv);
+                    $facets->facet(basename(__FILE__), "endereco.endereco_profissional.pais", 100, "País do endereço profissional", null, "_term", $_GET, $index_cv);
+                    $facets->facet(basename(__FILE__), "endereco.endereco_profissional.cidade", 100, "Cidade do endereço profissional", null, "_term", $_GET, $index_cv);
                     
-                    $facets->facet("formacao_academica_titulacao_graduacao.nomeInstituicao", 100, "Instituição em que cursou graduação", null, "_term", $_GET, $index_cv);
-                    $facets->facet("formacao_academica_titulacao_graduacao.nomeCurso", 100, "Nome do curso na graduação", null, "_term", $_GET, $index_cv);
-                    $facets->facet("formacao_academica_titulacao_graduacao.statusDoCurso", 100, "Status do curso na graduação", null, "_term", $_GET, $index_cv);
+                    $facets->facet(basename(__FILE__), "formacao_academica_titulacao_graduacao.nomeInstituicao", 100, "Instituição em que cursou graduação", null, "_term", $_GET, $index_cv);
+                    $facets->facet(basename(__FILE__), "formacao_academica_titulacao_graduacao.nomeCurso", 100, "Nome do curso na graduação", null, "_term", $_GET, $index_cv);
+                    $facets->facet(basename(__FILE__), "formacao_academica_titulacao_graduacao.statusDoCurso", 100, "Status do curso na graduação", null, "_term", $_GET, $index_cv);
                     
-                    $facets->facet("formacao_academica_titulacao_mestrado.nomeInstituicao", 100, "Instituição em que cursou mestrado", null, "_term", $_GET, $index_cv);
-                    $facets->facet("formacao_academica_titulacao_mestrado.nomeCurso", 100, "Nome do curso no mestrado", null, "_term", $_GET, $index_cv);
-                    $facets->facet("formacao_academica_titulacao_mestrado.statusDoCurso", 100, "Status do curso no mestrado", null, "_term", $_GET, $index_cv);
+                    $facets->facet(basename(__FILE__), "formacao_academica_titulacao_mestrado.nomeInstituicao", 100, "Instituição em que cursou mestrado", null, "_term", $_GET, $index_cv);
+                    $facets->facet(basename(__FILE__), "formacao_academica_titulacao_mestrado.nomeCurso", 100, "Nome do curso no mestrado", null, "_term", $_GET, $index_cv);
+                    $facets->facet(basename(__FILE__), "formacao_academica_titulacao_mestrado.statusDoCurso", 100, "Status do curso no mestrado", null, "_term", $_GET, $index_cv);
                     
-                    $facets->facet("formacao_academica_titulacao_mestradoProfissionalizante.nomeInstituicao", 100, "Instituição em que cursou mestrado profissional", null, "_term", $_GET, $index_cv);
-                    $facets->facet("formacao_academica_titulacao_mestradoProfissionalizante.nomeCurso", 100, "Nome do curso no mestrado profissional", null, "_term", $_GET, $index_cv);
-                    $facets->facet("formacao_academica_titulacao_mestradoProfissionalizante.statusDoCurso", 100, "Status do curso no mestrado profissional", null, "_term", $_GET, $index_cv);
+                    $facets->facet(basename(__FILE__), "formacao_academica_titulacao_mestradoProfissionalizante.nomeInstituicao", 100, "Instituição em que cursou mestrado profissional", null, "_term", $_GET, $index_cv);
+                    $facets->facet(basename(__FILE__), "formacao_academica_titulacao_mestradoProfissionalizante.nomeCurso", 100, "Nome do curso no mestrado profissional", null, "_term", $_GET, $index_cv);
+                    $facets->facet(basename(__FILE__), "formacao_academica_titulacao_mestradoProfissionalizante.statusDoCurso", 100, "Status do curso no mestrado profissional", null, "_term", $_GET, $index_cv);
                     
-                    $facets->facet("formacao_academica_titulacao_doutorado.nomeInstituicao", 100, "Instituição em que cursou doutorado", null, "_term", $_GET, $index_cv);
-                    $facets->facet("formacao_academica_titulacao_doutorado.nomeCurso", 100, "Nome do curso no doutorado", null, "_term", $_GET, $index_cv);
-                    $facets->facet("formacao_academica_titulacao_doutorado.statusDoCurso", 100, "Status do curso no doutorado", null, "_term", $_GET, $index_cv);
+                    $facets->facet(basename(__FILE__), "formacao_academica_titulacao_doutorado.nomeInstituicao", 100, "Instituição em que cursou doutorado", null, "_term", $_GET, $index_cv);
+                    $facets->facet(basename(__FILE__), "formacao_academica_titulacao_doutorado.nomeCurso", 100, "Nome do curso no doutorado", null, "_term", $_GET, $index_cv);
+                    $facets->facet(basename(__FILE__), "formacao_academica_titulacao_doutorado.statusDoCurso", 100, "Status do curso no doutorado", null, "_term", $_GET, $index_cv);
                     
-                    $facets->facet("formacao_academica_titulacao_livreDocencia.nomeInstituicao", 100, "Instituição em que cursou livre docência", null, "_term", $_GET, $index_cv);
-                    $facets->facet("formacao_maxima", 10, "Maior formação que iniciou", null, "_term", $_GET, $index_cv);         
-                    $facets->facet("atuacao_profissional.nomeInstituicao", 100, "Instituição em que atuou profissionalmente", null, "_term", $_GET, $index_cv);
-                    $facets->facet("atuacao_profissional.vinculos.outroEnquadramentoFuncionalInformado", 100, "Enquadramento funcional", null, "_term", $_GET, $index_cv);
-                    $facets->facet("atuacao_profissional.vinculos.outroVinculoInformado", 100, "Vínculo", null, "_term", $_GET, $index_cv);
+                    $facets->facet(basename(__FILE__), "formacao_academica_titulacao_livreDocencia.nomeInstituicao", 100, "Instituição em que cursou livre docência", null, "_term", $_GET, $index_cv);
+                    $facets->facet(basename(__FILE__), "formacao_maxima", 10, "Maior formação que iniciou", null, "_term", $_GET, $index_cv);         
+                    $facets->facet(basename(__FILE__), "atuacao_profissional.nomeInstituicao", 100, "Instituição em que atuou profissionalmente", null, "_term", $_GET, $index_cv);
+                    $facets->facet(basename(__FILE__), "atuacao_profissional.vinculos.outroEnquadramentoFuncionalInformado", 100, "Enquadramento funcional", null, "_term", $_GET, $index_cv);
+                    $facets->facet(basename(__FILE__), "atuacao_profissional.vinculos.outroVinculoInformado", 100, "Vínculo", null, "_term", $_GET, $index_cv);
                     
-                    $facets->facet("citacoes.SciELO.numeroCitacoes", 100, "Citações na Scielo", null, "_term", $_GET, $index_cv);
-                    $facets->facet("citacoes.SCOPUS.numeroCitacoes", 100, "Citações na Scopus", null, "_term", $_GET, $index_cv);
-                    $facets->facet("citacoes.Web of Science.numeroCitacoes", 100, "Citações na Web of Science", null, "_term", $_GET, $index_cv);
-                    $facets->facet("citacoes.outras.numero_citacoes", 100, "Citações em outras bases", null, "_term", $_GET, $index_cv);        
+                    $facets->facet(basename(__FILE__), "citacoes.SciELO.numeroCitacoes", 100, "Citações na Scielo", null, "_term", $_GET, $index_cv);
+                    $facets->facet(basename(__FILE__), "citacoes.SCOPUS.numeroCitacoes", 100, "Citações na Scopus", null, "_term", $_GET, $index_cv);
+                    $facets->facet(basename(__FILE__), "citacoes.Web of Science.numeroCitacoes", 100, "Citações na Web of Science", null, "_term", $_GET, $index_cv);
+                    $facets->facet(basename(__FILE__), "citacoes.outras.numero_citacoes", 100, "Citações em outras bases", null, "_term", $_GET, $index_cv);        
                     
-                    $facets->facet("data_atualizacao", 100, "Data de atualização do currículo", null, "_term", $_GET, $index_cv);
+                    $facets->facet(basename(__FILE__), "data_atualizacao", 100, "Data de atualização do currículo", null, "_term", $_GET, $index_cv);
 
                 ?>
                 </ul>
