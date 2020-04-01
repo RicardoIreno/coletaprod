@@ -81,7 +81,26 @@ $get_data = $_GET;
 
                     <!-- Navegador de resultados - Início -->
                     <?php ui::pagination($page, $total, $limit); ?>
-                    <!-- Navegador de resultados - Fim -->   
+                    <!-- Navegador de resultados - Fim -->
+
+                    <?php if($total == 0) : ?>
+                        <br/>
+                        <div class="alert alert-info" role="alert">
+                        Sua busca não obteve resultado. Você pode refazer sua busca abaixo:<br/><br/>
+                            <form action="result.php">
+                                <div class="form-group">
+                                    <input type="text" name="search" class="form-control" id="searchQuery" aria-describedby="searchHelp" placeholder="Pesquise por termo ou autor">
+                                    <small id="searchHelp" class="form-text text-muted">Dica: Use * para busca por radical. Ex: biblio*.</small>
+                                    <small id="searchHelp" class="form-text text-muted">Dica 2: Para buscas exatas, coloque entre ""</small>
+                                    <small id="searchHelp" class="form-text text-muted">Dica 3: Você também pode usar operadores booleanos: AND, OR</small>
+                                </div>                       
+                                <button type="submit" class="btn btn-primary">Pesquisar</button>
+                                
+                            </form>
+                        </div>
+                        <br/><br/>                        
+                    
+                    <?php endif; ?>                       
 
                     <?php foreach ($cursor["hits"]["hits"] as $r) : ?>
 
