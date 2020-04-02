@@ -347,7 +347,7 @@
             return $content;
         }
 
-        $file="export_bdpi.tsv";
+        $file="exportDspace.tsv";
         header('Content-type: text/tab-separated-values; charset=utf-8');
         header("Content-Disposition: attachment; filename=$file");
     
@@ -401,6 +401,78 @@
 
                 foreach ($cursor["hits"]["hits"] as $r) {
                     $content[] = createTableDspace($r);
+                }
+            }
+            echo implode("\n", $content);
+
+        }
+
+    } elseif ($_GET["format"] == "authorNetwork") {
+
+
+        function createNetwork($r) {
+            unset($fields);
+            $fields[] = $r['_id'];
+            $fields[] = $r["_source"]['name'];
+            $content = implode("\t", $fields);
+            unset($fields);
+            return $content;
+        }
+
+        $file="exportAuthorNetwork.tsv";
+        header('Content-type: text/tab-separated-values; charset=utf-8');
+        header("Content-Disposition: attachment; filename=$file");
+    
+        // Set directory to ROOT
+        chdir('../');
+        // Include essencial files
+        include('inc/config.php'); 
+        include('inc/functions.php');
+
+        if (!empty($_GET)) {
+            $result_get = Requests::getParser($_GET);
+            $query = $result_get['query'];
+            $limit = $result_get['limit'];
+            $page = $result_get['page'];
+            $skip = $result_get['skip'];
+
+            if (isset($_GET["sort"])) {
+                $query['sort'] = [
+                    ['name.keyword' => ['order' => 'asc']],
+                ];
+            } else {
+                $query['sort'] = [
+                    ['datePublished.keyword' => ['order' => 'desc']],
+                ];
+            }
+
+            $params = [];
+            $params["index"] = $index;
+            $params["size"] = 10;
+            $params["scroll"] = "30s";
+            $params["body"] = $query;
+
+            $cursor = $client->search($params);
+            $total = $cursor["hits"]["total"];
+
+            $content[] = "Source\tTarget\tYear";
+
+            foreach ($cursor["hits"]["hits"] as $r) {
+                $content[] = createNetwork($r);
+            }
+
+
+            while (isset($cursor['hits']['hits']) && count($cursor['hits']['hits']) > 0) {
+                $scroll_id = $cursor['_scroll_id'];
+                $cursor = $client->scroll(
+                    [
+                    "scroll_id" => $scroll_id,
+                    "scroll" => "30s"
+                    ]
+                );
+
+                foreach ($cursor["hits"]["hits"] as $r) {
+                    $content[] = createNetwork($r);
                 }
             }
             echo implode("\n", $content);
