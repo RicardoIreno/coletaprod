@@ -348,7 +348,8 @@ $get_data = $_GET;
                 <h3>Exportar</h3>
                 <p><a href="tools/export.php?<?php echo $_SERVER["QUERY_STRING"] ?>&format=ris">Exportar em formato RIS</a></p>
                 <p><a href="tools/export.php?<?php echo $_SERVER["QUERY_STRING"] ?>&format=dspace">Exportar em formato CSV para o DSpace</a></p>
-                <p><a href="tools/export.php?<?php echo $_SERVER["QUERY_STRING"] ?>&format=authorNetwork">Exportar em formato CSV para o Gephi da Rede de Co-Autoria</a></p>
+                <p><a href="tools/export.php?<?php echo $_SERVER["QUERY_STRING"] ?>&format=authorNetwork">Exportar em formato CSV para o Gephi da Rede de Co-Autoria incluindo publicações</a></p>
+                <p><a href="tools/export.php?<?php echo $_SERVER["QUERY_STRING"] ?>&format=authorNetworkWithoutPapers">Exportar em formato CSV para o Gephi da Rede de Co-Autoria sem publicações</a></p>
                 <hr>                   
                         
             </div>
