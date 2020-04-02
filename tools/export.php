@@ -501,8 +501,12 @@
             if (isset($contentAuthor)) {
                 $content = implode("\n", $contentAuthor);
                 unset($contentAuthor);
+            }
+            if (isset($content)) {
                 return $content;
-            }            
+            } else {
+                return "";
+            }
             
         }
 
