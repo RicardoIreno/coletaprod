@@ -436,16 +436,6 @@
             $page = $result_get['page'];
             $skip = $result_get['skip'];
 
-            if (isset($_GET["sort"])) {
-                $query['sort'] = [
-                    ['name.keyword' => ['order' => 'asc']],
-                ];
-            } else {
-                $query['sort'] = [
-                    ['datePublished.keyword' => ['order' => 'desc']],
-                ];
-            }
-
             $params = [];
             $params["index"] = $index;
             $params["size"] = 10;
