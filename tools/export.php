@@ -502,12 +502,7 @@
                 $content = implode("\n", $contentAuthor);
                 unset($contentAuthor);
             }
-            if (isset($content)) {
-                return $content;
-            } else {
-                return "";
-            }
-            
+            return $content;
         }
 
         $file="exportAuthorNetworkWithoutPapers.tsv";
