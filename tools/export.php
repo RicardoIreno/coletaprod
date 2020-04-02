@@ -411,11 +411,18 @@
 
 
         function createNetwork($r) {
-            unset($fields);
-            $fields[] = $r['_id'];
-            $fields[] = $r["_source"]['name'];
-            $content = implode("\t", $fields);
-            unset($fields);
+            unset($contentAuthor);
+            foreach ($r["_source"]['author'] as $author) {
+                unset($fields);
+                $fields[] = hash('crc32', $r['_id']);
+                $fields[] = $author['person']['name'];
+                $fields[] = '['.$r['_source']['datePublished'].','.((int)$r['_source']['datePublished'] + 2).']';              
+                $contentAuthor[] = implode("\t", $fields);
+                unset($fields);
+            }
+            
+            $content = implode("\n", $contentAuthor);
+            unset($contentAuthor);
             return $content;
         }
 
