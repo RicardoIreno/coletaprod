@@ -481,23 +481,27 @@
 
         function createNetwork($r) {
             foreach ($r["_source"]['author'] as $author) {
+                //print_r($author);
                 unset($r["_source"]['author'][0]);
-                foreach ($r["_source"]['author'] as $authorArray) {                    
+                //print_r($r["_source"]['author']);
+                foreach ($r["_source"]['author'] as $authorArray) {  
+                    //print_r($authorArray);                  
                     if ($author['person']['name'] != $authorArray['person']['name']){
                         $fields[] = $author['person']['name'];
                         $fields[] = $authorArray['person']['name'];
                         $fields[] = '['.$r['_source']['datePublished'].','.((int)$r['_source']['datePublished'] + 2).']';    
                     }
                     if (isset($fields)) {
+                        //print_r($fields);
                         $contentAuthor[] = implode("\t", $fields);
                         unset($fields);
                     }                     
                 }
-                if (isset($contentAuthor)) {
-                    $content = implode("\n", $contentAuthor);
-                    unset($contentAuthor);
-                }
             }
+            if (isset($contentAuthor)) {
+                $content = implode("\n", $contentAuthor);
+                unset($contentAuthor);
+            }            
             return $content;
         }
 
