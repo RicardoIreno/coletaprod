@@ -416,7 +416,7 @@
                 unset($fields);
                 $fields[] = hash('crc32', $r['_id']);
                 $fields[] = $author['person']['name'];
-                $fields[] = '['.$r['_source']['datePublished'].','.((int)$r['_source']['datePublished'] + 2).']';              
+                $fields[] = '['.$r['_source']['datePublished'].','.$r['_source']['datePublished'].']';              
                 $contentAuthor[] = implode("\t", $fields);
                 unset($fields);
             }
@@ -489,7 +489,7 @@
                     if ($author['person']['name'] != $authorArray['person']['name']){
                         $fields[] = $author['person']['name'];
                         $fields[] = $authorArray['person']['name'];
-                        $fields[] = '['.$r['_source']['datePublished'].','.((int)$r['_source']['datePublished'] + 2).']';    
+                        $fields[] = '['.$r['_source']['datePublished'].','.$r['_source']['datePublished'].']';    
                     }
                     if (isset($fields)) {
                         //print_r($fields);
