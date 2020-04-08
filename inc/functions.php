@@ -42,6 +42,21 @@ if (isset($testIndexCV) && $testIndexCV == false) {
     Elasticsearch::createIndex($index_cv, $client);
 }
 
+/* Connect to Elasticsearch | Index Authorities */
+try {
+    $client = \Elasticsearch\ClientBuilder::create()->setHosts($hosts)->build();
+    //print("<pre>".print_r($client,true)."</pre>");
+    $indexParams['index']  = $index_authority;   
+    $testIndexAut = $client->indices()->exists($indexParams);
+} catch (Exception $e) {    
+    $error_connection_message = '<div class="alert alert-danger" role="alert">Elasticsearch não foi encontrado.</div>';
+}
+
+/* Create index if not exists */
+if (isset($testIndexAut) && $testIndexAut == false) {
+    Elasticsearch::createIndex($index_authority, $client);
+}
+
 /* Connect to Source */
 try {
     $client = \Elasticsearch\ClientBuilder::create()->setHosts($hosts)->build();
