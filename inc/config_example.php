@@ -24,6 +24,7 @@
     /* Configurações do Elasticsearch */
     $index = "coletaprod";
     $index_cv = "coletaprodcv";
+    $index_authority = "coletaprodaut";
     $index_source = "ecafind";
 
 	/* Load libraries for PHP composer */ 
