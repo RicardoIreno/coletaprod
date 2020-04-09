@@ -816,7 +816,10 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'ARTIGOS-PUBLICADOS'})) {
             
 
         if (!empty($doc["doc"]["doi"])) {
-            $sha256 = hash('sha256', $doc["doc"]["doi"]);
+            $sha_array[] = $doc["doc"]["lattes_ids"][0];
+            $sha_array[] = $doc["doc"]["doi"];
+            $sha256 = hash('sha256', ''.implode("", $sha_array).'');
+
         } else {
             $sha_array[] = $doc["doc"]["lattes_ids"][0];
             $sha_array[] = $doc["doc"]["tipo"];
@@ -943,9 +946,13 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'LIVROS-E-CAPITULOS'})) {
                 
 
             if (!empty($doc["doc"]["doi"])) {
-                $sha256 = hash('sha256', $doc["doc"]["doi"]);
+                $sha_array[] = $doc["doc"]["lattes_ids"][0];
+                $sha_array[] = $doc["doc"]["doi"];
+                $sha256 = hash('sha256', ''.implode("", $sha_array).'');
             } elseif (!empty($doc["doc"]["isbn"])) {
-                $sha256 = hash('sha256', $doc["doc"]["isbn"]);
+                $sha_array[] = $doc["doc"]["lattes_ids"][0];
+                $sha_array[] = $doc["doc"]["isbn"];
+                $sha256 = hash('sha256', ''.implode("", $sha_array).'');                
             } else {
                 $sha_array[] = $doc["doc"]["lattes_ids"][0];
                 $sha_array[] = $doc["doc"]["tipo"];
@@ -1189,7 +1196,9 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TEXTOS-EM-JORNAIS-OU-REVISTA
             
 
         if (!empty($doc["doc"]["doi"])) {
-            $sha256 = hash('sha256', $doc["doc"]["doi"]);
+            $sha_array[] = $doc["doc"]["lattes_ids"][0];
+            $sha_array[] = $doc["doc"]["doi"];
+            $sha256 = hash('sha256', ''.implode("", $sha_array).'');
         } else {
             $sha_array[] = $doc["doc"]["lattes_ids"][0];
             $sha_array[] = $doc["doc"]["tipo"];
@@ -1314,7 +1323,9 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
                 
 
             if (!empty($doc["doc"]["doi"])) {
-                $sha256 = hash('sha256', $doc["doc"]["doi"]);
+                $sha_array[] = $doc["doc"]["lattes_ids"][0];
+                $sha_array[] = $doc["doc"]["doi"];
+                $sha256 = hash('sha256', ''.implode("", $sha_array).'');
             } else {
                 $sha_array[] = $doc["doc"]["lattes_ids"][0];
                 $sha_array[] = $doc["doc"]["tipo"];                
@@ -1437,7 +1448,9 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
                 
 
             if (!empty($doc["doc"]["doi"])) {
-                $sha256 = hash('sha256', $doc["doc"]["doi"]);
+                $sha_array[] = $doc["doc"]["lattes_ids"][0];
+                $sha_array[] = $doc["doc"]["doi"];
+                $sha256 = hash('sha256', ''.implode("", $sha_array).'');
             } else {
                 $sha_array[] = $doc["doc"]["lattes_ids"][0];
                 $sha_array[] = $doc["doc"]["tipo"];                
@@ -1562,7 +1575,9 @@ if (isset($curriculo->{'PRODUCAO-TECNICA'})) {
                 
 
             if (!empty($doc["doc"]["doi"])) {
-                $sha256 = hash('sha256', $doc["doc"]["doi"]);
+                $sha_array[] = $doc["doc"]["lattes_ids"][0];
+                $sha_array[] = $doc["doc"]["doi"];
+                $sha256 = hash('sha256', ''.implode("", $sha_array).'');
             } else {
                 $sha_array[] = $doc["doc"]["lattes_ids"][0];
                 $sha_array[] = $doc["doc"]["tipo"];                
@@ -1676,7 +1691,9 @@ if (isset($curriculo->{'PRODUCAO-TECNICA'})) {
                 
 
             if (!empty($doc["doc"]["doi"])) {
-                $sha256 = hash('sha256', $doc["doc"]["doi"]);
+                $sha_array[] = $doc["doc"]["lattes_ids"][0];
+                $sha_array[] = $doc["doc"]["doi"];
+                $sha256 = hash('sha256', ''.implode("", $sha_array).'');                
             } else {
                 $sha_array[] = $doc["doc"]["lattes_ids"][0];
                 $sha_array[] = $doc["doc"]["tipo"];                
@@ -1808,7 +1825,9 @@ if (isset($curriculo->{'OUTRA-PRODUCAO'})) {
                     
 
                 if (!empty($doc["doc"]["doi"])) {
-                    $sha256 = hash('sha256', $doc["doc"]["doi"]);
+                    $sha_array[] = $doc["doc"]["lattes_ids"][0];
+                    $sha_array[] = $doc["doc"]["doi"];
+                    $sha256 = hash('sha256', ''.implode("", $sha_array).'');
                 } else {
                     $sha_array[] = $doc["doc"]["lattes_ids"][0];
                     $sha_array[] = $doc["doc"]["tipo"];                    
