@@ -580,10 +580,67 @@ class paginaInicial {
     
 }
 
+class DadosInternos {
+
+    static function queryColetaprod($query_title, $query_year, $sha256) 
+    {  
+        
+        global $client;
+        global $index;
+        
+        $query_title =  str_replace('"', '', $query_title);
+        $query["min_score"] = 50;
+        $query["query"]["bool"]["should"][0]["multi_match"]["query"] = $query_title;
+        $query["query"]["bool"]["should"][0]["multi_match"]["type"] = "cross_fields";
+        $query["query"]["bool"]["should"][0]["multi_match"]["fields"][] = "name";
+        $query["query"]["bool"]["should"][0]["multi_match"]["minimum_should_match"] = "90%";
+        $query["query"]["bool"]["should"][1]["multi_match"]["query"] = $query_year;
+        $query["query"]["bool"]["should"][1]["multi_match"]["type"] = "best_fields";
+        $query["query"]["bool"]["should"][1]["multi_match"]["fields"][] = "datePublished";
+        $query["query"]["bool"]["should"][1]["multi_match"]["operator"] = "and";
+        $query["query"]["bool"]["should"][1]["multi_match"]["minimum_should_match"] = "100%";
+        $query["query"]["bool"]["minimum_should_match"] = 2;
+
+        $params = [];
+
+        $params["index"] = $index;
+        //$params["_source"] = $fields;
+        //$params["size"] = $size;
+        $params["body"] = $query;
+
+        $data = $client->search($params);
+
+        if ($data["hits"]["total"]["value"] > 0) {
+
+            foreach ($data["hits"]["hits"] as $match) {
+                if ($sha256 != $match["_id"]) {
+                    echo '<div class="alert alert-info" role="alert">';
+                    echo '<h5>Registros similares no Coletaprod</h5>';
+                    echo '<p>Fonte: '.$match["_source"]["source"].'</p>';
+                    echo '<p>Nota de proximidade: '.$match["_score"].' - <a href="http://localhost/coletaprod/item/'.$match["_id"].'" target="_blank">'.$match["_source"]["type"].' - '.$match["_source"]["name"].' ('.$match["_source"]["datePublished"].')</a><br/> Autores: ';   
+                    foreach ($match["_source"]['author'] as $autores) {
+                        $autArray[] = $autores['person']['name'];
+                    }
+                    echo implode("; ",$autArray);
+                    if (isset($match["_source"]["doi"])) {
+                        echo '<p>DOI: '.$match["_source"]["doi"].'</p>';
+                        $doc["doc"]["bdpi"]["doi_bdpi"] = $match["_source"]["doi"];
+                    } 
+                    echo '</p>';
+                    unset($autArray);
+                    echo '</div>';
+                }
+            }             
+        } 
+        return $data;
+    }
+
+}
+
 /**
  * Classe que obtem dados de fontes externas
  */
-class DadosExternos {
+class DadosExternos {   
 
     static function querySource($query_title, $query_year, $sha256) 
     {  

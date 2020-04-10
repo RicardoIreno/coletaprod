@@ -166,7 +166,10 @@ $get_data = $_GET;
                                 }
                                 if (isset($index_source)) {
                                     DadosExternos::querySource($r["_source"]['name'], $r["_source"]['datePublished'], $r['_id']);
-                                }                            
+                                }
+                                
+                                DadosInternos::queryColetaprod($r["_source"]['name'], $r["_source"]['datePublished'], $r['_id']);
+
                                 ?>  
 
            
