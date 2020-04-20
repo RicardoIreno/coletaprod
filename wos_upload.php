@@ -184,9 +184,10 @@ class Record
         $AffiliationsArray = explode(";", $row[$rowNum["AuthorsWithAffiliations"]]);
         foreach ($AffiliationsArray as $Aff) {
             preg_match('/(\[.*?\])(.*)/', $Aff, $output_array);
-            $doc["doc"]["institutions"][] = trim($output_array[2]);
+            if (isset($output_array[2])) {
+                $doc["doc"]["institutions"][] = trim($output_array[2]);
+            }            
         }
-
 
         $doc["doc"]["numOfAuthors"] = count($doc["doc"]["author"]);
         $doc["doc_as_upsert"] = true;
