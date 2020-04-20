@@ -11,10 +11,14 @@ if (isset($_FILES['file'])) {
     foreach ($row as $key => $value) {
         $rowNum["type"] = 0;
         if ($value == "TI") {
-            $rowNum["title"] = $key;
+            if (!isset($rowNum["title"])) {
+                $rowNum["title"] = $key;
+            }
         }
         if ($value == "PY") {
-            $rowNum["year"] = $key;
+            if (!isset($rowNum["year"])) {
+                $rowNum["year"] = $key;
+            }            
         }
         if ($value == "UT") {
             $rowNum["EID"] = $key;
