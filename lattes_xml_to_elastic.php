@@ -158,8 +158,13 @@ if ($_FILES['file']['size'] != 0) {
     if (isset($_REQUEST['nome_completo'])) {
         $query["doc"]["nome_completo"] = $_REQUEST['nome_completo'];
     }
+    if (isset($_REQUEST['uuid'])) {    
+        $id = $_REQUEST['uuid'];
+    } else {
+        $id = uniqid(rand(), true);
+    }
     $query["doc_as_upsert"] = true;    
-    $id = uniqid(rand(), true);
+    
     $resultado_curriculo = Elasticsearch::update($id, $query, $index_cv);
     print_r($resultado_curriculo);
 
