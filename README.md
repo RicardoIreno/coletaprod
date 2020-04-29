@@ -65,8 +65,7 @@ MURAKAMI, Tiago Rodrigo Marçal & LARA, Jan Leduc de. Coletaprod. Disponível em
 
     R
     library(shiny)
-    library(shiny)
     options(shiny.host = '0.0.0.0')
-    options(shiny.port = 8888).
+    options(shiny.port = 8888)
     library(bibliometrix)
     biblioshiny()
