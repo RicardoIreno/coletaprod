@@ -58,3 +58,15 @@ Para citar, use o DOI:
 <a href="https://zenodo.org/badge/latestdoi/3633209"><img src="https://zenodo.org/badge/3633209.svg" alt="DOI"></a>
 
 MURAKAMI, Tiago Rodrigo Marçal & LARA, Jan Leduc de. Coletaprod. Disponível em: < http://doi.org/10.5281/zenodo.3633209 >, Acesso em: 
+
+
+
+## Biblioshiny
+
+    R
+    library(shiny)
+    library(shiny)
+    options(shiny.host = '0.0.0.0')
+    options(shiny.port = 8888).
+    library(bibliometrix)
+    biblioshiny()
