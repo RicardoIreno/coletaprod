@@ -613,10 +613,16 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TRABALHOS-EM-EVENTOS'})) {
         $doc["doc"]["tipo"] = "Trabalhos em eventos";
         $doc["doc"]["source"] = "Base Lattes";
         $doc["doc"]["lattes_ids"][] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
-        $doc["doc"]["tag"][] = $_REQUEST['tag'];
+        if (isset($_REQUEST['tag'])) {
+            $doc["doc"]["tag"][] = $_REQUEST['tag'];
+        } else {
+            $doc["doc"]["tag"][] = "Lattes";
+        }
         $doc["doc"]["instituicao"]["unidade"] = explode("|", $_REQUEST['unidade']);
         $doc["doc"]["instituicao"]["departamento"] = explode("|", $_REQUEST['departamento']);
-        $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
+        if (isset($_REQUEST['numfuncional'])) {
+            $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
+        }    
         if (isset($_REQUEST['tipvin'])) {
             $doc["doc"]["instituicao"]["tipvin"] = explode("|", $_REQUEST['tipvin']);
         }
@@ -695,7 +701,6 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TRABALHOS-EM-EVENTOS'})) {
         // Constroi sha256
         $sha_array[] = $doc["doc"]["lattes_ids"][0];
         $sha_array[] = $doc["doc"]["tipo"];
-        $sha_array[] = $doc["doc"]["lattes"]["natureza"];
         $sha_array[] = $doc["doc"]["name"];
         $sha_array[] = $doc["doc"]["datePublished"];
         $sha_array[] = $doc["doc"]["country"];
@@ -739,10 +744,16 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'ARTIGOS-PUBLICADOS'})) {
         $doc["doc"]["tipo"] = "Artigo publicado";
         $doc["doc"]["source"] = "Base Lattes";
         $doc["doc"]["lattes_ids"][] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
-        $doc["doc"]["tag"][] = $_REQUEST['tag'];
+        if (isset($_REQUEST['tag'])) {
+            $doc["doc"]["tag"][] = $_REQUEST['tag'];
+        } else {
+            $doc["doc"]["tag"][] = "Lattes";
+        }
         $doc["doc"]["instituicao"]["unidade"] = explode("|", $_REQUEST['unidade']);
         $doc["doc"]["instituicao"]["departamento"] = explode("|", $_REQUEST['departamento']);
-        $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
+        if (isset($_REQUEST['numfuncional'])) {
+            $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
+        }
         if (isset($_REQUEST['tipvin'])) {
             $doc["doc"]["instituicao"]["tipvin"] = explode("|", $_REQUEST['tipvin']);
         }
@@ -823,7 +834,6 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'ARTIGOS-PUBLICADOS'})) {
         } else {
             $sha_array[] = $doc["doc"]["lattes_ids"][0];
             $sha_array[] = $doc["doc"]["tipo"];
-            $sha_array[] = $doc["doc"]["lattes"]["natureza"];
             $sha_array[] = $doc["doc"]["name"];
             $sha_array[] = $doc["doc"]["datePublished"];
             $sha_array[] = $doc["doc"]["isPartOf"]["name"];
@@ -869,10 +879,16 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'LIVROS-E-CAPITULOS'})) {
             $doc["doc"]["tipo"] = "Livro publicado ou organizado";
             $doc["doc"]["source"] = "Base Lattes";
             $doc["doc"]["lattes_ids"][] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
-            $doc["doc"]["tag"][] = $_REQUEST['tag'];
+            if (isset($_REQUEST['tag'])) {
+                $doc["doc"]["tag"][] = $_REQUEST['tag'];
+            } else {
+                $doc["doc"]["tag"][] = "Lattes";
+            }
             $doc["doc"]["instituicao"]["unidade"] = explode("|", $_REQUEST['unidade']);
             $doc["doc"]["instituicao"]["departamento"] = explode("|", $_REQUEST['departamento']);
-            $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
+            if (isset($_REQUEST['numfuncional'])) {
+                $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
+            }
             if (isset($_REQUEST['tipvin'])) {
                 $doc["doc"]["instituicao"]["tipvin"] = explode("|", $_REQUEST['tipvin']);
             }
@@ -956,7 +972,6 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'LIVROS-E-CAPITULOS'})) {
             } else {
                 $sha_array[] = $doc["doc"]["lattes_ids"][0];
                 $sha_array[] = $doc["doc"]["tipo"];
-                $sha_array[] = $doc["doc"]["lattes"]["natureza"];
                 $sha_array[] = $doc["doc"]["name"];
                 $sha_array[] = $doc["doc"]["datePublished"];
                 $sha_array[] = $doc["doc"]["bookEdition"];
@@ -998,10 +1013,16 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'LIVROS-E-CAPITULOS'})) {
             $doc["doc"]["tipo"] = "Capítulo de livro publicado";
             $doc["doc"]["source"] = "Base Lattes";
             $doc["doc"]["lattes_ids"][] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
-            $doc["doc"]["tag"][] = $_REQUEST['tag'];
+            if (isset($_REQUEST['tag'])) {
+                $doc["doc"]["tag"][] = $_REQUEST['tag'];
+            } else {
+                $doc["doc"]["tag"][] = "Lattes";
+            }
             $doc["doc"]["instituicao"]["unidade"] = explode("|", $_REQUEST['unidade']);
             $doc["doc"]["instituicao"]["departamento"] = explode("|", $_REQUEST['departamento']);
-            $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
+            if (isset($_REQUEST['numfuncional'])) {
+                $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
+            }
             if (isset($_REQUEST['tipvin'])) {
                 $doc["doc"]["instituicao"]["tipvin"] = explode("|", $_REQUEST['tipvin']);
             }
@@ -1076,7 +1097,6 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'LIVROS-E-CAPITULOS'})) {
 
             $sha_array[] = $doc["doc"]["lattes_ids"][0];
             $sha_array[] = $doc["doc"]["tipo"];
-            $sha_array[] = $doc["doc"]["lattes"]["natureza"];
             $sha_array[] = $doc["doc"]["name"];
             $sha_array[] = $doc["doc"]["datePublished"];
             $sha_array[] = $doc["doc"]["isPartOf"]["name"];
@@ -1120,10 +1140,16 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TEXTOS-EM-JORNAIS-OU-REVISTA
         $doc["doc"]["tipo"] = "Textos em jornais de notícias/revistas";
         $doc["doc"]["source"] = "Base Lattes";
         $doc["doc"]["lattes_ids"][] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
-        $doc["doc"]["tag"][] = $_REQUEST['tag'];
+        if (isset($_REQUEST['tag'])) {
+            $doc["doc"]["tag"][] = $_REQUEST['tag'];
+        } else {
+            $doc["doc"]["tag"][] = "Lattes";
+        }
         $doc["doc"]["instituicao"]["unidade"] = explode("|", $_REQUEST['unidade']);
         $doc["doc"]["instituicao"]["departamento"] = explode("|", $_REQUEST['departamento']);
-        $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
+        if (isset($_REQUEST['numfuncional'])) {
+            $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
+        }
         if (isset($_REQUEST['tipvin'])) {
             $doc["doc"]["instituicao"]["tipvin"] = explode("|", $_REQUEST['tipvin']);
         }
@@ -1202,7 +1228,6 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TEXTOS-EM-JORNAIS-OU-REVISTA
         } else {
             $sha_array[] = $doc["doc"]["lattes_ids"][0];
             $sha_array[] = $doc["doc"]["tipo"];
-            $sha_array[] = $doc["doc"]["lattes"]["natureza"];
             $sha_array[] = $doc["doc"]["name"];
             $sha_array[] = $doc["doc"]["datePublished"];
             $sha_array[] = $doc["doc"]["isPartOf"]["name"];
@@ -1249,10 +1274,16 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
             $doc["doc"]["tipo"] = "Partitura musical";
             $doc["doc"]["source"] = "Base Lattes";
             $doc["doc"]["lattes_ids"][] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
-            $doc["doc"]["tag"][] = $_REQUEST['tag'];
+            if (isset($_REQUEST['tag'])) {
+                $doc["doc"]["tag"][] = $_REQUEST['tag'];
+            } else {
+                $doc["doc"]["tag"][] = "Lattes";
+            }
             $doc["doc"]["instituicao"]["unidade"] = explode("|", $_REQUEST['unidade']);
             $doc["doc"]["instituicao"]["departamento"] = explode("|", $_REQUEST['departamento']);
-            $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
+            if (isset($_REQUEST['numfuncional'])) {
+                $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
+            }
             if (isset($_REQUEST['tipvin'])) {
                 $doc["doc"]["instituicao"]["tipvin"] = explode("|", $_REQUEST['tipvin']);
             }
@@ -1328,8 +1359,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
                 $sha256 = hash('sha256', ''.implode("", $sha_array).'');
             } else {
                 $sha_array[] = $doc["doc"]["lattes_ids"][0];
-                $sha_array[] = $doc["doc"]["tipo"];                
-                $sha_array[] = $doc["doc"]["lattes"]["natureza"];
+                $sha_array[] = $doc["doc"]["tipo"];
                 $sha_array[] = $doc["doc"]["name"];
                 $sha_array[] = $doc["doc"]["datePublished"];
                 $sha_array[] = $doc["doc"]["url"];
@@ -1369,10 +1399,16 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
             $doc["doc"]["tipo"] = "Tradução";
             $doc["doc"]["source"] = "Base Lattes";
             $doc["doc"]["lattes_ids"][] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
-            $doc["doc"]["tag"][] = $_REQUEST['tag'];
+            if (isset($_REQUEST['tag'])) {
+                $doc["doc"]["tag"][] = $_REQUEST['tag'];
+            } else {
+                $doc["doc"]["tag"][] = "Lattes";
+            }
             $doc["doc"]["instituicao"]["unidade"] = explode("|", $_REQUEST['unidade']);
             $doc["doc"]["instituicao"]["departamento"] = explode("|", $_REQUEST['departamento']);
-            $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
+            if (isset($_REQUEST['numfuncional'])) {
+                $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
+            }
             if (isset($_REQUEST['tipvin'])) {
                 $doc["doc"]["instituicao"]["tipvin"] = explode("|", $_REQUEST['tipvin']);
             }
@@ -1453,8 +1489,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
                 $sha256 = hash('sha256', ''.implode("", $sha_array).'');
             } else {
                 $sha_array[] = $doc["doc"]["lattes_ids"][0];
-                $sha_array[] = $doc["doc"]["tipo"];                
-                $sha_array[] = $doc["doc"]["lattes"]["natureza"];
+                $sha_array[] = $doc["doc"]["tipo"];
                 $sha_array[] = $doc["doc"]["name"];
                 $sha_array[] = $doc["doc"]["datePublished"];
                 $sha_array[] = $doc["doc"]["url"];
@@ -1500,10 +1535,16 @@ if (isset($curriculo->{'PRODUCAO-TECNICA'})) {
             $doc["doc"]["tipo"] = "Software";
             $doc["doc"]["source"] = "Base Lattes";
             $doc["doc"]["lattes_ids"][] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
-            $doc["doc"]["tag"][] = $_REQUEST['tag'];
+            if (isset($_REQUEST['tag'])) {
+                $doc["doc"]["tag"][] = $_REQUEST['tag'];
+            } else {
+                $doc["doc"]["tag"][] = "Lattes";
+            }
             $doc["doc"]["instituicao"]["unidade"] = explode("|", $_REQUEST['unidade']);
             $doc["doc"]["instituicao"]["departamento"] = explode("|", $_REQUEST['departamento']);
-            $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
+            if (isset($_REQUEST['numfuncional'])) {
+                $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
+            }
             if (isset($_REQUEST['tipvin'])) {
                 $doc["doc"]["instituicao"]["tipvin"] = explode("|", $_REQUEST['tipvin']);
             }
@@ -1580,8 +1621,7 @@ if (isset($curriculo->{'PRODUCAO-TECNICA'})) {
                 $sha256 = hash('sha256', ''.implode("", $sha_array).'');
             } else {
                 $sha_array[] = $doc["doc"]["lattes_ids"][0];
-                $sha_array[] = $doc["doc"]["tipo"];                
-                $sha_array[] = $doc["doc"]["lattes"]["natureza"];
+                $sha_array[] = $doc["doc"]["tipo"];
                 $sha_array[] = $doc["doc"]["name"];
                 $sha_array[] = $doc["doc"]["datePublished"];
                 $sha_array[] = $doc["doc"]["url"];
@@ -1621,10 +1661,16 @@ if (isset($curriculo->{'PRODUCAO-TECNICA'})) {
             $doc["doc"]["tipo"] = "Patente";
             $doc["doc"]["source"] = "Base Lattes";
             $doc["doc"]["lattes_ids"][] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
-            $doc["doc"]["tag"][] = $_REQUEST['tag'];
+            if (isset($_REQUEST['tag'])) {
+                $doc["doc"]["tag"][] = $_REQUEST['tag'];
+            } else {
+                $doc["doc"]["tag"][] = "Lattes";
+            }
             $doc["doc"]["instituicao"]["unidade"] = explode("|", $_REQUEST['unidade']);
             $doc["doc"]["instituicao"]["departamento"] = explode("|", $_REQUEST['departamento']);
-            $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
+            if (isset($_REQUEST['numfuncional'])) {
+                $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
+            }
             if (isset($_REQUEST['tipvin'])) {
                 $doc["doc"]["instituicao"]["tipvin"] = explode("|", $_REQUEST['tipvin']);
             }
@@ -1696,8 +1742,7 @@ if (isset($curriculo->{'PRODUCAO-TECNICA'})) {
                 $sha256 = hash('sha256', ''.implode("", $sha_array).'');                
             } else {
                 $sha_array[] = $doc["doc"]["lattes_ids"][0];
-                $sha_array[] = $doc["doc"]["tipo"];                
-                $sha_array[] = $doc["doc"]["lattes"]["natureza"];
+                $sha_array[] = $doc["doc"]["tipo"];
                 $sha_array[] = $doc["doc"]["name"];
                 $sha_array[] = $doc["doc"]["datePublished"];
                 $sha_array[] = $doc["doc"]["url"];
@@ -1745,10 +1790,16 @@ if (isset($curriculo->{'OUTRA-PRODUCAO'})) {
                 $doc["doc"]["tipo"] = "Apresentação de obra artística";
                 $doc["doc"]["source"] = "Base Lattes";
                 $doc["doc"]["lattes_ids"][] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
-                $doc["doc"]["tag"][] = $_REQUEST['tag'];
+                if (isset($_REQUEST['tag'])) {
+                    $doc["doc"]["tag"][] = $_REQUEST['tag'];
+                } else {
+                    $doc["doc"]["tag"][] = "Lattes";
+                }
                 $doc["doc"]["instituicao"]["unidade"] = explode("|", $_REQUEST['unidade']);
                 $doc["doc"]["instituicao"]["departamento"] = explode("|", $_REQUEST['departamento']);
-                $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
+                if (isset($_REQUEST['numfuncional'])) {
+                    $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
+                }
                 if (isset($_REQUEST['tipvin'])) {
                     $doc["doc"]["instituicao"]["tipvin"] = explode("|", $_REQUEST['tipvin']);
                 }
@@ -1830,8 +1881,7 @@ if (isset($curriculo->{'OUTRA-PRODUCAO'})) {
                     $sha256 = hash('sha256', ''.implode("", $sha_array).'');
                 } else {
                     $sha_array[] = $doc["doc"]["lattes_ids"][0];
-                    $sha_array[] = $doc["doc"]["tipo"];                    
-                    $sha_array[] = $doc["doc"]["lattes"]["natureza"];
+                    $sha_array[] = $doc["doc"]["tipo"];
                     $sha_array[] = $doc["doc"]["name"];
                     $sha_array[] = $doc["doc"]["datePublished"];
                     $sha_array[] = $doc["doc"]["url"];
