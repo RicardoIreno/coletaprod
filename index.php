@@ -216,9 +216,7 @@
                             <input type="text" placeholder="Tag para formar um grupo" class="uk-form-width-medium" name="tag">
                             <button class="uk-button-primary" name="btn_submit">Incluir</button><br/>                                    
                         </fieldset>
-                    </form>
-
-                    -->
+                    </form>                    
                     <form class="m-3" action="openlibrary.php" method="get" accept-charset="utf-8">
                         <legend>Consulta na API do OpenLibrary</legend>
                         <div class="input-group">
@@ -251,6 +249,7 @@
                             </div>    
                         </div>
                     </form>
+                    -->
                     <!--
                     <br/>
                     <form class="uk-form" action="grobid.php" method="post" accept-charset="utf-8" enctype="multipart/form-data">
