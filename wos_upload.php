@@ -149,6 +149,7 @@ class Record
         $doc["doc"]["isPartOf"]["issn"] = $row[$rowNum["ISSN"]];
         $doc["doc"]["publisher"]["organization"]["name"] = $row[$rowNum["Publisher"]];
         $doc["doc"]["publisher"]["organization"]["location"] = $row[$rowNum["PublisherCity"]];
+        $doc["doc"]["citedby"] = $row[$rowNum["CitedBy"]];
         $doc["doc"]["wos"]["citedby"] = $row[$rowNum["CitedBy"]];
         $doc["doc"]["wos"]["references"] = $row[$rowNum["References"]];
         $doc["doc"]["EducationEvent"]["name"] = $row[$rowNum["ConferenceTitle"]];

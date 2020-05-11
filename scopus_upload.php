@@ -126,6 +126,7 @@ class Record
         $doc["doc"]["pageEnd"] = $row[$rowNum["PageEnd"]];
         $doc["doc"]["isPartOf"]["issn"] = $row[$rowNum["ISSN"]];
         $doc["doc"]["publisher"]["organization"]["name"] = $row[$rowNum["Publisher"]];
+        $doc["doc"]["citedby"] = $row[$rowNum["CitedBy"]];
         $doc["doc"]["scopus"]["citedby"] = $row[$rowNum["CitedBy"]];
         $doc["doc"]["scopus"]["references"] = $row[$rowNum["References"]];
 
