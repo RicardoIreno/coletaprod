@@ -205,6 +205,24 @@
                     </form>
                     <div class="m-2">&nbsp;</div>
 
+                    <form class="m-3" action="tools/upload/sucupira_upload.php" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+                        <legend>Enviar um arquivo do SUCUPIRA</legend>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">SUCUPIRA</span>
+                            </div>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="fileCSVSucupira" aria-describedby="fileCSVSucupira" name="file">
+                                <label class="custom-file-label" for="fileCSVSucupira">Escolha o arquivo</label>
+                            </div>
+                            <input type="text" placeholder="TAG para formar um grupo" class="form-control" name="tag">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit">Upload</button>
+                            </div>    
+                        </div>  
+                    </form>
+                    <div class="m-2">&nbsp;</div>
+
                     <!--
                     <form class="uk-form" action="harvester_oai.php" method="get" accept-charset="utf-8" enctype="multipart/form-data">
                         <fieldset data-uk-margin>
