@@ -6,19 +6,23 @@ require '../../inc/functions.php';
 if (isset($_FILES['file'])) {
 
     $fh = fopen($_FILES['file']['tmp_name'], 'r+');
-    $row = fgetcsv($fh, 8192, ",");
+    $row = fgetcsv($fh, 8192, "\t");
 
     foreach ($row as $key => $value) {
+        if ($value == "NM_PRODUCAO") {
+            $rowNum["NM_PRODUCAO"] = $key;
+        }
         if ($value == "ID_PRODUCAO_INTELECTUAL") {
             $rowNum["ID_PRODUCAO_INTELECTUAL"] = $key;
         }
     }
 
     while (($row = fgetcsv($fh, 8192, ",")) !== false) {
+        //print_r($row);
         $doc = Record::Build($row, $rowNum, $_POST["tag"]);
-        if (!is_null($doc["doc"]["name"]) & !is_null($doc["doc"]["datePublished"])) {
+        //if (!is_null($doc["doc"]["name"]) & !is_null($doc["doc"]["datePublished"])) {
             //$doc["doc"]["bdpi"] = DadosExternos::query_bdpi_index($doc["doc"]["name"], $doc["doc"]["datePublished"]);
-        }
+        //}
         $sha256 = hash('sha256', ''.$doc["doc"]["source_id"].'');
         print_r($sha256);
         // if (!is_null($sha256)) {
@@ -43,7 +47,7 @@ class Record
         $doc["doc"]["type"] = "Work";
         $doc["doc"]["source"] = "Sucupira";
         $doc["doc"]["match"]["tag"][] = "Sucupira";
-        // $doc["doc"]["name"] = str_replace('"', '', $row[$rowNum["title"]]);
+        $doc["doc"]["name"] = str_replace('"', '', $row[$rowNum["NM_PRODUCAO"]]);
         // $doc["doc"]["datePublished"] = $row[$rowNum["year"]];
         $doc["doc"]["source_id"] = $row[$rowNum["ID_PRODUCAO_INTELECTUAL"]];
         $doc["doc"]["tag"][] = $tag;
