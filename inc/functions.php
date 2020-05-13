@@ -623,7 +623,7 @@ class DadosInternos {
                     }
                     echo implode("; ",$autArray);
                     if (isset($match["_source"]["doi"])) {
-                        echo '<p>DOI: <a href="'.$match["_source"]["doi"].'">'.$match["_source"]["doi"].'</a></p>';
+                        echo '<p>DOI: <a href="https://doi.org/'.$match["_source"]["doi"].'">'.$match["_source"]["doi"].'</a></p>';
                         $doc["doc"]["bdpi"]["doi_bdpi"] = $match["_source"]["doi"];
                     } 
                     echo '</p>';
@@ -680,7 +680,7 @@ class DadosExternos {
                 }
                 echo implode("; ",$autArray);
                 if (isset($match["_source"]["doi"])) {
-                    echo '<p>DOI: <a href="'.$match["_source"]["doi"].'">'.$match["_source"]["doi"].'</a></p>';
+                    echo '<p>DOI: <a href="https://doi.org/'.$match["_source"]["doi"].'">'.$match["_source"]["doi"].'</a></p>';
                     $doc["doc"]["bdpi"]["doi_bdpi"] = $match["_source"]["doi"];
                 } 
                 echo '</p>';
