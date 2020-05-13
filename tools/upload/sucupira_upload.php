@@ -17,7 +17,7 @@ if (isset($_FILES['file'])) {
         }
     }
 
-    while (($row = fgetcsv($fh, 8192, ",")) !== false) {
+    while (($row = fgetcsv($fh, 8192, "\t")) !== false) {
         //print_r($row);
         $doc = Record::Build($row, $rowNum, $_POST["tag"]);
         //if (!is_null($doc["doc"]["name"]) & !is_null($doc["doc"]["datePublished"])) {
@@ -25,6 +25,7 @@ if (isset($_FILES['file'])) {
         //}
         $sha256 = hash('sha256', ''.$doc["doc"]["source_id"].'');
         print_r($sha256);
+        print_r($doc);
         // if (!is_null($sha256)) {
         //     $resultado_scopus = Elasticsearch::update($sha256, $doc);
         // }
@@ -43,7 +44,6 @@ class Record
 {
     public static function build($row, $rowNum, $tag = "")
     {
-
         $doc["doc"]["type"] = "Work";
         $doc["doc"]["source"] = "Sucupira";
         $doc["doc"]["match"]["tag"][] = "Sucupira";
