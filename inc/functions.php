@@ -674,7 +674,7 @@ class DadosExternos {
             echo '<div class="alert alert-warning" role="alert">';
             echo '<h5>Registros similares na FONTE</h5>';
             foreach ($data["hits"]["hits"] as $match) {
-                echo '<p>Nota de proximidade: '.$match["_score"].' - <a href="http://localhost/coletaprod/item/'.$match["_id"].'" target="_blank">'.$match["_source"]["type"].' - '.$match["_source"]["name"].' ('.$match["_source"]["datePublished"].')</a><br/> Autores: ';   
+                echo '<p>Nota de proximidade: '.$match["_score"].' - <a href="http://localhost/coletaprod/item/'.$match["_id"].'" target="_blank">'.$match["_source"]["tipo"].' - '.$match["_source"]["name"].' ('.$match["_source"]["datePublished"].')</a><br/> Autores: ';   
                 foreach ($match["_source"]['author'] as $autores) {
                     $autArray[] = $autores['person']['name'];
                 }
