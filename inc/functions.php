@@ -616,14 +616,14 @@ class DadosInternos {
                 if ($sha256 != $match["_id"]) {
                     echo '<div class="alert alert-info" role="alert">';
                     echo '<h5>Registros similares no Coletaprod</h5>';
-                    echo '<p>Fonte: '.$match["_source"]["source"].'</p>';
-                    echo '<p>Nota de proximidade: '.$match["_score"].' - <a href="http://localhost/coletaprod/item/'.$match["_id"].'" target="_blank">'.$match["_source"]["tipo"].' - '.$match["_source"]["name"].' ('.$match["_source"]["datePublished"].')</a><br/> Autores: ';   
+                    echo '<p>Fonte: '.$match["_source"]["source"].'<br/>';
+                    echo 'Nota de proximidade: '.$match["_score"].' - <a href="http://localhost/coletaprod/item/'.$match["_id"].'" target="_blank">'.$match["_source"]["tipo"].' - '.$match["_source"]["name"].' ('.$match["_source"]["datePublished"].')</a><br/> Autores: ';   
                     foreach ($match["_source"]['author'] as $autores) {
                         $autArray[] = $autores['person']['name'];
                     }
                     echo implode("; ",$autArray);
                     if (isset($match["_source"]["doi"])) {
-                        echo '<p>DOI: '.$match["_source"]["doi"].'</p>';
+                        echo '<p>DOI: <a href="'.$match["_source"]["doi"].'">'.$match["_source"]["doi"].'</a></p>';
                         $doc["doc"]["bdpi"]["doi_bdpi"] = $match["_source"]["doi"];
                     } 
                     echo '</p>';
