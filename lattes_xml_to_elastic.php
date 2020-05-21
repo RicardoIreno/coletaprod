@@ -1,13 +1,13 @@
-<?php 
-    
+<?php
+
 require 'inc/config.php';
 require 'inc/functions.php';
 
-function processaAutoresLattes($autores_array) 
+function processaAutoresLattes($autores_array)
 {
     $i = 0;
     if (is_array($autores_array)) {
-        foreach ($autores_array as $autor) {        
+        foreach ($autores_array as $autor) {
             $autor = get_object_vars($autor);
             //print_r($autor);
             $array_result["doc"]["author"][$i]["person"]["name"] = $autor["@attributes"]["NOME-COMPLETO-DO-AUTOR"];
@@ -16,7 +16,7 @@ function processaAutoresLattes($autores_array)
             if (isset($autor["@attributes"]["NRO-ID-CNPQ"])) {
                 $array_result["doc"]["author"][$i]["nroIdCnpq"] = $autor["@attributes"]["NRO-ID-CNPQ"];
             }
-            
+
             $i++;
         }
     } else {
@@ -38,7 +38,7 @@ function processaAutoresLattes($autores_array)
     unset($array_result);
 }
 
-function processaPalavrasChaveLattes($palavras_chave) 
+function processaPalavrasChaveLattes($palavras_chave)
 {
     $palavras_chave = get_object_vars($palavras_chave);
     foreach (range(1, 6) as $number) {
@@ -49,10 +49,10 @@ function processaPalavrasChaveLattes($palavras_chave)
     if (isset($array_result)) {
         return $array_result;
     }
-    unset($array_result); 
+    unset($array_result);
 }
 
-function processaPalavrasChaveFormacaoLattes($palavras_chave) 
+function processaPalavrasChaveFormacaoLattes($palavras_chave)
 {
     $palavras_chave = get_object_vars($palavras_chave);
     foreach (range(1, 6) as $number) {
@@ -63,7 +63,7 @@ function processaPalavrasChaveFormacaoLattes($palavras_chave)
     if (isset($array_result)) {
         return $array_result;
     }
-    unset($array_result); 
+    unset($array_result);
 }
 
 function processaAreaDoConhecimentoLattes($areas_do_conhecimento)
@@ -76,7 +76,7 @@ function processaAreaDoConhecimentoLattes($areas_do_conhecimento)
             $array_result["doc"]["area_do_conhecimento"][$i]["nomeDaAreaDoConhecimento"] = $ac_record["NOME-DA-AREA-DO-CONHECIMENTO"];
             $array_result["doc"]["area_do_conhecimento"][$i]["nomeDaSubAreaDoConhecimento"] = $ac_record["NOME-DA-SUB-AREA-DO-CONHECIMENTO"];
             $array_result["doc"]["area_do_conhecimento"][$i]["nomeDaEspecialidade"] = $ac_record["NOME-DA-ESPECIALIDADE"];
-        } 
+        }
         $i++;
     }
     if (!empty($array_result)) {
@@ -86,8 +86,8 @@ function processaAreaDoConhecimentoLattes($areas_do_conhecimento)
         return $array_empty;
     }
     unset($array_result);
-         
-} 
+
+}
 
 function processaAreaDoConhecimentoFormacaoLattes($areas_do_conhecimento)
 {
@@ -99,16 +99,16 @@ function processaAreaDoConhecimentoFormacaoLattes($areas_do_conhecimento)
             $array_result["area_do_conhecimento"][$i]["nomeDaAreaDoConhecimento"] = $ac_record["NOME-DA-AREA-DO-CONHECIMENTO"];
             $array_result["area_do_conhecimento"][$i]["nomeDaSubAreaDoConhecimento"] = $ac_record["NOME-DA-SUB-AREA-DO-CONHECIMENTO"];
             $array_result["area_do_conhecimento"][$i]["nomeDaEspecialidade"] = $ac_record["NOME-DA-ESPECIALIDADE"];
-        } 
+        }
         $i++;
     }
     return $array_result;
-    unset($array_result);     
-}  
+    unset($array_result);
+}
 
 if (!isset($_POST['numfuncional'])) {
     $_POST['numfuncional'] = null;
-}            
+}
 if (!isset($_GET['unidade'])) {
     $_POST['unidade'] = null;
 }
@@ -121,7 +121,7 @@ if ($_FILES['file']['size'] != 0) {
 
 } else {
     echo "Não foi enviado um arquivo XML";
-    if (isset($_REQUEST['unidade'])) {    
+    if (isset($_REQUEST['unidade'])) {
         $query["doc"]["unidade"] = explode("|", $_REQUEST['unidade']);
     }
     if (isset($_REQUEST['departamento'])) {
@@ -139,12 +139,15 @@ if ($_FILES['file']['size'] != 0) {
     if (isset($_REQUEST['ppg_nome'])) {
         $query['doc']['ppg_nome'] = explode("|", $_REQUEST['ppg_nome']);
     }
+    if (isset($_REQUEST['ppg_capes'])) {
+        $query['doc']['ppg_capes'] = explode("|", $_REQUEST['ppg_nome']);
+    }
     if (isset($_REQUEST['genero'])) {
         $query['doc']['genero'] = $_REQUEST['genero'];
     }
     if (isset($_REQUEST['etnia'])) {
         $query['doc']['etnia'] = $_REQUEST['etnia'];
-    }    
+    }
     if (isset($_REQUEST['desc_nivel'])) {
         $query['doc']['desc_nivel'] = explode("|", $_REQUEST['desc_nivel']);
     }
@@ -161,13 +164,13 @@ if ($_FILES['file']['size'] != 0) {
     if (isset($_REQUEST['nome_completo'])) {
         $query["doc"]["nome_completo"] = $_REQUEST['nome_completo'];
     }
-    if (isset($_REQUEST['uuid'])) {    
+    if (isset($_REQUEST['uuid'])) {
         $id = $_REQUEST['uuid'];
     } else {
         $id = uniqid(rand(), true);
     }
-    $query["doc_as_upsert"] = true;    
-    
+    $query["doc_as_upsert"] = true;
+
     $resultado_curriculo = Elasticsearch::update($id, $query, $index_cv);
     print_r($resultado_curriculo);
 
@@ -175,7 +178,7 @@ if ($_FILES['file']['size'] != 0) {
 
     exit();
 
-    
+
 }
 
 $doc_curriculo_array = [];
@@ -197,6 +200,9 @@ if (isset($_REQUEST['secao'])) {
 if (isset($_REQUEST['ppg_nome'])) {
     $doc_curriculo_array['doc']['ppg_nome'] = explode("|", $_REQUEST['ppg_nome']);
 }
+if (isset($_REQUEST['ppg_capes'])) {
+    $doc_curriculo_array['doc']['ppg_capes'] = explode("|", $_REQUEST['ppg_capes']);
+}
 if (isset($_REQUEST['genero'])) {
     $doc_curriculo_array['doc']['genero'] = $_REQUEST['genero'];
 }
@@ -215,7 +221,7 @@ if (isset($_REQUEST['campus'])) {
 if (isset($_REQUEST['desc_gestora'])) {
     $doc_curriculo_array['doc']['desc_gestora'] = explode("|", $_REQUEST['desc_gestora']);
 }
-print_r($curriculo->attributes()->{'DATA-ATUALIZACAO'});            
+print_r($curriculo->attributes()->{'DATA-ATUALIZACAO'});
 $doc_curriculo_array["doc"]["data_atualizacao"] = substr((string)$curriculo->attributes()->{'DATA-ATUALIZACAO'}, 4, 4)."-".substr((string)$curriculo->attributes()->{'DATA-ATUALIZACAO'}, 2, 2);
 echo "<br/>";
 print_r($doc_curriculo_array["doc"]["data_atualizacao"]);
@@ -244,7 +250,7 @@ if (isset($curriculo->{'DADOS-GERAIS'}->attributes()->{'DATA-FALECIMENTO'})) {
 }
 if (isset($curriculo->{'DADOS-GERAIS'}->attributes()->{'ORCID-ID'})) {
     $doc_curriculo_array["doc"]["orcid_id"] = (string)$curriculo->{'DADOS-GERAIS'}->attributes()->{'ORCID-ID'};
-}                      
+}
 if (isset($curriculo->{'DADOS-GERAIS'}->{'RESUMO-CV'})) {
     $doc_curriculo_array["doc"]["resumo_cv"]["texto_resumo_cv_rh"] = str_replace('"', '\"', (string)$curriculo->{'DADOS-GERAIS'}->{'RESUMO-CV'}->attributes()->{'TEXTO-RESUMO-CV-RH'});
     if (isset($cursor["docs"][0]["dadosGerais"]["resumoCv"]["textoResumoCvRhEn"])) {
@@ -259,9 +265,9 @@ if (isset($curriculo->{'DADOS-GERAIS'}->{'RESUMO-CV'})) {
 // //             $doc_curriculo_array["doc"]["orcid"] = $links_pesquisador["link"]["path"];
 // //         }
 // //     }
-// // }      
-    
-// Endereço profissional atual            
+// // }
+
+// Endereço profissional atual
 if (isset($curriculo->{'DADOS-GERAIS'}->{'ENDERECO'})) {
     $doc_curriculo_array["doc"]["endereco"]["flagDePreferencia"] = (string)$curriculo->{'DADOS-GERAIS'}->{'ENDERECO'}->attributes()->{'FLAG-DE-PREFERENCIA'};
     if (isset($curriculo->{'DADOS-GERAIS'}->{'ENDERECO'}->{'ENDERECO-PROFISSIONAL'})) {
@@ -269,31 +275,31 @@ if (isset($curriculo->{'DADOS-GERAIS'}->{'ENDERECO'})) {
         foreach (["CODIGO-INSTITUICAO-EMPRESA","NOME-INSTITUICAO-EMPRESA","CODIGO-ORGAO","NOME-ORGAO","CODIGO-UNIDADE","NOME-UNIDADE","LOGRADOURO-COMPLEMENTO","PAIS","UF","CEP","CIDADE","BAIRRO","HOME-PAGE"] as $endprof_campos) {
             if (!empty($enderecoProfissionalArray["@attributes"][$endprof_campos])) {
                 $endprof_campos_corrigido = pregReplaceVariableName(strtolower($endprof_campos));
-                $doc_curriculo_array["doc"]["endereco"]["endereco_profissional"][$endprof_campos_corrigido] = $enderecoProfissionalArray["@attributes"][$endprof_campos]; 
-            }                    
+                $doc_curriculo_array["doc"]["endereco"]["endereco_profissional"][$endprof_campos_corrigido] = $enderecoProfissionalArray["@attributes"][$endprof_campos];
+            }
         }
     }
-}  
- 
-// // // Quadro de citações            
+}
+
+// // // Quadro de citações
 // // if (isset($cursor["docs"][0]["producaoBibliografica"]["artigosPublicados"]["totalQuadroCitacoes"])) {
 // //     $i = 0;
 // //     foreach ($cursor["docs"][0]["producaoBibliografica"]["artigosPublicados"]["totalQuadroCitacoes"] as $citacoes) {
 // //         foreach (["nomeBase","codigoBase","sequencialIndicador","numeroCitacoes","dataCitacao","textoArgumento","indiceH","numeroTrabalhos","uriPesquisadorBase","uriLogoBase"] as $citacoes_campos) {
 // //             if (isset ($citacoes[$citacoes_campos])) {
-// //                 $doc_curriculo_array["doc"]["citacoes"][$citacoes["nomeBase"]][$citacoes_campos] = $citacoes[$citacoes_campos];                   
-// //             }                    
+// //                 $doc_curriculo_array["doc"]["citacoes"][$citacoes["nomeBase"]][$citacoes_campos] = $citacoes[$citacoes_campos];
+// //             }
 // //         }
 // //         foreach (["uriPesquisadorBase"] as $identificador_pesquisador) {
 // //             if (!empty($citacoes[$identificador_pesquisador])) {
 // //                 $doc_curriculo_array["doc"]["uri_pesquisador"][] = $citacoes[$identificador_pesquisador];
 // //             }
-// //         }             
+// //         }
 // //         $i++;
 // //     }
-// // }           
-                
-// Formação Acadêmica Titulação            
+// // }
+
+// Formação Acadêmica Titulação
 if (isset($curriculo->{'DADOS-GERAIS'}->{'FORMACAO-ACADEMICA-TITULACAO'})) {
     if (isset($curriculo->{'DADOS-GERAIS'}->{'FORMACAO-ACADEMICA-TITULACAO'}->{'GRADUACAO'})) {
         foreach ($curriculo->{'DADOS-GERAIS'}->{'FORMACAO-ACADEMICA-TITULACAO'}->{'GRADUACAO'} as $graduacao) {
@@ -315,7 +321,7 @@ if (isset($curriculo->{'DADOS-GERAIS'}->{'FORMACAO-ACADEMICA-TITULACAO'})) {
             $formacao_array["nomeAgencia"] = $graduacao['@attributes']["NOME-AGENCIA"];
             if (isset($graduacao['@attributes']["FORMACAO-ACADEMICA-TITULACAO"])) {
                 $formacao_array["formacaoAcademicaTitulacao"] = $graduacao['@attributes']["FORMACAO-ACADEMICA-TITULACAO"];
-            }            
+            }
 
             $doc_curriculo_array["doc"]["formacao_academica_titulacao_graduacao"][] = $formacao_array;
             unset($formacao_array);
@@ -373,7 +379,7 @@ if (isset($curriculo->{'DADOS-GERAIS'}->{'FORMACAO-ACADEMICA-TITULACAO'})) {
                 $array_result_pc = processaPalavrasChaveFormacaoLattes($mestrado["PALAVRAS-CHAVE"]);
                 if (isset($array_result_pc)) {
                     $formacao_array = array_merge_recursive($formacao_array, $array_result_pc);
-                }            
+                }
             }
 
             if (isset($mestrado["AREAS-DO-CONHECIMENTO"])) {
@@ -382,7 +388,7 @@ if (isset($curriculo->{'DADOS-GERAIS'}->{'FORMACAO-ACADEMICA-TITULACAO'})) {
                     if (isset($array_result_ac)) {
                         $formacao_array = array_merge_recursive($formacao_array, $array_result_ac);
                     }
-                }            
+                }
             }
 
             $doc_curriculo_array["doc"]["formacao_academica_titulacao_mestrado"][] = $formacao_array;
@@ -415,7 +421,7 @@ if (isset($curriculo->{'DADOS-GERAIS'}->{'FORMACAO-ACADEMICA-TITULACAO'})) {
                 $array_result_pc = processaPalavrasChaveFormacaoLattes($mestradoProf["PALAVRAS-CHAVE"]);
                 if (isset($array_result_pc)) {
                     $formacao_array = array_merge_recursive($formacao_array, $array_result_pc);
-                }            
+                }
             }
 
             if (isset($mestradoProf["AREAS-DO-CONHECIMENTO"])) {
@@ -424,7 +430,7 @@ if (isset($curriculo->{'DADOS-GERAIS'}->{'FORMACAO-ACADEMICA-TITULACAO'})) {
                     if (isset($array_result_ac)) {
                         $formacao_array = array_merge_recursive($formacao_array, $array_result_ac);
                     }
-                }            
+                }
             }
 
             $doc_curriculo_array["doc"]["formacao_academica_titulacao_mestradoProfissionalizante"][] = $formacao_array;
@@ -462,7 +468,7 @@ if (isset($curriculo->{'DADOS-GERAIS'}->{'FORMACAO-ACADEMICA-TITULACAO'})) {
                 $array_result_pc = processaPalavrasChaveFormacaoLattes($doutorado["PALAVRAS-CHAVE"]);
                 if (isset($array_result_pc)) {
                     $formacao_array = array_merge_recursive($formacao_array, $array_result_pc);
-                }            
+                }
             }
 
             if (isset($doutorado["AREAS-DO-CONHECIMENTO"])) {
@@ -471,13 +477,13 @@ if (isset($curriculo->{'DADOS-GERAIS'}->{'FORMACAO-ACADEMICA-TITULACAO'})) {
                     if (isset($array_result_ac)) {
                         $formacao_array = array_merge_recursive($formacao_array, $array_result_ac);
                     }
-                }            
+                }
             }
 
             $doc_curriculo_array["doc"]["formacao_academica_titulacao_doutorado"][] = $formacao_array;
             unset($formacao_array);
         }
-    }    
+    }
 
     if (isset($curriculo->{'DADOS-GERAIS'}->{'FORMACAO-ACADEMICA-TITULACAO'}->{'POS-DOUTORADO'})) {
         foreach ($curriculo->{'DADOS-GERAIS'}->{'FORMACAO-ACADEMICA-TITULACAO'}->{'POS-DOUTORADO'} as $posDoutorado) {
@@ -492,15 +498,15 @@ if (isset($curriculo->{'DADOS-GERAIS'}->{'FORMACAO-ACADEMICA-TITULACAO'})) {
             $formacao_array["flagBolsa"]=$posDoutorado['@attributes']["FLAG-BOLSA"];
             $formacao_array["codigoAgenciaFinanciadora"]=$posDoutorado['@attributes']["CODIGO-AGENCIA-FINANCIADORA"];
             $formacao_array["nomeAgencia"]=$posDoutorado['@attributes']["NOME-AGENCIA"];
-            $formacao_array["statusDoCurso"]=$posDoutorado['@attributes']["STATUS-DO-CURSO"];  
+            $formacao_array["statusDoCurso"]=$posDoutorado['@attributes']["STATUS-DO-CURSO"];
             $formacao_array["numeroIDOrientador"]=$posDoutorado['@attributes']["NUMERO-ID-ORIENTADOR"];
-            $formacao_array["tituloDoTrabalho"]=$posDoutorado['@attributes']["TITULO-DO-TRABALHO"];   
+            $formacao_array["tituloDoTrabalho"]=$posDoutorado['@attributes']["TITULO-DO-TRABALHO"];
 
             if (isset($posDoutorado["PALAVRAS-CHAVE"])) {
                 $array_result_pc = processaPalavrasChaveFormacaoLattes($posDoutorado["PALAVRAS-CHAVE"]);
                 if (isset($array_result_pc)) {
                     $formacao_array = array_merge_recursive($formacao_array, $array_result_pc);
-                }            
+                }
             }
 
             if (isset($posDoutorado["AREAS-DO-CONHECIMENTO"])) {
@@ -509,14 +515,14 @@ if (isset($curriculo->{'DADOS-GERAIS'}->{'FORMACAO-ACADEMICA-TITULACAO'})) {
                     if (isset($array_result_ac)) {
                         $formacao_array = array_merge_recursive($formacao_array, $array_result_ac);
                     }
-                }            
+                }
             }
 
             $doc_curriculo_array["doc"]["formacao_academica_titulacao_pos_doutorado"][] = $formacao_array;
             unset($formacao_array);
         }
     }
-    
+
     if (isset($curriculo->{'DADOS-GERAIS'}->{'FORMACAO-ACADEMICA-TITULACAO'}->{'LIVRE-DOCENCIA'})) {
         foreach ($curriculo->{'DADOS-GERAIS'}->{'FORMACAO-ACADEMICA-TITULACAO'}->{'LIVRE-DOCENCIA'} as $livreDocencia) {
             $livreDocencia = get_object_vars($livreDocencia);
@@ -525,13 +531,13 @@ if (isset($curriculo->{'DADOS-GERAIS'}->{'FORMACAO-ACADEMICA-TITULACAO'})) {
             $formacao_array["codigoInstituicao"]=$livreDocencia['@attributes']["CODIGO-INSTITUICAO"];
             $formacao_array["nomeInstituicao"]=$livreDocencia['@attributes']["NOME-INSTITUICAO"];
             $formacao_array["anoDeObtencaoDoTitulo"]=$livreDocencia['@attributes']["ANO-DE-OBTENCAO-DO-TITULO"];
-            $formacao_array["tituloDoTrabalho"]=$livreDocencia['@attributes']["TITULO-DO-TRABALHO"];  
+            $formacao_array["tituloDoTrabalho"]=$livreDocencia['@attributes']["TITULO-DO-TRABALHO"];
 
             if (isset($livreDocencia["PALAVRAS-CHAVE"])) {
                 $array_result_pc = processaPalavrasChaveFormacaoLattes($livreDocencia["PALAVRAS-CHAVE"]);
                 if (isset($array_result_pc)) {
                     $formacao_array = array_merge_recursive($formacao_array, $array_result_pc);
-                }            
+                }
             }
 
             if (isset($livreDocencia["AREAS-DO-CONHECIMENTO"])) {
@@ -540,7 +546,7 @@ if (isset($curriculo->{'DADOS-GERAIS'}->{'FORMACAO-ACADEMICA-TITULACAO'})) {
                     if (isset($array_result_ac)) {
                         $formacao_array = array_merge_recursive($formacao_array, $array_result_ac);
                     }
-                }            
+                }
             }
 
             $doc_curriculo_array["doc"]["formacao_academica_titulacao_livreDocencia"][] = $formacao_array;
@@ -548,8 +554,8 @@ if (isset($curriculo->{'DADOS-GERAIS'}->{'FORMACAO-ACADEMICA-TITULACAO'})) {
         }
     }
 }
-        
-   
+
+
 
 // Formação máxima
 if (isset($curriculo->{'DADOS-GERAIS'}->{'FORMACAO-ACADEMICA-TITULACAO'}->{'LIVRE-DOCENCIA'})) {
@@ -569,12 +575,12 @@ if (isset($curriculo->{'DADOS-GERAIS'}->{'FORMACAO-ACADEMICA-TITULACAO'}->{'LIVR
 } else {
     $doc_curriculo_array["doc"]["formacao_maxima"] = "Sem formação informada";
 }
-             
-                
+
+
 
 
 // Idiomas
-    
+
 if (isset($curriculo->{'DADOS-GERAIS'}->{'IDIOMAS'})) {
     foreach ($curriculo->{'DADOS-GERAIS'}->{'IDIOMAS'}->{'IDIOMA'} as $idioma) {
         $idioma = get_object_vars($idioma);
@@ -591,7 +597,7 @@ if (isset($curriculo->{'DADOS-GERAIS'}->{'IDIOMAS'})) {
 }
 
 // Premios - Títulos
-    
+
 if (isset($curriculo->{'DADOS-GERAIS'}->{'PREMIOS-TITULOS'})) {
     foreach ($curriculo->{'DADOS-GERAIS'}->{'PREMIOS-TITULOS'}->{'PREMIO-TITULO'} as $premioTitulo) {
         $premioTitulo = get_object_vars($premioTitulo);
@@ -606,8 +612,8 @@ if (isset($curriculo->{'DADOS-GERAIS'}->{'PREMIOS-TITULOS'})) {
 
 $identificador = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
 $doc_curriculo_array["doc"]["lattesID"] = $identificador;
-$doc_curriculo_array["doc"]["dataDeColeta"] = date('Y-m-d');             
-$doc_curriculo_array["doc_as_upsert"] = true;    
+$doc_curriculo_array["doc"]["dataDeColeta"] = date('Y-m-d');
+$doc_curriculo_array["doc_as_upsert"] = true;
 
 $resultado_curriculo = Elasticsearch::update($identificador, $doc_curriculo_array, $index_cv);
 
@@ -633,7 +639,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TRABALHOS-EM-EVENTOS'})) {
         $doc["doc"]["instituicao"]["departamento"] = explode("|", $_REQUEST['departamento']);
         if (isset($_REQUEST['numfuncional'])) {
             $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
-        }    
+        }
         if (isset($_REQUEST['tipvin'])) {
             $doc["doc"]["instituicao"]["tipvin"] = explode("|", $_REQUEST['tipvin']);
         }
@@ -645,6 +651,9 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TRABALHOS-EM-EVENTOS'})) {
         }
         if (isset($_REQUEST['ppg_nome'])) {
             $doc['doc']["instituicao"]['ppg_nome'] = explode("|", $_REQUEST['ppg_nome']);
+        }
+        if (isset($_REQUEST['ppg_capes'])) {
+            $doc['doc']["instituicao"]['ppg_capes'] = explode("|", $_REQUEST['ppg_capes']);
         }
         if (isset($_REQUEST['genero'])) {
             $doc['doc']["instituicao"]['genero'] = $_REQUEST['genero'];
@@ -663,7 +672,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TRABALHOS-EM-EVENTOS'})) {
         }
         if (isset($_REQUEST['desc_gestora'])) {
             $doc['doc']["instituicao"]['desc_gestora'] = explode("|", $_REQUEST['desc_gestora']);
-        }        
+        }
         $doc["doc"]["datePublished"] = $dadosBasicosDoTrabalho['@attributes']["ANO-DO-TRABALHO"];
         $doc["doc"]["name"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-DO-TRABALHO"];
         $doc["doc"]["lattes"]["natureza"] = $dadosBasicosDoTrabalho['@attributes']['NATUREZA'];
@@ -698,8 +707,8 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TRABALHOS-EM-EVENTOS'})) {
             $array_result_pc = processaPalavrasChaveLattes($obra["PALAVRAS-CHAVE"]);
             if (isset($array_result_pc)) {
                 $doc = array_merge_recursive($doc, $array_result_pc);
-            } 
-            unset($array_result_pc);           
+            }
+            unset($array_result_pc);
         }
 
         if (isset($obra["AREAS-DO-CONHECIMENTO"])) {
@@ -707,7 +716,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TRABALHOS-EM-EVENTOS'})) {
             if (isset($array_result_ac)) {
                 $doc = array_merge_recursive($doc, $array_result_ac);
             }
-            unset($array_result_ac);           
+            unset($array_result_ac);
         }
 
 
@@ -780,6 +789,9 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'ARTIGOS-PUBLICADOS'})) {
         if (isset($_REQUEST['ppg_nome'])) {
             $doc['doc']["instituicao"]['ppg_nome'] = explode("|", $_REQUEST['ppg_nome']);
         }
+        if (isset($_REQUEST['ppg_capes'])) {
+            $doc['doc']["instituicao"]['ppg_capes'] = explode("|", $_REQUEST['ppg_capes']);
+        }
         if (isset($_REQUEST['genero'])) {
             $doc['doc']["instituicao"]['genero'] = $_REQUEST['genero'];
         }
@@ -797,7 +809,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'ARTIGOS-PUBLICADOS'})) {
         }
         if (isset($_REQUEST['desc_gestora'])) {
             $doc['doc']["instituicao"]['desc_gestora'] = explode("|", $_REQUEST['desc_gestora']);
-        }                  
+        }
         $doc["doc"]["datePublished"] = $dadosBasicosDoTrabalho['@attributes']["ANO-DO-ARTIGO"];
         $doc["doc"]["name"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-DO-ARTIGO"];
         $doc["doc"]["lattes"]["natureza"] = $dadosBasicosDoTrabalho['@attributes']['NATUREZA'];
@@ -829,19 +841,19 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'ARTIGOS-PUBLICADOS'})) {
             if (isset($array_result_pc)) {
                 $doc = array_merge_recursive($doc, $array_result_pc);
             }
-            unset($array_result_pc);            
+            unset($array_result_pc);
         }
 
         if (isset($obra["AREAS-DO-CONHECIMENTO"])) {
             $array_result_ac = processaAreaDoConhecimentoLattes($obra["AREAS-DO-CONHECIMENTO"]);
             if (isset($array_result_ac)) {
                 $doc = array_merge_recursive($doc, $array_result_ac);
-            } 
-            unset($array_result_ac);           
+            }
+            unset($array_result_ac);
         }
 
         // Constroi sha256
-            
+
 
         if (!empty($doc["doc"]["doi"])) {
             $sha_array[] = $doc["doc"]["lattes_ids"][0];
@@ -918,6 +930,9 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'LIVROS-E-CAPITULOS'})) {
             if (isset($_REQUEST['ppg_nome'])) {
                 $doc['doc']["instituicao"]['ppg_nome'] = explode("|", $_REQUEST['ppg_nome']);
             }
+            if (isset($_REQUEST['ppg_capes'])) {
+                $doc['doc']["instituicao"]['ppg_capes'] = explode("|", $_REQUEST['ppg_capes']);
+            }
             if (isset($_REQUEST['genero'])) {
                 $doc['doc']["instituicao"]['genero'] = $_REQUEST['genero'];
             }
@@ -935,7 +950,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'LIVROS-E-CAPITULOS'})) {
             }
             if (isset($_REQUEST['desc_gestora'])) {
                 $doc['doc']["instituicao"]['desc_gestora'] = explode("|", $_REQUEST['desc_gestora']);
-            }                      
+            }
             $doc["doc"]["lattes"]["tipo"] = $dadosBasicosDoTrabalho['@attributes']["TIPO"];
             $doc["doc"]["datePublished"] = $dadosBasicosDoTrabalho['@attributes']["ANO"];
             $doc["doc"]["name"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-DO-LIVRO"];
@@ -960,26 +975,26 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'LIVROS-E-CAPITULOS'})) {
             if (!empty($obra["AUTORES"])) {
                 $array_result = processaAutoresLattes($obra["AUTORES"]);
                 $doc = array_merge_recursive($doc, $array_result);
-            } 
+            }
 
             if (isset($obra["PALAVRAS-CHAVE"])) {
                 $array_result_pc = processaPalavrasChaveLattes($obra["PALAVRAS-CHAVE"]);
                 if (isset($array_result_pc)) {
                     $doc = array_merge_recursive($doc, $array_result_pc);
                 }
-                unset($array_result_pc);            
+                unset($array_result_pc);
             }
 
             if (isset($obra["AREAS-DO-CONHECIMENTO"])) {
                 $array_result_ac = processaAreaDoConhecimentoLattes($obra["AREAS-DO-CONHECIMENTO"]);
                 if (isset($array_result_ac)) {
                     $doc = array_merge_recursive($doc, $array_result_ac);
-                } 
-                unset($array_result_ac);           
+                }
+                unset($array_result_ac);
             }
 
             // Constroi sha256
-                
+
 
             if (!empty($doc["doc"]["doi"])) {
                 $sha_array[] = $doc["doc"]["lattes_ids"][0];
@@ -1055,6 +1070,9 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'LIVROS-E-CAPITULOS'})) {
             if (isset($_REQUEST['ppg_nome'])) {
                 $doc['doc']["instituicao"]['ppg_nome'] = explode("|", $_REQUEST['ppg_nome']);
             }
+            if (isset($_REQUEST['ppg_capes'])) {
+                $doc['doc']["instituicao"]['ppg_capes'] = explode("|", $_REQUEST['ppg_capes']);
+            }
             if (isset($_REQUEST['genero'])) {
                 $doc['doc']["instituicao"]['genero'] = $_REQUEST['genero'];
             }
@@ -1072,10 +1090,10 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'LIVROS-E-CAPITULOS'})) {
             }
             if (isset($_REQUEST['desc_gestora'])) {
                 $doc['doc']["instituicao"]['desc_gestora'] = explode("|", $_REQUEST['desc_gestora']);
-            }                
+            }
             $doc["doc"]["lattes"]["tipo"] = $dadosBasicosDoTrabalho['@attributes']["TIPO"];
             $doc["doc"]["name"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-DO-CAPITULO-DO-LIVRO"];
-            $doc["doc"]["datePublished"] = $dadosBasicosDoTrabalho['@attributes']["ANO"];            
+            $doc["doc"]["datePublished"] = $dadosBasicosDoTrabalho['@attributes']["ANO"];
             $doc["doc"]["country"] = $dadosBasicosDoTrabalho['@attributes']["PAIS-DE-PUBLICACAO"];
             $doc["doc"]["language"] = $dadosBasicosDoTrabalho['@attributes']["IDIOMA"];
             $doc["doc"]["lattes"]["meioDeDivulgacao"] = $dadosBasicosDoTrabalho['@attributes']["MEIO-DE-DIVULGACAO"];
@@ -1098,22 +1116,22 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'LIVROS-E-CAPITULOS'})) {
             if (!empty($obra["AUTORES"])) {
                 $array_result = processaAutoresLattes($obra["AUTORES"]);
                 $doc = array_merge_recursive($doc, $array_result);
-            } 
+            }
 
             if (isset($obra["PALAVRAS-CHAVE"])) {
                 $array_result_pc = processaPalavrasChaveLattes($obra["PALAVRAS-CHAVE"]);
                 if (isset($array_result_pc)) {
                     $doc = array_merge_recursive($doc, $array_result_pc);
                 }
-                unset($array_result_pc);            
+                unset($array_result_pc);
             }
 
             if (isset($obra["AREAS-DO-CONHECIMENTO"])) {
                 $array_result_ac = processaAreaDoConhecimentoLattes($obra["AREAS-DO-CONHECIMENTO"]);
                 if (isset($array_result_ac)) {
                     $doc = array_merge_recursive($doc, $array_result_ac);
-                } 
-                unset($array_result_ac);           
+                }
+                unset($array_result_ac);
             }
 
             // Constroi sha256
@@ -1185,6 +1203,9 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TEXTOS-EM-JORNAIS-OU-REVISTA
         if (isset($_REQUEST['ppg_nome'])) {
             $doc['doc']["instituicao"]['ppg_nome'] = explode("|", $_REQUEST['ppg_nome']);
         }
+        if (isset($_REQUEST['ppg_capes'])) {
+            $doc['doc']["instituicao"]['ppg_capes'] = explode("|", $_REQUEST['ppg_capes']);
+        }
         if (isset($_REQUEST['genero'])) {
             $doc['doc']["instituicao"]['genero'] = $_REQUEST['genero'];
         }
@@ -1202,8 +1223,8 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TEXTOS-EM-JORNAIS-OU-REVISTA
         }
         if (isset($_REQUEST['desc_gestora'])) {
             $doc['doc']["instituicao"]['desc_gestora'] = explode("|", $_REQUEST['desc_gestora']);
-        }                  
-        $doc["doc"]["lattes"]["natureza"] = $dadosBasicosDoTrabalho['@attributes']['NATUREZA'];        
+        }
+        $doc["doc"]["lattes"]["natureza"] = $dadosBasicosDoTrabalho['@attributes']['NATUREZA'];
         $doc["doc"]["name"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-DO-TEXTO"];
         $doc["doc"]["datePublished"] = $dadosBasicosDoTrabalho['@attributes']["ANO-DO-TEXTO"];
         $doc["doc"]["country"] = $dadosBasicosDoTrabalho['@attributes']["PAIS-DE-PUBLICACAO"];
@@ -1217,10 +1238,10 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TEXTOS-EM-JORNAIS-OU-REVISTA
 
         $doc["doc"]["isPartOf"]["name"] = $detalhamentoDoTrabalho['@attributes']["TITULO-DO-JORNAL-OU-REVISTA"];
         $doc["doc"]["isPartOf"]["issn"] = $detalhamentoDoTrabalho['@attributes']["ISSN"];
-        $doc["doc"]["isPartOf"]["datePublished"] = $detalhamentoDoTrabalho['@attributes']["DATA-DE-PUBLICACAO"];         
+        $doc["doc"]["isPartOf"]["datePublished"] = $detalhamentoDoTrabalho['@attributes']["DATA-DE-PUBLICACAO"];
         $doc["doc"]["volume"] = $detalhamentoDoTrabalho['@attributes']["VOLUME"];
         $doc["doc"]["pageStart"] = $detalhamentoDoTrabalho['@attributes']["PAGINA-INICIAL"];
-        $doc["doc"]["pageEnd"] = $detalhamentoDoTrabalho['@attributes']["PAGINA-FINAL"];        
+        $doc["doc"]["pageEnd"] = $detalhamentoDoTrabalho['@attributes']["PAGINA-FINAL"];
         $doc["doc"]["publisher"]["organization"]["location"] = $detalhamentoDoTrabalho['@attributes']["LOCAL-DE-PUBLICACAO"];
 
         if (!empty($obra["AUTORES"])) {
@@ -1233,19 +1254,19 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TEXTOS-EM-JORNAIS-OU-REVISTA
             if (isset($array_result_pc)) {
                 $doc = array_merge_recursive($doc, $array_result_pc);
             }
-            unset($array_result_pc);            
+            unset($array_result_pc);
         }
 
         if (isset($obra["AREAS-DO-CONHECIMENTO"])) {
             $array_result_ac = processaAreaDoConhecimentoLattes($obra["AREAS-DO-CONHECIMENTO"]);
             if (isset($array_result_ac)) {
                 $doc = array_merge_recursive($doc, $array_result_ac);
-            } 
-            unset($array_result_ac);           
+            }
+            unset($array_result_ac);
         }
 
         // Constroi sha256
-            
+
 
         if (!empty($doc["doc"]["doi"])) {
             $sha_array[] = $doc["doc"]["lattes_ids"][0];
@@ -1322,6 +1343,9 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
             if (isset($_REQUEST['ppg_nome'])) {
                 $doc['doc']["instituicao"]['ppg_nome'] = explode("|", $_REQUEST['ppg_nome']);
             }
+            if (isset($_REQUEST['ppg_capes'])) {
+                $doc['doc']["instituicao"]['ppg_capes'] = explode("|", $_REQUEST['ppg_capes']);
+            }
             if (isset($_REQUEST['genero'])) {
                 $doc['doc']["instituicao"]['genero'] = $_REQUEST['genero'];
             }
@@ -1339,8 +1363,8 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
             }
             if (isset($_REQUEST['desc_gestora'])) {
                 $doc['doc']["instituicao"]['desc_gestora'] = explode("|", $_REQUEST['desc_gestora']);
-            }                      
-            $doc["doc"]["lattes"]["natureza"] = $dadosBasicosDoTrabalho['@attributes']['NATUREZA'];        
+            }
+            $doc["doc"]["lattes"]["natureza"] = $dadosBasicosDoTrabalho['@attributes']['NATUREZA'];
             $doc["doc"]["name"] = $dadosBasicosDoTrabalho['@attributes']["TITULO"];
             $doc["doc"]["datePublished"] = $dadosBasicosDoTrabalho['@attributes']["ANO"];
             $doc["doc"]["country"] = $dadosBasicosDoTrabalho['@attributes']["PAIS-DE-PUBLICACAO"];
@@ -1356,7 +1380,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
             $doc["doc"]["publisher"]["organization"]["location"] = $detalhamentoDoTrabalho['@attributes']["CIDADE-DA-EDITORA"];
             $doc["doc"]["numberOfPages"] = $detalhamentoDoTrabalho['@attributes']["NUMERO-DE-PAGINAS"];
             $doc["doc"]["lattes"]["numeroDoCatalogo"] = $detalhamentoDoTrabalho['@attributes']["NUMERO-DO-CATALOGO"];
-            
+
 
             if (!empty($obra["AUTORES"])) {
                 $array_result = processaAutoresLattes($obra["AUTORES"]);
@@ -1375,7 +1399,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
                 $array_result_ac = processaAreaDoConhecimentoLattes($obra["AREAS-DO-CONHECIMENTO"]);
                 if (isset($array_result_ac)) {
                     $doc = array_merge_recursive($doc, $array_result_ac);
-                } 
+                }
                 unset($array_result_ac);
             }
 
@@ -1449,6 +1473,9 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
             if (isset($_REQUEST['ppg_nome'])) {
                 $doc['doc']["instituicao"]['ppg_nome'] = explode("|", $_REQUEST['ppg_nome']);
             }
+            if (isset($_REQUEST['ppg_capes'])) {
+                $doc['doc']["instituicao"]['ppg_capes'] = explode("|", $_REQUEST['ppg_capes']);
+            }
             if (isset($_REQUEST['genero'])) {
                 $doc['doc']["instituicao"]['genero'] = $_REQUEST['genero'];
             }
@@ -1466,8 +1493,8 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
             }
             if (isset($_REQUEST['desc_gestora'])) {
                 $doc['doc']["instituicao"]['desc_gestora'] = explode("|", $_REQUEST['desc_gestora']);
-            }                      
-            $doc["doc"]["lattes"]["natureza"] = $dadosBasicosDoTrabalho['@attributes']['NATUREZA'];        
+            }
+            $doc["doc"]["lattes"]["natureza"] = $dadosBasicosDoTrabalho['@attributes']['NATUREZA'];
             $doc["doc"]["name"] = $dadosBasicosDoTrabalho['@attributes']["TITULO"];
             $doc["doc"]["datePublished"] = $dadosBasicosDoTrabalho['@attributes']["ANO"];
             $doc["doc"]["country"] = $dadosBasicosDoTrabalho['@attributes']["PAIS-DE-PUBLICACAO"];
@@ -1488,7 +1515,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
             $doc["doc"]["volume"] = $detalhamentoDoTrabalho['@attributes']["VOLUME"];
             $doc["doc"]["fasciculo"] = $detalhamentoDoTrabalho['@attributes']["FASCICULO"];
             $doc["doc"]["serie"] = $detalhamentoDoTrabalho['@attributes']["FASCICULO"];
-            
+
 
             if (!empty($obra["AUTORES"])) {
                 $array_result = processaAutoresLattes($obra["AUTORES"]);
@@ -1500,19 +1527,19 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
                 if (isset($array_result_pc)) {
                     $doc = array_merge_recursive($doc, $array_result_pc);
                 }
-                unset($array_result_pc);            
+                unset($array_result_pc);
             }
 
             if (isset($obra["AREAS-DO-CONHECIMENTO"])) {
                 $array_result_ac = processaAreaDoConhecimentoLattes($obra["AREAS-DO-CONHECIMENTO"]);
                 if (isset($array_result_ac)) {
                     $doc = array_merge_recursive($doc, $array_result_ac);
-                } 
-                unset($array_result_ac);           
+                }
+                unset($array_result_ac);
             }
 
             // Constroi sha256
-                
+
 
             if (!empty($doc["doc"]["doi"])) {
                 $sha_array[] = $doc["doc"]["lattes_ids"][0];
@@ -1547,7 +1574,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
 
         }
     }
-    
+
 }
 
 //Parser de Produção Técnica
@@ -1588,6 +1615,9 @@ if (isset($curriculo->{'PRODUCAO-TECNICA'})) {
             if (isset($_REQUEST['ppg_nome'])) {
                 $doc['doc']["instituicao"]['ppg_nome'] = explode("|", $_REQUEST['ppg_nome']);
             }
+            if (isset($_REQUEST['ppg_capes'])) {
+                $doc['doc']["instituicao"]['ppg_capes'] = explode("|", $_REQUEST['ppg_capes']);
+            }
             if (isset($_REQUEST['genero'])) {
                 $doc['doc']["instituicao"]['genero'] = $_REQUEST['genero'];
             }
@@ -1605,8 +1635,8 @@ if (isset($curriculo->{'PRODUCAO-TECNICA'})) {
             }
             if (isset($_REQUEST['desc_gestora'])) {
                 $doc['doc']["instituicao"]['desc_gestora'] = explode("|", $_REQUEST['desc_gestora']);
-            }                      
-            $doc["doc"]["lattes"]["natureza"] = $dadosBasicosDoTrabalho['@attributes']['NATUREZA'];        
+            }
+            $doc["doc"]["lattes"]["natureza"] = $dadosBasicosDoTrabalho['@attributes']['NATUREZA'];
             $doc["doc"]["name"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-DO-SOFTWARE"];
             $doc["doc"]["datePublished"] = $dadosBasicosDoTrabalho['@attributes']["ANO"];
             $doc["doc"]["country"] = $dadosBasicosDoTrabalho['@attributes']["PAIS"];
@@ -1622,7 +1652,7 @@ if (isset($curriculo->{'PRODUCAO-TECNICA'})) {
             $doc["doc"]["lattes"]["finalidade"] = $detalhamentoDoTrabalho['@attributes']["FINALIDADE"];
             $doc["doc"]["lattes"]["plataforma"] = $detalhamentoDoTrabalho['@attributes']["PLATAFORMA"];
             $doc["doc"]["lattes"]["ambiente"] = $detalhamentoDoTrabalho['@attributes']["AMBIENTE"];
-            $doc["doc"]["lattes"]["disponibilidade"] = $detalhamentoDoTrabalho['@attributes']["DISPONIBILIDADE"];            
+            $doc["doc"]["lattes"]["disponibilidade"] = $detalhamentoDoTrabalho['@attributes']["DISPONIBILIDADE"];
             $doc["doc"]["lattes"]["instituicaoFinanciadora"] = $detalhamentoDoTrabalho['@attributes']["INSTITUICAO-FINANCIADORA"];
 
             if (!empty($obra["AUTORES"])) {
@@ -1635,19 +1665,19 @@ if (isset($curriculo->{'PRODUCAO-TECNICA'})) {
                 if (isset($array_result_pc)) {
                     $doc = array_merge_recursive($doc, $array_result_pc);
                 }
-                unset($array_result_pc);            
+                unset($array_result_pc);
             }
 
             if (isset($obra["AREAS-DO-CONHECIMENTO"])) {
                 $array_result_ac = processaAreaDoConhecimentoLattes($obra["AREAS-DO-CONHECIMENTO"]);
                 if (isset($array_result_ac)) {
                     $doc = array_merge_recursive($doc, $array_result_ac);
-                } 
-                unset($array_result_ac);           
+                }
+                unset($array_result_ac);
             }
 
             // Constroi sha256
-                
+
 
             if (!empty($doc["doc"]["doi"])) {
                 $sha_array[] = $doc["doc"]["lattes_ids"][0];
@@ -1717,6 +1747,9 @@ if (isset($curriculo->{'PRODUCAO-TECNICA'})) {
             if (isset($_REQUEST['ppg_nome'])) {
                 $doc['doc']["instituicao"]['ppg_nome'] = explode("|", $_REQUEST['ppg_nome']);
             }
+            if (isset($_REQUEST['ppg_capes'])) {
+                $doc['doc']["instituicao"]['ppg_capes'] = explode("|", $_REQUEST['ppg_capes']);
+            }
             if (isset($_REQUEST['genero'])) {
                 $doc['doc']["instituicao"]['genero'] = $_REQUEST['genero'];
             }
@@ -1734,7 +1767,7 @@ if (isset($curriculo->{'PRODUCAO-TECNICA'})) {
             }
             if (isset($_REQUEST['desc_gestora'])) {
                 $doc['doc']["instituicao"]['desc_gestora'] = explode("|", $_REQUEST['desc_gestora']);
-            }                             
+            }
             $doc["doc"]["name"] = $dadosBasicosDoTrabalho['@attributes']["TITULO"];
             $doc["doc"]["datePublished"] = $dadosBasicosDoTrabalho['@attributes']["ANO-DESENVOLVIMENTO"];
             $doc["doc"]["country"] = $dadosBasicosDoTrabalho['@attributes']["PAIS"];
@@ -1747,7 +1780,7 @@ if (isset($curriculo->{'PRODUCAO-TECNICA'})) {
             $doc["doc"]["lattes"]["finalidade"] = $detalhamentoDoTrabalho['@attributes']["FINALIDADE"];
             $doc["doc"]["lattes"]["instituicaoFinanciadora"] = $detalhamentoDoTrabalho['@attributes']["INSTITUICAO-FINANCIADORA"];
             $doc["doc"]["lattes"]["categoria"] = $detalhamentoDoTrabalho['@attributes']["CATEGORIA"];
-            
+
 
             if (!empty($obra["AUTORES"])) {
                 $array_result = processaAutoresLattes($obra["AUTORES"]);
@@ -1759,24 +1792,24 @@ if (isset($curriculo->{'PRODUCAO-TECNICA'})) {
                 if (isset($array_result_pc)) {
                     $doc = array_merge_recursive($doc, $array_result_pc);
                 }
-                unset($array_result_pc);            
+                unset($array_result_pc);
             }
 
             if (isset($obra["AREAS-DO-CONHECIMENTO"])) {
                 $array_result_ac = processaAreaDoConhecimentoLattes($obra["AREAS-DO-CONHECIMENTO"]);
                 if (isset($array_result_ac)) {
                     $doc = array_merge_recursive($doc, $array_result_ac);
-                } 
-                unset($array_result_ac);           
+                }
+                unset($array_result_ac);
             }
 
             // Constroi sha256
-                
+
 
             if (!empty($doc["doc"]["doi"])) {
                 $sha_array[] = $doc["doc"]["lattes_ids"][0];
                 $sha_array[] = $doc["doc"]["doi"];
-                $sha256 = hash('sha256', ''.implode("", $sha_array).'');                
+                $sha256 = hash('sha256', ''.implode("", $sha_array).'');
             } else {
                 $sha_array[] = $doc["doc"]["lattes_ids"][0];
                 $sha_array[] = $doc["doc"]["tipo"];
@@ -1806,7 +1839,7 @@ if (isset($curriculo->{'PRODUCAO-TECNICA'})) {
 
         }
     }
-    
+
 }
 
 //Parser de Outra Produção
@@ -1849,6 +1882,9 @@ if (isset($curriculo->{'OUTRA-PRODUCAO'})) {
                 if (isset($_REQUEST['ppg_nome'])) {
                     $doc['doc']["instituicao"]['ppg_nome'] = explode("|", $_REQUEST['ppg_nome']);
                 }
+                if (isset($_REQUEST['ppg_capes'])) {
+                    $doc['doc']["instituicao"]['ppg_capes'] = explode("|", $_REQUEST['ppg_capes']);
+                }
                 if (isset($_REQUEST['genero'])) {
                     $doc['doc']["instituicao"]['genero'] = $_REQUEST['genero'];
                 }
@@ -1866,8 +1902,8 @@ if (isset($curriculo->{'OUTRA-PRODUCAO'})) {
                 }
                 if (isset($_REQUEST['desc_gestora'])) {
                     $doc['doc']["instituicao"]['desc_gestora'] = explode("|", $_REQUEST['desc_gestora']);
-                }                          
-                $doc["doc"]["lattes"]["natureza"] = $dadosBasicosDoTrabalho['@attributes']['NATUREZA'];        
+                }
+                $doc["doc"]["lattes"]["natureza"] = $dadosBasicosDoTrabalho['@attributes']['NATUREZA'];
                 $doc["doc"]["name"] = $dadosBasicosDoTrabalho['@attributes']["TITULO"];
                 $doc["doc"]["datePublished"] = $dadosBasicosDoTrabalho['@attributes']["ANO"];
                 $doc["doc"]["country"] = $dadosBasicosDoTrabalho['@attributes']["PAIS"];
@@ -1881,14 +1917,14 @@ if (isset($curriculo->{'OUTRA-PRODUCAO'})) {
                 $doc["doc"]["lattes"]["tipoDeEvento"] = $detalhamentoDoTrabalho['@attributes']["TIPO-DE-EVENTO"];
                 $doc["doc"]["lattes"]["atividadeDosAutores"] = $detalhamentoDoTrabalho['@attributes']["ATIVIDADE-DOS-AUTORES"];
                 $doc["doc"]["lattes"]["flagIneditismoDaObra"] = $detalhamentoDoTrabalho['@attributes']["FLAG-INEDITISMO-DA-OBRA"];
-                $doc["doc"]["lattes"]["premiacao"] = $detalhamentoDoTrabalho['@attributes']["PREMIACAO"];            
+                $doc["doc"]["lattes"]["premiacao"] = $detalhamentoDoTrabalho['@attributes']["PREMIACAO"];
                 $doc["doc"]["lattes"]["obraDeReferencia"] = $detalhamentoDoTrabalho['@attributes']["OBRA-DE-REFERENCIA"];
                 $doc["doc"]["lattes"]["autorDaObraDeReferencia"] = $detalhamentoDoTrabalho['@attributes']["AUTOR-DA-OBRA-DE-REFERENCIA"];
-                $doc["doc"]["lattes"]["anoDaObraDeReferencia"] = $detalhamentoDoTrabalho['@attributes']["ANO-DA-OBRA-DE-REFERENCIA"];    
-                $doc["doc"]["lattes"]["duracaoEmMinutos"] = $detalhamentoDoTrabalho['@attributes']["DURACAO-EM-MINUTOS"]; 
-                $doc["doc"]["lattes"]["instituicaoPromotoraDoEvento"] = $detalhamentoDoTrabalho['@attributes']["INSTITUICAO-PROMOTORA-DO-EVENTO"]; 
-                $doc["doc"]["lattes"]["localDoEvento"] = $detalhamentoDoTrabalho['@attributes']["LOCAL-DO-EVENTO"]; 
-                $doc["doc"]["lattes"]["cidade"] = $detalhamentoDoTrabalho['@attributes']["CIDADE"]; 
+                $doc["doc"]["lattes"]["anoDaObraDeReferencia"] = $detalhamentoDoTrabalho['@attributes']["ANO-DA-OBRA-DE-REFERENCIA"];
+                $doc["doc"]["lattes"]["duracaoEmMinutos"] = $detalhamentoDoTrabalho['@attributes']["DURACAO-EM-MINUTOS"];
+                $doc["doc"]["lattes"]["instituicaoPromotoraDoEvento"] = $detalhamentoDoTrabalho['@attributes']["INSTITUICAO-PROMOTORA-DO-EVENTO"];
+                $doc["doc"]["lattes"]["localDoEvento"] = $detalhamentoDoTrabalho['@attributes']["LOCAL-DO-EVENTO"];
+                $doc["doc"]["lattes"]["cidade"] = $detalhamentoDoTrabalho['@attributes']["CIDADE"];
 
 
                 if (!empty($obra["AUTORES"])) {
@@ -1901,19 +1937,19 @@ if (isset($curriculo->{'OUTRA-PRODUCAO'})) {
                     if (isset($array_result_pc)) {
                         $doc = array_merge_recursive($doc, $array_result_pc);
                     }
-                    unset($array_result_pc);            
+                    unset($array_result_pc);
                 }
 
                 if (isset($obra["AREAS-DO-CONHECIMENTO"])) {
                     $array_result_ac = processaAreaDoConhecimentoLattes($obra["AREAS-DO-CONHECIMENTO"]);
                     if (isset($array_result_ac)) {
                         $doc = array_merge_recursive($doc, $array_result_ac);
-                    } 
-                    unset($array_result_ac);           
+                    }
+                    unset($array_result_ac);
                 }
 
                 // Constroi sha256
-                    
+
 
                 if (!empty($doc["doc"]["doi"])) {
                     $sha_array[] = $doc["doc"]["lattes_ids"][0];
@@ -1948,7 +1984,7 @@ if (isset($curriculo->{'OUTRA-PRODUCAO'})) {
 
             }
         }
-    }    
+    }
 }
 
 
