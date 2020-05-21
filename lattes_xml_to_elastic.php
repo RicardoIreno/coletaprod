@@ -147,6 +147,9 @@ if ($_FILES['file']['size'] != 0) {
     if (isset($_REQUEST['etnia'])) {
         $query['doc']['etnia'] = $_REQUEST['etnia'];
     }
+    if (isset($_REQUEST['ano_ingresso'])) {
+        $query['doc']['ano_ingresso'] = $_REQUEST['ano_ingresso'];
+    }
     if (isset($_REQUEST['desc_nivel'])) {
         $query['doc']['desc_nivel'] = explode("|", $_REQUEST['desc_nivel']);
     }
@@ -207,6 +210,9 @@ if (isset($_REQUEST['genero'])) {
 }
 if (isset($_REQUEST['etnia'])) {
     $doc_curriculo_array['doc']['etnia'] = $_REQUEST['etnia'];
+}
+if (isset($_REQUEST['ano_ingresso'])) {
+    $doc_curriculo_array['doc']['ano_ingresso'] = $_REQUEST['ano_ingresso'];
 }
 if (isset($_REQUEST['desc_nivel'])) {
     $doc_curriculo_array['doc']['desc_nivel'] = explode("|", $_REQUEST['desc_nivel']);
@@ -635,7 +641,9 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TRABALHOS-EM-EVENTOS'})) {
             $doc["doc"]["tag"][] = "Lattes";
         }
         $doc["doc"]["instituicao"]["unidade"] = explode("|", $_REQUEST['unidade']);
-        $doc["doc"]["instituicao"]["departamento"] = explode("|", $_REQUEST['departamento']);
+        if (isset($_REQUEST['departamento'])) {
+            $doc["doc"]["instituicao"]["departamento"] = explode("|", $_REQUEST['departamento']);
+        }
         if (isset($_REQUEST['numfuncional'])) {
             $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
         }
@@ -659,6 +667,9 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TRABALHOS-EM-EVENTOS'})) {
         }
         if (isset($_REQUEST['etnia'])) {
             $doc['doc']["instituicao"]['etnia'] = $_REQUEST['etnia'];
+        }
+        if (isset($_REQUEST['ano_ingresso'])) {
+            $doc['doc']["instituicao"]['ano_ingresso'] = $_REQUEST['ano_ingresso'];
         }
         if (isset($_REQUEST['desc_nivel'])) {
             $doc['doc']["instituicao"]['desc_nivel'] = explode("|", $_REQUEST['desc_nivel']);
@@ -772,7 +783,9 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'ARTIGOS-PUBLICADOS'})) {
             $doc["doc"]["tag"][] = "Lattes";
         }
         $doc["doc"]["instituicao"]["unidade"] = explode("|", $_REQUEST['unidade']);
-        $doc["doc"]["instituicao"]["departamento"] = explode("|", $_REQUEST['departamento']);
+        if (isset($_REQUEST['departamento'])) {
+            $doc["doc"]["instituicao"]["departamento"] = explode("|", $_REQUEST['departamento']);
+        }
         if (isset($_REQUEST['numfuncional'])) {
             $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
         }
@@ -796,6 +809,9 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'ARTIGOS-PUBLICADOS'})) {
         }
         if (isset($_REQUEST['etnia'])) {
             $doc['doc']["instituicao"]['etnia'] = $_REQUEST['etnia'];
+        }
+        if (isset($_REQUEST['ano_ingresso'])) {
+            $doc['doc']["instituicao"]['ano_ingresso'] = $_REQUEST['ano_ingresso'];
         }
         if (isset($_REQUEST['desc_nivel'])) {
             $doc['doc']["instituicao"]['desc_nivel'] = explode("|", $_REQUEST['desc_nivel']);
@@ -913,7 +929,9 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'LIVROS-E-CAPITULOS'})) {
                 $doc["doc"]["tag"][] = "Lattes";
             }
             $doc["doc"]["instituicao"]["unidade"] = explode("|", $_REQUEST['unidade']);
-            $doc["doc"]["instituicao"]["departamento"] = explode("|", $_REQUEST['departamento']);
+            if (isset($_REQUEST['departamento'])) {
+                $doc["doc"]["instituicao"]["departamento"] = explode("|", $_REQUEST['departamento']);
+            }
             if (isset($_REQUEST['numfuncional'])) {
                 $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
             }
@@ -937,6 +955,9 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'LIVROS-E-CAPITULOS'})) {
             }
             if (isset($_REQUEST['etnia'])) {
                 $doc['doc']["instituicao"]['etnia'] = $_REQUEST['etnia'];
+            }
+            if (isset($_REQUEST['ano_ingresso'])) {
+                $doc['doc']["instituicao"]['ano_ingresso'] = $_REQUEST['ano_ingresso'];
             }
             if (isset($_REQUEST['desc_nivel'])) {
                 $doc['doc']["instituicao"]['desc_nivel'] = explode("|", $_REQUEST['desc_nivel']);
@@ -1053,7 +1074,9 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'LIVROS-E-CAPITULOS'})) {
                 $doc["doc"]["tag"][] = "Lattes";
             }
             $doc["doc"]["instituicao"]["unidade"] = explode("|", $_REQUEST['unidade']);
-            $doc["doc"]["instituicao"]["departamento"] = explode("|", $_REQUEST['departamento']);
+            if (isset($_REQUEST['departamento'])) {
+                $doc["doc"]["instituicao"]["departamento"] = explode("|", $_REQUEST['departamento']);
+            }
             if (isset($_REQUEST['numfuncional'])) {
                 $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
             }
@@ -1077,6 +1100,9 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'LIVROS-E-CAPITULOS'})) {
             }
             if (isset($_REQUEST['etnia'])) {
                 $doc['doc']["instituicao"]['etnia'] = $_REQUEST['etnia'];
+            }
+            if (isset($_REQUEST['ano_ingresso'])) {
+                $doc['doc']["instituicao"]['ano_ingresso'] = $_REQUEST['ano_ingresso'];
             }
             if (isset($_REQUEST['desc_nivel'])) {
                 $doc['doc']["instituicao"]['desc_nivel'] = explode("|", $_REQUEST['desc_nivel']);
@@ -1186,7 +1212,9 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TEXTOS-EM-JORNAIS-OU-REVISTA
             $doc["doc"]["tag"][] = "Lattes";
         }
         $doc["doc"]["instituicao"]["unidade"] = explode("|", $_REQUEST['unidade']);
-        $doc["doc"]["instituicao"]["departamento"] = explode("|", $_REQUEST['departamento']);
+        if (isset($_REQUEST['departamento'])) {
+            $doc["doc"]["instituicao"]["departamento"] = explode("|", $_REQUEST['departamento']);
+        }
         if (isset($_REQUEST['numfuncional'])) {
             $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
         }
@@ -1210,6 +1238,9 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TEXTOS-EM-JORNAIS-OU-REVISTA
         }
         if (isset($_REQUEST['etnia'])) {
             $doc['doc']["instituicao"]['etnia'] = $_REQUEST['etnia'];
+        }
+        if (isset($_REQUEST['ano_ingresso'])) {
+            $doc['doc']["instituicao"]['ano_ingresso'] = $_REQUEST['ano_ingresso'];
         }
         if (isset($_REQUEST['desc_nivel'])) {
             $doc['doc']["instituicao"]['desc_nivel'] = explode("|", $_REQUEST['desc_nivel']);
@@ -1326,7 +1357,9 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
                 $doc["doc"]["tag"][] = "Lattes";
             }
             $doc["doc"]["instituicao"]["unidade"] = explode("|", $_REQUEST['unidade']);
-            $doc["doc"]["instituicao"]["departamento"] = explode("|", $_REQUEST['departamento']);
+            if (isset($_REQUEST['departamento'])) {
+                $doc["doc"]["instituicao"]["departamento"] = explode("|", $_REQUEST['departamento']);
+            }
             if (isset($_REQUEST['numfuncional'])) {
                 $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
             }
@@ -1350,6 +1383,9 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
             }
             if (isset($_REQUEST['etnia'])) {
                 $doc['doc']["instituicao"]['etnia'] = $_REQUEST['etnia'];
+            }
+            if (isset($_REQUEST['ano_ingresso'])) {
+                $doc['doc']["instituicao"]['ano_ingresso'] = $_REQUEST['ano_ingresso'];
             }
             if (isset($_REQUEST['desc_nivel'])) {
                 $doc['doc']["instituicao"]['desc_nivel'] = explode("|", $_REQUEST['desc_nivel']);
@@ -1456,7 +1492,9 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
                 $doc["doc"]["tag"][] = "Lattes";
             }
             $doc["doc"]["instituicao"]["unidade"] = explode("|", $_REQUEST['unidade']);
-            $doc["doc"]["instituicao"]["departamento"] = explode("|", $_REQUEST['departamento']);
+            if (isset($_REQUEST['departamento'])) {
+                $doc["doc"]["instituicao"]["departamento"] = explode("|", $_REQUEST['departamento']);
+            }
             if (isset($_REQUEST['numfuncional'])) {
                 $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
             }
@@ -1480,6 +1518,9 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
             }
             if (isset($_REQUEST['etnia'])) {
                 $doc['doc']["instituicao"]['etnia'] = $_REQUEST['etnia'];
+            }
+            if (isset($_REQUEST['ano_ingresso'])) {
+                $doc['doc']["instituicao"]['ano_ingresso'] = $_REQUEST['ano_ingresso'];
             }
             if (isset($_REQUEST['desc_nivel'])) {
                 $doc['doc']["instituicao"]['desc_nivel'] = explode("|", $_REQUEST['desc_nivel']);
@@ -1598,7 +1639,9 @@ if (isset($curriculo->{'PRODUCAO-TECNICA'})) {
                 $doc["doc"]["tag"][] = "Lattes";
             }
             $doc["doc"]["instituicao"]["unidade"] = explode("|", $_REQUEST['unidade']);
-            $doc["doc"]["instituicao"]["departamento"] = explode("|", $_REQUEST['departamento']);
+            if (isset($_REQUEST['departamento'])) {
+                $doc["doc"]["instituicao"]["departamento"] = explode("|", $_REQUEST['departamento']);
+            }
             if (isset($_REQUEST['numfuncional'])) {
                 $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
             }
@@ -1622,6 +1665,9 @@ if (isset($curriculo->{'PRODUCAO-TECNICA'})) {
             }
             if (isset($_REQUEST['etnia'])) {
                 $doc['doc']["instituicao"]['etnia'] = $_REQUEST['etnia'];
+            }
+            if (isset($_REQUEST['ano_ingresso'])) {
+                $doc['doc']["instituicao"]['ano_ingresso'] = $_REQUEST['ano_ingresso'];
             }
             if (isset($_REQUEST['desc_nivel'])) {
                 $doc['doc']["instituicao"]['desc_nivel'] = explode("|", $_REQUEST['desc_nivel']);
@@ -1730,7 +1776,9 @@ if (isset($curriculo->{'PRODUCAO-TECNICA'})) {
                 $doc["doc"]["tag"][] = "Lattes";
             }
             $doc["doc"]["instituicao"]["unidade"] = explode("|", $_REQUEST['unidade']);
-            $doc["doc"]["instituicao"]["departamento"] = explode("|", $_REQUEST['departamento']);
+            if (isset($_REQUEST['departamento'])) {
+                $doc["doc"]["instituicao"]["departamento"] = explode("|", $_REQUEST['departamento']);
+            }
             if (isset($_REQUEST['numfuncional'])) {
                 $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
             }
@@ -1754,6 +1802,9 @@ if (isset($curriculo->{'PRODUCAO-TECNICA'})) {
             }
             if (isset($_REQUEST['etnia'])) {
                 $doc['doc']["instituicao"]['etnia'] = $_REQUEST['etnia'];
+            }
+            if (isset($_REQUEST['ano_ingresso'])) {
+                $doc['doc']["instituicao"]['ano_ingresso'] = $_REQUEST['ano_ingresso'];
             }
             if (isset($_REQUEST['desc_nivel'])) {
                 $doc['doc']["instituicao"]['desc_nivel'] = explode("|", $_REQUEST['desc_nivel']);
@@ -1865,7 +1916,9 @@ if (isset($curriculo->{'OUTRA-PRODUCAO'})) {
                     $doc["doc"]["tag"][] = "Lattes";
                 }
                 $doc["doc"]["instituicao"]["unidade"] = explode("|", $_REQUEST['unidade']);
-                $doc["doc"]["instituicao"]["departamento"] = explode("|", $_REQUEST['departamento']);
+                if (isset($_REQUEST['departamento'])) {
+                    $doc["doc"]["instituicao"]["departamento"] = explode("|", $_REQUEST['departamento']);
+                }
                 if (isset($_REQUEST['numfuncional'])) {
                     $doc["doc"]["instituicao"]["numfuncional"] = $_REQUEST['numfuncional'];
                 }
@@ -1889,6 +1942,9 @@ if (isset($curriculo->{'OUTRA-PRODUCAO'})) {
                 }
                 if (isset($_REQUEST['etnia'])) {
                     $doc['doc']["instituicao"]['etnia'] = $_REQUEST['etnia'];
+                }
+                if (isset($_REQUEST['ano_ingresso'])) {
+                    $doc['doc']["instituicao"]['ano_ingresso'] = $_REQUEST['ano_ingresso'];
                 }
                 if (isset($_REQUEST['desc_nivel'])) {
                     $doc['doc']["instituicao"]['desc_nivel'] = explode("|", $_REQUEST['desc_nivel']);
