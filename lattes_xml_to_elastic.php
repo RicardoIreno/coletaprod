@@ -9,7 +9,6 @@ function processaAutoresLattes($autores_array)
     if (is_array($autores_array)) {
         foreach ($autores_array as $autor) {
             $autor = get_object_vars($autor);
-            //print_r($autor);
             $array_result["doc"]["author"][$i]["person"]["name"] = $autor["@attributes"]["NOME-COMPLETO-DO-AUTOR"];
             $array_result["doc"]["author"][$i]["nomeParaCitacao"] = $autor["@attributes"]["NOME-PARA-CITACAO"];
             $array_result["doc"]["author"][$i]["ordemDeAutoria"] = $autor["@attributes"]["ORDEM-DE-AUTORIA"];
