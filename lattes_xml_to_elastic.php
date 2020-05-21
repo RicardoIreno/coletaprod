@@ -142,6 +142,9 @@ if ($_FILES['file']['size'] != 0) {
     if (isset($_REQUEST['genero'])) {
         $query['doc']['genero'] = $_REQUEST['genero'];
     }
+    if (isset($_REQUEST['etnia'])) {
+        $query['doc']['etnia'] = $_REQUEST['etnia'];
+    }    
     if (isset($_REQUEST['desc_nivel'])) {
         $query['doc']['desc_nivel'] = explode("|", $_REQUEST['desc_nivel']);
     }
@@ -196,6 +199,9 @@ if (isset($_REQUEST['ppg_nome'])) {
 }
 if (isset($_REQUEST['genero'])) {
     $doc_curriculo_array['doc']['genero'] = $_REQUEST['genero'];
+}
+if (isset($_REQUEST['etnia'])) {
+    $doc_curriculo_array['doc']['etnia'] = $_REQUEST['etnia'];
 }
 if (isset($_REQUEST['desc_nivel'])) {
     $doc_curriculo_array['doc']['desc_nivel'] = explode("|", $_REQUEST['desc_nivel']);
@@ -632,28 +638,31 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TRABALHOS-EM-EVENTOS'})) {
             $doc["doc"]["instituicao"]["tipvin"] = explode("|", $_REQUEST['tipvin']);
         }
         if (isset($_REQUEST['divisao'])) {
-            $doc["doc"]["divisao"] = explode("|", $_REQUEST['divisao']);
+            $doc["doc"]["instituicao"]["divisao"] = explode("|", $_REQUEST['divisao']);
         }
         if (isset($_REQUEST['secao'])) {
-            $doc['doc']['secao'] = explode("|", $_REQUEST['secao']);
+            $doc['doc']["instituicao"]['secao'] = explode("|", $_REQUEST['secao']);
         }
         if (isset($_REQUEST['ppg_nome'])) {
-            $doc['doc']['ppg_nome'] = explode("|", $_REQUEST['ppg_nome']);
+            $doc['doc']["instituicao"]['ppg_nome'] = explode("|", $_REQUEST['ppg_nome']);
         }
         if (isset($_REQUEST['genero'])) {
-            $doc['doc']['genero'] = $_REQUEST['genero'];
+            $doc['doc']["instituicao"]['genero'] = $_REQUEST['genero'];
+        }
+        if (isset($_REQUEST['etnia'])) {
+            $doc['doc']["instituicao"]['etnia'] = $_REQUEST['etnia'];
         }
         if (isset($_REQUEST['desc_nivel'])) {
-            $doc['doc']['desc_nivel'] = explode("|", $_REQUEST['desc_nivel']);
+            $doc['doc']["instituicao"]['desc_nivel'] = explode("|", $_REQUEST['desc_nivel']);
         }
         if (isset($_REQUEST['desc_curso'])) {
-            $doc['doc']['desc_curso'] = explode("|", $_REQUEST['desc_curso']);
+            $doc['doc']["instituicao"]['desc_curso'] = explode("|", $_REQUEST['desc_curso']);
         }
         if (isset($_REQUEST['campus'])) {
-            $doc['doc']['campus'] = explode("|", $_REQUEST['campus']);
+            $doc['doc']["instituicao"]['campus'] = explode("|", $_REQUEST['campus']);
         }
         if (isset($_REQUEST['desc_gestora'])) {
-            $doc['doc']['desc_gestora'] = explode("|", $_REQUEST['desc_gestora']);
+            $doc['doc']["instituicao"]['desc_gestora'] = explode("|", $_REQUEST['desc_gestora']);
         }        
         $doc["doc"]["datePublished"] = $dadosBasicosDoTrabalho['@attributes']["ANO-DO-TRABALHO"];
         $doc["doc"]["name"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-DO-TRABALHO"];
@@ -773,6 +782,9 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'ARTIGOS-PUBLICADOS'})) {
         }
         if (isset($_REQUEST['genero'])) {
             $doc['doc']["instituicao"]['genero'] = $_REQUEST['genero'];
+        }
+        if (isset($_REQUEST['etnia'])) {
+            $doc['doc']["instituicao"]['etnia'] = $_REQUEST['etnia'];
         }
         if (isset($_REQUEST['desc_nivel'])) {
             $doc['doc']["instituicao"]['desc_nivel'] = explode("|", $_REQUEST['desc_nivel']);
@@ -909,6 +921,9 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'LIVROS-E-CAPITULOS'})) {
             if (isset($_REQUEST['genero'])) {
                 $doc['doc']["instituicao"]['genero'] = $_REQUEST['genero'];
             }
+            if (isset($_REQUEST['etnia'])) {
+                $doc['doc']["instituicao"]['etnia'] = $_REQUEST['etnia'];
+            }
             if (isset($_REQUEST['desc_nivel'])) {
                 $doc['doc']["instituicao"]['desc_nivel'] = explode("|", $_REQUEST['desc_nivel']);
             }
@@ -973,7 +988,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'LIVROS-E-CAPITULOS'})) {
             } elseif (!empty($doc["doc"]["isbn"])) {
                 $sha_array[] = $doc["doc"]["lattes_ids"][0];
                 $sha_array[] = $doc["doc"]["isbn"];
-                $sha256 = hash('sha256', ''.implode("", $sha_array).'');                
+                $sha256 = hash('sha256', ''.implode("", $sha_array).'');
             } else {
                 $sha_array[] = $doc["doc"]["lattes_ids"][0];
                 $sha_array[] = $doc["doc"]["tipo"];
@@ -1042,6 +1057,9 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'LIVROS-E-CAPITULOS'})) {
             }
             if (isset($_REQUEST['genero'])) {
                 $doc['doc']["instituicao"]['genero'] = $_REQUEST['genero'];
+            }
+            if (isset($_REQUEST['etnia'])) {
+                $doc['doc']["instituicao"]['etnia'] = $_REQUEST['etnia'];
             }
             if (isset($_REQUEST['desc_nivel'])) {
                 $doc['doc']["instituicao"]['desc_nivel'] = explode("|", $_REQUEST['desc_nivel']);
@@ -1169,6 +1187,9 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TEXTOS-EM-JORNAIS-OU-REVISTA
         }
         if (isset($_REQUEST['genero'])) {
             $doc['doc']["instituicao"]['genero'] = $_REQUEST['genero'];
+        }
+        if (isset($_REQUEST['etnia'])) {
+            $doc['doc']["instituicao"]['etnia'] = $_REQUEST['etnia'];
         }
         if (isset($_REQUEST['desc_nivel'])) {
             $doc['doc']["instituicao"]['desc_nivel'] = explode("|", $_REQUEST['desc_nivel']);
@@ -1304,6 +1325,9 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
             if (isset($_REQUEST['genero'])) {
                 $doc['doc']["instituicao"]['genero'] = $_REQUEST['genero'];
             }
+            if (isset($_REQUEST['etnia'])) {
+                $doc['doc']["instituicao"]['etnia'] = $_REQUEST['etnia'];
+            }
             if (isset($_REQUEST['desc_nivel'])) {
                 $doc['doc']["instituicao"]['desc_nivel'] = explode("|", $_REQUEST['desc_nivel']);
             }
@@ -1344,7 +1368,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
                 if (isset($array_result_pc)) {
                     $doc = array_merge_recursive($doc, $array_result_pc);
                 }
-                unset($array_result_pc);            
+                unset($array_result_pc);
             }
 
             if (isset($obra["AREAS-DO-CONHECIMENTO"])) {
@@ -1352,11 +1376,10 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
                 if (isset($array_result_ac)) {
                     $doc = array_merge_recursive($doc, $array_result_ac);
                 } 
-                unset($array_result_ac);           
+                unset($array_result_ac);
             }
 
             // Constroi sha256
-                
 
             if (!empty($doc["doc"]["doi"])) {
                 $sha_array[] = $doc["doc"]["lattes_ids"][0];
@@ -1428,6 +1451,9 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
             }
             if (isset($_REQUEST['genero'])) {
                 $doc['doc']["instituicao"]['genero'] = $_REQUEST['genero'];
+            }
+            if (isset($_REQUEST['etnia'])) {
+                $doc['doc']["instituicao"]['etnia'] = $_REQUEST['etnia'];
             }
             if (isset($_REQUEST['desc_nivel'])) {
                 $doc['doc']["instituicao"]['desc_nivel'] = explode("|", $_REQUEST['desc_nivel']);
@@ -1565,6 +1591,9 @@ if (isset($curriculo->{'PRODUCAO-TECNICA'})) {
             if (isset($_REQUEST['genero'])) {
                 $doc['doc']["instituicao"]['genero'] = $_REQUEST['genero'];
             }
+            if (isset($_REQUEST['etnia'])) {
+                $doc['doc']["instituicao"]['etnia'] = $_REQUEST['etnia'];
+            }
             if (isset($_REQUEST['desc_nivel'])) {
                 $doc['doc']["instituicao"]['desc_nivel'] = explode("|", $_REQUEST['desc_nivel']);
             }
@@ -1690,6 +1719,9 @@ if (isset($curriculo->{'PRODUCAO-TECNICA'})) {
             }
             if (isset($_REQUEST['genero'])) {
                 $doc['doc']["instituicao"]['genero'] = $_REQUEST['genero'];
+            }
+            if (isset($_REQUEST['etnia'])) {
+                $doc['doc']["instituicao"]['etnia'] = $_REQUEST['etnia'];
             }
             if (isset($_REQUEST['desc_nivel'])) {
                 $doc['doc']["instituicao"]['desc_nivel'] = explode("|", $_REQUEST['desc_nivel']);
@@ -1819,6 +1851,9 @@ if (isset($curriculo->{'OUTRA-PRODUCAO'})) {
                 }
                 if (isset($_REQUEST['genero'])) {
                     $doc['doc']["instituicao"]['genero'] = $_REQUEST['genero'];
+                }
+                if (isset($_REQUEST['etnia'])) {
+                    $doc['doc']["instituicao"]['etnia'] = $_REQUEST['etnia'];
                 }
                 if (isset($_REQUEST['desc_nivel'])) {
                     $doc['doc']["instituicao"]['desc_nivel'] = explode("|", $_REQUEST['desc_nivel']);
