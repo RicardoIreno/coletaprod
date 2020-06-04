@@ -340,7 +340,16 @@
             unset($fields);
             $fields[] = $r['_id'];
             $fields[] = "collection";
-            $fields[] = $r["_source"]["datePublished"];
+            if(!empty($r["_source"]["tipo"])) {
+                $fields[] = $r["_source"]["tipo"];
+            } else {
+                $fields[] = "Sem tipo";
+            }
+            if(!empty($r["_source"]["datePublished"])) {
+                $fields[] =$r["_source"]["datePublished"];
+            } else {
+                $fields[] = "Sem data";
+            }
             if(!empty($r["_source"]["doi"])) {
                 $fields[] = $r["_source"]["doi"];
             } else {
@@ -349,7 +358,7 @@
             if(!empty($r["_source"]["language"])) {
                 $fields[] = $r["_source"]["language"];
             } else {
-                $fields[] = "Sem DOI";
+                $fields[] = "Sem idioma";
             }
             if (!empty($r["_source"]["name"])) {
                 $fields[] = $r["_source"]["name"];
@@ -442,7 +451,7 @@
             $cursor = $client->search($params);
             $total = $cursor["hits"]["total"];
 
-            $content[] = "id\tcollection\tdc.date.issued\tdc.identifier.doi\tdc.language.iso\tdc.title\tdc.title.alternative\tdc.contributor.author\tdc.publisher\tdc.relation.ispartof\tdc.citation.volume\tdc.citation.issue\tdc.identifier.issn\tdc.format.extent";
+            $content[] = "id\tcollection\tdc.type\tdc.date.issued\tdc.identifier.doi\tdc.language.iso\tdc.title\tdc.title.alternative\tdc.contributor.author\tdc.publisher\tdc.relation.ispartof\tdc.citation.volume\tdc.citation.issue\tdc.identifier.issn\tdc.format.extent";
 
             foreach ($cursor["hits"]["hits"] as $r) {
                 $content[] = createTableDSpace($r);
