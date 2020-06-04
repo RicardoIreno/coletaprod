@@ -330,7 +330,7 @@
                 unset($fields);
             
             }
-            // echo implode("\n", $content);            
+            // echo implode("\n", $content);
     
         }        
 
@@ -347,13 +347,33 @@
             } else {
                 $fields[] = "Sem DOI";
             }
-            $fields[] = $r["_source"]["name"];
+            if(!empty($r["_source"]["language"])) {
+                $fields[] = $r["_source"]["language"];
+            } else {
+                $fields[] = "Sem DOI";
+            }
+            if (!empty($r["_source"]["name"])) {
+                $fields[] = $r["_source"]["name"];
+            } else {
+                $fields[] = "N/D";
+            }
+            if (!empty($r["_source"]["alternateName"])) {
+                $fields[] = $r["_source"]["alternateName"];
+            } else {
+                $fields[] = "N/D";
+            }
 
             foreach ($r["_source"]["author"] as $authors) {
                 $authors_array[]= $authors["person"]["name"];
             }
             $fields[] = implode("|",$authors_array);
             unset($authors_array);
+
+            if(!empty($r["_source"]["publisher"]["organization"]["name"])) {
+                $fields[] = $r["_source"]["publisher"]["organization"]["name"];
+            } else {
+                $fields[] = "N/D";
+            }            
 
             if(!empty($r["_source"]["isPartOf"]["name"])) {
                 $fields[] = $r["_source"]["isPartOf"]["name"];
@@ -377,7 +397,12 @@
             } else {
                 $fields[] = "N/D";
             }
-
+            if(!empty($r["_source"]["pageStart"])&&!empty($r["_source"]["pageEnd"])) {
+                $fields[] = ''.$r["_source"]["pageStart"].'-'.$r["_source"]["pageEnd"].'';
+            } else {
+                $fields[] = "N/D";
+            }
+            
             $content = implode("\t", $fields);
             unset($fields);
             return $content;
@@ -419,7 +444,7 @@
             $cursor = $client->search($params);
             $total = $cursor["hits"]["total"];
 
-            $content[] = "id\tcollection\tdc.date.issued\tdc.identifier.doi\tdc.title\tdc.contributor.author\tdc.relation.ispartof\tdc.citation.volume\tdc.citation.issue\tdc.identifier.issn";
+            $content[] = "id\tcollection\tdc.date.issued\tdc.identifier.doi\tdc.language.iso\tdc.title\tdc.title.alternative\tdc.contributor.author\tdc.publisher\tdc.relation.ispartof\tdc.citation.volume\tdc.citation.issue\tdc.identifier.issn\tdc.format.extent";
 
             foreach ($cursor["hits"]["hits"] as $r) {
                 $content[] = createTableDSpace($r);
