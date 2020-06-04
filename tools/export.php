@@ -336,7 +336,6 @@
 
     } elseif ($_GET["format"] == "dspace") {
 
-
         function createTableDSpace($r) {
             unset($fields);
             $fields[] = $r['_id'];
@@ -362,19 +361,16 @@
             } else {
                 $fields[] = "N/D";
             }
-
             foreach ($r["_source"]["author"] as $authors) {
                 $authors_array[]= $authors["person"]["name"];
             }
             $fields[] = implode("|",$authors_array);
             unset($authors_array);
-
             if(!empty($r["_source"]["publisher"]["organization"]["name"])) {
                 $fields[] = $r["_source"]["publisher"]["organization"]["name"];
             } else {
                 $fields[] = "N/D";
-            }            
-
+            }
             if(!empty($r["_source"]["isPartOf"]["name"])) {
                 $fields[] = $r["_source"]["isPartOf"]["name"];
             } else {
@@ -385,13 +381,11 @@
             } else {
                 $fields[] = "N/D";
             }
-
             if(!empty($r["_source"]["isPartOf"]["fasciculo"])) {
                 $fields[] = $r["_source"]["isPartOf"]["fasciculo"];
             } else {
                 $fields[] = "N/D";
             }
-
             if(!empty($r["_source"]["isPartOf"]["issn"])) {
                 $fields[] = $r["_source"]["isPartOf"]["issn"];
             } else {
@@ -402,7 +396,7 @@
             } else {
                 $fields[] = "N/D";
             }
-            
+
             $content = implode("\t", $fields);
             unset($fields);
             return $content;
