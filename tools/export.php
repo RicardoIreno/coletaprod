@@ -361,11 +361,15 @@
             } else {
                 $fields[] = "N/D";
             }
-            foreach ($r["_source"]["author"] as $authors) {
-                $authors_array[]= $authors["person"]["name"];
+            if (!empty($r["_source"]["author"])) {
+                foreach ($r["_source"]["author"] as $authors) {
+                    $authors_array[]= $authors["person"]["name"];
+                }
+                $fields[] = implode("|",$authors_array);
+                unset($authors_array);
+            } else {
+                $fields[] = "N/D";
             }
-            $fields[] = implode("|",$authors_array);
-            unset($authors_array);
             if(!empty($r["_source"]["publisher"]["organization"]["name"])) {
                 $fields[] = $r["_source"]["publisher"]["organization"]["name"];
             } else {
