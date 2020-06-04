@@ -337,11 +337,47 @@
     } elseif ($_GET["format"] == "dspace") {
 
 
-        function createTableDspace($r) {
+        function createTableDSpace($r) {
             unset($fields);
             $fields[] = $r['_id'];
             $fields[] = "collection";
-            $fields[] = $r["_source"]['name'];
+            $fields[] = $r["_source"]["datePublished"];
+            if(!empty($r["_source"]["doi"])) {
+                $fields[] = $r["_source"]["doi"];
+            } else {
+                $fields[] = "Sem DOI";
+            }
+            $fields[] = $r["_source"]["name"];
+
+            foreach ($r["_source"]["author"] as $authors) {
+                $authors_array[]= $authors["person"]["name"];
+            }
+            $fields[] = implode("|",$authors_array);
+            unset($authors_array);
+
+            if(!empty($r["_source"]["isPartOf"]["name"])) {
+                $fields[] = $r["_source"]["isPartOf"]["name"];
+            } else {
+                $fields[] = "N/D";
+            }
+            if(!empty($r["_source"]["isPartOf"]["volume"])) {
+                $fields[] = $r["_source"]["isPartOf"]["volume"];
+            } else {
+                $fields[] = "N/D";
+            }
+
+            if(!empty($r["_source"]["isPartOf"]["fasciculo"])) {
+                $fields[] = $r["_source"]["isPartOf"]["fasciculo"];
+            } else {
+                $fields[] = "N/D";
+            }
+
+            if(!empty($r["_source"]["isPartOf"]["issn"])) {
+                $fields[] = $r["_source"]["isPartOf"]["issn"];
+            } else {
+                $fields[] = "N/D";
+            }
+
             $content = implode("\t", $fields);
             unset($fields);
             return $content;
@@ -383,10 +419,10 @@
             $cursor = $client->search($params);
             $total = $cursor["hits"]["total"];
 
-            $content[] = "id\tcollection\tdc.title";
+            $content[] = "id\tcollection\tdc.date.issued\tdc.identifier.doi\tdc.title\tdc.contributor.author\tdc.relation.ispartof\tdc.citation.volume\tdc.citation.issue\tdc.identifier.issn";
 
             foreach ($cursor["hits"]["hits"] as $r) {
-                $content[] = createTableDspace($r);
+                $content[] = createTableDSpace($r);
             }
 
 
@@ -400,7 +436,7 @@
                 );
 
                 foreach ($cursor["hits"]["hits"] as $r) {
-                    $content[] = createTableDspace($r);
+                    $content[] = createTableDSpace($r);
                 }
             }
             echo implode("\n", $content);
@@ -416,7 +452,7 @@
                 unset($fields);
                 $fields[] = hash('crc32', $r['_id']);
                 $fields[] = $author['person']['name'];
-                $fields[] = '['.$r['_source']['datePublished'].','.$r['_source']['datePublished'].']';              
+                $fields[] = '['.$r['_source']['datePublished'].','.$r['_source']['datePublished'].']';
                 $contentAuthor[] = implode("\t", $fields);
                 unset($fields);
             }
