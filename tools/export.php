@@ -287,7 +287,7 @@
                 } 
                 $array_subject = implode("; ", $subject_array);
                 unset($subject_array);
-                $fields[] = $array_subject;                
+                $fields[] = $array_subject;
                 
                 if (isset($r["_source"]['alternateName'])) {
                     $fields[] = $r["_source"]['alternateName'];
@@ -301,7 +301,7 @@
                     }
                     $array_descriptionEn = implode(" ", $descriptionEn_array);
                     unset($descriptionEn_array);
-                    $fields[] = $array_descriptionEn;                      
+                    $fields[] = $array_descriptionEn;
                 } else {
                     $fields[] = "Não preenchido";
                 }
@@ -372,13 +372,18 @@
             }
             if (!empty($r["_source"]["author"])) {
                 foreach ($r["_source"]["author"] as $authors) {
-                    $authors_array[]= $authors["person"]["name"];
+                    $authors_array[]= trim($authors["person"]["name"]);
                 }
-                $fields[] = implode("|",$authors_array);
+                $fields[] = implode("||",$authors_array);
                 unset($authors_array);
             } else {
                 $fields[] = "N/D";
             }
+            if(!empty($r["_source"]["institutions"])) {
+                $fields[] = implode("||",$r["_source"]["institutions"]);
+            } else {
+                $fields[] = "N/D";
+            }            
             if(!empty($r["_source"]["publisher"]["organization"]["name"])) {
                 $fields[] = $r["_source"]["publisher"]["organization"]["name"];
             } else {
@@ -409,6 +414,20 @@
             } else {
                 $fields[] = "N/D";
             }
+            if (!empty($r["_source"]["funder"])) {
+                foreach ($r["_source"]["funder"] as $funders) {
+                    $funders_array[]= trim($funders["name"]);
+                }
+                $fields[] = implode("||",$funders_array);
+                unset($funders_array);
+            } else {
+                $fields[] = "N/D";
+            }
+            if(!empty($r["_source"]["description"])) {
+                $fields[] = $r["_source"]["description"];
+            } else {
+                $fields[] = "N/D";
+            }            
 
             $content = implode("\t", $fields);
             unset($fields);
@@ -451,7 +470,7 @@
             $cursor = $client->search($params);
             $total = $cursor["hits"]["total"];
 
-            $content[] = "id\tcollection\tdc.type\tdc.date.issued\tdc.identifier.doi\tdc.language.iso\tdc.title\tdc.title.alternative\tdc.contributor.author\tdc.publisher\tdc.relation.ispartof\tdc.citation.volume\tdc.citation.issue\tdc.identifier.issn\tdc.format.extent";
+            $content[] = "id\tcollection\tdc.type\tdc.date.issued\tdc.identifier.doi\tdc.language.iso\tdc.title\tdc.title.alternative\tdc.contributor.author\tdc.description.affiliation\tdc.publisher\tdc.relation.ispartof\tdc.citation.volume\tdc.citation.issue\tdc.identifier.issn\tdc.format.extent\tdc.description.sponsorship\tdc.description.abstract";
 
             foreach ($cursor["hits"]["hits"] as $r) {
                 $content[] = createTableDSpace($r);
