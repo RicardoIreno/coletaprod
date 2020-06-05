@@ -314,11 +314,11 @@
 
                 if (isset($r["_source"]['url'])) {
                     foreach ($r["_source"]['url'] as $url) {
-                        $url_array[] = $url;                        
+                        $url_array[] = $url;
                     }
                     $array_url = implode("| ", $url_array);
                     unset($url_array);
-                    $fields[] = $array_url;                      
+                    $fields[] = $array_url;
                 }    
                 
                 
