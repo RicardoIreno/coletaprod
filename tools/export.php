@@ -380,7 +380,7 @@
                 $fields[] = "N/D";
             }
             if(!empty($r["_source"]["institutions"])) {
-                $fields[] = implode("||",str_replace(array("\r", "\n"), '', trim($r["_source"]["institutions"])));
+                $fields[] = str_replace(array("\r", "\n"), '', implode("||", $r["_source"]["institutions"]));
             } else {
                 $fields[] = "N/D";
             }            
