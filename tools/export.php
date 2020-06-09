@@ -416,7 +416,7 @@
             }
             if (!empty($r["_source"]["funder"])) {
                 foreach ($r["_source"]["funder"] as $funders) {
-                    $funders_array[]= trim($funders["name"]);
+                    $funders_array[]= str_replace(array("\r", "\n"), '', trim($funders["name"]));
                 }
                 $fields[] = implode("||",$funders_array);
                 unset($funders_array);
