@@ -424,7 +424,7 @@
                 $fields[] = "N/D";
             }
             if(!empty($r["_source"]["description"])) {
-                $fields[] = $r["_source"]["description"];
+                $fields[] = str_replace(array("\r", "\n"), '', trim($r["_source"]["description"]));;
             } else {
                 $fields[] = "N/D";
             }            
