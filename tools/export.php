@@ -423,6 +423,21 @@
             } else {
                 $fields[] = "N/D";
             }
+            if (!empty($r["_source"]["funder"])) {
+                foreach ($r["_source"]["funder"] as $fundersID) {
+                    if (isset($fundersID["projectNumber"])){
+                        $fundersID_array[]= ''.str_replace(array("\r", "\n"), '', trim($fundersID["name"])).':'.$fundersID["projectNumber"].'';
+                    }
+                }
+                if (isset($fundersID_array)) {
+                    $fields[] = implode("||",$fundersID_array);
+                    unset($fundersID_array);
+                } else {
+                    $fields[] = "N/D";
+                }
+            } else {
+                $fields[] = "N/D";
+            }            
             if(!empty($r["_source"]["description"])) {
                 $fields[] = str_replace(array("\r", "\n"), '', trim($r["_source"]["description"]));
             } else {
@@ -470,7 +485,7 @@
             $cursor = $client->search($params);
             $total = $cursor["hits"]["total"];
 
-            $content[] = "id\tcollection\tdc.type\tdc.date.issued\tdc.identifier.doi\tdc.language.iso\tdc.title\tdc.title.alternative\tdc.contributor.author\tdc.description.affiliation\tdc.publisher\tdc.relation.ispartof\tdc.citation.volume\tdc.citation.issue\tdc.identifier.issn\tdc.format.extent\tdc.description.sponsorship\tdc.description.abstract";
+            $content[] = "id\tcollection\tdc.type\tdc.date.issued\tdc.identifier.doi\tdc.language.iso\tdc.title\tdc.title.alternative\tdc.contributor.author\tdc.description.affiliation\tdc.publisher\tdc.relation.ispartof\tdc.citation.volume\tdc.citation.issue\tdc.identifier.issn\tdc.format.extent\tdc.description.sponsorship\tdc.description.sponsorshipID\tdc.description.abstract";
 
             foreach ($cursor["hits"]["hits"] as $r) {
                 $content[] = createTableDSpace($r);
