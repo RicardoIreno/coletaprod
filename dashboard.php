@@ -56,6 +56,13 @@
     </br></br></br>
     <div class="container">
 
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Para login</strong> use o <strong>usuário: dashboard</strong> e <strong>senha: dashboard</strong>.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
     <?php if (isset($_REQUEST["dashboard"])) : ?>
 
         <?php if ($_REQUEST["dashboard"] == "lattes_producoes") : ?>
@@ -63,7 +70,7 @@
         <?php elseif ($_REQUEST["dashboard"] == "lattes_cv") : ?>
             <iframe src="<?php echo $dashboard_lattes_cv ?>" height="10000" width="100%" frameBorder="0" scrolling="no"></iframe>
         <?php else: ?>
-            <iframe src="<?php echo $dashboard_source ?>" height="10000" width="100%" frameBorder="0" scrolling="no"></iframe>            
+            <iframe src="<?php echo $dashboard_source ?>" height="10000" width="100%" frameBorder="0" scrolling="no"></iframe>
         <?php endif ?>
 
     <?php else: ?>    
