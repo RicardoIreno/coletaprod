@@ -34,7 +34,7 @@ try {
     $indexParams['index']  = $index_cv;   
     $testIndexCV = $client->indices()->exists($indexParams);
 } catch (Exception $e) {    
-    $error_connection_message = '<div class="alert alert-danger" role="alert">Elasticsearch não foi encontrado.</div>';
+    $error_connection_message = '<div class="alert alert-danger" role="alert">Índice de CV no Elasticsearch não foi encontrado.</div>';
 }
 
 /* Create index if not exists */
@@ -49,7 +49,7 @@ try {
     $indexParams['index']  = $index_authority;   
     $testIndexAut = $client->indices()->exists($indexParams);
 } catch (Exception $e) {    
-    $error_connection_message = '<div class="alert alert-danger" role="alert">Elasticsearch não foi encontrado.</div>';
+    $error_connection_message = '<div class="alert alert-danger" role="alert">Índice de autoridades no Elasticsearch não foi encontrado.</div>';
 }
 
 /* Create index if not exists */
@@ -64,7 +64,7 @@ try {
     $indexParams['index']  = $index_source;   
     $testIndexSource = $client->indices()->exists($indexParams);
 } catch (Exception $e) {    
-    $error_connection_message = '<div class="alert alert-danger" role="alert">Elasticsearch não foi encontrado.</div>';
+    $error_connection_message = '<div class="alert alert-danger" role="alert">Índice de fonte noElasticsearch não foi encontrado.</div>';
 }
 
 /* Create index of source if not exists */
