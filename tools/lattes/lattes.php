@@ -26,9 +26,9 @@
     fwrite($xmlFile, $content); 
     fclose($xmlFile);
     if (!is_null($row["nomabvset"])) {
-      $output = shell_exec('curl -X POST -F "file=@'.__DIR__.'/curriculo.xml" -F "codpes='.$row["codpes"].'" -F "unidade=ECA" -F "tag='.trim($row["nomabvset"]).'" -F "tipvin='.$row["tipvinext"].'" http://localhost/coletaprodeca/lattes_xml_to_elastic.php');
+      $output = shell_exec('curl -X POST -F "file=@'.__DIR__.'/curriculo.xml" -F "codpes='.$row["codpes"].'" -F "unidade=ECA" -F "tag='.trim($row["nomabvset"]).'" -F "tipvin='.$row["tipvinext"].'" '.$url_base.'/lattes_xml_to_elastic.php');
     } else {
-      $output = shell_exec('curl -X POST -F "file=@'.__DIR__.'/curriculo.xml" -F "codpes='.$row["codpes"].'" -F "unidade=ECA" -F "tag='.trim($row["nomcur"]).'" -F "tipvin='.$row["tipvinext"].'" http://localhost/coletaprodeca/lattes_xml_to_elastic.php');
+      $output = shell_exec('curl -X POST -F "file=@'.__DIR__.'/curriculo.xml" -F "codpes='.$row["codpes"].'" -F "unidade=ECA" -F "tag='.trim($row["nomcur"]).'" -F "tipvin='.$row["tipvinext"].'" '.$url_base.'/lattes_xml_to_elastic.php');
     }
     
     //echo "<pre>$output</pre>";
