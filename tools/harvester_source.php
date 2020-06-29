@@ -431,7 +431,7 @@ if (isset($_GET["oai"])) {
                     }
                     if ($field->attributes()->element == "title" && $field->attributes()->qualifier == "alternative") {
                         $query["doc"]["alternateName"] = (string)$field;
-                    }                    
+                    }
                     if ($field->attributes()->element == "subject") {
                         $query["doc"]["about"][] = (string)$field;
                     }
@@ -455,13 +455,13 @@ if (isset($_GET["oai"])) {
                     }
                     if ($field->attributes()->element == "identifier" && $field->attributes()->qualifier == "citation") {
                         $query["doc"]["citation"] = (string)$field;
-                    }                                            
+                    }
                     // if ($field->attributes()->element == "description" && $field->attributes()->qualifier == "abstract") {
                     //     $query["doc"]["description"][] = (string)$field;
                     // }
                     if ($field->attributes()->element == "description" && $field->attributes()->qualifier == "source") {
                         $query["doc"]["source"] = (string)$field;
-                    }                    
+                    }
                     if ($field->attributes()->element == "contributor" && $field->attributes()->qualifier == "author") {
                         $author[$i]["person"]["name"] = (string)$field;
                     }
@@ -481,13 +481,13 @@ if (isset($_GET["oai"])) {
                     }
                     if ($field->attributes()->element == "rights") {
                         $query["doc"]["conditionsOfAccess"] = (string)$field;
-                    }                                                                                                        
+                    }
                     if ($field->attributes()->element == "type") {
                         $query["doc"]["type"] = (string)$field;
                     }
                     if ($field->attributes()->element == "type") {
                         $query["doc"]["tipo"] = (string)$field;
-                    }                    
+                    }
                     if ($field->attributes()->element == "publisher" && empty($field->attributes()->qualifier)) {
                         $query["doc"]["publisher"]["organization"]["name"] = (string)$field;
                     }
@@ -496,6 +496,9 @@ if (isset($_GET["oai"])) {
                     }
                     if ($field->attributes()->element == "language" && $field->attributes()->qualifier == "iso") {
                         $query["doc"]["language"][] = (string)$field;
+                    }
+                    if ($field->attributes()->element == "creator" && $field->attributes()->qualifier == "affilliation") {
+                        $query["doc"]["institutions"][] = (string)$field;
                     }
                     $i++;
                 }
