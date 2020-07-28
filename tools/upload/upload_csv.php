@@ -16,6 +16,11 @@ if (($handle = fopen($argv[1], "r")) !== FALSE) {
         }
         $doc["doc_as_upsert"] = true;
         print_r($doc);
+        $sha256 = hash('sha256', ''.$doc["doc"]["numero_processo_candidatura"].'');
+        if (!is_null($sha256)) {
+            $resultado = Elasticsearch::update($sha256, $doc, $index_eleicoes);
+        }
+        print_r($resultado);
         unset($doc);
     }
     fclose($handle);
