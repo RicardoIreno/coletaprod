@@ -3,8 +3,6 @@
 require '../../inc/config.php';
 require '../../inc/functions.php';
 
-var_dump($argv);
-
 $row = 1;
 if (($handle = fopen($argv[1], "r")) !== FALSE) {
     while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
