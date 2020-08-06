@@ -24,11 +24,15 @@ define("CONSTANT_ARRAY", $mappingsArray);
 
 foreach ($mappingsArray as $mappingString) {
     $mappingsParamsArray[$mappingString]["type"] = "text";
+    $mappingsParamsArray[$mappingString]["fields"]["keyword"]["type"] = "keyword";
+    $mappingsParamsArray[$mappingString]["fields"]["keyword"]["ignore_above"] = 256;
 }
 
 $mappingsParams["index"] = $argv[3];
 $mappingsParams["body"]["properties"] = $mappingsParamsArray;
 $client->indices()->putMapping($mappingsParams);
+
+$shaArray = explode("--", $argv[4]);
 
 $row = 1;
 if (($handle = fopen($argv[1], "r")) !== FALSE) {
@@ -39,8 +43,15 @@ if (($handle = fopen($argv[1], "r")) !== FALSE) {
             $doc["doc"] = array_filter($docArray);
             $doc["doc_as_upsert"] = true;
         }
+
         unset($sha256);
-        $sha256 = hash('sha256', ''.$doc["doc"]["nome"].''.$doc["doc"]["ano_eleicao"].''.$doc["doc"]["sigla_uf"].''.$doc["doc"]["cpf"].''.$doc["doc"]["titulo_eleitoral"].'');
+        unset($shaText);
+        foreach ($shaArray as $unitSha) {
+            $shaText[] = $doc["doc"]["$unitSha"];
+        }
+        $shaText = implode("",$shaText);
+        $sha256 = hash('sha256', $shaText);
+        
         if (!is_null($doc)) {
             $resultado = Elasticsearch::update($sha256, $doc, $argv[3]);
         }
