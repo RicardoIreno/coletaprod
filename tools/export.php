@@ -599,25 +599,29 @@
                 //print_r($author);
                 unset($r["_source"]['author'][0]);
                 //print_r($r["_source"]['author']);
-                foreach ($r["_source"]['author'] as $authorArray) {  
-                    //print_r($authorArray);                  
+                foreach ($r["_source"]['author'] as $authorArray) {
+                    //print_r($authorArray);
                     if ($author['person']['name'] != $authorArray['person']['name']){
                         $fields[] = $author['person']['name'];
                         $fields[] = $authorArray['person']['name'];
-                        $fields[] = '['.$r['_source']['datePublished'].','.$r['_source']['datePublished'].']';    
+                        $fields[] = '['.$r['_source']['datePublished'].','.$r['_source']['datePublished'].']';
                     }
                     if (isset($fields)) {
                         //print_r($fields);
                         $contentAuthor[] = implode("\t", $fields);
                         unset($fields);
-                    }                     
+                    }
                 }
             }
             if (isset($contentAuthor)) {
                 $content = implode("\n", $contentAuthor);
                 unset($contentAuthor);
             }
-            return $content;
+            if (isset($content)) {
+                return $content;
+            } else {
+                return "";
+            }
         }
 
         $file="exportAuthorNetworkWithoutPapers.tsv";
