@@ -356,7 +356,7 @@
                 $fields[] = "Sem DOI";
             }
             if(!empty($r["_source"]["language"])) {
-                $fields[] = implode("||", $r["_source"]["language"]);
+                $fields[] = implode('||', $r["_source"]["language"]);
             } else {
                 $fields[] = "Sem idioma";
             }
