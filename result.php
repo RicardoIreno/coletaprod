@@ -199,7 +199,7 @@ $get_data = $_GET;
                                         </form>
                                         
                                         <?php
-                                        echo $dspaceRest;
+                                        var_dump($dspaceRest);
                                         if (isset($dspaceRest)) {
                                             echo '<form action="dspaceConnect.php" method="get">
                                                 <input type="hidden" name="createRecord" value="true" />
