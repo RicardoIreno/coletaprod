@@ -196,16 +196,17 @@ $get_data = $_GET;
                                                     
                                             <?php endif; ?>
                                             
-                                        </form>                                       
+                                        </form>
                                         
-                                        <?php                                        
-                                        if (isset($dspaceRest)) { 
+                                        <?php
+                                        echo $dspaceRest;
+                                        if (isset($dspaceRest)) {
                                             echo '<form action="dspaceConnect.php" method="get">
                                                 <input type="hidden" name="createRecord" value="true" />
                                                 <input type="hidden" name="_id" value="'.$r['_id'].'" />
                                                 <button class="btn btn-secondary" name="btn_submit">Criar registro no DSpace</button>
                                                 </form>';  
-                                        }                                        
+                                        }
                                         ?>
                                         
                                         <?php 
