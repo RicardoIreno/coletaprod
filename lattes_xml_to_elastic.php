@@ -902,7 +902,13 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'ARTIGOS-PUBLICADOS'})) {
         $doc["doc_as_upsert"] = true;
 
         // Armazenar registro
-        $resultado = Elasticsearch::update($sha256, $doc);
+        if (isset($doc['doc']["instituicao"]['ano_ingresso'])) {
+            if (intval($doc["doc"]["datePublished"]) >= intval($doc['doc']["instituicao"]['ano_ingresso'])) {
+                $resultado = Elasticsearch::update($sha256, $doc);
+            }
+        } else {
+            $resultado = Elasticsearch::update($sha256, $doc);
+        }
         echo "<br/>";
         print_r($resultado);
         echo "<br/><br/>";
@@ -1049,7 +1055,13 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'LIVROS-E-CAPITULOS'})) {
             $doc["doc_as_upsert"] = true;
 
             // Armazenar registro
-            $resultado = Elasticsearch::update($sha256, $doc);
+            if (isset($doc['doc']["instituicao"]['ano_ingresso'])) {
+                if (intval($doc["doc"]["datePublished"]) >= intval($doc['doc']["instituicao"]['ano_ingresso'])) {
+                    $resultado = Elasticsearch::update($sha256, $doc);
+                }
+            } else {
+                $resultado = Elasticsearch::update($sha256, $doc);
+            }
             echo "<br/>";
             print_r($resultado);
             echo "<br/><br/>";
@@ -1184,7 +1196,13 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'LIVROS-E-CAPITULOS'})) {
             $doc["doc_as_upsert"] = true;
 
             // Armazenar registro
-            $resultado = Elasticsearch::update($sha256, $doc);
+            if (isset($doc['doc']["instituicao"]['ano_ingresso'])) {
+                if (intval($doc["doc"]["datePublished"]) >= intval($doc['doc']["instituicao"]['ano_ingresso'])) {
+                    $resultado = Elasticsearch::update($sha256, $doc);
+                }
+            } else {
+                $resultado = Elasticsearch::update($sha256, $doc);
+            }
             echo "<br/>";
             print_r($resultado);
             echo "<br/><br/>";
@@ -1330,7 +1348,13 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TEXTOS-EM-JORNAIS-OU-REVISTA
         $doc["doc_as_upsert"] = true;
 
         // Armazenar registro
-        $resultado = Elasticsearch::update($sha256, $doc);
+        if (isset($doc['doc']["instituicao"]['ano_ingresso'])) {
+            if (intval($doc["doc"]["datePublished"]) >= intval($doc['doc']["instituicao"]['ano_ingresso'])) {
+                $resultado = Elasticsearch::update($sha256, $doc);
+            }
+        } else {
+            $resultado = Elasticsearch::update($sha256, $doc);
+        }
         echo "<br/>";
         print_r($resultado);
         echo "<br/><br/>";
@@ -1470,7 +1494,13 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
             $doc["doc_as_upsert"] = true;
 
             // Armazenar registro
-            $resultado = Elasticsearch::update($sha256, $doc);
+            if (isset($doc['doc']["instituicao"]['ano_ingresso'])) {
+                if (intval($doc["doc"]["datePublished"]) >= intval($doc['doc']["instituicao"]['ano_ingresso'])) {
+                    $resultado = Elasticsearch::update($sha256, $doc);
+                }
+            } else {
+                $resultado = Elasticsearch::update($sha256, $doc);
+            }
             echo "<br/>";
             print_r($resultado);
             echo "<br/><br/>";
@@ -1611,7 +1641,13 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
             $doc["doc_as_upsert"] = true;
 
             // Armazenar registro
-            $resultado = Elasticsearch::update($sha256, $doc);
+            if (isset($doc['doc']["instituicao"]['ano_ingresso'])) {
+                if (intval($doc["doc"]["datePublished"]) >= intval($doc['doc']["instituicao"]['ano_ingresso'])) {
+                    $resultado = Elasticsearch::update($sha256, $doc);
+                }
+            } else {
+                $resultado = Elasticsearch::update($sha256, $doc);
+            }
             echo "<br/>";
             print_r($resultado);
             echo "<br/><br/>";
@@ -1754,7 +1790,13 @@ if (isset($curriculo->{'PRODUCAO-TECNICA'})) {
             $doc["doc_as_upsert"] = true;
 
             // Armazenar registro
-            $resultado = Elasticsearch::update($sha256, $doc);
+            if (isset($doc['doc']["instituicao"]['ano_ingresso'])) {
+                if (intval($doc["doc"]["datePublished"]) >= intval($doc['doc']["instituicao"]['ano_ingresso'])) {
+                    $resultado = Elasticsearch::update($sha256, $doc);
+                }
+            } else {
+                $resultado = Elasticsearch::update($sha256, $doc);
+            }
             echo "<br/>";
             print_r($resultado);
             echo "<br/><br/>";
@@ -1886,7 +1928,13 @@ if (isset($curriculo->{'PRODUCAO-TECNICA'})) {
             $doc["doc_as_upsert"] = true;
 
             // Armazenar registro
-            $resultado = Elasticsearch::update($sha256, $doc);
+            if (isset($doc['doc']["instituicao"]['ano_ingresso'])) {
+                if (intval($doc["doc"]["datePublished"]) >= intval($doc['doc']["instituicao"]['ano_ingresso'])) {
+                    $resultado = Elasticsearch::update($sha256, $doc);
+                }
+            } else {
+                $resultado = Elasticsearch::update($sha256, $doc);
+            }
             echo "<br/>";
             print_r($resultado);
             echo "<br/><br/>";
@@ -2036,7 +2084,13 @@ if (isset($curriculo->{'OUTRA-PRODUCAO'})) {
                 $doc["doc_as_upsert"] = true;
 
                 // Armazenar registro
-                $resultado = Elasticsearch::update($sha256, $doc);
+                if (isset($doc['doc']["instituicao"]['ano_ingresso'])) {
+                    if (intval($doc["doc"]["datePublished"]) >= intval($doc['doc']["instituicao"]['ano_ingresso'])) {
+                        $resultado = Elasticsearch::update($sha256, $doc);
+                    }
+                } else {
+                    $resultado = Elasticsearch::update($sha256, $doc);
+                }
                 echo "<br/>";
                 print_r($resultado);
                 echo "<br/><br/>";
