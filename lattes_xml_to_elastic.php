@@ -581,7 +581,12 @@ if (isset($curriculo->{'DADOS-GERAIS'}->{'FORMACAO-ACADEMICA-TITULACAO'}->{'LIVR
     $doc_curriculo_array["doc"]["formacao_maxima"] = "Sem formação informada";
 }
 
-
+// Projetos de pesquisa
+if (isset($curriculo->{'DADOS-GERAIS'}->{'ATUACOES-PROFISSIONAIS'})) {
+    foreach ($curriculo->{'DADOS-GERAIS'}->{'ATUACOES-PROFISSIONAIS'}->{'ATUACAO-PROFISSIONAL'} as $atuacao_profissional) {
+        $atuacao_profissional = get_object_vars($atuacao_profissional);
+    }
+}
 
 
 // Idiomas
@@ -729,8 +734,6 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TRABALHOS-EM-EVENTOS'})) {
             unset($array_result_ac);
         }
 
-
-
         // Constroi sha256
         $sha_array[] = $doc["doc"]["lattes_ids"][0];
         $sha_array[] = $doc["doc"]["tipo"];
@@ -747,7 +750,14 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TRABALHOS-EM-EVENTOS'})) {
         $doc["doc_as_upsert"] = true;
 
         // Armazenar registro
-        $resultado = Elasticsearch::update($sha256, $doc);
+        if (isset($doc['doc']["instituicao"]['ano_ingresso'])) {
+            if (intval($doc["doc"]["datePublished"]) >= intval($doc['doc']["instituicao"]['ano_ingresso'])) {
+                $resultado = Elasticsearch::update($sha256, $doc);
+            }
+        } else {
+            $resultado = Elasticsearch::update($sha256, $doc);
+        }
+        
         echo "<br/>";
         print_r($resultado);
         echo "<br/><br/>";
