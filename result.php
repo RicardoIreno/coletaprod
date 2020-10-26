@@ -199,7 +199,6 @@ $get_data = $_GET;
                                         </form>
                                         
                                         <?php
-                                        var_dump($dspaceRest);
                                         if (!empty($dspaceRest)) {
                                             echo '<form action="dspaceConnect.php" method="get">
                                                 <input type="hidden" name="createRecord" value="true" />
@@ -213,13 +212,12 @@ $get_data = $_GET;
                                         if ($instituicao == "USP") {
                                             echo '<a href="tools/export.php?search[]=_id:'.$r['_id'].'&format=alephseq" class="btn btn-secondary">Exportar Alephseq</a>';
                                         }
-                                        ?>
-                                        
+                                        ?>                                        
 
 
                                         <form class="form-signin" method="post" action="editor/index.php">
                                             <?php
-                                                $jsonRecord = json_encode($r["_source"]);                                        
+                                                $jsonRecord = json_encode($r["_source"]);
                                             ?>
                                             <input type="hidden" id="coletaprod_id" name="coletaprod_id" value="<?php echo $r["_id"] ?>">
                                             <input type="hidden" id="record" name="record" value="<?php echo urlencode($jsonRecord) ?>">
