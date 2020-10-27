@@ -62,7 +62,7 @@
             <?php isset($error_connection_message) ? print_r($error_connection_message) : "" ?>
 
             <div class="alert alert-warning" role="alert">
-                O Coletaprod é uma ferramenta que agrega informações de diversas fontes, mas não realiza um processamento posterior nelas. Antes de fazer um uso da informação, é ter ciência de que há registros duplicados e outras inconsistências que devem ser avaliadas.
+                O Coletaprod é uma ferramenta que agrega informações de diversas fontes, mas não realiza um processamento posterior nelas. Antes de fazer um uso da informação, é preciso ter ciência de que há registros duplicados e outras inconsistências que devem ser avaliadas.
             </div>
 
              <form class="mt-3" action="result.php">
