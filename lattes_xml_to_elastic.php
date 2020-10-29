@@ -742,6 +742,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TRABALHOS-EM-EVENTOS'})) {
             $i_vinculo = 0;
         }
         $doc["doc"]["vinculo"][$i_vinculo]["nome"] = (string)$curriculo->{'DADOS-GERAIS'}->attributes()->{'NOME-COMPLETO'};
+        $doc["doc"]["vinculo"][$i_vinculo]["lattes_id"] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
         if (isset($_REQUEST['unidade'])) {
             $doc["doc"]["vinculo"][$i_vinculo]["unidade"] = explode("|", $_REQUEST['unidade']);
         }
@@ -939,6 +940,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'ARTIGOS-PUBLICADOS'})) {
             $i_vinculo = 0;
         }
         $doc["doc"]["vinculo"][$i_vinculo]["nome"] = (string)$curriculo->{'DADOS-GERAIS'}->attributes()->{'NOME-COMPLETO'};
+        $doc["doc"]["vinculo"][$i_vinculo]["lattes_id"] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
         if (isset($_REQUEST['unidade'])) {
             $doc["doc"]["vinculo"][$i_vinculo]["unidade"] = explode("|", $_REQUEST['unidade']);
         }
@@ -1145,6 +1147,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'LIVROS-E-CAPITULOS'})) {
                 $i_vinculo = 0;
             }
             $doc["doc"]["vinculo"][$i_vinculo]["nome"] = (string)$curriculo->{'DADOS-GERAIS'}->attributes()->{'NOME-COMPLETO'};
+            $doc["doc"]["vinculo"][$i_vinculo]["lattes_id"] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
             if (isset($_REQUEST['unidade'])) {
                 $doc["doc"]["vinculo"][$i_vinculo]["unidade"] = explode("|", $_REQUEST['unidade']);
             }
@@ -1352,6 +1355,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'LIVROS-E-CAPITULOS'})) {
                 $i_vinculo = 0;
             }
             $doc["doc"]["vinculo"][$i_vinculo]["nome"] = (string)$curriculo->{'DADOS-GERAIS'}->attributes()->{'NOME-COMPLETO'};
+            $doc["doc"]["vinculo"][$i_vinculo]["lattes_id"] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
             if (isset($_REQUEST['unidade'])) {
                 $doc["doc"]["vinculo"][$i_vinculo]["unidade"] = explode("|", $_REQUEST['unidade']);
             }
@@ -1548,6 +1552,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TEXTOS-EM-JORNAIS-OU-REVISTA
             $i_vinculo = 0;
         }
         $doc["doc"]["vinculo"][$i_vinculo]["nome"] = (string)$curriculo->{'DADOS-GERAIS'}->attributes()->{'NOME-COMPLETO'};
+        $doc["doc"]["vinculo"][$i_vinculo]["lattes_id"] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
         if (isset($_REQUEST['unidade'])) {
             $doc["doc"]["vinculo"][$i_vinculo]["unidade"] = explode("|", $_REQUEST['unidade']);
         }
@@ -1751,6 +1756,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
                 $i_vinculo = 0;
             }
             $doc["doc"]["vinculo"][$i_vinculo]["nome"] = (string)$curriculo->{'DADOS-GERAIS'}->attributes()->{'NOME-COMPLETO'};
+            $doc["doc"]["vinculo"][$i_vinculo]["lattes_id"] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
             if (isset($_REQUEST['unidade'])) {
                 $doc["doc"]["vinculo"][$i_vinculo]["unidade"] = explode("|", $_REQUEST['unidade']);
             }
@@ -1951,6 +1957,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
                 $i_vinculo = 0;
             }
             $doc["doc"]["vinculo"][$i_vinculo]["nome"] = (string)$curriculo->{'DADOS-GERAIS'}->attributes()->{'NOME-COMPLETO'};
+            $doc["doc"]["vinculo"][$i_vinculo]["lattes_id"] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
             if (isset($_REQUEST['unidade'])) {
                 $doc["doc"]["vinculo"][$i_vinculo]["unidade"] = explode("|", $_REQUEST['unidade']);
             }
@@ -2154,6 +2161,7 @@ if (isset($curriculo->{'PRODUCAO-TECNICA'})) {
                 $i_vinculo = 0;
             }
             $doc["doc"]["vinculo"][$i_vinculo]["nome"] = (string)$curriculo->{'DADOS-GERAIS'}->attributes()->{'NOME-COMPLETO'};
+            $doc["doc"]["vinculo"][$i_vinculo]["lattes_id"] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
             if (isset($_REQUEST['unidade'])) {
                 $doc["doc"]["vinculo"][$i_vinculo]["unidade"] = explode("|", $_REQUEST['unidade']);
             }
@@ -2346,6 +2354,7 @@ if (isset($curriculo->{'PRODUCAO-TECNICA'})) {
                 $i_vinculo = 0;
             }
             $doc["doc"]["vinculo"][$i_vinculo]["nome"] = (string)$curriculo->{'DADOS-GERAIS'}->attributes()->{'NOME-COMPLETO'};
+            $doc["doc"]["vinculo"][$i_vinculo]["lattes_id"] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
             if (isset($_REQUEST['unidade'])) {
                 $doc["doc"]["vinculo"][$i_vinculo]["unidade"] = explode("|", $_REQUEST['unidade']);
             }
@@ -2556,6 +2565,7 @@ if (isset($curriculo->{'OUTRA-PRODUCAO'})) {
                     $i_vinculo = 0;
                 }
                 $doc["doc"]["vinculo"][$i_vinculo]["nome"] = (string)$curriculo->{'DADOS-GERAIS'}->attributes()->{'NOME-COMPLETO'};
+                $doc["doc"]["vinculo"][$i_vinculo]["lattes_id"] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
                 if (isset($_REQUEST['unidade'])) {
                     $doc["doc"]["vinculo"][$i_vinculo]["unidade"] = explode("|", $_REQUEST['unidade']);
                 }
