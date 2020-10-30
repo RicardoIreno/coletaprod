@@ -33,6 +33,7 @@
             //echo "<br/><br/><br/><br/>";
             $body["doc"]["ExternalData"]["crossref"] = $work;
             $body["doc_as_upsert"] = true;
+            unset($body["doc"]["ExternalData"]["crossref"]["ExternalData"]["crossref"]["message"]["assertion"]["value"]);
             $resultado_crossref = Elasticsearch::update($r["_id"], $body);
             print_r($resultado_crossref);
             sleep(11);
