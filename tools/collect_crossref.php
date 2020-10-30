@@ -32,9 +32,9 @@
             $work = $clientCrossref->request('works/'.$r["_source"]["doi"].'');
             //echo "<br/><br/><br/><br/>";
             $body["doc"]["ExternalData"]["crossref"] = $work;
-            $body["doc_as_upsert"] = true;
+            $body["doc_as_upsert"] = true;            
+            unset($body["doc"]["ExternalData"]["crossref"]["message"]["assertion"]);
             var_dump($body);
-            unset($body["doc"]["ExternalData"]["crossref"]["message"]["assertion"]["value"]);
             $resultado_crossref = Elasticsearch::update($r["_id"], $body);
             print_r($resultado_crossref);
             sleep(11);
@@ -43,7 +43,7 @@
 
         } else {
             $body["doc"]["ExternalData"]["crossref"]["notFound"] = true;
-            unset($body["doc"]["ExternalData"]["crossref"]["notFound"]["message"]["assertion"]["value"]);
+            unset($body["doc"]["ExternalData"]["crossref"]["notFound"]["message"]["assertion"]);
             $body["doc_as_upsert"] = true;
             $resultado_crossref = Elasticsearch::update($r["_id"], $body);
             print_r($resultado_crossref);
