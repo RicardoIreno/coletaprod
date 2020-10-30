@@ -4,7 +4,9 @@
     require '../inc/config.php';
     require '../inc/functions.php';
 
-    $query["query"]["query_string"]["query"] = "+_exists_:doi -_exists_:ExternalData.crossref";
+    $query["query"]["bool"]["must_not"][0]["term"]["doi.keyword"] = "";
+    $query["query"]["bool"]["must_not"][1]["query_string"]["query"] = "_exists_:ExternalData.crossref";
+    
 
     $params = [];
     $params["index"] = $index;
