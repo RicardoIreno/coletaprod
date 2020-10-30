@@ -33,7 +33,7 @@
             //echo "<br/><br/><br/><br/>";
             $body["doc"]["ExternalData"]["crossref"] = $work;
             $body["doc_as_upsert"] = true;
-            //var_dump($body);
+            var_dump($body);
             unset($body["doc"]["ExternalData"]["crossref"]["message"]["assertion"]["value"]);
             $resultado_crossref = Elasticsearch::update($r["_id"], $body);
             print_r($resultado_crossref);
@@ -43,6 +43,7 @@
 
         } else {
             $body["doc"]["ExternalData"]["crossref"]["notFound"] = true;
+            unset($body["doc"]["ExternalData"]["crossref"]["notFound"]["message"]["assertion"]["value"]);
             $body["doc_as_upsert"] = true;
             $resultado_crossref = Elasticsearch::update($r["_id"], $body);
             print_r($resultado_crossref);
