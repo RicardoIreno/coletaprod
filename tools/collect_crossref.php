@@ -37,7 +37,7 @@
             //var_dump($body);
             $resultado_crossref = Elasticsearch::update($r["_id"], $body);
             print_r($resultado_crossref);
-            sleep(11);
+            sleep(2);
             ob_flush();
             flush();
 
