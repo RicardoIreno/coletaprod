@@ -136,7 +136,7 @@ $get_data = $_GET;
                                 </p>
                                 
    
-                                <?php if (!empty($r["_source"]['isPartOf']['name'])) : ?>                                        
+                                <?php if (!empty($r["_source"]['isPartOf']['name'])) : ?>
                                     <p class="text-muted"><b>In:</b> <a href="result.php?filter[]=isPartOf.name:&quot;<?php echo $r["_source"]['isPartOf']['name'];?>&quot;"><?php echo $r["_source"]['isPartOf']['name'];?></a></p>
                                 <?php endif; ?>
                                 <?php if (!empty($r["_source"]['isPartOf']['issn'])) : ?>
@@ -178,17 +178,17 @@ $get_data = $_GET;
 
                                         <form method="post">
                                             <?php if(isset($r["_source"]["concluido"])) : ?>
-                                                <?php if($r["_source"]["concluido"] == "Sim") : ?>                                                  
+                                                <?php if($r["_source"]["concluido"] == "Sim") : ?>
                                                     
-                                                        <label><input type='hidden' value='Não' name="<?php echo $r['_id'];?>"></label>      
+                                                        <label><input type='hidden' value='Não' name="<?php echo $r['_id'];?>"></label>
                                                         <button class="btn btn-primary">Desmarcar como concluído</button>
                                                 
                                                 <?php else : ?>
-                                                    
+
                                                         <label><input type='hidden' value='Sim' name="<?php echo $r['_id'];?>"></label>
                                                         <button class="btn btn-primary">Marcar como concluído</button>
                                                     
-                                                <?php endif; ?>                                    
+                                                <?php endif; ?>
                                             <?php else : ?>
                                                     
                                                         <label><input type='hidden' value='Sim' name="<?php echo $r['_id'];?>"></label>
@@ -239,14 +239,14 @@ $get_data = $_GET;
                 <div class="col-4">
                 
                 <hr>                
-                <h3>Refinar meus resultados</h3>    
+                <h3>Refinar meus resultados</h3>
                 <hr>
                 <?php
                     $facets = new facets();
                     $facets->query = $result_get['query'];
 
                     if (!isset($_GET)) {
-                        $_GET = null;                                    
+                        $_GET = null;
                     }   
                     
                     $facets->facet(basename(__FILE__), "instituicao.campus", 100, "Campus", null, "_term", $_GET);
@@ -301,6 +301,9 @@ $get_data = $_GET;
                     
                     $facets->facet(basename(__FILE__), "isPartOf.name", 100, "Título do periódico", null, "_term", $_GET);
 
+                    $facets->facet(basename(__FILE__), "ExternalData.crossref.message.author.affiliation.name", 100, "Crossref - Afiliação", null, "_term", $_GET);
+                    
+
                     $facets->facet(basename(__FILE__), "concluido", 100, "Concluído", null, "_term", $_GET);
                     $facets->facet(basename(__FILE__), "bdpi.existe", 100, "Está na FONTE?", null, "_term", $_GET);
 
@@ -323,13 +326,13 @@ $get_data = $_GET;
                                     $finalYearValue = $v;
                                 } else {
                                     echo '<input type="hidden" name="'.$k.'" value="'.htmlentities($v).'">';
-                                }                                    
+                                }
                             }
                         }
 
                         if (!isset($initialYearValue)) {
                             $initialYearValue = "";
-                        }                            
+                        }
                         if (!isset($finalYearValue)) {
                             $finalYearValue = "";
                         }
@@ -352,7 +355,7 @@ $get_data = $_GET;
                 <p><a href="tools/export.php?<?php echo $_SERVER["QUERY_STRING"] ?>&format=dspace">Exportar em formato CSV para o DSpace</a></p>
                 <p><a href="tools/export.php?<?php echo $_SERVER["QUERY_STRING"] ?>&format=authorNetwork">Exportar em formato CSV para o Gephi da Rede de Co-Autoria incluindo publicações</a></p>
                 <p><a href="tools/export.php?<?php echo $_SERVER["QUERY_STRING"] ?>&format=authorNetworkWithoutPapers">Exportar em formato CSV para o Gephi da Rede de Co-Autoria sem publicações</a></p>
-                <hr>                   
+                <hr>
                         
             </div>
         </div>
