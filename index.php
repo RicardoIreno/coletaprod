@@ -143,7 +143,9 @@
                     <li class="list-group-item"><?php echo paginaInicial::contar_registros_indice($index); ?> registros</li> 
                     <li class="list-group-item"><?php echo paginaInicial::contar_registros_indice($index_cv);; ?> currículos</li>
                     <li class="list-group-item"><?php echo paginaInicial::contar_registros_indice($index_source); ?> registros no Repositório Institucional</li>
-                    <li class="list-group-item"><?php echo paginaInicial::possui_lattes(); ?>% sem ID no Lattes</li>
+                    <!--
+                    <li class="list-group-item">< ?php echo paginaInicial::possui_lattes(); ?>% sem ID no Lattes</li>
+                    -->
                 </ul>
             </div>
         </div>
