@@ -301,7 +301,7 @@ $get_data = $_GET;
                     
                     $facets->facet(basename(__FILE__), "isPartOf.name", 100, "Título do periódico", null, "_term", $_GET);
 
-                    $facets->facetExistsField(basename(__FILE__), "ExternalData", 100, "Dados coletados da Crossref?", null, "_term", $_GET);
+                    $facets->facetExistsField(basename(__FILE__), "ExternalData.crossref.message.title", 100, "Dados coletados da Crossref?", null, "_term", $_GET);
                     $facets->facet(basename(__FILE__), "ExternalData.crossref.message.author.affiliation.name", 100, "Crossref - Afiliação", null, "_term", $_GET);
                     $facets->facet(basename(__FILE__), "ExternalData.crossref.message.funder.name", 100, "Crossref - Agência de financiamento", null, "_term", $_GET);
                     $facets->facet(basename(__FILE__), "ExternalData.crossref.message.is-referenced-by-count", 100, "Crossref - Número de citações obtidas", null, "_term", $_GET);
