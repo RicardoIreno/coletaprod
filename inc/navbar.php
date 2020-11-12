@@ -13,8 +13,9 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Dashboards
-                    </a>
+                    </a>                    
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <p class="dropdown-item">Usuário: dashboard / Senha: dashboard</p>
                     <?php if (isset($dashboard_lattes_producoes)): ?>
                         <a class="dropdown-item" href="<?php echo $dashboard_lattes_producoes ?>">Produções - Lattes</a>
                     <?php endif ?>
