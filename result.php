@@ -249,17 +249,17 @@ $get_data = $_GET;
                         $_GET = null;
                     }   
                     
-                    $facets->facet(basename(__FILE__), "instituicao.campus", 100, "Campus", null, "_term", $_GET);
-                    $facets->facet(basename(__FILE__), "instituicao.desc_gestora", 100, "Gestora", null, "_term", $_GET);
-                    $facets->facet(basename(__FILE__), "instituicao.unidade", 100, "Unidade", null, "_term", $_GET);
-                    $facets->facet(basename(__FILE__), "instituicao.departamento", 100, "Departamento", null, "_term", $_GET);
-                    $facets->facet(basename(__FILE__), "instituicao.divisao", 100, "Divisão", null, "_term", $_GET);
-                    $facets->facet(basename(__FILE__), "instituicao.secao", 100, "Seção", null, "_term", $_GET);
-                    $facets->facet(basename(__FILE__), "instituicao.ppg_nome", 100, "Nome do PPG", null, "_term", $_GET);
-                    $facets->facet(basename(__FILE__), "instituicao.tipvin", 100, "Tipo de vínculo", null, "_term", $_GET);
-                    $facets->facet(basename(__FILE__), "instituicao.genero", 100, "Genero", null, "_term", $_GET);
-                    $facets->facet(basename(__FILE__), "instituicao.desc_nivel", 100, "Nível", null, "_term", $_GET);
-                    $facets->facet(basename(__FILE__), "instituicao.desc_curso", 100, "Curso", null, "_term", $_GET);                    
+                    $facets->facet(basename(__FILE__), "vinculo.campus", 100, "Campus", null, "_term", $_GET);
+                    $facets->facet(basename(__FILE__), "vinculo.desc_gestora", 100, "Gestora", null, "_term", $_GET);
+                    $facets->facet(basename(__FILE__), "vinculo.unidade", 100, "Unidade", null, "_term", $_GET);
+                    $facets->facet(basename(__FILE__), "vinculo.departamento", 100, "Departamento", null, "_term", $_GET);
+                    $facets->facet(basename(__FILE__), "vinculo.divisao", 100, "Divisão", null, "_term", $_GET);
+                    $facets->facet(basename(__FILE__), "vinculo.secao", 100, "Seção", null, "_term", $_GET);
+                    $facets->facet(basename(__FILE__), "vinculo.ppg_nome", 100, "Nome do PPG", null, "_term", $_GET);
+                    $facets->facet(basename(__FILE__), "vinculo.tipvin", 100, "Tipo de vínculo", null, "_term", $_GET);
+                    $facets->facet(basename(__FILE__), "vinculo.genero", 100, "Genero", null, "_term", $_GET);
+                    $facets->facet(basename(__FILE__), "vinculo.desc_nivel", 100, "Nível", null, "_term", $_GET);
+                    $facets->facet(basename(__FILE__), "vinculo.desc_curso", 100, "Curso", null, "_term", $_GET);                    
                     
                     $facets->facet(basename(__FILE__), "Lattes.natureza", 100, "Natureza", null, "_term", $_GET);
                     $facets->facet(basename(__FILE__), "tipo", 100, "Tipo de material", null, "_term", $_GET);
@@ -269,9 +269,9 @@ $get_data = $_GET;
                     
                     $facets->facet(basename(__FILE__), "author.person.name", 100, "Nome completo do autor", null, "_term", $_GET);
                     $facets->facet(basename(__FILE__), "lattes_ids", 100, "Número do lattes", null, "_term", $_GET);                    
-                    $facets->facet(basename(__FILE__), "Instituicao.unidade",100,"Unidade",null,"_term",$_GET);
-                    $facets->facet(basename(__FILE__), "Instituicao.departamento",100,"Departamento",null,"_term",$_GET);
-                    $facets->facet(basename(__FILE__), "Instituicao.tipvin", 100, "Tipo de vínculo", null, "_term", $_GET);
+                    $facets->facet(basename(__FILE__), "vinculo.unidade",100,"Unidade",null,"_term",$_GET);
+                    $facets->facet(basename(__FILE__), "vinculo.departamento",100,"Departamento",null,"_term",$_GET);
+                    $facets->facet(basename(__FILE__), "vinculo.tipvin", 100, "Tipo de vínculo", null, "_term", $_GET);
                     
                     $facets->facet(basename(__FILE__), "country",200,"País de publicação",null,"_term",$_GET);
                     $facets->facet(basename(__FILE__), "datePublished",120,"Ano de publicação","desc","_term",$_GET);

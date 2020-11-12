@@ -106,11 +106,11 @@
             <div class="col-md-3">
                 <h2 class="uk-h3">Unidade</h2>
                 <ul class="list-group">
-                    <?php paginaInicial::unidade_inicio("instituicao.unidade"); ?>
+                    <?php paginaInicial::unidade_inicio("vinculo.unidade"); ?>
                 </ul>
                 <h2>Departamento</h2>
                 <ul class="list-group">
-                    <?php paginaInicial::unidade_inicio("instituicao.departamento"); ?>
+                    <?php paginaInicial::unidade_inicio("vinculo.departamento"); ?>
                 </ul>
                 <h2>Tags</h2>
                 <ul class="list-group">
@@ -120,7 +120,7 @@
             <div class="col-md-3">
                 <h2>Tipo de vínculo</h2>
                 <ul class="list-group">
-                    <?php paginaInicial::unidade_inicio("instituicao.tipvin"); ?>
+                    <?php paginaInicial::unidade_inicio("vinculo.tipvin"); ?>
                 </ul>
                 <h2 class="uk-h3">Tipo de material</h2>
                 <ul class="list-group">
@@ -128,7 +128,7 @@
                 </ul>
                 <h2>Nome do PPG</h2>
                 <ul class="list-group">
-                    <?php paginaInicial::unidade_inicio("instituicao.ppg_nome"); ?>
+                    <?php paginaInicial::unidade_inicio("vinculo.ppg_nome"); ?>
                 </ul>
             </div>
             <div class="col-md-3">
