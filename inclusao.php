@@ -79,7 +79,7 @@
                             </div>
                             <input type="text" placeholder="Insira o ID do Curriculo" class="form-control" name="id_lattes" data-validation="required">
                             <input type="text" placeholder="TAG para formar um grupo" class="form-control" name="tag">
-                            <input type="text" placeholder="Número funcional" class="form-control" name="numfuncional">                            
+                            <input type="text" placeholder="Número funcional" class="form-control" name="numfuncional">
                             <input type="text" placeholder="Unidade" class="form-control" name="unidade">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="submit">Enviar</button>
@@ -88,7 +88,7 @@
                     </form>
                     -->
 
-                    <form class="m-3" action="lattes_xml_to_elastic.php" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+                    <form class="m-3" action="lattes_xml_to_elastic_dedup.php" method="post" accept-charset="utf-8" enctype="multipart/form-data">
                         <legend>Inserir um XML do Lattes</legend>
                         <div class="input-group">
                             <div class="input-group-prepend">
@@ -99,7 +99,7 @@
                                 <label class="custom-file-label" for="fileXML">Escolha o arquivo</label>
                             </div>
                             <input type="text" placeholder="TAG" class="form-control" name="tag">
-                            <input type="text" placeholder="Núm. funcional" class="form-control" name="numfuncional">                            
+                            <input type="text" placeholder="Núm. funcional" class="form-control" name="numfuncional">
                             <input type="text" placeholder="Unidade" class="form-control" name="unidade">
                         </div>
                         <div class="input-group">

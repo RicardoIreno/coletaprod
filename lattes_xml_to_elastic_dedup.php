@@ -3,7 +3,7 @@
 require 'inc/config.php';
 require 'inc/functions.php';
 
-function comparaprod_doi($doi, $original_id)
+function comparaprod_doi($doi)
 {
     global $index;
     global $type;
@@ -17,6 +17,11 @@ function comparaprod_doi($doi, $original_id)
     $cursor = $client->search($params);
     $total = $cursor["hits"]["total"]["value"];
     echo "Resultado total com DOI: $total";
+    foreach ($cursor["hits"]["hits"] as $r) {
+        echo '<br/>';
+        echo ''.$r['_id'].' - '.$r['_source']['name'].' - '.$r['_source']['datePublished'].' - '.$r['_source']['tipo'].'';
+        echo '<br/>';
+    }
 
     // $result_matchTag = $matchTagArray;
     // foreach ($cursor["hits"]["hits"] as $r) {
@@ -41,7 +46,7 @@ function comparaprod_doi($doi, $original_id)
 
 }
 
-function comparaprod_title($title, $author_name, $year, $original_id)
+function comparaprod_title($title, $year)
 {
     global $index;
     global $client;
@@ -58,7 +63,7 @@ function comparaprod_title($title, $author_name, $year, $original_id)
                             "query":      "'.str_replace('"', '', $cleanTitle).'",
                             "type":       "cross_fields",
                             "fields":     [ "name" ],
-                            "minimum_should_match": "90%"
+                            "minimum_should_match": "95%"
                          }
                     },
                     {
@@ -66,11 +71,11 @@ function comparaprod_title($title, $author_name, $year, $original_id)
                             "query":      "'.$year.'",
                             "type":       "best_fields",
                             "fields":     [ "datePublished" ],
-                            "minimum_should_match": "75%"
+                            "minimum_should_match": "100%"
                         }
                     }
                 ],
-                "minimum_should_match" : 1
+                "minimum_should_match" : 2
             }
         }
     }
@@ -83,6 +88,12 @@ function comparaprod_title($title, $author_name, $year, $original_id)
     $cursor = $client->search($params);
     $total = $cursor["hits"]["total"]["value"];
     echo "Resultado total com Titulo: $total";
+
+    foreach ($cursor["hits"]["hits"] as $r) {
+        echo '<br/>';
+        echo ''.$r['_id'].' - '.$r["_source"]["name"].' - '.$r["_source"]["datePublished"].' - '.$r["_source"]["tipo"].'';
+        echo '<br/>';
+    }
 
 
     // $result_matchTag = $matchTagArray;
@@ -906,8 +917,19 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TRABALHOS-EM-EVENTOS'})) {
         $doc["doc"]["concluido"] = "Não";
         $doc["doc_as_upsert"] = true;
 
+        // Comparador
+        if (!empty($doc['doc']['doi'])){
+            echo 'Tem DOI: '.$doc['doc']['doi'].'<br/>';
+            comparaprod_doi($doc['doc']['doi']);
+            echo '<br/><br/><br/>';
+        } else {
+            echo 'Não tem DOI: '.$doc['doc']['name'].' - '.$doc['doc']['datePublished'].' - '.$doc["doc"]["tipo"].'<br/>';
+            comparaprod_title($doc['doc']['name'], $doc['doc']['datePublished']);
+            echo '<br/><br/><br/>';
+        }
+
         // Armazenar registro
-        if (isset($doc['doc']["instituicao"]['ano_ingresso'])) {
+        if (isset($doc['doc']['instituicao']['ano_ingresso'])) {
             if (intval($doc["doc"]["datePublished"]) >= intval($doc['doc']["instituicao"]['ano_ingresso'])) {
                 $resultado = Elasticsearch::update($sha256, $doc);
             }
@@ -1112,6 +1134,17 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'ARTIGOS-PUBLICADOS'})) {
         //$doc["doc"]["bdpi"] = DadosExternos::query_bdpi_index($doc["doc"]["name"], $doc["doc"]["datePublished"]);
         $doc["doc"]["concluido"] = "Não";
         $doc["doc_as_upsert"] = true;
+
+        // Comparador
+        if (!empty($doc['doc']['doi'])){
+            echo 'Tem DOI: '.$doc['doc']['doi'].'<br/>';
+            comparaprod_doi($doc['doc']['doi']);
+            echo '<br/><br/><br/>';
+        } else {
+            echo 'Não tem DOI: '.$doc['doc']['name'].' - '.$doc['doc']['datePublished'].' - '.$doc["doc"]["tipo"].'<br/>';
+            comparaprod_title($doc['doc']['name'], $doc['doc']['datePublished']);
+            echo '<br/><br/><br/>';
+        }
 
         // Armazenar registro
         if (isset($doc['doc']["instituicao"]['ano_ingresso'])) {
@@ -2761,6 +2794,6 @@ if (isset($curriculo->{'OUTRA-PRODUCAO'})) {
 
 
 
-sleep(5); echo '<script>window.location = \'result.php?filter[]=lattes_ids:"'.$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'}.'"\'</script>';
+//sleep(5); echo '<script>window.location = \'result.php?filter[]=lattes_ids:"'.$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'}.'"\'</script>';
 
 ?>
