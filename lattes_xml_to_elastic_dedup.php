@@ -23,6 +23,12 @@ function comparaprod_doi($doi)
         echo '<br/>';
     }
 
+    if ($total == 1) {
+        return $r;
+    } else {
+        return "Não encontrado";
+    }
+
     // $result_matchTag = $matchTagArray;
     // foreach ($cursor["hits"]["hits"] as $r) {
     //     if (isset($r["_source"]["match"]["tag"])) {
@@ -46,7 +52,7 @@ function comparaprod_doi($doi)
 
 }
 
-function comparaprod_title($title, $year)
+function comparaprod_title($title, $year, $type)
 {
     global $index;
     global $client;
@@ -73,9 +79,17 @@ function comparaprod_title($title, $year)
                             "fields":     [ "datePublished" ],
                             "minimum_should_match": "100%"
                         }
-                    }
+                    },
+                    {
+                        "multi_match" : {
+                            "query":      "'.$type.'",
+                            "type":       "best_fields",
+                            "fields":     [ "tipo" ],
+                            "minimum_should_match": "100%"
+                        }
+                    }                    
                 ],
-                "minimum_should_match" : 2
+                "minimum_should_match" : 3
             }
         }
     }
@@ -93,6 +107,12 @@ function comparaprod_title($title, $year)
         echo '<br/>';
         echo ''.$r['_id'].' - '.$r["_source"]["name"].' - '.$r["_source"]["datePublished"].' - '.$r["_source"]["tipo"].'';
         echo '<br/>';
+    }
+
+    if ($total == 1) {
+        return $r;
+    } else {
+        return "Não encontrado";
     }
 
 
@@ -920,11 +940,23 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TRABALHOS-EM-EVENTOS'})) {
         // Comparador
         if (!empty($doc['doc']['doi'])){
             echo 'Tem DOI: '.$doc['doc']['doi'].'<br/>';
-            comparaprod_doi($doc['doc']['doi']);
+            $result_comparaprod_doi = comparaprod_doi($doc['doc']['doi']);
+            if (is_array($result_comparaprod_doi)) {
+                echo "<br/>DOI: é um array<br/>";
+                print_r($result_comparaprod_doi);
+            } else {
+                echo "<br/>DOI: não é array<br/>";
+            }
             echo '<br/><br/><br/>';
         } else {
             echo 'Não tem DOI: '.$doc['doc']['name'].' - '.$doc['doc']['datePublished'].' - '.$doc["doc"]["tipo"].'<br/>';
-            comparaprod_title($doc['doc']['name'], $doc['doc']['datePublished']);
+            $result_comparaprod_title = comparaprod_title($doc['doc']['name'], $doc['doc']['datePublished'], $doc["doc"]["tipo"]);
+            if (is_array($result_comparaprod_title)) {
+                echo "<br/>Título: é um array<br/>";
+                print_r($result_comparaprod_title);
+            } else {
+                echo "<br/>Título: não é array<br/>";
+            }
             echo '<br/><br/><br/>';
         }
 
@@ -1138,11 +1170,21 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'ARTIGOS-PUBLICADOS'})) {
         // Comparador
         if (!empty($doc['doc']['doi'])){
             echo 'Tem DOI: '.$doc['doc']['doi'].'<br/>';
-            comparaprod_doi($doc['doc']['doi']);
+            $result_comparaprod_doi = comparaprod_doi($doc['doc']['doi']);
+            if (is_array($result_comparaprod_doi)) {
+                echo "<br/>DOI: é um array<br/>";
+            } else {
+                echo "<br/>DOI: não é array<br/>";
+            }
             echo '<br/><br/><br/>';
         } else {
             echo 'Não tem DOI: '.$doc['doc']['name'].' - '.$doc['doc']['datePublished'].' - '.$doc["doc"]["tipo"].'<br/>';
-            comparaprod_title($doc['doc']['name'], $doc['doc']['datePublished']);
+            $result_comparaprod_title = comparaprod_title($doc['doc']['name'], $doc['doc']['datePublished'], $doc["doc"]["tipo"]);
+            if (is_array($result_comparaprod_title)) {
+                echo "<br/>Título: é um array<br/>";
+            } else {
+                echo "<br/>Título: não é array<br/>";
+            }
             echo '<br/><br/><br/>';
         }
 
