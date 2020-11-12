@@ -1625,6 +1625,91 @@ class Exporters
 
     }
 
+    static function bibtex($cursor)
+    {
+
+        $record = [];
+
+        if (!empty($cursor["_source"]['name'])) {
+            $recordContent[] = 'title   = {'.$cursor["_source"]['name'].'}';
+        }
+
+        if (!empty($cursor["_source"]['author'])) {
+            $authorsArray = [];
+            foreach ($cursor["_source"]['author'] as $author) {
+                $authorsArray[] = $author["person"]["name"];
+            }
+            $recordContent[] = 'author = {'.implode(" and ", $authorsArray).'}';
+        }
+
+        if (!empty($cursor["_source"]['datePublished'])) {
+            $recordContent[] = 'year = {'.$cursor["_source"]['datePublished'].'}';
+        }
+
+        if (!empty($cursor["_source"]['doi'])) {
+            $recordContent[] = 'doi = {'.$cursor["_source"]['doi'].'}';
+        }
+
+        if (!empty($cursor["_source"]['publisher']['organization']['name'])) {
+            $recordContent[] = 'publisher = {'.$cursor["_source"]['publisher']['organization']['name'].'}';
+        }
+
+        if (!empty($cursor["_source"]["releasedEvent"])) {
+            $recordContent[] = 'booktitle   = {'.$cursor["_source"]["releasedEvent"].'}';
+        } else {
+            if (!empty($cursor["_source"]["isPartOf"]["name"])) {
+                $recordContent[] = 'journal   = {'.$cursor["_source"]["isPartOf"]["name"].'}';
+            }
+        }
+
+
+        $sha256 = hash('sha256', ''.implode("", $recordContent).'');
+
+        switch ($cursor["_source"]["type"]) {
+        case "ARTIGO DE PERIODICO":
+            $record[] = '@article{article'.substr($sha256, 0, 8).',';
+            $record[] = implode(",\\n", $recordContent);
+            $record[] = '}';
+            break;
+        case "MONOGRAFIA/LIVRO":
+            $record[] = '@book{book'.substr($sha256, 0, 8).',';
+            $record[] = implode(",\\n", $recordContent);
+            $record[] = '}';
+            break;
+        case "PARTE DE MONOGRAFIA/LIVRO":
+            $record[] = '@inbook{inbook'.substr($sha256, 0, 8).',';
+            $record[] = implode(",\\n", $recordContent);
+            $record[] = '}';
+            break;
+        case "TRABALHO DE EVENTO":
+            $record[] = '@inproceedings{inproceedings'.substr($sha256, 0, 8).',';
+            $record[] = implode(",\\n", $recordContent);
+            $record[] = '}';
+            break;
+        case "TRABALHO DE EVENTO-RESUMO":
+            $record[] = '@inproceedings{inproceedings'.substr($sha256, 0, 8).',';
+            $record[] = implode(",\\n", $recordContent);
+            $record[] = '}';
+            break;
+        case "TESE":
+            $record[] = '@mastersthesis{mastersthesis'.substr($sha256, 0, 8).',';
+            $recordContent[] = 'school = {Universidade de São Paulo}';
+            $record[] = implode(",\\n", $recordContent);
+            $record[] = '}';
+            break;
+        default:
+            $record[] = '@misc{misc'.substr($sha256, 0, 8).',';
+            $record[] = implode(",\\n", $recordContent);
+            $record[] = '}';
+        }
+
+
+        $record_blob = implode("\\n", $record);
+
+        return $record_blob;
+
+    }
+
 }
 
 ?>
