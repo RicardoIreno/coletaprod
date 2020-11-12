@@ -16,20 +16,20 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <?php if (isset($dashboard_lattes_producoes)): ?>
-                        <a class="dropdown-item" href="dashboard.php?dashboard=lattes_producoes">Produções - Lattes</a>
+                        <a class="dropdown-item" href="<?php echo $dashboard_lattes_producoes ?>">Produções - Lattes</a>
                     <?php endif ?>
                     <?php if (isset($dashboard_lattes_cv)): ?>
-                        <a class="dropdown-item" href="dashboard.php?dashboard=lattes_cv">Currículos - Lattes</a>
+                        <a class="dropdown-item" href="<?php echo $dashboard_lattes_cv ?>">Currículos - Lattes</a>
                     <?php endif ?>
                     <?php if (isset($dashboard_source)): ?>
-                        <a class="dropdown-item" href="dashboard.php?dashboard=source">Fonte</a>
+                        <a class="dropdown-item" href="<?php echo $dashboard_source ?>">Fonte</a>
                     </li>
                     </div>
-                </li>                
+                </li>
 
 
 
-                <?php endif ?>                                                          
+                <?php endif ?>
             </ul>
             <form class="form-inline my-2 my-lg-0" action="result.php">
                 <input class="form-control mr-sm-2" type="text" placeholder="Pesquisar" aria-label="Pesquisar" name="search">
