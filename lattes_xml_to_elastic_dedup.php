@@ -939,11 +939,11 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TRABALHOS-EM-EVENTOS'})) {
 
         // Comparador
         if (!empty($doc['doc']['doi'])){
-            echo 'Tem DOI: '.$doc['doc']['doi'].'<br/>';
+            //echo 'Tem DOI: '.$doc['doc']['doi'].'<br/>';
             $result_comparaprod_doi = comparaprod_doi($doc['doc']['doi']);
             if (is_array($result_comparaprod_doi)) {
-                echo "<br/>DOI: é um array<br/>";
-                print_r($result_comparaprod_doi);
+                //echo "<br/>DOI: é um array<br/>";
+                //print_r($result_comparaprod_doi);
                 $doc_existing['doc'] = $result_comparaprod_doi['_source'];
                 $doc_existing["doc"]["concluido"] = "Não";
                 $doc_existing["doc_as_upsert"] = true;
@@ -957,24 +957,24 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TRABALHOS-EM-EVENTOS'})) {
                 } else {
                     $resultado = Elasticsearch::update($sha256, $doc);
                 }
-                echo "<br/>DOI: não é array<br/>";
+                //echo "<br/>DOI: não é array<br/>";
             }
-            echo '<br/><br/><br/>';
+            //echo '<br/><br/><br/>';
         } else {
-            echo 'Não tem DOI: '.$doc['doc']['name'].' - '.$doc['doc']['datePublished'].' - '.$doc["doc"]["tipo"].'<br/>';
+            //echo 'Não tem DOI: '.$doc['doc']['name'].' - '.$doc['doc']['datePublished'].' - '.$doc["doc"]["tipo"].'<br/>';
             $result_comparaprod_title = comparaprod_title($doc['doc']['name'], $doc['doc']['datePublished'], $doc["doc"]["tipo"]);
             if (is_array($result_comparaprod_title)) {
-                echo "<br/>Título: é um array<br/>";
-                print_r($result_comparaprod_title['_source']['vinculo']);
-                echo "<br/>";
-                print_r($doc['doc']["vinculo"]);
-                echo "<br/><br/>Resultado do merge:";
+                //echo "<br/>Título: é um array<br/>";
+                //print_r($result_comparaprod_title['_source']['vinculo']);
+                //echo "<br/>";
+                //print_r($doc['doc']["vinculo"]);
+                //echo "<br/><br/>Resultado do merge:";
                 $result_comparaprod_title['_source']['vinculo'] = array_merge($result_comparaprod_title['_source']['vinculo'], $doc['doc']["vinculo"]);
-                print_r($result_comparaprod_title['_source']['vinculo']);
-                echo "<br/><br/>Resultado do array_unique:";
+                //print_r($result_comparaprod_title['_source']['vinculo']);
+                //echo "<br/><br/>Resultado do array_unique:";
                 $result_comparaprod_title['_source']['vinculo'] = array_unique($result_comparaprod_title['_source']['vinculo']);
                 //print_r($array);
-                echo "<br/>";
+                //echo "<br/>";
 
                 $doc_existing['doc'] = $result_comparaprod_title['_source'];
                 $doc_existing["doc"]["concluido"] = "Não";
@@ -989,9 +989,9 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TRABALHOS-EM-EVENTOS'})) {
                 } else {
                     $resultado = Elasticsearch::update($sha256, $doc);
                 }
-                echo "<br/>Título: não é array<br/>";
+                //echo "<br/>Título: não é array<br/>";
             }
-            echo '<br/><br/><br/>';
+            //echo '<br/><br/><br/>';
         }
 
         echo "<br/>";
@@ -1194,23 +1194,59 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'ARTIGOS-PUBLICADOS'})) {
 
         // Comparador
         if (!empty($doc['doc']['doi'])){
-            echo 'Tem DOI: '.$doc['doc']['doi'].'<br/>';
+            //echo 'Tem DOI: '.$doc['doc']['doi'].'<br/>';
             $result_comparaprod_doi = comparaprod_doi($doc['doc']['doi']);
             if (is_array($result_comparaprod_doi)) {
-                echo "<br/>DOI: é um array<br/>";
+                //echo "<br/>DOI: é um array<br/>";
+                //print_r($result_comparaprod_doi);
+                $doc_existing['doc'] = $result_comparaprod_doi['_source'];
+                $doc_existing["doc"]["concluido"] = "Não";
+                $doc_existing["doc_as_upsert"] = true;
+                $resultado = Elasticsearch::update($result_comparaprod_doi['_id'], $doc_existing);
             } else {
-                echo "<br/>DOI: não é array<br/>";
+                // Armazenar registro
+                if (isset($doc['doc']['instituicao']['ano_ingresso'])) {
+                    if (intval($doc["doc"]["datePublished"]) >= intval($doc['doc']["instituicao"]['ano_ingresso'])) {
+                        $resultado = Elasticsearch::update($sha256, $doc);
+                    }
+                } else {
+                    $resultado = Elasticsearch::update($sha256, $doc);
+                }
+                //echo "<br/>DOI: não é array<br/>";
             }
-            echo '<br/><br/><br/>';
+            //echo '<br/><br/><br/>';
         } else {
-            echo 'Não tem DOI: '.$doc['doc']['name'].' - '.$doc['doc']['datePublished'].' - '.$doc["doc"]["tipo"].'<br/>';
+            //echo 'Não tem DOI: '.$doc['doc']['name'].' - '.$doc['doc']['datePublished'].' - '.$doc["doc"]["tipo"].'<br/>';
             $result_comparaprod_title = comparaprod_title($doc['doc']['name'], $doc['doc']['datePublished'], $doc["doc"]["tipo"]);
             if (is_array($result_comparaprod_title)) {
-                echo "<br/>Título: é um array<br/>";
+                //echo "<br/>Título: é um array<br/>";
+                //print_r($result_comparaprod_title['_source']['vinculo']);
+                //echo "<br/>";
+                //print_r($doc['doc']["vinculo"]);
+                //echo "<br/><br/>Resultado do merge:";
+                $result_comparaprod_title['_source']['vinculo'] = array_merge($result_comparaprod_title['_source']['vinculo'], $doc['doc']["vinculo"]);
+                //print_r($result_comparaprod_title['_source']['vinculo']);
+                //echo "<br/><br/>Resultado do array_unique:";
+                $result_comparaprod_title['_source']['vinculo'] = array_unique($result_comparaprod_title['_source']['vinculo']);
+                //print_r($array);
+                //echo "<br/>";
+
+                $doc_existing['doc'] = $result_comparaprod_title['_source'];
+                $doc_existing["doc"]["concluido"] = "Não";
+                $doc_existing["doc_as_upsert"] = true;
+                $resultado = Elasticsearch::update($result_comparaprod_title['_id'], $doc_existing);
             } else {
-                echo "<br/>Título: não é array<br/>";
+                // Armazenar registro
+                if (isset($doc['doc']['instituicao']['ano_ingresso'])) {
+                    if (intval($doc["doc"]["datePublished"]) >= intval($doc['doc']["instituicao"]['ano_ingresso'])) {
+                        $resultado = Elasticsearch::update($sha256, $doc);
+                    }
+                } else {
+                    $resultado = Elasticsearch::update($sha256, $doc);
+                }
+                //echo "<br/>Título: não é array<br/>";
             }
-            echo '<br/><br/><br/>';
+            //echo '<br/><br/><br/>';
         }
 
         // Armazenar registro
@@ -1421,14 +1457,62 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'LIVROS-E-CAPITULOS'})) {
             $doc["doc"]["concluido"] = "Não";
             $doc["doc_as_upsert"] = true;
 
-            // Armazenar registro
-            if (isset($doc['doc']["instituicao"]['ano_ingresso'])) {
-                if (intval($doc["doc"]["datePublished"]) >= intval($doc['doc']["instituicao"]['ano_ingresso'])) {
+        // Comparador
+        if (!empty($doc['doc']['doi'])){
+            //echo 'Tem DOI: '.$doc['doc']['doi'].'<br/>';
+            $result_comparaprod_doi = comparaprod_doi($doc['doc']['doi']);
+            if (is_array($result_comparaprod_doi)) {
+                //echo "<br/>DOI: é um array<br/>";
+                //print_r($result_comparaprod_doi);
+                $doc_existing['doc'] = $result_comparaprod_doi['_source'];
+                $doc_existing["doc"]["concluido"] = "Não";
+                $doc_existing["doc_as_upsert"] = true;
+                $resultado = Elasticsearch::update($result_comparaprod_doi['_id'], $doc_existing);
+            } else {
+                // Armazenar registro
+                if (isset($doc['doc']['instituicao']['ano_ingresso'])) {
+                    if (intval($doc["doc"]["datePublished"]) >= intval($doc['doc']["instituicao"]['ano_ingresso'])) {
+                        $resultado = Elasticsearch::update($sha256, $doc);
+                    }
+                } else {
                     $resultado = Elasticsearch::update($sha256, $doc);
                 }
-            } else {
-                $resultado = Elasticsearch::update($sha256, $doc);
+                //echo "<br/>DOI: não é array<br/>";
             }
+            //echo '<br/><br/><br/>';
+        } else {
+            //echo 'Não tem DOI: '.$doc['doc']['name'].' - '.$doc['doc']['datePublished'].' - '.$doc["doc"]["tipo"].'<br/>';
+            $result_comparaprod_title = comparaprod_title($doc['doc']['name'], $doc['doc']['datePublished'], $doc["doc"]["tipo"]);
+            if (is_array($result_comparaprod_title)) {
+                //echo "<br/>Título: é um array<br/>";
+                //print_r($result_comparaprod_title['_source']['vinculo']);
+                //echo "<br/>";
+                //print_r($doc['doc']["vinculo"]);
+                //echo "<br/><br/>Resultado do merge:";
+                $result_comparaprod_title['_source']['vinculo'] = array_merge($result_comparaprod_title['_source']['vinculo'], $doc['doc']["vinculo"]);
+                //print_r($result_comparaprod_title['_source']['vinculo']);
+                //echo "<br/><br/>Resultado do array_unique:";
+                $result_comparaprod_title['_source']['vinculo'] = array_unique($result_comparaprod_title['_source']['vinculo']);
+                //print_r($array);
+                //echo "<br/>";
+
+                $doc_existing['doc'] = $result_comparaprod_title['_source'];
+                $doc_existing["doc"]["concluido"] = "Não";
+                $doc_existing["doc_as_upsert"] = true;
+                $resultado = Elasticsearch::update($result_comparaprod_title['_id'], $doc_existing);
+            } else {
+                // Armazenar registro
+                if (isset($doc['doc']['instituicao']['ano_ingresso'])) {
+                    if (intval($doc["doc"]["datePublished"]) >= intval($doc['doc']["instituicao"]['ano_ingresso'])) {
+                        $resultado = Elasticsearch::update($sha256, $doc);
+                    }
+                } else {
+                    $resultado = Elasticsearch::update($sha256, $doc);
+                }
+                //echo "<br/>Título: não é array<br/>";
+            }
+            //echo '<br/><br/><br/>';
+        }
             echo "<br/>";
             print_r($resultado);
             echo "<br/><br/>";
@@ -1617,14 +1701,62 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'LIVROS-E-CAPITULOS'})) {
             $doc["doc"]["concluido"] = "Não";
             $doc["doc_as_upsert"] = true;
 
-            // Armazenar registro
-            if (isset($doc['doc']["instituicao"]['ano_ingresso'])) {
-                if (intval($doc["doc"]["datePublished"]) >= intval($doc['doc']["instituicao"]['ano_ingresso'])) {
+        // Comparador
+        if (!empty($doc['doc']['doi'])){
+            //echo 'Tem DOI: '.$doc['doc']['doi'].'<br/>';
+            $result_comparaprod_doi = comparaprod_doi($doc['doc']['doi']);
+            if (is_array($result_comparaprod_doi)) {
+                //echo "<br/>DOI: é um array<br/>";
+                //print_r($result_comparaprod_doi);
+                $doc_existing['doc'] = $result_comparaprod_doi['_source'];
+                $doc_existing["doc"]["concluido"] = "Não";
+                $doc_existing["doc_as_upsert"] = true;
+                $resultado = Elasticsearch::update($result_comparaprod_doi['_id'], $doc_existing);
+            } else {
+                // Armazenar registro
+                if (isset($doc['doc']['instituicao']['ano_ingresso'])) {
+                    if (intval($doc["doc"]["datePublished"]) >= intval($doc['doc']["instituicao"]['ano_ingresso'])) {
+                        $resultado = Elasticsearch::update($sha256, $doc);
+                    }
+                } else {
                     $resultado = Elasticsearch::update($sha256, $doc);
                 }
-            } else {
-                $resultado = Elasticsearch::update($sha256, $doc);
+                //echo "<br/>DOI: não é array<br/>";
             }
+            //echo '<br/><br/><br/>';
+        } else {
+            //echo 'Não tem DOI: '.$doc['doc']['name'].' - '.$doc['doc']['datePublished'].' - '.$doc["doc"]["tipo"].'<br/>';
+            $result_comparaprod_title = comparaprod_title($doc['doc']['name'], $doc['doc']['datePublished'], $doc["doc"]["tipo"]);
+            if (is_array($result_comparaprod_title)) {
+                //echo "<br/>Título: é um array<br/>";
+                //print_r($result_comparaprod_title['_source']['vinculo']);
+                //echo "<br/>";
+                //print_r($doc['doc']["vinculo"]);
+                //echo "<br/><br/>Resultado do merge:";
+                $result_comparaprod_title['_source']['vinculo'] = array_merge($result_comparaprod_title['_source']['vinculo'], $doc['doc']["vinculo"]);
+                //print_r($result_comparaprod_title['_source']['vinculo']);
+                //echo "<br/><br/>Resultado do array_unique:";
+                $result_comparaprod_title['_source']['vinculo'] = array_unique($result_comparaprod_title['_source']['vinculo']);
+                //print_r($array);
+                //echo "<br/>";
+
+                $doc_existing['doc'] = $result_comparaprod_title['_source'];
+                $doc_existing["doc"]["concluido"] = "Não";
+                $doc_existing["doc_as_upsert"] = true;
+                $resultado = Elasticsearch::update($result_comparaprod_title['_id'], $doc_existing);
+            } else {
+                // Armazenar registro
+                if (isset($doc['doc']['instituicao']['ano_ingresso'])) {
+                    if (intval($doc["doc"]["datePublished"]) >= intval($doc['doc']["instituicao"]['ano_ingresso'])) {
+                        $resultado = Elasticsearch::update($sha256, $doc);
+                    }
+                } else {
+                    $resultado = Elasticsearch::update($sha256, $doc);
+                }
+                //echo "<br/>Título: não é array<br/>";
+            }
+            //echo '<br/><br/><br/>';
+        }
             echo "<br/>";
             print_r($resultado);
             echo "<br/><br/>";
@@ -1824,13 +1956,61 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TEXTOS-EM-JORNAIS-OU-REVISTA
         $doc["doc"]["concluido"] = "Não";
         $doc["doc_as_upsert"] = true;
 
-        // Armazenar registro
-        if (isset($doc['doc']["instituicao"]['ano_ingresso'])) {
-            if (intval($doc["doc"]["datePublished"]) >= intval($doc['doc']["instituicao"]['ano_ingresso'])) {
-                $resultado = Elasticsearch::update($sha256, $doc);
+        // Comparador
+        if (!empty($doc['doc']['doi'])){
+            //echo 'Tem DOI: '.$doc['doc']['doi'].'<br/>';
+            $result_comparaprod_doi = comparaprod_doi($doc['doc']['doi']);
+            if (is_array($result_comparaprod_doi)) {
+                //echo "<br/>DOI: é um array<br/>";
+                //print_r($result_comparaprod_doi);
+                $doc_existing['doc'] = $result_comparaprod_doi['_source'];
+                $doc_existing["doc"]["concluido"] = "Não";
+                $doc_existing["doc_as_upsert"] = true;
+                $resultado = Elasticsearch::update($result_comparaprod_doi['_id'], $doc_existing);
+            } else {
+                // Armazenar registro
+                if (isset($doc['doc']['instituicao']['ano_ingresso'])) {
+                    if (intval($doc["doc"]["datePublished"]) >= intval($doc['doc']["instituicao"]['ano_ingresso'])) {
+                        $resultado = Elasticsearch::update($sha256, $doc);
+                    }
+                } else {
+                    $resultado = Elasticsearch::update($sha256, $doc);
+                }
+                //echo "<br/>DOI: não é array<br/>";
             }
+            //echo '<br/><br/><br/>';
         } else {
-            $resultado = Elasticsearch::update($sha256, $doc);
+            //echo 'Não tem DOI: '.$doc['doc']['name'].' - '.$doc['doc']['datePublished'].' - '.$doc["doc"]["tipo"].'<br/>';
+            $result_comparaprod_title = comparaprod_title($doc['doc']['name'], $doc['doc']['datePublished'], $doc["doc"]["tipo"]);
+            if (is_array($result_comparaprod_title)) {
+                //echo "<br/>Título: é um array<br/>";
+                //print_r($result_comparaprod_title['_source']['vinculo']);
+                //echo "<br/>";
+                //print_r($doc['doc']["vinculo"]);
+                //echo "<br/><br/>Resultado do merge:";
+                $result_comparaprod_title['_source']['vinculo'] = array_merge($result_comparaprod_title['_source']['vinculo'], $doc['doc']["vinculo"]);
+                //print_r($result_comparaprod_title['_source']['vinculo']);
+                //echo "<br/><br/>Resultado do array_unique:";
+                $result_comparaprod_title['_source']['vinculo'] = array_unique($result_comparaprod_title['_source']['vinculo']);
+                //print_r($array);
+                //echo "<br/>";
+
+                $doc_existing['doc'] = $result_comparaprod_title['_source'];
+                $doc_existing["doc"]["concluido"] = "Não";
+                $doc_existing["doc_as_upsert"] = true;
+                $resultado = Elasticsearch::update($result_comparaprod_title['_id'], $doc_existing);
+            } else {
+                // Armazenar registro
+                if (isset($doc['doc']['instituicao']['ano_ingresso'])) {
+                    if (intval($doc["doc"]["datePublished"]) >= intval($doc['doc']["instituicao"]['ano_ingresso'])) {
+                        $resultado = Elasticsearch::update($sha256, $doc);
+                    }
+                } else {
+                    $resultado = Elasticsearch::update($sha256, $doc);
+                }
+                //echo "<br/>Título: não é array<br/>";
+            }
+            //echo '<br/><br/><br/>';
         }
         echo "<br/>";
         print_r($resultado);
@@ -2025,14 +2205,62 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
             $doc["doc"]["concluido"] = "Não";
             $doc["doc_as_upsert"] = true;
 
-            // Armazenar registro
-            if (isset($doc['doc']["instituicao"]['ano_ingresso'])) {
-                if (intval($doc["doc"]["datePublished"]) >= intval($doc['doc']["instituicao"]['ano_ingresso'])) {
+        // Comparador
+        if (!empty($doc['doc']['doi'])){
+            //echo 'Tem DOI: '.$doc['doc']['doi'].'<br/>';
+            $result_comparaprod_doi = comparaprod_doi($doc['doc']['doi']);
+            if (is_array($result_comparaprod_doi)) {
+                //echo "<br/>DOI: é um array<br/>";
+                //print_r($result_comparaprod_doi);
+                $doc_existing['doc'] = $result_comparaprod_doi['_source'];
+                $doc_existing["doc"]["concluido"] = "Não";
+                $doc_existing["doc_as_upsert"] = true;
+                $resultado = Elasticsearch::update($result_comparaprod_doi['_id'], $doc_existing);
+            } else {
+                // Armazenar registro
+                if (isset($doc['doc']['instituicao']['ano_ingresso'])) {
+                    if (intval($doc["doc"]["datePublished"]) >= intval($doc['doc']["instituicao"]['ano_ingresso'])) {
+                        $resultado = Elasticsearch::update($sha256, $doc);
+                    }
+                } else {
                     $resultado = Elasticsearch::update($sha256, $doc);
                 }
-            } else {
-                $resultado = Elasticsearch::update($sha256, $doc);
+                //echo "<br/>DOI: não é array<br/>";
             }
+            //echo '<br/><br/><br/>';
+        } else {
+            //echo 'Não tem DOI: '.$doc['doc']['name'].' - '.$doc['doc']['datePublished'].' - '.$doc["doc"]["tipo"].'<br/>';
+            $result_comparaprod_title = comparaprod_title($doc['doc']['name'], $doc['doc']['datePublished'], $doc["doc"]["tipo"]);
+            if (is_array($result_comparaprod_title)) {
+                //echo "<br/>Título: é um array<br/>";
+                //print_r($result_comparaprod_title['_source']['vinculo']);
+                //echo "<br/>";
+                //print_r($doc['doc']["vinculo"]);
+                //echo "<br/><br/>Resultado do merge:";
+                $result_comparaprod_title['_source']['vinculo'] = array_merge($result_comparaprod_title['_source']['vinculo'], $doc['doc']["vinculo"]);
+                //print_r($result_comparaprod_title['_source']['vinculo']);
+                //echo "<br/><br/>Resultado do array_unique:";
+                $result_comparaprod_title['_source']['vinculo'] = array_unique($result_comparaprod_title['_source']['vinculo']);
+                //print_r($array);
+                //echo "<br/>";
+
+                $doc_existing['doc'] = $result_comparaprod_title['_source'];
+                $doc_existing["doc"]["concluido"] = "Não";
+                $doc_existing["doc_as_upsert"] = true;
+                $resultado = Elasticsearch::update($result_comparaprod_title['_id'], $doc_existing);
+            } else {
+                // Armazenar registro
+                if (isset($doc['doc']['instituicao']['ano_ingresso'])) {
+                    if (intval($doc["doc"]["datePublished"]) >= intval($doc['doc']["instituicao"]['ano_ingresso'])) {
+                        $resultado = Elasticsearch::update($sha256, $doc);
+                    }
+                } else {
+                    $resultado = Elasticsearch::update($sha256, $doc);
+                }
+                //echo "<br/>Título: não é array<br/>";
+            }
+            //echo '<br/><br/><br/>';
+        }
             echo "<br/>";
             print_r($resultado);
             echo "<br/><br/>";
@@ -2227,14 +2455,62 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
             $doc["doc"]["concluido"] = "Não";
             $doc["doc_as_upsert"] = true;
 
-            // Armazenar registro
-            if (isset($doc['doc']["instituicao"]['ano_ingresso'])) {
-                if (intval($doc["doc"]["datePublished"]) >= intval($doc['doc']["instituicao"]['ano_ingresso'])) {
+        // Comparador
+        if (!empty($doc['doc']['doi'])){
+            //echo 'Tem DOI: '.$doc['doc']['doi'].'<br/>';
+            $result_comparaprod_doi = comparaprod_doi($doc['doc']['doi']);
+            if (is_array($result_comparaprod_doi)) {
+                //echo "<br/>DOI: é um array<br/>";
+                //print_r($result_comparaprod_doi);
+                $doc_existing['doc'] = $result_comparaprod_doi['_source'];
+                $doc_existing["doc"]["concluido"] = "Não";
+                $doc_existing["doc_as_upsert"] = true;
+                $resultado = Elasticsearch::update($result_comparaprod_doi['_id'], $doc_existing);
+            } else {
+                // Armazenar registro
+                if (isset($doc['doc']['instituicao']['ano_ingresso'])) {
+                    if (intval($doc["doc"]["datePublished"]) >= intval($doc['doc']["instituicao"]['ano_ingresso'])) {
+                        $resultado = Elasticsearch::update($sha256, $doc);
+                    }
+                } else {
                     $resultado = Elasticsearch::update($sha256, $doc);
                 }
-            } else {
-                $resultado = Elasticsearch::update($sha256, $doc);
+                //echo "<br/>DOI: não é array<br/>";
             }
+            //echo '<br/><br/><br/>';
+        } else {
+            //echo 'Não tem DOI: '.$doc['doc']['name'].' - '.$doc['doc']['datePublished'].' - '.$doc["doc"]["tipo"].'<br/>';
+            $result_comparaprod_title = comparaprod_title($doc['doc']['name'], $doc['doc']['datePublished'], $doc["doc"]["tipo"]);
+            if (is_array($result_comparaprod_title)) {
+                //echo "<br/>Título: é um array<br/>";
+                //print_r($result_comparaprod_title['_source']['vinculo']);
+                //echo "<br/>";
+                //print_r($doc['doc']["vinculo"]);
+                //echo "<br/><br/>Resultado do merge:";
+                $result_comparaprod_title['_source']['vinculo'] = array_merge($result_comparaprod_title['_source']['vinculo'], $doc['doc']["vinculo"]);
+                //print_r($result_comparaprod_title['_source']['vinculo']);
+                //echo "<br/><br/>Resultado do array_unique:";
+                $result_comparaprod_title['_source']['vinculo'] = array_unique($result_comparaprod_title['_source']['vinculo']);
+                //print_r($array);
+                //echo "<br/>";
+
+                $doc_existing['doc'] = $result_comparaprod_title['_source'];
+                $doc_existing["doc"]["concluido"] = "Não";
+                $doc_existing["doc_as_upsert"] = true;
+                $resultado = Elasticsearch::update($result_comparaprod_title['_id'], $doc_existing);
+            } else {
+                // Armazenar registro
+                if (isset($doc['doc']['instituicao']['ano_ingresso'])) {
+                    if (intval($doc["doc"]["datePublished"]) >= intval($doc['doc']["instituicao"]['ano_ingresso'])) {
+                        $resultado = Elasticsearch::update($sha256, $doc);
+                    }
+                } else {
+                    $resultado = Elasticsearch::update($sha256, $doc);
+                }
+                //echo "<br/>Título: não é array<br/>";
+            }
+            //echo '<br/><br/><br/>';
+        }
             echo "<br/>";
             print_r($resultado);
             echo "<br/><br/>";
@@ -2624,14 +2900,62 @@ if (isset($curriculo->{'PRODUCAO-TECNICA'})) {
             $doc["doc"]["concluido"] = "Não";
             $doc["doc_as_upsert"] = true;
 
-            // Armazenar registro
-            if (isset($doc['doc']["instituicao"]['ano_ingresso'])) {
-                if (intval($doc["doc"]["datePublished"]) >= intval($doc['doc']["instituicao"]['ano_ingresso'])) {
+        // Comparador
+        if (!empty($doc['doc']['doi'])){
+            //echo 'Tem DOI: '.$doc['doc']['doi'].'<br/>';
+            $result_comparaprod_doi = comparaprod_doi($doc['doc']['doi']);
+            if (is_array($result_comparaprod_doi)) {
+                //echo "<br/>DOI: é um array<br/>";
+                //print_r($result_comparaprod_doi);
+                $doc_existing['doc'] = $result_comparaprod_doi['_source'];
+                $doc_existing["doc"]["concluido"] = "Não";
+                $doc_existing["doc_as_upsert"] = true;
+                $resultado = Elasticsearch::update($result_comparaprod_doi['_id'], $doc_existing);
+            } else {
+                // Armazenar registro
+                if (isset($doc['doc']['instituicao']['ano_ingresso'])) {
+                    if (intval($doc["doc"]["datePublished"]) >= intval($doc['doc']["instituicao"]['ano_ingresso'])) {
+                        $resultado = Elasticsearch::update($sha256, $doc);
+                    }
+                } else {
                     $resultado = Elasticsearch::update($sha256, $doc);
                 }
-            } else {
-                $resultado = Elasticsearch::update($sha256, $doc);
+                //echo "<br/>DOI: não é array<br/>";
             }
+            //echo '<br/><br/><br/>';
+        } else {
+            //echo 'Não tem DOI: '.$doc['doc']['name'].' - '.$doc['doc']['datePublished'].' - '.$doc["doc"]["tipo"].'<br/>';
+            $result_comparaprod_title = comparaprod_title($doc['doc']['name'], $doc['doc']['datePublished'], $doc["doc"]["tipo"]);
+            if (is_array($result_comparaprod_title)) {
+                //echo "<br/>Título: é um array<br/>";
+                //print_r($result_comparaprod_title['_source']['vinculo']);
+                //echo "<br/>";
+                //print_r($doc['doc']["vinculo"]);
+                //echo "<br/><br/>Resultado do merge:";
+                $result_comparaprod_title['_source']['vinculo'] = array_merge($result_comparaprod_title['_source']['vinculo'], $doc['doc']["vinculo"]);
+                //print_r($result_comparaprod_title['_source']['vinculo']);
+                //echo "<br/><br/>Resultado do array_unique:";
+                $result_comparaprod_title['_source']['vinculo'] = array_unique($result_comparaprod_title['_source']['vinculo']);
+                //print_r($array);
+                //echo "<br/>";
+
+                $doc_existing['doc'] = $result_comparaprod_title['_source'];
+                $doc_existing["doc"]["concluido"] = "Não";
+                $doc_existing["doc_as_upsert"] = true;
+                $resultado = Elasticsearch::update($result_comparaprod_title['_id'], $doc_existing);
+            } else {
+                // Armazenar registro
+                if (isset($doc['doc']['instituicao']['ano_ingresso'])) {
+                    if (intval($doc["doc"]["datePublished"]) >= intval($doc['doc']["instituicao"]['ano_ingresso'])) {
+                        $resultado = Elasticsearch::update($sha256, $doc);
+                    }
+                } else {
+                    $resultado = Elasticsearch::update($sha256, $doc);
+                }
+                //echo "<br/>Título: não é array<br/>";
+            }
+            //echo '<br/><br/><br/>';
+        }
             echo "<br/>";
             print_r($resultado);
             echo "<br/><br/>";
@@ -2835,14 +3159,62 @@ if (isset($curriculo->{'OUTRA-PRODUCAO'})) {
                 $doc["doc"]["concluido"] = "Não";
                 $doc["doc_as_upsert"] = true;
 
+        // Comparador
+        if (!empty($doc['doc']['doi'])){
+            //echo 'Tem DOI: '.$doc['doc']['doi'].'<br/>';
+            $result_comparaprod_doi = comparaprod_doi($doc['doc']['doi']);
+            if (is_array($result_comparaprod_doi)) {
+                //echo "<br/>DOI: é um array<br/>";
+                //print_r($result_comparaprod_doi);
+                $doc_existing['doc'] = $result_comparaprod_doi['_source'];
+                $doc_existing["doc"]["concluido"] = "Não";
+                $doc_existing["doc_as_upsert"] = true;
+                $resultado = Elasticsearch::update($result_comparaprod_doi['_id'], $doc_existing);
+            } else {
                 // Armazenar registro
-                if (isset($doc['doc']["instituicao"]['ano_ingresso'])) {
+                if (isset($doc['doc']['instituicao']['ano_ingresso'])) {
                     if (intval($doc["doc"]["datePublished"]) >= intval($doc['doc']["instituicao"]['ano_ingresso'])) {
                         $resultado = Elasticsearch::update($sha256, $doc);
                     }
                 } else {
                     $resultado = Elasticsearch::update($sha256, $doc);
                 }
+                //echo "<br/>DOI: não é array<br/>";
+            }
+            //echo '<br/><br/><br/>';
+        } else {
+            //echo 'Não tem DOI: '.$doc['doc']['name'].' - '.$doc['doc']['datePublished'].' - '.$doc["doc"]["tipo"].'<br/>';
+            $result_comparaprod_title = comparaprod_title($doc['doc']['name'], $doc['doc']['datePublished'], $doc["doc"]["tipo"]);
+            if (is_array($result_comparaprod_title)) {
+                //echo "<br/>Título: é um array<br/>";
+                //print_r($result_comparaprod_title['_source']['vinculo']);
+                //echo "<br/>";
+                //print_r($doc['doc']["vinculo"]);
+                //echo "<br/><br/>Resultado do merge:";
+                $result_comparaprod_title['_source']['vinculo'] = array_merge($result_comparaprod_title['_source']['vinculo'], $doc['doc']["vinculo"]);
+                //print_r($result_comparaprod_title['_source']['vinculo']);
+                //echo "<br/><br/>Resultado do array_unique:";
+                $result_comparaprod_title['_source']['vinculo'] = array_unique($result_comparaprod_title['_source']['vinculo']);
+                //print_r($array);
+                //echo "<br/>";
+
+                $doc_existing['doc'] = $result_comparaprod_title['_source'];
+                $doc_existing["doc"]["concluido"] = "Não";
+                $doc_existing["doc_as_upsert"] = true;
+                $resultado = Elasticsearch::update($result_comparaprod_title['_id'], $doc_existing);
+            } else {
+                // Armazenar registro
+                if (isset($doc['doc']['instituicao']['ano_ingresso'])) {
+                    if (intval($doc["doc"]["datePublished"]) >= intval($doc['doc']["instituicao"]['ano_ingresso'])) {
+                        $resultado = Elasticsearch::update($sha256, $doc);
+                    }
+                } else {
+                    $resultado = Elasticsearch::update($sha256, $doc);
+                }
+                //echo "<br/>Título: não é array<br/>";
+            }
+            //echo '<br/><br/><br/>';
+        }
                 echo "<br/>";
                 print_r($resultado);
                 echo "<br/><br/>";
@@ -2861,6 +3233,6 @@ if (isset($curriculo->{'OUTRA-PRODUCAO'})) {
 
 
 
-//sleep(5); echo '<script>window.location = \'result.php?filter[]=lattes_ids:"'.$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'}.'"\'</script>';
+sleep(5); echo '<script>window.location = \'result.php?filter[]=lattes_ids:"'.$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'}.'"\'</script>';
 
 ?>
