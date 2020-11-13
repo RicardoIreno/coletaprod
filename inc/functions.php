@@ -1666,22 +1666,22 @@ class Exporters
         $sha256 = hash('sha256', ''.implode("", $recordContent).'');
 
         switch ($cursor["_source"]["type"]) {
-        case "ARTIGO DE PERIODICO":
+        case "Artigo publicado":
             $record[] = '@article{article'.substr($sha256, 0, 8).',';
             $record[] = implode(",\\n", $recordContent);
             $record[] = '}';
             break;
-        case "MONOGRAFIA/LIVRO":
+        case "Livro publicado ou organizado":
             $record[] = '@book{book'.substr($sha256, 0, 8).',';
             $record[] = implode(",\\n", $recordContent);
             $record[] = '}';
             break;
-        case "PARTE DE MONOGRAFIA/LIVRO":
+        case "Capítulo de livro publicado":
             $record[] = '@inbook{inbook'.substr($sha256, 0, 8).',';
             $record[] = implode(",\\n", $recordContent);
             $record[] = '}';
             break;
-        case "TRABALHO DE EVENTO":
+        case "Trabalhos em eventos":
             $record[] = '@inproceedings{inproceedings'.substr($sha256, 0, 8).',';
             $record[] = implode(",\\n", $recordContent);
             $record[] = '}';
