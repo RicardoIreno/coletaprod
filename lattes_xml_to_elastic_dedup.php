@@ -23,33 +23,11 @@ function comparaprod_doi($doi)
         echo '<br/>';
     }
 
-    if ($total == 1) {
+    if ($total >= 1) {
         return $r;
     } else {
         return "Não encontrado";
     }
-
-    // $result_matchTag = $matchTagArray;
-    // foreach ($cursor["hits"]["hits"] as $r) {
-    //     if (isset($r["_source"]["match"]["tag"])) {
-    //         $result_matchTag = array_merge($result_matchTag, $r["_source"]["match"]["tag"]);
-    //     } else {
-    //         $result_matchTag = $result_matchTag;
-    //     }
-    // }
-    // $result_matchTag_final = array_unique($result_matchTag);
-    // sort($result_matchTag_final);
-
-    // $doc["doc"]["match"]["tag"] = $result_matchTag_final;
-    // $doc["doc"]["match"]["data"] = date("Ymd");
-    // $doc["doc"]["match"]["count"] = count($result_matchTag_final);
-    // $doc["doc"]["match"]["string"] = implode(" - ", $result_matchTag_final);
-    // $doc["doc_as_upsert"] = true;
-    // //echo "<br/><br/><br/><br/>";
-    // //print_r($doc);
-    // $result_elastic = Elasticsearch::update($original_id, $doc);
-    // //print_r($result_elastic);
-
 }
 
 function comparaprod_title($title, $year, $type)
@@ -109,31 +87,12 @@ function comparaprod_title($title, $year, $type)
         echo '<br/>';
     }
 
-    if ($total == 1) {
+    if ($total >= 1) {
         return $r;
     } else {
         return "Não encontrado";
     }
 
-
-    // $result_matchTag = $matchTagArray;
-    // foreach ($cursor["hits"]["hits"] as $r) {
-    //     if (isset($r["_source"]["match"]["tag"])) {
-    //         $result_matchTag = array_merge($result_matchTag, $r["_source"]["match"]["tag"]);
-    //     } else {
-    //         $result_matchTag = $result_matchTag;
-    //     }
-    // }
-    // $result_matchTag_final = array_unique($result_matchTag);
-    // sort($result_matchTag_final);
-
-    // $doc["doc"]["match"]["tag"] = $result_matchTag_final;
-    // $doc["doc"]["match"]["data"] = date("Ymd");
-    // $doc["doc"]["match"]["count"] = count($result_matchTag_final);
-    // $doc["doc"]["match"]["string"] = implode(" - ", $result_matchTag_final);
-    // $doc["doc_as_upsert"] = true;
-    // //print_r($doc);
-    // $result_elastic = Elasticsearch::update($original_id, $doc);
 }
 
 function processaAutoresLattes($autores_array)
@@ -300,14 +259,14 @@ function construct_vinculo($request, $curriculo){
 function upsert($doc, $sha256){
     // Comparador
     if (!empty($doc['doc']['doi'])){
-        $result_comparaprod_doi = comparaprod_doi($doc['doc']['doi']);
-        if (is_array($result_comparaprod_doi)) {
-            $result_comparaprod_doi['_source']['vinculo'] = array_merge($result_comparaprod_doi['_source']['vinculo'], $doc['doc']["vinculo"]);
-            $result_comparaprod_doi['_source']['vinculo'] = array_unique($result_comparaprod_doi['_source']['vinculo']);            
-            $doc_existing['doc'] = $result_comparaprod_doi['_source'];
+        $result_comparaprod = comparaprod_doi($doc['doc']['doi']);
+        if (is_array($result_comparaprod)) {
+            $result_comparaprod['_source']['vinculo'] = array_merge($result_comparaprod['_source']['vinculo'], $doc['doc']["vinculo"]);
+            $result_comparaprod['_source']['vinculo'] = array_unique($result_comparaprod['_source']['vinculo']);
+            $doc_existing['doc'] = $result_comparaprod['_source'];
             $doc_existing["doc"]["concluido"] = "Não";
             $doc_existing["doc_as_upsert"] = true;
-            $resultado = Elasticsearch::update($result_comparaprod_doi['_id'], $doc_existing);
+            $resultado = Elasticsearch::update($result_comparaprod['_id'], $doc_existing);
         } else {
             if (isset($doc['doc']['instituicao']['ano_ingresso'])) {
                 if (intval($doc["doc"]["datePublished"]) >= intval($doc['doc']["instituicao"]['ano_ingresso'])) {
@@ -318,14 +277,14 @@ function upsert($doc, $sha256){
             }
         }
     } else {
-        $result_comparaprod_title = comparaprod_title($doc['doc']['name'], $doc['doc']['datePublished'], $doc["doc"]["tipo"]);
-        if (is_array($result_comparaprod_title)) {
-            $result_comparaprod_title['_source']['vinculo'] = array_merge($result_comparaprod_title['_source']['vinculo'], $doc['doc']["vinculo"]);
-            $result_comparaprod_title['_source']['vinculo'] = array_unique($result_comparaprod_title['_source']['vinculo']);
-            $doc_existing['doc'] = $result_comparaprod_title['_source'];
+        $result_comparaprod = comparaprod_title($doc['doc']['name'], $doc['doc']['datePublished'], $doc["doc"]["tipo"]);
+        if (is_array($result_comparaprod)) {
+            $result_comparaprod['_source']['vinculo'] = array_merge($result_comparaprod['_source']['vinculo'], $doc['doc']["vinculo"]);
+            $result_comparaprod['_source']['vinculo'] = array_unique($result_comparaprod['_source']['vinculo']);
+            $doc_existing['doc'] = $result_comparaprod['_source'];
             $doc_existing["doc"]["concluido"] = "Não";
             $doc_existing["doc_as_upsert"] = true;
-            $resultado = Elasticsearch::update($result_comparaprod_title['_id'], $doc_existing);
+            $resultado = Elasticsearch::update($result_comparaprod['_id'], $doc_existing);
         } else {
             if (isset($doc['doc']['instituicao']['ano_ingresso'])) {
                 if (intval($doc["doc"]["datePublished"]) >= intval($doc['doc']["instituicao"]['ano_ingresso'])) {
