@@ -888,15 +888,20 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TRABALHOS-EM-EVENTOS'})) {
         $doc["doc"]["vinculo"] = construct_vinculo($_REQUEST, $curriculo);
 
         // Constroi sha256
-        $sha_array[] = $doc["doc"]["lattes_ids"][0];
-        $sha_array[] = $doc["doc"]["tipo"];
-        $sha_array[] = $doc["doc"]["name"];
-        $sha_array[] = $doc["doc"]["datePublished"];
-        $sha_array[] = $doc["doc"]["country"];
-        $sha_array[] = $doc["doc"]["EducationEvent"]["name"];
-        $sha_array[] = $doc["doc"]["pageStart"];
-        $sha_array[] = $doc["doc"]["pageEnd"];
-        $sha256 = hash('sha256', ''.implode("", $sha_array).'');
+        if (!empty($doc['doc']['doi'])){
+            $sha256 = hash('sha256', ''.$doc['doc']['doi'].'');
+        } else {
+            $sha_array[] = $doc["doc"]["lattes_ids"][0];
+            $sha_array[] = $doc["doc"]["tipo"];
+            $sha_array[] = $doc["doc"]["name"];
+            $sha_array[] = $doc["doc"]["datePublished"];
+            $sha_array[] = $doc["doc"]["country"];
+            $sha_array[] = $doc["doc"]["EducationEvent"]["name"];
+            $sha_array[] = $doc["doc"]["pageStart"];
+            $sha_array[] = $doc["doc"]["pageEnd"];
+            $sha256 = hash('sha256', ''.implode("", $sha_array).'');
+        }
+
 
         //$doc["doc"]["bdpi"] = DadosExternos::query_bdpi_index($doc["doc"]["name"], $doc["doc"]["datePublished"]);
         $doc["doc"]["concluido"] = "Não";
@@ -904,17 +909,13 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TRABALHOS-EM-EVENTOS'})) {
 
         // Comparador
         if (!empty($doc['doc']['doi'])){
-            //echo 'Tem DOI: '.$doc['doc']['doi'].'<br/>';
             $result_comparaprod_doi = comparaprod_doi($doc['doc']['doi']);
             if (is_array($result_comparaprod_doi)) {
-                //echo "<br/>DOI: é um array<br/>";
-                //print_r($result_comparaprod_doi);
                 $doc_existing['doc'] = $result_comparaprod_doi['_source'];
                 $doc_existing["doc"]["concluido"] = "Não";
                 $doc_existing["doc_as_upsert"] = true;
                 $resultado = Elasticsearch::update($result_comparaprod_doi['_id'], $doc_existing);
             } else {
-                // Armazenar registro
                 if (isset($doc['doc']['instituicao']['ano_ingresso'])) {
                     if (intval($doc["doc"]["datePublished"]) >= intval($doc['doc']["instituicao"]['ano_ingresso'])) {
                         $resultado = Elasticsearch::update($sha256, $doc);
@@ -922,31 +923,17 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TRABALHOS-EM-EVENTOS'})) {
                 } else {
                     $resultado = Elasticsearch::update($sha256, $doc);
                 }
-                //echo "<br/>DOI: não é array<br/>";
             }
-            //echo '<br/><br/><br/>';
         } else {
-            //echo 'Não tem DOI: '.$doc['doc']['name'].' - '.$doc['doc']['datePublished'].' - '.$doc["doc"]["tipo"].'<br/>';
             $result_comparaprod_title = comparaprod_title($doc['doc']['name'], $doc['doc']['datePublished'], $doc["doc"]["tipo"]);
             if (is_array($result_comparaprod_title)) {
-                //echo "<br/>Título: é um array<br/>";
-                //print_r($result_comparaprod_title['_source']['vinculo']);
-                //echo "<br/>";
-                //print_r($doc['doc']["vinculo"]);
-                //echo "<br/><br/>Resultado do merge:";
                 $result_comparaprod_title['_source']['vinculo'] = array_merge($result_comparaprod_title['_source']['vinculo'], $doc['doc']["vinculo"]);
-                //print_r($result_comparaprod_title['_source']['vinculo']);
-                //echo "<br/><br/>Resultado do array_unique:";
                 $result_comparaprod_title['_source']['vinculo'] = array_unique($result_comparaprod_title['_source']['vinculo']);
-                //print_r($array);
-                //echo "<br/>";
-
                 $doc_existing['doc'] = $result_comparaprod_title['_source'];
                 $doc_existing["doc"]["concluido"] = "Não";
                 $doc_existing["doc_as_upsert"] = true;
                 $resultado = Elasticsearch::update($result_comparaprod_title['_id'], $doc_existing);
             } else {
-                // Armazenar registro
                 if (isset($doc['doc']['instituicao']['ano_ingresso'])) {
                     if (intval($doc["doc"]["datePublished"]) >= intval($doc['doc']["instituicao"]['ano_ingresso'])) {
                         $resultado = Elasticsearch::update($sha256, $doc);
@@ -954,9 +941,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TRABALHOS-EM-EVENTOS'})) {
                 } else {
                     $resultado = Elasticsearch::update($sha256, $doc);
                 }
-                //echo "<br/>Título: não é array<br/>";
             }
-            //echo '<br/><br/><br/>';
         }
 
         echo "<br/>";
@@ -1042,10 +1027,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'ARTIGOS-PUBLICADOS'})) {
 
 
         if (!empty($doc["doc"]["doi"])) {
-            $sha_array[] = $doc["doc"]["lattes_ids"][0];
-            $sha_array[] = $doc["doc"]["doi"];
-            $sha256 = hash('sha256', ''.implode("", $sha_array).'');
-
+            $sha256 = hash('sha256', ''.$doc["doc"]["doi"].'');
         } else {
             $sha_array[] = $doc["doc"]["lattes_ids"][0];
             $sha_array[] = $doc["doc"]["tipo"];
@@ -1209,9 +1191,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'LIVROS-E-CAPITULOS'})) {
 
             // Constroi sha256
             if (!empty($doc["doc"]["doi"])) {
-                $sha_array[] = $doc["doc"]["lattes_ids"][0];
-                $sha_array[] = $doc["doc"]["doi"];
-                $sha256 = hash('sha256', ''.implode("", $sha_array).'');
+                $sha256 = hash('sha256', ''.$doc["doc"]["doi"].'');
             } elseif (!empty($doc["doc"]["isbn"])) {
                 $sha_array[] = $doc["doc"]["lattes_ids"][0];
                 $sha_array[] = $doc["doc"]["isbn"];
@@ -1367,12 +1347,16 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'LIVROS-E-CAPITULOS'})) {
             $doc["doc"]["vinculo"] = construct_vinculo($_REQUEST, $curriculo);
 
             // Constroi sha256
-            $sha_array[] = $doc["doc"]["lattes_ids"][0];
-            $sha_array[] = $doc["doc"]["tipo"];
-            $sha_array[] = $doc["doc"]["name"];
-            $sha_array[] = $doc["doc"]["datePublished"];
-            $sha_array[] = $doc["doc"]["isPartOf"]["name"];
-            $sha256 = hash('sha256', ''.implode("", $sha_array).'');
+            if (!empty($doc["doc"]["doi"])) {
+                $sha256 = hash('sha256', ''.$doc["doc"]["doi"].'');
+            } else {
+                $sha_array[] = $doc["doc"]["lattes_ids"][0];
+                $sha_array[] = $doc["doc"]["tipo"];
+                $sha_array[] = $doc["doc"]["name"];
+                $sha_array[] = $doc["doc"]["datePublished"];
+                $sha_array[] = $doc["doc"]["isPartOf"]["name"];
+                $sha256 = hash('sha256', ''.implode("", $sha_array).'');
+            }
 
             //$doc["doc"]["bdpi"] = DadosExternos::query_bdpi_index($doc["doc"]["name"], $doc["doc"]["datePublished"]);
             $doc["doc"]["concluido"] = "Não";
@@ -1520,9 +1504,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TEXTOS-EM-JORNAIS-OU-REVISTA
 
 
         if (!empty($doc["doc"]["doi"])) {
-            $sha_array[] = $doc["doc"]["lattes_ids"][0];
-            $sha_array[] = $doc["doc"]["doi"];
-            $sha256 = hash('sha256', ''.implode("", $sha_array).'');
+            $sha256 = hash('sha256', ''.$doc["doc"]["doi"].'');
         } else {
             $sha_array[] = $doc["doc"]["lattes_ids"][0];
             $sha_array[] = $doc["doc"]["tipo"];
@@ -1676,9 +1658,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
             // Constroi sha256
 
             if (!empty($doc["doc"]["doi"])) {
-                $sha_array[] = $doc["doc"]["lattes_ids"][0];
-                $sha_array[] = $doc["doc"]["doi"];
-                $sha256 = hash('sha256', ''.implode("", $sha_array).'');
+                $sha256 = hash('sha256', ''.$doc["doc"]["doi"].'');
             } else {
                 $sha_array[] = $doc["doc"]["lattes_ids"][0];
                 $sha_array[] = $doc["doc"]["tipo"];
@@ -1829,9 +1809,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
 
             // Constroi sha256
             if (!empty($doc["doc"]["doi"])) {
-                $sha_array[] = $doc["doc"]["lattes_ids"][0];
-                $sha_array[] = $doc["doc"]["doi"];
-                $sha256 = hash('sha256', ''.implode("", $sha_array).'');
+                $sha256 = hash('sha256', ''.$doc["doc"]["doi"].'');
             } else {
                 $sha_array[] = $doc["doc"]["lattes_ids"][0];
                 $sha_array[] = $doc["doc"]["tipo"];
@@ -1986,9 +1964,7 @@ if (isset($curriculo->{'PRODUCAO-TECNICA'})) {
 
 
             if (!empty($doc["doc"]["doi"])) {
-                $sha_array[] = $doc["doc"]["lattes_ids"][0];
-                $sha_array[] = $doc["doc"]["doi"];
-                $sha256 = hash('sha256', ''.implode("", $sha_array).'');
+                $sha256 = hash('sha256', ''.$doc["doc"]["doi"].'');
             } else {
                 $sha_array[] = $doc["doc"]["lattes_ids"][0];
                 $sha_array[] = $doc["doc"]["tipo"];
@@ -2084,9 +2060,7 @@ if (isset($curriculo->{'PRODUCAO-TECNICA'})) {
 
 
             if (!empty($doc["doc"]["doi"])) {
-                $sha_array[] = $doc["doc"]["lattes_ids"][0];
-                $sha_array[] = $doc["doc"]["doi"];
-                $sha256 = hash('sha256', ''.implode("", $sha_array).'');
+                $sha256 = hash('sha256', ''.$doc["doc"]["doi"].'');
             } else {
                 $sha_array[] = $doc["doc"]["lattes_ids"][0];
                 $sha_array[] = $doc["doc"]["tipo"];
@@ -2248,9 +2222,7 @@ if (isset($curriculo->{'OUTRA-PRODUCAO'})) {
 
 
                 if (!empty($doc["doc"]["doi"])) {
-                    $sha_array[] = $doc["doc"]["lattes_ids"][0];
-                    $sha_array[] = $doc["doc"]["doi"];
-                    $sha256 = hash('sha256', ''.implode("", $sha_array).'');
+                    $sha256 = hash('sha256', ''.$doc["doc"]["doi"].'');
                 } else {
                     $sha_array[] = $doc["doc"]["lattes_ids"][0];
                     $sha_array[] = $doc["doc"]["tipo"];
