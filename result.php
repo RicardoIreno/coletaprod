@@ -268,7 +268,8 @@ $get_data = $_GET;
                     $facets->facet(basename(__FILE__), "match.string", 100, "Tag de correspondência", null, "_term", $_GET);
                     
                     $facets->facet(basename(__FILE__), "author.person.name", 100, "Nome completo do autor", null, "_term", $_GET);
-                    $facets->facet(basename(__FILE__), "lattes_ids", 100, "Número do lattes", null, "_term", $_GET);                    
+                    $facets->facet(basename(__FILE__), "lattes_ids", 100, "Número do lattes", null, "_term", $_GET);
+                    $facets->facet(basename(__FILE__), "vinculo.nome",100,"Nome do autor vinculado à instituição",null,"_term",$_GET);
                     $facets->facet(basename(__FILE__), "vinculo.unidade",100,"Unidade",null,"_term",$_GET);
                     $facets->facet(basename(__FILE__), "vinculo.departamento",100,"Departamento",null,"_term",$_GET);
                     $facets->facet(basename(__FILE__), "vinculo.tipvin", 100, "Tipo de vínculo", null, "_term", $_GET);
