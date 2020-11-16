@@ -238,6 +238,66 @@ function processaAreaDoConhecimentoFormacaoLattes($areas_do_conhecimento)
     unset($array_result);
 }
 
+function construct_vinculo($request, $curriculo){
+    // Vinculo
+    if (isset($doc["doc"]["vinculo"])) {
+        $i_vinculo = count($doc["doc"]["vinculo"]);
+        $i_vinculo++;
+    } else {
+        $i_vinculo = 0;
+    }
+    $doc["doc"]["vinculo"][$i_vinculo]["nome"] = (string)$curriculo->{'DADOS-GERAIS'}->attributes()->{'NOME-COMPLETO'};
+    $doc["doc"]["vinculo"][$i_vinculo]["lattes_id"] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
+    if (isset($request['unidade'])) {
+        $doc["doc"]["vinculo"][$i_vinculo]["unidade"] = explode("|", $request['unidade']);
+    }
+    if (isset($request['departamento'])) {
+        $doc["doc"]["vinculo"][$i_vinculo]["departamento"] = explode("|", $request['departamento']);
+    }
+    if (isset($request['numfuncional'])) {
+        $doc["doc"]["vinculo"][$i_vinculo]["numfuncional"] = $request['numfuncional'];
+    }
+    if (isset($request['tipvin'])) {
+        $doc["doc"]["vinculo"][$i_vinculo]["tipvin"] = explode("|", $request['tipvin']);
+    }
+    if (isset($request['divisao'])) {
+        $doc["doc"]["vinculo"][$i_vinculo]["divisao"] = explode("|", $request['divisao']);
+    }
+    if (isset($request['secao'])) {
+        $doc['doc']["vinculo"][$i_vinculo]['secao'] = explode("|", $request['secao']);
+    }
+    if (isset($request['ppg_nome'])) {
+        $doc['doc']["vinculo"][$i_vinculo]['ppg_nome'] = explode("|", $request['ppg_nome']);
+    }
+    if (isset($request['ppg_capes'])) {
+        $doc['doc']["vinculo"][$i_vinculo]['ppg_capes'] = explode("|", $request['ppg_capes']);
+    }
+    if (isset($request['genero'])) {
+        $doc['doc']["vinculo"][$i_vinculo]['genero'] = $request['genero'];
+    }
+    if (isset($request['etnia'])) {
+        $doc['doc']["vinculo"][$i_vinculo]['etnia'] = $request['etnia'];
+    }
+    if (isset($request['ano_ingresso'])) {
+        $doc['doc']["vinculo"][$i_vinculo]['ano_ingresso'] = substr($request['ano_ingresso'],-4);
+    }
+    if (isset($request['desc_nivel'])) {
+        $doc['doc']["vinculo"][$i_vinculo]['desc_nivel'] = explode("|", $request['desc_nivel']);
+    }
+    if (isset($request['desc_curso'])) {
+        $doc['doc']["vinculo"][$i_vinculo]['desc_curso'] = explode("|", $request['desc_curso']);
+    }
+    if (isset($request['campus'])) {
+        $doc['doc']["vinculo"][$i_vinculo]['campus'] = explode("|", $request['campus']);
+    }
+    if (isset($request['desc_gestora'])) {
+        $doc['doc']["vinculo"][$i_vinculo]['desc_gestora'] = explode("|", $request['desc_gestora']);
+    }
+
+    return $doc['doc']["vinculo"];
+}
+
+
 if (!isset($_POST['numfuncional'])) {
     $_POST['numfuncional'] = null;
 }
@@ -247,6 +307,8 @@ if (!isset($_GET['unidade'])) {
 if (!isset($_GET['tag'])) {
     $_POST['tag'] = null;
 }
+
+// Testa se foi enviado um arquivo
 if ($_FILES['file']['size'] != 0) {
 
     $curriculo = simplexml_load_file($_FILES['file']['tmp_name']);
@@ -314,65 +376,6 @@ if ($_FILES['file']['size'] != 0) {
     exit();
 
 
-}
-
-function construct_vinculo($request, $curriculo){
-    // Vinculo
-    if (isset($doc["doc"]["vinculo"])) {
-        $i_vinculo = count($doc["doc"]["vinculo"]);
-        $i_vinculo++;
-    } else {
-        $i_vinculo = 0;
-    }
-    $doc["doc"]["vinculo"][$i_vinculo]["nome"] = (string)$curriculo->{'DADOS-GERAIS'}->attributes()->{'NOME-COMPLETO'};
-    $doc["doc"]["vinculo"][$i_vinculo]["lattes_id"] = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
-    if (isset($request['unidade'])) {
-        $doc["doc"]["vinculo"][$i_vinculo]["unidade"] = explode("|", $request['unidade']);
-    }
-    if (isset($request['departamento'])) {
-        $doc["doc"]["vinculo"][$i_vinculo]["departamento"] = explode("|", $request['departamento']);
-    }
-    if (isset($request['numfuncional'])) {
-        $doc["doc"]["vinculo"][$i_vinculo]["numfuncional"] = $request['numfuncional'];
-    }
-    if (isset($request['tipvin'])) {
-        $doc["doc"]["vinculo"][$i_vinculo]["tipvin"] = explode("|", $request['tipvin']);
-    }
-    if (isset($request['divisao'])) {
-        $doc["doc"]["vinculo"][$i_vinculo]["divisao"] = explode("|", $request['divisao']);
-    }
-    if (isset($request['secao'])) {
-        $doc['doc']["vinculo"][$i_vinculo]['secao'] = explode("|", $request['secao']);
-    }
-    if (isset($request['ppg_nome'])) {
-        $doc['doc']["vinculo"][$i_vinculo]['ppg_nome'] = explode("|", $request['ppg_nome']);
-    }
-    if (isset($request['ppg_capes'])) {
-        $doc['doc']["vinculo"][$i_vinculo]['ppg_capes'] = explode("|", $request['ppg_capes']);
-    }
-    if (isset($request['genero'])) {
-        $doc['doc']["vinculo"][$i_vinculo]['genero'] = $request['genero'];
-    }
-    if (isset($request['etnia'])) {
-        $doc['doc']["vinculo"][$i_vinculo]['etnia'] = $request['etnia'];
-    }
-    if (isset($request['ano_ingresso'])) {
-        $doc['doc']["vinculo"][$i_vinculo]['ano_ingresso'] = substr($request['ano_ingresso'],-4);
-    }
-    if (isset($request['desc_nivel'])) {
-        $doc['doc']["vinculo"][$i_vinculo]['desc_nivel'] = explode("|", $request['desc_nivel']);
-    }
-    if (isset($request['desc_curso'])) {
-        $doc['doc']["vinculo"][$i_vinculo]['desc_curso'] = explode("|", $request['desc_curso']);
-    }
-    if (isset($request['campus'])) {
-        $doc['doc']["vinculo"][$i_vinculo]['campus'] = explode("|", $request['campus']);
-    }
-    if (isset($request['desc_gestora'])) {
-        $doc['doc']["vinculo"][$i_vinculo]['desc_gestora'] = explode("|", $request['desc_gestora']);
-    }
-
-    return $doc['doc']["vinculo"];
 }
 
 // Inicio Currículo
