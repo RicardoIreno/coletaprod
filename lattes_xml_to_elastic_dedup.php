@@ -256,13 +256,34 @@ function construct_vinculo($request, $curriculo){
     return $doc['doc']["vinculo"];
 }
 
+function my_array_unique($array, $keep_key_assoc = false){
+    $duplicate_keys = array();
+    $tmp = array();
+
+    foreach ($array as $key => $val){
+        // convert objects to arrays, in_array() does not support objects
+        if (is_object($val))
+            $val = (array)$val;
+
+        if (!in_array($val, $tmp))
+            $tmp[] = $val;
+        else
+            $duplicate_keys[] = $key;
+    }
+
+    foreach ($duplicate_keys as $key)
+        unset($array[$key]);
+
+    return $keep_key_assoc ? $array : array_values($array);
+}
+
 function upsert($doc, $sha256){
     // Comparador
     if (!empty($doc['doc']['doi'])){
         $result_comparaprod = comparaprod_doi($doc['doc']['doi']);
         if (is_array($result_comparaprod)) {
             $result_comparaprod['_source']['vinculo'] = array_merge($result_comparaprod['_source']['vinculo'], $doc['doc']["vinculo"]);
-            $result_comparaprod['_source']['vinculo'] = array_unique($result_comparaprod['_source']['vinculo']);
+            $result_comparaprod['_source']['vinculo'] = my_array_unique($result_comparaprod['_source']['vinculo']);
             $doc_existing['doc'] = $result_comparaprod['_source'];
             $doc_existing["doc"]["concluido"] = "Não";
             $doc_existing["doc_as_upsert"] = true;
@@ -280,7 +301,7 @@ function upsert($doc, $sha256){
         $result_comparaprod = comparaprod_title($doc['doc']['name'], $doc['doc']['datePublished'], $doc["doc"]["tipo"]);
         if (is_array($result_comparaprod)) {
             $result_comparaprod['_source']['vinculo'] = array_merge($result_comparaprod['_source']['vinculo'], $doc['doc']["vinculo"]);
-            $result_comparaprod['_source']['vinculo'] = array_unique($result_comparaprod['_source']['vinculo']);
+            $result_comparaprod['_source']['vinculo'] = my_array_unique($result_comparaprod['_source']['vinculo']);
             $doc_existing['doc'] = $result_comparaprod['_source'];
             $doc_existing["doc"]["concluido"] = "Não";
             $doc_existing["doc_as_upsert"] = true;
@@ -297,7 +318,6 @@ function upsert($doc, $sha256){
     }
     return $resultado;
 }
-
 
 if (!isset($_POST['numfuncional'])) {
     $_POST['numfuncional'] = null;
@@ -1833,6 +1853,6 @@ if (isset($curriculo->{'OUTRA-PRODUCAO'})) {
 
 
 
-sleep(5); echo '<script>window.location = \'result.php?filter[]=lattes_ids:"'.$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'}.'"\'</script>';
+//sleep(5); echo '<script>window.location = \'result.php?filter[]=lattes_ids:"'.$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'}.'"\'</script>';
 
 ?>
