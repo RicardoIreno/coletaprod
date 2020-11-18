@@ -674,6 +674,84 @@
 
         }        
 
+    } elseif ($_GET["format"] == "ppgNetworkWithoutPapers") {
+
+
+        function createNetwork($r) {
+            foreach ($r["_source"]['vinculo'] as $vinculo) {
+                unset($r["_source"]['vinculo'][0]);
+                foreach ($r["_source"]['vinculo'] as $vinculoArray) {
+                    if ($vinculo['ppg_nome'] != $vinculoArray['ppg_nome']){
+                        $fields[] = $vinculo['ppg_nome'][0];
+                        $fields[] = $vinculoArray['ppg_nome'][0];
+                        $fields[] = '['.$r['_source']['datePublished'].','.$r['_source']['datePublished'].']';
+                    }
+                    if (isset($fields)) {
+                        $contentVinculo[] = implode("\t", $fields);
+                        unset($fields);
+                    }
+                }
+            }
+            if (isset($contentVinculo)) {
+                $content = implode("\n", $contentVinculo);
+                unset($contentVinculo);
+            }
+            if (isset($content)) {
+                return $content;
+            } else {
+                return "";
+            }
+        }
+
+        $file="exportPPGSNetworkWithoutPapers.tsv";
+        header('Content-type: text/tab-separated-values; charset=utf-8');
+        header("Content-Disposition: attachment; filename=$file");
+    
+        // Set directory to ROOT
+        chdir('../');
+        // Include essencial files
+        include('inc/config.php'); 
+        include('inc/functions.php');
+
+        if (!empty($_GET)) {
+            $result_get = Requests::getParser($_GET);
+            $query = $result_get['query'];
+            $limit = $result_get['limit'];
+            $page = $result_get['page'];
+            $skip = $result_get['skip'];
+
+            $params = [];
+            $params["index"] = $index;
+            $params["size"] = 10;
+            $params["scroll"] = "30s";
+            $params["body"] = $query;
+
+            $cursor = $client->search($params);
+            $total = $cursor["hits"]["total"];
+
+            $content[] = "Source\tTarget\tYear";
+
+            foreach ($cursor["hits"]["hits"] as $r) {
+                $content[] = createNetwork($r);
+            }
+
+
+            while (isset($cursor['hits']['hits']) && count($cursor['hits']['hits']) > 0) {
+                $scroll_id = $cursor['_scroll_id'];
+                $cursor = $client->scroll(
+                    [
+                    "scroll_id" => $scroll_id,
+                    "scroll" => "30s"
+                    ]
+                );
+
+                foreach ($cursor["hits"]["hits"] as $r) {
+                    $content[] = createNetwork($r);
+                }
+            }
+            echo implode("\n", $content);
+        }
+
     } elseif($_GET["format"] == "ris") {
 
         $file="export_bdpi.ris";
