@@ -5,7 +5,7 @@ require 'inc/config.php';
 require 'inc/functions.php';
 
 if (!empty($_POST)) {
-    foreach ($_POST as $key=>$value) {            
+    foreach ($_POST as $key=>$value) {
         $var_concluido["doc"]["concluido"] = $value;
         $var_concluido["doc"]["doc_as_upsert"] = true; 
         Elasticsearch::update($key, $var_concluido);
