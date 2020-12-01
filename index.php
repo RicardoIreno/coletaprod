@@ -72,7 +72,7 @@
                     <div class="input-group-append">
                         <button type="submit" class="btn btn-primary">Pesquisar</button>
                     </div>
-                </div>                       
+                </div>
                 <small id="searchHelp" class="form-text text-muted">Dica: Use * para busca por radical. Ex: biblio*.</small>
                 <small id="searchHelp" class="form-text text-muted">Dica 2: Para buscas exatas, coloque entre ""</small>
                 <small id="searchHelp" class="form-text text-muted">Dica 3: Você também pode usar operadores booleanos: AND, OR</small>
@@ -142,8 +142,8 @@
                 <ul class="list-group">
                     <li class="list-group-item"><?php echo paginaInicial::contar_registros_indice($index); ?> registros</li> 
                     <li class="list-group-item"><?php echo paginaInicial::contar_registros_indice($index_cv);; ?> currículos</li>
-                    <li class="list-group-item"><?php echo paginaInicial::contar_registros_indice($index_source); ?> registros no Repositório Institucional</li>
                     <!--
+                    <li class="list-group-item">< ?php echo paginaInicial::contar_registros_indice($index_source); ?> registros no Repositório Institucional</li>
                     <li class="list-group-item">< ?php echo paginaInicial::possui_lattes(); ?>% sem ID no Lattes</li>
                     -->
                 </ul>

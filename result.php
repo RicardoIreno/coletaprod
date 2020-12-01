@@ -213,17 +213,18 @@ $get_data = $_GET;
                                         if ($instituicao == "USP") {
                                             echo '<a href="tools/export.php?search[]=_id:'.$r['_id'].'&format=alephseq" class="btn btn-secondary">Exportar Alephseq</a>';
                                         }
-                                        ?>                                        
+                                        ?>
 
-
+                                        <!--
                                         <form class="form-signin" method="post" action="editor/index.php">
-                                            <?php
+                                            < ?php
                                                 $jsonRecord = json_encode($r["_source"]);
                                             ?>
-                                            <input type="hidden" id="coletaprod_id" name="coletaprod_id" value="<?php echo $r["_id"] ?>">
-                                            <input type="hidden" id="record" name="record" value="<?php echo urlencode($jsonRecord) ?>">
+                                            <input type="hidden" id="coletaprod_id" name="coletaprod_id" value="< ?php echo $r["_id"] ?>">
+                                            <input type="hidden" id="record" name="record" value="< ?php echo urlencode($jsonRecord) ?>">
                                             <button class="btn btn-warning" type="submit">Editar antes de exportar</button>
                                         </form>
+                                        -->
 
                                     </div>
 
@@ -239,8 +240,8 @@ $get_data = $_GET;
                 </div>
                 <div class="col-4">
                 
-                <hr>                
-                <h3>Refinar meus resultados</h3>
+                <hr>
+                <h3>Refinar resultados</h3>
                 <hr>
                 <?php
                     $facets = new facets();

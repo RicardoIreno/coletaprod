@@ -17,13 +17,13 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <p class="dropdown-item">Usuário: dashboard / Senha: dashboard</p>
                     <?php if (isset($dashboard_lattes_producoes)): ?>
-                        <a class="dropdown-item" href="<?php echo $dashboard_lattes_producoes ?>">Produções - Lattes</a>
+                        <a class="dropdown-item" href="<?php echo $dashboard_lattes_producoes ?>" target="_blank">Produções - Lattes</a>
                     <?php endif ?>
                     <?php if (isset($dashboard_lattes_cv)): ?>
-                        <a class="dropdown-item" href="<?php echo $dashboard_lattes_cv ?>">Currículos - Lattes</a>
+                        <a class="dropdown-item" href="<?php echo $dashboard_lattes_cv ?>" target="_blank">Currículos - Lattes</a>
                     <?php endif ?>
                     <?php if (isset($dashboard_source)): ?>
-                        <a class="dropdown-item" href="<?php echo $dashboard_source ?>">Fonte</a>
+                        <a class="dropdown-item" href="<?php echo $dashboard_source ?>" target="_blank">Fonte</a>
                     </li>
                     </div>
                 </li>
@@ -35,7 +35,7 @@
             <form class="form-inline my-2 my-lg-0" action="result.php">
                 <input class="form-control mr-sm-2" type="text" placeholder="Pesquisar" aria-label="Pesquisar" name="search">
                 <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Pesquisar</button>
-            </form>          
+            </form>
         </div>
     </div>
 </nav>
