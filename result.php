@@ -140,13 +140,13 @@ $get_data = $_GET;
                                     <p class="text-muted"><b>In:</b> <a href="result.php?filter[]=isPartOf.name:&quot;<?php echo $r["_source"]['isPartOf']['name'];?>&quot;"><?php echo $r["_source"]['isPartOf']['name'];?></a></p>
                                 <?php endif; ?>
                                 <?php if (!empty($r["_source"]['isPartOf']['issn'])) : ?>
-                                    <p class="text-muted"><b>ISSN:</b> <a href="result.php?filter[]=isPartOf.issn:&quot;<?php echo $r["_source"]['isPartOf']['issn'];?>&quot;"><?php echo $r["_source"]['isPartOf']['issn'];?></a></li>                                        
+                                    <p class="text-muted"><b>ISSN:</b> <a href="result.php?filter[]=isPartOf.issn:&quot;<?php echo $r["_source"]['isPartOf']['issn'];?>&quot;"><?php echo $r["_source"]['isPartOf']['issn'];?></a></li>
                                 <?php endif; ?>
                                 <?php if (!empty($r["_source"]['EducationEvent']['name'])) : ?>
                                     <p class="text-muted"><b>Nome do evento:</b> <?php echo $r["_source"]['EducationEvent']['name'];?></p>
                                 <?php endif; ?>
                                 <?php if (!empty($r["_source"]['doi'])) : ?>
-                                    <p class="text-muted"><b>DOI:</b>    <a href="https://doi.org/<?php echo $r["_source"]['doi'];?>"><span id="<?php echo $r['_id'] ?>"><?php echo $r["_source"]['doi'];?></span></a> <button class="btn btn-info" onclick="copyToClipboard('#<?=$r['_id']?>')">Copiar DOI</button> <a class="btn btn-warning" href="doi_to_elastic.php?doi=<?php echo $r['_source']['doi'];?>&tag=<?php echo $r['_source']['tag'][0];?>">Coletar dados da Crossref</a></p>                                        
+                                    <p class="text-muted"><b>DOI:</b>    <a href="https://doi.org/<?php echo $r["_source"]['doi'];?>"><span id="<?php echo $r['_id'] ?>"><?php echo $r["_source"]['doi'];?></span></a> <button class="btn btn-info" onclick="copyToClipboard('#<?=$r['_id']?>')">Copiar DOI</button> <!-- <a class="btn btn-warning" href="doi_to_elastic.php?doi=< ?php echo $r['_source']['doi'];?>&tag=< ?php echo $r['_source']['tag'][0];?>">Coletar dados da Crossref</a>--></p>
                                 <?php endif; ?>
 
                                 <?php if (!empty($r["_source"]['url'])) : ?>
@@ -171,35 +171,35 @@ $get_data = $_GET;
                                 
                                 DadosInternos::queryColetaprod($r["_source"]['name'], $r["_source"]['datePublished'], $r['_id']);
 
-                                ?>  
+                                ?>
 
            
-
+                                    <!--
                                     <div class="btn-group mt-3" role="group" aria-label="Botoes">
 
                                         <form method="post">
-                                            <?php if(isset($r["_source"]["concluido"])) : ?>
-                                                <?php if($r["_source"]["concluido"] == "Sim") : ?>
+                                            < ?php if(isset($r["_source"]["concluido"])) : ?>
+                                                < ?php if($r["_source"]["concluido"] == "Sim") : ?>
                                                     
-                                                        <label><input type='hidden' value='Não' name="<?php echo $r['_id'];?>"></label>
+                                                        <label><input type='hidden' value='Não' name="< ?php echo $r['_id'];?>"></label>
                                                         <button class="btn btn-primary">Desmarcar como concluído</button>
                                                 
-                                                <?php else : ?>
+                                                < ?php else : ?>
 
-                                                        <label><input type='hidden' value='Sim' name="<?php echo $r['_id'];?>"></label>
+                                                        <label><input type='hidden' value='Sim' name="< ?php echo $r['_id'];?>"></label>
                                                         <button class="btn btn-primary">Marcar como concluído</button>
                                                     
-                                                <?php endif; ?>
-                                            <?php else : ?>
+                                                < ?php endif; ?>
+                                            < ?php else : ?>
                                                     
-                                                        <label><input type='hidden' value='Sim' name="<?php echo $r['_id'];?>"></label>
+                                                        <label><input type='hidden' value='Sim' name="< ?php echo $r['_id'];?>"></label>
                                                         <button class="btn btn-primary">Marcar como concluído</button>
                                                     
-                                            <?php endif; ?>
+                                             < ?php endif; ?>
                                             
                                         </form>
                                         
-                                        <?php
+                                        < ?php
                                         if (!empty($dspaceRest)) {
                                             echo '<form action="dspaceConnect.php" method="get">
                                                 <input type="hidden" name="createRecord" value="true" />
@@ -209,13 +209,12 @@ $get_data = $_GET;
                                         }
                                         ?>
                                         
-                                        <?php 
+                                        < ?php 
                                         if ($instituicao == "USP") {
                                             echo '<a href="tools/export.php?search[]=_id:'.$r['_id'].'&format=alephseq" class="btn btn-secondary">Exportar Alephseq</a>';
                                         }
                                         ?>
 
-                                        <!--
                                         <form class="form-signin" method="post" action="editor/index.php">
                                             < ?php
                                                 $jsonRecord = json_encode($r["_source"]);
@@ -224,9 +223,9 @@ $get_data = $_GET;
                                             <input type="hidden" id="record" name="record" value="< ?php echo urlencode($jsonRecord) ?>">
                                             <button class="btn btn-warning" type="submit">Editar antes de exportar</button>
                                         </form>
-                                        -->
 
                                     </div>
+                                    -->
 
                             </div>
                         </div>
