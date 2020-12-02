@@ -149,6 +149,55 @@
                 $body_upsert["doc_as_upsert"] = true;
                 $resultado_upsert = Elasticsearch::update($record["_id"], $body_upsert);
                 unset($body_upsert);
+
+            } elseif ($_GET['field'] == 'ExternalData.crossref.message.funder.name') {
+
+                $i = 0;
+                $body_upsert['doc']['ExternalData']['crossref']['message']['funder'] = $record['_source']['ExternalData']['crossref']['message']['funder'];
+    
+                // Para cada autor no registro
+                $i_funder = 0;
+                foreach ($record['_source']['ExternalData']['crossref']['message']['funder'] as $funder) {
+                    //print("<pre>".print_r($author,true)."</pre>");
+    
+                    $termCleaned = str_replace("&", "e", $funder["name"]);
+
+                    if (isset($funder["tematres"])) {
+                        if ($funder["tematres"] != "true") {
+                            $result_tematres = Authorities::tematresQuery($termCleaned, $tematres_url);
+                            if ($result_tematres["foundTerm"] != "ND") {
+                                $body_upsert["doc"]['ExternalData']['crossref']['message']['funder'][$i]["name"] = $result_tematres["foundTerm"];
+                                $body_upsert["doc"]['ExternalData']['crossref']['message']['funder'][$i]["tematres"] = "true";
+                            } else {
+                                $body_upsert["doc"]['ExternalData']['crossref']['message']['funder'][$i]["name"] = $result_tematres["termNotFound"];
+                                $body_upsert["doc"]['ExternalData']['crossref']['message']['funder'][$i]["tematres"] = "false";
+                            }
+                        }
+                    } else {
+                        //echo "<br/>";
+                        //print_r($termCleaned);
+                        //echo "<br/>";
+                        $result_tematres = Authorities::tematresQuery($termCleaned, $tematres_url);
+                        //print_r($result_tematres);
+                        //echo "<br/>";
+                        if ($result_tematres["foundTerm"] != "ND") {
+                            $body_upsert["doc"]['ExternalData']['crossref']['message']['funder'][$i]["name"] = $result_tematres["foundTerm"];
+                            $body_upsert["doc"]['ExternalData']['crossref']['message']['funder'][$i]["tematres"] = "true";
+                        } else {
+                            $body_upsert["doc"]['ExternalData']['crossref']['message']['funder'][$i]["name"] = $result_tematres["termNotFound"];
+                            $body_upsert["doc"]['ExternalData']['crossref']['message']['funder'][$i]["tematres"] = "false";
+                        }
+                    }
+                    $i_aff++;
+                    }
+                $i++;
+                //echo "<br/>";
+                //echo "<br/>";
+                //print("<pre>".print_r($body_upsert,true)."</pre>");
+                //echo "<br/>";
+                $body_upsert["doc_as_upsert"] = true;
+                $resultado_upsert = Elasticsearch::update($record["_id"], $body_upsert);
+                unset($body_upsert);
     
             } elseif ($_GET["field"] == "funder") {
 
