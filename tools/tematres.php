@@ -34,7 +34,7 @@
         } elseif ($_GET["field"] == "ExternalData.crossref.message.author.affiliation.name") {
             $params["_source"] = ["_id","ExternalData"];
         }
-        $params["size"] = 100;
+        $params["size"] = 200;
         // if (isset($_GET["field"])) {
         //     $params["from"] = $_GET["from"];
         // }
@@ -156,7 +156,6 @@
                 $body_upsert['doc']['ExternalData']['crossref']['message']['funder'] = $record['_source']['ExternalData']['crossref']['message']['funder'];
     
                 // Para cada autor no registro
-                $i_funder = 0;
                 foreach ($record['_source']['ExternalData']['crossref']['message']['funder'] as $funder) {
                     //print("<pre>".print_r($author,true)."</pre>");
     
@@ -188,8 +187,7 @@
                             $body_upsert["doc"]['ExternalData']['crossref']['message']['funder'][$i]["tematres"] = "false";
                         }
                     }
-                    $i_aff++;
-                    }
+                }
                 $i++;
                 //echo "<br/>";
                 //echo "<br/>";
