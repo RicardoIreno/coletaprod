@@ -1418,10 +1418,18 @@ class z3950 {
     
 }
 
-class testadores {
-    public static function existe($variavel){
+class Testadores
+{
+    public static function existe($variavel)
+    {
         $resultado_teste = ((isset($variavel) && $variavel)? $variavel : '');
         return $resultado_teste;
+    }
+    public static function testDOI($DOI) 
+    {
+        $pattern = '/^10.\d{4,9}\/[-._;()\:A-Z0-9]+$/i';
+        $result_test_doi = preg_match($pattern, $DOI);
+        return $result_test_doi;
     }
 }
 

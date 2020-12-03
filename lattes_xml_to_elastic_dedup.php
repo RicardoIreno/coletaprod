@@ -8,16 +8,16 @@ function comparaprod_doi($doi)
     global $index;
     global $type;
     global $client;
-    $query["query"]["query_string"]["query"] = "doi:\"$doi\"";
+    $query['query']['query_string']['query'] = "doi:\"$doi\"";
     $params = [];
-    $params["index"] = $index;
-    $params["type"] = $type;
-    $params["size"] = 100;
-    $params["body"] = $query;
+    $params['index'] = $index;
+    $params['type'] = $type;
+    $params['size'] = 100;
+    $params['body'] = $query;
     $cursor = $client->search($params);
-    $total = $cursor["hits"]["total"]["value"];
-    echo "Resultado total com DOI: $total";
-    foreach ($cursor["hits"]["hits"] as $r) {
+    $total = $cursor['hits']['total']['value'];
+    echo 'Resultado total com DOI: '.$total.'';
+    foreach ($cursor['hits']['hits'] as $r) {
         echo '<br/>';
         echo ''.$r['_id'].' - '.$r['_source']['name'].' - '.$r['_source']['datePublished'].' - '.$r['_source']['tipo'].'';
         echo '<br/>';
@@ -26,71 +26,115 @@ function comparaprod_doi($doi)
     if ($total >= 1) {
         return $r;
     } else {
-        return "Não encontrado";
+        return 'Não encontrado';
     }
 }
 
-function comparaprod_title($title, $year, $type)
+function comparaprod_title($title, $year, $type, $isPartOf_name = '', $publisher_organization_name = '')
 {
     global $index;
     global $client;
     $cleanTitle = preg_replace('/[\x00-\x1F\x7F]/', '', $title);
 
-    $query = '
-    {
-        "min_score": 10,
-        "query":{
-            "bool": {
-                "should": [
-                    {
-                        "multi_match" : {
-                            "query":      "'.str_replace('"', '', $cleanTitle).'",
-                            "type":       "cross_fields",
-                            "fields":     [ "name" ],
-                            "minimum_should_match": "95%"
-                         }
-                    },
-                    {
-                        "multi_match" : {
-                            "query":      "'.$year.'",
-                            "type":       "best_fields",
-                            "fields":     [ "datePublished" ],
-                            "minimum_should_match": "100%"
-                        }
-                    },
-                    {
-                        "multi_match" : {
-                            "query":      "'.$type.'",
-                            "type":       "best_fields",
-                            "fields":     [ "tipo" ],
-                            "minimum_should_match": "100%"
-                        }
-                    }
-                ],
-                "minimum_should_match" : 3
-            }
-        }
+    $query['min_score'] = 10;
+    $query['query']['bool']['should'][0]['multi_match']['query'] = str_replace('"', '', $cleanTitle);
+    $query['query']['bool']['should'][0]['multi_match']['type'] = 'cross_fields';
+    $query['query']['bool']['should'][0]['multi_match']['fields'][] = 'name';
+    $query['query']['bool']['should'][0]['multi_match']['minimum_should_match'] = '100%';
+
+    $query['query']['bool']['should'][1]['multi_match']['query'] = $year;
+    $query['query']['bool']['should'][1]['multi_match']['type'] = 'best_fields';
+    $query['query']['bool']['should'][1]['multi_match']['fields'][] = 'datePublished';
+    $query['query']['bool']['should'][1]['multi_match']['minimum_should_match'] = '100%';
+
+    $query['query']['bool']['should'][2]['multi_match']['query'] = $type;
+    $query['query']['bool']['should'][2]['multi_match']['type'] = 'best_fields';
+    $query['query']['bool']['should'][2]['multi_match']['fields'][] = 'tipo';
+    $query['query']['bool']['should'][2]['multi_match']['minimum_should_match'] = '100%';
+
+    $query['query']['bool']['minimum_should_match'] = 3;
+
+    if ($isPartOf_name != '') {
+        $query['query']['bool']['should'][3]['multi_match']['query'] = $isPartOf_name;
+        $query['query']['bool']['should'][3]['multi_match']['type'] = 'best_fields';
+        $query['query']['bool']['should'][3]['multi_match']['fields'][] = 'isPartOf.name';
+        $query['query']['bool']['should'][3]['multi_match']['minimum_should_match'] = '100%';
+
+        $query['query']['bool']['minimum_should_match'] = 4;
     }
-    ';
+
+    if ($publisher_organization_name != '') {
+        $query['query']['bool']['should'][3]['multi_match']['query'] = $publisher_organization_name;
+        $query['query']['bool']['should'][3]['multi_match']['type'] = 'best_fields';
+        $query['query']['bool']['should'][3]['multi_match']['fields'][] = 'publisher.organization.name';
+        $query['query']['bool']['should'][3]['multi_match']['minimum_should_match'] = '100%';
+
+        $query['query']['bool']['minimum_should_match'] = 4;
+    }
+
+    // $query = '
+    // {
+    //     "min_score": 10,
+    //     "query":{
+    //         "bool": {
+    //             "should": [
+    //                 {
+    //                     "multi_match" : {
+    //                         "query":      "'.str_replace('"', '', $cleanTitle).'",
+    //                         "type":       "cross_fields",
+    //                         "fields":     [ "name" ],
+    //                         "minimum_should_match": "100%"
+    //                      }
+    //                 },
+    //                 {
+    //                     "multi_match" : {
+    //                         "query":      "'.$year.'",
+    //                         "type":       "best_fields",
+    //                         "fields":     [ "datePublished" ],
+    //                         "minimum_should_match": "100%"
+    //                     }
+    //                 },
+    //                 {
+    //                     "multi_match" : {
+    //                         "query":      "'.$isPartOf_name.'",
+    //                         "type":       "best_fields",
+    //                         "fields":     [ "isPartOf.name" ],
+    //                         "minimum_should_match": "100%"
+    //                     }
+    //                 },
+    //                 {
+    //                     "multi_match" : {
+    //                         "query":      "'.$type.'",
+    //                         "type":       "best_fields",
+    //                         "fields":     [ "tipo" ],
+    //                         "minimum_should_match": "100%"
+    //                     }
+    //                 }
+    //             ],
+    //             "minimum_should_match" : 3
+    //         }
+    //     }
+    // }
+    // ';
 
     $params = [];
-    $params["index"] = $index;
-    $params["size"] = 1000;
-    $params["body"] = $query;
+    $params['index'] = $index;
+    $params['size'] = 1000;
+    $params['body'] = $query;
     $cursor = $client->search($params);
-    $total = $cursor["hits"]["total"]["value"];
-    echo "Resultado total com Titulo: $total";
+    $total = $cursor['hits']['total']['value'];
+    echo 'Resultado total com Titulo: '.$total.'';
 
-    foreach ($cursor["hits"]["hits"] as $r) {
+    foreach ($cursor['hits']['hits'] as $r) {
         echo '<br/>';
-        echo ''.$r['_id'].' - '.$r["_source"]["name"].' - '.$r["_source"]["datePublished"].' - '.$r["_source"]["tipo"].'';
+        echo ''.$r['_id'].' - '.$r['_source']['name'].' - '.$r['_source']['datePublished'].' - '.$r['_source']['tipo'].'';
         echo '<br/>';
     }
 
     if ($total >= 1) {
         return $r;
     } else {
-        return "Não encontrado";
+        return 'Não encontrado';
     }
 
 }
@@ -101,22 +145,22 @@ function processaAutoresLattes($autores_array)
     if (is_array($autores_array)) {
         foreach ($autores_array as $autor) {
             $autor = get_object_vars($autor);
-            $array_result["doc"]["author"][$i]["person"]["name"] = $autor["@attributes"]["NOME-COMPLETO-DO-AUTOR"];
-            $array_result["doc"]["author"][$i]["nomeParaCitacao"] = $autor["@attributes"]["NOME-PARA-CITACAO"];
-            $array_result["doc"]["author"][$i]["ordemDeAutoria"] = $autor["@attributes"]["ORDEM-DE-AUTORIA"];
-            if (isset($autor["@attributes"]["NRO-ID-CNPQ"])) {
-                $array_result["doc"]["author"][$i]["nroIdCnpq"] = $autor["@attributes"]["NRO-ID-CNPQ"];
+            $array_result['doc']['author'][$i]['person']['name'] = $autor['@attributes']['NOME-COMPLETO-DO-AUTOR'];
+            $array_result['doc']['author'][$i]['nomeParaCitacao'] = $autor['@attributes']['NOME-PARA-CITACAO'];
+            $array_result['doc']['author'][$i]['ordemDeAutoria'] = $autor['@attributes']['ORDEM-DE-AUTORIA'];
+            if (isset($autor['@attributes']['NRO-ID-CNPQ'])) {
+                $array_result['doc']['author'][$i]['nroIdCnpq'] = $autor['@attributes']['NRO-ID-CNPQ'];
             }
 
             $i++;
         }
     } else {
         $autor = get_object_vars($autores_array);
-        $array_result["doc"]["author"][$i]["person"]["name"] = $autor["@attributes"]["NOME-COMPLETO-DO-AUTOR"];
-        $array_result["doc"]["author"][$i]["nomeParaCitacao"] = $autor["@attributes"]["NOME-PARA-CITACAO"];
-        $array_result["doc"]["author"][$i]["ordemDeAutoria"] = $autor["@attributes"]["ORDEM-DE-AUTORIA"];
-        if (isset($autor["@attributes"]["NRO-ID-CNPQ"])) {
-            $array_result["doc"]["author"][$i]["nroIdCnpq"] = $autor["@attributes"]["NRO-ID-CNPQ"];
+        $array_result['doc']['author'][$i]['person']['name'] = $autor['@attributes']['NOME-COMPLETO-DO-AUTOR'];
+        $array_result['doc']['author'][$i]['nomeParaCitacao'] = $autor['@attributes']['NOME-PARA-CITACAO'];
+        $array_result['doc']['author'][$i]['ordemDeAutoria'] = $autor['@attributes']['ORDEM-DE-AUTORIA'];
+        if (isset($autor['@attributes']['NRO-ID-CNPQ'])) {
+            $array_result['doc']['author'][$i]['nroIdCnpq'] = $autor['@attributes']['NRO-ID-CNPQ'];
         }
     }
 
@@ -133,8 +177,8 @@ function processaPalavrasChaveLattes($palavras_chave)
 {
     $palavras_chave = get_object_vars($palavras_chave);
     foreach (range(1, 6) as $number) {
-        if (!empty($palavras_chave["@attributes"]["PALAVRA-CHAVE-$number"])) {
-            $array_result["doc"]["about"][] = $palavras_chave["@attributes"]["PALAVRA-CHAVE-$number"];
+        if (!empty($palavras_chave['@attributes']['PALAVRA-CHAVE-$number'])) {
+            $array_result['doc']['about'][] = $palavras_chave['@attributes']["PALAVRA-CHAVE-$number"];
         }
     }
     if (isset($array_result)) {
@@ -147,7 +191,7 @@ function processaPalavrasChaveFormacaoLattes($palavras_chave)
 {
     $palavras_chave = get_object_vars($palavras_chave);
     foreach (range(1, 6) as $number) {
-        if (!empty($palavras_chave["@attributes"]["PALAVRA-CHAVE-$number"])) {
+        if (!empty($palavras_chave['@attributes']["PALAVRA-CHAVE-$number"])) {
             $array_result["palavras_chave"][] = $palavras_chave["@attributes"]["PALAVRA-CHAVE-$number"];
         }
     }
@@ -298,7 +342,7 @@ function upsert($doc, $sha256){
             }
         }
     } else {
-        $result_comparaprod = comparaprod_title($doc['doc']['name'], $doc['doc']['datePublished'], $doc["doc"]["tipo"]);
+        $result_comparaprod = comparaprod_title($doc['doc']['name'], $doc['doc']['datePublished'], $doc["doc"]["tipo"], $doc["doc"]["isPartOf"]["name"], $doc["doc"]["publisher"]["organization"]["name"]);
         if (is_array($result_comparaprod)) {
             $result_comparaprod['_source']['vinculo'] = array_merge($result_comparaprod['_source']['vinculo'], $doc['doc']["vinculo"]);
             $result_comparaprod['_source']['vinculo'] = my_array_unique($result_comparaprod['_source']['vinculo']);
@@ -870,7 +914,9 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TRABALHOS-EM-EVENTOS'})) {
         $doc["doc"]["lattes"]["meioDeDivulgacao"] = $dadosBasicosDoTrabalho['@attributes']["MEIO-DE-DIVULGACAO"];
         $doc["doc"]["url"] = $dadosBasicosDoTrabalho['@attributes']["HOME-PAGE-DO-TRABALHO"];
         $doc["doc"]["lattes"]["flagRelevancia"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-RELEVANCIA"];
-        $doc["doc"]["doi"] = $dadosBasicosDoTrabalho['@attributes']["DOI"];
+        if (Testadores::testDOI($dadosBasicosDoTrabalho['@attributes']["DOI"] === true)) {
+            $doc["doc"]["doi"] = $dadosBasicosDoTrabalho['@attributes']["DOI"];
+        }
         $doc["doc"]["lattes"]["flagDivulgacaoCientifica"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-DIVULGACAO-CIENTIFICA"];
 
         $doc["doc"]["detalhamentoDoTrabalho"]["classificacaoDoEvento"] = $detalhamentoDoTrabalho['@attributes']["CLASSIFICACAO-DO-EVENTO"];
@@ -975,7 +1021,9 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'ARTIGOS-PUBLICADOS'})) {
         $doc["doc"]["lattes"]["meioDeDivulgacao"] = $dadosBasicosDoTrabalho['@attributes']["MEIO-DE-DIVULGACAO"];
         $doc["doc"]["url"] = $dadosBasicosDoTrabalho['@attributes']["HOME-PAGE-DO-TRABALHO"];
         $doc["doc"]["lattes"]["flagRelevancia"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-RELEVANCIA"];
-        $doc["doc"]["doi"] = $dadosBasicosDoTrabalho['@attributes']["DOI"];
+        if (Testadores::testDOI($dadosBasicosDoTrabalho['@attributes']["DOI"] === true)) {
+            $doc["doc"]["doi"] = $dadosBasicosDoTrabalho['@attributes']["DOI"];
+        }
         $doc["doc"]["alternateName"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-DO-ARTIGO-INGLES"];
         $doc["doc"]["lattes"]["flagDivulgacaoCientifica"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-DIVULGACAO-CIENTIFICA"];
 
@@ -1079,7 +1127,9 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'LIVROS-E-CAPITULOS'})) {
             $doc["doc"]["lattes"]["meioDeDivulgacao"] = $dadosBasicosDoTrabalho['@attributes']["MEIO-DE-DIVULGACAO"];
             $doc["doc"]["url"] = $dadosBasicosDoTrabalho['@attributes']["HOME-PAGE-DO-TRABALHO"];
             $doc["doc"]["lattes"]["flagRelevancia"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-RELEVANCIA"];
-            $doc["doc"]["doi"] = $dadosBasicosDoTrabalho['@attributes']["DOI"];
+            if (Testadores::testDOI($dadosBasicosDoTrabalho['@attributes']["DOI"] === true)) {
+                $doc["doc"]["doi"] = $dadosBasicosDoTrabalho['@attributes']["DOI"];
+            }
             $doc["doc"]["alternateName"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-DO-LIVRO-INGLES"];
             $doc["doc"]["lattes"]["flagDivulgacaoCientifica"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-DIVULGACAO-CIENTIFICA"];
 
@@ -1179,7 +1229,9 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'LIVROS-E-CAPITULOS'})) {
             $doc["doc"]["lattes"]["meioDeDivulgacao"] = $dadosBasicosDoTrabalho['@attributes']["MEIO-DE-DIVULGACAO"];
             $doc["doc"]["url"] = $dadosBasicosDoTrabalho['@attributes']["HOME-PAGE-DO-TRABALHO"];
             $doc["doc"]["lattes"]["flagRelevancia"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-RELEVANCIA"];
-            $doc["doc"]["doi"] = $dadosBasicosDoTrabalho['@attributes']["DOI"];
+            if (Testadores::testDOI($dadosBasicosDoTrabalho['@attributes']["DOI"] === true)) {
+                $doc["doc"]["doi"] = $dadosBasicosDoTrabalho['@attributes']["DOI"];
+            }
             $doc["doc"]["alternateName"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-DO-CAPITULO-DO-LIVRO-INGLES"];
             if (isset($dadosBasicosDoTrabalho['@attributes']["FLAG-DIVULGACAO-CIENTIFICA"])){
                 $doc["doc"]["lattes"]["flagDivulgacaoCientifica"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-DIVULGACAO-CIENTIFICA"];
@@ -1282,7 +1334,9 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TEXTOS-EM-JORNAIS-OU-REVISTA
         $doc["doc"]["lattes"]["meioDeDivulgacao"] = $dadosBasicosDoTrabalho['@attributes']["MEIO-DE-DIVULGACAO"];
         $doc["doc"]["url"] = $dadosBasicosDoTrabalho['@attributes']["HOME-PAGE-DO-TRABALHO"];
         $doc["doc"]["lattes"]["flagRelevancia"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-RELEVANCIA"];
-        $doc["doc"]["doi"] = $dadosBasicosDoTrabalho['@attributes']["DOI"];
+        if (Testadores::testDOI($dadosBasicosDoTrabalho['@attributes']["DOI"] === true)) {
+            $doc["doc"]["doi"] = $dadosBasicosDoTrabalho['@attributes']["DOI"];
+        }
         $doc["doc"]["alternateName"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-DO-TEXTO-INGLES"];
         $doc["doc"]["lattes"]["flagDivulgacaoCientifica"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-DIVULGACAO-CIENTIFICA"];
 
@@ -1385,7 +1439,9 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
             $doc["doc"]["lattes"]["meioDeDivulgacao"] = $dadosBasicosDoTrabalho['@attributes']["MEIO-DE-DIVULGACAO"];
             $doc["doc"]["url"] = $dadosBasicosDoTrabalho['@attributes']["HOME-PAGE-DO-TRABALHO"];
             $doc["doc"]["lattes"]["flagRelevancia"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-RELEVANCIA"];
-            $doc["doc"]["doi"] = $dadosBasicosDoTrabalho['@attributes']["DOI"];
+            if (Testadores::testDOI($dadosBasicosDoTrabalho['@attributes']["DOI"] === true)) {
+                $doc["doc"]["doi"] = $dadosBasicosDoTrabalho['@attributes']["DOI"];
+            }
             $doc["doc"]["alternateName"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-INGLES"];
 
             $doc["doc"]["formacaoInstrumental"] = $detalhamentoDoTrabalho['@attributes']["FORMACAO-INSTRUMENTAL"];
@@ -1478,7 +1534,9 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
             $doc["doc"]["lattes"]["meioDeDivulgacao"] = $dadosBasicosDoTrabalho['@attributes']["MEIO-DE-DIVULGACAO"];
             $doc["doc"]["url"] = $dadosBasicosDoTrabalho['@attributes']["HOME-PAGE-DO-TRABALHO"];
             $doc["doc"]["lattes"]["flagRelevancia"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-RELEVANCIA"];
-            $doc["doc"]["doi"] = $dadosBasicosDoTrabalho['@attributes']["DOI"];
+            if (Testadores::testDOI($dadosBasicosDoTrabalho['@attributes']["DOI"] === true)) {
+                $doc["doc"]["doi"] = $dadosBasicosDoTrabalho['@attributes']["DOI"];
+            }
             $doc["doc"]["alternateName"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-INGLES"];
 
             $doc["doc"]["originalName"] = $detalhamentoDoTrabalho['@attributes']["TITULO-DA-OBRA-ORIGINAL"];
@@ -1581,7 +1639,9 @@ if (isset($curriculo->{'PRODUCAO-TECNICA'})) {
             $doc["doc"]["lattes"]["meioDeDivulgacao"] = $dadosBasicosDoTrabalho['@attributes']["MEIO-DE-DIVULGACAO"];
             $doc["doc"]["url"] = $dadosBasicosDoTrabalho['@attributes']["HOME-PAGE-DO-TRABALHO"];
             $doc["doc"]["lattes"]["flagRelevancia"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-RELEVANCIA"];
-            $doc["doc"]["doi"] = $dadosBasicosDoTrabalho['@attributes']["DOI"];
+            if (Testadores::testDOI($dadosBasicosDoTrabalho['@attributes']["DOI"] === true)) {
+                $doc["doc"]["doi"] = $dadosBasicosDoTrabalho['@attributes']["DOI"];
+            }
             $doc["doc"]["alternateName"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-DO-SOFTWARE-INGLES"];
             $doc["doc"]["lattes"]["flagDivulgacaoCientifica"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-DIVULGACAO-CIENTIFICA"];
             $doc["doc"]["lattes"]["flagPotencialInovacao"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-POTENCIAL-INOVACAO"];
@@ -1774,7 +1834,9 @@ if (isset($curriculo->{'OUTRA-PRODUCAO'})) {
                 $doc["doc"]["lattes"]["meioDeDivulgacao"] = $dadosBasicosDoTrabalho['@attributes']["MEIO-DE-DIVULGACAO"];
                 $doc["doc"]["url"] = $dadosBasicosDoTrabalho['@attributes']["HOME-PAGE"];
                 $doc["doc"]["lattes"]["flagRelevancia"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-RELEVANCIA"];
-                $doc["doc"]["doi"] = $dadosBasicosDoTrabalho['@attributes']["DOI"];
+                if (Testadores::testDOI($dadosBasicosDoTrabalho['@attributes']["DOI"] === true)) {
+                    $doc["doc"]["doi"] = $dadosBasicosDoTrabalho['@attributes']["DOI"];
+                }
                 $doc["doc"]["alternateName"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-INGLES"];
 
                 $doc["doc"]["lattes"]["tipoDeEvento"] = $detalhamentoDoTrabalho['@attributes']["TIPO-DE-EVENTO"];
