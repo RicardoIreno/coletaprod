@@ -51,7 +51,8 @@ Class TrabalhosEmEventosLattes extends LattesWork
 $obra = new TrabalhosEmEventosLattes();
 $obra->name = 'Teste';
 $obra->lattes["natureza"] = 'Natureza';
-print("<pre>".print_r($obra, true)."</pre>");
+$obra_array = (array) $obra; 
+print("<pre>".print_r($obra_array, true)."</pre>");
 
 $json = json_encode(get_object_vars($obra), JSON_PRETTY_PRINT);
 echo "JSON:<br/>";
