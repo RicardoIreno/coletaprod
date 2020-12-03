@@ -36,7 +36,7 @@ function comparaprod_title($title, $year, $type, $isPartOf_name = '', $publisher
     global $client;
     $cleanTitle = preg_replace('/[\x00-\x1F\x7F]/', '', $title);
 
-    $query['min_score'] = 10;
+    $query['min_score'] = 50;
     $query['query']['bool']['should'][0]['multi_match']['query'] = str_replace('"', '', $cleanTitle);
     $query['query']['bool']['should'][0]['multi_match']['type'] = 'cross_fields';
     $query['query']['bool']['should'][0]['multi_match']['fields'][] = 'name';
@@ -55,6 +55,7 @@ function comparaprod_title($title, $year, $type, $isPartOf_name = '', $publisher
     $query['query']['bool']['minimum_should_match'] = 3;
 
     if ($isPartOf_name != '') {
+        echo "<br/>Tem periódico: $isPartOf_name<br/>";
         $query['query']['bool']['should'][3]['multi_match']['query'] = $isPartOf_name;
         $query['query']['bool']['should'][3]['multi_match']['type'] = 'best_fields';
         $query['query']['bool']['should'][3]['multi_match']['fields'][] = 'isPartOf.name';
@@ -64,6 +65,7 @@ function comparaprod_title($title, $year, $type, $isPartOf_name = '', $publisher
     }
 
     if ($publisher_organization_name != '') {
+        echo "<br/>Tem editora: $publisher_organization_name<br/>";
         $query['query']['bool']['should'][3]['multi_match']['query'] = $publisher_organization_name;
         $query['query']['bool']['should'][3]['multi_match']['type'] = 'best_fields';
         $query['query']['bool']['should'][3]['multi_match']['fields'][] = 'publisher.organization.name';
@@ -126,8 +128,9 @@ function comparaprod_title($title, $year, $type, $isPartOf_name = '', $publisher
     echo 'Resultado total com Titulo: '.$total.'';
 
     foreach ($cursor['hits']['hits'] as $r) {
+        //print("<pre>".print_r($r, true)."</pre>");
         echo '<br/>';
-        echo ''.$r['_id'].' - '.$r['_source']['name'].' - '.$r['_source']['datePublished'].' - '.$r['_source']['tipo'].'';
+        echo 'Score: '.$r['_score'].' - '.$r['_id'].' - '.$r['_source']['name'].' - '.$r['_source']['datePublished'].' - '.$r['_source']['tipo'].'';
         echo '<br/>';
     }
 
