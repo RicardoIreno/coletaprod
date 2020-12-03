@@ -961,7 +961,7 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TRABALHOS-EM-EVENTOS'})) {
         $doc["doc"]["vinculo"] = construct_vinculo($_REQUEST, $curriculo);
 
         // Constroi sha256
-        if (!empty($doc['doc']['doi'])){
+        if (!empty($doc['doc']['doi'])) {
             $sha256 = hash('sha256', ''.$doc['doc']['doi'].'');
         } else {
             $sha_array[] = $doc["doc"]["lattes_ids"][0];

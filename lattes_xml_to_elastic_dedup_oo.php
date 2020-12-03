@@ -3,27 +3,58 @@
 require 'inc/config.php';
 require 'inc/functions.php';
 
-Class Obra
+Class Work
 {
+    public $type;
+    public $source;
+    public $lattes_ids;
+    public $tag;
     public $name;
-    function __construct() {
+    public $author;
+    public $datePublished;
+    public $language;
+    public $url;
+    public $doi;
+    public $pageStart;
+    public $pageEnd;
+
+    function __construct()
+    {
         $this->type = "Work";
     }
-    function getDoc() {
+    function getDoc()
+    {
         $doc = $this->type;
         return $doc;
     }
 }
 
-Class TrabalhosEmEventos extends Obra
+Class LattesWork extends Work
 {
-    function __construct() {
-
+    public $lattes;
+    public function __construct()
+    {
+        parent::__construct();
+        $this->source = "Base Lattes";
     }
 }
 
-$obra = new Obra();
+Class TrabalhosEmEventosLattes extends LattesWork
+{
+    public $detalhamentoDoTrabalho;
+    function __construct()
+    {
+        parent::__construct();
+    }
+}
+
+$obra = new TrabalhosEmEventosLattes();
+$obra->name = 'Teste';
+$obra->lattes["natureza"] = 'Natureza';
 print("<pre>".print_r($obra, true)."</pre>");
-var_dump($obra);
+
+$json = json_encode(get_object_vars($obra), JSON_PRETTY_PRINT);
+echo "JSON:<br/>";
+print("<pre>".print_r($json, true)."</pre>");
 
 ?>
