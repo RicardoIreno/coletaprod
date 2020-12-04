@@ -32,15 +32,12 @@ function comparaprod_doi($doi)
 
 function comparaprod_title($doc)
 {
-    //print("<pre>".print_r($doc, true)."</pre>");
     global $index;
     global $client;
-    //$cleanTitle = preg_replace('/[^\\p{L}\\p{Nd}]/', '', $doc["doc"]["name"]);
-    $cleanTitle = $doc["doc"]["name"];
 
     $query['query']['bool']['filter'][]["term"]["tipo.keyword"] = $doc["doc"]["tipo"];
     $query['query']['bool']['filter'][]["term"]["datePublished.keyword"] = $doc["doc"]["datePublished"];
-    $query["query"]["bool"]["must"]["query_string"]["query"] = '(name:"'.$cleanTitle.'"^5) AND (author:'.$doc["doc"]['author'][0]['person']['name'].')';
+    $query["query"]["bool"]["must"]["query_string"]["query"] = '(name:"'.$doc["doc"]["name"].'"^5) AND (author:'.$doc["doc"]['author'][0]['person']['name'].')';
 
     if (!empty($doc['doc']['isPartOf']['name'])) {
         $query['query']['bool']['filter'][]["term"]["isPartOf.name.keyword"] = $doc['doc']['isPartOf']['name'];
@@ -51,99 +48,16 @@ function comparaprod_title($doc)
     if (!empty($doc['doc']['isbn'])) {
         $query['query']['bool']['filter'][]["term"]["isbn.keyword"] = $doc['doc']['isbn'];
     }
-    //print("<pre>".print_r($query, true)."</pre>");
-    //$query['min_score'] = 10;
-
-    // $query['query']['bool']['should'][0]['multi_match']['query'] = str_replace('"', '', $cleanTitle);
-    // $query['query']['bool']['should'][0]['multi_match']['type'] = 'cross_fields';
-    // $query['query']['bool']['should'][0]['multi_match']['fields'][] = 'name';
-    // $query['query']['bool']['should'][0]['multi_match']['minimum_should_match'] = '100%';
-
-    // $query['query']['bool']['should'][1]['multi_match']['query'] = $doc["doc"]["datePublished"];
-    // $query['query']['bool']['should'][1]['multi_match']['type'] = 'best_fields';
-    // $query['query']['bool']['should'][1]['multi_match']['fields'][] = 'datePublished';
-    // $query['query']['bool']['should'][1]['multi_match']['minimum_should_match'] = '100%';
-
-    // $query['query']['bool']['should'][2]['multi_match']['query'] = $doc["doc"]["tipo"];
-    // $query['query']['bool']['should'][2]['multi_match']['type'] = 'best_fields';
-    // $query['query']['bool']['should'][2]['multi_match']['fields'][] = 'tipo';
-    // $query['query']['bool']['should'][2]['multi_match']['minimum_should_match'] = '100%';
-
-    // $query['query']['bool']['minimum_should_match'] = 3;
-
-    // if (isset($doc['doc']['isPartOf']['name'])) {
-    //     $query['query']['bool']['should'][3]['multi_match']['query'] = $doc['doc']['isPartOf']['name'];
-    //     $query['query']['bool']['should'][3]['multi_match']['type'] = 'best_fields';
-    //     $query['query']['bool']['should'][3]['multi_match']['fields'][] = 'isPartOf.name';
-    //     $query['query']['bool']['should'][3]['multi_match']['minimum_should_match'] = '100%';
-
-    //     $query['query']['bool']['minimum_should_match'] = 4;
-    // }
-
-    // if (isset($doc['doc']['publisher']['organization']['name'])) {
-    //     $query['query']['bool']['should'][3]['multi_match']['query'] = $doc['doc']['publisher']['organization']['name'];
-    //     $query['query']['bool']['should'][3]['multi_match']['type'] = 'best_fields';
-    //     $query['query']['bool']['should'][3]['multi_match']['fields'][] = 'publisher.organization.name';
-    //     $query['query']['bool']['should'][3]['multi_match']['minimum_should_match'] = '100%';
-
-    //     $query['query']['bool']['minimum_should_match'] = 4;
-    // }
-
-    // $query = '
-    // {
-    //     "min_score": 10,
-    //     "query":{
-    //         "bool": {
-    //             "should": [
-    //                 {
-    //                     "multi_match" : {
-    //                         "query":      "'.str_replace('"', '', $cleanTitle).'",
-    //                         "type":       "cross_fields",
-    //                         "fields":     [ "name" ],
-    //                         "minimum_should_match": "100%"
-    //                      }
-    //                 },
-    //                 {
-    //                     "multi_match" : {
-    //                         "query":      "'.$year.'",
-    //                         "type":       "best_fields",
-    //                         "fields":     [ "datePublished" ],
-    //                         "minimum_should_match": "100%"
-    //                     }
-    //                 },
-    //                 {
-    //                     "multi_match" : {
-    //                         "query":      "'.$isPartOf_name.'",
-    //                         "type":       "best_fields",
-    //                         "fields":     [ "isPartOf.name" ],
-    //                         "minimum_should_match": "100%"
-    //                     }
-    //                 },
-    //                 {
-    //                     "multi_match" : {
-    //                         "query":      "'.$type.'",
-    //                         "type":       "best_fields",
-    //                         "fields":     [ "tipo" ],
-    //                         "minimum_should_match": "100%"
-    //                     }
-    //                 }
-    //             ],
-    //             "minimum_should_match" : 3
-    //         }
-    //     }
-    // }
-    // ';
 
     $params = [];
     $params['index'] = $index;
-    $params['size'] = 1000;
+    $params['size'] = 10;
     $params['body'] = $query;
     $cursor = $client->search($params);
     $total = $cursor['hits']['total']['value'];
     echo 'Resultado total com Titulo: '.$total.'';
 
     foreach ($cursor['hits']['hits'] as $r) {
-        //print("<pre>".print_r($r, true)."</pre>");
         echo '<br/>';
         echo 'Score: '.$r['_score'].' - '.$r['_id'].' - '.$r['_source']['name'].' - '.$r['_source']['datePublished'].' - '.$r['_source']['tipo'].'';
         echo '<br/>';
