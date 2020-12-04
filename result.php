@@ -244,7 +244,7 @@ $get_data = $_GET;
                 <hr>
                 <!-- Limitar por data - Início -->
                 <form action="result.php?" method="GET">
-                    <h5 class="mt-3">Filtrar por ano de publicação</h5>
+                    <h5 class="mt-3">Filtrar por intervalo de data de publicação</h5>
                     <?php 
                         parse_str($_SERVER["QUERY_STRING"], $parsedQuery);
                         foreach ($parsedQuery as $k => $v) {
