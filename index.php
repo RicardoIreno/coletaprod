@@ -75,47 +75,32 @@
                 </div>
                 <small id="searchHelp" class="form-text text-muted">Dica: Use * para busca por radical. Ex: biblio*.</small>
                 <small id="searchHelp" class="form-text text-muted">Dica 2: Para buscas exatas, coloque entre ""</small>
-                <small id="searchHelp" class="form-text text-muted">Dica 3: Você também pode usar operadores booleanos: AND, OR</small>
-            </form>
-            <form class="mt-3" action="result.php" method="get">
-                <label for="tagSearch">Pesquisa por TAG</label>
-                <div class="input-group">
-                    <input type="text" placeholder="Pesquise por tag" class="form-control" id="tagSearch" name="filter[]" value="tag:">
-                    <div class="input-group-append">
-                        <button type="submit" class="btn btn-primary">Buscar TAG</button>
-                    </div>
-                </div>
-            </form>
-            <form class="mt-3" action="result_autores.php" method="get">
-                <label for="authorSearch">Pesquisa por autor - <a href="result_autores.php">Ver todos</a></label>
-                <div class="input-group">
-                    <input type="text" placeholder="Pesquise por nome do autor ou Número funcional" class="form-control" id="authorSearch" name="search">
-                    <input type="hidden" name="fields[]" value="nome_completo">
-                    <input type="hidden" name="fields[]" value="nome_em_citacoes_bibliograficas">
-                    <input type="hidden" name="fields[]" value="endereco.endereco_profissional.nomeInstituicaoEmpresa">
-                    <div class="input-group-append">
-                        <button type="submit" class="btn btn-primary">Buscar autor</button>
-                    </div>   
-                </div>
+                <small id="searchHelp" class="form-text text-muted">Dica 3: Você também pode usar operadores booleanos: OR</small>
             </form>
         </div>
-    </div>    
+    </div>
 
     <div class="container">
         <div class="row">
             <div class="col-md-3">
+            <h2>Nome do PPG</h2>
+                <ul class="list-group">
+                    <?php paginaInicial::unidade_inicio("vinculo.ppg_nome"); ?>
+                </ul>
+                <!--
                 <h2 class="uk-h3">Unidade</h2>
                 <ul class="list-group">
-                    <?php paginaInicial::unidade_inicio("vinculo.unidade"); ?>
+                    < ?php paginaInicial::unidade_inicio("vinculo.unidade"); ?>
                 </ul>
                 <h2>Departamento</h2>
                 <ul class="list-group">
-                    <?php paginaInicial::unidade_inicio("vinculo.departamento"); ?>
+                    < ?php paginaInicial::unidade_inicio("vinculo.departamento"); ?>
                 </ul>
                 <h2>Tags</h2>
                 <ul class="list-group">
-                    <?php paginaInicial::unidade_inicio("tag"); ?>
+                    < ?php paginaInicial::unidade_inicio("tag"); ?>
                 </ul>
+                -->
             </div>
             <div class="col-md-3">
                 <h2>Tipo de vínculo</h2>
@@ -126,10 +111,7 @@
                 <ul class="list-group">
                     <?php paginaInicial::tipo_inicio(); ?>
                 </ul>
-                <h2>Nome do PPG</h2>
-                <ul class="list-group">
-                    <?php paginaInicial::unidade_inicio("vinculo.ppg_nome"); ?>
-                </ul>
+
             </div>
             <div class="col-md-3">
                 <h2 class="uk-h3">Fonte</h2>

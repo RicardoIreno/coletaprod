@@ -13,7 +13,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Dashboards
-                    </a>                    
+                    </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <p class="dropdown-item">Usuário: dashboard / Senha: dashboard</p>
                     <?php if (isset($dashboard_lattes_producoes)): ?>
@@ -25,10 +25,11 @@
                     <?php if (isset($dashboard_source)): ?>
                         <a class="dropdown-item" href="<?php echo $dashboard_source ?>" target="_blank">Fonte</a>
                     </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="result_autores.php">Perfil dos autores</a>
+                    </li>
                     </div>
                 </li>
-
-
 
                 <?php endif ?>
             </ul>
