@@ -66,7 +66,7 @@
             </div>
 
              <form class="mt-3" action="result.php">
-                <label for="searchQuery">Pesquisa por trabalho - <a href="result.php">Ver todos</a></label>
+                <label for="searchQuery">Pesquisa por trabalho - <a href="result.php">Navegar por todos</a></label>
                 <div class="input-group">
                     <input type="text" name="search" class="form-control" id="searchQuery" aria-describedby="searchHelp" placeholder="Pesquise por termo ou autor">
                     <div class="input-group-append">
@@ -83,7 +83,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-            <h2>Nome do PPG</h2>
+            <h2>Nome do Programa de Pós-Graduação</h2>
                 <ul class="list-group">
                     <?php paginaInicial::unidade_inicio("vinculo.ppg_nome"); ?>
                 </ul>

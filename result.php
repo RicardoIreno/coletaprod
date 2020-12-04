@@ -242,76 +242,6 @@ $get_data = $_GET;
                 <hr>
                 <h3>Refinar resultados</h3>
                 <hr>
-                <?php
-                    $facets = new facets();
-                    $facets->query = $result_get['query'];
-
-                    if (!isset($_GET)) {
-                        $_GET = null;
-                    }   
-                    
-                    $facets->facet(basename(__FILE__), "vinculo.ppg_nome", 100, "Nome do PPG", null, "_term", $_GET);
-                    $facets->facet(basename(__FILE__), "vinculo.campus", 100, "Campus", null, "_term", $_GET);
-                    $facets->facet(basename(__FILE__), "vinculo.desc_gestora", 100, "Gestora", null, "_term", $_GET);
-                    $facets->facet(basename(__FILE__), "vinculo.unidade", 100, "Unidade", null, "_term", $_GET);
-                    $facets->facet(basename(__FILE__), "vinculo.departamento", 100, "Departamento", null, "_term", $_GET);
-                    $facets->facet(basename(__FILE__), "vinculo.divisao", 100, "Divisão", null, "_term", $_GET);
-                    $facets->facet(basename(__FILE__), "vinculo.secao", 100, "Seção", null, "_term", $_GET);
-                    $facets->facet(basename(__FILE__), "vinculo.tipvin", 100, "Tipo de vínculo", null, "_term", $_GET);
-                    $facets->facet(basename(__FILE__), "vinculo.genero", 100, "Genero", null, "_term", $_GET);
-                    $facets->facet(basename(__FILE__), "vinculo.desc_nivel", 100, "Nível", null, "_term", $_GET);
-                    $facets->facet(basename(__FILE__), "vinculo.desc_curso", 100, "Curso", null, "_term", $_GET);                    
-                    
-                    $facets->facet(basename(__FILE__), "Lattes.natureza", 100, "Natureza", null, "_term", $_GET);
-                    $facets->facet(basename(__FILE__), "tipo", 100, "Tipo de material", null, "_term", $_GET);
-                    $facets->facet(basename(__FILE__), "tag", 100, "Tag", null, "_term", $_GET);
-                    $facets->facet(basename(__FILE__), "match.tag", 100, "Tag de correspondência", null, "_term", $_GET);
-                    $facets->facet(basename(__FILE__), "match.string", 100, "Tag de correspondência", null, "_term", $_GET);
-                    
-                    $facets->facet(basename(__FILE__), "author.person.name", 100, "Nome completo do autor", null, "_term", $_GET);
-                    $facets->facet(basename(__FILE__), "lattes_ids", 100, "Número do lattes", null, "_term", $_GET);
-                    $facets->facet(basename(__FILE__), "vinculo.nome",100,"Nome do autor vinculado à instituição",null,"_term",$_GET);
-                    
-                    $facets->facet(basename(__FILE__), "country",200,"País de publicação",null,"_term",$_GET);
-                    $facets->facet(basename(__FILE__), "datePublished",120,"Ano de publicação","desc","_term",$_GET);
-                    $facets->facet(basename(__FILE__), "language",40,"Idioma",null,"_term",$_GET);
-                    $facets->facet(basename(__FILE__), "Lattes.meioDeDivulgacao",100,"Meio de divulgação",null,"_term",$_GET);
-                    $facets->facet(basename(__FILE__), "about",100,"Palavras-chave",null,"_term",$_GET);
-                    $facets->facet(basename(__FILE__), "agencia_de_fomento",100,"Agências de fomento",null,"_term",$_GET);
-
-                    $facets->facet(basename(__FILE__), "Lattes.flagRelevancia",100,"Relevância",null,"_term",$_GET);
-                    $facets->facet(basename(__FILE__), "Lattes.flagDivulgacaoCientifica",100,"Divulgação científica",null,"_term",$_GET);
-                    
-                    $facets->facet(basename(__FILE__), "area_do_conhecimento.nomeGrandeAreaDoConhecimento", 100, "Nome da Grande Área do Conhecimento", null, "_term", $_GET);
-                    $facets->facet(basename(__FILE__), "area_do_conhecimento.nomeDaAreaDoConhecimento", 100, "Nome da Área do Conhecimento", null, "_term", $_GET);
-                    $facets->facet(basename(__FILE__), "area_do_conhecimento.nomeDaSubAreaDoConhecimento", 100, "Nome da Sub Área do Conhecimento", null, "_term", $_GET);
-                    $facets->facet(basename(__FILE__), "area_do_conhecimento.nomeDaEspecialidade", 100, "Nome da Especialidade", null, "_term", $_GET);
-                    
-                    $facets->facet(basename(__FILE__), "trabalhoEmEventos.classificacaoDoEvento", 100, "Classificação do evento", null, "_term", $_GET); 
-                    $facets->facet(basename(__FILE__), "EducationEvent.name", 100, "Nome do evento", null, "_term", $_GET);
-                    $facets->facet(basename(__FILE__), "publisher.organization.location", 100, "Cidade do evento", null, "_term", $_GET);
-                    $facets->facet(basename(__FILE__), "trabalhoEmEventos.anoDeRealizacao", 100, "Ano de realização do evento", null, "_term", $_GET);
-                    $facets->facet(basename(__FILE__), "trabalhoEmEventos.tituloDosAnaisOuProceedings", 100, "Título dos anais", null, "_term", $_GET);
-                    $facets->facet(basename(__FILE__), "trabalhoEmEventos.isbn", 100, "ISBN dos anais", null, "_term", $_GET);
-                    $facets->facet(basename(__FILE__), "trabalhoEmEventos.nomeDaEditora", 100, "Editora dos anais", null, "_term", $_GET);
-                    $facets->facet(basename(__FILE__), "trabalhoEmEventos.cidadeDaEditora", 100, "Cidade da editora", null, "_term", $_GET);
-
-                    $facets->facet(basename(__FILE__), "midiaSocialWebsiteBlog.formacao_maxima", 100, "Formação máxima - Blogs e mídias sociais", null, "_term", $_GET);
-                    
-                    $facets->facet(basename(__FILE__), "isPartOf.name", 100, "Título do periódico", null, "_term", $_GET);
-
-                    $facets->facetExistsField(basename(__FILE__), "ExternalData.crossref.message.title", 100, "Dados coletados da Crossref?", null, "_term", $_GET);
-                    $facets->facet(basename(__FILE__), "ExternalData.crossref.message.author.affiliation.name", 100, "Crossref - Afiliação", null, "_term", $_GET);
-                    $facets->facet(basename(__FILE__), "ExternalData.crossref.message.funder.name", 100, "Crossref - Agência de financiamento", null, "_term", $_GET);
-                    $facets->facet(basename(__FILE__), "ExternalData.crossref.message.funder.DOI", 100, "Crossref - Agência de financiamento - DOI", null, "_term", $_GET);
-                    $facets->facet_range(basename(__FILE__), "ExternalData.crossref.message.is-referenced-by-count", 100, "Crossref - Número de citações obtidas", null, "_term", $_GET);
-                    $facets->facet(basename(__FILE__), "doi", 100, "DOI", null, "_term", $_GET);
-
-                    $facets->facet(basename(__FILE__), "concluido", 100, "Concluído", null, "_term", $_GET);
-                    $facets->facet(basename(__FILE__), "bdpi.existe", 100, "Está na FONTE?", null, "_term", $_GET);
-
-                ?>
-                </ul>
                 <!-- Limitar por data - Início -->
                 <form action="result.php?" method="GET">
                     <h5 class="mt-3">Filtrar por ano de publicação</h5>
@@ -350,8 +280,66 @@ $get_data = $_GET;
                         <input type="text" class="form-control" id="finalYear" name="finalYear" pattern="\d{4}" placeholder="Ex. 2020" value="<?php echo $finalYearValue; ?>">
                     </div>
                     <button type="submit" class="btn btn-primary">Filtrar</button>
-                </form>   
+                </form>
+                <hr>
                 <!-- Limitar por data - Fim -->
+                <?php
+                    $facets = new facets();
+                    $facets->query = $result_get['query'];
+
+                    if (!isset($_GET)) {
+                        $_GET = null;
+                    }   
+                    
+                    $facets->facet(basename(__FILE__), "vinculo.ppg_nome", 100, "Nome do PPG", null, "_term", $_GET);
+                    $facets->facet(basename(__FILE__), "tipo", 100, "Tipo de material", null, "_term", $_GET);
+                    $facets->facet(basename(__FILE__), "author.person.name", 100, "Nome completo do autor", null, "_term", $_GET);
+                    $facets->facet(basename(__FILE__), "lattes_ids", 100, "Número do lattes", null, "_term", $_GET);
+                    $facets->facet(basename(__FILE__), "vinculo.nome", 100, "Nome do autor vinculado à instituição", null, "_term", $_GET);
+                    
+                    $facets->facet(basename(__FILE__), "country", 200, "País de publicação", null, "_term", $_GET);
+                    $facets->facet(basename(__FILE__), "datePublished", 120, "Ano de publicação", "desc", "_term", $_GET);
+                    $facets->facet(basename(__FILE__), "language", 40, "Idioma", null, "_term", $_GET);
+                    $facets->facet(basename(__FILE__), "lattes.natureza", 100, "Natureza", null, "_term", $_GET);
+                    $facets->facet(basename(__FILE__), "lattes.meioDeDivulgacao", 100, "Meio de divulgação", null, "_term", $_GET);
+                    $facets->facet(basename(__FILE__), "about", 100, "Palavras-chave", null, "_term", $_GET);
+                    $facets->facet(basename(__FILE__), "agencia_de_fomento", 100, "Agências de fomento", null, "_term", $_GET);
+                    $facets->facet(basename(__FILE__), "area_do_conhecimento.nomeGrandeAreaDoConhecimento", 100, "Nome da Grande Área do Conhecimento", null, "_term", $_GET);
+                    //$facets->facet(basename(__FILE__), "area_do_conhecimento.nomeDaAreaDoConhecimento", 100, "Nome da Área do Conhecimento", null, "_term", $_GET);
+                    //$facets->facet(basename(__FILE__), "area_do_conhecimento.nomeDaSubAreaDoConhecimento", 100, "Nome da Sub Área do Conhecimento", null, "_term", $_GET);
+                    //$facets->facet(basename(__FILE__), "area_do_conhecimento.nomeDaEspecialidade", 100, "Nome da Especialidade", null, "_term", $_GET);
+                    
+                    $facets->facet(basename(__FILE__), "trabalhoEmEventos.classificacaoDoEvento", 100, "Classificação do evento", null, "_term", $_GET); 
+                    $facets->facet(basename(__FILE__), "EducationEvent.name", 100, "Nome do evento", null, "_term", $_GET);
+                    $facets->facet(basename(__FILE__), "publisher.organization.location", 100, "Cidade", null, "_term", $_GET);
+                    $facets->facet(basename(__FILE__), "trabalhoEmEventos.anoDeRealizacao", 100, "Ano de realização do evento", null, "_term", $_GET);
+                    $facets->facet(basename(__FILE__), "trabalhoEmEventos.tituloDosAnaisOuProceedings", 100, "Título dos anais", null, "_term", $_GET);
+                    $facets->facet(basename(__FILE__), "trabalhoEmEventos.isbn", 100, "ISBN dos anais", null, "_term", $_GET);
+                    $facets->facet(basename(__FILE__), "trabalhoEmEventos.nomeDaEditora", 100, "Editora dos anais", null, "_term", $_GET);
+                    $facets->facet(basename(__FILE__), "trabalhoEmEventos.cidadeDaEditora", 100, "Cidade da editora", null, "_term", $_GET);
+
+                    $facets->facet(basename(__FILE__), "isPartOf.name", 100, "Título do periódico", null, "_term", $_GET);
+
+                    $facets->facetExistsField(basename(__FILE__), "ExternalData.crossref.message.title", 100, "Dados coletados da Crossref?", null, "_term", $_GET);
+                    $facets->facet(basename(__FILE__), "ExternalData.crossref.message.author.affiliation.name", 100, "Crossref - Afiliação", null, "_term", $_GET);
+                    $facets->facet(basename(__FILE__), "ExternalData.crossref.message.funder.name", 100, "Crossref - Agência de financiamento", null, "_term", $_GET);
+                    $facets->facet(basename(__FILE__), "ExternalData.crossref.message.funder.DOI", 100, "Crossref - Agência de financiamento - DOI", null, "_term", $_GET);
+                    $facets->facet_range(basename(__FILE__), "ExternalData.crossref.message.is-referenced-by-count", 100, "Crossref - Número de citações obtidas", null, "_term", $_GET);
+                    $facets->facet(basename(__FILE__), "doi", 100, "DOI", null, "_term", $_GET);
+
+                    $facets->facet(basename(__FILE__), "vinculo.campus", 100, "Campus", null, "_term", $_GET);
+                    $facets->facet(basename(__FILE__), "vinculo.desc_gestora", 100, "Gestora", null, "_term", $_GET);
+                    $facets->facet(basename(__FILE__), "vinculo.unidade", 100, "Unidade", null, "_term", $_GET);
+                    $facets->facet(basename(__FILE__), "vinculo.departamento", 100, "Departamento", null, "_term", $_GET);
+                    $facets->facet(basename(__FILE__), "vinculo.divisao", 100, "Divisão", null, "_term", $_GET);
+                    $facets->facet(basename(__FILE__), "vinculo.secao", 100, "Seção", null, "_term", $_GET);
+                    $facets->facet(basename(__FILE__), "vinculo.tipvin", 100, "Tipo de vínculo", null, "_term", $_GET);
+                    $facets->facet(basename(__FILE__), "vinculo.genero", 100, "Genero", null, "_term", $_GET);
+                    $facets->facet(basename(__FILE__), "vinculo.desc_nivel", 100, "Nível", null, "_term", $_GET);
+                    $facets->facet(basename(__FILE__), "vinculo.desc_curso", 100, "Curso", null, "_term", $_GET);
+
+                ?>
+                </ul>
                 <hr>
                 <h3>Exportar</h3>
                 <p><a href="tools/export.php?<?php echo $_SERVER["QUERY_STRING"] ?>&format=ris">Exportar em formato RIS</a></p>
