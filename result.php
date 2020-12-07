@@ -296,6 +296,7 @@ $get_data = $_GET;
                     $facets->facet(basename(__FILE__), "author.person.name", 100, "Nome completo do autor", null, "_term", $_GET);
                     //$facets->facet(basename(__FILE__), "lattes_ids", 100, "ID do Lattes", null, "_term", $_GET);
                     $facets->facet(basename(__FILE__), "vinculo.nome", 100, "Nome do autor vinculado à instituição", null, "_term", $_GET);
+                    $facets->facet(basename(__FILE__), "vinculo.lattes_id", 100, "ID do Lattes", null, "_term", $_GET);
                     
                     $facets->facet(basename(__FILE__), "country", 200, "País de publicação", null, "_term", $_GET);
                     $facets->facet(basename(__FILE__), "datePublished", 120, "Ano de publicação", "desc", "_term", $_GET);
