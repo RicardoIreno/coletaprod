@@ -68,7 +68,7 @@
              <form class="mt-3" action="result.php">
                 <label for="searchQuery">Pesquisa por trabalho - <a href="result.php">Navegar por todos</a></label>
                 <div class="input-group">
-                    <input type="text" name="search" class="form-control" id="searchQuery" aria-describedby="searchHelp" placeholder="Pesquise por termo ou autor">
+                    <input type="text" name="search" class="form-control" id="searchQuery" aria-describedby="searchHelp" placeholder="Pesquise por termo, autor ou ID do Lattes (16 dígitos)">
                     <div class="input-group-append">
                         <button type="submit" class="btn btn-primary">Pesquisar</button>
                     </div>
