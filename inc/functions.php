@@ -576,8 +576,27 @@ class paginaInicial {
         $total_dont_have_lattes = $cursorTotal["count"];      
 
         return number_format((float)($total_dont_have_lattes / $total) * 100, 2, '.', '');
-    }     
-    
+    }
+
+    static function filter_select($field) {
+        global $client;
+        global $index;
+        $query['query']['bool']['filter']['term']['type.keyword'] = "Work";
+        $query['aggs']['group_by_state']['terms']['field'] = "$field.keyword";
+        $query['aggs']['group_by_state']['terms']['size'] = 200;
+        $params = [
+            'index' => $index,
+            'size'=> 0,
+            'body' => $query
+        ];
+        $response = $client->search($params);
+        echo '<select class="form-control" name="filter[]" aria-label="Filtro">
+        <option selected>Selecione uma opção para filtrar</option>';
+        foreach ($response["aggregations"]["group_by_state"]["buckets"] as $facets) {
+            echo '<option value="'.$field.':'.$facets['key'].'">'.$facets['key'].'</option>';
+        }
+        echo '</select>';
+    }
 }
 
 class DadosInternos {
