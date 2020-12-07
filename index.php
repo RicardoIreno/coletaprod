@@ -75,7 +75,7 @@
                 </div>
                 <small id="searchHelp" class="form-text text-muted">Dica: Use * para busca por radical. Ex: biblio*.</small>
                 <small id="searchHelp" class="form-text text-muted">Dica 2: Para buscas exatas, coloque entre ""</small>
-                <small id="searchHelp" class="form-text text-muted">Dica 3: Você também pode usar operadores booleanos: OR</small>
+                <small id="searchHelp" class="form-text text-muted">Dica 3: Por padrão, o sistema utiliza o operador booleano OR. Caso necessite deixar a busca mais específica, utilize o operador AND</small>
             </form>
         </div>
     </div>
