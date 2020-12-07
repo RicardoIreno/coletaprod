@@ -569,7 +569,7 @@ class paginaInicial {
         global $client;
         $body["index"] = $index_cv;
         $cursor = $client->count($body);
-        $total = $cursor["count"];        
+        $total = $cursor["count"];
 
         $body["body"]["query"]["bool"]["must_not"]["exists"]["field"] = "lattesID";
         $cursorTotal = $client->count($body);
@@ -591,7 +591,7 @@ class paginaInicial {
         ];
         $response = $client->search($params);
         echo '<select class="form-control" name="filter[]" aria-label="Filtro">
-        <option selected>Selecione uma opção para filtrar</option>';
+        <option value="" selected>Selecione uma opção para filtrar</option>';
         foreach ($response["aggregations"]["group_by_state"]["buckets"] as $facets) {
             echo '<option value="'.$field.':'.$facets['key'].'">'.$facets['key'].'</option>';
         }
