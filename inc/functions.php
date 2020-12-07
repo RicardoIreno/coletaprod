@@ -581,10 +581,10 @@ class paginaInicial {
     static function filter_select($field) {
         global $client;
         global $index;
-        $query['sort']["$field.keyword"] = "asc";
         $query['query']['bool']['filter']['term']['type.keyword'] = "Work";
         $query['aggs']['group_by_state']['terms']['field'] = "$field.keyword";
         $query['aggs']['group_by_state']['terms']['size'] = 200;
+        $query["aggs"]['group_by_state']["terms"]["order"]['_term'] = "asc";
         $params = [
             'index' => $index,
             'size'=> 0,
