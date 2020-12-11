@@ -109,7 +109,7 @@ function processaPalavrasChaveLattes($palavras_chave)
 {
     $palavras_chave = get_object_vars($palavras_chave);
     foreach (range(1, 6) as $number) {
-        if (!empty($palavras_chave['@attributes']['PALAVRA-CHAVE-$number'])) {
+        if (!empty($palavras_chave['@attributes']["PALAVRA-CHAVE-$number"])) {
             $array_result['doc']['about'][] = $palavras_chave['@attributes']["PALAVRA-CHAVE-$number"];
         }
     }
