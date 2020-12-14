@@ -61,12 +61,10 @@
 
             <?php isset($error_connection_message) ? print_r($error_connection_message) : "" ?>
 
-            <div class="alert alert-warning" role="alert">
-                O Coletaprod é uma ferramenta que agrega informações de diversas fontes, mas não realiza um processamento posterior nelas. Antes de fazer um uso da informação, é preciso ter ciência de que há registros duplicados e outras inconsistências que devem ser avaliadas.
-            </div>
+            <div class="alert alert-warning" role="alert">O COPROD é uma ferramenta de busca da produção docente e discente (pós-graduação) desenvolvida pela UNIFESP. Ela agrega informações de diversas fontes, sendo possível buscá-las por meio de palavras, pesquisadores e Programas de Pós-Graduação, com a utilização de filtros bem como de termos conjugados. Aqui se acede à informação na forma de artigos, livros (e capítulos), além de trabalhos apresentados em eventos. Como se tratam de informações não processadas, duplicações podem ocasionalmente aparecer.</div>
 
              <form class="mt-3" action="result.php">
-                <label for="searchQuery">Pesquisa por trabalho - <a href="result.php">Navegar por todos</a></label>
+                <label for="searchQuery">Pesquisa por palavras - <a href="result.php">Navegar por todos</a></label>
                 <div class="input-group">
                     <input type="text" name="search" class="form-control" id="searchQuery" aria-describedby="searchHelp" placeholder="Pesquise por termo, autor ou ID do Lattes (16 dígitos)">
                     <?php paginaInicial::filter_select("vinculo.ppg_nome"); ?>
