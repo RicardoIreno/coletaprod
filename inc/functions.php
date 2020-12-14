@@ -558,7 +558,7 @@ class paginaInicial {
 
         $response = $client->search($params);
         foreach ($response["aggregations"]["group_by_state"]["buckets"] as $facets) {
-            echo '<li class="list-group-item"><a href="result.php?filter[]=type:&quot;Work&quot;&filter[]='.$field.':&quot;'.$facets['key'].'&quot;">'.$facets['key'].' ('.number_format($facets['doc_count'],0,',','.').')</a></li>';
+            echo '<li class="list-group-item"><a href="result.php?filter[]='.$field.':&quot;'.$facets['key'].'&quot;">'.$facets['key'].' ('.number_format($facets['doc_count'],0,',','.').')</a></li>';
         }   
 
     }
@@ -581,7 +581,6 @@ class paginaInicial {
     static function filter_select($field) {
         global $client;
         global $index;
-        $query['query']['bool']['filter']['term']['type.keyword'] = "Work";
         $query['aggs']['group_by_state']['terms']['field'] = "$field.keyword";
         $query['aggs']['group_by_state']['terms']['size'] = 200;
         $query["aggs"]['group_by_state']["terms"]["order"]['_term'] = "asc";

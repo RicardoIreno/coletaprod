@@ -14,16 +14,6 @@ if (!empty($_POST)) {
     header("Refresh:0");
 }
 
-if (isset($_GET["filter"])) {
-    if (!in_array("type:\"Work\"", $_GET["filter"])) {
-        $_GET["filter"][] = "type:\"Work\"";
-    }
-} else {
-    $_GET["filter"][] = "type:\"Work\"";
-}
-
-
-
 if (isset($fields)) {
     $_GET["fields"] = $fields;
 }
