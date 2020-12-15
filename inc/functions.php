@@ -1751,8 +1751,8 @@ Class ActiveFilters
             $getUnsetSearch = $get;
             unset($getUnsetSearch["search"]);
             unset($getUnsetSearch["page"]);
-            $url_push = '/result.php?'.http_build_query($getUnsetSearch);
-            $activeFilters[] = '<li class="list-inline-item"><a class="text-danger" href="http://'.$url_push.'" title="Remover filtro">'.$get["search"].' <span aria-hidden="true">&times;</span></a></li>';
+            $url_push = $url_base.'/result.php?'.http_build_query($getUnsetSearch);
+            $activeFilters[] = '<li class="list-inline-item"><a class="text-danger" href="'.$url_push.'" title="Remover filtro">'.$get["search"].' <span aria-hidden="true">&times;</span></a></li>';
         }
 
         if (!empty($get["filter"])) {
@@ -1763,8 +1763,8 @@ Class ActiveFilters
                     unset($filters_array["filter"][$pos]);
                     $filters_array["filter"] = array_filter($filters_array["filter"]);
                     unset($filters_array["page"]);
-                    $url_push = '/result.php?'.http_build_query($filters_array);
-                    $activeFilters[] = '<li class="list-inline-item"><a class="text-success" href="http://'.$url_push.'" title="Remover filtro">'.$filters.' <span aria-hidden="true">&times;</span></a></li>';
+                    $url_push = $url_base.'/result.php?'.http_build_query($filters_array);
+                    $activeFilters[] = '<li class="list-inline-item"><a class="text-success" href="'.$url_push.'" title="Remover filtro">'.$filters.' <span aria-hidden="true">&times;</span></a></li>';
                 }
             }
         }
