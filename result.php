@@ -77,7 +77,7 @@ $get_data = $_GET;
                     <!-- List of filters - Start -->
                     <?php
                     if (!empty($_SERVER["QUERY_STRING"])) {
-                        $filters = ActiveFilters::Filters($_GET);
+                        $filters = ActiveFilters::Filters($_GET, $url_base);
                         echo implode("", $filters);
                     }
                     ?>

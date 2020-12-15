@@ -1741,7 +1741,7 @@ class Exporters
 
 Class ActiveFilters
 {
-    public static function Filters($get)
+    public static function Filters($get, $url_base)
     {
         $activeFilters[] = '<div class="alert alert-info mt-3" role="alert">';
         $activeFilters[] = 'Filtros ativos:&nbsp;&nbsp;';
