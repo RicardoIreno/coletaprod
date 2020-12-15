@@ -7,7 +7,6 @@
 <html lang="pt-br" dir="ltr">
     <head>
         <?php
-            print_r($_SERVER);            
             include('inc/config.php');
             include('inc/meta-header-new.php');
             include('inc/functions.php');
