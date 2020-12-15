@@ -1751,7 +1751,7 @@ Class ActiveFilters
             $getUnsetSearch = $get;
             unset($getUnsetSearch["search"]);
             unset($getUnsetSearch["page"]);
-            $url_push = $_SERVER['SERVER_NAME'].$_SERVER["SCRIPT_NAME"].'?'.http_build_query($getUnsetSearch);
+            $url_push = 'result.php?'.http_build_query($getUnsetSearch);
             $activeFilters[] = '<li class="list-inline-item"><a class="text-danger" href="http://'.$url_push.'" title="Remover filtro">'.$get["search"].' <span aria-hidden="true">&times;</span></a></li>';
         }
 
@@ -1763,7 +1763,7 @@ Class ActiveFilters
                     unset($filters_array["filter"][$pos]);
                     $filters_array["filter"] = array_filter($filters_array["filter"]);
                     unset($filters_array["page"]);
-                    $url_push = $_SERVER['SERVER_NAME'].$_SERVER["SCRIPT_NAME"].'?'.http_build_query($filters_array);
+                    $url_push = 'result.php?'.http_build_query($filters_array);
                     $activeFilters[] = '<li class="list-inline-item"><a class="text-success" href="http://'.$url_push.'" title="Remover filtro">'.$filters.' <span aria-hidden="true">&times;</span></a></li>';
                 }
             }
