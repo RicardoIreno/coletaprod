@@ -1739,4 +1739,54 @@ class Exporters
 
 }
 
+Class ActiveFilters
+{
+    public static function Filters($get)
+    {
+        $activeFilters[] = '<div class="alert alert-info mt-3" role="alert">';
+        $activeFilters[] = 'Filtros ativos:&nbsp;&nbsp;';
+        $activeFilters[] = '<ul class="list-inline">';
+
+        if (!empty($get["search"])) {
+            $getUnsetSearch = $get;
+            unset($getUnsetSearch["search"]);
+            unset($getUnsetSearch["page"]);
+            $url_push = $_SERVER['SERVER_NAME'].$_SERVER["SCRIPT_NAME"].'?'.http_build_query($getUnsetSearch);
+            $activeFilters[] = '<li class="list-inline-item"><a class="text-danger" href="http://'.$url_push.'" title="Remover filtro">'.$get["search"].' <span aria-hidden="true">&times;</span></a></li>';
+        }
+
+        if (!empty($get["filter"])) {
+            foreach ($get["filter"] as $filters) {
+                if (!empty($filters)) {
+                    $filters_array = $get;
+                    $pos = array_search($filters, $filters_array["filter"]);
+                    unset($filters_array["filter"][$pos]);
+                    $filters_array["filter"] = array_filter($filters_array["filter"]);
+                    unset($filters_array["page"]);
+                    $url_push = $_SERVER['SERVER_NAME'].$_SERVER["SCRIPT_NAME"].'?'.http_build_query($filters_array);
+                    $activeFilters[] = '<li class="list-inline-item"><a class="text-success" href="http://'.$url_push.'" title="Remover filtro">'.$filters.' <span aria-hidden="true">&times;</span></a></li>';
+                }
+            }
+        }
+
+        if (!empty($get["notFilter"])) {
+            $notFilterText = sizeof($get["notFilter"]) > 1 ? $t->gettext('Removidos') : $t->gettext('Removido');
+            $activeFilters[] = '<span class="not-filter"> '. $notFilterText . ': </span>';
+            foreach ($get["notFilter"] as $notFilters) {
+                $notFiltersArray[] = $notFilters;
+                $name_field = explode(":", $notFilters);
+                $notFilters = str_replace($name_field[0].":", "", $notFilters);
+                $diff["notFilter"] = array_diff($get["notFilter"], $notFiltersArray);
+                $url_push = $_SERVER['SERVER_NAME'].$_SERVER["SCRIPT_NAME"].'?'.http_build_query($diff);
+                $activeFilters[] = '<li class="list-inline-item"><a href="http://'.$url_push.'" title="Remover filtro">'.$notFilters.' <span aria-hidden="true">&times;</span></span></a></li>';
+                unset($notFiltersArray);
+            }
+        }
+
+        $activeFilters[] = '</ul></div>';
+
+        return $activeFilters;
+    }
+}
+
 ?>

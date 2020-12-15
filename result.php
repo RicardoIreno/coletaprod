@@ -75,50 +75,12 @@ $get_data = $_GET;
 
 
                     <!-- List of filters - Start -->
-                    <?php if (!empty($_SERVER["QUERY_STRING"])) : ?>
-                        <?php echo '<div class="alert alert-info mt-3" role="alert">
-                        Filtros ativos:&nbsp;&nbsp;'
-                        ?>
-                        <?php
-                        if (!empty($_GET["search"][0])) {
-                            $querySearchArray[] = $_GET["search"];
-                            $name_field = explode(":", $_GET["search"]);
-                            $querySearch = str_replace($name_field[0].":", "", $_GET["search"]);
-                            $diff["search"] = array_diff((array)$_GET["search"], $querySearchArray);
-                            $url_push = $_SERVER['SERVER_NAME'].$_SERVER["SCRIPT_NAME"].'?'.http_build_query($diff);
-                            echo '<a href="http://'.$url_push.'" title="Remover filtro">'.$_GET["search"].' <span aria-hidden="true">&times;</span></a>&nbsp;&nbsp;&nbsp;&nbsp;';
-                            unset($querySearchArray);
-                        }
-
-                        if (!empty($_GET["filter"])) {
-                            foreach ($_GET["filter"] as $filters) {
-                                $filters_array[] = $filters;
-                                $name_field = explode(":", $filters);
-                                $filters = str_replace($name_field[0].":", "", $filters);
-                                $diff["filter"] = array_diff($_GET["filter"], $filters_array);
-                                $url_push = $_SERVER['SERVER_NAME'].$_SERVER["SCRIPT_NAME"].'?'.http_build_query($diff);
-                                echo '<a href="http://'.$url_push.'" title="Remover filtro">'.str_replace('"', '', $filters).' <span aria-hidden="true">&times;</span></a>&nbsp;&nbsp;&nbsp;&nbsp;';
-                                unset($filters_array);
-                            }
-                        }
-
-                        if (!empty($_GET["notFilter"])) {
-                            $notFilterText = sizeof($_GET["notFilter"]) > 1 ? $t->gettext('Removidos') : $t->gettext('Removido');
-                            echo '<span class="not-filter"> '. $notFilterText . ': </span>';
-                            foreach ($_GET["notFilter"] as $notFilters) {
-                                $notFiltersArray[] = $notFilters;
-                                $name_field = explode(":", $notFilters);
-                                $notFilters = str_replace($name_field[0].":", "", $notFilters);
-                                $diff["notFilter"] = array_diff($_GET["notFilter"], $notFiltersArray);
-                                $url_push = $_SERVER['SERVER_NAME'].$_SERVER["SCRIPT_NAME"].'?'.http_build_query($diff);
-                                echo '<a href="http://'.$url_push.'" title="Remover filtro">'.$notFilters.' <span aria-hidden="true">&times;</span></span></a>&nbsp;&nbsp;&nbsp;&nbsp;';
-                                unset($notFiltersArray);
-                            }
-                        }
-                        ?>
-                        <?php echo '</div>'; ?>
-                    
-                    <?php endif;?>
+                    <?php
+                    if (!empty($_SERVER["QUERY_STRING"])) {
+                        $filters = ActiveFilters::Filters($_GET);
+                        echo implode("", $filters);
+                    }
+                    ?>
                     <!-- List of filters - End -->
                     
                     
