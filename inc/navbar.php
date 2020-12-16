@@ -26,7 +26,7 @@
                         <a class="dropdown-item" href="<?php echo $dashboard_source ?>" target="_blank">Fonte</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="result_autores.php">Perfil dos autores</a>
+                        <a class="nav-link" href="result_autores.php">Autores</a>
                     </li>
                     </div>
                 </li>

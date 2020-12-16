@@ -98,9 +98,9 @@ $get_data = $_GET;
                         <div class="card">
                             <div class="card-body">
 
-                                <h5 class="card-title"><a class="text-dark" href="<?php echo $r['_source']['url']; ?>"><?php echo $r["_source"]['nome_completo']; ?></a></h5>
-   
-                                <?php if (!empty($r["_source"]['resumo_cv']['texto_resumo_cv_rh'])) : ?>                                        
+                                <h5 class="card-title"><a class="text-dark" href="http://lattes.cnpq.br/<?php echo $r['_source']['lattesID']; ?>"><?php echo $r["_source"]['nome_completo']; ?></a></h5>
+                                <p><a class="text-dark" href='result.php?filter[]=vinculo.lattes_id:"<?php echo $r['_source']['lattesID']; ?>"'>Ver produções indexadas</p>
+                                <?php if (!empty($r["_source"]['resumo_cv']['texto_resumo_cv_rh'])) : ?>
                                     <p class="text-muted"><b>Resumo:</b> <?php echo $r["_source"]['resumo_cv']['texto_resumo_cv_rh'];?></p>
                                 <?php endif; ?>
 
@@ -185,29 +185,29 @@ $get_data = $_GET;
                 <form action="result.php?" method="GET">
                     <h5 class="mt-3">Filtrar por ano de publicação</h5>
                     <?php 
-                        parse_str($_SERVER["QUERY_STRING"], $parsedQuery);
-                        foreach ($parsedQuery as $k => $v) {
-                            if (is_array($v)) {
-                                foreach ($v as $v_unit) {
-                                    echo '<input type="hidden" name="'.$k.'[]" value="'.htmlentities($v_unit).'">';
-                                }
-                            } else {
-                                if ($k == "initialYear") {
-                                    $initialYearValue = $v;
-                                } elseif ($k == "finalYear") {
-                                    $finalYearValue = $v;
-                                } else {
-                                    echo '<input type="hidden" name="'.$k.'" value="'.htmlentities($v).'">';
-                                }                                    
+                    parse_str($_SERVER["QUERY_STRING"], $parsedQuery);
+                    foreach ($parsedQuery as $k => $v) {
+                        if (is_array($v)) {
+                            foreach ($v as $v_unit) {
+                                echo '<input type="hidden" name="'.$k.'[]" value="'.htmlentities($v_unit).'">';
                             }
+                        } else {
+                            if ($k == "initialYear") {
+                                $initialYearValue = $v;
+                            } elseif ($k == "finalYear") {
+                                $finalYearValue = $v;
+                            } else {
+                                echo '<input type="hidden" name="'.$k.'" value="'.htmlentities($v).'">';
+                            } 
                         }
+                    }
 
-                        if (!isset($initialYearValue)) {
-                            $initialYearValue = "";
-                        }                            
-                        if (!isset($finalYearValue)) {
-                            $finalYearValue = "";
-                        }
+                    if (!isset($initialYearValue)) {
+                        $initialYearValue = "";
+                    }
+                    if (!isset($finalYearValue)) {
+                        $finalYearValue = "";
+                    }
 
                     ?>
                     <div class="form-group">
