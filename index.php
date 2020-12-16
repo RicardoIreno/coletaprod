@@ -66,7 +66,7 @@
 
             <?php isset($error_connection_message) ? print_r($error_connection_message) : "" ?>
 
-            <div class="alert alert-warning" role="alert">O COPROD é uma ferramenta de busca da produção docente e discente (pós-graduação) desenvolvida pela UNIFESP. Ela agrega informações de diversas fontes, sendo possível buscá-las por meio de palavras, pesquisadores e Programas de Pós-Graduação, com a utilização de filtros bem como de termos conjugados. Aqui se acede à informação na forma de artigos, livros (e capítulos), além de trabalhos apresentados em eventos. Como se tratam de informações não processadas, duplicações podem ocasionalmente aparecer.</div>
+            <div class="alert alert-warning" role="alert">O COLETAPROD é uma ferramenta de busca da produção docente e discente (pós-graduação) desenvolvida pela UNIFESP. Ela agrega informações de diversas fontes, sendo possível buscá-las por meio de palavras, pesquisadores e Programas de Pós-Graduação, com a utilização de filtros bem como de termos conjugados. Aqui se acede à informação na forma de artigos, livros (e capítulos), além de trabalhos apresentados em eventos. Como se tratam de informações não processadas, duplicações podem ocasionalmente aparecer.</div>
 
              <form class="mt-3" action="result.php">
                 <label for="searchQuery">Pesquisa por palavras - <a href="result.php">Navegar por todos</a></label>
