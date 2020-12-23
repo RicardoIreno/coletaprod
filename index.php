@@ -86,14 +86,14 @@
                         <input type="text" class="form-control" id="finalYear" name="finalYear" pattern="\d{4}" placeholder="Ex. 2020" value="">
                     </div>
                 </div>
-
                 <div class="input-group-append">
                     <button type="submit" class="btn btn-primary">Pesquisar</button>
                 </div>
-                </div>
                 <small id="searchHelp" class="form-text text-muted">Dica: Use * para busca por radical. Ex: biblio*.</small>
                 <small id="searchHelp" class="form-text text-muted">Dica 2: Para buscas exatas, coloque entre "". Ex: "Direito civil"</small>
-                <small id="searchHelp" class="form-text text-muted">Dica 3: Por padrão, o sistema utiliza o operador booleano OR. Caso necessite deixar a busca mais específica, utilize o operador AND (em maiúsculo)</small>
+                <small id="searchHelp" class="form-text text-muted">Dica 3: Por padrão, o sistema utiliza o operador booleano OR. Caso necessite deixar a busca mais específica, utilize o operador AND (em maiúscula)</small>
+
+                </div>
             </form>
         </div>
     </div>
