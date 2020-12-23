@@ -24,7 +24,7 @@ try {
 /* Create index if not exists */
 if (isset($testIndex) && $testIndex == false) {
     Elasticsearch::createIndex($index, $client);
-    //Elasticsearch::mappingsIndex($index, $client);
+    Elasticsearch::mappingsIndex($index, $client);
 }
 
 /* Connect to Elasticsearch | Index CV */
@@ -73,6 +73,8 @@ if (isset($testIndexSource) && $testIndexSource == false) {
 }
 
 /* Definição de idioma */
+
+setlocale(LC_ALL, 'pt_BR');
 
 // if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
 //     if (empty($_SESSION['localeToUse'])) {
