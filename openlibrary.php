@@ -3,7 +3,7 @@
     <head>
         <?php 
             include('inc/config.php');             
-            include('inc/meta-header-new.php');
+            include('inc/meta-header.php');
             include('inc/functions.php');
 
         ?> 

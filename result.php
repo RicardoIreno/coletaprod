@@ -51,7 +51,7 @@ $get_data = $_GET;
 <html lang="en">
     <head>
         <?php
-            include('inc/meta-header-new.php'); 
+            include('inc/meta-header.php'); 
         ?>        
         <title>Coletaprod - Resultado da busca por trabalhos</title>
         
