@@ -92,8 +92,8 @@
                 </div>
                 </div>
                 <small id="searchHelp" class="form-text text-muted">Dica: Use * para busca por radical. Ex: biblio*.</small>
-                <small id="searchHelp" class="form-text text-muted">Dica 2: Para buscas exatas, coloque entre ""</small>
-                <small id="searchHelp" class="form-text text-muted">Dica 3: Por padrão, o sistema utiliza o operador booleano OR. Caso necessite deixar a busca mais específica, utilize o operador AND</small>
+                <small id="searchHelp" class="form-text text-muted">Dica 2: Para buscas exatas, coloque entre "". Ex: "Direito civil"</small>
+                <small id="searchHelp" class="form-text text-muted">Dica 3: Por padrão, o sistema utiliza o operador booleano OR. Caso necessite deixar a busca mais específica, utilize o operador AND (em maiúsculo)</small>
             </form>
         </div>
     </div>
