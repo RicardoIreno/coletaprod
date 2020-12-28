@@ -1,19 +1,16 @@
-<?php 
-    if ($_SERVER["REQUEST_URI"] == "/") {
-        header("Location: http://unifesp.br/coletaprod/index.php"); 
-    }
+<?php
+if ($_SERVER["REQUEST_URI"] == "/") {
+    header("Location: http://unifesp.br/coletaprod/index.php"); 
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br" dir="ltr">
     <head>
         <?php
-            include('inc/config.php');
-            include('inc/meta-header-new.php');
-            include('inc/functions.php');
-            
-            /* Define variables */
-            define('authorUSP','authorUSP');
-        ?> 
+            require 'inc/config.php';
+            require 'inc/meta-header.php';
+            require 'inc/functions.php';
+        ?>
         <title><?php echo $branch ?></title>
         <!-- Facebook Tags - START -->
         <meta property="og:locale" content="pt_BR">
@@ -59,14 +56,22 @@
     <?php require 'inc/navbar.php'; ?>
     <!-- /NAV --> 
 
+    
     <div class="jumbotron">
-        <div class="container bg-light p-5 rounded mt-5">
+    <br/>
+        <div class="container bg-light rounded p-5 mt-5 mb-5">
             <h1 class="display-5"><?php echo $branch; ?></h1>
             <p><?php echo $branch_description; ?></p>
 
             <?php isset($error_connection_message) ? print_r($error_connection_message) : "" ?>
 
-            <div class="alert alert-warning" role="alert">O COLETAPROD é uma ferramenta de busca da produção docente e discente (pós-graduação) desenvolvida pela UNIFESP. Ela agrega informações do Currículo Lattes (Docentes após a data de ingresso na UNIFESP e Discentes que ingressaram após 2014), sendo possível buscá-las por meio de palavras, pesquisadores e Programas de Pós-Graduação, com a utilização de filtros bem como de termos conjugados. Aqui se acede à informação na forma de artigos, livros (e capítulos), além de trabalhos apresentados em eventos. Como se tratam de informações não processadas, duplicações podem ocasionalmente aparecer.</div>
+            <div class="alert alert-warning" role="alert">
+                O COLETAPROD é uma ferramenta de busca da produção docente e discente (pós-graduação) desenvolvida pela UNIFESP. 
+                Ela agrega informações do Currículo Lattes (Docentes após a data de ingresso na UNIFESP e Discentes que ingressaram após 2014), 
+                sendo possível buscá-las por meio de palavras, pesquisadores e Programas de Pós-Graduação, com a utilização de filtros bem como de termos conjugados. 
+                Aqui se acede à informação na forma de artigos, livros (e capítulos), além de trabalhos apresentados em eventos. 
+                Como se tratam de informações não processadas, duplicações podem ocasionalmente aparecer.
+            </div>
 
              <form class="mt-3" action="result.php">
                 <label for="searchQuery">Pesquisa por palavras - <a href="result.php">Navegar por todos</a></label>
@@ -95,10 +100,12 @@
 
                 </div>
             </form>
+            <br/>
         </div>
+        
     </div>
 
-    <div class="container">
+    <div class="container mt-4">
         <div class="row">
             <div class="col-md-3">
             <h2>Nome do Programa de Pós-Graduação</h2>

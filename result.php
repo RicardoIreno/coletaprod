@@ -43,17 +43,17 @@ $params["from"] = $result_get['skip'];
 $cursor = $client->search($params);
 
 /*pagination - start*/
-$get_data = $_GET;    
-/*pagination - end*/      
+$get_data = $_GET;
+/*pagination - end*/
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <?php
-            include('inc/meta-header-new.php'); 
-        ?>        
-        <title>Coletaprod - Resultado da busca por trabalhos</title>
+            require 'inc/meta-header.php'; 
+        ?>
+        <title><?php echo $branch; ?> - Resultado da busca</title>
         
     </head>
     <body>
@@ -61,9 +61,9 @@ $get_data = $_GET;
         <!-- NAV -->
         <?php require 'inc/navbar.php'; ?>
         <!-- /NAV -->
-        <br/><br/><br/><br/>
+        <br/>
 
-        <main role="main">
+        <main role="main" class="mt-5">
             <div class="container">
 
             <div class="row">
@@ -95,7 +95,7 @@ $get_data = $_GET;
                                     <small id="searchHelp" class="form-text text-muted">Dica: Use * para busca por radical. Ex: biblio*.</small>
                                     <small id="searchHelp" class="form-text text-muted">Dica 2: Para buscas exatas, coloque entre ""</small>
                                     <small id="searchHelp" class="form-text text-muted">Dica 3: Você também pode usar operadores booleanos: AND, OR</small>
-                                </div>                       
+                                </div>
                                 <button type="submit" class="btn btn-primary">Pesquisar</button>
                                 
                             </form>
@@ -285,21 +285,23 @@ $get_data = $_GET;
                 </form>
                 <hr>
                 <!-- Limitar por data - Fim -->
+
+                <!-- Facetas - Início -->
+                <div class="accordion" id="facets">
                 <?php
                     $facets = new facets();
                     $facets->query = $result_get['query'];
 
                     if (!isset($_GET)) {
                         $_GET = null;
-                    }   
-                    
+                    }
+
                     $facets->facet(basename(__FILE__), "vinculo.ppg_nome", 100, "Nome do PPG", null, "_term", $_GET);
                     $facets->facet(basename(__FILE__), "tipo", 100, "Tipo de material", null, "_term", $_GET);
                     $facets->facet(basename(__FILE__), "author.person.name", 100, "Nome completo do autor", null, "_term", $_GET);
-                    //$facets->facet(basename(__FILE__), "lattes_ids", 100, "ID do Lattes", null, "_term", $_GET);
                     $facets->facet(basename(__FILE__), "vinculo.nome", 100, "Nome do autor vinculado à instituição", null, "_term", $_GET);
                     $facets->facet(basename(__FILE__), "vinculo.lattes_id", 100, "ID do Lattes", null, "_term", $_GET);
-                    
+
                     $facets->facet(basename(__FILE__), "country", 200, "País de publicação", null, "_term", $_GET);
                     $facets->facet(basename(__FILE__), "datePublished", 120, "Ano de publicação", "desc", "_term", $_GET);
                     $facets->facet(basename(__FILE__), "language", 40, "Idioma", null, "_term", $_GET);
