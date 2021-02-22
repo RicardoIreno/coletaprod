@@ -128,7 +128,7 @@ $get_data = $_GET;
                                 <p class="text-muted"><b>Autores:</b>
                                     <?php if (!empty($r["_source"]['author'])) : ?>
                                         <?php foreach ($r["_source"]['author'] as $autores) {
-                                            $authors_array[]='<a href="result.php?filter[]=author.person.name:&quot;'.$autores["person"]["name"].'&quot;">'.$autores["person"]["name"].'</a>';
+                                            $authors_array[]=''.$autores["person"]["name"].'';
                                         } 
                                         $array_aut = implode(", ",$authors_array);
                                         unset($authors_array);
