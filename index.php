@@ -74,8 +74,8 @@ if ($_SERVER["REQUEST_URI"] == "/") {
                 sendo possível buscá-las por meio de palavras, pesquisadores e Programas de Pós-Graduação, com a utilização de filtros bem como de termos conjugados.
                 Aqui se acede à informação na forma de artigos, livros (e capítulos), além de trabalhos apresentados em eventos.
                 Como se tratam de informações não processadas, duplicações podem ocasionalmente aparecer.
-
-                Caso encontre erros, por favor <a href="https://docs.google.com/forms/d/e/1FAIpQLScmHGNgM_1z9sntKJo1uhIwIrxRt6qDdMZiPs0hvx8BMKuTmQ/viewform?usp=sf_link">use nosso formuário</a> para reportá-los.
+                <br/>
+                Caso encontre algum erro, por favor <a href="https://docs.google.com/forms/d/e/1FAIpQLScmHGNgM_1z9sntKJo1uhIwIrxRt6qDdMZiPs0hvx8BMKuTmQ/viewform?usp=sf_link">use nosso formuário</a> para reportá-los.
             </div>
 
             <form class="mt-3" action="result.php">
