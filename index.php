@@ -75,7 +75,7 @@ if ($_SERVER["REQUEST_URI"] == "/") {
                 Aqui se acede à informação na forma de artigos, livros (e capítulos), além de trabalhos apresentados em eventos.
                 Como se tratam de informações não processadas, duplicações podem ocasionalmente aparecer.
                 <br/>
-                Caso encontre algum erro, por favor <a href="https://docs.google.com/forms/d/e/1FAIpQLScmHGNgM_1z9sntKJo1uhIwIrxRt6qDdMZiPs0hvx8BMKuTmQ/viewform?usp=sf_link">use nosso formuário</a> para reportá-los.
+                Caso encontre algum erro, por favor <a href="https://docs.google.com/forms/d/e/1FAIpQLScmHGNgM_1z9sntKJo1uhIwIrxRt6qDdMZiPs0hvx8BMKuTmQ/viewform?usp=sf_link">use nosso formulário</a> para reportá-lo.
             </div>
 
             <form class="mt-3" action="result.php">
