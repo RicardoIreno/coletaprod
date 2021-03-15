@@ -339,7 +339,7 @@
     {
         unset($fields);
         $fields[] = $r['_id'];
-        $fields[] = $r['_source']['vinculo']['tipvin'];
+        $fields[] = $r['_source']['tag'];
         $fields[] = "collection";
         if (!empty($r["_source"]["tipo"])) {
             $fields[] = $r["_source"]["tipo"];
@@ -499,7 +499,7 @@
         $cursor = $client->search($params);
         $total = $cursor["hits"]["total"];
 
-        $content[] = "id\ttipvin\tcollection\tdc.type\tdc.date.issued\tdc.identifier.doi\tdc.language.iso\tdc.title\tdc.title.alternative\tdc.subject\tdc.contributor.author\tdc.description.affiliation\tdc.publisher\tdc.relation.ispartof\tdc.citation.volume\tdc.citation.issue\tdc.identifier.issn\tdc.format.extent\tdc.description.sponsorship\tdc.description.sponsorshipID\tdc.description.abstract";
+        $content[] = "id\ttag\tcollection\tdc.type\tdc.date.issued\tdc.identifier.doi\tdc.language.iso\tdc.title\tdc.title.alternative\tdc.subject\tdc.contributor.author\tdc.description.affiliation\tdc.publisher\tdc.relation.ispartof\tdc.citation.volume\tdc.citation.issue\tdc.identifier.issn\tdc.format.extent\tdc.description.sponsorship\tdc.description.sponsorshipID\tdc.description.abstract";
 
         foreach ($cursor["hits"]["hits"] as $r) {
             $content[] = createTableDSpace($r);
