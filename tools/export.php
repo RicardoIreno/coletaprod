@@ -332,9 +332,197 @@
             }
             // echo implode("\n", $content);
     
-        }        
+        }
+} elseif ($_GET["format"] == "capesprint") {
 
-    } elseif ($_GET["format"] == "dspace") {
+    function createTableDSpace($r)
+    {
+        unset($fields);
+        $fields[] = $r['_id'];
+        $fields[] = $r['_source']['vinculo']['tipvin'];
+        $fields[] = "collection";
+        if (!empty($r["_source"]["tipo"])) {
+            $fields[] = $r["_source"]["tipo"];
+        } else {
+            $fields[] = "Sem tipo";
+        }
+        if (!empty($r["_source"]["datePublished"])) {
+            $fields[] = $r["_source"]["datePublished"];
+        } else {
+            $fields[] = "Sem data";
+        }
+        if (!empty($r["_source"]["doi"])) {
+            $fields[] = $r["_source"]["doi"];
+        } else {
+            $fields[] = "Sem DOI";
+        }
+        if (!empty($r["_source"]["language"])) {
+            $fields[] = $r["_source"]["language"];
+        } else {
+            $fields[] = "Sem idioma";
+        }
+        if (!empty($r["_source"]["name"])) {
+            $fields[] = str_replace('"', '', $r["_source"]["name"]);
+        } else {
+            $fields[] = "N/D";
+        }
+        if (!empty($r["_source"]["alternateName"])) {
+            $fields[] = $r["_source"]["alternateName"];
+        } else {
+            $fields[] = "N/D";
+        }
+        if (!empty($r["_source"]["about"])) {
+            foreach ($r["_source"]["about"] as $subject) {
+                $subject_array[] = str_replace(array("\r", "\n"), '', trim(str_replace('"', '', $subject)));
+            }
+            $fields[] = implode("||", $subject_array);
+            unset($subject_array);
+        } else {
+            $fields[] = "Sem assunto cadastrado";
+        }
+        if (!empty($r["_source"]["author"])) {
+            foreach ($r["_source"]["author"] as $authors) {
+                $authors_array[] = trim($authors["person"]["name"]);
+            }
+            $fields[] = implode("||", $authors_array);
+            unset($authors_array);
+        } else {
+            $fields[] = "N/D";
+        }
+        if (!empty($r["_source"]["institutions"])) {
+            $fields[] = str_replace(array("\r", "\n"), '', implode("||", $r["_source"]["institutions"]));
+        } else {
+            $fields[] = "N/D";
+        }
+        if (!empty($r["_source"]["publisher"]["organization"]["name"])) {
+            $fields[] = $r["_source"]["publisher"]["organization"]["name"];
+        } else {
+            $fields[] = "N/D";
+        }
+        if (!empty($r["_source"]["isPartOf"]["name"])) {
+            $fields[] = $r["_source"]["isPartOf"]["name"];
+        } else {
+            $fields[] = "N/D";
+        }
+        if (!empty($r["_source"]["isPartOf"]["volume"])) {
+            $fields[] = $r["_source"]["isPartOf"]["volume"];
+        } else {
+            $fields[] = "N/D";
+        }
+        if (!empty($r["_source"]["isPartOf"]["fasciculo"])) {
+            $fields[] = $r["_source"]["isPartOf"]["fasciculo"];
+        } else {
+            $fields[] = "N/D";
+        }
+        if (!empty($r["_source"]["isPartOf"]["issn"])) {
+            $fields[] = $r["_source"]["isPartOf"]["issn"];
+        } else {
+            $fields[] = "N/D";
+        }
+        if (!empty($r["_source"]["pageStart"]) && !empty($r["_source"]["pageEnd"])) {
+            $fields[] = '' . $r["_source"]["pageStart"] . '-' . $r["_source"]["pageEnd"] . '';
+        } else {
+            $fields[] = "N/D";
+        }
+        if (!empty($r["_source"]["funder"])) {
+            foreach ($r["_source"]["funder"] as $funders) {
+                $funders_array[] = str_replace(array("\r", "\n"), '', trim($funders["name"]));
+            }
+            $fields[] = implode("||", $funders_array);
+            unset($funders_array);
+        } else {
+            $fields[] = "N/D";
+        }
+        if (!empty($r["_source"]["funder"])) {
+            foreach ($r["_source"]["funder"] as $fundersID) {
+                if (isset($fundersID["projectNumber"])) {
+                    $fundersID_array[] = '' . str_replace(array("\r", "\n"), '', trim($fundersID["name"])) . ':' . $fundersID["projectNumber"] . '';
+                }
+            }
+            if (isset($fundersID_array)) {
+                $fields[] = implode("||", $fundersID_array);
+                unset($fundersID_array);
+            } else {
+                $fields[] = "N/D";
+            }
+        } else {
+            $fields[] = "N/D";
+        }
+        if (!empty($r["_source"]["description"])) {
+            $fields[] = str_replace(array("\r", "\n"), '', trim($r["_source"]["description"]));
+        } else {
+            $fields[] = "N/D";
+        }
+
+        $content = implode("\t", $fields);
+        unset($fields);
+        return $content;
+    }
+
+    $file = "exportDspace.tsv";
+    header('Content-type: text/tab-separated-values; charset=utf-8');
+    header("Content-Disposition: attachment; filename=$file");
+
+    // Set directory to ROOT
+    chdir('../');
+    // Include essencial files
+    include('inc/config.php');
+    include('inc/functions.php');
+
+    if (!empty($_GET)) {
+        $result_get = Requests::getParser($_GET);
+        $query = $result_get['query'];
+        $limit = $result_get['limit'];
+        $page = $result_get['page'];
+        $skip = $result_get['skip'];
+
+        if (isset($_GET["sort"])) {
+            $query['sort'] = [
+                ['name.keyword' => ['order' => 'asc']],
+            ];
+        } else {
+            $query['sort'] = [
+                ['datePublished.keyword' => ['order' => 'desc']],
+            ];
+        }
+
+        $params = [];
+        if (isset($_GET["alternativeIndex"])) {
+            $params["index"] = $_GET["alternativeIndex"];
+        } else {
+            $params["index"] = $index;
+        }
+        $params["size"] = 50;
+        $params["scroll"] = "30s";
+        $params["body"] = $query;
+
+        $cursor = $client->search($params);
+        $total = $cursor["hits"]["total"];
+
+        $content[] = "id\ttipvin\tcollection\tdc.type\tdc.date.issued\tdc.identifier.doi\tdc.language.iso\tdc.title\tdc.title.alternative\tdc.subject\tdc.contributor.author\tdc.description.affiliation\tdc.publisher\tdc.relation.ispartof\tdc.citation.volume\tdc.citation.issue\tdc.identifier.issn\tdc.format.extent\tdc.description.sponsorship\tdc.description.sponsorshipID\tdc.description.abstract";
+
+        foreach ($cursor["hits"]["hits"] as $r) {
+            $content[] = createTableDSpace($r);
+        }
+
+
+        while (isset($cursor['hits']['hits']) && count($cursor['hits']['hits']) > 0) {
+            $scroll_id = $cursor['_scroll_id'];
+            $cursor = $client->scroll(
+                [
+                    "scroll_id" => $scroll_id,
+                    "scroll" => "30s"
+                ]
+            );
+
+            foreach ($cursor["hits"]["hits"] as $r) {
+                $content[] = createTableDSpace($r);
+            }
+        }
+        echo implode("\n", $content);
+    }
+
+} elseif ($_GET["format"] == "dspace") {
 
         function createTableDSpace($r) {
             unset($fields);
