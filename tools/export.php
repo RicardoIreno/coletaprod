@@ -339,7 +339,7 @@
     {
         unset($fields);
         $fields[] = $r['_id'];
-        $fields[] = $r['_source']['tag'];
+        $fields[] = implode(',', $r['_source']['tag']);
         $fields[] = "collection";
         if (!empty($r["_source"]["tipo"])) {
             $fields[] = $r["_source"]["tipo"];
