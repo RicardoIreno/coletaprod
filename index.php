@@ -206,10 +206,10 @@ if ($_SERVER["REQUEST_URI"] == "/") {
             },
             methods: {
                 searchCV() {
-                    axios.get('http://localhost:9200/unifespcv/_search', {
+                    axios.get('http://localhost:9200/<?php echo $index_cv; ?>/_search', {
                             auth: {
-                                username: "elastic",
-                                password: "elastic"
+                                username: "<?php echo $es_user; ?>",
+                                password: "<?php echo $es_password; ?>"
                             },
                             params: {
                                 source: JSON.stringify(this.query),
