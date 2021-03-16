@@ -206,7 +206,7 @@ if ($_SERVER["REQUEST_URI"] == "/") {
             },
             methods: {
                 searchCV() {
-                    axios.get('http://localhost:9200/<?php echo $index_cv; ?>/_search', {
+                    axios.get('<?php echo $es_host; ?>/<?php echo $index_cv; ?>/_search', {
                             crossDomain: true,
                             auth: {
                                 username: "<?php echo $es_user; ?>",
