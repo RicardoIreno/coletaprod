@@ -207,11 +207,11 @@ if ($_SERVER["REQUEST_URI"] == "/") {
             methods: {
                 searchCV() {
                     axios.get('http://localhost:9200/<?php echo $index_cv; ?>/_search', {
+                            crossDomain: true,
                             auth: {
                                 username: "<?php echo $es_user; ?>",
                                 password: "<?php echo $es_password; ?>"
                             },
-                            crossDomain: true,
                             params: {
                                 source: JSON.stringify(this.query),
                                 source_content_type: 'application/json'
