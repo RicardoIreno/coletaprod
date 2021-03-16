@@ -74,37 +74,55 @@ if ($_SERVER["REQUEST_URI"] == "/") {
                 sendo possível buscá-las por meio de palavras, pesquisadores e Programas de Pós-Graduação, com a utilização de filtros bem como de termos conjugados.
                 Aqui se acede à informação na forma de artigos, livros (e capítulos), além de trabalhos apresentados em eventos.
                 Como se tratam de informações não processadas, duplicações podem ocasionalmente aparecer.
-                <br/>
+                <br />
                 Caso encontre algum erro, por favor <a href="https://docs.google.com/forms/d/e/1FAIpQLScmHGNgM_1z9sntKJo1uhIwIrxRt6qDdMZiPs0hvx8BMKuTmQ/viewform?usp=sf_link">use nosso formulário</a> para reportá-lo.
             </div>
-
-            <form class="mt-3" action="result.php">
-                <label for="searchQuery">Pesquisa por palavras - <a href="result.php">Navegar por todos</a></label>
-                <div class="form-group">
-                    <input type="text" name="search" class="form-control" id="searchQuery" aria-describedby="searchHelp" placeholder="Pesquise por termo, autor ou ID do Lattes (16 dígitos)">
-                    <label>Filtrar por Nome do Programa de Pós-Graduação (Opcional):</label>
-                    <?php paginaInicial::filter_select("vinculo.ppg_nome"); ?>
-                </div>
-                <label>Filtrar por data (Opcional):</label>
-                <div class="input-group">
+            <div id="app">
+                <form class="mt-3" action="result.php" v-if="searchPage == 'simple'">
+                    <label for="searchQuery">Pesquisa por palavras - <a href="result.php">Navegar por todos</a></label>
                     <div class="form-group">
-                        <label for="initialYear">Ano inicial</label>
-                        <input type="text" class="form-control" id="initialYear" name="initialYear" pattern="\d{4}" placeholder="Ex. 2010" value="">
+                        <input type="text" name="search" class="form-control" id="searchQuery" aria-describedby="searchHelp" placeholder="Pesquise por termo, autor ou ID do Lattes (16 dígitos)">
                     </div>
+                    <div class="input-group-append mt-3">
+                        <button type="submit" class="btn btn-primary">Pesquisar</button>
+                    </div>
+                </form>
+                <form class="mt-3" action="result.php" v-if="searchPage == 'advanced'">
+                    <label for="searchQuery">Pesquisa por palavras - <a href="result.php">Navegar por todos</a></label>
                     <div class="form-group">
-                        <label for="finalYear">Ano final</label>
-                        <input type="text" class="form-control" id="finalYear" name="finalYear" pattern="\d{4}" placeholder="Ex. 2020" value="">
+                        <input type="text" name="search" class="form-control" id="searchQuery" aria-describedby="searchHelp" placeholder="Pesquise por termo, autor ou ID do Lattes (16 dígitos)">
+                        <label>Filtrar por Nome do Programa de Pós-Graduação (Opcional):</label>
+                        <?php paginaInicial::filter_select("vinculo.ppg_nome"); ?>
                     </div>
+                    <label for="authorsDataList" class="form-label">Autores (ID Lattes)</label>
+                    <input class="form-control" list="datalistOptions" id="authorsDataList" placeholder="Digite parte do nome do autor..." name="filter[]" v-model="query.query.query_string.query" @input="searchCV()">
+                    <datalist id="datalistOptions">
+                        <option v-for="author in authors" :key="author._id" :value="'vinculo.lattes_id:' + author._id">{{author.fields.nome_completo[0]}}</option>
+                    </datalist>
+                    <label>Filtrar por data (Opcional):</label>
+                    <div class="input-group">
+                        <div class="form-group">
+                            <label for="initialYear">Ano inicial</label>
+                            <input type="text" class="form-control" id="initialYear" name="initialYear" pattern="\d{4}" placeholder="Ex. 2010" value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="finalYear">Ano final</label>
+                            <input type="text" class="form-control" id="finalYear" name="finalYear" pattern="\d{4}" placeholder="Ex. 2020" value="">
+                        </div>
+                    </div>
+                    <div class="input-group-append mt-3">
+                        <button type="submit" class="btn btn-primary">Pesquisar</button>
+                    </div>
+                    <small id="searchHelp" class="form-text text-muted">Dica: Use * para busca por radical. Ex: biblio*.</small><br />
+                    <small id="searchHelp" class="form-text text-muted">Dica 2: Para buscas exatas, coloque entre "". Ex: "Direito civil"</small><br />
+                    <small id="searchHelp" class="form-text text-muted">Dica 3: Por padrão, o sistema utiliza o operador booleano OR. Caso necessite deixar a busca mais específica, utilize o operador AND (em maiúscula)</small>
+                </form>
+                <div class="mt-3">
+                    <button @click="searchPage = 'simple'" class="btn btn-primary">Busca simples</button>
+                    <button @click="searchPage = 'advanced'" class="btn btn-primary">Busca avançada</button>
                 </div>
-                <div class="input-group-append">
-                    <button type="submit" class="btn btn-primary">Pesquisar</button>
-                </div>
-                <small id="searchHelp" class="form-text text-muted">Dica: Use * para busca por radical. Ex: biblio*.</small>
-                <small id="searchHelp" class="form-text text-muted">Dica 2: Para buscas exatas, coloque entre "". Ex: "Direito civil"</small>
-                <small id="searchHelp" class="form-text text-muted">Dica 3: Por padrão, o sistema utiliza o operador booleano OR. Caso necessite deixar a busca mais específica, utilize o operador AND (em maiúscula)</small>
-
+            </div>
         </div>
-        </form>
         <br />
     </div>
 
@@ -165,6 +183,52 @@ if ($_SERVER["REQUEST_URI"] == "/") {
 
 
     <?php include('inc/footer.php'); ?>
+    <script>
+        var app = new Vue({
+            el: '#app',
+
+            data: {
+                searchPage: 'simple',
+                query: {
+                    query: {
+                        query_string: {
+                            query: "",
+                        }
+                    },
+                    fields: ["nome_completo"],
+                    "_source": false
+                },
+                message: "Teste",
+                authors: []
+            },
+            mounted() {
+                this.searchCV();
+            },
+            methods: {
+                searchCV() {
+                    axios.get('http://localhost:9200/unifespcv/_search', {
+                            auth: {
+                                username: "elastic",
+                                password: "elastic"
+                            },
+                            params: {
+                                source: JSON.stringify(this.query),
+                                source_content_type: 'application/json'
+                            }
+                        }).then((response) => {
+                            this.authors = response.data.hits.hits;
+                            console.log(response);
+                        })
+                        .catch((error) => {
+                            console.log(error);
+                            console.error(error);
+                            this.errored = true;
+                        })
+                        .finally(() => (this.loading = false));
+                }
+            }
+        })
+    </script>
 
 
 </body>
