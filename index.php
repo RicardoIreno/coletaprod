@@ -207,6 +207,11 @@ if ($_SERVER["REQUEST_URI"] == "/") {
             methods: {
                 searchCV() {
                     axios.get('http://localhost:9200/<?php echo $index_cv; ?>/_search', {
+                            headers: {
+                                'Access-Control-Allow-Origin': '*',
+                                'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
+                                'Access-Control-Allow-Headers': '*',
+                            },
                             auth: {
                                 username: "<?php echo $es_user; ?>",
                                 password: "<?php echo $es_password; ?>"
