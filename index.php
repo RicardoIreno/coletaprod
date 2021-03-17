@@ -95,9 +95,9 @@ if ($_SERVER["REQUEST_URI"] == "/") {
                         <?php paginaInicial::filter_select("vinculo.ppg_nome"); ?>
                     </div>
                     <label for="authorsDataList" class="form-label">Autores (ID Lattes)</label>
-                    <input class="form-control" list="datalistOptions" id="authorsDataList" placeholder="Digite parte do nome do autor..." name="filter[]" v-model="query.query.query_string.query" @input="searchCV()">
+                    <input class="form-control" list="datalistOptions" id="authorsDataList" placeholder="Digite parte do nome do autor..." name="filter[]" v-model="query" @input="searchCV()">
                     <datalist id="datalistOptions">
-                        <option v-for="author in authors" :key="author._id" :value="'vinculo.lattes_id:' + author._id">{{author.fields.nome_completo[0]}}</option>
+                        <option v-for="author in authors" :key="author._id" :value="'vinculo.lattes_id:' + author._id">{{author._source.nome_completo}}</option>
                     </datalist>
                     <label>Filtrar por data (Opcional):</label>
                     <div class="input-group">
@@ -185,49 +185,32 @@ if ($_SERVER["REQUEST_URI"] == "/") {
     <?php include('inc/footer.php'); ?>
     <script>
         var app = new Vue({
-            el: '#app',
+                    el: '#app',
 
-            data: {
-                searchPage: 'simple',
-                query: {
-                    query: {
-                        query_string: {
-                            query: "",
-                        }
+                    data: {
+                        searchPage: 'simple',
+                        query: "",
+                        message: "Teste",
+                        authors: []
                     },
-                    fields: ["nome_completo"],
-                    "_source": false
-                },
-                message: "Teste",
-                authors: []
-            },
-            mounted() {
-                this.searchCV();
-            },
-            methods: {
-                searchCV() {
-                    axios.get('<?php echo $es_host; ?>/<?php echo $index_cv; ?>/_search', {
-                            crossDomain: true,
-                            auth: {
-                                username: "<?php echo $es_user; ?>",
-                                password: "<?php echo $es_password; ?>"
-                            },
-                            params: {
-                                source: JSON.stringify(this.query),
-                                source_content_type: 'application/json'
-                            }
-                        }).then((response) => {
-                            this.authors = response.data.hits.hits;
-                            console.log(response);
-                        })
-                        .catch((error) => {
-                            console.log(error);
-                            console.error(error);
-                            this.errored = true;
-                        })
-                        .finally(() => (this.loading = false));
-                }
-            }
+                    mounted() {
+                        this.searchCV();
+                    },
+                    methods: {
+                        searchCV() {
+                            axios.get(
+                                    'tools/proxy_autocomplete_cv.php?query=' + this.query
+                                ).then((response) => {
+                                    this.authors = response.data.hits.hits;
+                                })
+                                .catch((error) => {
+                                    console.log(error);
+                                    console.error(error);
+                                    this.errored = true;
+                                })
+                                .finally(() => (this.loading = false));
+                        }
+                    }
         })
     </script>
 
