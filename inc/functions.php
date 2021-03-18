@@ -1548,14 +1548,14 @@ class Exporters
     {
 
         $author_number = count($r["_source"]['author']);
-                                        
+
         $record = [];
         $record[] = "000000001 FMT   L BK";
         $record[] = "000000001 LDR   L ^^^^^nab^^22^^^^^Ia^4500";
         $record[] = '000000001 BAS   L $$a04';
         $record[] = "000000001 008   L ^^^^^^s^^^^^^^^^^^^^^^^^^^^^^000^0^^^^^d";
         if (isset($r["_source"]['doi'])) {
-            $record[] = '000000001 0247  L $$a'.$r["_source"]["doi"].'$$2DOI';         
+            $record[] = '000000001 0247  L $$a'.$r["_source"]["doi"].'$$2DOI';
         } else {
             $record[] = '000000001 0247  L $$a$$2DOI';
         }
@@ -1567,7 +1567,7 @@ class Exporters
                 $record[] = '000000001 1001  L $$a'.$r["_source"]['author'][0]["nomeParaCitacao"].'$$d$$1$$4$$5$$7$$8$$9';
             } else {
                 $record[] = '000000001 1001  L $$a'.$r["_source"]['author'][0]["person"]["name"].'$$d$$1$$4$$5$$7$$8$$9';                
-            }                                            
+            }
             for ($i = 1; $i < $author_number; $i++) {
                 if (isset($r["_source"]['author'][$i]["nomeParaCitacao"])) {
                     $record[] = '000000001 7001  L $$a'.$r["_source"]['author'][$i]["nomeParaCitacao"].'$$d$$1$$4$$5$$7$$8$$9';
@@ -1581,8 +1581,8 @@ class Exporters
             } else {
                 $record[] = '000000001 1001  L $$a'.$r["_source"]['author'][0]["person"]["name"].'$$d$$1$$4$$5$$7$$8$$9';
             }
-        }                                            
-        $record[] = '000000001 24510 L $$a'.$r["_source"]["name"].'';                                            
+        }
+        $record[] = '000000001 24510 L $$a'.$r["_source"]["name"].'';
         if (isset($r["_source"]["trabalhoEmEventos"])) {  
             $record[] = '000000001 260   L $$a'.((isset($r["_source"]["trabalhoEmEventos"]["cidadeDaEditora"]) && $r["_source"]["trabalhoEmEventos"]["cidadeDaEditora"])? $r["_source"]["trabalhoEmEventos"]["cidadeDaEditora"] : '').'$$b'.((isset($r["_source"]["trabalhoEmEventos"]["nomeDaEditora"]) && $r["_source"]["trabalhoEmEventos"]["nomeDaEditora"])? $r["_source"]["trabalhoEmEventos"]["nomeDaEditora"] : '').'$$c'.$r["_source"]["datePublished"].'';
         } else {
@@ -1610,7 +1610,7 @@ class Exporters
                 $record[] = '000000001 536   L $$a'.$funder["name"].''.$funder_string.'';
             }
             
-        }              
+        }
         
         $record[] = '000000001 650 7 L $$a';
         $record[] = '000000001 650 7 L $$a';
@@ -1629,22 +1629,22 @@ class Exporters
         
         if (isset($r["_source"]["isPartOf"])) {
             $record[] = '000000001 7730  L $$t'.$r["_source"]["isPartOf"]["name"].'$$x'.((isset($r["_source"]["isPartOf"]["issn"])? $r["_source"]["isPartOf"]["issn"] : '')).'$$hv.'.((isset($r["_source"]["volume"])? $r["_source"]["volume"] : '')).', n. '.((isset($r["_source"]["serie"])? $r["_source"]["serie"] : '')).', p.'.((isset($r["_source"]["pageStart"])? $r["_source"]["pageStart"] : '')).'-'.((isset($r["_source"]["pageEnd"])? $r["_source"]["pageEnd"] : '')).', '.$r["_source"]["datePublished"].'';
-        }                                            
+        }
         
         
-        if (isset($r["_source"]['doi'])) {                                            
+        if (isset($r["_source"]['doi'])) {
             $record[] = '000000001 8564  L $$zClicar sobre o botão para acesso ao texto completo$$uhttps://doi.org/'.$r["_source"]["doi"].'$$3DOI';           
         } else {
             $record[] = '000000001 8564  L $$zClicar sobre o botão para acesso ao texto completo$$u$$3DOI';
-        }                          
+        }
         
         if (isset($r["_source"]["trabalhoEmEventos"])) {
             $record[] = '000000001 945   L $$aP$$bTRABALHO DE EVENTO$$c10$$j'.$r["_source"]["datePublished"].'$$l';
         }
         if (isset($r["_source"]["isPartOf"])) {
             $record[] = '000000001 945   L $$aP$$bARTIGO DE PERIODICO$$c01$$j'.$r["_source"]["datePublished"].'$$l';
-        }                                            
-        $record[] = '000000001 946   L $$a';   
+        }
+        $record[] = '000000001 946   L $$a';
         
         //sort($record);
 
@@ -1737,6 +1737,42 @@ class Exporters
 
         return $record_blob;
 
+    }
+
+    public static function citation($record, $citation_format)
+    {
+        /* Citeproc-PHP*/
+        include_once 'inc/citeproc-php/CiteProc.php';
+        $csl_abnt = file_get_contents('inc/citeproc-php/style/abnt.csl');
+        $csl_apa = file_get_contents('inc/citeproc-php/style/apa.csl');
+        $csl_nlm = file_get_contents('inc/citeproc-php/style/nlm.csl');
+        $csl_vancouver = file_get_contents('inc/citeproc-php/style/vancouver.csl');
+        $lang = "br";
+        $citeproc_abnt = new citeproc($csl_abnt, $lang);
+        $citeproc_apa = new citeproc($csl_apa, $lang);
+        $citeproc_nlm = new citeproc($csl_nlm, $lang);
+        $citeproc_vancouver = new citeproc($csl_nlm, $lang);
+        $mode = "bibliography";
+
+        if ($citation_format == "ABNT") {
+            $data = citation::citationQuery($record["_source"]);
+            return $citeproc_abnt->render($data[0], $mode);
+        }
+
+        if ($citation_format == "APA") {
+            $data = citation::citationQuery($record["_source"]);
+            return $citeproc_apa->render($data, $mode);
+        }
+
+        if ($citation_format == "NLM") {
+            $data = citation::citationQuery($record["_source"]);
+            return $citeproc_nlm->render($data, $mode);
+        }
+
+        if ($citation_format == "Vancouver") {
+            $data = citation::citationQuery($record["_source"]);
+            return $citeproc_vancouver->render($data, $mode);
+        }
     }
 
 }
