@@ -453,7 +453,7 @@
         } else {
             $fields[] = "N/D";
         }
-        $fields[] = Exporters::citation($r, "ABNT");
+        $fields[] = strip_tags(Exporters::citation($r, "ABNT"));
 
         $content = implode("\t", $fields);
         unset($fields);
