@@ -5,10 +5,12 @@ chdir('../');
 require 'inc/config.php';
 require 'inc/functions.php';
 
-$query["query"]["query_string"]["query"] = 'nome_completo:*'.$_REQUEST["query"].'*';
+$query["query"]["query_string"]["fields"] = ['nome_completo'];
+$query["query"]["query_string"]["query"] = '*'.$_REQUEST["query"].'*';
+
 $params = [];
 $params["index"] = $index_cv;
-$params["size"] = 100;
+$params["size"] = 1000;
 $params["_source"] = ["nome_completo"];
 $params["body"] = $query;
 
