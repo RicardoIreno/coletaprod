@@ -25,11 +25,14 @@ foreach ($cursor["hits"]["hits"] as $r) {
     //var_dump($lattesDate);
     $formattedLattesDate = date_format(date_create_from_format('d/m/Y', $lattesDate), 'Y-m-d');
     var_dump($formattedLattesDate);
-    if ($formattedRecordDate > $formattedLattesDate) {
-        echo "sim";
-    } else {
-        echo "não";
-    }
+    //if ($formattedRecordDate > $formattedLattesDate) {
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, 'localhost/unifesp_coletaprod/import_lattes_to_elastic_dedup.php?lattesID=' . $r["_id"] . '');
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        $output = curl_exec($ch);
+        var_dump($output);
+        curl_close($ch);
+    //}
 }
 
 
