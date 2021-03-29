@@ -200,6 +200,23 @@
             </form>
             <div class="m-2">&nbsp;</div>
 
+            <form class="m-3" action="csv_upload.php" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+                <legend>Enviar um arquivo CSV</legend>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">CSV</span>
+                    </div>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="fileXML" aria-describedby="fileXML" name="file">
+                        <label class="custom-file-label" for="fileXML">Escolha o arquivo</label>
+                    </div>
+                    <input type="text" placeholder="TAG para formar um grupo" class="form-control" name="tag">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit">Upload</button>
+                    </div>
+                </div>
+            </form>
+
             <!--
 
                     <form class="m-3" action="tools/upload/sucupira_upload.php" method="post" accept-charset="utf-8" enctype="multipart/form-data">
