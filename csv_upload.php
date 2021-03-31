@@ -41,7 +41,7 @@ if (isset($_FILES['file'])) {
         } else {
             echo 'Não';
             echo "<br/>";
-            $url = 'http://200.133.208.25/api/proxy_cpf/'.substr($row[$rowNum["CPF"]], 0, 11).'';
+            $url = 'http://200.133.208.25/api/proxy_cpf/'.substr($row[$rowNum["CPF"]], 1, 11).'';
             var_dump($url);
             $idLattes = file_get_contents('http://200.133.208.25/api/proxy_cpf/'.substr($row[$rowNum["CPF"]], 1, 11).'');
             echo "ID Lattes: ";
@@ -57,5 +57,12 @@ if (isset($_FILES['file'])) {
     fclose($fh);
 }
 
-//sleep(5);
-//echo '<script>window.location = \'result.php?filter[]=type:"Work"&filter[]=tag:"'.$_POST["tag"].'"\'</script>';
+function curlLattes() {
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, 'localhost/unifesp_coletaprod/import_lattes_to_elastic_dedup.php?lattesID=' . $r["_id"] . '');
+    curl_setopt($ch, CURLOPT_POSTFIELDS, implode('', $queryParams));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    $output = curl_exec($ch);
+    var_dump($output);
+    curl_close($ch);
+}
