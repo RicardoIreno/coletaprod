@@ -62,68 +62,71 @@ if (isset($_FILES['file'])) {
             if (!empty($row[$rowNum["COD_LATTES_16"]])) {
                 echo 'Sim';
                 echo "<br/><br/>";
+                $IDLattes = $row[$rowNum["COD_LATTES_16"]];
             }
         } else {
             echo 'Não';
             echo "<br/>";
             $url = 'http://200.133.208.25/api/proxy_cpf/'.substr($row[$rowNum["CPF"]], 1, 11).'';
             var_dump($url);
-            $idLattes = file_get_contents('http://200.133.208.25/api/proxy_cpf/'.substr($row[$rowNum["CPF"]], 1, 11).'');
+            $IDLattes = file_get_contents('http://200.133.208.25/api/proxy_cpf/'.substr($row[$rowNum["CPF"]], 1, 11).'');
             echo "ID Lattes: ";
-            var_dump($idLattes);
+            var_dump($IDLattes);
             echo "<br/><br/>";
         }
-        $doc["doc"]["CPF"] = $row[$rowNum["CPF"]];
-        $doc["doc"]["COD_LATTES_16"] = $row[$rowNum["COD_LATTES_16"]];
-        var_dump($doc);
-        echo "<br/><br/>";
-        unset($doc);
+
+        if (!empty($_REQUEST["tag"])) {
+            $queryParams[] = '&tag=' . $_REQUEST["tag"] . '';
+        }
+        if (!empty($row[$rowNum["CAMARA_NOME"]])) {
+            $queryParams[] = '&unidade=' . $row[$rowNum["CAMARA_NOME"]] . '';
+        }
+        if (!empty($row[$rowNum["DESC_DEPTO"]])) {
+            $queryParams[] = '&departamento=' . $row[$rowNum["DESC_DEPTO"]] . '';
+        }
+        if (!empty($row[$rowNum["CARGO_REDUZIDO_VINCS"]])) {
+            $queryParams[] = '&tipvin=' . $row[$rowNum["CARGO_REDUZIDO_VINCS"]] . '';
+        }
+        if (!empty($row[$rowNum["DESC_DIV"]])) {
+            $queryParams[] = '&divisao=' . $row[$rowNum["DESC_DIV"]] . '';
+        }
+        if (!empty($row[$rowNum["DESC_SEC"]])) {
+            $queryParams[] = '&secao=' . $row[$rowNum["DESC_SEC"]] . '';
+        }
+        if (!empty($row[$rowNum["PPG_NOME (PROGRAMA)"]])) {
+            $queryParams[] = '&ppg_nome=' . $row[$rowNum["PPG_NOME (PROGRAMA)"]] . '';
+        }
+        if (!empty($row[$rowNum["SEXO"]])) {
+            $queryParams[] = '&genero=' . $row[$rowNum["SEXO"]] . '';
+        }
+        if (!empty($r["_source"]["desc_nivel"][0])) {
+            $queryParams[] = '&desc_nivel=' . $r['_source']['desc_nivel'][0] . '';
+        }
+        if (!empty($row[$rowNum["DESCR_CURSO"]])) {
+            $queryParams[] = '&desc_curso=' . $row[$rowNum["DESCR_CURSO"]] . '';
+        }
+        if (!empty($row[$rowNum["CAMPUS_NOME"]])) {
+            $queryParams[] = '&campus=' . $row[$rowNum["CAMPUS_NOME"]] . '';
+        }
+        if (!empty($row[$rowNum["DESC_GESTORA"]])) {
+            $queryParams[] = '&desc_gestora=' . $row[$rowNum["DESC_GESTORA"]] . '';
+        }
+        if (isset($IDLattes)) {
+            curlLattes($IDLattes, $queryParams);
+        }
+        // $doc["doc"]["CPF"] = $row[$rowNum["CPF"]];
+        // $doc["doc"]["COD_LATTES_16"] = $row[$rowNum["COD_LATTES_16"]];
+        // var_dump($doc);
+        // echo "<br/><br/>";
+        // unset($doc);
     }
     fclose($fh);
 }
 
-function curlLattes() {
-
-    if (!empty($r["_source"]["tag"])) {
-        $queryParams[] = '&tag=' . $r['_source']['tag'] . '';
-    }
-    if (!empty($r["_source"]["unidade"][0])) {
-        $queryParams[] = '&unidade=' . $r['_source']['unidade'][0] . '';
-    }
-    if (!empty($r["_source"]["departamento"][0])) {
-        $queryParams[] = '&departamento=' . $r['_source']['departamento'][0] . '';
-    }
-    if (!empty($r["_source"]["tipvin"][0])) {
-        $queryParams[] = '&tipvin=' . $r['_source']['tipvin'][0] . '';
-    }
-    if (!empty($r["_source"]["divisao"][0])) {
-        $queryParams[] = '&divisao=' . $r['_source']['divisao'][0] . '';
-    }
-    if (!empty($r["_source"]["secao"][0])) {
-        $queryParams[] = '&secao=' . $r['_source']['secao'][0] . '';
-    }
-    if (!empty($r["_source"]["ppg_nome"][0])) {
-        $queryParams[] = '&ppg_nome=' . $r['_source']['ppg_nome'][0] . '';
-    }
-    if (!empty($r["_source"]["genero"][0])) {
-        $queryParams[] = '&genero=' . $r['_source']['genero'][0] . '';
-    }
-    if (!empty($r["_source"]["desc_nivel"][0])) {
-        $queryParams[] = '&desc_nivel=' . $r['_source']['desc_nivel'][0] . '';
-    }
-    if (!empty($r["_source"]["desc_curso"][0])) {
-        $queryParams[] = '&desc_curso=' . $r['_source']['desc_curso'][0] . '';
-    }
-    if (!empty($r["_source"]["campus"][0])) {
-        $queryParams[] = '&campus=' . $r['_source']['campus'][0] . '';
-    }
-    if (!empty($r["_source"]["desc_gestora"][0])) {
-        $queryParams[] = '&desc_gestora=' . $r['_source']['desc_gestora'][0] . '';
-    }
-    var_dump(implode('', $queryParams));
+function curlLattes($IDLattes, $queryParams) {
 
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, 'localhost/unifesp_coletaprod/import_lattes_to_elastic_dedup.php?lattesID=' . $r["_id"] . '');
+    curl_setopt($ch, CURLOPT_URL, 'localhost/unifesp_coletaprod/import_lattes_to_elastic_dedup.php?lattesID=' . $IDLattes . '');
     curl_setopt($ch, CURLOPT_POSTFIELDS, implode('', $queryParams));
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     $output = curl_exec($ch);
