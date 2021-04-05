@@ -635,6 +635,14 @@ class DadosInternos {
 
             foreach ($data["hits"]["hits"] as $match) {
                 if ($sha256 != $match["_id"]) {
+
+                    echo '
+                    <p>
+                    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapse' . $match["_id"] . '" aria-expanded="false" aria-controls="collapseExample">
+                        Ver Registros similares no Coletaprod
+                    </button>
+                    </p>
+                    <div class="collapse" id="collapse' . $match["_id"] . '">';
                     echo '<div class="alert alert-info" role="alert">';
                     echo '<h5>Registros similares no Coletaprod</h5>';
                     echo '<p>Fonte: '.$match["_source"]["source"].'<br/>';
@@ -650,6 +658,9 @@ class DadosInternos {
                     echo '</p>';
                     unset($autArray);
                     echo '</div>';
+                    echo '</div>';
+
+
                 }
             }             
         } 
