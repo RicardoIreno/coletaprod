@@ -112,7 +112,7 @@ if (isset($_FILES['file'])) {
             $queryParams[] = '&desc_gestora=' . $row[$rowNum["DESC_GESTORA"]] . '';
         }
         if (isset($IDLattes)) {
-            curlLattes($IDLattes, $queryParams);
+            curlLattes($url_base, $IDLattes, $queryParams);
         }
         // $doc["doc"]["CPF"] = $row[$rowNum["CPF"]];
         // $doc["doc"]["COD_LATTES_16"] = $row[$rowNum["COD_LATTES_16"]];
@@ -123,7 +123,7 @@ if (isset($_FILES['file'])) {
     fclose($fh);
 }
 
-function curlLattes($IDLattes, $queryParams) {
+function curlLattes($url_base, $IDLattes, $queryParams) {
 
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, ''. $url_base .'/import_lattes_to_elastic_dedup.php?lattesID=' . $IDLattes . '');
