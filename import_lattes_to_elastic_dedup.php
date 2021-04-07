@@ -16,11 +16,11 @@ function comparaprod_doi($doi)
     $params['body'] = $query;
     $cursor = $client->search($params);
     $total = $cursor['hits']['total']['value'];
-    echo 'Resultado total com DOI: '.$total.'';
+    // echo 'Resultado total com DOI: '.$total.'';
     foreach ($cursor['hits']['hits'] as $r) {
-        echo '<br/>';
-        echo ''.$r['_id'].' - '.$r['_source']['name'].' - '.$r['_source']['datePublished'].' - '.$r['_source']['tipo'].'';
-        echo '<br/>';
+        // echo '<br/>';
+        // echo ''.$r['_id'].' - '.$r['_source']['name'].' - '.$r['_source']['datePublished'].' - '.$r['_source']['tipo'].'';
+        // echo '<br/>';
     }
 
     if ($total >= 1) {
@@ -55,12 +55,12 @@ function comparaprod_title($doc)
     $params['body'] = $query;
     $cursor = $client->search($params);
     $total = $cursor['hits']['total']['value'];
-    echo 'Resultado total com Titulo: '.$total.'';
+    // echo 'Resultado total com Titulo: '.$total.'';
 
     foreach ($cursor['hits']['hits'] as $r) {
-        echo '<br/>';
-        echo 'Score: '.$r['_score'].' - '.$r['_id'].' - '.$r['_source']['name'].' - '.$r['_source']['datePublished'].' - '.$r['_source']['tipo'].'';
-        echo '<br/>';
+        // echo '<br/>';
+        // echo 'Score: '.$r['_score'].' - '.$r['_id'].' - '.$r['_source']['name'].' - '.$r['_source']['datePublished'].' - '.$r['_source']['tipo'].'';
+        // echo '<br/>';
     }
 
     if ($total >= 1) {
@@ -847,9 +847,9 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TRABALHOS-EM-EVENTOS'})) {
 
         // Comparador
         $resultado = upsert($doc, $sha256);
-        echo "<br/>";
-        print_r($resultado);
-        echo "<br/><br/>";
+        // echo "<br/>";
+        // print_r($resultado);
+        // echo "<br/><br/>";
 
         unset($dadosBasicosDoTrabalho);
         unset($detalhamentoDoTrabalho);
@@ -951,9 +951,9 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'ARTIGOS-PUBLICADOS'})) {
 
         // Comparador
         $resultado = upsert($doc, $sha256);
-        echo "<br/>";
-        print_r($resultado);
-        echo "<br/><br/>";
+        // echo "<br/>";
+        // print_r($resultado);
+        // echo "<br/><br/>";
         unset($dadosBasicosDoTrabalho);
         unset($detalhamentoDoTrabalho);
         unset($obra);
@@ -1056,9 +1056,9 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'LIVROS-E-CAPITULOS'})) {
 
             // Comparador
             $resultado = upsert($doc, $sha256);
-            echo "<br/>";
-            print_r($resultado);
-            echo "<br/><br/>";
+            // echo "<br/>";
+            // print_r($resultado);
+            // echo "<br/><br/>";
 
 
             unset($dadosBasicosDoTrabalho);
@@ -1156,9 +1156,9 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'LIVROS-E-CAPITULOS'})) {
 
             // Comparador
             $resultado = upsert($doc, $sha256);
-            echo "<br/>";
-            print_r($resultado);
-            echo "<br/><br/>";
+            // echo "<br/>";
+            // print_r($resultado);
+            // echo "<br/><br/>";
 
 
             unset($dadosBasicosDoTrabalho);
@@ -1263,9 +1263,9 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TEXTOS-EM-JORNAIS-OU-REVISTA
 
         // Comparador
         $resultado = upsert($doc, $sha256);
-        echo "<br/>";
-        print_r($resultado);
-        echo "<br/><br/>";
+        // echo "<br/>";
+        // print_r($resultado);
+        // echo "<br/><br/>";
         unset($dadosBasicosDoTrabalho);
         unset($detalhamentoDoTrabalho);
         unset($obra);
@@ -1363,9 +1363,9 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
 
             // Comparador
             $resultado = upsert($doc, $sha256);
-            echo "<br/>";
-            print_r($resultado);
-            echo "<br/><br/>";
+            // echo "<br/>";
+            // print_r($resultado);
+            // echo "<br/><br/>";
             unset($dadosBasicosDoTrabalho);
             unset($detalhamentoDoTrabalho);
             unset($obra);
@@ -1462,9 +1462,9 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
 
             // Comparador
             $resultado = upsert($doc, $sha256);
-            echo "<br/>";
-            print_r($resultado);
-            echo "<br/><br/>";
+            // echo "<br/>";
+            // print_r($resultado);
+            // echo "<br/><br/>";
             unset($dadosBasicosDoTrabalho);
             unset($detalhamentoDoTrabalho);
             unset($obra);
@@ -1565,9 +1565,9 @@ if (isset($curriculo->{'PRODUCAO-TECNICA'})) {
 
             // Comparador
             $resultado = upsert($doc, $sha256);
-            echo "<br/>";
-            print_r($resultado);
-            echo "<br/><br/>";
+            // echo "<br/>";
+            // print_r($resultado);
+            // echo "<br/><br/>";
             unset($dadosBasicosDoTrabalho);
             unset($detalhamentoDoTrabalho);
             unset($obra);
@@ -1655,9 +1655,9 @@ if (isset($curriculo->{'PRODUCAO-TECNICA'})) {
 
             // Comparador
             $resultado = upsert($doc, $sha256);
-            echo "<br/>";
-            print_r($resultado);
-            echo "<br/><br/>";
+            // echo "<br/>";
+            // print_r($resultado);
+            // echo "<br/><br/>";
             unset($dadosBasicosDoTrabalho);
             unset($detalhamentoDoTrabalho);
             unset($obra);
@@ -1765,9 +1765,9 @@ if (isset($curriculo->{'OUTRA-PRODUCAO'})) {
 
                 // Comparador
                 $resultado = upsert($doc, $sha256);
-                echo "<br/>";
-                print_r($resultado);
-                echo "<br/><br/>";
+                // echo "<br/>";
+                // print_r($resultado);
+                // echo "<br/><br/>";
                 unset($dadosBasicosDoTrabalho);
                 unset($detalhamentoDoTrabalho);
                 unset($obra);
