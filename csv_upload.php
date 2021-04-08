@@ -68,72 +68,72 @@ if (isset($_FILES['file'])) {
         if (!empty($_REQUEST["tag"])) {
             $queryParams[] = '&tag=' . $_REQUEST["tag"] . '';
         } else {
-            $queryParams[] = '&tag=""';
+            $queryParams[] = '&tag=';
         }
         if (!empty($row[$rowNum["CAMARA_NOME"]])) {
             $queryParams[] = '&unidade=' . $row[$rowNum["CAMARA_NOME"]] . '';
         } else {
-            $queryParams[] = '&unidade=""';
+            $queryParams[] = '&unidade=';
         }
 
         if (!empty($row[$rowNum["DESC_DEPTO"]])) {
             $queryParams[] = '&departamento=' . $row[$rowNum["DESC_DEPTO"]] . '';
         } else {
-            $queryParams[] = '&departamento=""';
+            $queryParams[] = '&departamento=';
         }
 
         if (!empty($row[$rowNum["CARGO_REDUZIDO_VINCS"]])) {
             $queryParams[] = '&tipvin=' . $row[$rowNum["CARGO_REDUZIDO_VINCS"]] . '';
         } else {
-            $queryParams[] = '&tipvin=""';
+            $queryParams[] = '&tipvin=';
         }
 
         if (!empty($row[$rowNum["DESC_DIV"]])) {
             $queryParams[] = '&divisao=' . $row[$rowNum["DESC_DIV"]] . '';
         } else {
-            $queryParams[] = '&divisao=""';
+            $queryParams[] = '&divisao=';
         }
 
         if (!empty($row[$rowNum["DESC_SEC"]])) {
             $queryParams[] = '&secao=' . $row[$rowNum["DESC_SEC"]] . '';
         } else {
-            $queryParams[] = '&secao=""';
+            $queryParams[] = '&secao=';
         }
 
         if (!empty($row[$rowNum["PPG_NOME (PROGRAMA)"]])) {
             $queryParams[] = '&ppg_nome=' . $row[$rowNum["PPG_NOME (PROGRAMA)"]] . '';
         } else {
-            $queryParams[] = '&ppg_nome=""';
+            $queryParams[] = '&ppg_nome=';
         }
 
         if (!empty($row[$rowNum["SEXO"]])) {
             $queryParams[] = '&genero=' . $row[$rowNum["SEXO"]] . '';
         } else {
-            $queryParams[] = '&genero=""';
+            $queryParams[] = '&genero=';
         }
 
         if (!empty($r["_source"]["desc_nivel"][0])) {
             $queryParams[] = '&desc_nivel=' . $r['_source']['desc_nivel'][0] . '';
         } else {
-            $queryParams[] = '&desc_nivel=""';
+            $queryParams[] = '&desc_nivel=';
         }
 
         if (!empty($row[$rowNum["DESCR_CURSO"]])) {
             $queryParams[] = '&desc_curso=' . $row[$rowNum["DESCR_CURSO"]] . '';
         } else {
-            $queryParams[] = '&desc_curso=""';
+            $queryParams[] = '&desc_curso=';
         }
 
         if (!empty($row[$rowNum["CAMPUS_NOME"]])) {
             $queryParams[] = '&campus=' . $row[$rowNum["CAMPUS_NOME"]] . '';
         } else {
-            $queryParams[] = '&campus=""';
+            $queryParams[] = '&campus=';
         }
 
         if (!empty($row[$rowNum["DESC_GESTORA"]])) {
             $queryParams[] = '&desc_gestora=' . $row[$rowNum["DESC_GESTORA"]] . '';
         } else {
-            $queryParams[] = '&desc_gestora=""';
+            $queryParams[] = '&desc_gestora=';
         }
         $queryParams[] = '&numfuncional='. $IDLattes. '';
 
