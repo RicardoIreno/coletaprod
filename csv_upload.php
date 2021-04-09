@@ -140,6 +140,7 @@ if (isset($_FILES['file'])) {
         if (isset($IDLattes)) {
             curlLattes($url_base, $IDLattes, $queryParams);
         }
+        unset($row);
     }
     fclose($fh);
 }
