@@ -315,10 +315,16 @@ if (isset($_REQUEST['lattesID'])) {
 $doc_curriculo_array = [];
 $doc_curriculo_array["doc"]["source"] = "Base Lattes";
 $doc_curriculo_array["doc"]["type"] = "Curriculum";
-$doc_curriculo_array["doc"]["tag"] = $_REQUEST['tag'];
+if (isset($_REQUEST['tag'])) {
+    $doc_curriculo_array["doc"]["tag"] = $_REQUEST['tag'];
+} else {
+    $doc_curriculo_array["doc"]["tag"] = "";
+}
 $doc_curriculo_array["doc"]["unidade"] = explode("|", $_REQUEST['unidade']);
 $doc_curriculo_array["doc"]["departamento"] = explode("|", $_REQUEST['departamento']);
-$doc_curriculo_array["doc"]["numfuncional"] = $_REQUEST['numfuncional'];
+if (isset($_REQUEST['numfuncional'])) {
+    $doc_curriculo_array["doc"]["numfuncional"] = $_REQUEST['numfuncional'];
+}
 if (isset($_REQUEST['tipvin'])) {
     $doc_curriculo_array["doc"]["tipvin"] = explode("|", $_REQUEST['tipvin']);
 }
@@ -594,9 +600,18 @@ if (isset($curriculo->{'DADOS-GERAIS'}->{'FORMACAO-ACADEMICA-TITULACAO'})) {
             $formacao_array["tipoDoutorado"]=$doutorado['@attributes']["TIPO-DOUTORADO"];
             $formacao_array["numeroIDOrientador"]=$doutorado['@attributes']["NUMERO-ID-ORIENTADOR"];
             $formacao_array["codigoCursoCapes"]=$doutorado['@attributes']["CODIGO-CURSO-CAPES"];
-            $formacao_array["nomeDoCoOrientador"]=$doutorado['@attributes']["NOME-DO-CO-ORIENTADOR"];
-            $formacao_array["codigoInstituicaoCoTutela"]=$doutorado['@attributes']["CODIGO-INSTITUICAO-CO-TUTELA"];
-            $formacao_array["codigoInstituicaoSanduiche"]=$doutorado['@attributes']["CODIGO-INSTITUICAO-SANDUICHE"];
+            if (isset($doutorado['@attributes']["NOME-DO-CO-ORIENTADOR"])) {
+                $formacao_array["nomeDoCoOrientador"] = $doutorado['@attributes']["NOME-DO-CO-ORIENTADOR"];
+            }
+            if (isset($doutorado['@attributes']["NOME-DO-CO-ORIENTADOR"])) {
+                $formacao_array["nomeDoCoOrientador"] = $doutorado['@attributes']["NOME-DO-CO-ORIENTADOR"];
+            }
+            if (isset($doutorado['@attributes']["CODIGO-INSTITUICAO-CO-TUTELA"])) {
+                $formacao_array["codigoInstituicaoCoTutela"] = $doutorado['@attributes']["CODIGO-INSTITUICAO-CO-TUTELA"];
+            }
+            if (isset($doutorado['@attributes']["CODIGO-INSTITUICAO-SANDUICHE"])) {
+                $formacao_array["codigoInstituicaoSanduiche"] = $doutorado['@attributes']["CODIGO-INSTITUICAO-SANDUICHE"];
+            }
 
             if (isset($doutorado["PALAVRAS-CHAVE"])) {
                 $array_result_pc = processaPalavrasChaveFormacaoLattes($doutorado["PALAVRAS-CHAVE"]);
@@ -785,8 +800,9 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TRABALHOS-EM-EVENTOS'})) {
         if (Testadores::testDOI($dadosBasicosDoTrabalho['@attributes']["DOI"] === true)) {
             $doc["doc"]["doi"] = $dadosBasicosDoTrabalho['@attributes']["DOI"];
         }
-        $doc["doc"]["lattes"]["flagDivulgacaoCientifica"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-DIVULGACAO-CIENTIFICA"];
-
+        if (isset($dadosBasicosDoTrabalho['@attributes']["FLAG-DIVULGACAO-CIENTIFICA"])) {
+            $doc["doc"]["lattes"]["flagDivulgacaoCientifica"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-DIVULGACAO-CIENTIFICA"];
+        }
         $doc["doc"]["detalhamentoDoTrabalho"]["classificacaoDoEvento"] = $detalhamentoDoTrabalho['@attributes']["CLASSIFICACAO-DO-EVENTO"];
         $doc["doc"]["EducationEvent"]["name"] = $detalhamentoDoTrabalho['@attributes']["NOME-DO-EVENTO"];
         $doc["doc"]["publisher"]["organization"]["location"] = $detalhamentoDoTrabalho['@attributes']["CIDADE-DO-EVENTO"];
@@ -893,8 +909,9 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'ARTIGOS-PUBLICADOS'})) {
             $doc["doc"]["doi"] = $dadosBasicosDoTrabalho['@attributes']["DOI"];
         }
         $doc["doc"]["alternateName"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-DO-ARTIGO-INGLES"];
-        $doc["doc"]["lattes"]["flagDivulgacaoCientifica"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-DIVULGACAO-CIENTIFICA"];
-
+        if (isset($dadosBasicosDoTrabalho['@attributes']["FLAG-DIVULGACAO-CIENTIFICA"])) {
+            $doc["doc"]["lattes"]["flagDivulgacaoCientifica"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-DIVULGACAO-CIENTIFICA"];
+        }
         $doc["doc"]["publisher"]["organization"]["location"] = $detalhamentoDoTrabalho['@attributes']["LOCAL-DE-PUBLICACAO"];
         $doc["doc"]["isPartOf"]["name"] = $detalhamentoDoTrabalho['@attributes']["TITULO-DO-PERIODICO-OU-REVISTA"];
         $doc["doc"]["pageStart"] = $detalhamentoDoTrabalho['@attributes']["PAGINA-INICIAL"];
@@ -999,8 +1016,9 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'LIVROS-E-CAPITULOS'})) {
                 $doc["doc"]["doi"] = $dadosBasicosDoTrabalho['@attributes']["DOI"];
             }
             $doc["doc"]["alternateName"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-DO-LIVRO-INGLES"];
-            $doc["doc"]["lattes"]["flagDivulgacaoCientifica"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-DIVULGACAO-CIENTIFICA"];
-
+            if (isset($dadosBasicosDoTrabalho['@attributes']["FLAG-DIVULGACAO-CIENTIFICA"])) {
+                $doc["doc"]["lattes"]["flagDivulgacaoCientifica"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-DIVULGACAO-CIENTIFICA"];
+            }
             $doc["doc"]["detalhamentoDoLivro"]["numeroDeVolumes"] = $detalhamentoDoTrabalho['@attributes']["NUMERO-DE-VOLUMES"];
             $doc["doc"]["numberOfPages"] = $detalhamentoDoTrabalho['@attributes']["NUMERO-DE-PAGINAS"];
             $doc["doc"]["isbn"] = $detalhamentoDoTrabalho['@attributes']["ISBN"];
@@ -1206,8 +1224,9 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TEXTOS-EM-JORNAIS-OU-REVISTA
             $doc["doc"]["doi"] = $dadosBasicosDoTrabalho['@attributes']["DOI"];
         }
         $doc["doc"]["alternateName"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-DO-TEXTO-INGLES"];
-        $doc["doc"]["lattes"]["flagDivulgacaoCientifica"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-DIVULGACAO-CIENTIFICA"];
-
+        if (isset($dadosBasicosDoTrabalho['@attributes']["FLAG-DIVULGACAO-CIENTIFICA"])) {
+            $doc["doc"]["lattes"]["flagDivulgacaoCientifica"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-DIVULGACAO-CIENTIFICA"];
+        }
         $doc["doc"]["isPartOf"]["name"] = $detalhamentoDoTrabalho['@attributes']["TITULO-DO-JORNAL-OU-REVISTA"];
         $doc["doc"]["isPartOf"]["issn"] = $detalhamentoDoTrabalho['@attributes']["ISSN"];
         $doc["doc"]["isPartOf"]["datePublished"] = $detalhamentoDoTrabalho['@attributes']["DATA-DE-PUBLICACAO"];
