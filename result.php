@@ -248,6 +248,10 @@ $get_data = $_GET;
                     <hr>
                     <h3>Refinar resultados</h3>
                     <hr>
+
+                    <?php if (isset($result_get["query"]["query"]["bool"]["filter"][0]["term"]["vinculo.lattes_id.keyword"])) : ?>
+                        <p><a class="btn btn-primary" href="tools/export.php?<?php echo $_SERVER["QUERY_STRING"] ?>&format=bibtex">Exportar para ORCID (BibTeX)</a></p>
+                    <?php endif ?>
                     <!-- Limitar por data - Início -->
                     <form action="result.php?" method="GET">
                         <h5 class="mt-3">Filtrar por intervalo de data de publicação</h5>
