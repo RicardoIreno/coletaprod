@@ -63,19 +63,19 @@ if ($_SERVER["REQUEST_URI"] == "/") {
     <div class="jumbotron">
         <br />
         <div class="container bg-light rounded p-5 mt-5 mb-5">
-            <h1 class="display-5"><?php echo $branch; ?></h1>
-            <p><?php echo $branch_description; ?></p>
-
+            <img src="inc/images/Prod_mais_2.png" class="rounded mx-auto d-block">
             <?php isset($error_connection_message) ? print_r($error_connection_message) : "" ?>
-
+            <br /><br />
             <div class="alert alert-warning" role="alert">
-                O COLETAPROD é uma ferramenta de busca da produção docente e discente (pós-graduação) desenvolvida pela UNIFESP.
-                Ela agrega informações do Currículo Lattes (Docentes após a data de ingresso na UNIFESP e Discentes que ingressaram após 2014),
-                sendo possível buscá-las por meio de palavras, pesquisadores e Programas de Pós-Graduação, com a utilização de filtros bem como de termos conjugados.
-                Aqui se acede à informação na forma de artigos, livros (e capítulos), além de trabalhos apresentados em eventos.
-                Como se tratam de informações não processadas, duplicações podem ocasionalmente aparecer.
-                <br />
-                Caso encontre algum erro, por favor <a href="https://docs.google.com/forms/d/e/1FAIpQLScmHGNgM_1z9sntKJo1uhIwIrxRt6qDdMZiPs0hvx8BMKuTmQ/viewform?usp=sf_link">use nosso formulário</a> para reportá-lo.
+                <p>
+                    O COLETAPROD é uma ferramenta de busca da produção docente e discente (pós-graduação) desenvolvida pela UNIFESP.
+                    Ela agrega informações do Currículo Lattes (Docentes após a data de ingresso na UNIFESP e Discentes que ingressaram após 2014),
+                    sendo possível buscá-las por meio de palavras, pesquisadores e Programas de Pós-Graduação, com a utilização de filtros bem como de termos conjugados.
+                    Aqui se acede à informação na forma de artigos, livros (e capítulos), além de trabalhos apresentados em eventos.
+                    Como se tratam de informações não processadas, duplicações podem ocasionalmente aparecer.
+                    <br />
+                    Caso encontre algum erro, por favor <a href="https://docs.google.com/forms/d/e/1FAIpQLScmHGNgM_1z9sntKJo1uhIwIrxRt6qDdMZiPs0hvx8BMKuTmQ/viewform?usp=sf_link">use nosso formulário</a> para reportá-lo.
+                </p>
             </div>
             <div id="app">
                 <form class="mt-3" action="result.php" v-if="searchPage == 'simple'">
