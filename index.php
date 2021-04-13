@@ -68,7 +68,7 @@ if ($_SERVER["REQUEST_URI"] == "/") {
             <br /><br />
             <div class="alert alert-warning" role="alert">
                 <p>
-                    O COLETAPROD é uma ferramenta de busca da produção docente e discente (pós-graduação) desenvolvida pela UNIFESP.
+                    O Prod+ é uma ferramenta de busca da produção docente e discente (pós-graduação) desenvolvida pela UNIFESP.
                     Ela agrega informações do Currículo Lattes (Docentes após a data de ingresso na UNIFESP e Discentes que ingressaram após 2014),
                     sendo possível buscá-las por meio de palavras, pesquisadores e Programas de Pós-Graduação, com a utilização de filtros bem como de termos conjugados.
                     Aqui se acede à informação na forma de artigos, livros (e capítulos), além de trabalhos apresentados em eventos.
