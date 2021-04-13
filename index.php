@@ -131,35 +131,54 @@ if ($_SERVER["REQUEST_URI"] == "/") {
     <div class="container mt-4">
         <div class="row">
             <div class="col-md-3">
-                <h2>Nome do Programa de Pós-Graduação</h2>
-                <ul class="list-group">
-                    <?php paginaInicial::unidade_inicio("vinculo.ppg_nome"); ?>
-                </ul>
-                <!--
-                <h2 class="uk-h3">Unidade</h2>
-                <ul class="list-group">
-                    < ?php paginaInicial::unidade_inicio("vinculo.unidade"); ?>
-                </ul>
-                <h2>Departamento</h2>
-                <ul class="list-group">
-                    < ?php paginaInicial::unidade_inicio("vinculo.departamento"); ?>
-                </ul>
-                <h2>Tags</h2>
-                <ul class="list-group">
-                    < ?php paginaInicial::unidade_inicio("tag"); ?>
-                </ul>
-                -->
+                <div class="accordion" id="accordionPPGs">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                Nome do Programa de Pós-Graduação
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionPPGs">
+                            <div class="accordion-body">
+                                <ul class="list-group">
+                                    <?php paginaInicial::unidade_inicio("vinculo.ppg_nome"); ?>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="col-md-3">
-                <h2>Tipo de vínculo</h2>
-                <ul class="list-group">
-                    <?php paginaInicial::unidade_inicio("vinculo.tipvin"); ?>
-                </ul>
-                <h2 class="uk-h3">Tipo de material</h2>
-                <ul class="list-group">
-                    <?php paginaInicial::tipo_inicio(); ?>
-                </ul>
-
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Tipo de vínculo
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <ul class="list-group">
+                                    <?php paginaInicial::unidade_inicio("vinculo.tipvin"); ?>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Tipo de material
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <ul class="list-group">
+                                    <?php paginaInicial::tipo_inicio(); ?>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="col-md-3">
                 <h2 class="uk-h3">Fonte</h2>
@@ -185,32 +204,32 @@ if ($_SERVER["REQUEST_URI"] == "/") {
     <?php include('inc/footer.php'); ?>
     <script>
         var app = new Vue({
-                    el: '#app',
+            el: '#app',
 
-                    data: {
-                        searchPage: 'simple',
-                        query: "",
-                        message: "Teste",
-                        authors: []
-                    },
-                    mounted() {
-                        this.searchCV();
-                    },
-                    methods: {
-                        searchCV() {
-                            axios.get(
-                                    'tools/proxy_autocomplete_cv.php?query=' + this.query
-                                ).then((response) => {
-                                    this.authors = response.data.hits.hits;
-                                })
-                                .catch((error) => {
-                                    console.log(error);
-                                    console.error(error);
-                                    this.errored = true;
-                                })
-                                .finally(() => (this.loading = false));
-                        }
-                    }
+            data: {
+                searchPage: 'simple',
+                query: "",
+                message: "Teste",
+                authors: []
+            },
+            mounted() {
+                this.searchCV();
+            },
+            methods: {
+                searchCV() {
+                    axios.get(
+                            'tools/proxy_autocomplete_cv.php?query=' + this.query
+                        ).then((response) => {
+                            this.authors = response.data.hits.hits;
+                        })
+                        .catch((error) => {
+                            console.log(error);
+                            console.error(error);
+                            this.errored = true;
+                        })
+                        .finally(() => (this.loading = false));
+                }
+            }
         })
     </script>
 
