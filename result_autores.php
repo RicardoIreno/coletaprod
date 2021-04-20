@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <?php
 
-require 'inc/config.php'; 
+require 'inc/config.php';
 require 'inc/functions.php';
 
 if (!empty($_POST)) {
-    foreach ($_POST as $key=>$value) {            
+    foreach ($_POST as $key => $value) {
         $var_concluido["doc"]["concluido"] = $value;
-        $var_concluido["doc"]["doc_as_upsert"] = true; 
+        $var_concluido["doc"]["doc_as_upsert"] = true;
         Elasticsearch::update($key, $var_concluido);
     }
     sleep(6);
@@ -47,47 +47,51 @@ $params["from"] = $result_get['skip'];
 $cursor = $client->search($params);
 
 /*pagination - start*/
-$get_data = $_GET;    
-/*pagination - end*/      
+$get_data = $_GET;
+/*pagination - end*/
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <?php
-            include('inc/meta-header.php'); 
-        ?>        
-        <title>Lattes - Resultado da busca por trabalhos</title>
-        
-        <script src="http://cdn.jsdelivr.net/g/filesaver.js"></script>
-        <script>
-              function SaveAsFile(t,f,m) {
-                    try {
-                        var b = new Blob([t],{type:m});
-                        saveAs(b, f);
-                    } catch (e) {
-                        window.open("data:"+m+"," + encodeURIComponent(t), '_blank','');
-                    }
-                }
-        </script>         
-        
-    </head>
-    <body>
 
-        <!-- NAV -->
-        <?php require 'inc/navbar.php'; ?>
-        <!-- /NAV -->
-        <br/><br/><br/><br/>
+<head>
+    <?php
+    include('inc/meta-header.php');
+    ?>
+    <title>Lattes - Resultado da busca por trabalhos</title>
 
-        <main role="main">
-            <div class="container">
+    <script src="http://cdn.jsdelivr.net/g/filesaver.js"></script>
+    <script>
+        function SaveAsFile(t, f, m) {
+            try {
+                var b = new Blob([t], {
+                    type: m
+                });
+                saveAs(b, f);
+            } catch (e) {
+                window.open("data:" + m + "," + encodeURIComponent(t), '_blank', '');
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <?php require 'inc/navbar.php'; ?>
+    <!-- /NAV -->
+    <br /><br /><br /><br />
+
+    <main role="main">
+        <div class="container">
 
             <div class="row">
-                <div class="col-8">    
+                <div class="col-8">
 
                     <!-- Navegador de resultados - Início -->
                     <?php ui::pagination($page, $total, $limit); ?>
-                    <!-- Navegador de resultados - Fim -->   
+                    <!-- Navegador de resultados - Fim -->
 
                     <?php foreach ($cursor["hits"]["hits"] as $r) : ?>
                         <?php if (empty($r["_source"]['datePublished'])) {
@@ -98,33 +102,34 @@ $get_data = $_GET;
                         <div class="card">
                             <div class="card-body">
 
-                                <h5 class="card-title"><a class="text-dark" href="http://lattes.cnpq.br/<?php echo $r['_source']['lattesID']; ?>"><?php echo $r["_source"]['nome_completo']; ?></a></h5>
+                                <h5 class="card-title"><a class="text-dark" href="profile/index.php?lattesID=<?php echo $r['_source']['lattesID']; ?>"><?php echo $r["_source"]['nome_completo']; ?></a></h5>
+                                <p><a class="text-dark" href="http://lattes.cnpq.br/<?php echo $r['_source']['lattesID']; ?>">Ver Currículo Lattes</a></p>
                                 <p><a class="text-dark" href='result.php?filter[]=vinculo.lattes_id:"<?php echo $r['_source']['lattesID']; ?>"'>Ver produções indexadas</a></p>
                                 <?php if (!empty($r["_source"]['resumo_cv']['texto_resumo_cv_rh'])) : ?>
-                                    <p class="text-muted"><b>Resumo:</b> <?php echo $r["_source"]['resumo_cv']['texto_resumo_cv_rh'];?></p>
+                                    <p class="text-muted"><b>Resumo:</b> <?php echo $r["_source"]['resumo_cv']['texto_resumo_cv_rh']; ?></p>
                                 <?php endif; ?>
 
                             </div>
                         </div>
-                        <?php endforeach;?>
+                    <?php endforeach; ?>
 
 
-                        <!-- Navegador de resultados - Início -->
-                        <?php ui::pagination($page, $total, $limit); ?>
-                        <!-- Navegador de resultados - Fim -->  
+                    <!-- Navegador de resultados - Início -->
+                    <?php ui::pagination($page, $total, $limit); ?>
+                    <!-- Navegador de resultados - Fim -->
 
                 </div>
                 <div class="col-4">
-                
-                <hr>
-                <h3>Refinar meus resultados</h3>    
-                <hr>
-                <?php
+
+                    <hr>
+                    <h3>Refinar meus resultados</h3>
+                    <hr>
+                    <?php
                     $facets = new facets();
                     $facets->query = $result_get['query'];
 
                     if (!isset($_GET)) {
-                        $_GET = null;                                    
+                        $_GET = null;
                     }
 
                     $facets->facet(basename(__FILE__), "campus", 100, "Campus", null, "_term", $_GET, $index_cv);
@@ -138,98 +143,99 @@ $get_data = $_GET;
                     $facets->facet(basename(__FILE__), "genero", 100, "Genero", null, "_term", $_GET, $index_cv);
                     $facets->facet(basename(__FILE__), "desc_nivel", 100, "Nível", null, "_term", $_GET, $index_cv);
                     $facets->facet(basename(__FILE__), "desc_curso", 100, "Curso", null, "_term", $_GET, $index_cv);
-                    
+
                     $facets->facet(basename(__FILE__), "numfuncional", 100, "Número funcional", null, "_term", $_GET, $index_cv);
                     $facets->facet(basename(__FILE__), "tag", 100, "Tag", null, "_term", $_GET, $index_cv);
                     $facets->facet(basename(__FILE__), "nacionalidade", 100, "Nacionalidade", null, "_term", $_GET, $index_cv);
                     $facets->facet(basename(__FILE__), "pais_de_nascimento", 100, "País de nascimento", null, "_term", $_GET, $index_cv);
-                            
+
                     $facets->facet(basename(__FILE__), "endereco.endereco_profissional.nomeInstituicaoEmpresa", 100, "Nome da Instituição ou Empresa", null, "_term", $_GET, $index_cv);
                     $facets->facet(basename(__FILE__), "endereco.endereco_profissional.nomeOrgao", 100, "Nome do orgão", null, "_term", $_GET, $index_cv);
                     $facets->facet(basename(__FILE__), "endereco.endereco_profissional.nomeUnidade", 100, "Nome da unidade", null, "_term", $_GET, $index_cv);
                     $facets->facet(basename(__FILE__), "endereco.endereco_profissional.pais", 100, "País do endereço profissional", null, "_term", $_GET, $index_cv);
                     $facets->facet(basename(__FILE__), "endereco.endereco_profissional.cidade", 100, "Cidade do endereço profissional", null, "_term", $_GET, $index_cv);
-                    
+
                     $facets->facet(basename(__FILE__), "formacao_academica_titulacao_graduacao.nomeInstituicao", 100, "Instituição em que cursou graduação", null, "_term", $_GET, $index_cv);
                     $facets->facet(basename(__FILE__), "formacao_academica_titulacao_graduacao.nomeCurso", 100, "Nome do curso na graduação", null, "_term", $_GET, $index_cv);
                     $facets->facet(basename(__FILE__), "formacao_academica_titulacao_graduacao.statusDoCurso", 100, "Status do curso na graduação", null, "_term", $_GET, $index_cv);
-                    
+
                     $facets->facet(basename(__FILE__), "formacao_academica_titulacao_mestrado.nomeInstituicao", 100, "Instituição em que cursou mestrado", null, "_term", $_GET, $index_cv);
                     $facets->facet(basename(__FILE__), "formacao_academica_titulacao_mestrado.nomeCurso", 100, "Nome do curso no mestrado", null, "_term", $_GET, $index_cv);
                     $facets->facet(basename(__FILE__), "formacao_academica_titulacao_mestrado.statusDoCurso", 100, "Status do curso no mestrado", null, "_term", $_GET, $index_cv);
-                    
+
                     $facets->facet(basename(__FILE__), "formacao_academica_titulacao_mestradoProfissionalizante.nomeInstituicao", 100, "Instituição em que cursou mestrado profissional", null, "_term", $_GET, $index_cv);
                     $facets->facet(basename(__FILE__), "formacao_academica_titulacao_mestradoProfissionalizante.nomeCurso", 100, "Nome do curso no mestrado profissional", null, "_term", $_GET, $index_cv);
                     $facets->facet(basename(__FILE__), "formacao_academica_titulacao_mestradoProfissionalizante.statusDoCurso", 100, "Status do curso no mestrado profissional", null, "_term", $_GET, $index_cv);
-                    
+
                     $facets->facet(basename(__FILE__), "formacao_academica_titulacao_doutorado.nomeInstituicao", 100, "Instituição em que cursou doutorado", null, "_term", $_GET, $index_cv);
                     $facets->facet(basename(__FILE__), "formacao_academica_titulacao_doutorado.nomeCurso", 100, "Nome do curso no doutorado", null, "_term", $_GET, $index_cv);
                     $facets->facet(basename(__FILE__), "formacao_academica_titulacao_doutorado.statusDoCurso", 100, "Status do curso no doutorado", null, "_term", $_GET, $index_cv);
-                    
+
                     $facets->facet(basename(__FILE__), "formacao_academica_titulacao_livreDocencia.nomeInstituicao", 100, "Instituição em que cursou livre docência", null, "_term", $_GET, $index_cv);
-                    $facets->facet(basename(__FILE__), "formacao_maxima", 10, "Maior formação que iniciou", null, "_term", $_GET, $index_cv);         
+                    $facets->facet(basename(__FILE__), "formacao_maxima", 10, "Maior formação que iniciou", null, "_term", $_GET, $index_cv);
                     $facets->facet(basename(__FILE__), "atuacao_profissional.nomeInstituicao", 100, "Instituição em que atuou profissionalmente", null, "_term", $_GET, $index_cv);
                     $facets->facet(basename(__FILE__), "atuacao_profissional.vinculos.outroEnquadramentoFuncionalInformado", 100, "Enquadramento funcional", null, "_term", $_GET, $index_cv);
                     $facets->facet(basename(__FILE__), "atuacao_profissional.vinculos.outroVinculoInformado", 100, "Vínculo", null, "_term", $_GET, $index_cv);
-                    
+
                     $facets->facet(basename(__FILE__), "citacoes.SciELO.numeroCitacoes", 100, "Citações na Scielo", null, "_term", $_GET, $index_cv);
                     $facets->facet(basename(__FILE__), "citacoes.SCOPUS.numeroCitacoes", 100, "Citações na Scopus", null, "_term", $_GET, $index_cv);
                     $facets->facet(basename(__FILE__), "citacoes.Web of Science.numeroCitacoes", 100, "Citações na Web of Science", null, "_term", $_GET, $index_cv);
-                    $facets->facet(basename(__FILE__), "citacoes.outras.numero_citacoes", 100, "Citações em outras bases", null, "_term", $_GET, $index_cv);        
-                    
+                    $facets->facet(basename(__FILE__), "citacoes.outras.numero_citacoes", 100, "Citações em outras bases", null, "_term", $_GET, $index_cv);
+
                     $facets->facet(basename(__FILE__), "data_atualizacao", 100, "Data de atualização do currículo", null, "_term", $_GET, $index_cv);
 
-                ?>
-                </ul>
-                <!-- Limitar por data - Início -->
-                <form action="result.php?" method="GET">
-                    <h5 class="mt-3">Filtrar por ano de publicação</h5>
-                    <?php 
-                    parse_str($_SERVER["QUERY_STRING"], $parsedQuery);
-                    foreach ($parsedQuery as $k => $v) {
-                        if (is_array($v)) {
-                            foreach ($v as $v_unit) {
-                                echo '<input type="hidden" name="'.$k.'[]" value="'.htmlentities($v_unit).'">';
-                            }
-                        } else {
-                            if ($k == "initialYear") {
-                                $initialYearValue = $v;
-                            } elseif ($k == "finalYear") {
-                                $finalYearValue = $v;
-                            } else {
-                                echo '<input type="hidden" name="'.$k.'" value="'.htmlentities($v).'">';
-                            } 
-                        }
-                    }
-
-                    if (!isset($initialYearValue)) {
-                        $initialYearValue = "";
-                    }
-                    if (!isset($finalYearValue)) {
-                        $finalYearValue = "";
-                    }
-
                     ?>
-                    <div class="form-group">
-                        <label for="initialYear">Ano inicial</label>
-                        <input type="text" class="form-control" id="initialYear" name="initialYear" pattern="\d{4}" placeholder="Ex. 2010" value="<?php echo $initialYearValue; ?>" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="finalYear">Ano final</label>
-                        <input type="text" class="form-control" id="finalYear" name="finalYear" pattern="\d{4}" placeholder="Ex. 2020" value="<?php echo $finalYearValue; ?>">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Filtrar</button>
-                </form>   
-                <!-- Limitar por data - Fim -->
-                <hr>     
-                        
+                    </ul>
+                    <!-- Limitar por data - Início -->
+                    <form action="result.php?" method="GET">
+                        <h5 class="mt-3">Filtrar por ano de publicação</h5>
+                        <?php
+                        parse_str($_SERVER["QUERY_STRING"], $parsedQuery);
+                        foreach ($parsedQuery as $k => $v) {
+                            if (is_array($v)) {
+                                foreach ($v as $v_unit) {
+                                    echo '<input type="hidden" name="' . $k . '[]" value="' . htmlentities($v_unit) . '">';
+                                }
+                            } else {
+                                if ($k == "initialYear") {
+                                    $initialYearValue = $v;
+                                } elseif ($k == "finalYear") {
+                                    $finalYearValue = $v;
+                                } else {
+                                    echo '<input type="hidden" name="' . $k . '" value="' . htmlentities($v) . '">';
+                                }
+                            }
+                        }
+
+                        if (!isset($initialYearValue)) {
+                            $initialYearValue = "";
+                        }
+                        if (!isset($finalYearValue)) {
+                            $finalYearValue = "";
+                        }
+
+                        ?>
+                        <div class="form-group">
+                            <label for="initialYear">Ano inicial</label>
+                            <input type="text" class="form-control" id="initialYear" name="initialYear" pattern="\d{4}" placeholder="Ex. 2010" value="<?php echo $initialYearValue; ?>" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="finalYear">Ano final</label>
+                            <input type="text" class="form-control" id="finalYear" name="finalYear" pattern="\d{4}" placeholder="Ex. 2020" value="<?php echo $finalYearValue; ?>">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Filtrar</button>
+                    </form>
+                    <!-- Limitar por data - Fim -->
+                    <hr>
+
+                </div>
             </div>
-        </div>
-                
 
-        <?php include('inc/footer.php'); ?>
+
+            <?php include('inc/footer.php'); ?>
 
         </div>
-        
-    </body>
+
+</body>
+
 </html>
