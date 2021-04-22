@@ -217,6 +217,22 @@
                 </div>
             </form>
 
+            <form class="m-3" action="lattesid_by_cpf.php" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+                <legend>Enviar um arquivo com os CPFs</legend>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Obter Lattes IDs usando o CPF</span>
+                    </div>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="fileXML" aria-describedby="fileXML" name="file">
+                        <label class="custom-file-label" for="fileXML">Escolha o arquivo</label>
+                    </div>
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit">Upload</button>
+                    </div>
+                </div>
+            </form>
+
             <!--
 
                     <form class="m-3" action="tools/upload/sucupira_upload.php" method="post" accept-charset="utf-8" enctype="multipart/form-data">
