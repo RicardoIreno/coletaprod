@@ -1,6 +1,6 @@
 <?php
 if ($_SERVER["REQUEST_URI"] == "/") {
-    header("Location: http://unifesp.br/coletaprod/index.php");
+    header("Location: http://unifesp.br/prodmais/index.php");
 }
 ?>
 <!DOCTYPE html>
