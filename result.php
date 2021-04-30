@@ -362,23 +362,23 @@ $get_data = $_GET;
                         <p><a href="tools/export.php?<?php echo $_SERVER["QUERY_STRING"] ?>&format=authorNetwork">Exportar em formato CSV para o Gephi da Rede de Co-Autoria incluindo publicações</a></p>
                         <p><a href="tools/export.php?<?php echo $_SERVER["QUERY_STRING"] ?>&format=authorNetworkWithoutPapers">Exportar em formato CSV para o Gephi da Rede de Co-Autoria sem publicações</a></p>
                         <p><a href="tools/export.php?<?php echo $_SERVER["QUERY_STRING"] ?>&format=ppgNetworkWithoutPapers">Exportar em formato CSV para o Gephi da Rede de PPGs</a></p>
-                        <hr>
                     </div>
                 </div>
-
-                <?php include('inc/footer.php'); ?>
-
             </div>
+        </div>
+    </main>
 
-            <script>
-                function copyToClipboard(element) {
-                    var $temp = $("<input>");
-                    $("body").append($temp);
-                    $temp.val($(element).text()).select();
-                    document.execCommand("copy");
-                    $temp.remove();
-                }
-            </script>
+    <?php include('inc/footer.php'); ?>
+
+    <script>
+        function copyToClipboard(element) {
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val($(element).text()).select();
+            document.execCommand("copy");
+            $temp.remove();
+        }
+    </script>
 
 </body>
 
