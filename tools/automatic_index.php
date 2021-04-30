@@ -23,7 +23,6 @@ $consulta = "
     AND VINCULO = 'DOCENTE'
     AND SIT_CRED IN ('Credenciamento Pleno','Recredenciamento Pleno', 'Descredenciamento')
     AND DT_TERMINO IS NULL
-    AND ROWNUM <= 100
 ";
 
 $stid = oci_parse($conexao, $consulta) or die("erro");
