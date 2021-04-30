@@ -24,7 +24,7 @@
     foreach ($cursor["hits"]["hits"] as $r) {
 
         $clientCrossref = new RenanBr\CrossRefClient();
-        $clientCrossref->setUserAgent('GroovyBib/1.1 (https://unifesp.br/coletaprod/; mailto:tiago.murakami@unifesp.br)');
+        $clientCrossref->setUserAgent('GroovyBib/1.1 (https://unifesp.br/prodmais/; mailto:tiago.murakami@unifesp.br)');
         $exists = $clientCrossref->exists('works/'.$r["_source"]["doi"].'');
         
         if ($exists == true) {
