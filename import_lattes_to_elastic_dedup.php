@@ -361,10 +361,12 @@ if (isset($_REQUEST['campus'])) {
 if (isset($_REQUEST['desc_gestora'])) {
     $doc_curriculo_array['doc']['desc_gestora'] = explode("|", $_REQUEST['desc_gestora']);
 }
-print_r($curriculo->attributes()->{'DATA-ATUALIZACAO'});
+
 $doc_curriculo_array["doc"]["data_atualizacao"] = substr((string)$curriculo->attributes()->{'DATA-ATUALIZACAO'}, 4, 4)."-".substr((string)$curriculo->attributes()->{'DATA-ATUALIZACAO'}, 2, 2);
-echo "<br/>";
-print_r($doc_curriculo_array["doc"]["data_atualizacao"]);
+
+if (isset($_REQUEST['dt_atual_lattes'])) {
+    $doc_curriculo_array["doc"]["dt_atual_lattes"] = $_REQUEST['dt_atual_lattes'];
+}
 $doc_curriculo_array["doc"]["nome_completo"] = (string)$curriculo->{'DADOS-GERAIS'}->attributes()->{'NOME-COMPLETO'};
 $doc_curriculo_array["doc"]["nome_em_citacoes_bibliograficas"] = (string)$curriculo->{'DADOS-GERAIS'}->attributes()->{'NOME-EM-CITACOES-BIBLIOGRAFICAS'};
 if (isset($curriculo->{'DADOS-GERAIS'}->attributes()->{'NACIONALIDADE'})) {

@@ -17,7 +17,7 @@ if (!$conexao) {
 
 
 $consulta = "
-    SELECT * FROM CONS_OLAP.unifesp_coleta_prod 
+    SELECT * FROM CONS_OLAP.unifesp_coleta_prod
     WHERE DATA_ADMISSAO IS NOT NULL 
     AND DATA_DEMISSAO IS NULL
     AND VINCULO = 'DOCENTE'
@@ -30,6 +30,10 @@ oci_execute($stid);
 while (($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)) != false) {
 
     $IDLattes = file_get_contents('http://200.133.208.25/api/proxy_cpf/' . $row["CPF"] . '');
+
+    $DataAtualizacaoLattes = file_get_contents('http://200.133.208.25/api/proxy_data_atualizacao/' . $IDLattes . '');
+
+    $DataAtualizacaoLattes_formatted = ''.substr($DataAtualizacaoLattes, 6, 4).'-'. substr($DataAtualizacaoLattes, 3, 2).'';
 
     if (strlen($IDLattes) == 16) {
 
@@ -48,6 +52,8 @@ while (($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)) != false) {
         //$queryParams[] = '&desc_curso=' . $r['_source']['desc_curso'][0] . '';
         $queryParams[] = '&campus=' . $row["DESC_GESTORA"] . '';
         $queryParams[] = '&desc_gestora=' . $row["DESC_GESTORA"] . '';
+        $queryParams[] = '&dt_atual_lattes=' . $DataAtualizacaoLattes_formatted . '';
+        $queryParams[] = '&dt_credenciamento=' . date("Y", strtotime($row["DT_CREDENC"])) . '';
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, '' . $url_base . '/import_lattes_to_elastic_dedup.php?lattesID=' . $IDLattes . '');
