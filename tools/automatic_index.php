@@ -20,7 +20,7 @@ $consulta = "
     SELECT * FROM CONS_OLAP.unifesp_coleta_prod
     WHERE DATA_ADMISSAO IS NOT NULL 
     AND DATA_DEMISSAO IS NULL
-    AND VINCULO = 'DOCENTE'
+    AND VINCULO = 'PG ORIENTADORES'
     AND SIT_CRED IN ('Credenciamento Pleno','Recredenciamento Pleno', 'Descredenciamento')
     AND DT_TERMINO IS NULL
 ";
