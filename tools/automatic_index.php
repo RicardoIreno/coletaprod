@@ -92,7 +92,6 @@ while (($row = oci_fetch_array($stid_1, OCI_ASSOC + OCI_RETURN_NULLS)) != false)
         $queryParams[] = '&tipvin=' . $row["CARGO_REDUZIDO"] . '';
         $queryParams[] = '&divisao=' . $row["DESC_DIV"] . '';
         $queryParams[] = '&secao=' . $row["DESC_SEC"] . '';
-        $queryParams[] = '&ppg_nome=' . $row["PPG_NOME_PROGRAMA"] . '';
         $queryParams[] = '&genero=' . $row["GENERO"] . '';
         $queryParams[] = '&desc_nivel=' . $row["DESCRICAO_NIVEL"] . '';
         //$queryParams[] = '&desc_curso=' . $r['_source']['desc_curso'][0] . '';
