@@ -38,8 +38,6 @@ if (!empty($_REQUEST["lattesID"])) {
     $params_works = [];
     $params_works["index"] = $index;
     $params_works["body"] = $result_get_works['query'];
-    $params_works["size"] = $limit;
-    $params_works["from"] = $result_get_works['skip'];
     $cursor_works = $client->search($params_works);
 } else {
     echo "Não foi informado um LattesID";
@@ -68,26 +66,38 @@ if (!empty($_REQUEST["lattesID"])) {
             <div class="row">
                 <div class="col-12">
                     <h1><?php echo $profile["nome_completo"] ?></h1>
-                    <br /><br /><br /><br />
-                    <?php var_dump($profile); ?>
-                    <br /><br /><br /><br />
-                    <?php //var_dump($cursor_works); ?>
+                    <br />
+                    <p><?php echo $profile["resumo_cv"]["texto_resumo_cv_rh"] ?></p>
+                    <?php //var_dump($profile); 
+                    ?>
+                    <?php //var_dump($cursor_works); 
+                    ?>
                     <?php
-                        foreach ($cursor_works["hits"]["hits"] as $works) {
-                            echo "<br /><br />";
-                            var_dump($works);
-                            echo '
+                    foreach ($cursor_works["hits"]["hits"] as $works) {
+                        //echo "<br /><br />";
+                        //var_dump($works);
+                        echo '
                             <div class="card">
                                 <h5 class="card-header">' . $works["_source"]["tipo"] . '</h5>
                                 <div class="card-body">
                                     <h5 class="card-title">' . $works["_source"]["name"] . '</h5>
-                                    <p class="card-text"></p>
+                                    <p class="card-text">Data de publicação: ' . $works["_source"]["datePublished"] . '</p>
+                            ';
+                        if (isset($works["_source"]["EducationEvent"])) {
+                            echo '<p class="card-text">Nome do evento: ' . $works["_source"]["EducationEvent"]["name"] . '</p>';
+                        }
+                        echo '<p class="card-text">País de publicação: ' . $works["_source"]["country"] . '</p>';
+                        foreach ($works["_source"]["author"] as $author) {
+                            $authors[] = $author["person"]["name"];
+                        };
+                        echo '<p class="card-text">Autor: ' . implode('; ', $authors) . '</p>';
+                        echo '
                                 </div>
                             </div>
-                            '
-                            ;
-                            echo "<br /><br />";
-                        }
+                            ';
+                        echo "<br /><br />";
+                        unset($authors);
+                    }
                     ?>
                 </div>
             </div>

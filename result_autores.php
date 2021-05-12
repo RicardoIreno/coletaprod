@@ -105,6 +105,7 @@ $get_data = $_GET;
                                 <h5 class="card-title"><a class="text-dark" href="profile/index.php?lattesID=<?php echo $r['_source']['lattesID']; ?>"><?php echo $r["_source"]['nome_completo']; ?></a></h5>
                                 <p><a class="text-dark" href="http://lattes.cnpq.br/<?php echo $r['_source']['lattesID']; ?>">Ver Currículo Lattes</a></p>
                                 <p><a class="text-dark" href='result.php?filter[]=vinculo.lattes_id:"<?php echo $r['_source']['lattesID']; ?>"'>Ver produções indexadas</a></p>
+                                <p><a class="text-dark" href='profile/index.php?lattesID=<?php echo $r['_source']['lattesID']; ?>'>Ver perfil</a></p>
                                 <?php if (!empty($r["_source"]['resumo_cv']['texto_resumo_cv_rh'])) : ?>
                                     <p class="text-muted"><b>Resumo:</b> <?php echo $r["_source"]['resumo_cv']['texto_resumo_cv_rh']; ?></p>
                                 <?php endif; ?>
