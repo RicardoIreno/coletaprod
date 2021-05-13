@@ -38,7 +38,7 @@ while (($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)) != false) {
         $queryParams[] = '&tag=';
         $queryParams[] = '&unidade=' . $row["DESC_ACADEMICA"] . '';
         $queryParams[] = '&departamento=' . $row["DESC_DEPTO"] . '';
-        $queryParams[] = '&tipvin=' . $row["VINCULO"] . '';
+        $queryParams[] = '&tipvin=' . $row["CARGO_REDUZIDO"] . '';
         $queryParams[] = '&divisao=' . $row["DESC_DIV"] . '';
         $queryParams[] = '&secao=' . $row["DESC_SEC"] . '';
         $queryParams[] = '&ppg_nome=' . $row["PPG_NOME_PROGRAMA"] . '';
