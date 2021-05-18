@@ -78,6 +78,12 @@ $get_data = $_GET;
 
 <body>
 
+    <?php
+    if (file_exists('inc/google_analytics.php')) {
+        include 'inc/google_analytics.php';
+    }
+    ?>
+
     <!-- NAV -->
     <?php require 'inc/navbar.php'; ?>
     <!-- /NAV -->

@@ -53,7 +53,11 @@ if ($_SERVER["REQUEST_URI"] == "/") {
 
 <body>
 
-
+    <?php
+    if (file_exists('inc/google_analytics.php')) {
+        include 'inc/google_analytics.php';
+    }
+    ?>
 
     <!-- NAV -->
     <?php require 'inc/navbar.php'; ?>
