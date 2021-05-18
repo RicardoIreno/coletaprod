@@ -51,10 +51,13 @@ $get_data = $_GET;
 <html lang="en">
 
 <head>
+
     <?php
     require 'inc/meta-header.php';
     ?>
     <title><?php echo $branch; ?> - Resultado da busca</title>
+
+    <link rel="stylesheet" href="inc/css/style.css" />
 
 </head>
 
@@ -65,7 +68,7 @@ $get_data = $_GET;
         include 'inc/google_analytics.php';
     }
     ?>
-
+    <br /><br />
     <!-- NAV -->
     <?php require 'inc/navbar.php'; ?>
     <!-- /NAV -->

@@ -73,6 +73,7 @@ $get_data = $_GET;
             }
         }
     </script>
+    <link rel="stylesheet" href="inc/css/style.css" />
 
 </head>
 
