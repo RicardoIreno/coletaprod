@@ -188,6 +188,12 @@ $get_data = $_GET;
 
                                 ?>
 
+                                <?php if (!empty($r["_source"]['doi'])) : ?>
+                                    <?php if (isset($elsevier_apikey)) : ?>
+                                        <object height="50" data="https://api.elsevier.com/content/abstract/citation-count?doi=<?php echo $r["_source"]['doi']; ?>&httpAccept=text/html&apiKey=<?php echo $elsevier_apikey; ?>"></object>
+                                    <?php endif; ?>
+                                <?php endif; ?>
+
 
                                 <!--
                                     <div class="btn-group mt-3" role="group" aria-label="Botoes">
@@ -313,6 +319,7 @@ $get_data = $_GET;
                             $_GET = null;
                         }
 
+                        $facets->facet(basename(__FILE__), "doi", 100, "DOI", null, "_term", $_GET);
                         $facets->facet(basename(__FILE__), "vinculo.ppg_nome", 100, "Nome do PPG", null, "_term", $_GET);
                         $facets->facet(basename(__FILE__), "tipo", 100, "Tipo de material", null, "_term", $_GET);
                         $facets->facet(basename(__FILE__), "author.person.name", 100, "Nome completo do autor", null, "_term", $_GET);

@@ -1819,7 +1819,7 @@ Class ActiveFilters
         }
 
         if (!empty($get["notFilter"])) {
-            $notFilterText = sizeof($get["notFilter"]) > 1 ? $t->gettext('Removidos') : $t->gettext('Removido');
+            $notFilterText = sizeof($get["notFilter"]) > 1 ? 'Removidos' : 'Removido';
             $activeFilters[] = '<span class="not-filter"> '. $notFilterText . ': </span>';
             foreach ($get["notFilter"] as $notFilters) {
                 $notFiltersArray[] = $notFilters;

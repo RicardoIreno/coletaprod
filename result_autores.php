@@ -88,7 +88,7 @@ $get_data = $_GET;
     <!-- NAV -->
     <?php require 'inc/navbar.php'; ?>
     <!-- /NAV -->
-    <br /><br /><br /><br />
+    <br /><br /><br /><br /><br />
 
     <main role="main">
         <div class="container">
@@ -235,14 +235,11 @@ $get_data = $_GET;
                     </form>
                     <!-- Limitar por data - Fim -->
                     <hr>
-
                 </div>
             </div>
+    </main>
 
-
-            <?php include('inc/footer.php'); ?>
-
-        </div>
+    <?php include('inc/footer.php'); ?>
 
 </body>
 
