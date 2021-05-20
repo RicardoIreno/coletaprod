@@ -68,11 +68,9 @@ $get_data = $_GET;
         include 'inc/google_analytics.php';
     }
     ?>
-    <br /><br />
     <!-- NAV -->
     <?php require 'inc/navbar.php'; ?>
     <!-- /NAV -->
-    <br />
 
     <main role="main" class="mt-5">
         <div class="container">
