@@ -592,7 +592,7 @@ class paginaInicial {
             'body' => $query
         ];
         $response = $client->search($params);
-        echo '<select class="form-control" name="filter[]" aria-label="Filtro">
+        echo '<select class="my-input" name="filter[]" aria-label="Filtro">
         <option value="" selected>Selecione uma opção para filtrar</option>';
         foreach ($response["aggregations"]["group_by_state"]["buckets"] as $facets) {
             echo '<option value="'.$field.':'.$facets['key'].'">'.$facets['key'].'</option>';
