@@ -103,7 +103,7 @@ if ($_SERVER["REQUEST_URI"] == "/") {
                     <form class="mt-3" action="result.php" v-if="searchPage == 'simple'">
                         <label for="searchQuery">Pesquisa por palavras - <a href="result.php">Navegar por todos</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                         <div class="form-group">
-                            <input type="text" name="search" class="form-control" id="searchQuery" aria-describedby="searchHelp" placeholder="Pesquise por termo, autor ou ID do Lattes (16 dígitos)">
+                            <input type="text" name="search" class="my-input" id="searchQuery" aria-describedby="searchHelp" placeholder="Pesquise por termo, autor ou ID do Lattes (16 dígitos)">
                         </div>
                         <div class="input-group-append mt-3">
                             <button type="submit" class="my-btn">Pesquisar</button>
@@ -112,32 +112,28 @@ if ($_SERVER["REQUEST_URI"] == "/") {
                     <form class="mt-3" action="result.php" v-if="searchPage == 'advanced'">
                         <label for="searchQuery">Pesquisa por palavras - <a href="result.php">Navegar por todos</a></label>
                         <div class="form-group">
-                            <input type="text" name="search" class="form-control" id="searchQuery" aria-describedby="searchHelp" placeholder="Pesquise por termo, autor ou ID do Lattes (16 dígitos)">
+                            <input type="text" name="search" class="my-input" id="searchQuery" aria-describedby="searchHelp" placeholder="Pesquise por termo, autor ou ID do Lattes (16 dígitos)">
                             <label>Filtrar por Nome do Programa de Pós-Graduação (Opcional):</label>
                             <?php paginaInicial::filter_select("vinculo.ppg_nome"); ?>
                         </div>
                         <label for="authorsDataList" class="form-label">Autores (ID Lattes)</label>
-                        <input class="form-control" list="datalistOptions" id="authorsDataList" placeholder="Digite parte do nome do autor..." name="filter[]" v-model="query" @input="searchCV()">
+                        <input class="my-input" list="datalistOptions" id="authorsDataList" placeholder="Digite parte do nome do autor..." name="filter[]" v-model="query" @input="searchCV()">
                         <datalist id="datalistOptions">
                             <option v-for="author in authors" :key="author._id" :value="'vinculo.lattes_id:' + author._id">{{author._source.nome_completo}}</option>
                         </datalist>
-                        <label>Filtrar por data (Opcional):</label>
-                        <div class="input-group">
-                            <div class="form-group">
-                                <label for="initialYear">Ano inicial</label>
-                                <input type="text" class="form-control" id="initialYear" name="initialYear" pattern="\d{4}" placeholder="Ex. 2010" value="">
-                            </div>
-                            <div class="form-group">
-                                <label for="finalYear">Ano final</label>
-                                <input type="text" class="form-control" id="finalYear" name="finalYear" pattern="\d{4}" placeholder="Ex. 2020" value="">
-                            </div>
+                        <div class="data-search-container">
+
+                            <input type="text" class="my-input" id="initialYear" name="initialYear" pattern="\d{4}" placeholder="19XX (opcional)" value="">
+                            <span> à </span>
+                            <input type="text" class="my-input" id="finalYear" name="finalYear" pattern="\d{4}" placeholder="20XX (opcional)" value="">
+
                         </div>
                         <div class="input-group-append mt-3">
                             <button type="submit" class="my-btn">Pesquisar</button>
                         </div>
-                        <small id="searchHelp" class="form-text text-muted">Dica: Use * para busca por radical. Ex: biblio*.</small><br />
-                        <small id="searchHelp" class="form-text text-muted">Dica 2: Para buscas exatas, coloque entre "". Ex: "Direito civil"</small><br />
-                        <small id="searchHelp" class="form-text text-muted">Dica 3: Por padrão, o sistema utiliza o operador booleano OR. Caso necessite deixar a busca mais específica, utilize o operador AND (em maiúscula)</small>
+                        <small id="searchHelp" class="small-info">Dica: Use * para busca por radical. Ex: biblio*.</small><br />
+                        <small id="searchHelp" class="small-info">Dica 2: Para buscas exatas, coloque entre "". Ex: "Direito civil"</small><br />
+                        <small id="searchHelp" class="small-info">Dica 3: Por padrão, o sistema utiliza o operador booleano OR. Caso necessite deixar a busca mais específica, utilize o operador AND (em maiúscula)</small>
                     </form>
                     <div class="mt-3">
                         <button @click="searchPage = 'simple'" class="my-btn">Busca simples</button>
