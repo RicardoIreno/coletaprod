@@ -101,13 +101,15 @@ if ($_SERVER["REQUEST_URI"] == "/") {
 
                 <div id="app">
                     <form class="mt-3" action="result.php" v-if="searchPage == 'simple'">
-                        <label for="searchQuery">Pesquisa por palavras - <a href="result.php">Navegar por todos</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                        <div class="form-group">
-                            <input type="text" name="search" class="my-input" id="searchQuery" aria-describedby="searchHelp" placeholder="Pesquise por termo, autor ou ID do Lattes (16 dígitos)">
-                        </div>
-                        <div class="input-group-append mt-3">
+                        <label for="searchQuery">Pesquisa por palavras - <a href="result.php">Navegar por todos</a></label>
+                        <input type="text" name="search" class="my-input" id="searchQuery" aria-describedby="searchHelp" placeholder="Pesquise por termo, autor ou ID do Lattes (16 dígitos)">
+                        <div class="d-grid gap-2 col-6 mx-auto">
                             <button type="submit" class="my-btn">Pesquisar</button>
                         </div>
+                        <small id="searchHelp" class="small-info">Dica: Use * para busca por radical. Ex: biblio*.</small><br />
+                        <small id="searchHelp" class="small-info">Dica 2: Para buscas exatas, coloque entre "". Ex: "Direito civil"</small><br />
+                        <small id="searchHelp" class="small-info">Dica 3: Por padrão, o sistema utiliza o operador booleano OR. Caso necessite deixar a busca mais específica, utilize o operador AND (em maiúscula)</small>
+
                     </form>
                     <form class="mt-3" action="result.php" v-if="searchPage == 'advanced'">
                         <label for="searchQuery">Pesquisa por palavras - <a href="result.php">Navegar por todos</a></label>
