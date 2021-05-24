@@ -17,12 +17,14 @@
 
     <div class="footer-textbox">
         <p>
+            <!--
             <b>Equipe envolvida</b><br />
             Desenvolvimento: Tiago Murakami<br />
             Design: Ricardo Ireno<br />
             ...
             <br />
             <br />
+            -->
             Desenvolvido com o software livre <a target="_blank" href="https://github.com/trmurakami/coletaprod">coletaprod</a> v2.3
         </p>
     </div>
