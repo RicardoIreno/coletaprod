@@ -10,7 +10,7 @@ $query["query"]["query_string"]["query"] = '*'.$_REQUEST["query"].'*';
 
 $params = [];
 $params["index"] = $index_cv;
-$params["size"] = 1000;
+$params["size"] = 10;
 $params["_source"] = ["nome_completo"];
 $params["body"] = $query;
 
