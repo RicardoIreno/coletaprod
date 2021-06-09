@@ -35,12 +35,9 @@ $params["index"] = $index_cv;
 $params["body"] = $result_get['query'];
 $cursorTotal = $client->count($params);
 $total = $cursorTotal["count"];
-if (isset($_GET["sort"])) {
-    $result_get['query']["sort"][$_GET["sort"]]["unmapped_type"] = "long";
-    $result_get['query']["sort"][$_GET["sort"]]["missing"] = "_last";
-    $result_get['query']["sort"][$_GET["sort"]]["order"] = "desc";
-    $result_get['query']["sort"][$_GET["sort"]]["mode"] = "max";
-}
+$result_get['query']["sort"]["nome_completo.keyword"]["unmapped_type"] = "long";
+$result_get['query']["sort"]["nome_completo.keyword"]["missing"] = "_last";
+$result_get['query']["sort"]["nome_completo.keyword"]["order"] = "asc";
 $params["body"] = $result_get['query'];
 $params["size"] = $limit;
 $params["from"] = $result_get['skip'];
