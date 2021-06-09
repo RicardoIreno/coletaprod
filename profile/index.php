@@ -51,6 +51,7 @@ if (!empty($_REQUEST["lattesID"])) {
     include('inc/meta-header.php');
     ?>
     <title>Perfil: <?php echo $profile["nome_completo"] ?></title>
+    <link rel="stylesheet" href="../inc/css/style.css" />
 
 </head>
 
