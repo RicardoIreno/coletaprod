@@ -211,6 +211,7 @@ if ($_SERVER["REQUEST_URI"] == "/") {
                 <div class="container mt-4">
                     <div class="row">
                         <div class="col-md-3">
+                            <h2 class="uk-h3">Nome do Programa de Pós-Graduação</h2>
                             <div class="accordion" id="accordionPPGs">
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingOne">
@@ -229,6 +230,7 @@ if ($_SERVER["REQUEST_URI"] == "/") {
                             </div>
                         </div>
                         <div class="col-md-3">
+                            <h2 class="uk-h3">Filtros por tipo de vínculo / material</h2>
                             <div class="accordion" id="accordionExample">
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingTwo">
