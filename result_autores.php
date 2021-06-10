@@ -113,7 +113,7 @@ $get_data = $_GET;
                                     <div class="p-2 bd-highlight"><a class="text-dark" href='result.php?filter[]=vinculo.lattes_id:"<?php echo $r['_source']['lattesID']; ?>"'>Ver produções indexadas</a></div>
                                     <div class="p-2 bd-highlight">
                                         <a class="text-dark" href="http://lattes.cnpq.br/<?php echo $r['_source']['lattesID']; ?>">
-                                            <img src="inc/images/logo-lattes.png" width="25px" height="25px">
+                                            <img src="inc/images/logo-lattes.png" width="25px" height="25px" alt="Acessar Currículo Lattes">
                                         </a>
                                     </div>
                                 </div>
