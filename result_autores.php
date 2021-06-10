@@ -117,11 +117,6 @@ $get_data = $_GET;
                                         </a>
                                     </div>
                                 </div>
-
-                                <?php if (!empty($r["_source"]['resumo_cv']['texto_resumo_cv_rh'])) : ?>
-                                    <p class="text-muted"><b>Resumo:</b> <?php echo $r["_source"]['resumo_cv']['texto_resumo_cv_rh']; ?></p>
-                                <?php endif; ?>
-
                             </div>
                         </div>
                     <?php endforeach; ?>
