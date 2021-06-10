@@ -66,7 +66,7 @@ if (!empty($_REQUEST["lattesID"])) {
     <!-- NAV -->
     <?php require 'inc/navbar.php'; ?>
     <!-- /NAV -->
-    <br /><br /><br /><br />
+    <br /><br />
 
     <main role="main">
         <div class="container">
