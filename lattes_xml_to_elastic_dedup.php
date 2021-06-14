@@ -846,7 +846,8 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TRABALHOS-EM-EVENTOS'})) {
         $doc["doc"]["lattes"]["meioDeDivulgacao"] = $dadosBasicosDoTrabalho['@attributes']["MEIO-DE-DIVULGACAO"];
         $doc["doc"]["url"] = $dadosBasicosDoTrabalho['@attributes']["HOME-PAGE-DO-TRABALHO"];
         $doc["doc"]["lattes"]["flagRelevancia"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-RELEVANCIA"];
-        if (Testadores::testDOI($dadosBasicosDoTrabalho['@attributes']["DOI"] === true)) {
+        $testDOI = Testadores::testDOI($dadosBasicosDoTrabalho['@attributes']["DOI"]);
+        if ($testDOI === 1) {
             $doc["doc"]["doi"] = $dadosBasicosDoTrabalho['@attributes']["DOI"];
         }
         $doc["doc"]["lattes"]["flagDivulgacaoCientifica"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-DIVULGACAO-CIENTIFICA"];
@@ -953,7 +954,8 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'ARTIGOS-PUBLICADOS'})) {
         $doc["doc"]["lattes"]["meioDeDivulgacao"] = $dadosBasicosDoTrabalho['@attributes']["MEIO-DE-DIVULGACAO"];
         $doc["doc"]["url"] = $dadosBasicosDoTrabalho['@attributes']["HOME-PAGE-DO-TRABALHO"];
         $doc["doc"]["lattes"]["flagRelevancia"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-RELEVANCIA"];
-        if (Testadores::testDOI($dadosBasicosDoTrabalho['@attributes']["DOI"] === true)) {
+        $testDOI = Testadores::testDOI($dadosBasicosDoTrabalho['@attributes']["DOI"]);
+        if ($testDOI === 1) {
             $doc["doc"]["doi"] = $dadosBasicosDoTrabalho['@attributes']["DOI"];
         }
         $doc["doc"]["alternateName"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-DO-ARTIGO-INGLES"];
@@ -1059,7 +1061,8 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'LIVROS-E-CAPITULOS'})) {
             $doc["doc"]["lattes"]["meioDeDivulgacao"] = $dadosBasicosDoTrabalho['@attributes']["MEIO-DE-DIVULGACAO"];
             $doc["doc"]["url"] = $dadosBasicosDoTrabalho['@attributes']["HOME-PAGE-DO-TRABALHO"];
             $doc["doc"]["lattes"]["flagRelevancia"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-RELEVANCIA"];
-            if (Testadores::testDOI($dadosBasicosDoTrabalho['@attributes']["DOI"] === true)) {
+            $testDOI = Testadores::testDOI($dadosBasicosDoTrabalho['@attributes']["DOI"]);
+            if ($testDOI === 1) {
                 $doc["doc"]["doi"] = $dadosBasicosDoTrabalho['@attributes']["DOI"];
             }
             $doc["doc"]["alternateName"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-DO-LIVRO-INGLES"];
@@ -1161,7 +1164,8 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'LIVROS-E-CAPITULOS'})) {
             $doc["doc"]["lattes"]["meioDeDivulgacao"] = $dadosBasicosDoTrabalho['@attributes']["MEIO-DE-DIVULGACAO"];
             $doc["doc"]["url"] = $dadosBasicosDoTrabalho['@attributes']["HOME-PAGE-DO-TRABALHO"];
             $doc["doc"]["lattes"]["flagRelevancia"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-RELEVANCIA"];
-            if (Testadores::testDOI($dadosBasicosDoTrabalho['@attributes']["DOI"] === true)) {
+            $testDOI = Testadores::testDOI($dadosBasicosDoTrabalho['@attributes']["DOI"]);
+            if ($testDOI === 1) {
                 $doc["doc"]["doi"] = $dadosBasicosDoTrabalho['@attributes']["DOI"];
             }
             $doc["doc"]["alternateName"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-DO-CAPITULO-DO-LIVRO-INGLES"];
@@ -1266,7 +1270,8 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'TEXTOS-EM-JORNAIS-OU-REVISTA
         $doc["doc"]["lattes"]["meioDeDivulgacao"] = $dadosBasicosDoTrabalho['@attributes']["MEIO-DE-DIVULGACAO"];
         $doc["doc"]["url"] = $dadosBasicosDoTrabalho['@attributes']["HOME-PAGE-DO-TRABALHO"];
         $doc["doc"]["lattes"]["flagRelevancia"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-RELEVANCIA"];
-        if (Testadores::testDOI($dadosBasicosDoTrabalho['@attributes']["DOI"] === true)) {
+        $testDOI = Testadores::testDOI($dadosBasicosDoTrabalho['@attributes']["DOI"]);
+        if ($testDOI === 1) {
             $doc["doc"]["doi"] = $dadosBasicosDoTrabalho['@attributes']["DOI"];
         }
         $doc["doc"]["alternateName"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-DO-TEXTO-INGLES"];
@@ -1371,7 +1376,8 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
             $doc["doc"]["lattes"]["meioDeDivulgacao"] = $dadosBasicosDoTrabalho['@attributes']["MEIO-DE-DIVULGACAO"];
             $doc["doc"]["url"] = $dadosBasicosDoTrabalho['@attributes']["HOME-PAGE-DO-TRABALHO"];
             $doc["doc"]["lattes"]["flagRelevancia"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-RELEVANCIA"];
-            if (Testadores::testDOI($dadosBasicosDoTrabalho['@attributes']["DOI"] === true)) {
+            $testDOI = Testadores::testDOI($dadosBasicosDoTrabalho['@attributes']["DOI"]);
+            if ($testDOI === 1) {
                 $doc["doc"]["doi"] = $dadosBasicosDoTrabalho['@attributes']["DOI"];
             }
             $doc["doc"]["alternateName"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-INGLES"];
@@ -1466,7 +1472,8 @@ if (isset($curriculo->{'PRODUCAO-BIBLIOGRAFICA'}->{'DEMAIS-TIPOS-DE-PRODUCAO-BIB
             $doc["doc"]["lattes"]["meioDeDivulgacao"] = $dadosBasicosDoTrabalho['@attributes']["MEIO-DE-DIVULGACAO"];
             $doc["doc"]["url"] = $dadosBasicosDoTrabalho['@attributes']["HOME-PAGE-DO-TRABALHO"];
             $doc["doc"]["lattes"]["flagRelevancia"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-RELEVANCIA"];
-            if (Testadores::testDOI($dadosBasicosDoTrabalho['@attributes']["DOI"] === true)) {
+            $testDOI = Testadores::testDOI($dadosBasicosDoTrabalho['@attributes']["DOI"]);
+            if ($testDOI === 1) {
                 $doc["doc"]["doi"] = $dadosBasicosDoTrabalho['@attributes']["DOI"];
             }
             $doc["doc"]["alternateName"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-INGLES"];
@@ -1571,7 +1578,8 @@ if (isset($curriculo->{'PRODUCAO-TECNICA'})) {
             $doc["doc"]["lattes"]["meioDeDivulgacao"] = $dadosBasicosDoTrabalho['@attributes']["MEIO-DE-DIVULGACAO"];
             $doc["doc"]["url"] = $dadosBasicosDoTrabalho['@attributes']["HOME-PAGE-DO-TRABALHO"];
             $doc["doc"]["lattes"]["flagRelevancia"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-RELEVANCIA"];
-            if (Testadores::testDOI($dadosBasicosDoTrabalho['@attributes']["DOI"] === true)) {
+            $testDOI = Testadores::testDOI($dadosBasicosDoTrabalho['@attributes']["DOI"]);
+            if ($testDOI === 1) {
                 $doc["doc"]["doi"] = $dadosBasicosDoTrabalho['@attributes']["DOI"];
             }
             $doc["doc"]["alternateName"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-DO-SOFTWARE-INGLES"];
@@ -1766,7 +1774,8 @@ if (isset($curriculo->{'OUTRA-PRODUCAO'})) {
                 $doc["doc"]["lattes"]["meioDeDivulgacao"] = $dadosBasicosDoTrabalho['@attributes']["MEIO-DE-DIVULGACAO"];
                 $doc["doc"]["url"] = $dadosBasicosDoTrabalho['@attributes']["HOME-PAGE"];
                 $doc["doc"]["lattes"]["flagRelevancia"] = $dadosBasicosDoTrabalho['@attributes']["FLAG-RELEVANCIA"];
-                if (Testadores::testDOI($dadosBasicosDoTrabalho['@attributes']["DOI"] === true)) {
+                $testDOI = Testadores::testDOI($dadosBasicosDoTrabalho['@attributes']["DOI"]);
+                if ($testDOI === 1) {
                     $doc["doc"]["doi"] = $dadosBasicosDoTrabalho['@attributes']["DOI"];
                 }
                 $doc["doc"]["alternateName"] = $dadosBasicosDoTrabalho['@attributes']["TITULO-INGLES"];
@@ -1828,7 +1837,7 @@ if (isset($curriculo->{'OUTRA-PRODUCAO'})) {
                 $doc["doc_as_upsert"] = true;
 
                 // Comparador
-                $resultado = upsert($doc, $sha256);                
+                $resultado = upsert($doc, $sha256);
                 echo "<br/>";
                 print_r($resultado);
                 echo "<br/><br/>";
