@@ -110,29 +110,29 @@ $get_data = $_GET;
                                 </p>
                                 
    
-                                <?php if (!empty($r["_source"]['isPartOf']['name'])) : ?>                                        
+                                <?php if (!empty($r["_source"]['isPartOf']['name'])) : ?>
                                     <p class="text-muted"><b>In:</b> <a href="result.php?filter[]=isPartOf.name:&quot;<?php echo $r["_source"]['isPartOf']['name'];?>&quot;"><?php echo $r["_source"]['isPartOf']['name'];?></a></p>
                                 <?php endif; ?>
                                 <?php if (!empty($r["_source"]['isPartOf']['issn'])) : ?>
-                                    <p class="text-muted"><b>ISSN:</b> <a href="result.php?filter[]=isPartOf.issn:&quot;<?php echo $r["_source"]['isPartOf']['issn'];?>&quot;"><?php echo $r["_source"]['isPartOf']['issn'];?></a></li>                                        
+                                    <p class="text-muted"><b>ISSN:</b> <a href="result.php?filter[]=isPartOf.issn:&quot;<?php echo $r["_source"]['isPartOf']['issn'];?>&quot;"><?php echo $r["_source"]['isPartOf']['issn'];?></a></li>
                                 <?php endif; ?>
                                 <?php if (!empty($r["_source"]['EducationEvent']['name'])) : ?>
                                     <p class="text-muted"><b>Nome do evento:</b> <?php echo $r["_source"]['EducationEvent']['name'];?></p>
-                                <?php endif; ?>                                   
+                                <?php endif; ?>
                                 
                                 <?php if (!empty($r["_source"]['doi'])) : ?>
-                                    <p class="text-muted"><b>DOI:</b>    <a href="https://doi.org/<?php echo $r["_source"]['doi'];?>"><span id="<?php echo $r['_id'] ?>"><?php echo $r["_source"]['doi'];?></span></a> <button class="btn btn-info" onclick="copyToClipboard('#<?=$r['_id']?>')">Copiar DOI</button> <a class="btn btn-warning" href="doi_to_elastic.php?doi=<?php echo $r['_source']['doi'];?>&tag=<?php echo $r['_source']['tag'][0];?>">Coletar dados da Crossref</a></p>                                        
+                                    <p class="text-muted"><b>DOI:</b>    <a href="https://doi.org/<?php echo $r["_source"]['doi'];?>"><span id="<?php echo $r['_id'] ?>"><?php echo $r["_source"]['doi'];?></span></a><a class="btn btn-warning" href="doi_to_elastic.php?doi=<?php echo $r['_source']['doi'];?>&tag=<?php echo $r['_source']['tag'][0];?>">Coletar dados da Crossref</a></p>                                        
                                 <?php endif; ?>
 
                                 <?php if (!empty($r["_source"]['url'])) : ?>
                                     <p class="text-muted"><b>URL:</b> <a href="<?php echo str_replace("]", "", str_replace("[", "", $r["_source"]['url'])); ?>"><?php echo str_replace("]", "", str_replace("[", "", $r["_source"]['url']));?></a></p>
-                                <?php endif; ?>                                                                             
+                                <?php endif; ?>
                                 
                                 <?php if (!empty($r["_source"]['ids_match'])) : ?>  
                                     <?php foreach ($r["_source"]['ids_match'] as $id_match) : ?>
                                         <?php compararRegistros::match_id($id_match["id_match"], $id_match["nota"]);?>
                                     <?php endforeach;?>
-                                <?php endif; ?>                                     
+                                <?php endif; ?>
 
 
                   
