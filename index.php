@@ -211,12 +211,12 @@ if ($_SERVER["REQUEST_URI"] == "/") {
                 <div class="container mt-4">
                     <div class="row">
                         <div class="col-md-3">
-                            <h2 class="uk-h3">Nome do Programa de Pós-Graduação</h2>
+                            <h2 class="uk-h3">Programa de Pós-Graduação</h2>
                             <div class="accordion" id="accordionPPGs">
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingOne">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                            Nome do Programa de Pós-Graduação
+                                            Programa de Pós-Graduação
                                         </button>
                                     </h2>
                                     <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionPPGs">
@@ -230,7 +230,7 @@ if ($_SERVER["REQUEST_URI"] == "/") {
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <h2 class="uk-h3">Filtros por tipo de vínculo / material</h2>
+                            <h2 class="uk-h3">Tipo de vínculo / material</h2>
                             <div class="accordion" id="accordionExample">
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingTwo">

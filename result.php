@@ -317,7 +317,6 @@ $get_data = $_GET;
                             $_GET = null;
                         }
 
-                        $facets->facet(basename(__FILE__), "doi", 100, "DOI", null, "_term", $_GET);
                         $facets->facet(basename(__FILE__), "vinculo.ppg_nome", 100, "Nome do PPG", null, "_term", $_GET);
                         $facets->facet(basename(__FILE__), "tipo", 100, "Tipo de material", null, "_term", $_GET);
                         $facets->facet(basename(__FILE__), "author.person.name", 100, "Nome completo do autor", null, "_term", $_GET);
@@ -331,7 +330,7 @@ $get_data = $_GET;
                         $facets->facet(basename(__FILE__), "lattes.meioDeDivulgacao", 100, "Meio de divulgação", null, "_term", $_GET);
                         $facets->facet(basename(__FILE__), "about", 100, "Palavras-chave", null, "_term", $_GET);
                         $facets->facet(basename(__FILE__), "agencia_de_fomento", 100, "Agências de fomento", null, "_term", $_GET);
-                        $facets->facet(basename(__FILE__), "area_do_conhecimento.nomeGrandeAreaDoConhecimento", 100, "Nome da Grande Área do Conhecimento", null, "_term", $_GET);
+                        $facets->facet(basename(__FILE__), "area_do_conhecimento.nomeGrandeAreaDoConhecimento", 100, "Nome da grande área do conhecimento", null, "_term", $_GET);
                         //$facets->facet(basename(__FILE__), "area_do_conhecimento.nomeDaAreaDoConhecimento", 100, "Nome da Área do Conhecimento", null, "_term", $_GET);
                         //$facets->facet(basename(__FILE__), "area_do_conhecimento.nomeDaSubAreaDoConhecimento", 100, "Nome da Sub Área do Conhecimento", null, "_term", $_GET);
                         //$facets->facet(basename(__FILE__), "area_do_conhecimento.nomeDaEspecialidade", 100, "Nome da Especialidade", null, "_term", $_GET);
@@ -352,7 +351,6 @@ $get_data = $_GET;
                         $facets->facet(basename(__FILE__), "ExternalData.crossref.message.funder.name", 100, "Crossref - Agência de financiamento", null, "_term", $_GET);
                         $facets->facet(basename(__FILE__), "ExternalData.crossref.message.funder.DOI", 100, "Crossref - Agência de financiamento - DOI", null, "_term", $_GET);
                         $facets->facet_range(basename(__FILE__), "ExternalData.crossref.message.is-referenced-by-count", 100, "Crossref - Número de citações obtidas", null, "_term", $_GET);
-                        $facets->facet(basename(__FILE__), "doi", 100, "DOI", null, "_term", $_GET);
 
                         $facets->facet(basename(__FILE__), "vinculo.campus", 100, "Campus", null, "_term", $_GET);
                         $facets->facet(basename(__FILE__), "vinculo.desc_gestora", 100, "Gestora", null, "_term", $_GET);
@@ -361,7 +359,7 @@ $get_data = $_GET;
                         $facets->facet(basename(__FILE__), "vinculo.divisao", 100, "Divisão", null, "_term", $_GET);
                         $facets->facet(basename(__FILE__), "vinculo.secao", 100, "Seção", null, "_term", $_GET);
                         $facets->facet(basename(__FILE__), "vinculo.tipvin", 100, "Tipo de vínculo", null, "_term", $_GET);
-                        $facets->facet(basename(__FILE__), "vinculo.genero", 100, "Genero", null, "_term", $_GET);
+                        $facets->facet(basename(__FILE__), "vinculo.genero", 100, "Gênero", null, "_term", $_GET);
                         $facets->facet(basename(__FILE__), "vinculo.desc_nivel", 100, "Nível", null, "_term", $_GET);
                         $facets->facet(basename(__FILE__), "vinculo.desc_curso", 100, "Curso", null, "_term", $_GET);
 
