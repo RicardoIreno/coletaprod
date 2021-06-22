@@ -98,7 +98,7 @@ h4 {
   font-size: 0.8rem;
 }
 
-@media (max-width: 37.4375em) {
+@media (max-width: 42.4375em) {
   h1 {
     font-size: 1.3rem;
   }
@@ -168,11 +168,18 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding: 2rem;
 }
 
-@media (max-width: 37.4375em) {
+@media (max-width: 56.1875em) {
   .main {
-    padding: 0.2em;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 42.4375em) {
+  .main {
+    padding: 0.2rem;
   }
 }
 
@@ -221,7 +228,7 @@ body {
   }
 }
 
-@media (max-width: 37.4375em) {
+@media (max-width: 42.4375em) {
   .footer-logobox {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -490,15 +497,14 @@ form {
 }
 
 .logo-home {
-  width: 300px;
+  max-width: 300px;
   padding: 0 0 2rem 0;
   margin-top: 8rem;
   fill: #1C9AD1;
 }
 
-@media (max-width: 37.4375em) {
+@media (max-width: 42.4375em) {
   .logo-home {
-    width: 200px;
     margin-top: 2rem;
   }
 }
@@ -567,7 +573,7 @@ form {
           align-items: center;
 }
 
-@media (max-width: 37.4375em) {
+@media (max-width: 42.4375em) {
   .btns-container {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
