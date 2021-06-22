@@ -100,16 +100,16 @@ h4 {
 
 @media (max-width: 37.4375em) {
   h1 {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
   }
   h2 {
-    font-size: 0.95rem;
+    font-size: 1.05rem;
   }
   h3 {
-    font-size: 0.5rem;
+    font-size: 0.6rem;
   }
   h4 {
-    font-size: 0.5rem;
+    font-size: 0.6rem;
   }
 }
 
@@ -168,6 +168,12 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+@media (max-width: 37.4375em) {
+  .main {
+    padding: 0.2em;
+  }
 }
 
 /*====================================================
@@ -477,11 +483,6 @@ form {
   margin-bottom: 3rem;
 }
 
-.one {
-  max-width: 100%;
-  margin-bottom: 3rem;
-}
-
 .my-textbox {
   max-width: 800px;
   margin: 0 auto;
@@ -489,15 +490,16 @@ form {
 }
 
 .logo-home {
-  width: 350px;
+  width: 300px;
   padding: 0 0 2rem 0;
-  margin-top: 5rem;
+  margin-top: 8rem;
   fill: #1C9AD1;
 }
 
 @media (max-width: 37.4375em) {
   .logo-home {
-    width: 100px;
+    width: 200px;
+    margin-top: 2rem;
   }
 }
 
@@ -563,6 +565,15 @@ form {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+@media (max-width: 37.4375em) {
+  .btns-container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
 }
 
 .small-info {
