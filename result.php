@@ -76,7 +76,7 @@ $get_data = $_GET;
         <div class="container">
 
             <div class="row">
-                <div class="col-8">
+                <div class="col-md-8">
 
                     <!-- Navegador de resultados - Início -->
                     <?php ui::pagination($page, $total, $limit); ?>
@@ -256,7 +256,7 @@ $get_data = $_GET;
                     <!-- Navegador de resultados - Fim -->
 
                 </div>
-                <div class="col-4">
+                <div class="col-md-4">
 
                     <hr>
                     <h3>Refinar resultados</h3>
