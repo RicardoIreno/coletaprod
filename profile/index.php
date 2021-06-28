@@ -17,7 +17,7 @@ if (!empty($_REQUEST["lattesID"])) {
     }
     $_GET["filter"][] = 'lattesID:' . $_GET["lattesID"] . '';
     $result_get = Requests::getParser($_GET);
-    $limit = 9999;
+    $limit = $result_get['limit'];
     $page = $result_get['page'];
     $params = [];
     $params["index"] = $index_cv;
@@ -37,6 +37,7 @@ if (!empty($_REQUEST["lattesID"])) {
     $result_get_works = Requests::getParser($filter_works);
     $params_works = [];
     $params_works["index"] = $index;
+    $params_works["size"] = 9999;
     $params_works["body"] = $result_get_works['query'];
     $cursor_works = $client->search($params_works);
 } else {
