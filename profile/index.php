@@ -17,7 +17,7 @@ if (!empty($_REQUEST["lattesID"])) {
     }
     $_GET["filter"][] = 'lattesID:' . $_GET["lattesID"] . '';
     $result_get = Requests::getParser($_GET);
-    $limit = $result_get['limit'];
+    $limit = 9999;
     $page = $result_get['page'];
     $params = [];
     $params["index"] = $index_cv;
