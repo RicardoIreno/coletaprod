@@ -19,6 +19,7 @@ if (isset($fields)) {
 }
 
 $_GET = filter_input_array(INPUT_GET, $_GET, FILTER_SANITIZE_SPECIAL_CHARS);
+$_GET["search"] = str_replace("<", "", $_GET["search"]);
 $result_get = Requests::getParser($_GET);
 $limit = $result_get['limit'];
 $page = $result_get['page'];
