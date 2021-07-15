@@ -18,7 +18,7 @@ if (isset($fields)) {
     $_GET["fields"] = $fields;
 }
 
-$_GET = filter_input_array(INPUT_GET, $_GET);
+$_GET = filter_input(INPUT_GET, $_GET["search"], FILTER_SANITIZE_SPECIAL_CHARS);
 $result_get = Requests::getParser($_GET);
 $limit = $result_get['limit'];
 $page = $result_get['page'];
