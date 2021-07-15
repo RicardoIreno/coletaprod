@@ -17,6 +17,8 @@ if (!empty($_POST)) {
 if (isset($fields)) {
     $_GET["fields"] = $fields;
 }
+
+$_GET = filter_input_array(INPUT_GET, $_GET);
 $result_get = Requests::getParser($_GET);
 $limit = $result_get['limit'];
 $page = $result_get['page'];
