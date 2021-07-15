@@ -453,6 +453,11 @@
         } else {
             $fields[] = "N/D";
         }
+        if (!empty($r["_source"]["unidade"])) {
+            $fields[] = $r["_source"]["unidade"];
+        } else {
+            $fields[] = "N/D";
+        }
         $fields[] = strip_tags(Exporters::citation($r, "ABNT"));
 
         $content = implode("\t", $fields);

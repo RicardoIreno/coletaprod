@@ -32,11 +32,9 @@ $mappingsParams["index"] = $argv[3];
 $mappingsParams["body"]["properties"] = $mappingsParamsArray;
 $client->indices()->putMapping($mappingsParams);
 
-$shaArray = explode("--", $argv[4]);
-
 $row = 1;
 if (($handle = fopen($argv[1], "r")) !== FALSE) {
-    while (($data = fgetcsv($handle, 1000, $argv[2])) !== FALSE) {
+    while (($data = fgetcsv($handle, 0, $argv[2])) !== FALSE) {
         $num = count($data);
         for ($c=1; $c < $num; $c++) {
             $docArray[CONSTANT_ARRAY[$c]] = $data[$c];
@@ -46,11 +44,9 @@ if (($handle = fopen($argv[1], "r")) !== FALSE) {
 
         unset($sha256);
         unset($shaText);
-        foreach ($shaArray as $unitSha) {
-            $shaText[] = $doc["doc"]["$unitSha"];
-        }
-        $shaText = implode("",$shaText);
-        $sha256 = hash('sha256', $shaText);
+        unset($shaArray);
+        $shaTextString = implode(",", $data);
+        $sha256 = hash('sha256', $shaTextString);
         
         if (!is_null($doc)) {
             $resultado = Elasticsearch::update($sha256, $doc, $argv[3]);
