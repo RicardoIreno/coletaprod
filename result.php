@@ -194,7 +194,9 @@ $get_data = $_GET;
 
                                 <?php if (!empty($r["_source"]['doi'])) : ?>
                                     <?php if (isset($elsevier_apikey)) : ?>
-                                        <object height="50" data="https://api.elsevier.com/content/abstract/citation-count?doi=<?php echo $r["_source"]['doi']; ?>&httpAccept=text/html&apiKey=<?php echo $elsevier_apikey; ?>"></object>
+                                        <!--
+                                        <object height="50" data="https://api.elsevier.com/content/abstract/citation-count?doi=< ?php echo $r["_source"]['doi']; ?>&httpAccept=text/html&apiKey=< ?php echo $elsevier_apikey; ?>"></object>
+                                        -->
                                     <?php endif; ?>
                                 <?php endif; ?>
 
