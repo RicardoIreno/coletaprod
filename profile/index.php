@@ -77,6 +77,7 @@ if (!empty($_REQUEST["lattesID"])) {
                     <h1><?php echo $profile["nome_completo"] ?></h1>
                     <br />
                     <p><?php echo $profile["resumo_cv"]["texto_resumo_cv_rh"] ?></p>
+                    <p>Quantidade de registros: <?php echo $total ?></p>
                     <?php //var_dump($profile); 
                     ?>
                     <?php //var_dump($cursor_works); 
