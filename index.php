@@ -92,7 +92,7 @@ if ($_SERVER["REQUEST_URI"] == "/") {
             <div class="my-textbox">
 
                 <h2>
-                    Uma ferramenta de busca da produção docente e discente desenvolvida pela UNIFESP.
+                    Uma ferramenta de busca da produção de pesquisadores da UNIFESP.
                 </h2>
 
             </div><!-- end textbox-home -->
