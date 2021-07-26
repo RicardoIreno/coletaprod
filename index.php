@@ -97,6 +97,12 @@ if ($_SERVER["REQUEST_URI"] == "/") {
 
             </div><!-- end textbox-home -->
 
+            <?php if (paginaInicial::contar_registros_indice($index) == 0): ?>
+                <div class="alert alert-warning" role="alert">
+                    O Prod+ está em manutenção!
+                </div>
+            <?php endif; ?>
+
             <div class="formbox">
 
                 <div id="app">
