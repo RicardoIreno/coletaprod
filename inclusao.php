@@ -1,3 +1,12 @@
+<?php
+    session_start();
+    if ($_SESSION["login"] === true) {
+
+    } else {
+        header("Location: login.php");
+        die();
+    }
+?>
 <!DOCTYPE html>
 <html lang="pt-br" dir="ltr">
 
@@ -383,3 +392,5 @@
 </body>
 
 </html>
+
+<?php session_destroy(); ?>
