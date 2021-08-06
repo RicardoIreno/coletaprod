@@ -11,7 +11,7 @@
                 Fale conosco</a></p>
         <p><a href="https://atendimento.unifesp.br/">
                 Política de privacidade</a></p>
-        <p><a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSd3CDf4EdmJT13gBo4mtWi9wS1bnbzB4-Sopz_wToO19PN8gw/viewform">
+        <p><a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSdZTjaFwFultrJ5daado3eopzKo_UmpSseuoU8JzoJKP6eEKw/viewform">
                 Relate erros</a></p>
     </div>
 
