@@ -28,7 +28,7 @@ $consulta_pg_orient = "
 $stid = oci_parse($conexao, $consulta_pg_orient) or die("erro");
 oci_execute($stid);
 while (($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)) != false) {
-
+    print_r($row["CPF"]);
     $IDLattes = file_get_contents('http://200.133.208.25/api/proxy_cpf/' . $row["CPF"] . '');
 
     if (strlen($IDLattes) == 16) {
