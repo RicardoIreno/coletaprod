@@ -11,3 +11,4 @@ tools/lattes/zip.zip
 tools/reindex.sh
 data/
 backup/
+tools/data/
