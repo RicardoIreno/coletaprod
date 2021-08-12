@@ -81,6 +81,6 @@ while (($row = oci_fetch_array($stid_1, OCI_ASSOC + OCI_RETURN_NULLS)) != false)
 
 }
 
-exec('zip -r backup/archive'.date("Ymd").'.zip "data"');
+//exec('zip -r backup/archive'.date("Ymd").'.zip "data"');
 
 oci_close($conexao);
