@@ -1,6 +1,6 @@
   #!/bin/bash
 
-reldir="dirname $0"
+reldir=dirname "$0"
 cd $reldir
 
 rm -r ../data/*
