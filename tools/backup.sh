@@ -1,6 +1,6 @@
   #!/bin/bash
 
-reldir=dirname "$0"
+reldir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 cd $reldir
 
 rm -r ../data/*
