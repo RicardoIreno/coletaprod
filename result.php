@@ -266,7 +266,7 @@ $get_data = $_GET;
                     <hr>
 
                     <?php if (isset($result_get["query"]["query"]["bool"]["filter"][0]["term"]["vinculo.lattes_id.keyword"])) : ?>
-                        <p><a class="btn btn-primary" href="tools/export.php?<?php echo $_SERVER["QUERY_STRING"] ?>&format=bibtex">Exportar para ORCID (BibTeX)</a></p>
+                        <p><a class="btn btn-primary" href="tools/export.php?<?php echo $_SERVER["QUERY_STRING"] ?>&format=bibtex" rel="nofollow">Exportar para ORCID (BibTeX)</a></p>
                     <?php endif ?>
                     <!-- Limitar por data - Início -->
                     <form action="result.php?" method="GET">
@@ -370,13 +370,13 @@ $get_data = $_GET;
                         </ul>
                         <hr>
                         <h3>Exportar</h3>
-                        <p><a href="tools/export.php?<?php echo $_SERVER["QUERY_STRING"] ?>&format=ris">Exportar em formato RIS</a></p>
-                        <p><a href="tools/export.php?<?php echo $_SERVER["QUERY_STRING"] ?>&format=bibtex">Exportar em formato BIBTEX</a></p>
-                        <p><a href="tools/export.php?<?php echo $_SERVER["QUERY_STRING"] ?>&format=dspace">Exportar em formato CSV para o DSpace</a></p>
-                        <p><a href="tools/export.php?<?php echo $_SERVER["QUERY_STRING"] ?>&format=capesprint">Exportar em formato CSV para o CapesPrint</a></p>
-                        <p><a href="tools/export.php?<?php echo $_SERVER["QUERY_STRING"] ?>&format=authorNetwork">Exportar em formato CSV para o Gephi da Rede de Co-Autoria incluindo publicações</a></p>
-                        <p><a href="tools/export.php?<?php echo $_SERVER["QUERY_STRING"] ?>&format=authorNetworkWithoutPapers">Exportar em formato CSV para o Gephi da Rede de Co-Autoria sem publicações</a></p>
-                        <p><a href="tools/export.php?<?php echo $_SERVER["QUERY_STRING"] ?>&format=ppgNetworkWithoutPapers">Exportar em formato CSV para o Gephi da Rede de PPGs</a></p>
+                        <p><a href="tools/export.php?<?php echo $_SERVER["QUERY_STRING"] ?>&format=ris" rel="nofollow">Exportar em formato RIS</a></p>
+                        <p><a href="tools/export.php?<?php echo $_SERVER["QUERY_STRING"] ?>&format=bibtex" rel="nofollow">Exportar em formato BIBTEX</a></p>
+                        <p><a href="tools/export.php?<?php echo $_SERVER["QUERY_STRING"] ?>&format=dspace" rel="nofollow">Exportar em formato CSV para o DSpace</a></p>
+                        <p><a href="tools/export.php?<?php echo $_SERVER["QUERY_STRING"] ?>&format=capesprint" rel="nofollow">Exportar em formato CSV para o CapesPrint</a></p>
+                        <p><a href="tools/export.php?<?php echo $_SERVER["QUERY_STRING"] ?>&format=authorNetwork" rel="nofollow">Exportar em formato CSV para o Gephi da Rede de Co-Autoria incluindo publicações</a></p>
+                        <p><a href="tools/export.php?<?php echo $_SERVER["QUERY_STRING"] ?>&format=authorNetworkWithoutPapers" rel="nofollow">Exportar em formato CSV para o Gephi da Rede de Co-Autoria sem publicações</a></p>
+                        <p><a href="tools/export.php?<?php echo $_SERVER["QUERY_STRING"] ?>&format=ppgNetworkWithoutPapers" rel="nofollow">Exportar em formato CSV para o Gephi da Rede de PPGs</a></p>
                     </div>
                 </div>
             </div>
