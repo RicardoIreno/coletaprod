@@ -50,7 +50,7 @@ while (($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)) != false) {
     $queryParams[] = '&dt_credenciamento=' . date("Y", strtotime($row["DT_CREDENC"])) . '';
 
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, '' . $url_base . '/import_lattes_to_elastic_dedup.php?lattesID=' . $IDLattes . '');
+    curl_setopt($ch, CURLOPT_URL, '' . $url_base . '/import_lattes_to_elastic_dedup.php?lattesIDBackup=' . $IDLattes . '');
     curl_setopt($ch, CURLOPT_POSTFIELDS, implode('', $queryParams));
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     $output = curl_exec($ch);
@@ -90,7 +90,7 @@ while (($row = oci_fetch_array($stid_1, OCI_ASSOC + OCI_RETURN_NULLS)) != false)
     $queryParams[] = '&dt_credenciamento=' . date("Y", strtotime($row["DT_CREDENC"])) . '';
 
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, '' . $url_base . '/import_lattes_to_elastic_dedup.php?lattesID=' . $IDLattes . '');
+    curl_setopt($ch, CURLOPT_URL, '' . $url_base . '/import_lattes_to_elastic_dedup.php?lattesIDBackup=' . $IDLattes . '');
     curl_setopt($ch, CURLOPT_POSTFIELDS, implode('', $queryParams));
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     $output = curl_exec($ch);
