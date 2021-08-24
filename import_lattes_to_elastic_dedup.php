@@ -312,9 +312,7 @@ if (isset($_REQUEST['lattesID'])) {
 }
 
 if (isset($_REQUEST['lattesIDBackup'])) {
-    print_r($_REQUEST["lattesIDBackup"]);
-    $file = file_get_contents('data/data/' . $_REQUEST['lattesID'] . '.xml');
-    var_dump($file);
+    $file = file_get_contents('http://200.144.92.58/data/data/' . $_REQUEST['lattesID'] . '.xml');
     $curriculo = simplexml_load_string($file);
 }
 
