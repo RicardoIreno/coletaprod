@@ -29,6 +29,9 @@ $stid = oci_parse($conexao, $consulta_pg_orient) or die("erro");
 oci_execute($stid);
 while (($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)) != false) {
 
+    $IDLattes = file_get_contents('http://200.133.208.25/api/proxy_cpf/' . $row["CPF"] . '');
+
+
     echo "Processando $IDLattes";
     echo "<br/><br/>";
 
@@ -47,7 +50,7 @@ while (($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)) != false) {
     $queryParams[] = '&dt_credenciamento=' . date("Y", strtotime($row["DT_CREDENC"])) . '';
 
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, '' . $url_base . '/import_lattes_to_elastic_dedup.php?lattesIDBackup=' . $IDLattes . '');
+    curl_setopt($ch, CURLOPT_URL, '' . $url_base . '/import_lattes_to_elastic_dedup.php?lattesID=' . $IDLattes . '');
     curl_setopt($ch, CURLOPT_POSTFIELDS, implode('', $queryParams));
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     $output = curl_exec($ch);
@@ -68,7 +71,7 @@ $stid_1 = oci_parse($conexao, $consulta_docente) or die("erro");
 oci_execute($stid_1);
 while (($row = oci_fetch_array($stid_1, OCI_ASSOC + OCI_RETURN_NULLS)) != false) {
 
-
+    $IDLattes = file_get_contents('http://200.133.208.25/api/proxy_cpf/' . $row["CPF"] . '');
 
     echo "Processando $IDLattes";
     echo "<br/><br/>";
@@ -87,7 +90,7 @@ while (($row = oci_fetch_array($stid_1, OCI_ASSOC + OCI_RETURN_NULLS)) != false)
     $queryParams[] = '&dt_credenciamento=' . date("Y", strtotime($row["DT_CREDENC"])) . '';
 
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, '' . $url_base . '/import_lattes_to_elastic_dedup.php?lattesIDBackup=' . $IDLattes . '');
+    curl_setopt($ch, CURLOPT_URL, '' . $url_base . '/import_lattes_to_elastic_dedup.php?lattesID=' . $IDLattes . '');
     curl_setopt($ch, CURLOPT_POSTFIELDS, implode('', $queryParams));
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     $output = curl_exec($ch);
