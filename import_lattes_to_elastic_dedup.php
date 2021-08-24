@@ -311,6 +311,11 @@ if (isset($_REQUEST['lattesID'])) {
     $curriculo = simplexml_load_string($file);
 }
 
+if (isset($_REQUEST['lattesIDBackup'])) {
+    $file = file_get_contents('data/data/' . $_REQUEST['lattesID'] . '.xml');
+    $curriculo = simplexml_load_string($file);
+}
+
 // Inicio Currículo
 $doc_curriculo_array = [];
 $doc_curriculo_array["doc"]["source"] = "Base Lattes";
