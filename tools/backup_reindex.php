@@ -29,40 +29,31 @@ $stid = oci_parse($conexao, $consulta_pg_orient) or die("erro");
 oci_execute($stid);
 while (($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)) != false) {
 
-    $IDLattes = file_get_contents('http://200.133.208.25/api/proxy_cpf/' . $row["CPF"] . '');
+    echo "Processando $IDLattes";
+    echo "<br/><br/>";
 
+    $queryParams[] = '&tag=';
+    $queryParams[] = '&unidade=' . $row["DESC_ACADEMICA"] . '';
+    $queryParams[] = '&departamento=' . $row["DESC_DEPTO"] . '';
+    $queryParams[] = '&tipvin=' . $row["CARGO_REDUZIDO"] . '';
+    $queryParams[] = '&divisao=' . $row["DESC_DIV"] . '';
+    $queryParams[] = '&secao=' . $row["DESC_SEC"] . '';
+    $queryParams[] = '&ppg_nome=' . $row["PPG_NOME_PROGRAMA"] . '';
+    $queryParams[] = '&genero=' . $row["GENERO"] . '';
+    $queryParams[] = '&desc_nivel=' . $row["DESCRICAO_NIVEL"] . '';
+    //$queryParams[] = '&desc_curso=' . $r['_source']['desc_curso'][0] . '';
+    $queryParams[] = '&campus=' . $row["DESC_GESTORA"] . '';
+    $queryParams[] = '&desc_gestora=' . $row["DESC_GESTORA"] . '';
+    $queryParams[] = '&dt_credenciamento=' . date("Y", strtotime($row["DT_CREDENC"])) . '';
 
-    if (strlen($IDLattes) == 16) {
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, '' . $url_base . '/import_lattes_to_elastic_dedup.php?lattesIDBackup=' . $IDLattes . '');
+    curl_setopt($ch, CURLOPT_POSTFIELDS, implode('', $queryParams));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    $output = curl_exec($ch);
 
-        $DataAtualizacaoLattes = file_get_contents('http://200.133.208.25/api/proxy_data_atualizacao/' . $IDLattes . '');
-        $DataAtualizacaoLattes_formatted = '' . substr($DataAtualizacaoLattes, 6, 4) . '-' . substr($DataAtualizacaoLattes, 3, 2) . '';
+    unset($queryParams);
 
-        echo "Processando $IDLattes";
-        echo "<br/><br/>";
-
-        $queryParams[] = '&tag=';
-        $queryParams[] = '&unidade=' . $row["DESC_ACADEMICA"] . '';
-        $queryParams[] = '&departamento=' . $row["DESC_DEPTO"] . '';
-        $queryParams[] = '&tipvin=' . $row["CARGO_REDUZIDO"] . '';
-        $queryParams[] = '&divisao=' . $row["DESC_DIV"] . '';
-        $queryParams[] = '&secao=' . $row["DESC_SEC"] . '';
-        $queryParams[] = '&ppg_nome=' . $row["PPG_NOME_PROGRAMA"] . '';
-        $queryParams[] = '&genero=' . $row["GENERO"] . '';
-        $queryParams[] = '&desc_nivel=' . $row["DESCRICAO_NIVEL"] . '';
-        //$queryParams[] = '&desc_curso=' . $r['_source']['desc_curso'][0] . '';
-        $queryParams[] = '&campus=' . $row["DESC_GESTORA"] . '';
-        $queryParams[] = '&desc_gestora=' . $row["DESC_GESTORA"] . '';
-        $queryParams[] = '&dt_atual_lattes=' . $DataAtualizacaoLattes_formatted . '';
-        $queryParams[] = '&dt_credenciamento=' . date("Y", strtotime($row["DT_CREDENC"])) . '';
-
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, '' . $url_base . '/import_lattes_to_elastic_dedup.php?lattesIDBackup=' . $IDLattes . '');
-        curl_setopt($ch, CURLOPT_POSTFIELDS, implode('', $queryParams));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        $output = curl_exec($ch);
-
-        unset($queryParams);
-    }
     unset($IDLattes);
 }
 
@@ -77,38 +68,32 @@ $stid_1 = oci_parse($conexao, $consulta_docente) or die("erro");
 oci_execute($stid_1);
 while (($row = oci_fetch_array($stid_1, OCI_ASSOC + OCI_RETURN_NULLS)) != false) {
 
-    $IDLattes = file_get_contents('http://200.133.208.25/api/proxy_cpf/' . $row["CPF"] . '');
 
-    if (strlen($IDLattes) == 16) {
 
-        $DataAtualizacaoLattes = file_get_contents('http://200.133.208.25/api/proxy_data_atualizacao/' . $IDLattes . '');
-        $DataAtualizacaoLattes_formatted = '' . substr($DataAtualizacaoLattes, 6, 4) . '-' . substr($DataAtualizacaoLattes, 3, 2) . '';
+    echo "Processando $IDLattes";
+    echo "<br/><br/>";
 
-        echo "Processando $IDLattes";
-        echo "<br/><br/>";
+    $queryParams[] = '&tag=';
+    $queryParams[] = '&unidade=' . $row["DESC_ACADEMICA"] . '';
+    $queryParams[] = '&departamento=' . $row["DESC_DEPTO"] . '';
+    $queryParams[] = '&tipvin=' . $row["CARGO_REDUZIDO"] . '';
+    $queryParams[] = '&divisao=' . $row["DESC_DIV"] . '';
+    $queryParams[] = '&secao=' . $row["DESC_SEC"] . '';
+    $queryParams[] = '&genero=' . $row["GENERO"] . '';
+    $queryParams[] = '&desc_nivel=' . $row["DESCRICAO_NIVEL"] . '';
+    //$queryParams[] = '&desc_curso=' . $r['_source']['desc_curso'][0] . '';
+    $queryParams[] = '&campus=' . $row["DESC_GESTORA"] . '';
+    $queryParams[] = '&desc_gestora=' . $row["DESC_GESTORA"] . '';
+    $queryParams[] = '&dt_credenciamento=' . date("Y", strtotime($row["DT_CREDENC"])) . '';
 
-        $queryParams[] = '&tag=';
-        $queryParams[] = '&unidade=' . $row["DESC_ACADEMICA"] . '';
-        $queryParams[] = '&departamento=' . $row["DESC_DEPTO"] . '';
-        $queryParams[] = '&tipvin=' . $row["CARGO_REDUZIDO"] . '';
-        $queryParams[] = '&divisao=' . $row["DESC_DIV"] . '';
-        $queryParams[] = '&secao=' . $row["DESC_SEC"] . '';
-        $queryParams[] = '&genero=' . $row["GENERO"] . '';
-        $queryParams[] = '&desc_nivel=' . $row["DESCRICAO_NIVEL"] . '';
-        //$queryParams[] = '&desc_curso=' . $r['_source']['desc_curso'][0] . '';
-        $queryParams[] = '&campus=' . $row["DESC_GESTORA"] . '';
-        $queryParams[] = '&desc_gestora=' . $row["DESC_GESTORA"] . '';
-        $queryParams[] = '&dt_atual_lattes=' . $DataAtualizacaoLattes_formatted . '';
-        $queryParams[] = '&dt_credenciamento=' . date("Y", strtotime($row["DT_CREDENC"])) . '';
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, '' . $url_base . '/import_lattes_to_elastic_dedup.php?lattesIDBackup=' . $IDLattes . '');
+    curl_setopt($ch, CURLOPT_POSTFIELDS, implode('', $queryParams));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    $output = curl_exec($ch);
 
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, '' . $url_base . '/import_lattes_to_elastic_dedup.php?lattesIDBackup=' . $IDLattes . '');
-        curl_setopt($ch, CURLOPT_POSTFIELDS, implode('', $queryParams));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        $output = curl_exec($ch);
+    unset($queryParams);
 
-        unset($queryParams);
-    }
     unset($IDLattes);
 }
 
