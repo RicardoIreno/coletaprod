@@ -86,6 +86,20 @@ if (!empty($_REQUEST["lattesID"])) {
                     ?>
                     <?php //var_dump($cursor_works); 
                     ?>
+
+<?php
+    $authorfacets = new AuthorFacets();
+    $authorfacets->query = $result_get['query'];
+
+    if (!isset($_GET)) {
+        $_GET = null;
+    }
+
+    $authorfacets->authorfacet(basename(__FILE__), "tipo", 100, "Tipo de material", null, "_term", $_GET);
+    echo "<br/><br/>";
+
+?>
+
                     <?php
                     foreach ($cursor_works["hits"]["hits"] as $works) {
                         //echo "<br /><br />";

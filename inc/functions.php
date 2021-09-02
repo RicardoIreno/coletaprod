@@ -1838,4 +1838,58 @@ Class ActiveFilters
     }
 }
 
+class AuthorFacets
+{
+    public function authorfacet($fileName, $field, $size, $field_name, $sort, $sort_type, $get_search, $alternative_index = null, $collapsed = true)
+    {
+        global $url_base;
+
+        if (isset($get_search["page"])) {
+            unset($get_search["page"]);
+        }
+
+        $query = $this->query;
+        $lattesID = $query['query']['bool']['filter'][1]['term']['lattesID.keyword'];
+        unset($query['query']['bool']['filter']);
+        $query['query']['bool']['filter']['term']['vinculo.lattes_id.keyword'] = $lattesID;
+
+        $query["aggs"]["counts"]["terms"]["field"] = "$field.keyword";
+        if (!empty($_SESSION['oauthuserdata'])) {
+            $query["aggs"]["counts"]["terms"]["missing"] = "Não preenchido";
+        }
+        if (isset($sort)) {
+            $query["aggs"]["counts"]["terms"]["order"][$sort_type] = $sort;
+        }
+        $query["aggs"]["counts"]["terms"]["size"] = $size;
+
+        $response = Elasticsearch::search(null, 0, $query, $alternative_index);
+
+        $result_count = count($response["aggregations"]["counts"]["buckets"]);
+
+        // echo "<br/><br/>";
+        // print("<pre>" . print_r($query, true) . "</pre>");
+        // echo "<br/><br/>";
+
+        foreach ($response["aggregations"]["counts"]["buckets"] as $facets) {
+            if ($facets['key'] == "Não preenchido") {
+                echo '<li>';
+                echo '<div uk-grid>
+                                <div class="uk-width-expand" style="color:#333">
+                                    <a href="' . $fileName . '?' . http_build_query($get_search) . '&search=(-_exists_:' . $field . ')">' . $facets['key'] . '</a>
+                                </div>
+                                <div class="uk-width-auto" style="color:#333">
+                                    <span class="uk-badge" style="font-size:80%">' . number_format($facets['doc_count'], 0, ',', '.') . '</span>
+                                </div>';
+                echo '</div></li>';
+            } else {
+                echo '<li class="list-group-item d-flex justify-content-between align-items-center">';
+                echo '<a href="' . $fileName . '?' . http_build_query($get_search) . '&filter[]=' . $field . ':&quot;' . str_replace('&', '%26', $facets['key']) . '&quot;"  title="E" style="color:#0040ff;font-size: 90%">' . $facets['key'] . '</a>
+                        <span class="badge bg-primary badge-pill">' . number_format($facets['doc_count'], 0, ',', '.') . '</span>';
+                echo '</li>';
+            }
+        }
+
+    }
+}
+
 ?>
