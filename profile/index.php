@@ -41,7 +41,7 @@ if (!empty($_REQUEST["lattesID"])) {
 
     $worksTotal = $client->count($params_works);
     $totalWorks = $worksTotal["count"];
-    
+
     $params_works["size"] = 9999;
     $cursor_works = $client->search($params_works);
 } else {
@@ -57,6 +57,9 @@ if (!empty($_REQUEST["lattesID"])) {
     ?>
     <title>Perfil: <?php echo $profile["nome_completo"] ?></title>
     <link rel="stylesheet" href="../inc/css/style.css" />
+
+    <script src="https://vega.github.io/vega/vega.min.js"></script>
+
 
 </head>
 
@@ -87,18 +90,209 @@ if (!empty($_REQUEST["lattesID"])) {
                     <?php //var_dump($cursor_works); 
                     ?>
 
-<?php
-    $authorfacets = new AuthorFacets();
-    $authorfacets->query = $result_get['query'];
+                    <?php
+                    $authorfacets = new AuthorFacets();
+                    $authorfacets->query = $result_get['query'];
 
-    if (!isset($_GET)) {
-        $_GET = null;
-    }
+                    if (!isset($_GET)) {
+                        $_GET = null;
+                    }
 
-    $authorfacets->authorfacet(basename(__FILE__), "tipo", 100, "Tipo de material", null, "_term", $_GET);
-    echo "<br/><br/>";
+                    $authorfacets->authorfacet(basename(__FILE__), "tipo", 100, "Tipo de material", null, "_term", $_GET);
+                    echo "<br/><br/>";
 
-?>
+                    ?>
+
+
+                    <div class="embed">
+                        <div id="bar-chart" class="view"></div>
+                        <a href="./bar-chart.vg.json">View Source</a>
+                        <a id="bar-chart-png" href="#">Export PNG</a>
+                        <a id="bar-chart-svg" href="#">Export SVG</a>
+                    </div>
+                    <script>
+                        var spec = {
+                            "$schema": "https://vega.github.io/schema/vega/v5.json",
+                            "width": 1200,
+                            "height": 300,
+                            "padding": 5,
+
+                            "data": [{
+                                "name": "table",
+                                "values": [{
+                                        "category": "Trabalhos em eventos",
+                                        "amount": 1401
+                                    },
+                                    {
+                                        "category": "Artigo publicado",
+                                        "amount": 1332
+                                    },
+                                    {
+                                        "category": "Capítulo de livro publicado",
+                                        "amount": 81
+                                    },
+                                    {
+                                        "category": "Livro publicado ou organizado",
+                                        "amount": 10
+                                    },
+                                    {
+                                        "category": "Textos em jornais de notícias/revistas",
+                                        "amount": 7
+                                    }
+                                ]
+                            }],
+
+                            "signals": [{
+                                "name": "tooltip",
+                                "value": {},
+                                "on": [{
+                                        "events": "rect:mouseover",
+                                        "update": "datum"
+                                    },
+                                    {
+                                        "events": "rect:mouseout",
+                                        "update": "{}"
+                                    }
+                                ]
+                            }],
+
+                            "scales": [{
+                                    "name": "xscale",
+                                    "type": "band",
+                                    "domain": {
+                                        "data": "table",
+                                        "field": "category"
+                                    },
+                                    "range": "width",
+                                    "padding": 0.05,
+                                    "round": true
+                                },
+                                {
+                                    "name": "yscale",
+                                    "domain": {
+                                        "data": "table",
+                                        "field": "amount"
+                                    },
+                                    "nice": true,
+                                    "range": "height"
+                                }
+                            ],
+
+                            "axes": [{
+                                    "orient": "bottom",
+                                    "scale": "xscale"
+                                },
+                                {
+                                    "orient": "left",
+                                    "scale": "yscale"
+                                }
+                            ],
+
+                            "marks": [{
+                                    "type": "rect",
+                                    "from": {
+                                        "data": "table"
+                                    },
+                                    "encode": {
+                                        "enter": {
+                                            "x": {
+                                                "scale": "xscale",
+                                                "field": "category"
+                                            },
+                                            "width": {
+                                                "scale": "xscale",
+                                                "band": 1
+                                            },
+                                            "y": {
+                                                "scale": "yscale",
+                                                "field": "amount"
+                                            },
+                                            "y2": {
+                                                "scale": "yscale",
+                                                "value": 0
+                                            }
+                                        },
+                                        "update": {
+                                            "fill": {
+                                                "value": "steelblue"
+                                            }
+                                        },
+                                        "hover": {
+                                            "fill": {
+                                                "value": "red"
+                                            }
+                                        }
+                                    }
+                                },
+                                {
+                                    "type": "text",
+                                    "encode": {
+                                        "enter": {
+                                            "align": {
+                                                "value": "center"
+                                            },
+                                            "baseline": {
+                                                "value": "bottom"
+                                            },
+                                            "fill": {
+                                                "value": "#333"
+                                            }
+                                        },
+                                        "update": {
+                                            "x": {
+                                                "scale": "xscale",
+                                                "signal": "tooltip.category",
+                                                "band": 0.5
+                                            },
+                                            "y": {
+                                                "scale": "yscale",
+                                                "signal": "tooltip.amount",
+                                                "offset": -2
+                                            },
+                                            "text": {
+                                                "signal": "tooltip.amount"
+                                            },
+                                            "fillOpacity": [{
+                                                    "test": "isNaN(tooltip.amount)",
+                                                    "value": 0
+                                                },
+                                                {
+                                                    "value": 1
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            ]
+                        };
+
+                        function image(view, type) {
+                            return function(event) {
+                                event.preventDefault();
+                                view.toImageURL(type).then(function(url) {
+                                    var link = document.createElement('a');
+                                    link.setAttribute('href', url);
+                                    link.setAttribute('target', '_blank');
+                                    link.setAttribute('download', 'bar-chart.' + type);
+                                    link.dispatchEvent(new MouseEvent('click'));
+                                }).catch(function(error) {
+                                    console.error(error);
+                                });
+                            };
+                        }
+
+                        var view = new vega.View(vega.parse(spec), {
+                            loader: vega.loader({
+                                baseURL: '/vega/'
+                            }),
+                            logLevel: vega.Warn,
+                            renderer: 'svg'
+                        }).initialize('#bar-chart').hover().run();
+
+                        document.querySelector('#bar-chart-png').addEventListener('click', image(view, 'png'));
+                        document.querySelector('#bar-chart-svg').addEventListener('click', image(view, 'svg'));
+                    </script>
+                    <br /><br />
 
                     <?php
                     foreach ($cursor_works["hits"]["hits"] as $works) {
