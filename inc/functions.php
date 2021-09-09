@@ -1873,7 +1873,7 @@ class AuthorFacets
         $i = 0; 
         foreach ($response["aggregations"]["counts"]["buckets"] as $facets) {
             $response_array[$i]["category"] = $facets['key'];
-            $response_array[$i]["amount"] = number_format($facets['doc_count'], 0, ',', '.');
+            $response_array[$i]["amount"] = $facets['doc_count'];
             $i++;
         }
 
