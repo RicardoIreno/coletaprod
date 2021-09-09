@@ -98,8 +98,7 @@ if (!empty($_REQUEST["lattesID"])) {
                         $_GET = null;
                     }
 
-                    $authorfacets->authorfacet(basename(__FILE__), "tipo", 100, "Tipo de material", null, "_term", $_GET);
-                    echo "<br/><br/>";
+                    $resultauthorfacet = $authorfacets->authorfacet(basename(__FILE__), "tipo", 100, "Tipo de material", null, "_term", $_GET);
 
                     ?>
 
@@ -119,27 +118,7 @@ if (!empty($_REQUEST["lattesID"])) {
 
                             "data": [{
                                 "name": "table",
-                                "values": [{
-                                        "category": "Trabalhos em eventos",
-                                        "amount": 1401
-                                    },
-                                    {
-                                        "category": "Artigo publicado",
-                                        "amount": 1332
-                                    },
-                                    {
-                                        "category": "Capítulo de livro publicado",
-                                        "amount": 81
-                                    },
-                                    {
-                                        "category": "Livro publicado ou organizado",
-                                        "amount": 10
-                                    },
-                                    {
-                                        "category": "Textos em jornais de notícias/revistas",
-                                        "amount": 7
-                                    }
-                                ]
+                                "values": <?= $resultauthorfacet ?>
                             }],
 
                             "signals": [{
