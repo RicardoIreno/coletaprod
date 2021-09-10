@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <?php
 // Set directory to ROOT
 chdir('../');
