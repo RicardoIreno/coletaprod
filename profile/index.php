@@ -58,7 +58,7 @@ if (!empty($_REQUEST["lattesID"])) {
     <title>Perfil: <?php echo $profile["nome_completo"] ?></title>
     <link rel="stylesheet" href="../inc/css/style.css" />
 
-    <script src="https://vega.github.io/vega/vega.min.js"></script>
+    <script src="../inc/js/vega.min.js"></script>
 
 
 </head>
