@@ -45,7 +45,8 @@ if (!empty($_REQUEST["lattesID"])) {
     $params_works["size"] = 9999;
     $cursor_works = $client->search($params_works);
 } else {
-    echo "Não foi informado um LattesID";
+    header("Location: https://unifesp.br/prodmais/index.php");
+    die();
 }
 ?>
 <!DOCTYPE html>
