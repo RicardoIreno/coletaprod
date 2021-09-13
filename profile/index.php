@@ -5,6 +5,21 @@ chdir('../');
 require 'inc/config.php';
 require 'inc/functions.php';
 
+function lattesID10($lattesID16) {
+    $url = 'http://lattes.cnpq.br/' . $lattesID16 . '';
+
+    $headers = @get_headers($url);
+
+    $lattesID10 = "";
+    foreach ($headers as $h) {
+        if (substr($h, 0, 87) == 'Location: http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=') {
+            $lattesID10 = trim(substr($h, 87));
+            break;
+        }
+    }
+    return $lattesID10;
+}
+
 if (!empty($_REQUEST["lattesID"])) {
 
     if (isset($_GET["filter"])) {
@@ -43,6 +58,10 @@ if (!empty($_REQUEST["lattesID"])) {
 
     $params_works["size"] = 9999;
     $cursor_works = $client->search($params_works);
+
+
+    $lattesID10 = lattesID10($_GET["lattesID"]);
+
 } else {
     header("Location: https://unifesp.br/prodmais/index.php");
     die();
@@ -83,6 +102,12 @@ if (!empty($_REQUEST["lattesID"])) {
                 <div class="col-12">
                     <h1><?php echo $profile["nome_completo"] ?></h1>
                     <br />
+                    <img src="http://servicosweb.cnpq.br/wspessoa/servletrecuperafoto?tipo=1&amp;bcv=true&amp;id=<?php echo $lattesID10; ?>">
+
+                    <a class="text-dark" href="http://lattes.cnpq.br/<?php echo $_GET["lattesID"]; ?>">
+                        <img src="../inc/images/logo-lattes.png" width="25px" height="25px" alt="Acessar Currículo Lattes">
+                    </a>
+
                     <p><?php echo $profile["resumo_cv"]["texto_resumo_cv_rh"] ?></p>
                     <p>Quantidade de registros: <?php echo $totalWorks ?></p>
                     <?php //var_dump($profile); 
@@ -249,7 +274,7 @@ if (!empty($_REQUEST["lattesID"])) {
                             return function(event) {
                                 event.preventDefault();
                                 view.toImageURL(type).then(function(url) {
-                                    var link = document.createElement('a');
+                                    var link = document.createElement(' a');
                                     link.setAttribute('href', url);
                                     link.setAttribute('target', '_blank');
                                     link.setAttribute('download', 'bar-chart.' + type);
@@ -259,7 +284,6 @@ if (!empty($_REQUEST["lattesID"])) {
                                 });
                             };
                         }
-
                         var view = new vega.View(vega.parse(spec), {
                             loader: vega.loader({
                                 baseURL: '/vega/'
@@ -267,7 +291,6 @@ if (!empty($_REQUEST["lattesID"])) {
                             logLevel: vega.Warn,
                             renderer: 'svg'
                         }).initialize('#bar-chart').hover().run();
-
                         document.querySelector('#bar-chart-png').addEventListener('click', image(view, 'png'));
                         document.querySelector('#bar-chart-svg').addEventListener('click', image(view, 'svg'));
                     </script>
