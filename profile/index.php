@@ -5,7 +5,8 @@ chdir('../');
 require 'inc/config.php';
 require 'inc/functions.php';
 
-function lattesID10($lattesID16) {
+function lattesID10($lattesID16)
+{
     $url = 'http://lattes.cnpq.br/' . $lattesID16 . '';
 
     $headers = @get_headers($url);
@@ -61,7 +62,6 @@ if (!empty($_REQUEST["lattesID"])) {
 
 
     $lattesID10 = lattesID10($_GET["lattesID"]);
-
 } else {
     header("Location: https://unifesp.br/prodmais/index.php");
     die();
@@ -102,7 +102,7 @@ if (!empty($_REQUEST["lattesID"])) {
                 <div class="col-12">
                     <h1><?php echo $profile["nome_completo"] ?></h1>
                     <br />
-                    <img src="http://servicosweb.cnpq.br/wspessoa/servletrecuperafoto?tipo=1&amp;bcv=true&amp;id=<?php echo $lattesID10; ?>">
+                    <img width="200" height="200" src="http://servicosweb.cnpq.br/wspessoa/servletrecuperafoto?tipo=1&amp;bcv=true&amp;id=<?php echo $lattesID10; ?>">
 
                     <a class="text-dark" href="http://lattes.cnpq.br/<?php echo $_GET["lattesID"]; ?>">
                         <img src="../inc/images/logo-lattes.png" width="25px" height="25px" alt="Acessar Currículo Lattes">
