@@ -40,6 +40,16 @@ if (!empty($_REQUEST["lattesID"])) {
     $cursorTotal = $client->count($params);
     $total = $cursorTotal["count"];
 
+    // $result_get['query']["sort"]["datePublished"]["missing"] = "_last";
+    // $result_get['query']["sort"]["datePublished"]["order"] = "asc";
+    // $result_get['query']["sort"]["datePublished"]["mode"] = "max";
+
+
+    // $result_get['query']["sort"]["_uid"]["unmapped_type"] = "long";
+    // $result_get['query']["sort"]["_uid"]["missing"] = "_last";
+    // $result_get['query']["sort"]["_uid"]["order"] = "desc";
+    // $result_get['query']["sort"]["_uid"]["mode"] = "max";
+
     $params["body"] = $result_get['query'];
     $params["size"] = $limit;
     $params["from"] = $result_get['skip'];
@@ -124,6 +134,7 @@ if (!empty($_REQUEST["lattesID"])) {
                     }
 
                     $resultauthorfacet = $authorfacets->authorfacet(basename(__FILE__), "tipo", 100, "Tipo de material", null, "_term", $_GET);
+                    $resultyearfacet = $authorfacets->authorfacet(basename(__FILE__), "datePublished", 120, "Ano de publicação", "desc", "_term", $_GET);
 
                     ?>
 
@@ -295,7 +306,172 @@ if (!empty($_REQUEST["lattesID"])) {
                         document.querySelector('#bar-chart-svg').addEventListener('click', image(view, 'svg'));
                     </script>
                     <br /><br />
+                    <div class="embed">
+                        <div id="bar-chart2" class="view"></div>
+                        <a href="./bar-chart2.vg.json">View Source</a>
+                        <a id="bar-chart2-png" href="#">Export PNG</a>
+                        <a id="bar-chart2-svg" href="#">Export SVG</a>
+                    </div>
+                    <script>
+                        var spec = {
+                            "$schema": "https://vega.github.io/schema/vega/v5.json",
+                            "width": 1200,
+                            "height": 300,
+                            "padding": 5,
 
+                            "data": [{
+                                "name": "table",
+                                "values": <?= $resultyearfacet ?>
+                            }],
+
+                            "signals": [{
+                                "name": "tooltip",
+                                "value": {},
+                                "on": [{
+                                        "events": "rect:mouseover",
+                                        "update": "datum"
+                                    },
+                                    {
+                                        "events": "rect:mouseout",
+                                        "update": "{}"
+                                    }
+                                ]
+                            }],
+
+                            "scales": [{
+                                    "name": "xscale",
+                                    "type": "band",
+                                    "domain": {
+                                        "data": "table",
+                                        "field": "category"
+                                    },
+                                    "range": "width",
+                                    "padding": 0.05,
+                                    "round": true
+                                },
+                                {
+                                    "name": "yscale",
+                                    "domain": {
+                                        "data": "table",
+                                        "field": "amount"
+                                    },
+                                    "nice": true,
+                                    "range": "height"
+                                }
+                            ],
+
+                            "axes": [{
+                                    "orient": "bottom",
+                                    "scale": "xscale"
+                                },
+                                {
+                                    "orient": "left",
+                                    "scale": "yscale"
+                                }
+                            ],
+
+                            "marks": [{
+                                    "type": "rect",
+                                    "from": {
+                                        "data": "table"
+                                    },
+                                    "encode": {
+                                        "enter": {
+                                            "x": {
+                                                "scale": "xscale",
+                                                "field": "category"
+                                            },
+                                            "width": {
+                                                "scale": "xscale",
+                                                "band": 1
+                                            },
+                                            "y": {
+                                                "scale": "yscale",
+                                                "field": "amount"
+                                            },
+                                            "y2": {
+                                                "scale": "yscale",
+                                                "value": 0
+                                            }
+                                        },
+                                        "update": {
+                                            "fill": {
+                                                "value": "steelblue"
+                                            }
+                                        },
+                                        "hover": {
+                                            "fill": {
+                                                "value": "red"
+                                            }
+                                        }
+                                    }
+                                },
+                                {
+                                    "type": "text",
+                                    "encode": {
+                                        "enter": {
+                                            "align": {
+                                                "value": "center"
+                                            },
+                                            "baseline": {
+                                                "value": "bottom"
+                                            },
+                                            "fill": {
+                                                "value": "#333"
+                                            }
+                                        },
+                                        "update": {
+                                            "x": {
+                                                "scale": "xscale",
+                                                "signal": "tooltip.category",
+                                                "band": 0.5
+                                            },
+                                            "y": {
+                                                "scale": "yscale",
+                                                "signal": "tooltip.amount",
+                                                "offset": -2
+                                            },
+                                            "text": {
+                                                "signal": "tooltip.amount"
+                                            },
+                                            "fillOpacity": [{
+                                                    "test": "isNaN(tooltip.amount)",
+                                                    "value": 0
+                                                },
+                                                {
+                                                    "value": 1
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            ]
+                        };
+
+                        function image(view, type) {
+                            return function(event) {
+                                event.preventDefault();
+                                view.toImageURL(type).then(function(url) {
+                                    var link = document.createElement(' a');
+                                    link.setAttribute('href', url);
+                                    link.setAttribute('target', '_blank');
+                                    link.setAttribute('download', 'bar-chart2.' + type);
+                                    link.dispatchEvent(new MouseEvent('click'));
+                                }).catch(function(error) {
+                                    console.error(error);
+                                });
+                            };
+                        }
+                        var view = new vega.View(vega.parse(spec), {
+                            loader: vega.loader({
+                                baseURL: '/vega/'
+                            }),
+                            logLevel: vega.Warn,
+                            renderer: 'svg'
+                        }).initialize('#bar-chart2').hover().run();
+                        document.querySelector('#bar-chart2-png').addEventListener('click', image(view, 'png'));
+                        document.querySelector('#bar-chart2-svg').addEventListener('click', image(view, 'svg'));
+                    </script>
                     <?php
                     foreach ($cursor_works["hits"]["hits"] as $works) {
                         //echo "<br /><br />";
