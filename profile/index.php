@@ -138,7 +138,7 @@ if (!empty($_REQUEST["lattesID"])) {
 
                     ?>
 
-
+                    <h2>Distribuição de trabalhos por tipo</h2>
                     <div class="embed">
                         <div id="bar-chart" class="view"></div>
                         <a href="./bar-chart.vg.json">View Source</a>
@@ -306,6 +306,7 @@ if (!empty($_REQUEST["lattesID"])) {
                         document.querySelector('#bar-chart-svg').addEventListener('click', image(view, 'svg'));
                     </script>
                     <br /><br />
+                    <h2>Distribuição de trabalhos por ano de publicação</h2>
                     <div class="embed">
                         <div id="bar-chart2" class="view"></div>
                         <a href="./bar-chart2.vg.json">View Source</a>
@@ -472,6 +473,8 @@ if (!empty($_REQUEST["lattesID"])) {
                         document.querySelector('#bar-chart2-png').addEventListener('click', image(view, 'png'));
                         document.querySelector('#bar-chart2-svg').addEventListener('click', image(view, 'svg'));
                     </script>
+                    <br /><br />
+                    <h2>Relação de trabalhos</h2>
                     <?php
                     foreach ($cursor_works["hits"]["hits"] as $works) {
                         //echo "<br /><br />";
@@ -480,22 +483,21 @@ if (!empty($_REQUEST["lattesID"])) {
                             <div class="card">
                                 <h5 class="card-header">' . $works["_source"]["tipo"] . '</h5>
                                 <div class="card-body">
-                                    <h5 class="card-title">' . $works["_source"]["name"] . '</h5>
-                                    <p class="card-text">Data de publicação: ' . $works["_source"]["datePublished"] . '</p>
+                                    <h5 class="card-title">' . $works["_source"]["name"] . ' (' . $works["_source"]["datePublished"] . ')</h5>
                             ';
                         if (isset($works["_source"]["EducationEvent"])) {
-                            echo '<p class="card-text">Nome do evento: ' . $works["_source"]["EducationEvent"]["name"] . '</p>';
+                            echo '<p style="margin-bottom:0px;">Nome do evento: ' . $works["_source"]["EducationEvent"]["name"] . '</p>';
                         }
-                        echo '<p class="card-text">País de publicação: ' . $works["_source"]["country"] . '</p>';
+                        echo '<p style="margin-bottom:0px;">País de publicação: ' . $works["_source"]["country"] . '</p>';
                         foreach ($works["_source"]["author"] as $author) {
                             $authors[] = $author["person"]["name"];
                         };
-                        echo '<p class="card-text">Autor: ' . implode('; ', $authors) . '</p>';
+                        echo '<p style="margin-bottom:0px;">Autor: ' . implode('; ', $authors) . '</p>';
                         echo '
                                 </div>
                             </div>
                             ';
-                        echo "<br /><br />";
+                        echo "<br />";
                         unset($authors);
                     }
                     ?>
