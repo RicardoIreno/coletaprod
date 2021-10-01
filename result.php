@@ -136,7 +136,7 @@ $get_data = $_GET;
                                 }
                                 ?>
 
-                                <p class="text-muted"><b>Autores:</b>
+                                <p class="text-muted"><b>Autoria:</b>
                                     <?php if (!empty($r["_source"]['author'])) : ?>
                                         <?php foreach ($r["_source"]['author'] as $autores) {
                                             $authors_array[] = '' . $autores["person"]["name"] . '';

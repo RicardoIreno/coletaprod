@@ -36,7 +36,7 @@
     </li>
 
     <li class="navmenu-item">
-      <a class="navmenu-link" href="result_autores.php">Autores</a>
+      <a class="navmenu-link" href="result_autores.php">Pesquisadores</a>
     </li>
 
     <li class="navmenu-item">
@@ -46,21 +46,16 @@
 
         <li class="navmenu-submenu-item">
           <?php if (isset($dashboard_lattes_producoes)) : ?>
-            <a class="navmenu-submenu-link" href="<?php echo $dashboard_lattes_producoes ?>" target="_blank">Produções - Lattes</a>
+            <a class="navmenu-submenu-link" href="<?php echo $dashboard_lattes_producoes ?>" target="_blank">Produções acadêmicas - Lattes</a>
           <?php endif ?>
         </li>
 
         <li class="navmenu-submenu-item">
           <?php if (isset($dashboard_lattes_cv)) : ?>
-            <a class="navmenu-submenu-link" href="<?php echo $dashboard_lattes_cv ?>" target="_blank">Currículos - Lattes</a>
+            <a class="navmenu-submenu-link" href="<?php echo $dashboard_lattes_cv ?>" target="_blank">Perfil dos pesquisados - Lattes</a>
           <?php endif ?>
         </li>
 
-        <li class="navmenu-submenu-item">
-          <?php if (isset($dashboard_source)) : ?>
-            <a class="navmenu-submenu-link" href="<?php echo $dashboard_source ?>" target="_blank">Fonte</a>
-          <?php endif ?>
-        </li>
       </ul>
     </li>
   </ul>

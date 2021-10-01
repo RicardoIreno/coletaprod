@@ -118,6 +118,8 @@ if (!empty($_REQUEST["lattesID"])) {
                         <img src="../inc/images/logo-lattes.png" width="25px" height="25px" alt="Acessar Currículo Lattes">
                     </a>
 
+                    <div class="bd-highlight"><a class="text-dark" href='../result.php?filter[]=vinculo.lattes_id:"<?php echo $profile['lattesID']; ?>"'>Ver produções indexadas</a></div>
+
                     <p><?php echo $profile["resumo_cv"]["texto_resumo_cv_rh"] ?></p>
                     <p>Quantidade de registros: <?php echo $totalWorks ?></p>
                     <?php //var_dump($profile); 
@@ -492,7 +494,7 @@ if (!empty($_REQUEST["lattesID"])) {
                         foreach ($works["_source"]["author"] as $author) {
                             $authors[] = $author["person"]["name"];
                         };
-                        echo '<p style="margin-bottom:0px;">Autor: ' . implode('; ', $authors) . '</p>';
+                        echo '<p style="margin-bottom:0px;">Autoria: ' . implode('; ', $authors) . '</p>';
                         echo '
                                 </div>
                             </div>
