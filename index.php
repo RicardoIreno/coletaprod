@@ -124,7 +124,7 @@ if ($_SERVER["REQUEST_URI"] == "/") {
 
                     </form>
                     <form class="mt-3" action="result.php" v-if="searchPage == 'advanced'">
-                        <label for="searchQuery">Pesquisa por palavras - <a href="result.php">Navegar por todos</a></label>
+                        <label for="searchQuery">Pesquisa por palavras</label>
                         <div class="form-group">
                             <input type="text" name="search" class="my-input" id="searchQuery" aria-describedby="searchHelp" placeholder="Pesquise por termo, autor ou ID do Lattes (16 dígitos)">
                             <label>Filtrar por Nome do Programa de Pós-Graduação (Opcional):</label>
