@@ -112,7 +112,7 @@ if (!empty($_REQUEST["lattesID"])) {
                 <div class="col-12">
                     <h1><?php echo $profile["nome_completo"] ?></h1>
                     <br />
-                    <img height="200" src="http://servicosweb.cnpq.br/wspessoa/servletrecuperafoto?tipo=1&amp;bcv=true&amp;id=<?php echo $lattesID10; ?>" style="margin-bottom: 10px;">
+                    <img class="img-thumbnail" height="200" src="http://servicosweb.cnpq.br/wspessoa/servletrecuperafoto?tipo=1&amp;bcv=true&amp;id=<?php echo $lattesID10; ?>" style="margin-bottom: 10px;">
 
                     <a class="text-dark" href="http://lattes.cnpq.br/<?php echo $_GET["lattesID"]; ?>">
                         <img src="../inc/images/logo-lattes.png" width="25px" height="25px" alt="Acessar Currículo Lattes">
