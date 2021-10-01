@@ -118,7 +118,9 @@ if (!empty($_REQUEST["lattesID"])) {
                         <img src="../inc/images/logo-lattes.png" width="25px" height="25px" alt="Acessar Currículo Lattes">
                     </a>
 
-                    <div class="bd-highlight"><a class="text-dark" href='../result.php?filter[]=vinculo.lattes_id:"<?php echo $profile['lattesID']; ?>"'>Ver produções indexadas</a></div>
+                    <p><a class="text-dark" href='../result.php?filter[]=vinculo.lattes_id:"<?php echo $profile['lattesID']; ?>"'>Ver produções indexadas</a></p>
+
+                    <p><a class="text-dark" href="../tools/export.php?search=&filter[]=vinculo.lattes_id:<?php echo $profile['lattesID']; ?>&format=bibtex" rel="nofollow">Exportar para ORCID (Formato BibTeX)</a></p>
 
                     <p><?php echo $profile["resumo_cv"]["texto_resumo_cv_rh"] ?></p>
                     <p>Quantidade de registros: <?php echo $totalWorks ?></p>
