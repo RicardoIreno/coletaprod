@@ -19,6 +19,9 @@ if ($_SERVER["REQUEST_URI"] == "/") {
     require 'inc/functions.php';
     ?>
     <title><?php echo $branch ?></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="description" content="Indicadores de dados referentes à Unifesp." />
+    <meta name="keywords" content="UNIFESP" />
     <!-- Facebook Tags - START -->
     <meta property="og:locale" content="pt_BR">
     <meta property="og:url" content="<?php echo $url_base ?>">
@@ -98,18 +101,18 @@ if ($_SERVER["REQUEST_URI"] == "/") {
             <div class="my-textbox">
 
                 <h2>
-                    Uma ferramenta de busca da produção de pesquisadores da UNIFESP.
+                    Uma ferramenta de busca da produção científica de pesquisadores da UNIFESP.
                 </h2>
 
             </div><!-- end textbox-home -->
 
-            <?php if (paginaInicial::contar_registros_indice($index) == 0): ?>
+            <?php if (paginaInicial::contar_registros_indice($index) == 0) : ?>
                 <div class="alert alert-warning" role="alert">
                     O Prod+ está em manutenção!
                 </div>
             <?php endif; ?>
 
-            <div class="formbox">
+            <div class="formbox-container">
 
                 <div id="app">
                     <form class="mt-3" action="result.php" v-if="searchPage == 'simple'">
@@ -155,69 +158,6 @@ if ($_SERVER["REQUEST_URI"] == "/") {
                     </div>
                 </div>
             </div>
-
-            <!--
-
-                <div id="app">
-
-                    <div class="simple-search-container" v-if="searchPage == 'simple'">
-
-                        <form class="" action="result.php">
-                            <input class="my-input" type="search" placeholder="Pesquisar" aria-label="Pesquisar" name="search">
-                        </form>
-                    </div> 
-
-                    <div v-if="searchPage == 'advanced'">
-
-                        <form class="" action="result.php">
-                            <input class="my-input" type="search" placeholder="Filtrar por Nome do Programa de Pós-Graduação (Opcional)" aria-label="Mudar" name="search">
-
-                            <input class="my-input" list="datalistOptions" id="authorsDataList" placeholder="Autores (nome ou ID Lattes)" name="filter[]" v-model="query" @input="searchCV()">
-
-                            <datalist class="my-input" id="datalistOptions">
-                                <option v-for="author in authors" :key="author._id" :value="'vinculo.lattes_id:' + author._id">{{author._source.nome_completo}}</option>
-                            </datalist>
-
-                            <div class="data-search-container">
-
-                                <input type="text" class="my-input" id="initialYear" name="initialYear" pattern="\d{4}" placeholder="19XX (opcional)" value="">
-                                <span> à </span>
-                                <input type="text" class="my-input" id="finalYear" name="finalYear" pattern="\d{4}" placeholder="20XX (opcional)" value="">
-
-                            </div>
-
-                        </form>
-
-                        <small class="small-info">Dica: Use * para busca por radical. Ex: biblio*.</small><br />
-                        <small class="small-info">Dica 2: Para buscas exatas, coloque entre "". Ex: "Direito civil"</small><br />
-                        <small class="small-info">Dica 3: Por padrão, o sistema utiliza o operador booleano OR. Caso necessite deixar a busca mais específica, utilize o operador AND (em maiúscula)</small>
-
-                    </div> 
-
-
-                </div> 
-
-
-            </div>
-
-            <div class="btns-container">
-
-                <button @click="searchPage = 'simple'" class="my-btn">Busca simples</button>
-                <button @click="searchPage = 'advanced'" class="my-btn">Busca avançada</button>
-
-                <button type="submit" class="btn-pesquisar">
-
-                    <svg class="icon-pesquisar" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 100 100">
-                        <path d="M98.6,86.5L79.2,67c-0.9-0.9-2.1-1.4-3.3-1.4h-3.2c5.4-6.9,8.6-15.6,8.6-25C81.3,18.2,63.1,0,40.6,0
-							S0,18.2,0,40.6s18.2,40.6,40.6,40.6c9.4,0,18.1-3.2,25-8.6v3.2c0,1.3,0.5,2.4,1.4,3.3l19.5,19.5c1.8,1.8,4.8,1.8,6.6,0l5.5-5.5
-							C100.5,91.3,100.5,88.3,98.6,86.5z M40.6,65.6c-13.8,0-25-11.2-25-25s11.2-25,25-25s25,11.2,25,25S54.5,65.6,40.6,65.6z" />
-                    </svg>
-
-                </button>
-            </div>
-
-
-        </div> -->
 
             <div class="two">
                 <div class="container mt-4">

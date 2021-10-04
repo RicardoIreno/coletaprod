@@ -1,31 +1,35 @@
-<footer class="footer">
+<footer class="myfooter">
 
-    <div class="footer-logobox">
-        <img class="footer-logo" src="inc/images/logo-sti-branco.svg" alt="STI">
-        <img class="footer-logo" src="inc/images/logo-unifesp-branco.svg" alt="Unifesp">
-    </div>
+    <div class="myfooter__wrapper">
+
+        <div class="myfooter__contact">
+            <a class="myfooter__link" href="https://atendimento.unifesp.br/">
+                Fale conosco</a> <span class="myfooter__link-det">|</span>
+            <a class="myfooter__link" href="https://atendimento.unifesp.br/">
+                Política de privacidade</a> <span class="myfooter__link-det">|</span>
+            <a class="myfooter__link" target="_blank" href="https://forms.gle/2QRcqg2YfxMvEqVX9">
+                Relate erros</a>
+
+        </div>
+
+        <div class="myfooter__logos">
+            <a href="https://sti.unifesp.br/" target="_blank"><img class="myfooter__logo" src="inc/images/sti-branco.svg" alt="STI"></a>
+            <a href="https://unifesp.br/" target="_blank"><img class="myfooter__logo" src="inc/images/unifesp-branco.svg" alt="Unifesp"></a>
+        </div>
+
+        <div class="citation__container">
+            <p class=citation>
+                <b>Como citar:</b> <br />
+                <span class="citation__author"> Unifesp. </span>
+                <span class="citation__italic">ln:</span>
+                Prodmais Unifesp.
+                1.5.
+                São Paulo: Unifesp, 2021
+                Disponível em: https://unifesp.br/prodmais
+                Acessado em: XX jan. 20XX.
+            </p>
+        </div>
+
     </div>
 
-    <div class="footer-logobox">
-        <p><a href="https://atendimento.unifesp.br/">
-                Fale conosco</a></p>
-        <p><a href="https://atendimento.unifesp.br/">
-                Política de privacidade</a></p>
-        <p><a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSdZTjaFwFultrJ5daado3eopzKo_UmpSseuoU8JzoJKP6eEKw/viewform">
-                Relate erros</a></p>
-    </div>
-
-    <div class="footer-textbox">
-        <p>
-            <!--
-            <b>Equipe envolvida</b><br />
-            Desenvolvimento: Tiago Murakami<br />
-            Design: Ricardo Ireno<br />
-            ...
-            <br />
-            <br />
-            -->
-            Desenvolvido com o software livre <a target="_blank" href="https://github.com/trmurakami/coletaprod">coletaprod</a> v2.3
-        </p>
-    </div>
 </footer>
