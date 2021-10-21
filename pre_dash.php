@@ -27,6 +27,7 @@
     </script>
     <!-- End Jekyll SEO tag -->
     <link rel="stylesheet" href="manual/assets/style-manual.css">
+    <link rel="stylesheet" href="inc/css/style.css" />
     <link type="application/atom+xml" rel="alternate" href="https://unifesp.br/prodmais/feed.xml" title="Manual do Prodmais" />
 </head>
 
