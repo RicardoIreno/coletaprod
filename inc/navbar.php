@@ -36,15 +36,15 @@
     </li>
 
     <li class="navmenu-item">
-      <a class="navmenu-link" href="result_autores.php">Pesquisadores</a>
+      <a class="navmenu-link" href="https://unifesp.br/prodmais/result_autores.php">Pesquisadores</a>
     </li>
 
     <li class="navmenu-item">
-      <a class="navmenu-link" href="manual/">Manual de utilização</a>
+      <a class="navmenu-link" href="https://unifesp.br/prodmais/manual/">Manual de utilização</a>
     </li>
 
     <li class="navmenu-item">
-      <a class="navmenu-link" href="pre_dash.php">Dashboards</a>
+      <a class="navmenu-link" href="https://unifesp.br/prodmais/pre_dash.php">Dashboards</a>
     </li>
 
     <!-- <li class="navmenu-item">
