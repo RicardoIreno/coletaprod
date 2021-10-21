@@ -32,7 +32,7 @@
   <ul class="navmenu">
 
     <li class="navmenu-item">
-      <a class="navmenu-link" aria-current="page" href="index.php">Início</a>
+      <a class="navmenu-link" aria-current="page" href="https://unifesp.br/prodmais/">Início</a>
     </li>
 
     <li class="navmenu-item">
