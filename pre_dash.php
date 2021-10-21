@@ -31,6 +31,9 @@
 </head>
 
 <body class="bodycolor">
+    <!-- NAV -->
+    <?php require 'inc/navbar.php'; ?>
+    <!-- /NAV -->
 
     <div class="site-wrapper">
 
@@ -74,6 +77,8 @@
 
 
     </div>
+
+    <?php include('inc/footer.php'); ?>
 
 </body>
 
