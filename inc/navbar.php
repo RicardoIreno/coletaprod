@@ -44,7 +44,7 @@
     </li>
 
     <li class="navmenu-item">
-      <a class="navmenu-link" href="manual/pre_dash.php">Dashboards</a>
+      <a class="navmenu-link" href="pre_dash.php">Dashboards</a>
     </li>
 
     <!-- <li class="navmenu-item">
