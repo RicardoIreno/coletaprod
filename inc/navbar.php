@@ -40,24 +40,32 @@
     </li>
 
     <li class="navmenu-item">
+      <a class="navmenu-link" href="manual/">Manual de utilização</a>
+    </li>
+
+    <li class="navmenu-item">
+      <a class="navmenu-link" href="manual/pre_dash.php">Dashboards</a>
+    </li>
+
+    <!-- <li class="navmenu-item">
       <span>Dashboards</span>
 
       <ul class="navmenu-submenu">
 
         <li class="navmenu-submenu-item">
-          <?php if (isset($dashboard_lattes_producoes)) : ?>
-            <a class="navmenu-submenu-link" href="<?php echo $dashboard_lattes_producoes ?>" target="_blank">Produções acadêmicas - Lattes</a>
-          <?php endif ?>
+          < ?php if (isset($dashboard_lattes_producoes)) : ?>
+            <a class="navmenu-submenu-link" href="< ?php echo $dashboard_lattes_producoes ?>" target="_blank">Produções acadêmicas - Lattes</a>
+          < ?php endif ?>
         </li>
 
         <li class="navmenu-submenu-item">
-          <?php if (isset($dashboard_lattes_cv)) : ?>
-            <a class="navmenu-submenu-link" href="<?php echo $dashboard_lattes_cv ?>" target="_blank">Perfil dos pesquisados - Lattes</a>
-          <?php endif ?>
+          < ?php if (isset($dashboard_lattes_cv)) : ?>
+            <a class="navmenu-submenu-link" href="< ?php echo $dashboard_lattes_cv ?>" target="_blank">Perfil dos pesquisados - Lattes</a>
+          < ?php endif ?>
         </li>
 
       </ul>
-    </li>
+    </li> -->
   </ul>
 
 </nav>

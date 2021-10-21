@@ -13,8 +13,19 @@
         </div>
 
         <div class="myfooter__logos">
-            <a href="https://sti.unifesp.br/" target="_blank"><img class="myfooter__logo" src="inc/images/sti-branco.svg" alt="STI"></a>
-            <a href="https://unifesp.br/" target="_blank"><img class="myfooter__logo" src="inc/images/unifesp-branco.svg" alt="Unifesp"></a>
+            <?php if (file_exists("inc/images/logos/sti-branco.svg")) : ?>
+                <a href="https://sti.unifesp.br/" target="_blank"><img class="myfooter__logo" src="inc/images/logos/sti-branco.svg" alt="STI"></a>
+            <?php endif ?>
+            <?php if (file_exists("../inc/images/logos/sti-branco.svg")) : ?>
+                <a href="https://sti.unifesp.br/" target="_blank"><img class="myfooter__logo" src="../inc/images/logos/sti-branco.svg" alt="STI"></a>
+            <?php endif ?>
+            <?php if (file_exists("inc/images/logos/unifesp-branco.svg")) : ?>
+                <a href="https://unifesp.br/" target="_blank"><img class="myfooter__logo" src="inc/images/logos/unifesp-branco.svg" alt="Unifesp"></a>
+            <?php endif ?>
+            <?php if (file_exists("../inc/images/logos/unifesp-branco.svg")) : ?>
+                <a href="https://unifesp.br/" target="_blank"><img class="myfooter__logo" src="../inc/images/logos/unifesp-branco.svg" alt="Unifesp"></a>
+            <?php endif ?>
+
         </div>
 
         <div class="citation__container">
@@ -22,14 +33,18 @@
                 <b>Como citar:</b> <br />
                 <span class="citation__author"> Unifesp. </span>
                 <span class="citation__italic">ln:</span>
-                Prodmais Unifesp.
-                1.5.
+                Prod+.
+                1.0.
                 São Paulo: Unifesp, 2021
-                Disponível em: https://unifesp.br/prodmais
+                Disponível em: https://unifesp.br/prodmais/
                 Acessado em: XX jan. 20XX.
             </p>
         </div>
 
+
+
     </div>
+
+
 
 </footer>
