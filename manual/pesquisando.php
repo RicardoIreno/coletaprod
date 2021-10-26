@@ -29,6 +29,7 @@
   <link rel="stylesheet" href="assets/style-manual.css">
   <link rel="stylesheet" href="../inc/css/style.css">
   <link type="application/atom+xml" rel="alternate" href="https://unifesp.br/prodmais/manual/feed.xml" title="Manual do Prodmais" />
+  <link rel="shortcut icon" href="../inc/images/favicon-64x.png" type="image/x-icon">
 </head>
 
 <body class="bodycolor">
