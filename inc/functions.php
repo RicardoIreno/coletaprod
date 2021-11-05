@@ -575,7 +575,7 @@ class paginaInicial {
 
         $body["body"]["query"]["bool"]["must_not"]["exists"]["field"] = "lattesID";
         $cursorTotal = $client->count($body);
-        $total_dont_have_lattes = $cursorTotal["count"];      
+        $total_dont_have_lattes = $cursorTotal["count"];
 
         return number_format((float)($total_dont_have_lattes / $total) * 100, 2, '.', '');
     }
@@ -592,7 +592,7 @@ class paginaInicial {
             'body' => $query
         ];
         $response = $client->search($params);
-        echo '<select class="my-input" name="filter[]" aria-label="Filtro">
+        echo '<select class="myinput" name="filter[]" aria-label="Filtro">
         <option value="" selected>Selecione uma opção para filtrar</option>';
         foreach ($response["aggregations"]["group_by_state"]["buckets"] as $facets) {
             echo '<option value="'.$field.':'.$facets['key'].'">'.$facets['key'].'</option>';
