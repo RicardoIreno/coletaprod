@@ -40,9 +40,9 @@
 
   <div class="site-wrapper">
 
-    <main class="page-wrapper" aria-label="Content">
+    <main class="manual-page" aria-label="Content">
 
-      <a onclick="window.history.back()" class="btnback">Voltar</a>
+      <a onclick="window.history.back()" class="mybtn btnback">Voltar</a>
 
       <h1 id="exportacao">Exportação</h1>
 
@@ -131,9 +131,9 @@
 
 
       <hr class="myline">
-      <div class="lin-first">
+      <div class="div-h">
 
-        <a class="mybtn2 lin-first" href="pesquisando.php"><svg class="mybtn2-img" version="1.1" x="0px" y="0px" viewBox="0 0 383.3 383.3">
+        <a class="mybtn mybtn-manual myicon-manual div-v" href="pesquisando.php"><svg class="myicon-manual" version="1.1" x="0px" y="0px" viewBox="0 0 383.3 383.3">
             <g>
               <path d="M0,333.1c0.6-2.5,1.1-5.1,1.9-7.6c2.3-7.7,6.7-14,12.1-19.9c24.9-26.7,54-48.5,82.3-71.1c7.6-6.1,15.3-12,23.1-18.2
       c-0.5-1.1-1-2.1-1.5-3C74.5,137.9,108.1,41.9,189,9.9c83.7-33,176.9,19.4,192.1,108.1c5.8,34-0.1,66-17.3,95.9
@@ -148,9 +148,9 @@
               <path d="M301.5,130.4c-5.5-0.2-10-3.8-12.9-10c-6.4-13.5-16.6-23-30.8-27.6c-5.1-1.7-10.7-2.4-16.1-2.8
       c-9.1-0.6-15.6-6.7-15.5-15.3c0.1-8.5,6.9-15.1,16-14.7c34.4,1.5,59.2,17.8,74.2,48.8C321.1,119.1,314,130.3,301.5,130.4z" />
             </g>
-          </svg>Como pesquisar </a>
+          </svg>Pesquisando </a>
 
-        <a class="mybtn2 lin-first" href="exportacao.php"><svg class="mybtn2-img" version="1.1" x="0px" y="0px" viewBox="0 0 383.3 383.3">
+        <a class="mybtn mybtn-manual myicon-manual div-v" href="exportacao.php"><svg class="myicon-manual" version="1.1" x="0px" y="0px" viewBox="0 0 383.3 383.3">
             <g>
               <path d="M173.8,381.8c-36.2,0-72.3,0.1-108.5,0c-31.7-0.1-56.4-21-61.8-52.3c-0.6-3.3-0.6-6.8-0.6-10.2c0-72.1-0.1-144.3,0-216.4
       c0-30.8,20.2-55.2,50.2-61.2c3.8-0.7,7.6-1.1,11.5-1.1c38.8-0.1,77.6-0.1,116.5,0c14.3,0,23.6,12.3,19.3,25.1
@@ -165,9 +165,9 @@
       c0,9.4-5.6,16.5-14,18.8c-8.1,2.2-17.1-1.2-20.9-8.7c-1.7-3.4-2.6-7.6-2.7-11.4c-0.3-20-0.1-40-0.1-60c0-1.6,0-3.2,0-4.8
       C343.7,68.3,343.1,68,342.6,67.6z" />
             </g>
-          </svg>Como exportar </a>
+          </svg>Exportando </a>
 
-        <a class="mybtn2 lin-first" href="dashboard.php"><svg class="mybtn2-img" version="1.1" x="0px" y="0px" viewBox="0 0 383.3 383.3">
+        <a class="mybtn mybtn-manual myicon-manual div-v" href="dashboard.php"><svg class="myicon-manual" version="1.1" x="0px" y="0px" viewBox="0 0 383.3 383.3">
             <g>
               <path d="M384.4,200.7c-0.2,0.3-0.4,0.6-0.5,1c-4,15.1-14,22.9-29.7,22.9c-36.4,0-72.9,0-109.3,0c-2.5,0-5,0-7.5,0
       c-17.3-0.2-29.2-12.1-29.3-29.4c-0.1-12.1,0-24.3,0-36.4c0-41.6,0-83.2,0-124.7c0-19.9,5.2-27.4,23.9-34c43.1,0,86.2,0,129.3,0
@@ -191,9 +191,9 @@
       c0,22.4,0,44.8,0,67.2c0,5.4,1.1,6.4,6.7,6.4C257.8,360.7,277,360.7,296.1,360.7z" />
             </g>
           </svg>
-          Como usar o Dashboard </a>
+          Dashboard </a>
 
-        <a class="mybtn2 lin-first" href="https://unifesp.br/prodmais/"><svg class="mybtn2-img" x="0px" y="0px" viewBox="0 0 131.9 101.4">
+        <a class="mybtn mybtn-manual myicon-manual div-v" href="https://unifesp.br/prodmais/"><svg class="myicon-manual" x="0px" y="0px" viewBox="0 0 131.9 101.4">
             <path d="M66,101.4H49.8c-0.7,0-1.3-0.6-1.3-1.3v-15C39.9,84.5,33,77.6,32.4,69h-15C7.8,69,0,61.2,0,51.6c0-9.2,7.2-16.8,16.2-17.4
 	c0.6-18,15.5-32.4,33.6-32.4C56,1.8,62,3.5,67.2,6.7c4.4-3.2,9.5-4.9,15-4.9c10.5,0,19.9,6.5,23.7,16.2h0.5
 	c14.1,0,25.5,11.5,25.5,25.5S120.4,69,106.4,69H82.9l-15.8,31.7C66.9,101.2,66.5,101.4,66,101.4z M51.1,98.9h14.1L81,67.2
@@ -214,7 +214,7 @@
             <path d="M106.5,52.2H58c-0.3,0-0.6-0.3-0.6-0.6V27.3c0-13.7,11.2-24.9,24.9-24.9s24.9,11.2,24.9,24.9v24.3
 	C107.1,52,106.8,52.2,106.5,52.2z M58.6,51h47.3V27.3c0-13-10.6-23.6-23.6-23.6S58.7,14.3,58.7,27.3L58.6,51L58.6,51z" />
           </svg>
-          Voltar ao Prodmais </a>
+          Home </a>
 
       </div>
     </main>
