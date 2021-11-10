@@ -125,13 +125,13 @@ if ($_SERVER["REQUEST_URI"] == "/") {
                     <input class="myinput" list="datalistOptions" id="authorsDataList" placeholder="Autores (nome ou ID Lattes)" name="filter[]" v-model="query" @input="searchCV()">
 
                     <datalist class="myinput" id="datalistOptions">
-                        <option v-for="author in authors" :key="author._id" :value="'vinculo.lattes_id:' + author._id"></option>
+                        <option v-for="author in authors" :key="author._id" :value="'vinculo.lattes_id:' + author._id">{{author._source.nome_completo}}</option>
                     </datalist>
 
                     <div class="div-h">
 
                         <input type="text" class="myinput myinput-date" id="initialYear" name="initialYear" pattern="\d{4}" placeholder="19XX" value="">
-                        <span> à </span>
+                        <span> - </span>
                         <input type="text" class="myinput myinput-date" id="finalYear" name="finalYear" pattern="\d{4}" placeholder="20XX" value="">
 
                     </div>
