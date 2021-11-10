@@ -1,5 +1,4 @@
-<header class="myheader">
-  <svg class="logo-header" viewBox="0 0 418.2 64.2">
+<header class="myheader"><svg class="logo-header" viewBox="0 0 418.2 64.2">
     <path d="M151 52.7h-12.5c-2.6 0-4.7-2.1-4.7-4.7V35.5c0-2.6 2.1-4.7 4.7-4.7H151c2.6 0 4.7 2.1 4.7 4.7V48C155.6 50.6 153.5 52.7 151 52.7zM138.5 33.8c-1 0-1.7 0.8-1.7 1.7V48c0 1 0.8 1.7 1.7 1.7H151c1 0 1.7-0.8 1.7-1.7V35.5c0-1-0.8-1.7-1.7-1.7H138.5z" />
     <path d="M91.2 52.6c-0.8 0-1.5-0.7-1.5-1.5V32.3c0-0.8 0.7-1.5 1.5-1.5s1.5 0.7 1.5 1.5v18.9C92.7 52 92 52.6 91.2 52.6z" />
     <path d="M179.6 39.5c-0.8 0-1.5-0.7-1.5-1.5V19.2c0-0.8 0.7-1.5 1.5-1.5 0.8 0 1.5 0.7 1.5 1.5v18.9C181 38.9 180.4 39.5 179.6 39.5z" />
@@ -24,15 +23,15 @@
     <path d="M396.2 21.6h-0.1c0-0.8-0.3-1.5-0.9-2.1 -0.6-0.6-1.3-0.9-2.2-0.9h-0.6l0-0.5h3.8V21.6zM396.2 48.1v3.5h-3.8v-0.5h0.6c0.8 0 1.5-0.3 2.1-0.9 0.6-0.6 0.9-1.3 0.9-2.1H396.2zM399.2 18.1v33.5h-3.1V18.1H399.2zM404.9 18.1c2 0 3.8 0.4 5.3 1.1 1.5 0.7 2.6 1.8 3.4 3.2 0.8 1.4 1.2 3 1.2 5 0 1.5-0.3 2.8-0.9 3.9 -0.6 1.2-1.3 2.1-2.3 2.9 -1 0.8-2 1.4-3.3 1.8 -1.2 0.4-2.5 0.6-3.8 0.5 -1.3-0.1-2.5-0.5-3.8-1.1v-0.5c1.1 0.2 2 0.2 2.9 0.2 0.8 0 1.7-0.2 2.7-0.5 0.9-0.3 1.8-0.8 2.6-1.6 0.8-0.8 1.4-1.8 1.8-3.2 0.1-0.4 0.2-0.8 0.2-1.3 0.1-0.5 0.1-1 0-1.6 0-2.2-0.6-4-1.7-5.3 -1.1-1.3-2.7-2-4.7-2H399c-0.2-0.5-0.3-1-0.5-1.4H404.9zM399 48.1h0.1c0 0.8 0.3 1.5 0.9 2.1 0.6 0.6 1.3 0.9 2.1 0.9h0.6v0.5H399V48.1z" />
   </svg>
 
-  <nav class="menu-prod div-h">
+  <nav class="menu-prod">
 
-    <a class="menu-prod-link" aria-current="page" href="https://unifesp.br/prodmais/"><svg class="m-icon" x="0px" y="0px" viewBox="0 0 24 24">
+    <a class="menu-prod-link" aria-current="page" href="https://unifesp.br/prodmais/index.php"><svg class="myicon-menu" x="0px" y="0px" viewBox="0 0 24 24">
         <path d="M10,20v-6h4v6h5v-8h3L12,3L2,12h3v8H10z" />
       </svg>
       <div class="speech-bubble">Home</div>
     </a>
 
-    <a class="menu-prod-link" href="https://unifesp.br/prodmais/result_autores.php"><svg class="m-icon" x="0px" y="0px" viewBox="0 0 24 24">
+    <a class="menu-prod-link" href="https://unifesp.br/prodmais/result_autores.php"><svg class="myicon-menu" x="0px" y="0px" viewBox="0 0 24 24">
         <path d="M12.7,23.3c-0.4,0-0.9,0-1.3,0c-0.1,0-0.1,0-0.2,0c-1.6-0.1-3-0.5-4.4-1.3c-3.6-2-5.6-5.2-5.9-9.3c-0.1-1.8,0.2-3.5,1-5.1
 	c2-3.9,5.2-6.1,9.6-6.4c2-0.1,3.9,0.3,5.7,1.3c3.1,1.7,5,4.3,5.7,7.9c0.1,0.4,0.1,0.9,0.2,1.3c0,0.4,0,0.9,0,1.3c0,0.1,0,0.1,0,0.2
 	c-0.1,1.6-0.5,3-1.3,4.4c-1.7,3.1-4.4,5-7.9,5.7C13.5,23.2,13.1,23.2,12.7,23.3z M12,20.4c2,0,3.7-0.6,5.2-1.9
@@ -43,7 +42,7 @@
       <div class="speech-bubble">Pesquisadores</div>
     </a>
 
-    <a class="menu-prod-link" href="https://unifesp.br/prodmais/manual/"><svg class="m-icon" x="0px" y="0px" viewBox="0 0 24 24">
+    <a class="menu-prod-link" href="https://unifesp.br/prodmais/manual/"><svg class="myicon-menu" x="0px" y="0px" viewBox="0 0 24 24">
         <g>
           <path d="M6.8,1.2c4.1,0,8.2,0,12.3,0c0,0.1,0,0.2,0,0.3c0,3.5,0,6.9,0,10.4c0,0.1,0,0.2,0,0.3c-3.4,0.1-5.5,1.7-6.4,4.9
 		c-1.9,0-3.9,0-5.8,0c0-0.1,0-0.2,0-0.3c0-1.8,0-3.5,0-5.3C6.8,8.1,6.8,4.7,6.8,1.2z M16.4,9.1c0-0.4,0-0.8,0-1.3
@@ -62,11 +61,20 @@
       <div class="speech-bubble">Manual</div>
     </a>
 
-    <a class="menu-prod-link" href="https://unifesp.br/prodmais/pre_dash.php"><svg class="m-icon" x="0px" y="0px" viewBox="0 0 24 24">
+    <a class="menu-prod-link" href="https://unifesp.br/prodmais/pre_dash.php"><svg class="myicon-menu" x="0px" y="0px" viewBox="0 0 24 24">
         <path d="M21,16V4H3v12H21 M21,2c1.1,0,2,0.9,2,2v12c0,1.1-0.9,2-2,2h-7v2h2v2H8v-2h2v-2H3c-1.1,0-2-0.9-2-2V4c0-1.1,0.9-2,2-2H21
 	 M5,6h9v5H5V6 M15,6h4v2h-4V6 M19,9v5h-4V9H19 M5,12h4v2H5V12 M10,12h4v2h-4V12z" />
       </svg>
       <div class="speech-bubble">Dashboard</div>
+    </a>
+
+    <a class="menu-prod-link" href="https://unifesp.br/prodmais/sobre.php"><svg class="myicon-menu" x="0px" y="0px" viewBox="0 0 24 24">
+        <path d="M12,0C5.4,0,0,5.4,0,12s5.4,12,12,12s12-5.4,12-12S18.6,0,12,0z M14.5,17.7c-0.2,0.1-1.8,1.2-2.4,1.6
+	c-0.6,0.4-3,1.8-2.6-0.9c0.9-5.3,2.7-8.4,0.6-7.1C9.6,11.7,9.2,11.9,9,12c-0.2,0.1-0.2,0.1-0.3-0.2c-0.2-0.3-0.2-0.3,0-0.4
+	c0,0,3.2-2.6,4.4-2.7c1.2-0.1,0.9,1.3,0.8,1.9c-0.7,2.7-1.9,6.6-1.7,7.2c0.2,0.6,1.3-0.3,2-0.8c0,0,0.1-0.1,0.2,0
+	C14.6,17.4,14.8,17.5,14.5,17.7z M13.5,7C12.7,7,12,6.3,12,5.5S12.7,4,13.5,4S15,4.7,15,5.5S14.3,7,13.5,7z" />
+      </svg>
+      <div class="speech-bubble">Sobre</div>
     </a>
 
   </nav>

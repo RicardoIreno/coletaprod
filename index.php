@@ -172,7 +172,7 @@ if ($_SERVER["REQUEST_URI"] == "/") {
             <div class="container mt-4">
                 <div class="row">
                     <div class="col-md-3">
-                        <h2 class="uk-h3">Programa de Pós-Graduação</h2>
+                        <h3 class="uk-h3">Programa de Pós-Graduação</h3>
                         <div class="accordion" id="accordionPPGs">
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingOne">
@@ -191,14 +191,14 @@ if ($_SERVER["REQUEST_URI"] == "/") {
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <h2 class="uk-h3">Tipo de vínculo / material</h2>
+                        <h3 class="uk-h3">Tipo de vínculo / material</h3>
                         <div class="accordion" id="accordionExample">
                             <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingTwo">
+                                <h3 class="accordion-header" id="headingTwo">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                         Tipo de vínculo
                                     </button>
-                                </h2>
+                                </h3>
                                 <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
                                         <ul class="list-group">
@@ -208,11 +208,11 @@ if ($_SERVER["REQUEST_URI"] == "/") {
                                 </div>
                             </div>
                             <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingThree">
+                                <h3 class="accordion-header" id="headingThree">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                         Tipo de material
                                     </button>
-                                </h2>
+                                </h3>
                                 <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
                                         <ul class="list-group">
@@ -224,13 +224,13 @@ if ($_SERVER["REQUEST_URI"] == "/") {
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <h2 class="uk-h3">Fonte</h2>
+                        <h3 class="uk-h3">Fonte</h3>
                         <ul class="list-group">
                             <?php paginaInicial::fonte_inicio(); ?>
                         </ul>
                     </div>
                     <div class="col-md-3">
-                        <h2 class="uk-h3">Estatísticas</h2>
+                        <h3 class="uk-h3">Estatísticas</h3>
                         <ul class="list-group">
                             <li class="list-group-item"><?php echo paginaInicial::contar_registros_indice($index); ?> registros</li>
                             <li class="list-group-item"><?php echo paginaInicial::contar_registros_indice($index_cv);; ?> currículos</li>
