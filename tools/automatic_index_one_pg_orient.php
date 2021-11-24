@@ -38,7 +38,7 @@ while (($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)) != false) {
         $DataAtualizacaoLattes = file_get_contents('http://200.133.208.25/api/proxy_data_atualizacao/' . $IDLattes . '');
         $DataAtualizacaoLattes_formatted = '' . substr($DataAtualizacaoLattes, 6, 4) . '-' . substr($DataAtualizacaoLattes, 3, 2) . '';
 
-        echo "Processando $IDLattes";
+        echo 'Processando '.$IDLattes.' - '.$row['PPG_NOME_PROGRAMA'].'';
         echo "<br/><br/>";
 
         $queryParams[] = '&tag=';
@@ -68,7 +68,7 @@ while (($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)) != false) {
         $DataAtualizacaoLattes = file_get_contents('http://200.133.208.25/api/proxy_data_atualizacao/' . $row["COD_LATTES_16"] . '');
         $DataAtualizacaoLattes_formatted = '' . substr($DataAtualizacaoLattes, 6, 4) . '-' . substr($DataAtualizacaoLattes, 3, 2) . '';
 
-        echo "Processando " . $row['COD_LATTES_16'];
+        echo "Processando " . $row['COD_LATTES_16'] .' - ' . $row["PPG_NOME_PROGRAMA"];
         echo "<br/><br/>";
 
         $queryParams[] = '&tag=';
@@ -79,6 +79,7 @@ while (($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)) != false) {
         $queryParams[] = '&secao=' . $row["DESC_SEC"] . '';
         $queryParams[] = '&genero=' . $row["GENERO"] . '';
         $queryParams[] = '&desc_nivel=' . $row["DESCRICAO_NIVEL"] . '';
+        $queryParams[] = '&ppg_nome=' . $row["PPG_NOME_PROGRAMA"] . '';
         //$queryParams[] = '&desc_curso=' . $r['_source']['desc_curso'][0] . '';
         $queryParams[] = '&campus=' . $row["DESC_GESTORA"] . '';
         $queryParams[] = '&desc_gestora=' . $row["DESC_GESTORA"] . '';

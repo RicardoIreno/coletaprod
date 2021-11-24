@@ -78,6 +78,7 @@ while (($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)) != false) {
         $queryParams[] = '&secao=' . $row["DESC_SEC"] . '';
         $queryParams[] = '&genero=' . $row["GENERO"] . '';
         $queryParams[] = '&desc_nivel=' . $row["DESCRICAO_NIVEL"] . '';
+        $queryParams[] = '&ppg_nome=' . $row["PPG_NOME_PROGRAMA"] . '';
         //$queryParams[] = '&desc_curso=' . $r['_source']['desc_curso'][0] . '';
         $queryParams[] = '&campus=' . $row["DESC_GESTORA"] . '';
         $queryParams[] = '&desc_gestora=' . $row["DESC_GESTORA"] . '';
