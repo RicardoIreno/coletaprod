@@ -26,16 +26,5 @@
         <?php endif ?>
     </div>
 
-    <p class=citation>
-        <b>Como citar:</b> <br />
-        <span class="citation-author"> Unifesp. </span>
-        <span class="citation-italic">ln:</span>
-        Prod+.
-        1.0.
-        São Paulo: Unifesp, 2021
-        Disponível em: https://unifesp.br/prodmais/
-        Acessado em: XX jan. 20XX.
-    </p>
-
 
 </footer>
