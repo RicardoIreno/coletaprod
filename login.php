@@ -11,8 +11,8 @@ if (isset($_POST["username"])) {
     else $_SESSION["login"] = true;
 }
 if (isset($validUser) && ($validUser)) {
-    header("Location: inclusao.php");
-    die();
+    header("Location: " . $_SERVER["HTTP_REFERER"]);
+    exit;
 }
 ?>
 
