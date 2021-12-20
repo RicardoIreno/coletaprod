@@ -80,10 +80,10 @@
 
             <div class="div-h">
 
-                <a class="mybtn mybtn-manual div-h" href="http://200.144.92.58/kibana/app/kibana#/dashboard/34b66560-2b32-11eb-95f6-e1f5e808acc0?embed=true&_g=(refreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3Anow-15m%2Cto%3Anow))">
+                <a class="mybtn mybtn-manual div-h" href="http://200.144.92.58/kibana/app/kibana#/dashboard/26076fa0-618c-11ec-9863-4f7d48084ff8?embed=true&_g=(refreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3Anow-15m%2Cto%3Anow))">
                     Produção Acadêmica </a>
 
-                <a class="mybtn mybtn-manual div-h" href="http://200.144.92.58/kibana/app/kibana#/dashboard/421f0360-2b32-11eb-95f6-e1f5e808acc0?embed=true&_g=(filters%3A!()%2CrefreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3Anow-15m%2Cto%3Anow))">
+                <a class="mybtn mybtn-manual div-h" href="http://200.144.92.58/kibana/app/kibana#/dashboard/568e12f0-618c-11ec-9863-4f7d48084ff8?embed=true&_g=(filters%3A!()%2CrefreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3Anow-15m%2Cto%3Anow))">
                     Perfil dos Pesquisadores </a>
 
             </div>
