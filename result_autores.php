@@ -22,6 +22,9 @@ if (isset($_GET["filter"])) {
     $_GET["filter"][] = "type:\"Curriculum\"";
 }
 
+if (isset($_GET["query"])) {
+    $_GET["search"] = 'nome_completo:' .$_GET['query']. '';
+}
 
 
 if (isset($fields)) {
@@ -92,6 +95,13 @@ $get_data = $_GET;
 
             <div class="row">
                 <div class="col-8">
+
+                    <form action="result_autores.php" method="get" accept-charset="utf-8" enctype="multipart/form-data">
+                        <div class="input-group mb-3">
+                            <input name="query" type="text" class="form-control" placeholder="Digite parte do nome do pesquisador" aria-label="Digite parte do nome do pesquisador" aria-describedby="button-addon2">
+                            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Pesquisar</button>
+                        </div>
+                    </form>
 
                     <!-- Navegador de resultados - Início -->
                     <?php ui::pagination($page, $total, $limit); ?>
