@@ -19,7 +19,7 @@
 
     echo "Registros restantes: $total<br/><br/>";
 
-    $params["size"] = 2;
+    $params["size"] = 100;
     $params["from"] = 0;
     $cursor = $client->search($params);
 
