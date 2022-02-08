@@ -19,7 +19,7 @@
 
     echo "Registros restantes: $total<br/><br/>";
 
-    $params["size"] = 100;
+    $params["size"] = 500;
     $params["from"] = 0;
     $cursor = $client->search($params);
 
@@ -43,11 +43,12 @@
 
             $work = file_get_contents($url);
             //$work_converted = json_decode($work);
-            $body["doc"]["ExternalData"]["openalex"] = $work;
+            $body["doc"]["ExternalData"]["openalex"] = json_decode($work, true);
             $body["doc"]["openalex"] = true;
+            $body["doc"]["counts_by_year"] = $body["doc"]["ExternalData"]["openalex"]["counts_by_year"];
             $body["doc_as_upsert"] = true;
             //echo "<pre>".print_r($body, true)."</pre>";     
-            //unset($body["doc"]["ExternalData"]["openalex"]["message"]["assertion"]);
+            unset($body["doc"]["ExternalData"]["openalex"]["abstract_inverted_index"]);
             //var_dump($body);
             $resultado_openalex = Elasticsearch::update($r["_id"], $body);
             print_r($resultado_openalex);
