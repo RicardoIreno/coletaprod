@@ -802,13 +802,15 @@ if (isset($curriculo->{'DADOS-GERAIS'}->{'IDIOMAS'})) {
 // Premios - Títulos
 
 if (isset($curriculo->{'DADOS-GERAIS'}->{'PREMIOS-TITULOS'})) {
+    $i_premio = 0;
     foreach ($curriculo->{'DADOS-GERAIS'}->{'PREMIOS-TITULOS'}->{'PREMIO-TITULO'} as $premioTitulo) {
         $premioTitulo = get_object_vars($premioTitulo);
-        $premioTitulo_array["nomeDoPremioOuTitulo"]=$premioTitulo['@attributes']["NOME-DO-PREMIO-OU-TITULO"];
-        $premioTitulo_array["nomeDaEntidadePromotora"]=$premioTitulo['@attributes']["NOME-DA-ENTIDADE-PROMOTORA"];
-        $premioTitulo_array["anoDaPremiacao"]=$premioTitulo['@attributes']["ANO-DA-PREMIACAO"];
-        $premioTitulo_array["nomeDoPremioOuTituloIngles"]=$premioTitulo['@attributes']["NOME-DO-PREMIO-OU-TITULO-INGLES"];
+        $premioTitulo_array[$i_premio]["nomeDoPremioOuTitulo"]=$premioTitulo['@attributes']["NOME-DO-PREMIO-OU-TITULO"];
+        $premioTitulo_array[$i_premio]["nomeDaEntidadePromotora"]=$premioTitulo['@attributes']["NOME-DA-ENTIDADE-PROMOTORA"];
+        $premioTitulo_array[$i_premio]["anoDaPremiacao"]=$premioTitulo['@attributes']["ANO-DA-PREMIACAO"];
+        $premioTitulo_array[$i_premio]["nomeDoPremioOuTituloIngles"]=$premioTitulo['@attributes']["NOME-DO-PREMIO-OU-TITULO-INGLES"];
         $doc_curriculo_array["doc"]["premios_titulos"][] = $premioTitulo_array;
+        $i_premio++;
         unset($premioTitulo_array);
     }
 }
