@@ -1705,7 +1705,7 @@ class Exporters
 
         $sha256 = hash('sha256', ''.implode("", $recordContent).'');
 
-        switch ($cursor["_source"]["type"]) {
+        switch ($cursor["_source"]["tipo"]) {
         case "Artigo publicado":
             $record[] = '@article{article'.substr($sha256, 0, 8).',';
             $record[] = implode(",\\n", $recordContent);
