@@ -110,6 +110,9 @@ if (!empty($_REQUEST["lattesID"])) {
 
             <div class="row">
                 <div class="col-12">
+<?php 
+    echo "<pre>".print_r($profile,true)."</pre>";
+?>
                     <h1><?php echo $profile["nome_completo"] ?></h1>
                     <br />
                     <img class="rounded img-thumbnail" width="200px" height="200px" src="http://servicosweb.cnpq.br/wspessoa/servletrecuperafoto?tipo=1&amp;bcv=true&amp;id=<?php echo $lattesID10; ?>" style="margin-bottom: 10px;">
@@ -117,10 +120,24 @@ if (!empty($_REQUEST["lattesID"])) {
                     <a class="text-dark" href="http://lattes.cnpq.br/<?php echo $_GET["lattesID"]; ?>">
                         <img src="../inc/images/logo-lattes.png" width="25px" height="25px" alt="Acessar Currículo Lattes">
                     </a>
+                    <?php 
+                        foreach ($profile["campus"] as $campus) {
+                            echo '<p>Campus: ' . $campus . '</p>';
+                        } 
+                    ?>
+                    <?php 
+                        foreach ($profile["ppg_nome"] as $nome_ppg) {
+                            echo '<p>Programa de Pós-Graduação: ' . $nome_ppg . '</p>';
+                        } 
+                    ?>
+                    <p>Nome em citações bibliográficas: <?php echo $profile["nome_em_citacoes_bibliograficas"] ?></p>
+                    <p>ORCID ID: <a href="<?php echo $profile["orcid_id"] ?>" rel="nofollow" target="_blank"><?php echo $profile["orcid_id"] ?></a></p>
+                    <p>Data da obtenção dos dados do Lattes: <?php echo $profile["dataDeColeta"] ?></p>
+                    
 
-                    <p><a class="text-dark" href='../result.php?filter[]=vinculo.lattes_id:"<?php echo $profile['lattesID']; ?>"'>Ver produções indexadas</a></p>
+                    <p><a href='../result.php?filter[]=vinculo.lattes_id:"<?php echo $profile['lattesID']; ?>"'>Ver produções indexadas</a></p>
 
-                    <p><a class="text-dark" href="../tools/export.php?search=&filter[]=vinculo.lattes_id:<?php echo $profile['lattesID']; ?>&format=bibtex" rel="nofollow">Exportar para ORCID (Formato BibTeX)</a></p>
+                    <p><a href="../tools/export.php?search=&filter[]=vinculo.lattes_id:<?php echo $profile['lattesID']; ?>&format=bibtex" rel="nofollow">Exportar para ORCID (Formato BibTeX)</a></p>
 
                     <p><?php echo $profile["resumo_cv"]["texto_resumo_cv_rh"] ?></p>
                     <p>Quantidade de registros: <?php echo $totalWorks ?></p>
@@ -139,8 +156,18 @@ if (!empty($_REQUEST["lattesID"])) {
 
                     $resultauthorfacet = $authorfacets->authorfacet(basename(__FILE__), "tipo", 100, "Tipo de material", null, "_term", $_GET);
                     $resultyearfacet = $authorfacets->authorfacet(basename(__FILE__), "datePublished", 120, "Ano de publicação", "desc", "_term", $_GET);
+                    $resultaboutfacet = $authorfacets->authorfacet(basename(__FILE__), "about", 120, "Palavras-chave do autor", null, "_term", $_GET);
+                    $resultcitedfacet = $authorfacets->authorfacet(basename(__FILE__), "counts_by_year", 120, "Cited", null, "_term", $_GET);
+
+                    var_dump($resultcitedfacet);
+
 
                     ?>
+
+<?php 
+    var_dump($resultaboutfacet, true);
+?>
+
 
                     <h2>Distribuição de trabalhos por tipo</h2>
                     <div class="embed">
@@ -482,7 +509,7 @@ if (!empty($_REQUEST["lattesID"])) {
                     <?php
                     foreach ($cursor_works["hits"]["hits"] as $works) {
                         //echo "<br /><br />";
-                        //var_dump($works);
+                        var_dump($works);
                         echo '
                             <div class="card">
                                 <h5 class="card-header">' . $works["_source"]["tipo"] . '</h5>
