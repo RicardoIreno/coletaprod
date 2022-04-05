@@ -815,6 +815,22 @@ if (isset($curriculo->{'DADOS-GERAIS'}->{'PREMIOS-TITULOS'})) {
     }
 }
 
+// Licença Maternidade
+
+if (isset($curriculo->{'DADOS-GERAIS'}->{'LICENCAS'})) {
+    $i_licenca = 0;
+    foreach ($curriculo->{'DADOS-GERAIS'}->{'LICENCAS'}->{'LICENCA'} as $licenca) {
+        $licenca = get_object_vars($licenca);
+        $licenca_array[$i_premio]["tipoLicenca"]=$licenca['@attributes']["TIPO-LICENCA"];
+        $licenca_array[$i_premio]["dataInicioLicenca"]=$licenca['@attributes']["DATA-INICIO-LICENCA"];
+        $licenca_array[$i_premio]["dataFimLicenca"]=$licenca['@attributes']["DATA-FIM-LICENCA"];
+        $doc_curriculo_array["doc"]["licencas"][] = $licenca_array;
+        $i_licenca++;
+        unset($licenca_array);
+    }
+}
+
+
 $identificador = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
 $doc_curriculo_array["doc"]["lattesID"] = $identificador;
 $doc_curriculo_array["doc"]["dataDeColeta"] = date('Y-m-d');
