@@ -8,6 +8,26 @@
 if ($_SERVER["REQUEST_URI"] == "/") {
     header("Location: https://unifesp.br/prodmais/index.php");
 }
+
+/*
+
+Este arquivo é parte do programa Prodmais
+
+Prodmais é um software livre; você pode redistribuí-lo e/ou
+modificá-lo dentro dos termos da Licença Pública Geral GNU como
+publicada pela Free Software Foundation (FSF); na versão 3 da
+Licença, ou (a seu critério) qualquer versão posterior.
+
+Este programa é distribuído na esperança de que possa ser útil,
+mas SEM NENHUMA GARANTIA; sem uma garantia implícita de ADEQUAÇÃO
+a qualquer MERCADO ou APLICAÇÃO EM PARTICULAR. Veja a
+Licença Pública Geral GNU para maiores detalhes.
+
+Você deve ter recebido uma cópia da Licença Pública Geral GNU junto
+com este programa, Se não, veja <http://www.gnu.org/licenses/>.
+
+*/
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br" dir="ltr">
@@ -35,28 +55,6 @@ if ($_SERVER["REQUEST_URI"] == "/") {
     <meta property="og:type" content="website">
     <!-- Facebook Tags - END -->
 
-    <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
-
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
-        }
-
-        .jumbotron {
-            background-image: url("<?php echo $background_1 ?>");
-            background-size: 100%;
-            background-repeat: no-repeat;
-        }
-    </style>
     <link rel="stylesheet" href="inc/css/style.css" />
 
 </head>
@@ -234,10 +232,6 @@ if ($_SERVER["REQUEST_URI"] == "/") {
                         <ul class="list-group">
                             <li class="list-group-item"><?php echo paginaInicial::contar_registros_indice($index); ?> registros</li>
                             <li class="list-group-item"><?php echo paginaInicial::contar_registros_indice($index_cv);; ?> currículos</li>
-                            <!--
-                    <li class="list-group-item">< ?php echo paginaInicial::contar_registros_indice($index_source); ?> registros no Repositório Institucional</li>
-                    <li class="list-group-item">< ?php echo paginaInicial::possui_lattes(); ?>% sem ID no Lattes</li>
-                    -->
                         </ul>
                     </div>
                 </div>
