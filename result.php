@@ -150,7 +150,7 @@ $get_data = $_GET;
 
 
                                 <?php if (!empty($r["_source"]['isPartOf']['name'])) : ?>
-                                    <p class="text-muted"><b>In:</b> <a href="result.php?filter[]=isPartOf.name:&quot;<?php echo $r["_source"]['isPartOf']['name']; ?>&quot;"><?php echo $r["_source"]['isPartOf']['name']; ?></a></p>
+                                    <p class="text-muted"><b>Fonte:</b> <a href="result.php?filter[]=isPartOf.name:&quot;<?php echo $r["_source"]['isPartOf']['name']; ?>&quot;"><?php echo $r["_source"]['isPartOf']['name']; ?></a></p>
                                 <?php endif; ?>
                                 <?php if (!empty($r["_source"]['isPartOf']['issn'])) : ?>
                                     <p class="text-muted"><b>ISSN:</b> <a href="result.php?filter[]=isPartOf.issn:&quot;<?php echo $r["_source"]['isPartOf']['issn']; ?>&quot;"><?php echo $r["_source"]['isPartOf']['issn']; ?></a></li>

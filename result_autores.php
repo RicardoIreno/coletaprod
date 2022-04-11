@@ -96,10 +96,10 @@ $get_data = $_GET;
             <div class="row">
                 <div class="col-8">
 
-                    <form action="result_autores.php" method="get" accept-charset="utf-8" enctype="multipart/form-data">
+                    <form action="result_autores.php" method="get" accept-charset="utf-8" enctype="multipart/form-data" id="searchresearchers">
                         <div class="input-group mb-3">
                             <input name="query" type="text" class="form-control" placeholder="Digite parte do nome do pesquisador" aria-label="Digite parte do nome do pesquisador" aria-describedby="button-addon2">
-                            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Pesquisar</button>
+                            <button class="btn btn-outline-secondary" type="submit" form="searchresearchers" value="Submit">Pesquisar</button>
                         </div>
                     </form>
 
