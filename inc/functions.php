@@ -603,7 +603,7 @@ class paginaInicial {
 
 class DadosInternos {
 
-    static function queryColetaprod($query_title, $query_year, $sha256) 
+    static function queryProdmais($query_title, $query_year, $sha256) 
     {  
         
         global $client;
