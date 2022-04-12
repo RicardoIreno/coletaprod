@@ -78,6 +78,8 @@ if (!empty($_REQUEST["lattesID"])) {
 }
 ?>
 
+<?php echo "<pre>".print_r($profile,true)."</pre>"; ?>
+
 <!DOCTYPE HTML>
 
 <html lang="pt-br"><head>
@@ -151,18 +153,21 @@ if (!empty($_REQUEST["lattesID"])) {
   <div class="core-one">
 
     <div class="co-photo-wrapper">
-      <img class="co-bestBagde" src="assets/img/badges/bolsista-cnpq-1a.svg"/>  
+      <!-- <img class="co-bestBagde" src="assets/img/badges/bolsista-cnpq-1a.svg"/>  -->
       <div class="co-photo-container">
         <img class="co-photo" src="http://servicosweb.cnpq.br/wspessoa/servletrecuperafoto?tipo=1&amp;bcv=true&amp;id=<?php echo $lattesID10; ?>" />
       </div>
     </div>
     
-    <!-- <h1 class="ty-name">MARIA TERESA DE SANDE E LEMOS RAMOS ASCENSAO TERRERI</h1> -->
-    <img 
-      class="country-flag" 
-      src="assets/img/country_flags/br.svg" 
-      alt="nacionalidade brasileira"
-      title="nacionalidade brasileira" />
+    <?php if($profile["nacionalidade"]=="B") : ?>
+      <img 
+        class="country-flag" 
+        src="assets/img/country_flags/br.svg" 
+        alt="nacionalidade brasileira"
+        title="nacionalidade brasileira" 
+      />
+    <?php endif; ?>
+    <!--
     
     <div class="co-badgeIcons">
       
@@ -196,25 +201,26 @@ if (!empty($_REQUEST["lattesID"])) {
             
         />
       
-    </div>
+    </div> 
+    -->
   </div>
 
   <div class="core-two">
     <h1 class="ty-name"><?php echo $profile["nome_completo"] ?></h1>
     <!-- <div class="u-spacer-2  "></div> -->
     <h2 class="ty ty-prof">Universidade Federal de São Paulo</h2>
-    <p class="ty ty-prof">Escola instituto</p>
-    <p class="ty ty-prof">Departamento de Cirurgia</p>
-    <p class="ty ty-email">bertola@unifesp.br</p>
+    <p class="ty ty-prof"><?php echo $profile["unidade"][0] ?></p>
+    <p class="ty ty-prof"><?php echo $profile["departamento"][0] ?></p>
+    <!-- <p class="ty ty-email">bertola@unifesp.br</p> -->
     <div class="u-spacer-1"></div>
 
 
 
     <div class="u-spacer-1"></div>
     
-    <!-- <h3 class="ty-subtitle">Nomes de citação</h3>
+    <h3 class="ty-subtitle">Nomes em citações bibliográficas</h3>
 
-    <p class="ty-prof">BERTOLLA, Ricardo Pimenta;BERTOLLA, R;Bertolla, R. P.;Bertolla, R.P.;Ricardo P. Bertolla;Bertolla RP;BERTOLLA, RICARDO P.;BERTOLLA, RICARDOPIMENTA;BERTOLLA, RICARDO;BERTOLLA, R.</p> -->
+    <p class="ty-prof"><?php echo $profile["nome_em_citacoes_bibliograficas"] ?></p>
   
 
     <h3 class="ty-subtitle">Perfis na web</h3>
