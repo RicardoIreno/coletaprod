@@ -57,7 +57,8 @@ $get_data = $_GET;
     require 'inc/meta-header.php';
     ?>
     <title><?php echo $branch; ?> - Resultado da busca</title>
-
+    
+    <link rel="stylesheet" href="sass/main.css" />
     <link rel="stylesheet" href="inc/css/style.css" />
 
 </head>

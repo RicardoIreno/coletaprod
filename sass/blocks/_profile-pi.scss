@@ -1,0 +1,96 @@
+// PI - PRODUÇÃO INTELECTUAL BLOCK
+
+
+.pi {
+  margin-block: 2rem; 
+
+  &-author {
+    color: #000;
+    font-weight: 700;
+  }
+
+  &-authors {
+    color: rgb(139, 139, 139)
+  }
+
+  &-citationIcon {
+    width: 30px;
+    margin-right: .25rem;
+  }
+
+  &-citations {
+    margin-right: .5rem;
+    color: _palette(theme);
+    font-weight: 600;
+  }
+
+  &-icon {
+    width: 50px;
+  }
+
+  &-moreinfo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-content: start;
+
+    &-item {
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      margin-right: 1rem;
+    }
+
+    &-icon {
+      width: 30px;
+      margin-right: .25rem;
+    }
+  }
+
+  &-separator {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  
+    &-ln {
+      width: 85%;
+      border-top: 1px dashed _palette(theme-light);
+      border-bottom: none;
+      border-left: none;
+      border-right: none;
+      transform: translateY(2px);
+    }
+  }
+  
+  &-type {
+    color: _palette(theme-light);
+    font-size: .9rem;
+    white-space: nowrap;
+    overflow: visible;
+    padding: .2rem;
+    border: 1px dashed _palette(theme-light);
+    border-radius: 10px;
+  }
+
+  &-year {
+    text-align: center;
+  }
+}
+
+@include breakpoint(md-up) {
+  .pi {
+    &-moreinfo {
+      flex-direction: row;
+    }
+
+    &-year {
+      text-align: left;
+      margin-left: 4rem;
+    }
+  }
+}
+
+

@@ -1,0 +1,29 @@
+// DIV UTILITY //
+
+.u-div-h, .u-div-v {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+  &-s {
+    justify-content: start;
+  }
+}
+
+@include breakpoint(md-up) {
+  .u-div-h {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+  
+  
+  
+  
+  
+  
+  
+  
+  

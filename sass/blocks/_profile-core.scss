@@ -1,0 +1,188 @@
+// PROFILE CORE
+
+.core {
+  display: grid;
+  padding: 0 2rem;
+  align-content: flex-start;
+
+  &-one {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    text-align: center;
+    justify-content: baseline;
+  }
+  
+  &-two {
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+    text-align: center;
+  }
+
+  &-three {
+    align-items: center;
+    display: flex;
+    margin-top: 2rem;
+    justify-content: space-around;
+
+  }
+
+
+}
+
+// @media (min-width: 56.25em) and (max-width: 68.6875em) 
+@include breakpoint(md-up) {
+  .core {
+
+    grid-template-areas: "one two two"
+                        "three three three";
+
+    column-gap: 1rem;
+    &-one {
+      position: relative;
+      grid-area: one;
+      padding-right: 2rem;
+    }
+
+    &-two {
+      grid-area: two;
+      justify-content: flex-start;
+      text-align: start;
+    }
+
+    &-three {
+      grid-area: three;
+      justify-content: space-between;
+      margin-top: 0;
+      padding-left: 1rem;
+      border-left: 1px solid #ededed;
+    }
+
+  }
+}
+
+@include breakpoint(lg-up) {
+  .core {
+    grid-template-columns: 300px 1fr 1fr;
+    grid-template-areas: "one two three";
+
+    &-one {
+      padding-right: 2rem;
+    }
+
+    &-two {
+      justify-content: flex-start;
+      text-align: start;
+    }
+
+    &-three {
+      justify-content: space-between;
+
+    }
+
+  }
+}
+
+
+// PROFILE-CORE THINGS  
+
+.co {
+  &-photo {
+    // width: 100%;
+    // // margin: 0 auto;
+    // box-sizing: border-box;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    
+    &-container, &-wrapper {
+      width: 200px;
+      height: 200px;
+      justify-content: center;
+      margin: 0 auto;
+      position: relative;
+      justify-content: center;
+    }
+
+    &-container {
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+  }
+
+  
+  &-bestBagde {
+    position: absolute;
+    width: 50px;
+    top: 150px;
+    right: 20px;
+    z-index: 999;
+  }
+  
+  &-badgeIcons, 
+  &-socialIcons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-block: .8rem;
+  } 
+
+  &-badgeIcons {
+    &-icon {
+      width: 25px;
+      margin: 0 .2rem; 
+    }
+  }
+
+  &-socialIcons {
+    &-icon {
+      width: 25px;
+      margin: 0 .5rem; 
+    }
+  }
+
+  &-numbers {
+    // margin-top: 2.5rem;
+
+    &-number {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      font-size: 1.3rem;
+      font-weight: 600  ;
+      margin-bottom: 1rem;
+    }
+
+    &-icon {
+      width: 30px;
+      margin-right: .5rem;
+    }
+  }
+}
+
+
+
+
+
+@include breakpoint(md-up) {
+  .co {
+    &-academicIcons, 
+    &-socialIcons {
+      justify-content: flex-start;
+      
+      &-icon {
+        margin: 0 .5rem 0 0; 
+      }
+    }
+  }
+}
+
+
+.country-flag {
+  width: 24px;
+  border-radius: 50%;
+  margin: 0 auto 1rem auto;
+}

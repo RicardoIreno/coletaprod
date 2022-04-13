@@ -1,0 +1,14 @@
+
+@mixin flex($direction, $x: false, $y: false ) {
+  width: 100%;
+	display: flex;
+	flex-direction: $direction;
+
+  @if $x {
+	 justify-content: $x;
+  }
+
+  @if $y {
+  	align-items: $y;
+  }
+}

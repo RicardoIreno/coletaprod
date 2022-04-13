@@ -1,0 +1,57 @@
+// == BUTTONS == // 
+
+@mixin hover-btn {
+	background-color: _palette(btn-hover);
+  border-color: _palette(btn-hover);  
+  -webkit-box-shadow: 0px 5px 10px -10px rgba(0,0,0,0.57);
+  -moz-box-shadow: 0px 5px 410px -10px rgba(0,0,0,0.57);
+  box-shadow: 5px 10px -10px rgba(0,0,0,0.57);
+  transition: all 0.2s ease 0s;
+}
+  
+.btn {
+	align-items: center;
+	background: none;
+	border: 3px solid _palette(btn-fg);
+  border-radius: 40px;
+	color: _palette(btn-fg);
+	cursor: pointer;
+	display: flex;
+	flex-direction: row;
+	font-weight: 600;
+	justify-content: center;
+	margin: .5rem;
+	min-width: 6rem;
+	padding: 8px;
+	text-align: center;
+	text-decoration: none;
+	transition: all 0.3s ease 0s;
+	vertical-align: middle;
+	width: fit-content;
+	
+	&-ico {
+		fill: _palette(theme);
+		transition: all 0.2s ease 0s;
+		vertical-align: middle;
+		width: 30px; 
+		margin: .25rem;
+	}
+
+	&:focus {
+		outline: none;
+	}
+	
+	&:hover,&:focus {
+		@include hover-btn;
+		color: #fff;
+
+		.btn-ico {
+			fill: #fff;
+		}
+	}
+}
+	
+	
+	
+
+

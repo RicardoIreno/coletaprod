@@ -1,0 +1,29 @@
+// PROFILE LAYOUTS
+
+.profile-container {
+  width: 100%;
+  margin: 0;
+}
+.profile-wrapper {
+  background-color: #fff;
+  border-radius: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 1rem;
+  padding: 1rem;
+  position: relative;
+}
+
+@include breakpoint(md-up) {
+  .profile-wrapper {
+    margin: 4rem;
+    padding: 4rem 3rem 3rem 2rem;
+  }
+}
+
+@include breakpoint(md-up) {
+  .profile-tabs {
+    padding-inline: 4rem;
+  }
+}

@@ -1,0 +1,49 @@
+// == THEME == // 
+
+$palette: (
+
+	theme:			 	#1C9AD1,
+	theme-light: 	#7fd1f5,
+	theme-light-2:#c4edff,
+	bg-primary:		#fff,
+	fg-primary:		#1C9AD1,
+	titles: 			#1C9AD1,
+	link: 				#1C9AD1,
+
+  // navbar
+	nav-link:     #fff,
+
+	// footer
+	footer-bg:    #5D866C,
+	footer-fg:    #EAEAEA,
+	footer-link:  #EAEAEA,
+	footer-hover: #D4DFD8,
+	footer-border:#A5C698,
+
+	input: #fff,
+
+	btn-bg:			  #1C9AD1,
+	btn-fg: 		  #1C9AD1,
+	btn-hover: 		#7fd1f5,
+
+	profile-bg: #F1F1F1
+
+);
+
+
+
+// body {
+// 	background-color: _palette(bg-primary);
+// }
+.profile-body {
+	background-color: _palette(profile-bg);
+}
+
+.manual-body {
+	background-color: _palette(profile-bg);
+}
+
+
+h1, h2, h3, h4, h5 {
+	color: _palette(titles);
+}

@@ -1,0 +1,36 @@
+// == HEADER == // 
+  
+.siteHeader{
+  display: flex;
+  top: 0;
+  right: 0;
+  left: 0;
+  padding: 0 2rem .2rem 2rem ;
+  z-index: 1030;
+  flex-direction: column;
+  align-content: center;
+  justify-items: center;
+  background-color: _palette(theme);
+  border-bottom: 6px solid _palette(theme-light);
+  box-shadow: 0 0 15px 0 rgba(0,0,0,.5);
+  -webkit-box-shadow: 0 0 15px 0 rgba(0,0,0,.5); 
+
+  &-logo {
+    height: 50px;
+    margin: .3rem 0;
+    fill: #fff;
+  }
+}
+
+@include breakpoint(sm-up) {
+  .siteHeader {
+    justify-content: space-between;
+    flex-direction: row;
+    
+    &-header {
+      max-height: 30px
+    }
+
+  }
+}
+  
