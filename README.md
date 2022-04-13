@@ -1,4 +1,4 @@
-# coletaprod
+# Prodmais 
 Extração e navegação de registros para a Coleta de Produção Científica das Instituições. 
 
 Fontes possíveis: 
@@ -7,65 +7,49 @@ Fontes possíveis:
 + Web of Science
 + CrossRef (DOI)
 
-## Dependencias
+## Dependências
 
 1. Elasticsearch 7.4 ou superior
-* Dependências do PHP: php-cgi | php-curl
+2. PHP 7.4 ou superior
+* Dependências do PHP: php-cgi | php-curl | php-xml
 
-## Clonar repositórios
+## Instalação 
 
-git clone https://github.com/trmurakami/coletaprod.git
-
-## Instalação
-
-curl -s http://getcomposer.org/installer | php
-
-php composer.phar install --no-dev
-
-git submodule init
-
-git submodule update
-
-## Configurar o arquivo inc/config.php
-
-Editar suas configurações em config.php
-
-## Criar indices
-
-Rodar o sistema pela primeira vez para criar os indices
-
-## Comandos para rodar via linha de comando (Se necessário)
-
-php5-cgi -f lattes_json_to_elastic.php id_lattes=XXXXXXXX
-
-php5-cgi -f lattes_json_to_elastic.php path_download=XXXXXXXX
-
-php5-cgi -f lattes_json_to_elastic.php id_lattes=XXXXX tag[]=XXXX unidade[]=XXX numfuncional=XXXXXX
-
-## Rodar documentação
-
-trmurakami@bdpife2:/var/www/html/dev_coletaprod/vendor/phpdocumentor/phpdocumentor/bin$ ./phpdoc -d /var/www/html/dev_coletaprod/inc/ -t /var/www/html/dev_coletaprod/docs --ignore "*/vendor/*,vendor/*"
+Ver INSTALL.md
 
 ## Autores:
 
 + Tiago Rodrigo Marçal Murakami
 + Jan Leduc de Lara
++ Ricardo Ireno
++ Alexsandro Cardoso Carvalho
 
+# Licença livre
+** 
+Este programa é um software livre; você pode redistribuí-lo e/ou
+modificá-lo sob os termos da Licença Pública Geral GNU como publicada
+pela Free Software Foundation; na versão 3 da Licença, ou
+(a seu critério) qualquer versão posterior.
 
-## Como citar
+Este programa é distribuído na esperança de que possa ser útil,
+mas SEM NENHUMA GARANTIA; sem uma garantia implícita de ADEQUAÇÃO
+a qualquer MERCADO ou APLICAÇÃO EM PARTICULAR. Veja a
+Licença Pública Geral GNU para mais detalhes.
 
-Para citar, use o DOI: 
-<a href="https://zenodo.org/badge/latestdoi/3633209"><img src="https://zenodo.org/badge/3633209.svg" alt="DOI"></a>
+Você deve ter recebido uma cópia da Licença Pública Geral GNU junto
+com este programa. Se não, veja <http://www.gnu.org/licenses/>.**
 
-MURAKAMI, Tiago Rodrigo Marçal & LARA, Jan Leduc de. Coletaprod. Disponível em: < http://doi.org/10.5281/zenodo.3633209 >, Acesso em: 
+** Copyright (C) <year>  <name of author>
 
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as
+    published by the Free Software Foundation, either version 3 of the
+    License, or (at your option) any later version.
 
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
 
-## Biblioshiny
-
-    R
-    library(shiny)
-    options(shiny.host = '0.0.0.0')
-    options(shiny.port = 8888)
-    library(bibliometrix)
-    biblioshiny()
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.**

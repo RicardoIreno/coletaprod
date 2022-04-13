@@ -1,4 +1,4 @@
-# Guia de instalação passo a passo do Coletaprod
+# Guia de instalação passo a passo do Prodmais UNIFESP
 
 ## Linux
 
@@ -20,7 +20,7 @@ Por padrão, o elasticseach não exige senha na instalação.
     echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/php.list
     sudo apt update
     sudo apt -y install php7.4
-    sudo apt-get install php7.4-{cgi,curl,mbstring,zip}
+    sudo apt-get install php7.4-{cgi,curl,mbstring,zip,xml}
 
 
 ### Instalação do Apache2 
@@ -28,11 +28,11 @@ Por padrão, o elasticseach não exige senha na instalação.
     sudo apt update
     sudo apt install apache2
 
-### Clonagem do repositório do Coletaprod
+### Clonagem do repositório do Prodmais
 
 Você pode clonar em qualquer pasta, mas é recomendável clonar na pasta pública do apache (ex. /var/www/html): 
 
-    git clone https://github.com/trmurakami/coletaprod.git
+    git clone https://github.com/unifesp/prodmais.git
 
 Na pasta do repositório, rodar: 
 
@@ -49,11 +49,31 @@ Editar o arquivo config.php
 
     nano inc/config.php
 
-Editar no arquivo config.php as variáveis: $branch, $branch_description, $url_base, $background_1, $facebook_image (opcional) e $instituicao.
+Editar no arquivo config.php as variáveis: $branch, $branch_description, $url_base, $facebook_image (opcional) e $instituicao.
 
 Após editar o arquivo config.php, rodar ele pela primeira vez num browser, usando o endereço htttp://localhost/NOMEDODIRETÓRIO
 
 Ao rodar pela primeira vez, o sistema irá criar os índices no elasticsearch.
 
+### Inclusão automática
 
-## Windows
+Parâmetros aceitos no import_lattes_to_elastic_dedup.php
+
+    tag
+    unidade
+    departamento
+    tipvin
+    numfuncional
+    divisao
+    secao
+    ppg_nome
+    ppg_capes
+    genero
+    etnia
+    desc_nivel
+    desc_curso
+    ano_ingresso
+    campus
+    desc_gestora
+
+Exemplo de código para a inclusão automática: tools/automatic_index.php
