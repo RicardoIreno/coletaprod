@@ -78,8 +78,6 @@ if (!empty($_REQUEST["lattesID"])) {
 }
 ?>
 
-<?php echo "<pre>".print_r($profile,true)."</pre>"; ?>
-
 <!DOCTYPE HTML>
 
 <html lang="pt-br"><head>
@@ -211,6 +209,11 @@ if (!empty($_REQUEST["lattesID"])) {
     <h2 class="ty ty-prof">Universidade Federal de São Paulo</h2>
     <p class="ty ty-prof"><?php echo $profile["unidade"][0] ?></p>
     <p class="ty ty-prof"><?php echo $profile["departamento"][0] ?></p>
+    <?php if(isset($profile["ppg_nome"])): ?>
+      <?php foreach ($profile["ppg_nome"] as $key => $ppg_nome): ?>
+        <p class="ty ty-prof">Programa de Pós-Graduação: <?php echo $ppg_nome ?></p>
+      <?php endforeach; ?>
+    <?php endif; ?>
     <!-- <p class="ty ty-email">bertola@unifesp.br</p> -->
     <div class="u-spacer-1"></div>
 
@@ -644,61 +647,157 @@ if (!empty($_REQUEST["lattesID"])) {
   <div class="u-spacer-2"></div>
 
 
+  
+  <?php if(isset($profile["idiomas"])): ?>
   <div class="p-language">
     <h3 class="ty-subtitle">Idiomas</h3>
-    <p><span>Inglês:</span>Compreende Bem, Fala Bem, Lê Bem, Escreve Bem</p>
-    <p><span>Francês:</span>Compreende Bem, Fala Bem, Lê Bem, Escreve Bem</p>
-
+    <?php foreach ($profile["idiomas"] as $key => $idioma): ?>
+      <p>
+        <span><?php echo $idioma["descricaoDoIdioma"] ?>:</span>
+        Compreende <?php echo $idioma["proficienciaDeCompreensao"] ?>, 
+        Fala <?php echo $idioma["proficienciaDeFala"] ?>, 
+        Lê <?php echo $idioma["proficienciaDeLeitura"] ?>, 
+        Escreve <?php echo $idioma["proficienciaDeEscrita"] ?>
+      </p>
+    <?php endforeach; ?>
   </div>
+  <?php endif; ?>
   <div class="u-spacer-2"></div>
 
   <div class="edu">
     <h3 class="ty-subtitle">Formação</h3>
-
     
-    <div class="formation-container">
-      <div class="u-grid">
-        <div class="u-grid-left">
-          <img class="pi-icon" src="assets/img/icons/academic.svg" />
-        </div>
-        
-        <div class="u-grid-right">
-          <div class="formation">
-            <p class="ty-item">Doutorado em Antropologia 
-              <span class="ty formation-date">2000 — 2006</span>
-            </p>
-            <p class="ty">Universidade Federal de São Paulo, UNIFESP, Brasil.</p>
-            <div class="u-spacer-1"></div>
-            <p class="ty">Grande área: Universidade Federal de São Paulo, UNIFESP, Brasil.</p>
-            <p class="ty">Setor: Saúde humana</p>
+    <!-- Livre Docência -->
+    <?php if(isset($profile["formacao_academica_titulacao_livreDocencia"])): ?>
+
+      <?php foreach ($profile["formacao_academica_titulacao_livreDocencia"] as $key => $livreDocencia): ?>
+
+        <div class="formation-container">
+          <div class="u-grid">
+            <div class="u-grid-left">
+              <img class="pi-icon" src="assets/img/icons/academic.svg" />
+            </div>
+            
+            <div class="u-grid-right">
+              <div class="formation">
+                <p class="ty-item">Livre Docência 
+                  <span class="ty formation-date"><?php echo $livreDocencia["anoDeObtencaoDoTitulo"] ?></span>
+                </p>
+                <p class="ty"><?php echo $livreDocencia["nomeInstituicao"] ?></p>
+                <div class="u-spacer-1"></div>
+                <p class="ty">Título do trabalho: <?php echo $livreDocencia["tituloDoTrabalho"] ?></p>
+                <p class="ty">Grande área: <?php echo $livreDocencia["area_do_conhecimento"][0]["nomeGrandeAreaDoConhecimento"] ?></p>
+                <p class="ty">Sub área: <?php echo $livreDocencia["area_do_conhecimento"][0]["nomeDaSubAreaDoConhecimento"] ?></p>
+                <p class="ty">Especialidade: <?php echo $livreDocencia["area_do_conhecimento"][0]["nomeDaEspecialidade"] ?></p>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-    
-    <div class="formation-container">
-      <div class="u-grid">
-        <div class="u-grid-left">
-          <img class="pi-icon" src="assets/img/icons/academic.svg" />
-        </div>
-        
-        <div class="u-grid-right">
-          <div class="formation">
-            <p class="ty-item">Mestrado em Medicina (Urologia) (Conceito CAPES 4) 
-              <span class="ty formation-date">1995 — 2000</span>
-            </p>
-            <p class="ty">Universidade Federal de São Paulo, UNIFESP, Brasil.</p>
-            <div class="u-spacer-1"></div>
-            <p class="ty">Grande área: Universidade Federal de São Paulo, UNIFESP, Brasil.</p>
-            <p class="ty">Setor: Saúde humana</p>
+
+      <?php endforeach; ?>
+
+    <?php endif; ?>
+
+    <!-- Doutorado -->
+    <?php if(isset($profile["formacao_academica_titulacao_doutorado"])): ?>
+
+      <?php foreach ($profile["formacao_academica_titulacao_doutorado"] as $key => $doutorado): ?>
+
+        <div class="formation-container">
+          <div class="u-grid">
+            <div class="u-grid-left">
+              <img class="pi-icon" src="assets/img/icons/academic.svg" />
+            </div>
+            
+            <div class="u-grid-right">
+              <div class="formation">
+                <p class="ty-item">Doutorado em <?php echo $doutorado["nomeCurso"] ?>
+                  <span class="ty formation-date"><?php echo $doutorado["anoDeInicio"] ?> - <?php echo $doutorado["anoDeConclusao"] ?></span>
+                </p>
+                <p class="ty"><?php echo $doutorado["nomeInstituicao"] ?></p>
+                <div class="u-spacer-1"></div>
+                <p class="ty">Título do trabalho: <?php echo $doutorado["tituloDaDissertacaoTese"] ?></p>
+                <p class="ty">Orientador: <?php echo $doutorado["nomeDoOrientador"] ?></p>
+                <p class="ty">Grande área: <?php echo $doutorado["area_do_conhecimento"][0]["nomeGrandeAreaDoConhecimento"] ?></p>
+                <p class="ty">Sub área: <?php echo $doutorado["area_do_conhecimento"][0]["nomeDaSubAreaDoConhecimento"] ?></p>
+                <p class="ty">Especialidade: <?php echo $doutorado["area_do_conhecimento"][0]["nomeDaEspecialidade"] ?></p>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-    
 
+      <?php endforeach; ?>
+
+      <?php endif; ?>
+
+      <!-- Mestrado -->
+      <?php if(isset($profile["formacao_academica_titulacao_mestrado"])): ?>
+
+        <?php foreach ($profile["formacao_academica_titulacao_mestrado"] as $key => $mestrado): ?>
+
+          <div class="formation-container">
+            <div class="u-grid">
+              <div class="u-grid-left">
+                <img class="pi-icon" src="assets/img/icons/academic.svg" />
+              </div>
+              
+              <div class="u-grid-right">
+                <div class="formation">
+                  <p class="ty-item">Mestrado em <?php echo $mestrado["nomeCurso"] ?>
+                    <span class="ty formation-date"><?php echo $mestrado["anoDeInicio"] ?> - <?php echo $mestrado["anoDeConclusao"] ?></span>
+                  </p>
+                  <p class="ty"><?php echo $mestrado["nomeInstituicao"] ?></p>
+                  <div class="u-spacer-1"></div>
+                  <p class="ty">Título do trabalho: <?php echo $mestrado["tituloDaDissertacaoTese"] ?></p>
+                  <p class="ty">Orientador: <?php echo $mestrado["nomeDoOrientador"] ?></p>
+                  <p class="ty">Grande área: <?php echo $mestrado["area_do_conhecimento"][0]["nomeGrandeAreaDoConhecimento"] ?></p>
+                  <p class="ty">Sub área: <?php echo $mestrado["area_do_conhecimento"][0]["nomeDaSubAreaDoConhecimento"] ?></p>
+                  <p class="ty">Especialidade: <?php echo $mestrado["area_do_conhecimento"][0]["nomeDaEspecialidade"] ?></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        <?php endforeach; ?>
+
+      <?php endif; ?>
+
+      <!-- Graduação -->
+      <?php if(isset($profile["formacao_academica_titulacao_graduacao"])): ?>
+
+        <?php foreach ($profile["formacao_academica_titulacao_graduacao"] as $key => $graduacao): ?>
+
+          <div class="formation-container">
+            <div class="u-grid">
+              <div class="u-grid-left">
+                <img class="pi-icon" src="assets/img/icons/academic.svg" />
+              </div>
+              
+              <div class="u-grid-right">
+                <div class="formation">
+                  <p class="ty-item">Graduação em <?php echo $graduacao["nomeCurso"] ?>
+                    <span class="ty formation-date"><?php echo $graduacao["anoDeInicio"] ?> - <?php echo $graduacao["anoDeConclusao"] ?></span>
+                  </p>
+                  <p class="ty"><?php echo $graduacao["nomeInstituicao"] ?></p>
+                  <div class="u-spacer-1"></div>
+                  <?php if(!empty($graduacao["tituloDoTrabalhoDeConclusaoDeCurso"])): ?>
+                    <p class="ty">Título do trabalho: <?php echo $graduacao["tituloDoTrabalhoDeConclusaoDeCurso"] ?></p>
+                  <?php endif; ?>
+                  <?php if(!empty($graduacao["nomeDoOrientador"])): ?>
+                    <p class="ty">Orientador: <?php echo $graduacao["nomeDoOrientador"] ?></p>
+                  <?php endif; ?>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        <?php endforeach; ?>
+
+      <?php endif; ?>
 
   </div>
+
+
 </div></div>
             <div id="tab-two" class="tab-content" v-if="tabOpened == '2'"><div class="profile-pi"> 
 
@@ -1095,7 +1194,8 @@ if (!empty($_REQUEST["lattesID"])) {
           }
         }
       })
-    </script>      
+    </script>
+    <?php echo "<pre>".print_r($profile,true)."</pre>"; ?>      
 	</body>
 		
 
