@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <meta name="description" content="Prodmais Unifesp." />
     <meta name="keywords" content="Produção acadêmica, lattes, ORCID" />
-    <link rel="stylesheet" href="inc/css/style.css" />
+    <link rel="stylesheet" href="sass/main.css" />
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 
