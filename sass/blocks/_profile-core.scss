@@ -137,11 +137,11 @@
     }
   }
 
-  &-socialIcons {
-    &-icon {
-      width: 25px;
-      margin: 0 .5rem; 
-    }
+  &-lastUpdate {
+    color: _palette(theme-light);
+    font-size: .8rem;
+    font-style: italic;
+    text-align: right;
   }
 
   &-numbers {
@@ -155,12 +155,20 @@
       font-weight: 600  ;
       margin-bottom: 1rem;
     }
-
     &-icon {
       width: 30px;
       margin-right: .5rem;
     }
   }
+
+  &-socialIcons {
+    &-icon {
+      width: 25px;
+      margin: 0 .5rem; 
+    }
+  }
+
+
 }
 
 

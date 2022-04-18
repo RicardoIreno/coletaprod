@@ -455,9 +455,11 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
   width: 25px;
   margin: 0 0.2rem;
 }
-.co-socialIcons-icon {
-  width: 25px;
-  margin: 0 0.5rem;
+.co-lastUpdate {
+  color: #7fd1f5;
+  font-size: 0.8rem;
+  font-style: italic;
+  text-align: right;
 }
 .co-numbers-number {
   display: flex;
@@ -470,6 +472,10 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
 .co-numbers-icon {
   width: 30px;
   margin-right: 0.5rem;
+}
+.co-socialIcons-icon {
+  width: 25px;
+  margin: 0 0.5rem;
 }
 
 @media (min-width: 56.25em) {
@@ -977,6 +983,10 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
 
 .u-li {
   margin-left: 0.8rem;
+}
+
+.u-right {
+  text-align: right;
 }
 
 .u-skip {
