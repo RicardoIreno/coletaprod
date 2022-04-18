@@ -4,6 +4,7 @@ chdir('../');
 // Include essencial files
 require 'inc/config.php';
 require 'inc/functions.php';
+include_once '_fakedata.php';
 
 function lattesID10($lattesID16)
 {
@@ -87,7 +88,7 @@ if (!empty($_REQUEST["lattesID"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <meta name="description" content="Prodmais Unifesp." />
     <meta name="keywords" content="Produção acadêmica, lattes, ORCID" />
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="../sass/main.css" />
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   </head>
   <body>
@@ -97,12 +98,19 @@ if (!empty($_REQUEST["lattesID"])) {
   <!-- /NAV -->
 
 <main class="profile-container">
-      <div class="profile-wrapper"><div class="core"> 
+  <div class="profile-wrapper">
+  
 
+<!-- =============================
+## SEÇÃO CORE
+=============================== -->
+
+  <div class="core"> 
+  
   <div class="core-one">
 
     <div class="co-photo-wrapper">
-      <!-- <img class="co-bestBagde" src="assets/img/badges/bolsista-cnpq-1a.svg"/>  -->
+      <!-- <img class="co-bestBagde" src="../inc/images/badges/bolsista-cnpq-1a.svg"/>  -->
       <div class="co-photo-container">
         <img class="co-photo" src="http://servicosweb.cnpq.br/wspessoa/servletrecuperafoto?tipo=1&amp;bcv=true&amp;id=<?php echo $lattesID10; ?>" />
       </div>
@@ -111,7 +119,7 @@ if (!empty($_REQUEST["lattesID"])) {
     <?php if($profile["nacionalidade"]=="B") : ?>
       <img 
         class="country-flag" 
-        src="assets/img/country_flags/br.svg" 
+        src="../inc/images/country_flags/br.svg" 
         alt="nacionalidade brasileira"
         title="nacionalidade brasileira" 
       />
@@ -124,7 +132,7 @@ if (!empty($_REQUEST["lattesID"])) {
         <img 
           class="co-badgeIcons-icon" 
           
-            src="assets/img/badges/bolsista-cnpq-1a.svg" 
+            src="../inc/images/badges/bolsista-cnpq-1a.svg" 
             alt="Bolsista CNPQ nível 1A"
             title="Bolsista CNPQ nível 1A"
             
@@ -134,7 +142,7 @@ if (!empty($_REQUEST["lattesID"])) {
         <img 
           class="co-badgeIcons-icon" 
           
-            src="assets/img/badges/member.svg"
+            src="../inc/images/badges/member.svg"
             alt="Membro de conselho ou comissão"  
             title="Membro de conselho ou comissão"  
             
@@ -144,7 +152,7 @@ if (!empty($_REQUEST["lattesID"])) {
         <img 
           class="co-badgeIcons-icon" 
           
-            src="assets/img/badges/leader.svg" 
+            src="../inc/images/badges/leader.svg" 
             alt="Exercedor de cargo de chefia"
             title="Exercedor de cargo de chefia"
             
@@ -184,7 +192,7 @@ if (!empty($_REQUEST["lattesID"])) {
         <img 
           href="www.google.com.br" 
           class="co-socialIcons-icon" 
-          src="assets/img/academic_plataforms/logo_academia_edu.svg"  
+          src="../inc/images/academic_plataforms/logo_academia_edu.svg"  
           alt="Academia . Edu" 
           title="Academia . Edu" 
         />
@@ -192,7 +200,7 @@ if (!empty($_REQUEST["lattesID"])) {
         <img 
           href="www.google.com.br" 
           class="co-socialIcons-icon" 
-          src="assets/img/academic_plataforms/logo_altmetric.svg"  
+          src="../inc/images/academic_plataforms/logo_altmetric.svg"  
           alt="Altmetric" 
           title="Altmetric" 
         />
@@ -200,7 +208,7 @@ if (!empty($_REQUEST["lattesID"])) {
         <img 
           href="www.google.com.br" 
           class="co-socialIcons-icon" 
-          src="assets/img/academic_plataforms/logo_google_scholar.svg"  
+          src="../inc/images/academic_plataforms/logo_google_scholar.svg"  
           alt="Google Scholar" 
           title="Google Scholar" 
         />
@@ -208,7 +216,7 @@ if (!empty($_REQUEST["lattesID"])) {
         <img 
           href="www.google.com.br" 
           class="co-socialIcons-icon" 
-          src="assets/img/academic_plataforms/logo_innovation_catalyst_global.svg"  
+          src="../inc/images/academic_plataforms/logo_innovation_catalyst_global.svg"  
           alt="Innovation Catalyst Global" 
           title="Innovation Catalyst Global" 
         />
@@ -216,7 +224,7 @@ if (!empty($_REQUEST["lattesID"])) {
         <img 
           href="www.google.com.br" 
           class="co-socialIcons-icon" 
-          src="assets/img/academic_plataforms/logo_lattes.svg"  
+          src="../inc/images/academic_plataforms/logo_lattes.svg"  
           alt="Lattes" 
           title="Lattes" 
         />
@@ -224,7 +232,7 @@ if (!empty($_REQUEST["lattesID"])) {
         <img 
           href="www.google.com.br" 
           class="co-socialIcons-icon" 
-          src="assets/img/academic_plataforms/logo_mendeley.svg"  
+          src="../inc/images/academic_plataforms/logo_mendeley.svg"  
           alt="Mendely" 
           title="Mendely" 
         />
@@ -232,7 +240,7 @@ if (!empty($_REQUEST["lattesID"])) {
         <img 
           href="www.google.com.br" 
           class="co-socialIcons-icon" 
-          src="assets/img/academic_plataforms/logo_publons.svg"  
+          src="../inc/images/academic_plataforms/logo_publons.svg"  
           alt="Publons" 
           title="Publons" 
         />
@@ -240,7 +248,7 @@ if (!empty($_REQUEST["lattesID"])) {
         <img 
           href="www.google.com.br" 
           class="co-socialIcons-icon" 
-          src="assets/img/academic_plataforms/logo_research_id.svg"  
+          src="../inc/images/academic_plataforms/logo_research_id.svg"  
           alt="Research ID" 
           title="Research ID" 
         />
@@ -248,7 +256,7 @@ if (!empty($_REQUEST["lattesID"])) {
         <img 
           href="www.google.com.br" 
           class="co-socialIcons-icon" 
-          src="assets/img/academic_plataforms/logo_researchgate.svg"  
+          src="../inc/images/academic_plataforms/logo_researchgate.svg"  
           alt="research Gate" 
           title="research Gate" 
         />
@@ -256,7 +264,7 @@ if (!empty($_REQUEST["lattesID"])) {
         <img 
           href="www.google.com" 
           class="co-socialIcons-icon" 
-          src="assets/img/academic_plataforms/logo_zotero.svg"  
+          src="../inc/images/academic_plataforms/logo_zotero.svg"  
           alt="Zotero" 
           title="Zotero" 
         />
@@ -268,7 +276,7 @@ if (!empty($_REQUEST["lattesID"])) {
         <img 
           href="www.google.com" 
           class="co-socialIcons-icon" 
-          src="assets/img/social/Twitter.svg"  
+          src="../inc/images/social/twitter.svg"  
           alt="Twitter" 
           title="Twitter" 
         />
@@ -276,7 +284,7 @@ if (!empty($_REQUEST["lattesID"])) {
         <img 
           href="www.google.com" 
           class="co-socialIcons-icon" 
-          src="assets/img/social/facebook.svg"  
+          src="../inc/images/social/facebook.svg"  
           alt="Twitter" 
           title="Twitter" 
         />
@@ -289,27 +297,27 @@ if (!empty($_REQUEST["lattesID"])) {
 
     <div class="co-numbers">
       <span class="co-numbers-number">
-        <img class="co-numbers-icon"src="assets/img/icons/article-published.svg" alt="Artigos publicados" />
+        <img class="co-numbers-icon"src="../inc/images/icons/article-published.svg" alt="Artigos publicados" />
         45
       </span>
 
       <span class="co-numbers-number">
-        <img class="co-numbers-icon"src="assets/img/icons/article-aproved.svg" alt="Artigos aprovados"/>
+        <img class="co-numbers-icon"src="../inc/images/icons/article-aproved.svg" alt="Artigos aprovados"/>
         35
       </span>
 
       <span class="co-numbers-number">
-        <img class="co-numbers-icon"src="assets/img/icons/orientation.svg" alt="Orientações"/>
+        <img class="co-numbers-icon"src="../inc/images/icons/orientation.svg" alt="Orientações"/>
         12
       </span>
 
       <span class="co-numbers-number">
-        <img class="co-numbers-icon"src="assets/img/icons/research.svg" alt="Pesquisas"/>
+        <img class="co-numbers-icon"src="../inc/images/icons/research.svg" alt="Pesquisas"/>
         15
       </span>
 
       <span class="co-numbers-number">
-        <img class="co-numbers-icon"src="assets/img/icons/event.svg" alt="Eventos participados"/>
+        <img class="co-numbers-icon"src="../inc/images/icons/event.svg" alt="Eventos participados"/>
         41
       </span>
 
@@ -515,6 +523,8 @@ if (!empty($_REQUEST["lattesID"])) {
 
 <span class="u-skip" id="skipgraph”" class="ty ty-lastUpdate">Atualizado em 20.02.2022</span><div id="tabs" class="profile-tabs">
 
+
+
           <div class="tab-bar">
             <button id="tab-btn-1" class="tab-btn" v-on:click="changeTab('1')">Sobre Mim</button>
             <button id="tab-btn-2" class="tab-btn" v-on:click="changeTab('2')">Produção Intelectual</button>
@@ -525,6 +535,16 @@ if (!empty($_REQUEST["lattesID"])) {
 
           <div class="tab-container">
             <div id="tab-one" class="tab-content" v-if="tabOpened == '1'">
+
+
+
+<!-- =============================
+## SEÇÃO SOBRE MIM
+=============================== -->
+
+
+
+
 <div class="profile-ext-desc"> 
 
   <div class="p-description">
@@ -535,65 +555,27 @@ if (!empty($_REQUEST["lattesID"])) {
   <div class="u-spacer-2"></div>
 
   <div class="p-tags">
-    <h3 class="ty-subtitle">Tags mais usadas</h3>
+    <h3 class="ty-subtitle">Tags mais usadas</h3> 
 
-    <ul class="tag-cloud" role="navigation" aria-label="Webdev tag cloud">
-      
-        <li><a class="tag" data-weight="3" href="">População</a></li>
-      
-        <li><a class="tag" data-weight="4" href="">Crise</a></li>
-      
-        <li><a class="tag" data-weight="7" href="">Comércio</a></li>
-      
-        <li><a class="tag" data-weight="2" href="">Legislação</a></li>
-      
-        <li><a class="tag" data-weight="3" href="">Trabalho</a></li>
-      
-        <li><a class="tag" data-weight="4" href="">Governança</a></li>
-      
-        <li><a class="tag" data-weight="5" href="">Empregabilidade</a></li>
-      
-        <li><a class="tag" data-weight="1" href="">Sociedade</a></li>
-      
-        <li><a class="tag" data-weight="8" href="">Justiça</a></li>
-      
-        <li><a class="tag" data-weight="9" href="">Direitos</a></li>
-      
-        <li><a class="tag" data-weight="4" href="">Direitos humanos</a></li>
-      
-        <li><a class="tag" data-weight="6" href="">Política</a></li>
-      
-        <li><a class="tag" data-weight="8" href="">Informação</a></li>
-      
-        <li><a class="tag" data-weight="5" href="">Redes sociais</a></li>
-      
-        <li><a class="tag" data-weight="7" href="">Mundo digital</a></li>
-      
-        <li><a class="tag" data-weight="4" href="">Saúde</a></li>
-      
-        <li><a class="tag" data-weight="8" href="">Ecologia</a></li>
-      
-        <li><a class="tag" data-weight="2" href="">Dinheiro</a></li>
-      
-        <li><a class="tag" data-weight="1" href="">Polítias Públicas</a></li>
-      
-        <li><a class="tag" data-weight="5" href="">Polícia</a></li>
-      
-        <li><a class="tag" data-weight="6" href="">Empreendedorismo</a></li>
-      
-        <li><a class="tag" data-weight="8" href="">Inclusão</a></li>
-      
-        <li><a class="tag" data-weight="7" href="">Classes sociais</a></li>
-      
-        <li><a class="tag" data-weight="4" href="">Antropologia</a></li>
-      
-        <li><a class="tag" data-weight="6" href="">Recessão</a></li>
-      
-        <li><a class="tag" data-weight="1" href="">Pirataria</a></li>
-      
-        <li><a class="tag" data-weight="3" href="">Etnografia</a></li>
-      
+    <ul class="tag-cloud" role="navigation" aria-label="Tags mais usadas">
+      <?php 
+        foreach ($tags as $t => $tag) {
+            echo 
+              "<li>
+                <a 
+                  class='tag' 
+                  href='' 
+                  data-weight={$tag['weight']}
+                >
+                  {$tag['name']}</a>
+              </li>";
+        }
+        unset($t); 
+        unset($name); 
+        unset($value); 
+      ?>
     </ul>
+
   </div>
   <div class="u-spacer-2"></div>
 
@@ -626,7 +608,7 @@ if (!empty($_REQUEST["lattesID"])) {
         <div class="formation-container">
           <div class="u-grid">
             <div class="u-grid-left">
-              <img class="pi-icon" src="assets/img/icons/academic.svg" />
+              <img class="pi-icon" src="../inc/images/icons/academic.svg" />
             </div>
             
             <div class="u-grid-right">
@@ -667,7 +649,7 @@ if (!empty($_REQUEST["lattesID"])) {
         <div class="formation-container">
           <div class="u-grid">
             <div class="u-grid-left">
-              <img class="pi-icon" src="assets/img/icons/academic.svg" />
+              <img class="pi-icon" src="../inc/images/icons/academic.svg" />
             </div>            
             <div class="u-grid-right">
               <div class="formation">
@@ -707,7 +689,7 @@ if (!empty($_REQUEST["lattesID"])) {
           <div class="formation-container">
             <div class="u-grid">
               <div class="u-grid-left">
-                <img class="pi-icon" src="assets/img/icons/academic.svg" />
+                <img class="pi-icon" src="../inc/images/icons/academic.svg" />
               </div>
               
               <div class="u-grid-right">
@@ -749,7 +731,7 @@ if (!empty($_REQUEST["lattesID"])) {
           <div class="formation-container">
             <div class="u-grid">
               <div class="u-grid-left">
-                <img class="pi-icon" src="assets/img/icons/academic.svg" />
+                <img class="pi-icon" src="../inc/images/icons/academic.svg" />
               </div>
               
               <div class="u-grid-right">
@@ -780,11 +762,19 @@ if (!empty($_REQUEST["lattesID"])) {
 </div></div>
             <div id="tab-two" class="tab-content" v-if="tabOpened == '2'"><div class="profile-pi"> 
 
-  <h2 class="ty-title">Produção Intelecual</h2>
 
 
 
-<!-- pi: produção intelectual -->
+<!-- =============================
+  ## SEÇÃO PRODUÇÃO INTELETUAL
+  =============================== -->
+
+
+
+
+<h2 class="ty-title">Produção Intelecual</h2>
+  
+
 <?php 
 
 foreach ($cursor_works['hits']['hits'] as $key => $work) {
@@ -811,7 +801,7 @@ for ($i = 2040; $i >= 1900; $i -= 1) {
 
           <div class="u-grid-left">        
             
-              <img class="pi-icon" src="assets/img/icons/article-published.svg" />            
+              <img class="pi-icon" src="../inc/images/icons/article-published.svg" />            
 
           </div>            
 
@@ -831,7 +821,7 @@ for ($i = 2040; $i >= 1900; $i -= 1) {
               <!--
               <div class="pi-moreinfo-item"> 
                 <img class="pi-moreinfo-icon"
-                  src="assets/img/icons/citation.svg" 
+                  src="../inc/images/icons/citation.svg" 
                   alt="representação de citação" 
                 />
                 
@@ -847,7 +837,7 @@ for ($i = 2040; $i >= 1900; $i -= 1) {
                 <div class="pi-moreinfo-item"> 
                   <img 
                     class="pi-moreinfo-icon"
-                    src="assets/img/icons/link.svg" 
+                    src="../inc/images/icons/link.svg" 
                     alt="representação de um link"
                   />
                   
@@ -862,7 +852,7 @@ for ($i = 2040; $i >= 1900; $i -= 1) {
 
                 <img 
                 class="pi-moreinfo-icon"
-                src="assets/img/logos/doi.svg" 
+                src="../inc/images/logos/doi.svg" 
                 alt="logo DOI"
                 />
                 
@@ -904,7 +894,10 @@ for ($i = 2040; $i >= 1900; $i -= 1) {
           </div>
         </div>
       </div>
+
+      
     </main>
+    <?php include('inc/footer.php'); ?>
 
 		<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     
@@ -925,16 +918,12 @@ for ($i = 2040; $i >= 1900; $i -= 1) {
             for (i = 0; i < tabs.length; i++ )
               tabs[i].className = tabs[i].className.replace("tab-active", "")
 
-            tabs[Number(tab)-1].className += "tab-active"
+            tabs[Number(tab)-1].className += " tab-active"
           }
         }
       })
     </script>
-    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-    <?php //echo "<pre>".print_r($cursor,true)."</pre>"; ?>
-    <?php //echo "<pre>".print_r($cursor_works,true)."</pre>"; ?>
+
     
     <?php
       //$resultaboutfacet = $authorfacets->authorfacet(basename(__FILE__), "about", 120, "Palavras-chave do autor", null, "_term", $_GET);
