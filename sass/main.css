@@ -157,19 +157,22 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
   font-family: "Lato", sans-serif;
 }
 .ty-name, .ty-title, .ty-subtitle, .ty-item {
-  font-family: "Lato", sans-serif;
   font-weight: 700;
   color: #000;
 }
-.ty-title {
-  font-size: 1.4rem;
+.ty-subItem {
+  font-weight: 600;
+  color: #1C9AD1;
+}
+.ty-right {
+  text-align: end;
 }
 .ty-subtitle {
   font-size: 1.1rem;
   margin-block: 0.5rem;
 }
-.ty-right {
-  text-align: end;
+.ty-title {
+  font-size: 1.4rem;
 }
 .ty-themeLight {
   color: #7fd1f5;
@@ -513,6 +516,9 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
 }
 .pi-icon {
   width: 50px;
+}
+.pi-iconlang {
+  width: 30px;
 }
 .pi-moreinfo {
   width: 100%;

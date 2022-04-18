@@ -177,12 +177,12 @@ if (!empty($_REQUEST["lattesID"])) {
 
           <div class="u-spacer-1"></div>
 
-          <h3 class="ty-subtitle">Nomes em citações bibliográficas</h3>
+          <h3 class="ty ty-title">Nomes em citações bibliográficas</h3>
 
           <p class="ty-prof"><?php echo $profile["nome_em_citacoes_bibliograficas"] ?></p>
 
 
-          <h3 class="ty-subtitle">Perfis na web</h3>
+          <h3 class="ty ty-title">Perfis na web</h3>
           <div class="co-socialIcons">
 
 
@@ -482,14 +482,14 @@ if (!empty($_REQUEST["lattesID"])) {
             <div class="profile-ext-desc">
 
               <div class="p-description">
-                <h3 class="ty-subtitle">Resumo</h3>
+                <h3 class="ty ty-title">Resumo</h3>
                 <p class="ty">
                 <p><?php echo $profile["resumo_cv"]["texto_resumo_cv_rh"] ?></p>
               </div>
               <div class="u-spacer-2"></div>
 
               <div class="p-tags">
-                <h3 class="ty-subtitle">Tags mais usadas</h3>
+                <h3 class="ty ty-title">Tags mais usadas</h3>
 
                 <ul class="tag-cloud" role="navigation" aria-label="Tags mais usadas">
                   <?php 
@@ -520,15 +520,39 @@ if (!empty($_REQUEST["lattesID"])) {
 
             <?php if(isset($profile["idiomas"])): ?>
             <div class="p-language">
-              <h3 class="ty-subtitle">Idiomas</h3>
+              <h3 class="ty ty-title">Idiomas</h3>
               <?php foreach ($profile["idiomas"] as $key => $idioma): ?>
-              <p>
-                <span><?php echo $idioma["descricaoDoIdioma"] ?>:</span>
-                Compreende <?php echo $idioma["proficienciaDeCompreensao"] ?>,
-                Fala <?php echo $idioma["proficienciaDeFala"] ?>,
-                Lê <?php echo $idioma["proficienciaDeLeitura"] ?>,
-                Escreve <?php echo $idioma["proficienciaDeEscrita"] ?>
-              </p>
+
+              <div class="u-grid">
+
+                <div class="u-grid-left">
+                  <?php 
+                      switch ($idioma["descricaoDoIdioma"]) {
+                        case "Inglês":
+                            echo "<img class='pi-iconlang' src='../inc/images/icons/languages/en.svg' />";
+                            break;
+                        case "Espanhol":
+                            echo "<img class='pi-iconlang' src='../inc/images/icons/languages/es.svg' />";
+                            break;
+                        case "Português":
+                            echo "<img class='pi-iconlang' src='../inc/images/icons/languages/pt.svg' />";
+                            break;
+                      }
+                    ?>
+
+                </div>
+
+                <div class="u-grid-right">
+                  <p>
+                    <span><?php echo $idioma["descricaoDoIdioma"] ?>:</span>
+                    Compreende <?php echo $idioma["proficienciaDeCompreensao"] ?>,
+                    Fala <?php echo $idioma["proficienciaDeFala"] ?>,
+                    Lê <?php echo $idioma["proficienciaDeLeitura"] ?>,
+                    Escreve <?php echo $idioma["proficienciaDeEscrita"] ?>
+                  </p>
+
+                </div>
+              </div>
               <?php endforeach; ?>
             </div>
             <?php endif; ?>
@@ -537,7 +561,7 @@ if (!empty($_REQUEST["lattesID"])) {
             <div class="u-spacer-2"></div>
 
             <div class="edu">
-              <h3 class="ty-subtitle">Formação</h3>
+              <h3 class="ty ty-title">Formação</h3>
 
               <!-- Livre Docência -->
               <?php if(isset($profile["formacao_academica_titulacao_livreDocencia"])): ?>
@@ -553,26 +577,38 @@ if (!empty($_REQUEST["lattesID"])) {
                   <div class="u-grid-right">
                     <div class="formation">
                       <p class="ty-item">Livre Docência
-                        <span class="ty formation-date"><?php echo $livreDocencia["anoDeObtencaoDoTitulo"] ?></span>
+                        <span class="ty u-date-range"><?php echo $livreDocencia["anoDeObtencaoDoTitulo"] ?></span>
                       </p>
                       <p class="ty"><?php echo $livreDocencia["nomeInstituicao"] ?></p>
                       <div class="u-spacer-1"></div>
-                      <p class="ty">Título do trabalho: <?php echo $livreDocencia["tituloDoTrabalho"] ?></p>
+                      <p class="ty">
+                        <b class="ty-subItem">Trabalho: </b>
+                        <?php echo $livreDocencia["tituloDoTrabalho"] ?>
+                      </p>
+
                       <?php if(!empty($livreDocencia["area_do_conhecimento"][0]["nomeGrandeAreaDoConhecimento"])): ?>
-                      <p class="ty">Grande área:
-                        <?php echo $livreDocencia["area_do_conhecimento"][0]["nomeGrandeAreaDoConhecimento"] ?></p>
+                      <p class="ty">
+                        <b class="ty-subItem">Grande área:</b>
+                        <?php echo $livreDocencia["area_do_conhecimento"][0]["nomeGrandeAreaDoConhecimento"] ?>
+                      </p>
                       <?php endif; ?>
                       <?php if(!empty($livreDocencia["area_do_conhecimento"][0]["nomeDaAreaDoConhecimento"])): ?>
-                      <p class="ty">Área do conhecimento:
-                        <?php echo $livreDocencia["area_do_conhecimento"][0]["nomeDaAreaDoConhecimento"] ?></p>
+                      <p class="ty">
+                        <b class="ty-subItem">Área do conhecimento:</b>
+                        <?php echo $livreDocencia["area_do_conhecimento"][0]["nomeDaAreaDoConhecimento"] ?>
+                      </p>
                       <?php endif; ?>
                       <?php if(!empty($livreDocencia["area_do_conhecimento"][0]["nomeDaSubAreaDoConhecimento"])): ?>
-                      <p class="ty">Sub área:
-                        <?php echo $livreDocencia["area_do_conhecimento"][0]["nomeDaSubAreaDoConhecimento"] ?></p>
+                      <p class="ty">
+                        <b class="ty-subItem">Sub área:</b>
+                        <?php echo $livreDocencia["area_do_conhecimento"][0]["nomeDaSubAreaDoConhecimento"] ?>
+                      </p>
                       <?php endif; ?>
                       <?php if(!empty($livreDocencia["area_do_conhecimento"][0]["nomeDaEspecialidade"])): ?>
-                      <p class="ty">Especialidade:
-                        <?php echo $livreDocencia["area_do_conhecimento"][0]["nomeDaEspecialidade"] ?></p>
+                      <p class="ty">
+                        <b class="ty-subItem">Especialidade:</b>
+                        <?php echo $livreDocencia["area_do_conhecimento"][0]["nomeDaEspecialidade"] ?>
+                      </p>
                       <?php endif; ?>
 
                     </div>
@@ -597,28 +633,44 @@ if (!empty($_REQUEST["lattesID"])) {
                   <div class="u-grid-right">
                     <div class="formation">
                       <p class="ty-item">Doutorado em <?php echo $doutorado["nomeCurso"] ?>
-                        <span class="ty formation-date"><?php echo $doutorado["anoDeInicio"] ?> -
+                        <span class="ty u-date-range"><?php echo $doutorado["anoDeInicio"] ?> -
                           <?php echo $doutorado["anoDeConclusao"] ?></span>
                       </p>
                       <p class="ty"><?php echo $doutorado["nomeInstituicao"] ?></p>
                       <div class="u-spacer-1"></div>
-                      <p class="ty">Título do trabalho: <?php echo $doutorado["tituloDaDissertacaoTese"] ?></p>
-                      <p class="ty">Orientador: <?php echo $doutorado["nomeDoOrientador"] ?></p>
+
+                      <p class="ty">
+                        <b class="ty-subItem">Trabalho:</b> <?php echo $doutorado["tituloDaDissertacaoTese"] ?>
+                      </p>
+
+                      <p class="ty">
+                        <b class="ty-subItem">Orientador:</b> <?php echo $doutorado["nomeDoOrientador"] ?>
+                      </p>
+
                       <?php if(!empty($doutorado["area_do_conhecimento"][0]["nomeGrandeAreaDoConhecimento"])): ?>
-                      <p class="ty">Grande área:
-                        <?php echo $doutorado["area_do_conhecimento"][0]["nomeGrandeAreaDoConhecimento"] ?></p>
+                      <p class="ty">
+                        <b class="ty-subItem">Grande área:</b>
+                        <?php echo $doutorado["area_do_conhecimento"][0]["nomeGrandeAreaDoConhecimento"] ?>
+                      </p>
                       <?php endif; ?>
+
                       <?php if(!empty($doutorado["area_do_conhecimento"][0]["nomeDaAreaDoConhecimento"])): ?>
-                      <p class="ty">Área do conhecimento:
-                        <?php echo $doutorado["area_do_conhecimento"][0]["nomeDaAreaDoConhecimento"] ?></p>
+                      <p class="ty">
+                        <b class="ty-subItem">Área do conhecimento:</b>
+                        <?php echo $doutorado["area_do_conhecimento"][0]["nomeDaAreaDoConhecimento"] ?>
+                      </p>
                       <?php endif; ?>
                       <?php if(!empty($doutorado["area_do_conhecimento"][0]["nomeDaSubAreaDoConhecimento"])): ?>
-                      <p class="ty">Sub área:
-                        <?php echo $doutorado["area_do_conhecimento"][0]["nomeDaSubAreaDoConhecimento"] ?></p>
+                      <p class="ty">
+                        <b class="ty-subItem">Sub área:</b>
+                        <?php echo $doutorado["area_do_conhecimento"][0]["nomeDaSubAreaDoConhecimento"] ?>
+                      </p>
                       <?php endif; ?>
                       <?php if(!empty($doutorado["area_do_conhecimento"][0]["nomeDaEspecialidade"])): ?>
-                      <p class="ty">Especialidade:
-                        <?php echo $doutorado["area_do_conhecimento"][0]["nomeDaEspecialidade"] ?></p>
+                      <p class="ty">
+                        <b class="ty-subItem">Especialidade:</b>
+                        <?php echo $doutorado["area_do_conhecimento"][0]["nomeDaEspecialidade"] ?>
+                      </p>
                       <?php endif; ?>
                     </div>
                   </div>
@@ -643,28 +695,46 @@ if (!empty($_REQUEST["lattesID"])) {
                   <div class="u-grid-right">
                     <div class="formation">
                       <p class="ty-item">Mestrado em <?php echo $mestrado["nomeCurso"] ?>
-                        <span class="ty formation-date"><?php echo $mestrado["anoDeInicio"] ?> -
+                        <span class="ty u-date-range"><?php echo $mestrado["anoDeInicio"] ?> -
                           <?php echo $mestrado["anoDeConclusao"] ?></span>
                       </p>
                       <p class="ty"><?php echo $mestrado["nomeInstituicao"] ?></p>
                       <div class="u-spacer-1"></div>
-                      <p class="ty">Título do trabalho: <?php echo $mestrado["tituloDaDissertacaoTese"] ?></p>
-                      <p class="ty">Orientador: <?php echo $mestrado["nomeDoOrientador"] ?></p>
+
+                      <p class="ty">
+                        <b class="ty-subItem">Título do trabalho:</b>
+                        <?php echo $mestrado["tituloDaDissertacaoTese"] ?>
+                      </p>
+                      <p class="ty">
+                        <b class="ty-subItem">Orientador: </b>
+                        <?php echo $mestrado["nomeDoOrientador"] ?>
+                      </p>
+
                       <?php if(!empty($mestrado["area_do_conhecimento"][0]["nomeGrandeAreaDoConhecimento"])): ?>
-                      <p class="ty">Grande área:
-                        <?php echo $mestrado["area_do_conhecimento"][0]["nomeGrandeAreaDoConhecimento"] ?></p>
+                      <p class="ty">
+                        <b class="ty-subItem">Grande área: </b>
+                        <?php echo $mestrado["area_do_conhecimento"][0]["nomeGrandeAreaDoConhecimento"] ?>
+                      </p>
                       <?php endif; ?>
+
                       <?php if(!empty($mestrado["area_do_conhecimento"][0]["nomeDaAreaDoConhecimento"])): ?>
-                      <p class="ty">Área do conhecimento:
-                        <?php echo $mestrado["area_do_conhecimento"][0]["nomeDaAreaDoConhecimento"] ?></p>
+                      <p class="ty">
+                        <b class="ty-subItem">Área do conhecimento:</b>
+                        <?php echo $mestrado["area_do_conhecimento"][0]["nomeDaAreaDoConhecimento"] ?>
+                      </p>
                       <?php endif; ?>
+
                       <?php if(!empty($mestrado["area_do_conhecimento"][0]["nomeDaSubAreaDoConhecimento"])): ?>
-                      <p class="ty">Sub área:
-                        <?php echo $mestrado["area_do_conhecimento"][0]["nomeDaSubAreaDoConhecimento"] ?></p>
+                      <p class="ty">
+                        <b class="ty-subItem">Sub área:</b>
+                        <?php echo $mestrado["area_do_conhecimento"][0]["nomeDaSubAreaDoConhecimento"] ?>
+                      </p>
                       <?php endif; ?>
                       <?php if(!empty($mestrado["area_do_conhecimento"][0]["nomeDaEspecialidade"])): ?>
-                      <p class="ty">Especialidade:
-                        <?php echo $mestrado["area_do_conhecimento"][0]["nomeDaEspecialidade"] ?></p>
+                      <p class="ty">
+                        <b class="ty-subItem">Especialidade:</b>
+                        <?php echo $mestrado["area_do_conhecimento"][0]["nomeDaEspecialidade"] ?>
+                      </p>
                       <?php endif; ?>
 
                     </div>
@@ -690,17 +760,22 @@ if (!empty($_REQUEST["lattesID"])) {
                   <div class="u-grid-right">
                     <div class="formation">
                       <p class="ty-item">Graduação em <?php echo $graduacao["nomeCurso"] ?>
-                        <span class="ty formation-date"><?php echo $graduacao["anoDeInicio"] ?> -
+                        <span class="ty u-date-range"><?php echo $graduacao["anoDeInicio"] ?> -
                           <?php echo $graduacao["anoDeConclusao"] ?></span>
                       </p>
                       <p class="ty"><?php echo $graduacao["nomeInstituicao"] ?></p>
                       <div class="u-spacer-1"></div>
                       <?php if(!empty($graduacao["tituloDoTrabalhoDeConclusaoDeCurso"])): ?>
-                      <p class="ty">Título do trabalho: <?php echo $graduacao["tituloDoTrabalhoDeConclusaoDeCurso"] ?>
+                      <p class="ty">
+                        <b class="ty-subItem">Título do trabalho: </b>
+                        <?php echo $graduacao["tituloDoTrabalhoDeConclusaoDeCurso"] ?>
                       </p>
                       <?php endif; ?>
                       <?php if(!empty($graduacao["nomeDoOrientador"])): ?>
-                      <p class="ty">Orientador: <?php echo $graduacao["nomeDoOrientador"] ?></p>
+                      <p class="ty">
+                        <b class="ty-subItem">Orientador: </b>
+                        <?php echo $graduacao["nomeDoOrientador"] ?>
+                      </p>
                       <?php endif; ?>
                     </div>
                   </div>
@@ -710,6 +785,9 @@ if (!empty($_REQUEST["lattesID"])) {
               <?php endforeach; ?>
 
               <?php endif; ?>
+
+              <h4 class="ty ty-title">Formação complementar</h4>
+
 
             </div> <!-- end edu -->
 
@@ -722,7 +800,7 @@ if (!empty($_REQUEST["lattesID"])) {
           <div id="tab-two" class="tab-content" v-if="tabOpened == '2'">
             <div class="profile-pi">
 
-              <h2 class="ty-title">Produção Intelecual</h2>
+              <h2 class="ty ty-title">Produção Intelecual</h2>
 
 
               <?php 
