@@ -782,6 +782,118 @@ if (!empty($_REQUEST["lattesID"])) {
 
   <h2 class="ty-title">Produção Intelecual</h2>
 
+
+
+<!-- pi: produção intelectual -->
+<?php 
+
+foreach ($cursor_works['hits']['hits'] as $key => $work) {
+  $works[$work['_source']['datePublished']][] = $work;
+}
+
+for ($i = 2040; $i >= 1900; $i -= 1) {
+  if (!empty($works[$i])) {
+
+
+    echo '<hr class="u-line"></hr>
+    <h3 class="ty-subtitle pi-year">'.$i.'</h3>
+    <hr class="u-line"></hr> ';
+
+    foreach ($works[$i] as $key => $work) {
+
+      foreach ($work["_source"]["author"] as $author) {
+        $authors[] = $author["person"]["name"];
+      }
+      
+      echo '<div class="pi">
+      
+        <div class="u-grid">
+
+          <div class="u-grid-left">        
+            
+              <img class="pi-icon" src="assets/img/icons/article-published.svg" />            
+
+          </div>            
+
+          <div class="u-grid-right">
+
+            <div class="pi-separator">
+              <span class="pi-type">'.$work['_source']['tipo'].'</span> 
+              <hr class="pi-separator-ln"></hr>
+            </div>
+            <h4 class="ty-item">'.$work['_source']['name'].'</h4>
+            
+            <span class="u-sr-only">Autores</span>
+            <p class="pi-authors">' . implode('; ', $authors) . '</p>
+                        
+            <div class="pi-moreinfo">
+              
+              <!--
+              <div class="pi-moreinfo-item"> 
+                <img class="pi-moreinfo-icon"
+                  src="assets/img/icons/citation.svg" 
+                  alt="representação de citação" 
+                />
+                
+                <span class="pi-citations">Web Of Science: 12</span>
+                
+                <span class="pi-citations">Scopus 8</span>
+                
+              </div>
+              -->
+              ';
+              if (!empty($work['_source']['url'])) {
+                echo '              
+                <div class="pi-moreinfo-item"> 
+                  <img 
+                    class="pi-moreinfo-icon"
+                    src="assets/img/icons/link.svg" 
+                    alt="representação de um link"
+                  />
+                  
+                  <a href="'.$work['_source']['url'].'" target="blank">Acessar o conteúdo</a>
+                </div>
+              ';
+            }
+             
+            if (!empty($work['_source']['doi'])) {
+              echo '
+              <div class="pi-moreinfo-item">
+
+                <img 
+                class="pi-moreinfo-icon"
+                src="assets/img/logos/doi.svg" 
+                alt="logo DOI"
+                />
+                
+                <a href="https://doi.org/'.$work['_source']['doi'].'"> Acessar o DOI</a>
+              </div>';
+            };
+              
+              echo '
+              
+            </div>
+            <p class="ty-right ty-themeLight">Fonte: Alguma fonte</p>
+                
+          </div>
+
+        </div>
+          
+      </div>';
+      //echo "<pre>".print_r($work,true)."</pre>";
+
+    }
+    unset($authors);
+  }
+}
+
+
+?>
+
+
+
+  
+
   
 
     <hr class="u-line"></hr>
@@ -1178,7 +1290,12 @@ if (!empty($_REQUEST["lattesID"])) {
     <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
     <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
     <?php echo "<pre>".print_r($cursor,true)."</pre>"; ?>
-    <?php echo "<pre>".print_r($cursor_works,true)."</pre>"; ?>     
+    <?php echo "<pre>".print_r($cursor_works,true)."</pre>"; ?>
+    
+    <?php
+      $resultaboutfacet = $authorfacets->authorfacet(basename(__FILE__), "about", 120, "Palavras-chave do autor", null, "_term", $_GET);
+      var_dump($resultaboutfacet, true);
+    ?>
 	</body>
 		
 
