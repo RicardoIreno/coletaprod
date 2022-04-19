@@ -185,7 +185,11 @@ if (!empty($_REQUEST["lattesID"])) {
           <h3 class="ty ty-title">Perfis na web</h3>
           <div class="co-socialIcons">
 
+          <?php if(!empty($profile['lattesID'])) : ?>
+            <a href="https://lattes.cnpq.br/<?php echo $profile['lattesID']; ?>" target="_blank" rel="external"><img href="www.google.com.br" class="co-socialIcons-icon" src="../inc/images/academic_plataforms/logo_lattes.svg" alt="Lattes" title="Lattes" />
+          <?php endif; ?>
 
+          <!--
             <img href="www.google.com.br" class="co-socialIcons-icon"
               src="../inc/images/academic_plataforms/logo_academia_edu.svg" alt="Academia . Edu"
               title="Academia . Edu" />
@@ -201,8 +205,7 @@ if (!empty($_REQUEST["lattesID"])) {
               src="../inc/images/academic_plataforms/logo_innovation_catalyst_global.svg"
               alt="Innovation Catalyst Global" title="Innovation Catalyst Global" />
 
-            <img href="www.google.com.br" class="co-socialIcons-icon"
-              src="../inc/images/academic_plataforms/logo_lattes.svg" alt="Lattes" title="Lattes" />
+            
 
             <img href="www.google.com.br" class="co-socialIcons-icon"
               src="../inc/images/academic_plataforms/logo_mendeley.svg" alt="Mendely" title="Mendely" />
@@ -228,6 +231,7 @@ if (!empty($_REQUEST["lattesID"])) {
 
             <img href="www.google.com" class="co-socialIcons-icon" src="../inc/images/social/facebook.svg" alt="Twitter"
               title="Twitter" />
+          -->
 
           </div>
 
@@ -890,14 +894,20 @@ if (!empty($_REQUEST["lattesID"])) {
                               echo '
                               
                             </div>
-                            <p class="ty-right ty-themeLight">Fonte: Alguma fonte</p>
+                            <p class="ty-right ty-themeLight">Fonte: '; 
+                            echo  (!empty($work['_source']['isPartOf']['name'])) ? $work['_source']['isPartOf']['name'] : '';
+                            echo (!empty($work['_source']['isPartOf']['volume'])) ? ', v.'.$work['_source']['isPartOf']['volume'] : '';
+                            echo (!empty($work['_source']['isPartOf']['fasciculo'])) ? ', n.'.$work['_source']['isPartOf']['fasciculo'] : '';
+                            echo (!empty($work['_source']['pageStart'])) ? ', p.'.$work['_source']['pageStart'] : '';
+                            echo '
+                            </p>
                                 
                           </div>
 
                         </div>
                           
                       </div>';
-                      //echo "<pre>".print_r($work,true)."</pre>";
+                      //echo "<pre>".print_r($work, true)."</pre>";
 
                     }
                     unset($authors);
