@@ -164,6 +164,10 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
   font-weight: 600;
   color: #1C9AD1;
 }
+.ty-subItem-light {
+  font-weight: 700;
+  color: #7fd1f5;
+}
 .ty-right {
   text-align: end;
 }
@@ -518,7 +522,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
   width: 50px;
 }
 .pi-iconlang {
-  width: 30px;
+  width: 50px;
 }
 .pi-moreinfo {
   width: 100%;
@@ -747,7 +751,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
   color: #000;
   transition: all 0.4s 0s ease;
 }
-.tab-container {
+.tab-content {
   padding-top: 2rem;
 }
 .tab-active {

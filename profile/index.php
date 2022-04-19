@@ -177,8 +177,176 @@ if (!empty($_REQUEST["lattesID"])) {
 
         </div> <!-- end core-two -->
 
-      </div> <!-- end core -->
+        <div class="core-three">
 
+          <div class="co-numbers">
+            <span class="co-numbers-number">
+              <img class="co-numbers-icon" src="../inc/images/icons/article-published.svg" alt="Artigos publicados" />
+              45
+            </span>
+
+            <span class="co-numbers-number">
+              <img class="co-numbers-icon" src="../inc/images/icons/article-aproved.svg" alt="Artigos aprovados" />
+              35
+            </span>
+
+            <span class="co-numbers-number">
+              <img class="co-numbers-icon" src="../inc/images/icons/orientation.svg" alt="Orientações" />
+              12
+            </span>
+
+            <span class="co-numbers-number">
+              <img class="co-numbers-icon" src="../inc/images/icons/research.svg" alt="Pesquisas" />
+              15
+            </span>
+
+            <span class="co-numbers-number">
+              <img class="co-numbers-icon" src="../inc/images/icons/event.svg" alt="Eventos participados" />
+              41
+            </span>
+
+          </div> <!-- end profile-numbers -->
+
+
+          <a class="u-skip" href=”#skipgraph”>Pular gráfico</a>
+
+          <div class="graph">
+
+            <div class="graph-line">
+              <span class="graph-label">Artigos publicados</span>
+              <?php 
+                foreach ($artigos_publicados as $i => $j) {
+                  echo 
+                  "<div 
+                    class='graph-unit' 
+                    data-weight='{$j['total']}'
+                    title='{$j['year']} — total: {$j['total']}'
+                  ></div>";
+                }
+                unset($i);
+                unset($j);
+              ?>
+            </div>
+
+            <div class="graph-line">
+              <span class="graph-label">Livros e capítulos</span>
+              <?php 
+                foreach ($livros_e_capitulos as $i => $j) {
+                  echo 
+                    "<div 
+                      class='graph-unit' 
+                      data-weight='{$j['total']}'
+                      title='{$j['year']} — total: {$j['total']}'
+                    ></div>";
+                }
+                unset($i);
+                unset($j);
+              ?>
+            </div>
+
+            <div class="graph-line graph-division">
+              <span class="graph-label">Orientações de mestrado</span>
+              <?php 
+                foreach ($orientacoes_mestrado as $i => $j) {
+                  echo 
+                    "<div 
+                      class='graph-unit' 
+                      data-weight='{$j['total']}'
+                      title='{$j['year']} — total: {$j['total']}'
+                    ></div>";
+                }
+                unset($i);
+                unset($j);
+              ?>
+            </div>
+
+            <div class="graph-line">
+              <span class="graph-label">Orientações de doutorado</span>
+              <?php 
+                foreach ($orientacoes_doutorado as $i => $j) {
+                  echo 
+                    "<div 
+                      class='graph-unit' 
+                      data-weight='{$j['total']}'
+                      title='{$j['year']} — total: {$j['total']}'
+                    ></div>";
+                }
+                unset($i);
+                unset($j);
+              ?>
+            </div>
+
+            <div class="graph-line">
+              <span class="graph-label">Ensino</span>
+              <?php 
+                foreach ($ensino as $i => $j) {
+                  echo 
+                    "<div 
+                      class='graph-unit' 
+                      data-weight='{$j['total']}'
+                      title='{$j['year']} — total: {$j['total']}'
+                    ></div>";
+                }
+                unset($i);
+                unset($j);
+              ?>
+            </div>
+
+            <div class="graph-line graph-division">
+              <span class="graph-label">Softwares e patentes</span>
+              <?php 
+                foreach ($softwares_patentes as $i => $j) {
+                  echo 
+                    "<div 
+                      class='graph-unit' 
+                      data-weight='{$j['total']}'
+                      title='{$j['year']} — total: {$j['total']}'
+                    ></div>";
+                }
+                unset($i);
+                unset($j);
+              ?>
+            </div>
+
+            <div class="graph-line">
+              <span class="graph-label">Participações em eventos</span>
+              <?php 
+                foreach ($participacoes_eventos as $i => $j) {
+                echo 
+                  "<div 
+                    class='graph-unit' 
+                    data-weight='{$j['total']}'
+                    title='{$j['year']} — total: {$j['total']}'
+                  ></div>";
+                }
+                unset($i);
+                unset($j);
+              ?>
+            </div>
+
+            <div class="graph-line">
+              <div class="graph-icon"></div>
+              <div class="graph-label">2021 ————— 2015</div>
+            </div>
+
+          </div> <!-- end graph -->
+
+
+          <div class="graph-info">
+            <span class="graph-info-label">+</span>
+            <div class="graph-unit" data-weight="4"></div>
+            <div class="graph-unit" data-weight="3"></div>
+            <div class="graph-unit" data-weight="2"></div>
+            <div class="graph-unit" data-weight="1"></div>
+            <div class="graph-unit" data-weight="0"></div>
+            <span class="graph-info-label">-</span>
+          </div>
+
+
+        </div> <!-- end core-three -->
+
+
+      </div> <!-- end core -->
 
 
       <span class="u-skip" id="skipgraph”" class="ty ty-lastUpdate">Atualizado em
@@ -201,7 +369,6 @@ if (!empty($_REQUEST["lattesID"])) {
         <div id="tab-one" class="tab-content" v-if="tabOpened == '1'">
 
 
-
           <div class="p-description">
             <h3 class="ty ty-title">Resumo</h3>
             <p class="ty">
@@ -216,16 +383,16 @@ if (!empty($_REQUEST["lattesID"])) {
           <div class="p-tags">
             <ul class="tag-cloud" role="navigation" aria-label="Tags mais usadas">
               <?php foreach ($tags as $t=> $tag) {
-      echo
-      "<li>
-        <a class='tag' href='' data-weight={$tag['weight']}>
-          {$tag['name']}</a>
-      </li>";
-      }
-      unset($t);
-      unset($name);
-      unset($value);
-      ?>
+                echo
+                "<li>
+                  <a class='tag' href='' data-weight={$tag['weight']}>
+                    {$tag['name']}</a>
+                </li>";
+                }
+                unset($t);
+                unset($name);
+                unset($value);
+                ?>
             </ul>
           </div> <!-- end p-tags -->
 
@@ -243,28 +410,34 @@ if (!empty($_REQUEST["lattesID"])) {
 
               <div class="u-grid-left">
                 <?php 
-        switch ($idioma["descricaoDoIdioma"]) {
-          case "Inglês":
-            echo "<img class='pi-iconlang' src='../inc/images/icons/languages/en.svg' />";
-            break;
-          case "Espanhol":
-            echo "<img class='pi-iconlang' src='../inc/images/icons/languages/es.svg' />";
-            break;
-          case "Português":
-            echo "<img class='pi-iconlang' src='../inc/images/icons/languages/pt.svg' />";
-            break;
-        }
-      ?>
-
+                  switch ($idioma["descricaoDoIdioma"]) {
+                    case "Inglês":
+                      echo "<img class='pi-iconlang' src='../inc/images/icons/languages/en.svg' />";
+                      break;
+                    case "Espanhol":
+                      echo "<img class='pi-iconlang' src='../inc/images/icons/languages/es.svg' />";
+                      break;
+                    case "Português":
+                      echo "<img class='pi-iconlang' src='../inc/images/icons/languages/pt.svg' />";
+                      break;
+                  }
+                ?>
               </div>
 
               <div class="u-grid-right">
-                <p>
-                  <span><?php echo $idioma["descricaoDoIdioma"] ?>:</span>
-                  Compreende <?php echo $idioma["proficienciaDeCompreensao"] ?>,
-                  Fala <?php echo $idioma["proficienciaDeFala"] ?>,
-                  Lê <?php echo $idioma["proficienciaDeLeitura"] ?>,
-                  Escreve <?php echo $idioma["proficienciaDeEscrita"] ?>
+                <p class="ty ty-item"><?php echo $idioma["descricaoDoIdioma"] ?></p>
+                <p class="ty" style="margin-bottom:10px;">
+
+                  Compreende <?php echo strtolower($idioma["proficienciaDeCompreensao"]) ?>
+                  <b class="ty-subItem-light">/</b>
+
+                  Fala <?php echo strtolower($idioma["proficienciaDeFala"]) ?>
+                  <b class="ty-subItem-light">/</b>
+
+                  Lê <?php echo strtolower($idioma["proficienciaDeLeitura"]) ?>
+                  <b class="ty-subItem-light">/</b>
+
+                  Escreve <?php echo strtolower($idioma["proficienciaDeEscrita"]) ?>
                 </p>
 
               </div>
