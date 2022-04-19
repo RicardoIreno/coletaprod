@@ -77,6 +77,7 @@ if (!empty($_REQUEST["lattesID"])) {
     header("Location: https://unifesp.br/prodmais/index.php");
     die();
 }
+//echo "<pre>".print_r($profile, true)."</pre>";
 ?>
 
 <!DOCTYPE HTML>
@@ -190,7 +191,10 @@ if (!empty($_REQUEST["lattesID"])) {
           <div class="co-socialIcons">
 
           <?php if(!empty($profile['lattesID'])) : ?>
-            <a href="https://lattes.cnpq.br/<?php echo $profile['lattesID']; ?>" target="_blank" rel="external"><img href="www.google.com.br" class="co-socialIcons-icon" src="../inc/images/academic_plataforms/logo_lattes.svg" alt="Lattes" title="Lattes" />
+            <a href="https://lattes.cnpq.br/<?php echo $profile['lattesID']; ?>" target="_blank" rel="external"><img class="co-socialIcons-icon" src="../inc/images/academic_plataforms/logo_lattes.svg" alt="Lattes" title="Lattes" /></a>
+          <?php endif; ?>
+          <?php if(!empty($profile['orcid_id'])) : ?>
+            <a href="<?php echo $profile['orcid_id']; ?>" target="_blank" rel="external"><img class="co-socialIcons-icon" src="../inc/images/academic_plataforms/logo_research_id.svg" alt="ORCID" title="ORCID" /></a>
           <?php endif; ?>
 
           <!--
@@ -240,6 +244,7 @@ if (!empty($_REQUEST["lattesID"])) {
           </div>
 
         </div>
+        <!--
 
         <div class="core-three">
 
@@ -270,6 +275,8 @@ if (!empty($_REQUEST["lattesID"])) {
             </span>
 
           </div>
+
+          
 
           <div class="graph">
             <a class="u-skip" href=”#skipgraph”>Pular gráfico</a>
@@ -453,7 +460,8 @@ if (!empty($_REQUEST["lattesID"])) {
 
 
 
-          </div> <!-- // graph -->
+          </div> 
+
 
           <div class="graph-info">
             <span class="graph-info-label">+</span>
@@ -464,12 +472,14 @@ if (!empty($_REQUEST["lattesID"])) {
             <div class="graph-unit" data-weight="0"></div>
             <span class="graph-info-label">-</span>
           </div>
+                    -->
+          <!-- // graph -->
         </div>
 
 
       </div> <!-- end Core -->
 
-      <span class="u-skip" id="skipgraph”" class="ty ty-lastUpdate">Atualizado em 20.02.2022</span>
+      <span class="u-skip" id="skipgraph”" class="ty ty-lastUpdate">Atualizado em <?php echo $profile['data_atualizacao']; ?></span>
       <div id="tabs" class="profile-tabs">
 
 
