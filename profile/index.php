@@ -491,30 +491,32 @@ if (!empty($_REQUEST["lattesID"])) {
                 <p><?php echo $profile["resumo_cv"]["texto_resumo_cv_rh"] ?></p>
               </div>
               <div class="u-spacer-2"></div>
+              <!--
 
               <div class="p-tags">
                 <h3 class="ty ty-title">Tags mais usadas</h3>
 
                 <ul class="tag-cloud" role="navigation" aria-label="Tags mais usadas">
-                  <?php 
-              foreach ($tags as $t => $tag) {
-                  echo 
-                    "<li>
-                      <a 
-                        class='tag' 
-                        href='' 
-                        data-weight={$tag['weight']}
-                      >
-                        {$tag['name']}</a>
-                    </li>";
-              }
-              unset($t); 
-              unset($name); 
-              unset($value); 
-            ?>
+                  < ?php 
+                    foreach ($tags as $t => $tag) {
+                        echo 
+                          "<li>
+                            <a 
+                              class='tag' 
+                              href='' 
+                              data-weight={$tag['weight']}
+                            >
+                              {$tag['name']}</a>
+                          </li>";
+                    }
+                    unset($t); 
+                    unset($name); 
+                    unset($value); 
+                  ?>
                 </ul>
 
               </div>
+              -->
               <div class="u-spacer-2"></div>
 
             </div> <!-- end profile-desc -->
@@ -790,8 +792,9 @@ if (!empty($_REQUEST["lattesID"])) {
 
               <?php endif; ?>
 
+              <!--
               <h4 class="ty ty-title">Formação complementar</h4>
-
+              -->
 
             </div> <!-- end edu -->
 
