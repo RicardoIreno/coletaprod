@@ -163,12 +163,16 @@ if (!empty($_REQUEST["lattesID"])) {
           <h1 class="ty-name"><?php echo $profile["nome_completo"] ?></h1>
           <!-- <div class="u-spacer-2  "></div> -->
           <h2 class="ty ty-prof">Universidade Federal de São Paulo</h2>
-          <p class="ty ty-prof"><?php echo $profile["unidade"][0] ?></p>
-          <p class="ty ty-prof"><?php echo $profile["departamento"][0] ?></p>
+          <?php if(!empty($profile["unidade"][0])) : ?>
+            <p class="ty ty-prof"><?php echo $profile["unidade"][0] ?></p>
+          <?php endif; ?>
+          <?php if(!empty($profile["departamento"][0])) : ?>
+            <p class="ty ty-prof"><?php echo $profile["departamento"][0] ?></p>
+          <?php endif; ?>
           <?php if(isset($profile["ppg_nome"])): ?>
-          <?php foreach ($profile["ppg_nome"] as $key => $ppg_nome): ?>
-          <p class="ty ty-prof">Programa de Pós-Graduação: <?php echo $ppg_nome ?></p>
-          <?php endforeach; ?>
+            <?php foreach ($profile["ppg_nome"] as $key => $ppg_nome): ?>
+              <p class="ty ty-prof">Programa de Pós-Graduação: <?php echo $ppg_nome ?></p>
+            <?php endforeach; ?>
           <?php endif; ?>
           <!-- <p class="ty ty-email">bertola@unifesp.br</p> -->
           <div class="u-spacer-1"></div>
