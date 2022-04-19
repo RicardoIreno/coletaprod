@@ -360,7 +360,7 @@ if (!empty($_REQUEST["lattesID"])) {
         <div class="tab-bar">
           <button id="tab-btn-1" class="tab-btn" v-on:click="changeTab('1')">Sobre Mim</button>
           <button id="tab-btn-2" class="tab-btn" v-on:click="changeTab('2')">Produção Intelectual</button>
-          <!-- <button id="tab-btn-3" class="tab-btn" v-on:click="changeTab('3')">Pesquisa</button> -->
+          <button id="tab-btn-3" class="tab-btn" v-on:click="changeTab('3')">Pesquisa</button>
           <!-- <button id="tab-btn-4" class="tab-btn" v-on:click="changeTab('4')">Orientações</button> -->
         </div>
 
@@ -396,13 +396,11 @@ if (!empty($_REQUEST["lattesID"])) {
             </ul>
           </div> <!-- end p-tags -->
 
-          <div class="u-spacer-2"></div>
-
-
+          <hr class="u-line u-margin-b-2" />
 
 
           <?php if(isset($profile["idiomas"])): ?>
-          <div class="p-language">
+          <div class=" p-language">
             <h3 class="ty ty-title">Idiomas</h3>
             <?php foreach ($profile["idiomas"] as $key => $idioma): ?>
 
@@ -446,7 +444,7 @@ if (!empty($_REQUEST["lattesID"])) {
           </div> <!-- end p-language -->
           <?php endif; ?>
 
-
+          <hr class="u-line u-margin-b-2" />
 
           <h3 class="ty ty-title">Formação</h3>
 
@@ -717,7 +715,7 @@ if (!empty($_REQUEST["lattesID"])) {
                         <h4 class="ty-item">'.$work['_source']['name'].'</h4>
                         
                         <span class="u-sr-only">Autores</span>
-                        <p class="pi-authors">' . implode('; ', $authors) . '</p>
+                        <p class="ty-authors">' . implode('; ', $authors) . '</p>
                                     
                         <div class="pi-moreinfo">
                           
@@ -792,6 +790,43 @@ if (!empty($_REQUEST["lattesID"])) {
 
 
         <div id="tab-three" class="tab-content" v-if="tabOpened == '3'">
+          <h3 class="ty ty-title u-spacer-2">Projetos de Pesquisa</h3>
+
+          <hr class="u-line u-spacer-2">
+
+          <div class="u-grid">
+            <div class="u-grid-left">
+              <img class='pi-iconlang' src='../inc/images/icons/research.svg' />
+            </div>
+
+            <div class="u-grid-right">
+
+              <p class="ty ty-item u-spacer-1">Projeto de Pesquisa X <span class="ty u-date-range"> 2019 - 2022</span>
+              </p>
+              <p class="ty u-spacer-1">
+                <b class="ty-subItem">Sobre o projeto:</b>
+                A infertilidade masculina é multifatorial. Diversos estudos de nossos e outros grupos
+                demonstraram que a varicocele, por exemplo, diminui a qualidade seminal, a qualidade funcional dos
+                espermatozoides e altera o perfil proteômico do plasma seminal. Comisso, torna-se fundamental
+                compreender quais são os mecanismos intrínsecos da transferência proteica presentes no sêmen. Os
+                espermatozoides são expostos a microvesículas e exossomos durante o trânsito epididimário e após a
+                ejaculação. Essas microvesículas apresentamcomposição proteica própria o que pode ser fundamental para o
+                transporte e transferência proteica.
+              </p>
+
+              <p class="ty u-spacer-1">
+                <b class="ty-subItem">Integrantes:</b>
+                <span class="ty-authors">
+                  Ricardo Pimenta Bertolla - Coordenador / Mariana Camargo - Integrante / Paula Intasqui Lopes -
+                  Integrante / ANTONIASSI, M. P. - Integrante / Larissa Berloffa Belardin
+                </span>
+              </p>
+
+
+            </div> <!-- end-grid-right -->
+
+          </div><!-- end-grid -->
+
         </div> <!-- end tab-three -->
 
 
@@ -815,7 +850,7 @@ if (!empty($_REQUEST["lattesID"])) {
   var app = new Vue({
     el: '#tabs',
     data: {
-      tabOpened: '1',
+      tabOpened: '3',
       isActive: false
 
     },

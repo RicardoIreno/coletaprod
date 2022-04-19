@@ -124,6 +124,15 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
 
 // PROFILE 
 .ty {
+  &-author {
+    color: #000;
+    font-weight: 700;
+  }
+
+  &-authors {
+    color: rgb(139, 139, 139)
+  }
+
   &-name {
     font-size: 2rem;
     line-height: 2.2rem;
@@ -149,4 +158,6 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
     color:rgb(161, 161, 161);
     text-align: right;
   }
+
+
 }
