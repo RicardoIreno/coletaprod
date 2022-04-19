@@ -177,6 +177,175 @@ if (!empty($_REQUEST["lattesID"])) {
 
         </div> <!-- end core-two -->
 
+        <div class="core-three">
+
+          <div class="co-numbers">
+            <span class="co-numbers-number">
+              <img class="co-numbers-icon" src="../inc/images/icons/article-published.svg" alt="Artigos publicados" />
+              45
+            </span>
+
+            <span class="co-numbers-number">
+              <img class="co-numbers-icon" src="../inc/images/icons/article-aproved.svg" alt="Artigos aprovados" />
+              35
+            </span>
+
+            <span class="co-numbers-number">
+              <img class="co-numbers-icon" src="../inc/images/icons/orientation.svg" alt="Orientações" />
+              12
+            </span>
+
+            <span class="co-numbers-number">
+              <img class="co-numbers-icon" src="../inc/images/icons/research.svg" alt="Pesquisas" />
+              15
+            </span>
+
+            <span class="co-numbers-number">
+              <img class="co-numbers-icon" src="../inc/images/icons/event.svg" alt="Eventos participados" />
+              41
+            </span>
+
+          </div> <!-- end profile-numbers -->
+
+
+          <a class="u-skip" href=”#skipgraph”>Pular gráfico</a>
+
+          <div class="graph">
+
+            <div class="graph-line">
+              <span class="graph-label">Artigos publicados</span>
+              <?php 
+                foreach ($artigos_publicados as $i => $j) {
+                  echo 
+                  "<div 
+                    class='graph-unit' 
+                    data-weight='{$j['total']}'
+                    title='{$j['year']} — total: {$j['total']}'
+                  ></div>";
+                }
+                unset($i);
+                unset($j);
+              ?>
+            </div>
+
+            <div class="graph-line">
+              <span class="graph-label">Livros e capítulos</span>
+              <?php 
+                foreach ($livros_e_capitulos as $i => $j) {
+                  echo 
+                    "<div 
+                      class='graph-unit' 
+                      data-weight='{$j['total']}'
+                      title='{$j['year']} — total: {$j['total']}'
+                    ></div>";
+                }
+                unset($i);
+                unset($j);
+              ?>
+            </div>
+
+            <div class="graph-line graph-division">
+              <span class="graph-label">Orientações de mestrado</span>
+              <?php 
+                foreach ($orientacoes_mestrado as $i => $j) {
+                  echo 
+                    "<div 
+                      class='graph-unit' 
+                      data-weight='{$j['total']}'
+                      title='{$j['year']} — total: {$j['total']}'
+                    ></div>";
+                }
+                unset($i);
+                unset($j);
+              ?>
+            </div>
+
+            <div class="graph-line">
+              <span class="graph-label">Orientações de doutorado</span>
+              <?php 
+                foreach ($orientacoes_doutorado as $i => $j) {
+                  echo 
+                    "<div 
+                      class='graph-unit' 
+                      data-weight='{$j['total']}'
+                      title='{$j['year']} — total: {$j['total']}'
+                    ></div>";
+                }
+                unset($i);
+                unset($j);
+              ?>
+            </div>
+
+            <div class="graph-line">
+              <span class="graph-label">Ensino</span>
+              <?php 
+                foreach ($ensino as $i => $j) {
+                  echo 
+                    "<div 
+                      class='graph-unit' 
+                      data-weight='{$j['total']}'
+                      title='{$j['year']} — total: {$j['total']}'
+                    ></div>";
+                }
+                unset($i);
+                unset($j);
+              ?>
+            </div>
+
+            <div class="graph-line graph-division">
+              <span class="graph-label">Softwares e patentes</span>
+              <?php 
+                foreach ($softwares_patentes as $i => $j) {
+                  echo 
+                    "<div 
+                      class='graph-unit' 
+                      data-weight='{$j['total']}'
+                      title='{$j['year']} — total: {$j['total']}'
+                    ></div>";
+                }
+                unset($i);
+                unset($j);
+              ?>
+            </div>
+
+            <div class="graph-line">
+              <span class="graph-label">Participações em eventos</span>
+              <?php 
+                foreach ($participacoes_eventos as $i => $j) {
+                echo 
+                  "<div 
+                    class='graph-unit' 
+                    data-weight='{$j['total']}'
+                    title='{$j['year']} — total: {$j['total']}'
+                  ></div>";
+                }
+                unset($i);
+                unset($j);
+              ?>
+            </div>
+
+            <div class="graph-line">
+              <div class="graph-icon"></div>
+              <div class="graph-label">2021 ————— 2015</div>
+            </div>
+
+          </div> <!-- end graph -->
+
+
+          <div class="graph-info">
+            <span class="graph-info-label">+</span>
+            <div class="graph-unit" data-weight="4"></div>
+            <div class="graph-unit" data-weight="3"></div>
+            <div class="graph-unit" data-weight="2"></div>
+            <div class="graph-unit" data-weight="1"></div>
+            <div class="graph-unit" data-weight="0"></div>
+            <span class="graph-info-label">-</span>
+          </div>
+
+
+        </div> <!-- end core-three -->
+
+
       </div> <!-- end core -->
 
 
