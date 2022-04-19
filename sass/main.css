@@ -182,6 +182,13 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
   color: #7fd1f5;
 }
 
+.ty-author {
+  color: #000;
+  font-weight: 700;
+}
+.ty-authors {
+  color: rgb(139, 139, 139);
+}
 .ty-name {
   font-size: 2rem;
   line-height: 2.2rem;
@@ -501,13 +508,6 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
 
 .pi {
   margin-block: 2rem;
-}
-.pi-author {
-  color: #000;
-  font-weight: 700;
-}
-.pi-authors {
-  color: rgb(139, 139, 139);
 }
 .pi-citationIcon {
   width: 30px;
@@ -993,6 +993,13 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
 
 .u-li {
   margin-left: 0.8rem;
+}
+
+.u-margin-b-1 {
+  margin-block: 1rem;
+}
+.u-margin-b-2 {
+  margin-block: 2rem;
 }
 
 .u-right {
