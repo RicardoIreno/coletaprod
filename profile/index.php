@@ -349,7 +349,6 @@ if (!empty($_REQUEST["lattesID"])) {
       </div> <!-- end core -->
 
 
-
       <span class="u-skip" id="skipgraph”" class="ty ty-lastUpdate">Atualizado em
         <?php echo $profile['data_atualizacao']; ?></span>
 
@@ -370,7 +369,6 @@ if (!empty($_REQUEST["lattesID"])) {
         <div id="tab-one" class="tab-content" v-if="tabOpened == '1'">
 
 
-
           <div class="p-description">
             <h3 class="ty ty-title">Resumo</h3>
             <p class="ty">
@@ -385,16 +383,16 @@ if (!empty($_REQUEST["lattesID"])) {
           <div class="p-tags">
             <ul class="tag-cloud" role="navigation" aria-label="Tags mais usadas">
               <?php foreach ($tags as $t=> $tag) {
-      echo
-      "<li>
-        <a class='tag' href='' data-weight={$tag['weight']}>
-          {$tag['name']}</a>
-      </li>";
-      }
-      unset($t);
-      unset($name);
-      unset($value);
-      ?>
+                echo
+                "<li>
+                  <a class='tag' href='' data-weight={$tag['weight']}>
+                    {$tag['name']}</a>
+                </li>";
+                }
+                unset($t);
+                unset($name);
+                unset($value);
+                ?>
             </ul>
           </div> <!-- end p-tags -->
 
@@ -412,28 +410,34 @@ if (!empty($_REQUEST["lattesID"])) {
 
               <div class="u-grid-left">
                 <?php 
-        switch ($idioma["descricaoDoIdioma"]) {
-          case "Inglês":
-            echo "<img class='pi-iconlang' src='../inc/images/icons/languages/en.svg' />";
-            break;
-          case "Espanhol":
-            echo "<img class='pi-iconlang' src='../inc/images/icons/languages/es.svg' />";
-            break;
-          case "Português":
-            echo "<img class='pi-iconlang' src='../inc/images/icons/languages/pt.svg' />";
-            break;
-        }
-      ?>
-
+                  switch ($idioma["descricaoDoIdioma"]) {
+                    case "Inglês":
+                      echo "<img class='pi-iconlang' src='../inc/images/icons/languages/en.svg' />";
+                      break;
+                    case "Espanhol":
+                      echo "<img class='pi-iconlang' src='../inc/images/icons/languages/es.svg' />";
+                      break;
+                    case "Português":
+                      echo "<img class='pi-iconlang' src='../inc/images/icons/languages/pt.svg' />";
+                      break;
+                  }
+                ?>
               </div>
 
               <div class="u-grid-right">
-                <p>
-                  <span><?php echo $idioma["descricaoDoIdioma"] ?>:</span>
-                  Compreende <?php echo $idioma["proficienciaDeCompreensao"] ?>,
-                  Fala <?php echo $idioma["proficienciaDeFala"] ?>,
-                  Lê <?php echo $idioma["proficienciaDeLeitura"] ?>,
-                  Escreve <?php echo $idioma["proficienciaDeEscrita"] ?>
+                <p class="ty ty-item"><?php echo $idioma["descricaoDoIdioma"] ?></p>
+                <p class="ty" style="margin-bottom:10px;">
+
+                  Compreende <?php echo strtolower($idioma["proficienciaDeCompreensao"]) ?>
+                  <b class="ty-subItem-light">/</b>
+
+                  Fala <?php echo strtolower($idioma["proficienciaDeFala"]) ?>
+                  <b class="ty-subItem-light">/</b>
+
+                  Lê <?php echo strtolower($idioma["proficienciaDeLeitura"]) ?>
+                  <b class="ty-subItem-light">/</b>
+
+                  Escreve <?php echo strtolower($idioma["proficienciaDeEscrita"]) ?>
                 </p>
 
               </div>
