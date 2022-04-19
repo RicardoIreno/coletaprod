@@ -94,7 +94,7 @@ if (!empty($_REQUEST["lattesID"])) {
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 
-<body>
+<body class="profile-body">
 
   <!-- NAV -->
   <?php require 'inc/navbar.php'; ?>
@@ -104,10 +104,8 @@ if (!empty($_REQUEST["lattesID"])) {
     <div class="profile-wrapper">
 
 
-      <!-- ## SEÇÃO CORE -->
 
       <div class="core">
-
         <div class="core-one">
 
           <div class="co-photo-wrapper">
@@ -116,70 +114,43 @@ if (!empty($_REQUEST["lattesID"])) {
               <img class="co-photo"
                 src="http://servicosweb.cnpq.br/wspessoa/servletrecuperafoto?tipo=1&amp;bcv=true&amp;id=<?php echo $lattesID10; ?>" />
             </div>
-          </div>
+          </div> <!-- end co-photo-wrapper -->
 
           <?php if($profile["nacionalidade"]=="B") : ?>
           <img class="country-flag" src="../inc/images/country_flags/br.svg" alt="nacionalidade brasileira"
             title="nacionalidade brasileira" />
           <?php endif; ?>
-          <!--
-      
-      <div class="co-badgeIcons">
-        
-        
-          <img 
-            class="co-badgeIcons-icon" 
-            
-              src="../inc/images/badges/bolsista-cnpq-1a.svg" 
-              alt="Bolsista CNPQ nível 1A"
-              title="Bolsista CNPQ nível 1A"
-              
-          />
-        
-        
-          <img 
-            class="co-badgeIcons-icon" 
-            
-              src="../inc/images/badges/member.svg"
-              alt="Membro de conselho ou comissão"  
-              title="Membro de conselho ou comissão"  
-              
-          />
-        
-        
-          <img 
-            class="co-badgeIcons-icon" 
-            
-              src="../inc/images/badges/leader.svg" 
-              alt="Exercedor de cargo de chefia"
-              title="Exercedor de cargo de chefia"
-              
-          />
-        
-      </div> 
-      -->
-        </div>
+
+
+          <div class="co-badgeIcons">
+            <img class="co-badgeIcons-icon" src="../inc/images/badges/bolsista-cnpq-1a.svg" alt="Bolsista CNPQ nível 1A"
+              title="Bolsista CNPQ nível 1A" />
+
+            <img class="co-badgeIcons-icon" src="../inc/images/badges/member.svg" alt="Membro de conselho ou comissão"
+              title="Membro de conselho ou comissão" />
+
+            <img class="co-badgeIcons-icon" src="../inc/images/badges/leader.svg" alt="Exercedor de cargo de chefia"
+              title="Exercedor de cargo de chefia" />
+          </div> <!-- end co-badgeIcons -->
+
+        </div> <!-- end core-one -->
 
         <div class="core-two">
           <h1 class="ty-name"><?php echo $profile["nome_completo"] ?></h1>
           <!-- <div class="u-spacer-2  "></div> -->
           <h2 class="ty ty-prof">Universidade Federal de São Paulo</h2>
           <?php if(!empty($profile["unidade"][0])) : ?>
-            <p class="ty ty-prof"><?php echo $profile["unidade"][0] ?></p>
+          <p class="ty ty-prof"><?php echo $profile["unidade"][0] ?></p>
           <?php endif; ?>
           <?php if(!empty($profile["departamento"][0])) : ?>
-            <p class="ty ty-prof"><?php echo $profile["departamento"][0] ?></p>
+          <p class="ty ty-prof"><?php echo $profile["departamento"][0] ?></p>
           <?php endif; ?>
           <?php if(isset($profile["ppg_nome"])): ?>
-            <?php foreach ($profile["ppg_nome"] as $key => $ppg_nome): ?>
-              <p class="ty ty-prof">Programa de Pós-Graduação: <?php echo $ppg_nome ?></p>
-            <?php endforeach; ?>
+          <?php foreach ($profile["ppg_nome"] as $key => $ppg_nome): ?>
+          <p class="ty ty-prof">Programa de Pós-Graduação: <?php echo $ppg_nome ?></p>
+          <?php endforeach; ?>
           <?php endif; ?>
           <!-- <p class="ty ty-email">bertola@unifesp.br</p> -->
-          <div class="u-spacer-1"></div>
-
-
-
           <div class="u-spacer-1"></div>
 
           <h3 class="ty ty-title">Nomes em citações bibliográficas</h3>
@@ -190,296 +161,31 @@ if (!empty($_REQUEST["lattesID"])) {
           <h3 class="ty ty-title">Perfis na web</h3>
           <div class="co-socialIcons">
 
-          <?php if(!empty($profile['lattesID'])) : ?>
-            <a href="https://lattes.cnpq.br/<?php echo $profile['lattesID']; ?>" target="_blank" rel="external"><img class="co-socialIcons-icon" src="../inc/images/academic_plataforms/logo_lattes.svg" alt="Lattes" title="Lattes" /></a>
-          <?php endif; ?>
-          <?php if(!empty($profile['orcid_id'])) : ?>
-            <a href="<?php echo $profile['orcid_id']; ?>" target="_blank" rel="external"><img class="co-socialIcons-icon" src="../inc/images/academic_plataforms/logo_research_id.svg" alt="ORCID" title="ORCID" /></a>
-          <?php endif; ?>
+            <?php if(!empty($profile['lattesID'])) : ?>
 
-          <!--
-            <img href="www.google.com.br" class="co-socialIcons-icon"
-              src="../inc/images/academic_plataforms/logo_academia_edu.svg" alt="Academia . Edu"
-              title="Academia . Edu" />
+            <a href="https://lattes.cnpq.br/<?php echo $profile['lattesID']; ?>" target="_blank" rel="external"><img
+                class="co-socialIcons-icon" src="../inc/images/academic_plataforms/logo_lattes.svg" alt="Lattes"
+                title="Lattes" /></a>
+            <?php endif; ?>
+            <?php if(!empty($profile['orcid_id'])) : ?>
+            <a href="<?php echo $profile['orcid_id']; ?>" target="_blank" rel="external"><img
+                class="co-socialIcons-icon" src="../inc/images/academic_plataforms/logo_research_id.svg" alt="ORCID"
+                title="ORCID" /></a>
+            <?php endif; ?>
 
-            <img href="www.google.com.br" class="co-socialIcons-icon"
-              src="../inc/images/academic_plataforms/logo_altmetric.svg" alt="Altmetric" title="Altmetric" />
+          </div> <!-- end co-socialIcons -->
 
-            <img href="www.google.com.br" class="co-socialIcons-icon"
-              src="../inc/images/academic_plataforms/logo_google_scholar.svg" alt="Google Scholar"
-              title="Google Scholar" />
+        </div> <!-- end core-two -->
 
-            <img href="www.google.com.br" class="co-socialIcons-icon"
-              src="../inc/images/academic_plataforms/logo_innovation_catalyst_global.svg"
-              alt="Innovation Catalyst Global" title="Innovation Catalyst Global" />
+      </div> <!-- end core -->
 
-            
 
-            <img href="www.google.com.br" class="co-socialIcons-icon"
-              src="../inc/images/academic_plataforms/logo_mendeley.svg" alt="Mendely" title="Mendely" />
 
-            <img href="www.google.com.br" class="co-socialIcons-icon"
-              src="../inc/images/academic_plataforms/logo_publons.svg" alt="Publons" title="Publons" />
+      <span class="u-skip" id="skipgraph”" class="ty ty-lastUpdate">Atualizado em
+        <?php echo $profile['data_atualizacao']; ?></span>
 
-            <img href="www.google.com.br" class="co-socialIcons-icon"
-              src="../inc/images/academic_plataforms/logo_research_id.svg" alt="Research ID" title="Research ID" />
 
-            <img href="www.google.com.br" class="co-socialIcons-icon"
-              src="../inc/images/academic_plataforms/logo_researchgate.svg" alt="research Gate" title="research Gate" />
 
-            <img href="www.google.com" class="co-socialIcons-icon"
-              src="../inc/images/academic_plataforms/logo_zotero.svg" alt="Zotero" title="Zotero" />
-
-
-            <span class="u-vseparator">|</span>
-
-
-            <img href="www.google.com" class="co-socialIcons-icon" src="../inc/images/social/twitter.svg" alt="Twitter"
-              title="Twitter" />
-
-            <img href="www.google.com" class="co-socialIcons-icon" src="../inc/images/social/facebook.svg" alt="Twitter"
-              title="Twitter" />
-          -->
-
-          </div>
-
-        </div>
-        <!--
-
-        <div class="core-three">
-
-          <div class="co-numbers">
-            <span class="co-numbers-number">
-              <img class="co-numbers-icon" src="../inc/images/icons/article-published.svg" alt="Artigos publicados" />
-              45
-            </span>
-
-            <span class="co-numbers-number">
-              <img class="co-numbers-icon" src="../inc/images/icons/article-aproved.svg" alt="Artigos aprovados" />
-              35
-            </span>
-
-            <span class="co-numbers-number">
-              <img class="co-numbers-icon" src="../inc/images/icons/orientation.svg" alt="Orientações" />
-              12
-            </span>
-
-            <span class="co-numbers-number">
-              <img class="co-numbers-icon" src="../inc/images/icons/research.svg" alt="Pesquisas" />
-              15
-            </span>
-
-            <span class="co-numbers-number">
-              <img class="co-numbers-icon" src="../inc/images/icons/event.svg" alt="Eventos participados" />
-              41
-            </span>
-
-          </div>
-
-          
-
-          <div class="graph">
-            <a class="u-skip" href=”#skipgraph”>Pular gráfico</a>
-
-
-            <div class="graph-line">
-              <span class="graph-label">Artigos publicados</span>
-
-              <div class="graph-unit" data-weight="4"></div>
-
-              <div class="graph-unit" data-weight="4"></div>
-
-              <div class="graph-unit" data-weight="4"></div>
-
-              <div class="graph-unit" data-weight="3"></div>
-
-              <div class="graph-unit" data-weight="4"></div>
-
-              <div class="graph-unit" data-weight="3"></div>
-
-              <div class="graph-unit" data-weight="2"></div>
-
-            </div>
-
-            <div class="graph-line">
-              <span class="graph-label">Livros e capítulos</span>
-
-              <div class="graph-unit" data-weight="2"></div>
-
-              <div class="graph-unit" data-weight="1"></div>
-
-              <div class="graph-unit" data-weight="1"></div>
-
-              <div class="graph-unit" data-weight="2"></div>
-
-              <div class="graph-unit" data-weight="2"></div>
-
-              <div class="graph-unit" data-weight="0"></div>
-
-              <div class="graph-unit" data-weight="0"></div>
-
-            </div>
-
-            <div class="graph-line graph-division">
-              <span class="graph-label">Orientações de mestrado</span>
-
-              <div class="graph-unit" data-weight="1"></div>
-
-              <div class="graph-unit" data-weight="1"></div>
-
-              <div class="graph-unit" data-weight="2"></div>
-
-              <div class="graph-unit" data-weight="2"></div>
-
-              <div class="graph-unit" data-weight="3"></div>
-
-              <div class="graph-unit" data-weight="3"></div>
-
-              <div class="graph-unit" data-weight="4"></div>
-
-            </div>
-
-            <div class="graph-line">
-              <span class="graph-label">Orientações de doutorado</span>
-
-              <div class="graph-unit" data-weight="2"></div>
-
-              <div class="graph-unit" data-weight="2"></div>
-
-              <div class="graph-unit" data-weight="1"></div>
-
-              <div class="graph-unit" data-weight="1"></div>
-
-              <div class="graph-unit" data-weight="4"></div>
-
-              <div class="graph-unit" data-weight="5"></div>
-
-              <div class="graph-unit" data-weight="6"></div>
-
-            </div>
-
-            <div class="graph-line">
-              <span class="graph-label">Outras orientações</span>
-
-              <div class="graph-unit" data-weight="2"></div>
-
-              <div class="graph-unit" data-weight="2"></div>
-
-              <div class="graph-unit" data-weight="3"></div>
-
-              <div class="graph-unit" data-weight="3"></div>
-
-              <div class="graph-unit" data-weight="4"></div>
-
-              <div class="graph-unit" data-weight="3"></div>
-
-              <div class="graph-unit" data-weight="2"></div>
-
-            </div>
-
-            <div class="graph-line">
-              <span class="graph-label">Ensino</span>
-
-              <div class="graph-unit" data-weight="4"></div>
-
-              <div class="graph-unit" data-weight="3"></div>
-
-              <div class="graph-unit" data-weight="4"></div>
-
-              <div class="graph-unit" data-weight="4"></div>
-
-              <div class="graph-unit" data-weight="4"></div>
-
-              <div class="graph-unit" data-weight="3"></div>
-
-              <div class="graph-unit" data-weight="2"></div>
-
-            </div>
-
-            <div class="graph-line graph-division">
-              <span class="graph-label">Sofwtwares e patentes</span>
-
-              <div class="graph-unit" data-weight="1"></div>
-
-              <div class="graph-unit" data-weight="1"></div>
-
-              <div class="graph-unit" data-weight="0"></div>
-
-              <div class="graph-unit" data-weight="0"></div>
-
-              <div class="graph-unit" data-weight="0"></div>
-
-              <div class="graph-unit" data-weight="0"></div>
-
-              <div class="graph-unit" data-weight="0"></div>
-
-            </div>
-
-            <div class="graph-line">
-              <span class="graph-label">Trabalhos em eventos</span>
-
-              <div class="graph-unit" data-weight="4"></div>
-
-              <div class="graph-unit" data-weight="4"></div>
-
-              <div class="graph-unit" data-weight="3"></div>
-
-              <div class="graph-unit" data-weight="2"></div>
-
-              <div class="graph-unit" data-weight="2"></div>
-
-              <div class="graph-unit" data-weight="1"></div>
-
-              <div class="graph-unit" data-weight="1"></div>
-
-            </div>
-
-            <div class="graph-line">
-              <span class="graph-label">Participações em eventos</span>
-
-              <div class="graph-unit" data-weight="3"></div>
-
-              <div class="graph-unit" data-weight="4"></div>
-
-              <div class="graph-unit" data-weight="4"></div>
-
-              <div class="graph-unit" data-weight="3"></div>
-
-              <div class="graph-unit" data-weight="2"></div>
-
-              <div class="graph-unit" data-weight="3"></div>
-
-              <div class="graph-unit" data-weight="4"></div>
-
-            </div>
-
-            <div class="graph-line">
-              <div class="graph-icon"></div>
-              <div class="graph-label">2021 ————— 2015</div>
-            </div>
-
-
-
-          </div> 
-
-
-          <div class="graph-info">
-            <span class="graph-info-label">+</span>
-            <div class="graph-unit" data-weight="4"></div>
-            <div class="graph-unit" data-weight="3"></div>
-            <div class="graph-unit" data-weight="2"></div>
-            <div class="graph-unit" data-weight="1"></div>
-            <div class="graph-unit" data-weight="0"></div>
-            <span class="graph-info-label">-</span>
-          </div>
-                    -->
-          <!-- // graph -->
-        </div>
-
-
-      </div> <!-- end Core -->
-
-      <span class="u-skip" id="skipgraph”" class="ty ty-lastUpdate">Atualizado em <?php echo $profile['data_atualizacao']; ?></span>
       <div id="tabs" class="profile-tabs">
 
 
@@ -491,465 +197,443 @@ if (!empty($_REQUEST["lattesID"])) {
         </div>
 
 
-        <div class="tab-container">
-          <div id="tab-one" class="tab-content" v-if="tabOpened == '1'">
+
+        <div id="tab-one" class="tab-content" v-if="tabOpened == '1'">
 
 
 
-            <!-- ## SEÇÃO SOBRE MIM -->
-            <div class="profile-ext-desc">
+          <div class="p-description">
+            <h3 class="ty ty-title">Resumo</h3>
+            <p class="ty">
+            <p><?php echo $profile["resumo_cv"]["texto_resumo_cv_rh"] ?></p>
+          </div>
+          <div class="u-spacer-2"></div>
 
-              <div class="p-description">
-                <h3 class="ty ty-title">Resumo</h3>
-                <p class="ty">
-                <p><?php echo $profile["resumo_cv"]["texto_resumo_cv_rh"] ?></p>
+
+
+          <h3 class="ty ty-title">Tags mais usadas</h3>
+
+          <div class="p-tags">
+            <ul class="tag-cloud" role="navigation" aria-label="Tags mais usadas">
+              <?php foreach ($tags as $t=> $tag) {
+      echo
+      "<li>
+        <a class='tag' href='' data-weight={$tag['weight']}>
+          {$tag['name']}</a>
+      </li>";
+      }
+      unset($t);
+      unset($name);
+      unset($value);
+      ?>
+            </ul>
+          </div> <!-- end p-tags -->
+
+          <div class="u-spacer-2"></div>
+
+
+
+
+          <?php if(isset($profile["idiomas"])): ?>
+          <div class="p-language">
+            <h3 class="ty ty-title">Idiomas</h3>
+            <?php foreach ($profile["idiomas"] as $key => $idioma): ?>
+
+            <div class="u-grid">
+
+              <div class="u-grid-left">
+                <?php 
+        switch ($idioma["descricaoDoIdioma"]) {
+          case "Inglês":
+            echo "<img class='pi-iconlang' src='../inc/images/icons/languages/en.svg' />";
+            break;
+          case "Espanhol":
+            echo "<img class='pi-iconlang' src='../inc/images/icons/languages/es.svg' />";
+            break;
+          case "Português":
+            echo "<img class='pi-iconlang' src='../inc/images/icons/languages/pt.svg' />";
+            break;
+        }
+      ?>
+
               </div>
-              <div class="u-spacer-2"></div>
-              <!--
 
-              <div class="p-tags">
-                <h3 class="ty ty-title">Tags mais usadas</h3>
-
-                <ul class="tag-cloud" role="navigation" aria-label="Tags mais usadas">
-                  < ?php 
-                    foreach ($tags as $t => $tag) {
-                        echo 
-                          "<li>
-                            <a 
-                              class='tag' 
-                              href='' 
-                              data-weight={$tag['weight']}
-                            >
-                              {$tag['name']}</a>
-                          </li>";
-                    }
-                    unset($t); 
-                    unset($name); 
-                    unset($value); 
-                  ?>
-                </ul>
+              <div class="u-grid-right">
+                <p>
+                  <span><?php echo $idioma["descricaoDoIdioma"] ?>:</span>
+                  Compreende <?php echo $idioma["proficienciaDeCompreensao"] ?>,
+                  Fala <?php echo $idioma["proficienciaDeFala"] ?>,
+                  Lê <?php echo $idioma["proficienciaDeLeitura"] ?>,
+                  Escreve <?php echo $idioma["proficienciaDeEscrita"] ?>
+                </p>
 
               </div>
-              -->
-              <div class="u-spacer-2"></div>
-
-            </div> <!-- end profile-desc -->
-
-
+            </div> <!-- end u-grid -->
+            <?php endforeach; ?>
+          </div> <!-- end p-language -->
+          <?php endif; ?>
 
 
-            <?php if(isset($profile["idiomas"])): ?>
-            <div class="p-language">
-              <h3 class="ty ty-title">Idiomas</h3>
-              <?php foreach ($profile["idiomas"] as $key => $idioma): ?>
 
-              <div class="u-grid">
+          <h3 class="ty ty-title">Formação</h3>
 
-                <div class="u-grid-left">
-                  <?php 
-                      switch ($idioma["descricaoDoIdioma"]) {
-                        case "Inglês":
-                            echo "<img class='pi-iconlang' src='../inc/images/icons/languages/en.svg' />";
-                            break;
-                        case "Espanhol":
-                            echo "<img class='pi-iconlang' src='../inc/images/icons/languages/es.svg' />";
-                            break;
-                        case "Português":
-                            echo "<img class='pi-iconlang' src='../inc/images/icons/languages/pt.svg' />";
-                            break;
-                      }
-                    ?>
+          <!-- Livre Docência -->
+          <?php if(isset($profile["formacao_academica_titulacao_livreDocencia"])): ?>
 
-                </div>
+          <?php foreach ($profile["formacao_academica_titulacao_livreDocencia"] as $key => $livreDocencia): ?>
 
-                <div class="u-grid-right">
-                  <p>
-                    <span><?php echo $idioma["descricaoDoIdioma"] ?>:</span>
-                    Compreende <?php echo $idioma["proficienciaDeCompreensao"] ?>,
-                    Fala <?php echo $idioma["proficienciaDeFala"] ?>,
-                    Lê <?php echo $idioma["proficienciaDeLeitura"] ?>,
-                    Escreve <?php echo $idioma["proficienciaDeEscrita"] ?>
+          <div class="formation-container">
+            <div class="u-grid">
+              <div class="u-grid-left">
+                <img class="pi-icon" src="../inc/images/icons/academic.svg" />
+              </div>
+
+              <div class="u-grid-right">
+                <div class="formation">
+                  <p class="ty-item">Livre Docência
+                    <span class="ty u-date-range"><?php echo $livreDocencia["anoDeObtencaoDoTitulo"] ?></span>
+                  </p>
+                  <p class="ty"><?php echo $livreDocencia["nomeInstituicao"] ?></p>
+                  <div class="u-spacer-1"></div>
+                  <p class="ty">
+                    <b class="ty-subItem">Trabalho: </b>
+                    <?php echo $livreDocencia["tituloDoTrabalho"] ?>
                   </p>
 
-                </div>
+                  <?php if(!empty($livreDocencia["area_do_conhecimento"][0]["nomeGrandeAreaDoConhecimento"])): ?>
+                  <p class="ty">
+                    <b class="ty-subItem">Grande área:</b>
+                    <?php echo $livreDocencia["area_do_conhecimento"][0]["nomeGrandeAreaDoConhecimento"] ?>
+                  </p>
+                  <?php endif; ?>
+                  <?php if(!empty($livreDocencia["area_do_conhecimento"][0]["nomeDaAreaDoConhecimento"])): ?>
+                  <p class="ty">
+                    <b class="ty-subItem">Área do conhecimento:</b>
+                    <?php echo $livreDocencia["area_do_conhecimento"][0]["nomeDaAreaDoConhecimento"] ?>
+                  </p>
+                  <?php endif; ?>
+                  <?php if(!empty($livreDocencia["area_do_conhecimento"][0]["nomeDaSubAreaDoConhecimento"])): ?>
+                  <p class="ty">
+                    <b class="ty-subItem">Sub área:</b>
+                    <?php echo $livreDocencia["area_do_conhecimento"][0]["nomeDaSubAreaDoConhecimento"] ?>
+                  </p>
+                  <?php endif; ?>
+                  <?php if(!empty($livreDocencia["area_do_conhecimento"][0]["nomeDaEspecialidade"])): ?>
+                  <p class="ty">
+                    <b class="ty-subItem">Especialidade:</b>
+                    <?php echo $livreDocencia["area_do_conhecimento"][0]["nomeDaEspecialidade"] ?>
+                  </p>
+                  <?php endif; ?>
+
+                </div> <!-- end formation -->
+              </div> <!-- end u-grid-right -->
+            </div> <!-- end u-grid -->
+          </div> <!-- end formation-container -->
+          <?php endforeach; ?>
+          <?php endif; ?>
+
+
+
+          <!-- Doutorado -->
+          <?php if(isset($profile["formacao_academica_titulacao_doutorado"])): ?>
+
+          <?php foreach ($profile["formacao_academica_titulacao_doutorado"] as $key => $doutorado): ?>
+
+          <div class="formation-container">
+            <div class="u-grid">
+              <div class="u-grid-left">
+                <img class="pi-icon" src="../inc/images/icons/academic.svg" />
               </div>
-              <?php endforeach; ?>
-            </div>
-            <?php endif; ?>
+              <div class="u-grid-right">
+                <div class="formation">
+                  <p class="ty-item">Doutorado em <?php echo $doutorado["nomeCurso"] ?>
+                    <span class="ty u-date-range"><?php echo $doutorado["anoDeInicio"] ?> -
+                      <?php echo $doutorado["anoDeConclusao"] ?></span>
+                  </p>
+                  <p class="ty"><?php echo $doutorado["nomeInstituicao"] ?></p>
+                  <div class="u-spacer-1"></div>
+
+                  <p class="ty">
+                    <b class="ty-subItem">Trabalho:</b> <?php echo $doutorado["tituloDaDissertacaoTese"] ?>
+                  </p>
+
+                  <p class="ty">
+                    <b class="ty-subItem">Orientador:</b> <?php echo $doutorado["nomeDoOrientador"] ?>
+                  </p>
+
+                  <?php if(!empty($doutorado["area_do_conhecimento"][0]["nomeGrandeAreaDoConhecimento"])): ?>
+                  <p class="ty">
+                    <b class="ty-subItem">Grande área:</b>
+                    <?php echo $doutorado["area_do_conhecimento"][0]["nomeGrandeAreaDoConhecimento"] ?>
+                  </p>
+                  <?php endif; ?>
+
+                  <?php if(!empty($doutorado["area_do_conhecimento"][0]["nomeDaAreaDoConhecimento"])): ?>
+                  <p class="ty">
+                    <b class="ty-subItem">Área do conhecimento:</b>
+                    <?php echo $doutorado["area_do_conhecimento"][0]["nomeDaAreaDoConhecimento"] ?>
+                  </p>
+                  <?php endif; ?>
+                  <?php if(!empty($doutorado["area_do_conhecimento"][0]["nomeDaSubAreaDoConhecimento"])): ?>
+                  <p class="ty">
+                    <b class="ty-subItem">Sub área:</b>
+                    <?php echo $doutorado["area_do_conhecimento"][0]["nomeDaSubAreaDoConhecimento"] ?>
+                  </p>
+                  <?php endif; ?>
+                  <?php if(!empty($doutorado["area_do_conhecimento"][0]["nomeDaEspecialidade"])): ?>
+                  <p class="ty">
+                    <b class="ty-subItem">Especialidade:</b>
+                    <?php echo $doutorado["area_do_conhecimento"][0]["nomeDaEspecialidade"] ?>
+                  </p>
+                  <?php endif; ?>
+                </div> <!-- end formation -->
+              </div> <!-- end u-grid-right -->
+            </div> <!-- end u-grid -->
+          </div> <!-- end formation-container -->
+          <?php endforeach; ?>
+          <?php endif; ?>
 
 
-            <div class="u-spacer-2"></div>
 
-            <div class="edu">
-              <h3 class="ty ty-title">Formação</h3>
+          <!-- Mestrado -->
+          <?php if(isset($profile["formacao_academica_titulacao_mestrado"])): ?>
 
-              <!-- Livre Docência -->
-              <?php if(isset($profile["formacao_academica_titulacao_livreDocencia"])): ?>
+          <?php foreach ($profile["formacao_academica_titulacao_mestrado"] as $key => $mestrado): ?>
 
-              <?php foreach ($profile["formacao_academica_titulacao_livreDocencia"] as $key => $livreDocencia): ?>
-
-              <div class="formation-container">
-                <div class="u-grid">
-                  <div class="u-grid-left">
-                    <img class="pi-icon" src="../inc/images/icons/academic.svg" />
-                  </div>
-
-                  <div class="u-grid-right">
-                    <div class="formation">
-                      <p class="ty-item">Livre Docência
-                        <span class="ty u-date-range"><?php echo $livreDocencia["anoDeObtencaoDoTitulo"] ?></span>
-                      </p>
-                      <p class="ty"><?php echo $livreDocencia["nomeInstituicao"] ?></p>
-                      <div class="u-spacer-1"></div>
-                      <p class="ty">
-                        <b class="ty-subItem">Trabalho: </b>
-                        <?php echo $livreDocencia["tituloDoTrabalho"] ?>
-                      </p>
-
-                      <?php if(!empty($livreDocencia["area_do_conhecimento"][0]["nomeGrandeAreaDoConhecimento"])): ?>
-                      <p class="ty">
-                        <b class="ty-subItem">Grande área:</b>
-                        <?php echo $livreDocencia["area_do_conhecimento"][0]["nomeGrandeAreaDoConhecimento"] ?>
-                      </p>
-                      <?php endif; ?>
-                      <?php if(!empty($livreDocencia["area_do_conhecimento"][0]["nomeDaAreaDoConhecimento"])): ?>
-                      <p class="ty">
-                        <b class="ty-subItem">Área do conhecimento:</b>
-                        <?php echo $livreDocencia["area_do_conhecimento"][0]["nomeDaAreaDoConhecimento"] ?>
-                      </p>
-                      <?php endif; ?>
-                      <?php if(!empty($livreDocencia["area_do_conhecimento"][0]["nomeDaSubAreaDoConhecimento"])): ?>
-                      <p class="ty">
-                        <b class="ty-subItem">Sub área:</b>
-                        <?php echo $livreDocencia["area_do_conhecimento"][0]["nomeDaSubAreaDoConhecimento"] ?>
-                      </p>
-                      <?php endif; ?>
-                      <?php if(!empty($livreDocencia["area_do_conhecimento"][0]["nomeDaEspecialidade"])): ?>
-                      <p class="ty">
-                        <b class="ty-subItem">Especialidade:</b>
-                        <?php echo $livreDocencia["area_do_conhecimento"][0]["nomeDaEspecialidade"] ?>
-                      </p>
-                      <?php endif; ?>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <?php endforeach; ?>
-
-              <?php endif; ?>
-
-              <!-- Doutorado -->
-              <?php if(isset($profile["formacao_academica_titulacao_doutorado"])): ?>
-
-              <?php foreach ($profile["formacao_academica_titulacao_doutorado"] as $key => $doutorado): ?>
-
-              <div class="formation-container">
-                <div class="u-grid">
-                  <div class="u-grid-left">
-                    <img class="pi-icon" src="../inc/images/icons/academic.svg" />
-                  </div>
-                  <div class="u-grid-right">
-                    <div class="formation">
-                      <p class="ty-item">Doutorado em <?php echo $doutorado["nomeCurso"] ?>
-                        <span class="ty u-date-range"><?php echo $doutorado["anoDeInicio"] ?> -
-                          <?php echo $doutorado["anoDeConclusao"] ?></span>
-                      </p>
-                      <p class="ty"><?php echo $doutorado["nomeInstituicao"] ?></p>
-                      <div class="u-spacer-1"></div>
-
-                      <p class="ty">
-                        <b class="ty-subItem">Trabalho:</b> <?php echo $doutorado["tituloDaDissertacaoTese"] ?>
-                      </p>
-
-                      <p class="ty">
-                        <b class="ty-subItem">Orientador:</b> <?php echo $doutorado["nomeDoOrientador"] ?>
-                      </p>
-
-                      <?php if(!empty($doutorado["area_do_conhecimento"][0]["nomeGrandeAreaDoConhecimento"])): ?>
-                      <p class="ty">
-                        <b class="ty-subItem">Grande área:</b>
-                        <?php echo $doutorado["area_do_conhecimento"][0]["nomeGrandeAreaDoConhecimento"] ?>
-                      </p>
-                      <?php endif; ?>
-
-                      <?php if(!empty($doutorado["area_do_conhecimento"][0]["nomeDaAreaDoConhecimento"])): ?>
-                      <p class="ty">
-                        <b class="ty-subItem">Área do conhecimento:</b>
-                        <?php echo $doutorado["area_do_conhecimento"][0]["nomeDaAreaDoConhecimento"] ?>
-                      </p>
-                      <?php endif; ?>
-                      <?php if(!empty($doutorado["area_do_conhecimento"][0]["nomeDaSubAreaDoConhecimento"])): ?>
-                      <p class="ty">
-                        <b class="ty-subItem">Sub área:</b>
-                        <?php echo $doutorado["area_do_conhecimento"][0]["nomeDaSubAreaDoConhecimento"] ?>
-                      </p>
-                      <?php endif; ?>
-                      <?php if(!empty($doutorado["area_do_conhecimento"][0]["nomeDaEspecialidade"])): ?>
-                      <p class="ty">
-                        <b class="ty-subItem">Especialidade:</b>
-                        <?php echo $doutorado["area_do_conhecimento"][0]["nomeDaEspecialidade"] ?>
-                      </p>
-                      <?php endif; ?>
-                    </div>
-                  </div>
-                </div>
+          <div class="formation-container">
+            <div class="u-grid">
+              <div class="u-grid-left">
+                <img class="pi-icon" src="../inc/images/icons/academic.svg" />
               </div>
 
-              <?php endforeach; ?>
+              <div class="u-grid-right">
+                <div class="formation">
+                  <p class="ty-item">Mestrado em <?php echo $mestrado["nomeCurso"] ?>
+                    <span class="ty u-date-range"><?php echo $mestrado["anoDeInicio"] ?> -
+                      <?php echo $mestrado["anoDeConclusao"] ?></span>
+                  </p>
+                  <p class="ty"><?php echo $mestrado["nomeInstituicao"] ?></p>
+                  <div class="u-spacer-1"></div>
 
-              <?php endif; ?>
+                  <p class="ty">
+                    <b class="ty-subItem">Título do trabalho:</b>
+                    <?php echo $mestrado["tituloDaDissertacaoTese"] ?>
+                  </p>
+                  <p class="ty">
+                    <b class="ty-subItem">Orientador: </b>
+                    <?php echo $mestrado["nomeDoOrientador"] ?>
+                  </p>
 
-              <!-- Mestrado -->
-              <?php if(isset($profile["formacao_academica_titulacao_mestrado"])): ?>
+                  <?php if(!empty($mestrado["area_do_conhecimento"][0]["nomeGrandeAreaDoConhecimento"])): ?>
+                  <p class="ty">
+                    <b class="ty-subItem">Grande área: </b>
+                    <?php echo $mestrado["area_do_conhecimento"][0]["nomeGrandeAreaDoConhecimento"] ?>
+                  </p>
+                  <?php endif; ?>
 
-              <?php foreach ($profile["formacao_academica_titulacao_mestrado"] as $key => $mestrado): ?>
+                  <?php if(!empty($mestrado["area_do_conhecimento"][0]["nomeDaAreaDoConhecimento"])): ?>
+                  <p class="ty">
+                    <b class="ty-subItem">Área do conhecimento:</b>
+                    <?php echo $mestrado["area_do_conhecimento"][0]["nomeDaAreaDoConhecimento"] ?>
+                  </p>
+                  <?php endif; ?>
 
-              <div class="formation-container">
-                <div class="u-grid">
-                  <div class="u-grid-left">
-                    <img class="pi-icon" src="../inc/images/icons/academic.svg" />
-                  </div>
+                  <?php if(!empty($mestrado["area_do_conhecimento"][0]["nomeDaSubAreaDoConhecimento"])): ?>
+                  <p class="ty">
+                    <b class="ty-subItem">Sub área:</b>
+                    <?php echo $mestrado["area_do_conhecimento"][0]["nomeDaSubAreaDoConhecimento"] ?>
+                  </p>
+                  <?php endif; ?>
+                  <?php if(!empty($mestrado["area_do_conhecimento"][0]["nomeDaEspecialidade"])): ?>
+                  <p class="ty">
+                    <b class="ty-subItem">Especialidade:</b>
+                    <?php echo $mestrado["area_do_conhecimento"][0]["nomeDaEspecialidade"] ?>
+                  </p>
+                  <?php endif; ?>
 
-                  <div class="u-grid-right">
-                    <div class="formation">
-                      <p class="ty-item">Mestrado em <?php echo $mestrado["nomeCurso"] ?>
-                        <span class="ty u-date-range"><?php echo $mestrado["anoDeInicio"] ?> -
-                          <?php echo $mestrado["anoDeConclusao"] ?></span>
-                      </p>
-                      <p class="ty"><?php echo $mestrado["nomeInstituicao"] ?></p>
-                      <div class="u-spacer-1"></div>
+                </div> <!-- end formation -->
+              </div> <!-- end u-grid-right -->
+            </div> <!-- end u-grid -->
+          </div> <!-- end formation-container -->
+          <?php endforeach; ?>
+          <?php endif; ?>
 
-                      <p class="ty">
-                        <b class="ty-subItem">Título do trabalho:</b>
-                        <?php echo $mestrado["tituloDaDissertacaoTese"] ?>
-                      </p>
-                      <p class="ty">
-                        <b class="ty-subItem">Orientador: </b>
-                        <?php echo $mestrado["nomeDoOrientador"] ?>
-                      </p>
 
-                      <?php if(!empty($mestrado["area_do_conhecimento"][0]["nomeGrandeAreaDoConhecimento"])): ?>
-                      <p class="ty">
-                        <b class="ty-subItem">Grande área: </b>
-                        <?php echo $mestrado["area_do_conhecimento"][0]["nomeGrandeAreaDoConhecimento"] ?>
-                      </p>
-                      <?php endif; ?>
 
-                      <?php if(!empty($mestrado["area_do_conhecimento"][0]["nomeDaAreaDoConhecimento"])): ?>
-                      <p class="ty">
-                        <b class="ty-subItem">Área do conhecimento:</b>
-                        <?php echo $mestrado["area_do_conhecimento"][0]["nomeDaAreaDoConhecimento"] ?>
-                      </p>
-                      <?php endif; ?>
+          <!-- Graduação -->
+          <?php if(isset($profile["formacao_academica_titulacao_graduacao"])): ?>
 
-                      <?php if(!empty($mestrado["area_do_conhecimento"][0]["nomeDaSubAreaDoConhecimento"])): ?>
-                      <p class="ty">
-                        <b class="ty-subItem">Sub área:</b>
-                        <?php echo $mestrado["area_do_conhecimento"][0]["nomeDaSubAreaDoConhecimento"] ?>
-                      </p>
-                      <?php endif; ?>
-                      <?php if(!empty($mestrado["area_do_conhecimento"][0]["nomeDaEspecialidade"])): ?>
-                      <p class="ty">
-                        <b class="ty-subItem">Especialidade:</b>
-                        <?php echo $mestrado["area_do_conhecimento"][0]["nomeDaEspecialidade"] ?>
-                      </p>
-                      <?php endif; ?>
+          <?php foreach ($profile["formacao_academica_titulacao_graduacao"] as $key => $graduacao): ?>
 
-                    </div>
-                  </div>
-                </div>
+          <div class="formation-container">
+            <div class="u-grid">
+              <div class="u-grid-left">
+                <img class="pi-icon" src="../inc/images/icons/academic.svg" />
               </div>
 
-              <?php endforeach; ?>
+              <div class="u-grid-right">
+                <div class="formation">
+                  <p class="ty-item">Graduação em <?php echo $graduacao["nomeCurso"] ?>
+                    <span class="ty u-date-range"><?php echo $graduacao["anoDeInicio"] ?> -
+                      <?php echo $graduacao["anoDeConclusao"] ?></span>
+                  </p>
+                  <p class="ty"><?php echo $graduacao["nomeInstituicao"] ?></p>
+                  <div class="u-spacer-1"></div>
+                  <?php if(!empty($graduacao["tituloDoTrabalhoDeConclusaoDeCurso"])): ?>
+                  <p class="ty">
+                    <b class="ty-subItem">Título do trabalho: </b>
+                    <?php echo $graduacao["tituloDoTrabalhoDeConclusaoDeCurso"] ?>
+                  </p>
+                  <?php endif; ?>
+                  <?php if(!empty($graduacao["nomeDoOrientador"])): ?>
+                  <p class="ty">
+                    <b class="ty-subItem">Orientador: </b>
+                    <?php echo $graduacao["nomeDoOrientador"] ?>
+                  </p>
+                  <?php endif; ?>
+                </div> <!-- end formation -->
+              </div> <!-- end u-grid-right -->
+            </div> <!-- end u-grid -->
+          </div> <!-- end formation-container -->
+          <?php endforeach; ?>
+          <?php endif; ?>
 
-              <?php endif; ?>
-
-              <!-- Graduação -->
-              <?php if(isset($profile["formacao_academica_titulacao_graduacao"])): ?>
-
-              <?php foreach ($profile["formacao_academica_titulacao_graduacao"] as $key => $graduacao): ?>
-
-              <div class="formation-container">
-                <div class="u-grid">
-                  <div class="u-grid-left">
-                    <img class="pi-icon" src="../inc/images/icons/academic.svg" />
-                  </div>
-
-                  <div class="u-grid-right">
-                    <div class="formation">
-                      <p class="ty-item">Graduação em <?php echo $graduacao["nomeCurso"] ?>
-                        <span class="ty u-date-range"><?php echo $graduacao["anoDeInicio"] ?> -
-                          <?php echo $graduacao["anoDeConclusao"] ?></span>
-                      </p>
-                      <p class="ty"><?php echo $graduacao["nomeInstituicao"] ?></p>
-                      <div class="u-spacer-1"></div>
-                      <?php if(!empty($graduacao["tituloDoTrabalhoDeConclusaoDeCurso"])): ?>
-                      <p class="ty">
-                        <b class="ty-subItem">Título do trabalho: </b>
-                        <?php echo $graduacao["tituloDoTrabalhoDeConclusaoDeCurso"] ?>
-                      </p>
-                      <?php endif; ?>
-                      <?php if(!empty($graduacao["nomeDoOrientador"])): ?>
-                      <p class="ty">
-                        <b class="ty-subItem">Orientador: </b>
-                        <?php echo $graduacao["nomeDoOrientador"] ?>
-                      </p>
-                      <?php endif; ?>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <?php endforeach; ?>
-
-              <?php endif; ?>
-
-              <!--
-              <h4 class="ty ty-title">Formação complementar</h4>
-              -->
-
-            </div> <!-- end edu -->
-
-          </div> <!-- end tab-one -->
+        </div> <!-- end tab-one -->
 
 
+        <div id="tab-two" class="tab-content" v-if="tabOpened == '2'">
+          <div class="profile-pi">
+
+            <h2 class="ty ty-title">Produção Intelecual</h2>
+
+            <?php 
+            foreach ($cursor_works['hits']['hits'] as $key => $work) {
+              $works[$work['_source']['datePublished']][] = $work;
+            }
+
+            for ($i = 2040; $i >= 1900; $i -= 1) {
+              if (!empty($works[$i])) {
 
 
+                echo '<hr class="u-line"></hr>
+                <h3 class="ty-subtitle pi-year">'.$i.'</h3>
+                <hr class="u-line"></hr> ';
 
-          <div id="tab-two" class="tab-content" v-if="tabOpened == '2'">
-            <div class="profile-pi">
+                foreach ($works[$i] as $key => $work) {
 
-              <h2 class="ty ty-title">Produção Intelecual</h2>
-
-
-              <?php 
-                foreach ($cursor_works['hits']['hits'] as $key => $work) {
-                  $works[$work['_source']['datePublished']][] = $work;
-                }
-
-                for ($i = 2040; $i >= 1900; $i -= 1) {
-                  if (!empty($works[$i])) {
-
-
-                    echo '<hr class="u-line"></hr>
-                    <h3 class="ty-subtitle pi-year">'.$i.'</h3>
-                    <hr class="u-line"></hr> ';
-
-                    foreach ($works[$i] as $key => $work) {
-
-                      foreach ($work["_source"]["author"] as $author) {
-                        $authors[] = $author["person"]["name"];
-                      }
-                      
-                      echo '<div class="pi">
-                      
-                        <div class="u-grid">
-
-                          <div class="u-grid-left">        
-                            
-                              <img class="pi-icon" src="../inc/images/icons/article-published.svg" />            
-
-                          </div>            
-
-                          <div class="u-grid-right">
-
-                            <div class="pi-separator">
-                              <span class="pi-type">'.$work['_source']['tipo'].'</span> 
-                              <hr class="pi-separator-ln"></hr>
-                            </div>
-                            <h4 class="ty-item">'.$work['_source']['name'].'</h4>
-                            
-                            <span class="u-sr-only">Autores</span>
-                            <p class="pi-authors">' . implode('; ', $authors) . '</p>
-                                        
-                            <div class="pi-moreinfo">
-                              
-                              <!--
-                              <div class="pi-moreinfo-item"> 
-                                <img class="pi-moreinfo-icon"
-                                  src="../inc/images/icons/citation.svg" 
-                                  alt="representação de citação" 
-                                />
-                                
-                                <span class="pi-citations">Web Of Science: 12</span>
-                                
-                                <span class="pi-citations">Scopus 8</span>
-                                
-                              </div>
-                              -->
-                              ';
-                              if (!empty($work['_source']['url'])) {
-                                echo '              
-                                <div class="pi-moreinfo-item"> 
-                                  <img 
-                                    class="pi-moreinfo-icon"
-                                    src="../inc/images/icons/link.svg" 
-                                    alt="representação de um link"
-                                  />
-                                  
-                                  <a href="'.$work['_source']['url'].'" target="blank">Acessar o conteúdo</a>
-                                </div>
-                              ';
-                            }
-                            
-                            if (!empty($work['_source']['doi'])) {
-                              echo '
-                              <div class="pi-moreinfo-item">
-
-                                <img 
-                                class="pi-moreinfo-icon"
-                                src="../inc/images/logos/doi.svg" 
-                                alt="logo DOI"
-                                />
-                                
-                                <a href="https://doi.org/'.$work['_source']['doi'].'"> Acessar o DOI</a>
-                              </div>';
-                            };
-                              
-                              echo '
-                              
-                            </div>
-                            <p class="ty-right ty-themeLight">Fonte: '; 
-                            echo  (!empty($work['_source']['isPartOf']['name'])) ? $work['_source']['isPartOf']['name'] : '';
-                            echo (!empty($work['_source']['isPartOf']['volume'])) ? ', v.'.$work['_source']['isPartOf']['volume'] : '';
-                            echo (!empty($work['_source']['isPartOf']['fasciculo'])) ? ', n.'.$work['_source']['isPartOf']['fasciculo'] : '';
-                            echo (!empty($work['_source']['pageStart'])) ? ', p.'.$work['_source']['pageStart'] : '';
-                            echo '
-                            </p>
-                                
-                          </div>
-
-                        </div>
-                          
-                      </div>';
-                      //echo "<pre>".print_r($work, true)."</pre>";
-
-                    }
-                    unset($authors);
+                  foreach ($work["_source"]["author"] as $author) {
+                    $authors[] = $author["person"]["name"];
                   }
+                  
+                  echo '<div class="pi">
+                  
+                    <div class="u-grid">
+
+                      <div class="u-grid-left">        
+                        
+                          <img class="pi-icon" src="../inc/images/icons/article-published.svg" />            
+
+                      </div>            
+
+                      <div class="u-grid-right">
+
+                        <div class="pi-separator">
+                          <span class="pi-type">'.$work['_source']['tipo'].'</span> 
+                          <hr class="pi-separator-ln"></hr>
+                        </div>
+                        <h4 class="ty-item">'.$work['_source']['name'].'</h4>
+                        
+                        <span class="u-sr-only">Autores</span>
+                        <p class="pi-authors">' . implode('; ', $authors) . '</p>
+                                    
+                        <div class="pi-moreinfo">
+                          
+                          <!--
+                          <div class="pi-moreinfo-item"> 
+                            <img class="pi-moreinfo-icon"
+                              src="../inc/images/icons/citation.svg" 
+                              alt="representação de citação" 
+                            />
+                            
+                            <span class="pi-citations">Web Of Science: 12</span>
+                            
+                            <span class="pi-citations">Scopus 8</span>
+                            
+                          </div>
+                          -->
+                          ';
+                          if (!empty($work['_source']['url'])) {
+                            echo '              
+                            <div class="pi-moreinfo-item"> 
+                              <img 
+                                class="pi-moreinfo-icon"
+                                src="../inc/images/icons/link.svg" 
+                                alt="representação de um link"
+                              />
+                              
+                              <a href="'.$work['_source']['url'].'" target="blank">Acessar o conteúdo</a>
+                            </div>
+                          ';
+                        }
+                        
+                        if (!empty($work['_source']['doi'])) {
+                          echo '
+                          <div class="pi-moreinfo-item">
+
+                            <img 
+                            class="pi-moreinfo-icon"
+                            src="../inc/images/logos/doi.svg" 
+                            alt="logo DOI"
+                            />
+                            
+                            <a href="https://doi.org/'.$work['_source']['doi'].'"> Acessar o DOI</a>
+                          </div>';
+                        };
+                          
+                          echo '
+                          
+                        </div>
+                        <p class="ty-right ty-themeLight">Fonte: '; 
+                        echo  (!empty($work['_source']['isPartOf']['name'])) ? $work['_source']['isPartOf']['name'] : '';
+                        echo (!empty($work['_source']['isPartOf']['volume'])) ? ', v.'.$work['_source']['isPartOf']['volume'] : '';
+                        echo (!empty($work['_source']['isPartOf']['fasciculo'])) ? ', n.'.$work['_source']['isPartOf']['fasciculo'] : '';
+                        echo (!empty($work['_source']['pageStart'])) ? ', p.'.$work['_source']['pageStart'] : '';
+                        echo '
+                        </p>
+                            
+                      </div>
+
+                    </div>
+                      
+                  </div>';
+                  //echo "<pre>".print_r($work, true)."</pre>";
+
                 }
-                ?>
+                unset($authors);
+              }
+            }
+            ?>
 
-            </div> <!-- end profile-pi -->
-          </div> <!-- end tab-two -->
-
-
-          <div id="tab-three" class="tab-content" v-if="tabOpened == '3'">
-
-          </div>
-          <div id="tab-four" class="tab-content" v-if="tabOpened == '4'">
-
-          </div>
+          </div> <!-- end profile-pi -->
+        </div> <!-- end tab-two -->
 
 
-        </div>
-      </div>
-    </div>
+        <div id="tab-three" class="tab-content" v-if="tabOpened == '3'">
+        </div> <!-- end tab-three -->
 
 
+        <div id="tab-four" class="tab-content" v-if="tabOpened == '4'">
+        </div> <!-- end tab-four -->
+
+
+
+
+      </div> <!-- end #tabs -->
+
+    </div> <!-- end profile-wrapper -->
   </main>
+
+
   <?php include('inc/footer.php'); ?>
 
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
@@ -982,6 +666,5 @@ if (!empty($_REQUEST["lattesID"])) {
       //var_dump($resultaboutfacet, true);
     ?>
 </body>
-
 
 </html>

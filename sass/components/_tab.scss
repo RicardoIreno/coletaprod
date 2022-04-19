@@ -34,8 +34,9 @@
     }
   }
 
-  &-container {
+  &-content {
     padding-top: 2rem;
+    display: none;
   }
 
   &-active {
