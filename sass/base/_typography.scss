@@ -87,6 +87,10 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
 
 .ty {
   font-family: "Lato", sans-serif;
+
+  &-center {
+    text-align: center;
+  }
   
   &-name, &-title, &-subtitle, &-item {
     font-weight: 700;
@@ -107,6 +111,10 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
     }
   }
 
+  &-right {
+    text-align: end;
+  }
+
   &-subItem {
     font-weight: 600;
     color: _palette(theme);
@@ -117,17 +125,11 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
     }
   }
 
-  
-
-
-  &-right {
-    text-align: end;
-  }
-
   &-subtitle {
     font-size: 1.1rem;
     margin-block: .5rem;
   }
+
 
   &-themeLight {
     color: _palette(theme-light)

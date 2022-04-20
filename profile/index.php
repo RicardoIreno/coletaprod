@@ -915,6 +915,180 @@ if (!empty($_REQUEST["lattesID"])) {
 
           </div><!-- end-grid -->
 
+
+          <hr class="u-line" />
+          <h4 class="ty ty-title u-spacer-2">Supervisões de pós-doutorado em andamento</h4>
+
+
+          <div class="u-grid">
+            <div class="u-grid-left">
+              <img class='pi-iconlang' src='../inc/images/icons/orientation.svg' />
+            </div>
+
+            <div class="u-grid-right">
+
+              <p class="ty ty-item">
+                <a href="http://lattes.cnpq.br/4527664839744803" target="blank">
+                  Mika Alexia Miyazaki.
+                </a>
+                <span class="ty u-date-range">2019</span>
+              </p>
+
+              <p class="ty ty-gray">
+                INFLUÊNCIA DA FRAGMENTAÇÃO DE DNA ESPERMÁTICO NO INÍCIO DO DESENVOLVIMENTO EMBRIONÁRIO INICIAL.
+              </p>
+
+              <p class="ty u-spacer-1">
+                Universidade Federal de São Paulo —
+                <b class="ty-subItem">Curso:</b>
+                Medicina (Urologia)
+              </p>
+
+            </div> <!-- end-grid-right -->
+
+          </div><!-- end-grid -->
+
+          <div class="u-spacer-2"></div>
+
+
+          <hr class="u-line" />
+          <h4 class="ty ty-title u-spacer-2">Dissertações de mestrado concluídas</h4>
+
+          <ul class="orientation">
+            <li>
+              <div class="u-grid">
+                <div class="u-grid-left">
+                  <img class='pi-iconlang' src='../inc/images/icons/orientation.svg' />
+                </div>
+
+                <div class="u-grid-right">
+
+                  <p class="ty ty-item">
+                    <a class="ty-itemLink" href="http://lattes.cnpq.br/4527664839744803" target="blank">
+                      Mika Alexia Miyazaki
+                    </a>
+                    <span class="ty u-date-range">2019</span>
+                  </p>
+
+                  <p class="ty ty-gray">
+                    INFLUÊNCIA DA FRAGMENTAÇÃO DE DNA ESPERMÁTICO NO INÍCIO DO DESENVOLVIMENTO EMBRIONÁRIO INICIAL.
+                  </p>
+
+                  <p class="ty u-spacer-1">
+                    Universidade Federal de São Paulo —
+                    <b class="ty-subItem">Curso:</b>
+                    Medicina (Urologia)
+                  </p>
+
+                </div> <!-- end-grid-right -->
+
+              </div><!-- end-grid -->
+
+            </li>
+          </ul>
+
+
+
+          <hr class="u-line" />
+          <h4 class="ty ty-title u-spacer-2">Teses de doutorado concluídas</h4>
+
+
+          <div class="u-grid">
+            <div class="u-grid-left">
+              <img class='pi-iconlang' src='../inc/images/icons/orientation.svg' />
+            </div>
+
+            <div class="u-grid-right">
+
+              <p class="ty ty-item">
+                <a href="http://lattes.cnpq.br/4527664839744803" target="blank">
+                  Mika Alexia Miyazaki.
+                </a>
+                <span class="ty u-date-range">2019</span>
+              </p>
+
+              <p class="ty ty-gray">
+                INFLUÊNCIA DA FRAGMENTAÇÃO DE DNA ESPERMÁTICO NO INÍCIO DO DESENVOLVIMENTO EMBRIONÁRIO INICIAL.
+              </p>
+
+              <p class="ty u-spacer-1">
+                Universidade Federal de São Paulo —
+                <b class="ty-subItem">Curso:</b>
+                Medicina (Urologia)
+              </p>
+
+            </div> <!-- end-grid-right -->
+
+          </div><!-- end-grid -->
+
+
+          <hr class="u-line" />
+          <h4 class="ty ty-title u-spacer-2">Iniciações científicas concluídas</h4>
+
+
+          <div class="u-grid">
+            <div class="u-grid-left">
+              <img class='pi-iconlang' src='../inc/images/icons/orientation.svg' />
+            </div>
+
+            <div class="u-grid-right">
+
+              <p class="ty ty-item">
+                <a href="http://lattes.cnpq.br/4527664839744803" target="blank">
+                  Mika Alexia Miyazaki.
+                </a>
+                <span class="ty u-date-range">2019</span>
+              </p>
+
+              <p class="ty ty-gray">
+                INFLUÊNCIA DA FRAGMENTAÇÃO DE DNA ESPERMÁTICO NO INÍCIO DO DESENVOLVIMENTO EMBRIONÁRIO INICIAL.
+              </p>
+
+              <p class="ty u-spacer-1">
+                Universidade Federal de São Paulo —
+                <b class="ty-subItem">Curso:</b>
+                Medicina (Urologia)
+              </p>
+
+            </div> <!-- end-grid-right -->
+
+          </div><!-- end-grid -->
+
+
+
+          <hr class="u-line" />
+          <h4 class="ty ty-title u-spacer-2">Orientações de outra natureza concluídas</h4>
+
+
+          <div class="u-grid">
+            <div class="u-grid-left">
+              <img class='pi-iconlang' src='../inc/images/icons/orientation.svg' />
+            </div>
+
+            <div class="u-grid-right">
+
+              <p class="ty ty-item">
+                <a href="http://lattes.cnpq.br/4527664839744803" target="blank">
+                  Mika Alexia Miyazaki.
+                </a>
+                <span class="ty u-date-range">2019</span>
+              </p>
+
+              <p class="ty ty-gray">
+                INFLUÊNCIA DA FRAGMENTAÇÃO DE DNA ESPERMÁTICO NO INÍCIO DO DESENVOLVIMENTO EMBRIONÁRIO INICIAL.
+              </p>
+
+              <p class="ty u-spacer-1">
+                Universidade Federal de São Paulo —
+                <b class="ty-subItem">Curso:</b>
+                Medicina (Urologia)
+              </p>
+
+            </div> <!-- end-grid-right -->
+
+          </div><!-- end-grid -->
+
+
         </div> <!-- end tab-four -->
 
 
