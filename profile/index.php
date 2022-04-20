@@ -379,19 +379,30 @@ if (!empty($_REQUEST["lattesID"])) {
 
 
           <h3 class="ty ty-title">Tags mais usadas</h3>
+          <?php
+              $authorfacets = new AuthorFacets();
+              $authorfacets->query = $result_get['query'];
+
+              if (!isset($_GET)) {
+                  $_GET = null;
+              }
+
+              $resultaboutfacet = json_decode($authorfacets->authorfacet(basename(__FILE__), "about", 120, "Palavras-chave do autor", null, "_term", $_GET), true);
+              shuffle($resultaboutfacet);
+          ?>
 
           <div class="p-tags">
             <ul class="tag-cloud" role="navigation" aria-label="Tags mais usadas">
-              <?php foreach ($tags as $t=> $tag) {
+              <?php foreach ($resultaboutfacet as $t=> $tag) {
                 echo
                 "<li>
-                  <a class='tag' href='' data-weight={$tag['weight']}>
-                    {$tag['name']}</a>
+                  <a class='tag' href='' data-weight={$tag['amount']}>
+                    {$tag['category']}</a>
                 </li>";
                 }
                 unset($t);
-                unset($name);
-                unset($value);
+                unset($category);
+                unset($amount);
                 ?>
             </ul>
           </div> <!-- end p-tags -->
@@ -868,11 +879,6 @@ if (!empty($_REQUEST["lattesID"])) {
   })
   </script>
 
-
-  <?php
-      //$resultaboutfacet = $authorfacets->authorfacet(basename(__FILE__), "about", 120, "Palavras-chave do autor", null, "_term", $_GET);
-      //var_dump($resultaboutfacet, true);
-    ?>
 </body>
 
 </html>
