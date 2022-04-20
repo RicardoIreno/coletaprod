@@ -361,7 +361,7 @@ if (!empty($_REQUEST["lattesID"])) {
           <button id="tab-btn-1" class="tab-btn" v-on:click="changeTab('1')">Sobre Mim</button>
           <button id="tab-btn-2" class="tab-btn" v-on:click="changeTab('2')">Produção Intelectual</button>
           <button id="tab-btn-3" class="tab-btn" v-on:click="changeTab('3')">Pesquisa</button>
-          <!-- <button id="tab-btn-4" class="tab-btn" v-on:click="changeTab('4')">Orientações</button> -->
+          <button id="tab-btn-4" class="tab-btn" v-on:click="changeTab('4')">Orientações</button>
         </div>
 
 
@@ -723,10 +723,10 @@ if (!empty($_REQUEST["lattesID"])) {
                           <span class="pi-type">'.$work['_source']['tipo'].'</span> 
                           <hr class="pi-separator-ln"></hr>
                         </div>
-                        <h4 class="ty-item">'.$work['_source']['name'].'</h4>
+                        <h5 class="ty-item">'.$work['_source']['name'].'</h5>
                         
                         <span class="u-sr-only">Autores</span>
-                        <p class="ty-authors">' . implode('; ', $authors) . '</p>
+                        <p class="ty-gray">' . implode('; ', $authors) . '</p>
                                     
                         <div class="pi-moreinfo">
                           
@@ -827,7 +827,7 @@ if (!empty($_REQUEST["lattesID"])) {
 
               <p class="ty u-spacer-1">
                 <b class="ty-subItem">Integrantes:</b>
-                <span class="ty-authors">
+                <span class="ty-gray">
                   Ricardo Pimenta Bertolla - Coordenador / Mariana Camargo - Integrante / Paula Intasqui Lopes -
                   Integrante / ANTONIASSI, M. P. - Integrante / Larissa Berloffa Belardin
                 </span>
@@ -842,6 +842,79 @@ if (!empty($_REQUEST["lattesID"])) {
 
 
         <div id="tab-four" class="tab-content" v-if="tabOpened == '4'">
+
+          <h3 class="ty ty-title u-spacer-2">Orientações e supervisões</h3>
+
+          <hr class="u-line" />
+          <h4 class="ty ty-title u-spacer-2">Dissertações de mestrado em andamento</h4>
+
+          <ul class="orientation">
+            <li>
+              <div class="u-grid">
+                <div class="u-grid-left">
+                  <img class='pi-iconlang' src='../inc/images/icons/orientation.svg' />
+                </div>
+
+                <div class="u-grid-right">
+
+                  <p class="ty ty-item">
+                    <a class="ty-itemLink" href="http://lattes.cnpq.br/4527664839744803" target="blank">
+                      Mika Alexia Miyazaki
+                    </a>
+                    <span class="ty u-date-range">2019</span>
+                  </p>
+
+                  <p class="ty ty-gray">
+                    INFLUÊNCIA DA FRAGMENTAÇÃO DE DNA ESPERMÁTICO NO INÍCIO DO DESENVOLVIMENTO EMBRIONÁRIO INICIAL.
+                  </p>
+
+                  <p class="ty u-spacer-1">
+                    Universidade Federal de São Paulo —
+                    <b class="ty-subItem">Curso:</b>
+                    Medicina (Urologia)
+                  </p>
+
+                </div> <!-- end-grid-right -->
+
+              </div><!-- end-grid -->
+
+            </li>
+          </ul>
+
+
+
+          <hr class="u-line" />
+          <h4 class="ty ty-title u-spacer-2">Teses de doutorado em andamento</h4>
+
+
+          <div class="u-grid">
+            <div class="u-grid-left">
+              <img class='pi-iconlang' src='../inc/images/icons/orientation.svg' />
+            </div>
+
+            <div class="u-grid-right">
+
+              <p class="ty ty-item">
+                <a href="http://lattes.cnpq.br/4527664839744803" target="blank">
+                  Mika Alexia Miyazaki.
+                </a>
+                <span class="ty u-date-range">2019</span>
+              </p>
+
+              <p class="ty ty-gray">
+                INFLUÊNCIA DA FRAGMENTAÇÃO DE DNA ESPERMÁTICO NO INÍCIO DO DESENVOLVIMENTO EMBRIONÁRIO INICIAL.
+              </p>
+
+              <p class="ty u-spacer-1">
+                Universidade Federal de São Paulo —
+                <b class="ty-subItem">Curso:</b>
+                Medicina (Urologia)
+              </p>
+
+            </div> <!-- end-grid-right -->
+
+          </div><!-- end-grid -->
+
         </div> <!-- end tab-four -->
 
 
@@ -861,7 +934,7 @@ if (!empty($_REQUEST["lattesID"])) {
   var app = new Vue({
     el: '#tabs',
     data: {
-      tabOpened: '3',
+      tabOpened: '4',
       isActive: false
 
     },
