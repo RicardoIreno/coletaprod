@@ -396,7 +396,7 @@ if (!empty($_REQUEST["lattesID"])) {
               <?php foreach ($resultaboutfacet as $t=> $tag) {
                 echo
                 "<li>
-                  <a class='tag' href='' data-weight={$tag['amount']}>
+                  <a class='tag' data-weight={$tag['amount']}>
                     {$tag['category']}</a>
                 </li>";
                 }
