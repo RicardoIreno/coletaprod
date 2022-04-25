@@ -8,6 +8,7 @@
   padding: 0 2rem;
   background-color: _palette(theme);
   list-style: none;
+  height: 100%;
 
   &-link {
     display: flex;
@@ -22,7 +23,7 @@
       transition: all 0.4s 0s ease;
       
       .mainMenu-ico {
-        fill: #fff;
+        fill: _palette(theme-light);
       }
     }
   }
@@ -33,7 +34,7 @@
     background-color: none;
     vertical-align: middle;
     transition: all 0.2s ease 0s;
-    fill: _palette(theme-light);
+    fill: _palette(theme-light-2);
   }
 }
 
