@@ -79,6 +79,7 @@
     <p class="ty"><em>Bolsista FAPESP</em></p>
 
   </main>
+  <?php include('inc/footer.php'); ?>
 
 
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
