@@ -109,17 +109,12 @@ if (!empty($_REQUEST["lattesID"])) {
         <div class="core-one">
 
           <div class="co-photo-wrapper">
-            <!-- <img class="co-bestBagde" src="../inc/images/badges/bolsista-cnpq-1a.svg"/>  -->
+            <img class="co-bestBagde" src="../inc/images/badges/bolsista-cnpq-1a.svg" />
             <div class="co-photo-container">
               <img class="co-photo"
                 src="http://servicosweb.cnpq.br/wspessoa/servletrecuperafoto?tipo=1&amp;bcv=true&amp;id=<?php echo $lattesID10; ?>" />
             </div>
           </div> <!-- end co-photo-wrapper -->
-
-          <?php if($profile["nacionalidade"]=="B") : ?>
-          <img class="country-flag" src="../inc/images/country_flags/br.svg" alt="nacionalidade brasileira"
-            title="nacionalidade brasileira" />
-          <?php endif; ?>
 
 
           <div class="co-badgeIcons">
@@ -136,7 +131,15 @@ if (!empty($_REQUEST["lattesID"])) {
         </div> <!-- end core-one -->
 
         <div class="core-two">
-          <h1 class="ty-name"><?php echo $profile["nome_completo"] ?></h1>
+          <h1 class="ty-name">
+            <?php echo $profile["nome_completo"] ?>
+
+            <?php if($profile["nacionalidade"]=="B") : ?>
+            <img class="country-flag" src="../inc/images/country_flags/br.svg" alt="nacionalidade brasileira"
+              title="nacionalidade brasileira" />
+            <?php endif; ?>
+          </h1>
+
           <!-- <div class="u-spacer-2  "></div> -->
           <h2 class="ty ty-prof">Universidade Federal de São Paulo</h2>
           <?php if(!empty($profile["unidade"][0])) : ?>
