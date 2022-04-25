@@ -1,4 +1,33 @@
 
+.about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 3rem;
+
+  &-ico {
+    width: 100px;
+    // fill: _palette(theme);
+    fill: _palette(theme);
+    transition: all 0.25s ease-in-out;
+    margin: 1rem auto;
+
+    &:hover {
+      fill: _palette(theme-light);
+    }
+  }
+
+  &-textbox {
+    max-width: 1200px;
+    text-align: center;
+
+  }
+
+  &-titles {
+    margin: 1rem center;
+  }
+}
+
 .logo-about {
   max-width: 120px;
   margin: 2rem;

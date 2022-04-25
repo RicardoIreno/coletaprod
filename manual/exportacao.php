@@ -17,19 +17,19 @@
   <meta name="twitter:card" content="summary" />
   <meta property="twitter:title" content="Manual do Prodmais" />
   <script type="application/ld+json">
-    {
-      "@type": "WebPage",
-      "description": "Manual do Prodmais",
-      "url": "https://unifesp.br/prodmais/manual/exportacao.php",
-      "headline": "Manual do Prodmais",
-      "@context": "https://schema.org"
-    }
+  {
+    "@type": "WebPage",
+    "description": "Manual do Prodmais",
+    "url": "https://unifesp.br/prodmais/manual/exportacao.php",
+    "headline": "Manual do Prodmais",
+    "@context": "https://schema.org"
+  }
   </script>
   <!-- End Jekyll SEO tag -->
   <link rel="stylesheet" href="../sass/main.css" />
-  <link type="application/atom+xml" rel="alternate" href="https://unifesp.br/prodmais/manual/feed.xml" title="Manual do Prodmais" />
+  <link type="application/atom+xml" rel="alternate" href="https://unifesp.br/prodmais/manual/feed.xml"
+    title="Manual do Prodmais" />
 </head>
-<link rel="stylesheet" href="../inc/css/style.css">
 <link rel="shortcut icon" href="../inc/images/favicon-64x.png" type="image/x-icon">
 
 <body class="manual-body">
@@ -41,16 +41,19 @@
 
   <main class="manual-wrapper" aria-label="Content">
     <div class="manual-wrapper">
-    
+
       <h1 id="exportacao">Manual — Exportação</h1>
 
-      <p>O Prodmais permite a exportação dos metadados da sua pesquisa nos formatos RIS, BIBTEX e diferentes formatações de CSV. Uma vez feita a pesquisa, as opções de exportação aparecem ao final da seção de filtros no lado direito da página. Basta deslizar até o final da página e escolher um formato de exportação.</p>
+      <p>O Prodmais permite a exportação dos metadados da sua pesquisa nos formatos RIS, BIBTEX e diferentes formatações
+        de CSV. Uma vez feita a pesquisa, as opções de exportação aparecem ao final da seção de filtros no lado direito
+        da página. Basta deslizar até o final da página e escolher um formato de exportação.</p>
 
       <center>
         <img class="manual-img" src="assets/img/manual/como_expotar_1.jpg" />
       </center>
 
-      <p>Você encontrará as opções de exportação na parte inferior direita da página, logo abaixo das opções de filtragem:</p>
+      <p>Você encontrará as opções de exportação na parte inferior direita da página, logo abaixo das opções de
+        filtragem:</p>
 
       <center>
         <img class="manual-img" src="assets/img/manual/como_expotar_2.jpg" />
@@ -61,7 +64,9 @@
 
       <h3 id="ris">RIS</h3>
 
-      <p>Um arquivo RIS é um arquivo de citação bibliográfica salvo em um formato desenvolvido pela Research Information Systems (RIS). Os arquivos RIS são salvos em um formato de texto ASCII, e são suportados por programas com o EndNote, Wandora e BibDesk.</p>
+      <p>Um arquivo RIS é um arquivo de citação bibliográfica salvo em um formato desenvolvido pela Research Information
+        Systems (RIS). Os arquivos RIS são salvos em um formato de texto ASCII, e são suportados por programas com o
+        EndNote, Wandora e BibDesk.</p>
 
       <table>
         <thead>
@@ -88,7 +93,9 @@
 
       <h3 id="bibtex">BIBTEX</h3>
 
-      <p>BibTeX é uma ferramenta de formatação usada em documentos LaTeX. Ela foi criada para facilitar a separação da bibliografia com a apresentação do texto, seguindo o mesmo conceito da distinção do conteúdo com o estilo do texto utilizada no próprio LaTeX e XHTML.</p>
+      <p>BibTeX é uma ferramenta de formatação usada em documentos LaTeX. Ela foi criada para facilitar a separação da
+        bibliografia com a apresentação do texto, seguindo o mesmo conceito da distinção do conteúdo com o estilo do
+        texto utilizada no próprio LaTeX e XHTML.</p>
 
       <table>
         <thead>
@@ -115,13 +122,18 @@
 
       <h3 id="csv">CSV</h3>
 
-      <p>Um arquivo CSV é um formato extremamente de arquivo de valores separados por vírgula normalmente usado por diversos tipos de programas, desde os mais simples, como o Bloco de Notas, até editores de planilhas como o Microsoft Excel ou o OpenOffice Calc.</p>
+      <p>Um arquivo CSV é um formato extremamente de arquivo de valores separados por vírgula normalmente usado por
+        diversos tipos de programas, desde os mais simples, como o Bloco de Notas, até editores de planilhas como o
+        Microsoft Excel ou o OpenOffice Calc.</p>
 
       <p>No Prodmais é possível exportar os dados em CSV formatados para o DSpace, o CapesPrint, e o Gephi.</p>
 
       <h2 id="exportação-dos-dados-do-lattes-para-o-orcid">Exportação dos dados do Lattes para o ORCID</h2>
 
-      <p>Manter o currículo Lattes e o ORCID igualmente atualizados é uma tarefa trabalhosa. O Prodmais oferece uma forma fácil de transferir os dados do currículo Lattes para o ORCID através de uma exportação em formato BibTeX. E de uma forma simples. Basta usar a opção <em>Exportar para ORCID (Formato BibTeX)</em> na página do seu perfil de pesquisador, que pode ser pesquisada a partir da aba Pesquisadores:</p>
+      <p>Manter o currículo Lattes e o ORCID igualmente atualizados é uma tarefa trabalhosa. O Prodmais oferece uma
+        forma fácil de transferir os dados do currículo Lattes para o ORCID através de uma exportação em formato BibTeX.
+        E de uma forma simples. Basta usar a opção <em>Exportar para ORCID (Formato BibTeX)</em> na página do seu perfil
+        de pesquisador, que pode ser pesquisada a partir da aba Pesquisadores:</p>
 
       <center>
         <img class="manual-img" src="assets/img/manual/perfil_pesquisador.jpg" />
@@ -130,7 +142,7 @@
 
       <div class="u-spacer-2"></div>
       <?php require './manual-menu.php'; ?>
-      </div>
+    </div>
     </div> <!-- manual-wrapper -->
   </main>
 

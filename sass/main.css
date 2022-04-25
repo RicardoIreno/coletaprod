@@ -851,6 +851,29 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
   transition: all 0.2s ease 0s;
 }
 
+.about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 3rem;
+}
+.about-ico {
+  width: 100px;
+  fill: #1C9AD1;
+  transition: all 0.25s ease-in-out;
+  margin: 1rem auto;
+}
+.about-ico:hover {
+  fill: #7fd1f5;
+}
+.about-textbox {
+  max-width: 1200px;
+  text-align: center;
+}
+.about-titles {
+  margin: 1rem center;
+}
+
 .logo-about {
   max-width: 120px;
   margin: 2rem;
