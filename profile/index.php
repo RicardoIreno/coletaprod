@@ -148,10 +148,10 @@ if (!empty($_REQUEST["lattesID"])) {
           <?php if(!empty($profile["departamento"][0])) : ?>
           <p class="ty ty-prof"><?php echo $profile["departamento"][0] ?></p>
           <?php endif; ?>
-          <?php if(isset($profile["ppg_nome"])): ?>
-          <?php foreach ($profile["ppg_nome"] as $key => $ppg_nome): ?>
-          <p class="ty ty-prof">Programa de Pós-Graduação: <?php echo $ppg_nome ?></p>
-          <?php endforeach; ?>
+          <?php if(!empty($profile["ppg_nome"][0])): ?>
+            <?php foreach ($profile["ppg_nome"] as $key => $ppg_nome): ?>
+              <p class="ty ty-prof">Programa de Pós-Graduação: <?php echo $ppg_nome ?></p>
+            <?php endforeach; ?>
           <?php endif; ?>
           <!-- <p class="ty ty-email">bertola@unifesp.br</p> -->
           <div class="u-spacer-1"></div>
@@ -849,75 +849,50 @@ if (!empty($_REQUEST["lattesID"])) {
           <h3 class="ty ty-title u-spacer-2">Orientações e supervisões</h3>
 
           <hr class="u-line" />
-          <h4 class="ty ty-title u-spacer-2">Dissertações de mestrado em andamento</h4>
+          <?php foreach($profile['orientacoes'] as $orientacao): ?>
+            <?php //echo "<pre>".print_r($orientacao, true)."</pre>"; ?>
+            <?php if ($orientacao['natureza'] =='Dissertação de mestrado'): ?>
+              <h4 class="ty ty-title u-spacer-2">Dissertações de mestrado em andamento</h4>
+            <?php elseif($orientacao['natureza'] =='Tese de doutorado'): ?>
+              <h4 class="ty ty-title u-spacer-2">Teses de doutorado em andamento</h4>
+            <?php endif; ?>
+            <ul class="orientation">
+              <li>
+                <div class="u-grid">
+                  <div class="u-grid-left">
+                    <img class='pi-iconlang' src='../inc/images/icons/orientation.svg' />
+                  </div>
 
-          <ul class="orientation">
-            <li>
-              <div class="u-grid">
-                <div class="u-grid-left">
-                  <img class='pi-iconlang' src='../inc/images/icons/orientation.svg' />
-                </div>
+                  <div class="u-grid-right">
 
-                <div class="u-grid-right">
+                    <p class="ty ty-item">
+                      <a class="ty-itemLink" href="http://lattes.cnpq.br/<?php echo $orientacao['numeroIDOrientado']; ?>" target="_blank">
+                        <?php echo $orientacao['nomeDoOrientando']; ?>
+                      </a>
+                      <span class="ty u-date-range"><?php echo $orientacao['ano']; ?></span>
+                    </p>
 
-                  <p class="ty ty-item">
-                    <a class="ty-itemLink" href="http://lattes.cnpq.br/4527664839744803" target="blank">
-                      Mika Alexia Miyazaki
-                    </a>
-                    <span class="ty u-date-range">2019</span>
-                  </p>
+                    <p class="ty ty-gray">
+                      <?php echo $orientacao['titulo']; ?>
+                    </p>
 
-                  <p class="ty ty-gray">
-                    INFLUÊNCIA DA FRAGMENTAÇÃO DE DNA ESPERMÁTICO NO INÍCIO DO DESENVOLVIMENTO EMBRIONÁRIO INICIAL.
-                  </p>
+                    <p class="ty u-spacer-1">
+                      <?php echo $orientacao['nomeDaInstituicao']; ?> —
+                      <b class="ty-subItem">Curso:</b>
+                      <?php echo $orientacao['nomeDoCurso']; ?>
+                    </p>
 
-                  <p class="ty u-spacer-1">
-                    Universidade Federal de São Paulo —
-                    <b class="ty-subItem">Curso:</b>
-                    Medicina (Urologia)
-                  </p>
+                  </div> <!-- end-grid-right -->
 
-                </div> <!-- end-grid-right -->
+                </div><!-- end-grid -->
 
-              </div><!-- end-grid -->
-
-            </li>
-          </ul>
+              </li>
+            </ul>
+          <?php endforeach; ?>
 
 
 
-          <hr class="u-line" />
-          <h4 class="ty ty-title u-spacer-2">Teses de doutorado em andamento</h4>
-
-
-          <div class="u-grid">
-            <div class="u-grid-left">
-              <img class='pi-iconlang' src='../inc/images/icons/orientation.svg' />
-            </div>
-
-            <div class="u-grid-right">
-
-              <p class="ty ty-item">
-                <a href="http://lattes.cnpq.br/4527664839744803" target="blank">
-                  Mika Alexia Miyazaki.
-                </a>
-                <span class="ty u-date-range">2019</span>
-              </p>
-
-              <p class="ty ty-gray">
-                INFLUÊNCIA DA FRAGMENTAÇÃO DE DNA ESPERMÁTICO NO INÍCIO DO DESENVOLVIMENTO EMBRIONÁRIO INICIAL.
-              </p>
-
-              <p class="ty u-spacer-1">
-                Universidade Federal de São Paulo —
-                <b class="ty-subItem">Curso:</b>
-                Medicina (Urologia)
-              </p>
-
-            </div> <!-- end-grid-right -->
-
-          </div><!-- end-grid -->
-
+          <!--
 
           <hr class="u-line" />
           <h4 class="ty ty-title u-spacer-2">Supervisões de pós-doutorado em andamento</h4>
@@ -947,9 +922,9 @@ if (!empty($_REQUEST["lattesID"])) {
                 Medicina (Urologia)
               </p>
 
-            </div> <!-- end-grid-right -->
+            </div> 
 
-          </div><!-- end-grid -->
+          </div>
 
           <div class="u-spacer-2"></div>
 
@@ -983,9 +958,9 @@ if (!empty($_REQUEST["lattesID"])) {
                     Medicina (Urologia)
                   </p>
 
-                </div> <!-- end-grid-right -->
+                </div> 
 
-              </div><!-- end-grid -->
+              </div>
 
             </li>
           </ul>
@@ -1020,9 +995,9 @@ if (!empty($_REQUEST["lattesID"])) {
                 Medicina (Urologia)
               </p>
 
-            </div> <!-- end-grid-right -->
+            </div> 
 
-          </div><!-- end-grid -->
+          </div>
 
 
           <hr class="u-line" />
@@ -1053,9 +1028,9 @@ if (!empty($_REQUEST["lattesID"])) {
                 Medicina (Urologia)
               </p>
 
-            </div> <!-- end-grid-right -->
+            </div> 
 
-          </div><!-- end-grid -->
+          </div>
 
 
 
@@ -1087,9 +1062,9 @@ if (!empty($_REQUEST["lattesID"])) {
                 Medicina (Urologia)
               </p>
 
-            </div> <!-- end-grid-right -->
+            </div> 
 
-          </div><!-- end-grid -->
+          </div> -->
 
 
         </div> <!-- end tab-four -->
