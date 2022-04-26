@@ -846,49 +846,52 @@ if (!empty($_REQUEST["lattesID"])) {
 
         <div id="tab-four" class="tab-content" v-if="tabOpened == '4'">
 
+          <?php if(!empty($profile['orientacoes'] )): ?>
+            
           <h3 class="ty ty-title u-spacer-2">Orientações e supervisões</h3>
-
           <hr class="u-line" />
-          <?php foreach($profile['orientacoes'] as $orientacao): ?>
-            <?php //echo "<pre>".print_r($orientacao, true)."</pre>"; ?>
-            <?php if ($orientacao['natureza'] =='Dissertação de mestrado'): ?>
-              <h4 class="ty ty-title u-spacer-2">Dissertações de mestrado em andamento</h4>
-            <?php elseif($orientacao['natureza'] =='Tese de doutorado'): ?>
-              <h4 class="ty ty-title u-spacer-2">Teses de doutorado em andamento</h4>
-            <?php endif; ?>
-            <ul class="orientation">
-              <li>
-                <div class="u-grid">
-                  <div class="u-grid-left">
-                    <img class='pi-iconlang' src='../inc/images/icons/orientation.svg' />
-                  </div>
+          
+            <?php foreach($profile['orientacoes'] as $orientacao): ?>
+              <?php //echo "<pre>".print_r($orientacao, true)."</pre>"; ?>
+              <?php if ($orientacao['natureza'] =='Dissertação de mestrado'): ?>
+                <h4 class="ty ty-title u-spacer-2">Dissertações de mestrado em andamento</h4>
+              <?php elseif($orientacao['natureza'] =='Tese de doutorado'): ?>
+                <h4 class="ty ty-title u-spacer-2">Teses de doutorado em andamento</h4>
+              <?php endif; ?>
+              <ul class="orientation">
+                <li>
+                  <div class="u-grid">
+                    <div class="u-grid-left">
+                      <img class='pi-iconlang' src='../inc/images/icons/orientation.svg' />
+                    </div>
 
-                  <div class="u-grid-right">
+                    <div class="u-grid-right">
 
-                    <p class="ty ty-item">
-                      <a class="ty-itemLink" href="http://lattes.cnpq.br/<?php echo $orientacao['numeroIDOrientado']; ?>" target="_blank">
-                        <?php echo $orientacao['nomeDoOrientando']; ?>
-                      </a>
-                      <span class="ty u-date-range"><?php echo $orientacao['ano']; ?></span>
-                    </p>
+                      <p class="ty ty-item">
+                        <a class="ty-itemLink" href="http://lattes.cnpq.br/<?php echo $orientacao['numeroIDOrientado']; ?>" target="_blank">
+                          <?php echo $orientacao['nomeDoOrientando']; ?>
+                        </a>
+                        <span class="ty u-date-range"><?php echo $orientacao['ano']; ?></span>
+                      </p>
 
-                    <p class="ty ty-gray">
-                      <?php echo $orientacao['titulo']; ?>
-                    </p>
+                      <p class="ty ty-gray">
+                        <?php echo $orientacao['titulo']; ?>
+                      </p>
 
-                    <p class="ty u-spacer-1">
-                      <?php echo $orientacao['nomeDaInstituicao']; ?> —
-                      <b class="ty-subItem">Curso:</b>
-                      <?php echo $orientacao['nomeDoCurso']; ?>
-                    </p>
+                      <p class="ty u-spacer-1">
+                        <?php echo $orientacao['nomeDaInstituicao']; ?> —
+                        <b class="ty-subItem">Curso:</b>
+                        <?php echo $orientacao['nomeDoCurso']; ?>
+                      </p>
 
-                  </div> <!-- end-grid-right -->
+                    </div> <!-- end-grid-right -->
 
-                </div><!-- end-grid -->
+                  </div><!-- end-grid -->
 
-              </li>
-            </ul>
-          <?php endforeach; ?>
+                </li>
+              </ul>
+            <?php endforeach; ?>
+          <?php endif; ?>
 
 
 
