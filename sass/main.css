@@ -716,6 +716,9 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
   width: 100%;
   max-width: 800px;
 }
+.search-btn {
+  margin: 1rem auto;
+}
 .search-form {
   width: 100%;
   display: flex;
