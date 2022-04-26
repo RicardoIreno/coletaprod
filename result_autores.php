@@ -55,89 +55,100 @@ $get_data = $_GET;
 <html lang="en">
 
 <head>
-    <?php
+  <?php
     include('inc/meta-header.php');
     ?>
-    <title>Lattes - Resultado da busca por trabalhos</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous">
+  </script>
 
-    <script src="http://cdn.jsdelivr.net/g/filesaver.js"></script>
-    <script>
-        function SaveAsFile(t, f, m) {
-            try {
-                var b = new Blob([t], {
-                    type: m
-                });
-                saveAs(b, f);
-            } catch (e) {
-                window.open("data:" + m + "," + encodeURIComponent(t), '_blank', '');
-            }
-        }
-    </script>
-    <link rel="stylesheet" href="sass/main.css" />
-    <link rel="stylesheet" href="inc/css/style.css" />
+  <title>Lattes - Resultado da busca por trabalhos</title>
+
+  <script src="http://cdn.jsdelivr.net/g/filesaver.js"></script>
+  <script>
+  function SaveAsFile(t, f, m) {
+    try {
+      var b = new Blob([t], {
+        type: m
+      });
+      saveAs(b, f);
+    } catch (e) {
+      window.open("data:" + m + "," + encodeURIComponent(t), '_blank', '');
+    }
+  }
+  </script>
+  <link rel="stylesheet" href="sass/main.css" />
+  <link rel="stylesheet" href="inc/css/style.css" />
 
 </head>
 
 <body>
 
-    <?php
+  <?php
     if (file_exists('inc/google_analytics.php')) {
         include 'inc/google_analytics.php';
     }
     ?>
 
-    <!-- NAV -->
-    <?php require 'inc/navbar.php'; ?>
-    <!-- /NAV -->
-    <br /><br /><br /><br /><br />
+  <!-- NAV -->
+  <?php require 'inc/navbar.php'; ?>
+  <!-- /NAV -->
+  <br /><br /><br /><br /><br />
 
-    <main role="main">
-        <div class="container">
+  <main role="main">
+    <div class="container">
 
-            <div class="row">
-                <div class="col-8">
+      <div class="row">
+        <div class="col-8">
 
-                    <form action="result_autores.php" method="get" accept-charset="utf-8" enctype="multipart/form-data" id="searchresearchers">
-                        <div class="input-group mb-3">
-                            <input name="query" type="text" class="form-control" placeholder="Digite parte do nome do pesquisador" aria-label="Digite parte do nome do pesquisador" aria-describedby="button-addon2">
-                            <button class="btn btn-outline-secondary" type="submit" form="searchresearchers" value="Submit">Pesquisar</button>
-                        </div>
-                    </form>
+          <form action="result_autores.php" method="get" accept-charset="utf-8" enctype="multipart/form-data"
+            id="searchresearchers">
+            <div class="input-group mb-3">
+              <input name="query" type="text" class="form-control" placeholder="Digite parte do nome do pesquisador"
+                aria-label="Digite parte do nome do pesquisador" aria-describedby="button-addon2">
+              <button class="btn btn-outline-secondary" type="submit" form="searchresearchers"
+                value="Submit">Pesquisar</button>
+            </div>
+          </form>
 
-                    <!-- Navegador de resultados - Início -->
-                    <?php ui::pagination($page, $total, $limit); ?>
-                    <!-- Navegador de resultados - Fim -->
+          <!-- Navegador de resultados - Início -->
+          <?php ui::pagination($page, $total, $limit); ?>
+          <!-- Navegador de resultados - Fim -->
 
-                    <?php foreach ($cursor["hits"]["hits"] as $r) : ?>
-                        <?php if (empty($r["_source"]['datePublished'])) {
+          <?php foreach ($cursor["hits"]["hits"] as $r) : ?>
+          <?php if (empty($r["_source"]['datePublished'])) {
                             $r["_source"]['datePublished'] = "";
                         }
                         ?>
 
-                        <div class="card">
-                            <div class="card-body">
+          <div class="card">
+            <div class="card-body">
 
-                                <div class="d-flex bd-highlight">
-                                    <div class="p-2 flex-grow-1 bd-highlight">
-                                        <h5 class="card-title"><a class="text-dark" href="profile/index.php?lattesID=<?php echo $r['_source']['lattesID']; ?>"><?php echo $r["_source"]['nome_completo']; ?></a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
-
-
-                    <!-- Navegador de resultados - Início -->
-                    <?php ui::pagination($page, $total, $limit); ?>
-                    <!-- Navegador de resultados - Fim -->
-
+              <div class="d-flex bd-highlight">
+                <div class="p-2 flex-grow-1 bd-highlight">
+                  <h5 class="card-title"><a class="text-dark"
+                      href="profile/index.php?lattesID=<?php echo $r['_source']['lattesID']; ?>"><?php echo $r["_source"]['nome_completo']; ?></a>
+                  </h5>
                 </div>
-                <div class="col-4">
+              </div>
+            </div>
+          </div>
+          <?php endforeach; ?>
 
-                    <hr>
-                    <h3>Refinar meus resultados</h3>
-                    <hr>
-                    <?php
+
+          <!-- Navegador de resultados - Início -->
+          <?php ui::pagination($page, $total, $limit); ?>
+          <!-- Navegador de resultados - Fim -->
+
+        </div>
+        <div class="col-4">
+
+          <hr>
+          <h3>Refinar meus resultados</h3>
+          <hr>
+          <?php
                     $facets = new facets();
                     $facets->query = $result_get['query'];
 
@@ -198,11 +209,11 @@ $get_data = $_GET;
                     $facets->facet(basename(__FILE__), "data_atualizacao", 100, "Data de atualização do currículo", null, "_term", $_GET, $index_cv);
 
                     ?>
-                    </ul>
-                    <!-- Limitar por data - Início -->
-                    <form action="result.php?" method="GET">
-                        <h5 class="mt-3">Filtrar por ano de publicação</h5>
-                        <?php
+          </ul>
+          <!-- Limitar por data - Início -->
+          <form action="result.php?" method="GET">
+            <h5 class="mt-3">Filtrar por ano de publicação</h5>
+            <?php
                         parse_str($_SERVER["QUERY_STRING"], $parsedQuery);
                         foreach ($parsedQuery as $k => $v) {
                             if (is_array($v)) {
@@ -228,23 +239,25 @@ $get_data = $_GET;
                         }
 
                         ?>
-                        <div class="form-group">
-                            <label for="initialYear">Ano inicial</label>
-                            <input type="text" class="form-control" id="initialYear" name="initialYear" pattern="\d{4}" placeholder="Ex. 2010" value="<?php echo $initialYearValue; ?>" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="finalYear">Ano final</label>
-                            <input type="text" class="form-control" id="finalYear" name="finalYear" pattern="\d{4}" placeholder="Ex. 2020" value="<?php echo $finalYearValue; ?>">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Filtrar</button>
-                    </form>
-                    <!-- Limitar por data - Fim -->
-                    <hr>
-                </div>
+            <div class="form-group">
+              <label for="initialYear">Ano inicial</label>
+              <input type="text" class="form-control" id="initialYear" name="initialYear" pattern="\d{4}"
+                placeholder="Ex. 2010" value="<?php echo $initialYearValue; ?>" required>
             </div>
-    </main>
+            <div class="form-group">
+              <label for="finalYear">Ano final</label>
+              <input type="text" class="form-control" id="finalYear" name="finalYear" pattern="\d{4}"
+                placeholder="Ex. 2020" value="<?php echo $finalYearValue; ?>">
+            </div>
+            <button type="submit" class="btn btn-primary">Filtrar</button>
+          </form>
+          <!-- Limitar por data - Fim -->
+          <hr>
+        </div>
+      </div>
+  </main>
 
-    <?php include('inc/footer.php'); ?>
+  <?php include('inc/footer.php'); ?>
 
 </body>
 
