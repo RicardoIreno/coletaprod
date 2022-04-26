@@ -1,19 +1,23 @@
 // == SEARCH == // 
-  
+   
 .search {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 800px;
-   
- &-form {
-   width: 100%;
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   justify-items: center;
-   margin: 0 auto;
+  max-width: 800px;  
+
+  &-btn {
+    margin: 1rem auto;
+  }
+
+  &-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    margin: 0 auto;
   }
 
   &-input, &-date {

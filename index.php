@@ -121,10 +121,11 @@ com este programa, Se não, veja <http://www.gnu.org/licenses/>.
       <form class="search-form" class="" action="result.php" title="Pesquisa simples">
 
         <div class="u-div-v">
-          <input class="search-input" type="search" placeholder="Pesquise por palavra chave" aria-label="Pesquisar" name="search">       
+          <input class="search-input" type="search" placeholder="Pesquise por palavra chave" aria-label="Pesquisar"
+            name="search">
         </div>
 
-        <a v-on:click="changeSearch()" class="btn" title="Alternar modo de pesquisa">
+        <button v-on:click="changeSearch()" class="btn search-btn" title="Alternar modo de pesquisa">
           <span v-if="searchPage == 'simple'">
             <svg class="btn-ico" x="0px" y="0px" viewBox="0 0 80 48">
               <path class="st0" d="M7.7,10c0.7,0,1.5,0.2,2.2,0.5L39.7,25l30.6-14c2.5-1.1,5.5,0,6.6,2.5c1.1,2.5,0,5.5-2.5,6.6l-32.7,15
@@ -137,7 +138,7 @@ com este programa, Se não, veja <http://www.gnu.org/licenses/>.
                   c1.4-0.6,2.9-0.6,4.3,0.1l32,15.6c2.5,1.2,3.5,4.2,2.3,6.7C76,34.5,74.2,35.5,72.3,35.5z" />
             </svg>
           </span>
-        </a>
+        </button>
 
         <div class="u-div-v" v-if="searchPage == 'advanced'">
 
@@ -145,8 +146,8 @@ com este programa, Se não, veja <http://www.gnu.org/licenses/>.
 
           <?php paginaInicial::filter_select("vinculo.ppg_nome"); ?>
 
-          <input class="search-input" type="search" placeholder="Filtrar por Nome do Programa de Pós-Graduação (Opcional)"
-            aria-label="Mudar" name="search">
+          <input class="search-input" type="search"
+            placeholder="Filtrar por Nome do Programa de Pós-Graduação (Opcional)" aria-label="Mudar" name="search">
 
           <input class="search-input" list="datalistOptions" id="authorsDataList"
             placeholder="Filtrar por nome ou ID Lattes do autor" name="filter[]" v-model="query" @input="searchCV()">
@@ -167,7 +168,7 @@ com este programa, Se não, veja <http://www.gnu.org/licenses/>.
 
           </div>
 
-          
+
         </div> <!-- advanced -->
 
         <button type="submit" class="btnSearch" title="Buscar">
@@ -185,9 +186,9 @@ com este programa, Se não, veja <http://www.gnu.org/licenses/>.
         <small class="u-info">3: Por padrão, o sistema utiliza o operador booleano OR. Caso necessite deixar a busca
           mais específica, utilize o operador AND (em maiúscula)</small>
 
-      </div>
+    </div>
     </form>
-     <!-- app -->
+    <!-- app -->
 
     <hr />
     <hr />

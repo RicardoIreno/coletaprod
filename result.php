@@ -53,133 +53,150 @@ $get_data = $_GET;
 
 <head>
 
-    <?php
+  <?php
     require 'inc/meta-header.php';
     ?>
-    <title><?php echo $branch; ?> - Resultado da busca</title>
-    
-    <link rel="stylesheet" href="sass/main.css" />
-    <link rel="stylesheet" href="inc/css/style.css" />
+  <title><?php echo $branch; ?> - Resultado da busca</title>
 
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous">
+  </script>
+  <!-- <link rel="stylesheet" href="sass/main.css" /> -->
 </head>
 
 <body>
 
-    <?php
+  <?php
     if (file_exists('inc/google_analytics.php')) {
         include 'inc/google_analytics.php';
     }
     ?>
-    <!-- NAV -->
-    <?php require 'inc/navbar.php'; ?>
-    <!-- /NAV -->
+  <!-- NAV -->
+  <?php require 'inc/navbar.php'; ?>
+  <!-- /NAV -->
 
-    <main role="main" class="mt-5">
-        <div class="container">
+  <main role="main" class="mt-5">
+    <div class="container">
 
-            <div class="row">
-                <div class="col-md-8">
+      <div class="row">
+        <div class="col-md-8">
 
-                    <!-- Navegador de resultados - Início -->
-                    <?php ui::pagination($page, $total, $limit); ?>
-                    <!-- Navegador de resultados - Fim -->
+          <!-- Navegador de resultados - Início -->
+          <?php ui::pagination($page, $total, $limit); ?>
+          <!-- Navegador de resultados - Fim -->
 
 
-                    <!-- List of filters - Start -->
-                    <?php
+          <!-- List of filters - Start -->
+          <?php
                     if (!empty($_SERVER["QUERY_STRING"])) {
                         $filters = ActiveFilters::Filters($_GET, $url_base);
                         echo implode("", $filters);
                     }
                     ?>
-                    <!-- List of filters - End -->
+          <!-- List of filters - End -->
 
 
 
-                    <?php if ($total == 0) : ?>
-                        <br />
-                        <div class="alert alert-info" role="alert">
-                            Sua busca não obteve resultado. Você pode refazer sua busca abaixo:<br /><br />
-                            <form action="result.php">
-                                <div class="form-group">
-                                    <input type="text" name="search" class="form-control" id="searchQuery" aria-describedby="searchHelp" placeholder="Pesquise por termo ou autor">
-                                    <small id="searchHelp" class="form-text text-muted">Dica: Use * para busca por radical. Ex: biblio*.</small>
-                                    <small id="searchHelp" class="form-text text-muted">Dica 2: Para buscas exatas, coloque entre ""</small>
-                                    <small id="searchHelp" class="form-text text-muted">Dica 3: Você também pode usar operadores booleanos: AND, OR</small>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Pesquisar</button>
+          <?php if ($total == 0) : ?>
+          <br />
+          <div class="alert alert-info" role="alert">
+            Sua busca não obteve resultado. Você pode refazer sua busca abaixo:<br /><br />
+            <form action="result.php">
+              <div class="form-group">
+                <input type="text" name="search" class="form-control" id="searchQuery" aria-describedby="searchHelp"
+                  placeholder="Pesquise por termo ou autor">
+                <small id="searchHelp" class="form-text text-muted">Dica: Use * para busca por radical. Ex:
+                  biblio*.</small>
+                <small id="searchHelp" class="form-text text-muted">Dica 2: Para buscas exatas, coloque entre ""</small>
+                <small id="searchHelp" class="form-text text-muted">Dica 3: Você também pode usar operadores booleanos:
+                  AND, OR</small>
+              </div>
+              <button type="submit" class="btn btn-primary">Pesquisar</button>
 
-                            </form>
-                        </div>
-                        <br /><br />
+            </form>
+          </div>
+          <br /><br />
 
-                    <?php endif; ?>
+          <?php endif; ?>
 
-                    <?php foreach ($cursor["hits"]["hits"] as $r) : ?>
+          <?php foreach ($cursor["hits"]["hits"] as $r) : ?>
 
-                        <?php //print_r($r); 
+          <?php //print_r($r); 
                         ?>
-                        <?php if (empty($r["_source"]['datePublished'])) {
+          <?php if (empty($r["_source"]['datePublished'])) {
                             $r["_source"]['datePublished'] = "";
                         }
                         ?>
 
-                        <div class="card">
-                            <div class="card-body">
+          <div class="card">
+            <div class="card-body">
 
-                                <h6 class="card-subtitle mb-2 text-muted"><?php echo $r["_source"]['tipo']; ?> | <?php echo $r["_source"]['source']; ?></h6>
-                                <h5 class="card-title text-dark"><?php echo $r["_source"]['name']; ?> (<?php echo $r["_source"]['datePublished']; ?>)</h5>
+              <h6 class="card-subtitle mb-2 text-muted"><?php echo $r["_source"]['tipo']; ?> |
+                <?php echo $r["_source"]['source']; ?></h6>
+              <h5 class="card-title text-dark"><?php echo $r["_source"]['name']; ?>
+                (<?php echo $r["_source"]['datePublished']; ?>)</h5>
 
 
-                                <?php
+              <?php
                                 if (!empty($r["_source"]["concluido"])) {
                                     $r["_source"]["concluido"] == "Sim" ? print_r('<span class="badge badge-warning">Concluído</span>') : false;
                                 }
                                 ?>
 
-                                <p class="text-muted"><b>Autoria:</b>
-                                    <?php if (!empty($r["_source"]['author'])) : ?>
-                                        <?php foreach ($r["_source"]['author'] as $autores) {
+              <p class="text-muted"><b>Autoria:</b>
+                <?php if (!empty($r["_source"]['author'])) : ?>
+                <?php foreach ($r["_source"]['author'] as $autores) {
                                             $authors_array[] = '' . $autores["person"]["name"] . '';
                                         }
                                         $array_aut = implode(", ", $authors_array);
                                         unset($authors_array);
                                         print_r($array_aut);
                                         ?>
-                                    <?php endif; ?>
-                                </p>
+                <?php endif; ?>
+              </p>
 
 
-                                <?php if (!empty($r["_source"]['isPartOf']['name'])) : ?>
-                                    <div class="text-muted"><b>Fonte:</b> <a href="result.php?filter[]=isPartOf.name:&quot;<?php echo $r["_source"]['isPartOf']['name']; ?>&quot;"><?php echo $r["_source"]['isPartOf']['name']; ?></a></div>
-                                <?php endif; ?>
-                                <?php if (!empty($r["_source"]['isPartOf']['issn'])) : ?>
-                                    <div class="text-muted"><b>ISSN:</b> <a href="result.php?filter[]=isPartOf.issn:&quot;<?php echo $r["_source"]['isPartOf']['issn']; ?>&quot;"><?php echo $r["_source"]['isPartOf']['issn']; ?></a></div>
-                                    <?php endif; ?>
-                                    <?php if (!empty($r["_source"]['EducationEvent']['name'])) : ?>
-                                    <div class="text-muted"><b>Nome do evento:</b> <?php echo $r["_source"]['EducationEvent']['name']; ?></div>
-                                <?php endif; ?>
-                                <?php if (!empty($r["_source"]['doi'])) : ?>
-                                    <div class="text-muted"><b>DOI:</b> <a href="https://doi.org/<?php echo $r["_source"]['doi']; ?>"><span id="<?php echo $r['_id'] ?>"><?php echo $r["_source"]['doi']; ?></span></a></div>
-                                <?php endif; ?>
+              <?php if (!empty($r["_source"]['isPartOf']['name'])) : ?>
+              <div class="text-muted"><b>Fonte:</b> <a
+                  href="result.php?filter[]=isPartOf.name:&quot;<?php echo $r["_source"]['isPartOf']['name']; ?>&quot;"><?php echo $r["_source"]['isPartOf']['name']; ?></a>
+              </div>
+              <?php endif; ?>
+              <?php if (!empty($r["_source"]['isPartOf']['issn'])) : ?>
+              <div class="text-muted"><b>ISSN:</b> <a
+                  href="result.php?filter[]=isPartOf.issn:&quot;<?php echo $r["_source"]['isPartOf']['issn']; ?>&quot;"><?php echo $r["_source"]['isPartOf']['issn']; ?></a>
+              </div>
+              <?php endif; ?>
+              <?php if (!empty($r["_source"]['EducationEvent']['name'])) : ?>
+              <div class="text-muted"><b>Nome do evento:</b> <?php echo $r["_source"]['EducationEvent']['name']; ?>
+              </div>
+              <?php endif; ?>
+              <?php if (!empty($r["_source"]['doi'])) : ?>
+              <div class="text-muted"><b>DOI:</b> <a href="https://doi.org/<?php echo $r["_source"]['doi']; ?>"><span
+                    id="<?php echo $r['_id'] ?>"><?php echo $r["_source"]['doi']; ?></span></a></div>
+              <?php endif; ?>
 
-                                <?php if (!empty($r["_source"]['url'])) : ?>
-                                    <div class="text-muted"><b>URL:</b> <a href="<?php echo str_replace("]", "", str_replace("[", "", $r["_source"]['url'])); ?>"><?php echo str_replace("]", "", str_replace("[", "", $r["_source"]['url'])); ?></a></div>
-                                <?php endif; ?>
-                                <?php if (!empty($r["_source"]['ExternalData']['crossref']['message']['is-referenced-by-count'])) : ?>
-                                    <div class="text-muted"><b>Citações na Crossref:</b> <?php echo $r["_source"]['ExternalData']['crossref']['message']['is-referenced-by-count']; ?></div>
-                                <?php endif; ?>
-                                <?php if (!empty($r["_source"]['ids_match'])) : ?>
-                                    <?php foreach ($r["_source"]['ids_match'] as $id_match) : ?>
-                                        <?php compararRegistros::match_id($id_match["id_match"], $id_match["nota"]); ?>
-                                    <?php endforeach; ?>
-                                <?php endif; ?>
+              <?php if (!empty($r["_source"]['url'])) : ?>
+              <div class="text-muted"><b>URL:</b> <a
+                  href="<?php echo str_replace("]", "", str_replace("[", "", $r["_source"]['url'])); ?>"><?php echo str_replace("]", "", str_replace("[", "", $r["_source"]['url'])); ?></a>
+              </div>
+              <?php endif; ?>
+              <?php if (!empty($r["_source"]['ExternalData']['crossref']['message']['is-referenced-by-count'])) : ?>
+              <div class="text-muted"><b>Citações na Crossref:</b>
+                <?php echo $r["_source"]['ExternalData']['crossref']['message']['is-referenced-by-count']; ?></div>
+              <?php endif; ?>
+              <?php if (!empty($r["_source"]['ids_match'])) : ?>
+              <?php foreach ($r["_source"]['ids_match'] as $id_match) : ?>
+              <?php compararRegistros::match_id($id_match["id_match"], $id_match["nota"]); ?>
+              <?php endforeach; ?>
+              <?php endif; ?>
 
-                                <?php
+              <?php
                                     DadosInternos::queryProdmais($r["_source"]['name'], $r["_source"]['datePublished'], $r['_id']);
                                 ?>
 
-                                <!--
+              <!--
                                     <div class="btn-group mt-3" role="group" aria-label="Botoes">
                                         
                                         < ?php
@@ -195,29 +212,30 @@ $get_data = $_GET;
                                     </div>
                                     -->
 
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
+            </div>
+          </div>
+          <?php endforeach; ?>
 
 
-                    <!-- Navegador de resultados - Início -->
-                    <?php ui::pagination($page, $total, $limit); ?>
-                    <!-- Navegador de resultados - Fim -->
+          <!-- Navegador de resultados - Início -->
+          <?php ui::pagination($page, $total, $limit); ?>
+          <!-- Navegador de resultados - Fim -->
 
-                </div>
-                <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
 
-                    <hr>
-                    <h3>Refinar resultados</h3>
-                    <hr>
+          <hr>
+          <h3>Refinar resultados</h3>
+          <hr>
 
-                    <?php if (isset($result_get["query"]["query"]["bool"]["filter"][0]["term"]["vinculo.lattes_id.keyword"])) : ?>
-                        <p><a class="btn btn-primary" href="tools/export.php?<?php echo $_SERVER["QUERY_STRING"] ?>&format=bibtex" rel="nofollow">Exportar para ORCID (BibTeX)</a></p>
-                    <?php endif ?>
-                    <!-- Limitar por data - Início -->
-                    <form action="result.php?" method="GET">
-                        <h5 class="mt-3">Filtrar por intervalo de data de publicação</h5>
-                        <?php
+          <?php if (isset($result_get["query"]["query"]["bool"]["filter"][0]["term"]["vinculo.lattes_id.keyword"])) : ?>
+          <p><a class="btn btn-primary" href="tools/export.php?<?php echo $_SERVER["QUERY_STRING"] ?>&format=bibtex"
+              rel="nofollow">Exportar para ORCID (BibTeX)</a></p>
+          <?php endif ?>
+          <!-- Limitar por data - Início -->
+          <form action="result.php?" method="GET">
+            <h5 class="mt-3">Filtrar por intervalo de data de publicação</h5>
+            <?php
                         parse_str($_SERVER["QUERY_STRING"], $parsedQuery);
                         foreach ($parsedQuery as $k => $v) {
                             if (is_array($v)) {
@@ -243,22 +261,24 @@ $get_data = $_GET;
                         }
 
                         ?>
-                        <div class="form-group">
-                            <label for="initialYear">Ano inicial</label>
-                            <input type="text" class="form-control" id="initialYear" name="initialYear" pattern="\d{4}" placeholder="Ex. 2010" value="<?php echo $initialYearValue; ?>" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="finalYear">Ano final</label>
-                            <input type="text" class="form-control" id="finalYear" name="finalYear" pattern="\d{4}" placeholder="Ex. 2020" value="<?php echo $finalYearValue; ?>">
-                        </div>
-                        <button type="submit" class="btn btn-primary mt-3">Filtrar</button>
-                    </form>
-                    <hr>
-                    <!-- Limitar por data - Fim -->
+            <div class="form-group">
+              <label for="initialYear">Ano inicial</label>
+              <input type="text" class="form-control" id="initialYear" name="initialYear" pattern="\d{4}"
+                placeholder="Ex. 2010" value="<?php echo $initialYearValue; ?>" required>
+            </div>
+            <div class="form-group">
+              <label for="finalYear">Ano final</label>
+              <input type="text" class="form-control" id="finalYear" name="finalYear" pattern="\d{4}"
+                placeholder="Ex. 2020" value="<?php echo $finalYearValue; ?>">
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Filtrar</button>
+          </form>
+          <hr>
+          <!-- Limitar por data - Fim -->
 
-                    <!-- Facetas - Início -->
-                    <div class="accordion" id="facets">
-                        <?php
+          <!-- Facetas - Início -->
+          <div class="accordion" id="facets">
+            <?php
                         $facets = new facets();
                         $facets->query = $result_get['query'];
 
@@ -313,33 +333,40 @@ $get_data = $_GET;
                         $facets->facet(basename(__FILE__), "vinculo.desc_curso", 100, "Curso", null, "_term", $_GET);
 
                         ?>
-                        </ul>
-                        <hr>
-                        <h3>Exportar</h3>
-                        <p><a href="tools/export.php?<?php echo $_SERVER["QUERY_STRING"] ?>&format=ris" rel="nofollow">Exportar em formato RIS</a></p>
-                        <p><a href="tools/export.php?<?php echo $_SERVER["QUERY_STRING"] ?>&format=bibtex" rel="nofollow">Exportar em formato BIBTEX</a></p>
-                        <p><a href="tools/export.php?<?php echo $_SERVER["QUERY_STRING"] ?>&format=dspace" rel="nofollow">Exportar em formato CSV para o DSpace</a></p>
-                        <p><a href="tools/export.php?<?php echo $_SERVER["QUERY_STRING"] ?>&format=capesprint" rel="nofollow">Exportar em formato CSV para o CapesPrint</a></p>
-                        <p><a href="tools/export.php?<?php echo $_SERVER["QUERY_STRING"] ?>&format=authorNetwork" rel="nofollow">Exportar em formato CSV para o Gephi da Rede de Co-Autoria incluindo publicações</a></p>
-                        <p><a href="tools/export.php?<?php echo $_SERVER["QUERY_STRING"] ?>&format=authorNetworkWithoutPapers" rel="nofollow">Exportar em formato CSV para o Gephi da Rede de Co-Autoria sem publicações</a></p>
-                        <p><a href="tools/export.php?<?php echo $_SERVER["QUERY_STRING"] ?>&format=ppgNetworkWithoutPapers" rel="nofollow">Exportar em formato CSV para o Gephi da Rede de PPGs</a></p>
-                    </div>
-                </div>
-            </div>
+            </ul>
+            <hr>
+            <h3>Exportar</h3>
+            <p><a href="tools/export.php?<?php echo $_SERVER["QUERY_STRING"] ?>&format=ris" rel="nofollow">Exportar em
+                formato RIS</a></p>
+            <p><a href="tools/export.php?<?php echo $_SERVER["QUERY_STRING"] ?>&format=bibtex" rel="nofollow">Exportar
+                em formato BIBTEX</a></p>
+            <p><a href="tools/export.php?<?php echo $_SERVER["QUERY_STRING"] ?>&format=dspace" rel="nofollow">Exportar
+                em formato CSV para o DSpace</a></p>
+            <p><a href="tools/export.php?<?php echo $_SERVER["QUERY_STRING"] ?>&format=capesprint"
+                rel="nofollow">Exportar em formato CSV para o CapesPrint</a></p>
+            <p><a href="tools/export.php?<?php echo $_SERVER["QUERY_STRING"] ?>&format=authorNetwork"
+                rel="nofollow">Exportar em formato CSV para o Gephi da Rede de Co-Autoria incluindo publicações</a></p>
+            <p><a href="tools/export.php?<?php echo $_SERVER["QUERY_STRING"] ?>&format=authorNetworkWithoutPapers"
+                rel="nofollow">Exportar em formato CSV para o Gephi da Rede de Co-Autoria sem publicações</a></p>
+            <p><a href="tools/export.php?<?php echo $_SERVER["QUERY_STRING"] ?>&format=ppgNetworkWithoutPapers"
+                rel="nofollow">Exportar em formato CSV para o Gephi da Rede de PPGs</a></p>
+          </div>
         </div>
-    </main>
+      </div>
+    </div>
+  </main>
 
-    <?php include('inc/footer.php'); ?>
+  <?php include('inc/footer.php'); ?>
 
-    <script>
-        function copyToClipboard(element) {
-            var $temp = $("<input>");
-            $("body").append($temp);
-            $temp.val($(element).text()).select();
-            document.execCommand("copy");
-            $temp.remove();
-        }
-    </script>
+  <script>
+  function copyToClipboard(element) {
+    var $temp = $("<input>");
+    $("body").append($temp);
+    $temp.val($(element).text()).select();
+    document.execCommand("copy");
+    $temp.remove();
+  }
+  </script>
 
 </body>
 
