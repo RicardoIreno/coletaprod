@@ -3,6 +3,10 @@
       require '../inc/config.php';
   } elseif (file_exists('../../inc/config.php')) {
       require '../../inc/config.php';
+  } elseif (file_exists('inc/config.php')) {
+      require 'inc/config.php';
+  } else {
+      die('No config file found');
   }
 ?>
 
