@@ -850,13 +850,15 @@ if (!empty($_REQUEST["lattesID"])) {
             
           <h3 class="ty ty-title u-spacer-2">Orientações e supervisões</h3>
           <hr class="u-line" />
-          
+
             <?php foreach($profile['orientacoes'] as $orientacao): ?>
               <?php //echo "<pre>".print_r($orientacao, true)."</pre>"; ?>
               <?php if ($orientacao['natureza'] =='Dissertação de mestrado'): ?>
                 <h4 class="ty ty-title u-spacer-2">Dissertações de mestrado em andamento</h4>
               <?php elseif($orientacao['natureza'] =='Tese de doutorado'): ?>
                 <h4 class="ty ty-title u-spacer-2">Teses de doutorado em andamento</h4>
+              <?php elseif($orientacao['natureza'] =='Supervisão de pós-doutorado'): ?>
+                <h4 class="ty ty-title u-spacer-2">Supervisões de pós-doutorado em andamento</h4>
               <?php endif; ?>
               <ul class="orientation">
                 <li>
@@ -879,9 +881,10 @@ if (!empty($_REQUEST["lattesID"])) {
                       </p>
 
                       <p class="ty u-spacer-1">
-                        <?php echo $orientacao['nomeDaInstituicao']; ?> —
+                        <?php echo $orientacao['nomeDaInstituicao']; ?><?php if(!empty($orientacao['nomeDoCurso'])): ?> —
                         <b class="ty-subItem">Curso:</b>
                         <?php echo $orientacao['nomeDoCurso']; ?>
+                        <?php endif; ?>
                       </p>
 
                     </div> <!-- end-grid-right -->
