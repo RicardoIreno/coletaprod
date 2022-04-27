@@ -58,6 +58,9 @@ com este programa, Se não, veja <http://www.gnu.org/licenses/>.
   <link rel="stylesheet" href="sass/main.css" />
   <!-- <link rel="stylesheet" href="inc/css/style.css" /> -->
 
+  <script src="inc/js/vue.js"></script><!-- https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js -->
+  <script src="inc/js/axios.min.js"></script><!-- https://unpkg.com/axios/dist/axios.min.js -->
+
 </head>
 
 <body>
