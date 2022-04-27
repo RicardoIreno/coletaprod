@@ -481,7 +481,7 @@ if (!empty($_REQUEST["lattesID"])) {
                   <p class="ty"><?php echo $livreDocencia["nomeInstituicao"] ?></p>
                   <div class="u-spacer-1"></div>
                   <p class="ty">
-                    <b class="ty-subItem">Trabalho: </b>
+                    <b class="ty-subItem">Título do trabalho:</b>
                     <?php echo $livreDocencia["tituloDoTrabalho"] ?>
                   </p>
 
@@ -539,11 +539,11 @@ if (!empty($_REQUEST["lattesID"])) {
                   <div class="u-spacer-1"></div>
 
                   <p class="ty">
-                    <b class="ty-subItem">Trabalho:</b> <?php echo $doutorado["tituloDaDissertacaoTese"] ?>
+                    <b class="ty-subItem">Título do trabalho:</b> <?php echo $doutorado["tituloDaDissertacaoTese"] ?>
                   </p>
 
                   <p class="ty">
-                    <b class="ty-subItem">Orientador:</b> <?php echo $doutorado["nomeDoOrientador"] ?>
+                    <b class="ty-subItem">Orientador(a):</b> <?php echo $doutorado["nomeDoOrientador"] ?>
                   </p>
 
                   <?php if(!empty($doutorado["area_do_conhecimento"][0]["nomeGrandeAreaDoConhecimento"])): ?>
@@ -605,7 +605,7 @@ if (!empty($_REQUEST["lattesID"])) {
                     <?php echo $mestrado["tituloDaDissertacaoTese"] ?>
                   </p>
                   <p class="ty">
-                    <b class="ty-subItem">Orientador: </b>
+                    <b class="ty-subItem">Orientador(a): </b>
                     <?php echo $mestrado["nomeDoOrientador"] ?>
                   </p>
 
@@ -666,13 +666,13 @@ if (!empty($_REQUEST["lattesID"])) {
                   <div class="u-spacer-1"></div>
                   <?php if(!empty($graduacao["tituloDoTrabalhoDeConclusaoDeCurso"])): ?>
                   <p class="ty">
-                    <b class="ty-subItem">Título do trabalho: </b>
+                    <b class="ty-subItem">Título do trabalho:</b>
                     <?php echo $graduacao["tituloDoTrabalhoDeConclusaoDeCurso"] ?>
                   </p>
                   <?php endif; ?>
                   <?php if(!empty($graduacao["nomeDoOrientador"])): ?>
                   <p class="ty">
-                    <b class="ty-subItem">Orientador: </b>
+                    <b class="ty-subItem">Orientador(a): </b>
                     <?php echo $graduacao["nomeDoOrientador"] ?>
                   </p>
                   <?php endif; ?>
