@@ -481,7 +481,7 @@ if (!empty($_REQUEST["lattesID"])) {
                   <p class="ty"><?php echo $livreDocencia["nomeInstituicao"] ?></p>
                   <div class="u-spacer-1"></div>
                   <p class="ty">
-                    <b class="ty-subItem">Título do trabalho:</b>
+                    <b class="ty-subItem">Título:</b>
                     <?php echo $livreDocencia["tituloDoTrabalho"] ?>
                   </p>
 
@@ -539,7 +539,7 @@ if (!empty($_REQUEST["lattesID"])) {
                   <div class="u-spacer-1"></div>
 
                   <p class="ty">
-                    <b class="ty-subItem">Título do trabalho:</b> <?php echo $doutorado["tituloDaDissertacaoTese"] ?>
+                    <b class="ty-subItem">Título:</b> <?php echo $doutorado["tituloDaDissertacaoTese"] ?>
                   </p>
 
                   <p class="ty">
@@ -601,7 +601,7 @@ if (!empty($_REQUEST["lattesID"])) {
                   <div class="u-spacer-1"></div>
 
                   <p class="ty">
-                    <b class="ty-subItem">Título do trabalho:</b>
+                    <b class="ty-subItem">Título:</b>
                     <?php echo $mestrado["tituloDaDissertacaoTese"] ?>
                   </p>
                   <p class="ty">
@@ -666,7 +666,7 @@ if (!empty($_REQUEST["lattesID"])) {
                   <div class="u-spacer-1"></div>
                   <?php if(!empty($graduacao["tituloDoTrabalhoDeConclusaoDeCurso"])): ?>
                   <p class="ty">
-                    <b class="ty-subItem">Título do trabalho:</b>
+                    <b class="ty-subItem">Título:</b>
                     <?php echo $graduacao["tituloDoTrabalhoDeConclusaoDeCurso"] ?>
                   </p>
                   <?php endif; ?>
