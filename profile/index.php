@@ -863,7 +863,7 @@ if (!empty($_REQUEST["lattesID"])) {
                   if(count($orientacao_andamento_array[$orientacao_andamento_label]) > 0) {
                     echo '<h4 class="ty ty-title u-spacer-2">'.$orientacao_andamento_label.' em andamento</h4><ul class="orientation">';
                     foreach ($orientacao_andamento_array[$orientacao_andamento_label] as $orientacao_andamento_echo) {
-                      var_dump($orientacao_andamento_echo);
+                      //var_dump($orientacao_andamento_echo);
                       echo '
                       <li>
                       <div class="u-grid">
@@ -881,13 +881,16 @@ if (!empty($_REQUEST["lattesID"])) {
                           </p>
     
                           <p class="ty ty-gray">';
-                          (!empty($orientacao_andamento_echo["titulo"])) ? print_r('Título: '.$orientacao_andamento_echo["titulo"]) : "";
+                          (!empty($orientacao_andamento_echo["titulo"])) ? print_r('<b class="ty-subItem">Título:</b> '.$orientacao_andamento_echo["titulo"]) : "";
                           echo'
                           </p>
     
                           <p class="ty u-spacer-1">'.$orientacao_andamento_echo["nomeDaInstituicao"].'';
-                          (!empty($orientacao_andamento_echo["nomeDoCurso"])) ? print_r('— <b class="ty-subItem">Curso:</b> '.$orientacao_andamento_echo["nomeDoCurso"]) : "";
-                          echo'</p>
+                          (!empty($orientacao_andamento_echo["nomeDoCurso"])) ? print_r(' — <b class="ty-subItem">Curso:</b> '.$orientacao_andamento_echo["nomeDoCurso"]) : "";
+                          
+                          ($orientacao_andamento_echo["flagBolsa"] == "SIM") ? print_r('<br/><b class="ty-subItem">Bolsa:</b> '.$orientacao_andamento_echo["nomeDaAgencia"].'') : "";
+                          echo '</p>
+
     
                         </div> <!-- end-grid-right -->
     
