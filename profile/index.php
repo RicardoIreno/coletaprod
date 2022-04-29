@@ -846,10 +846,11 @@ if (!empty($_REQUEST["lattesID"])) {
 
         <div id="tab-four" class="tab-content" v-if="tabOpened == '4'">
 
-          <?php if(!empty($profile['orientacoes'] )): ?>
-            
           <h3 class="ty ty-title u-spacer-2">Orientações e supervisões</h3>
-          <hr class="u-line" />
+
+          <?php if(!empty($profile['orientacoes'] )): ?>
+          
+            <hr class="u-line" />
             <?php 
                 $orientacoes_andamento_labels = ['Supervisão de pós-doutorado', 'Tese de doutorado', 'Dissertação de mestrado'];
                 foreach ($orientacoes_andamento_labels as $orientacao_andamento_label) {
@@ -908,7 +909,69 @@ if (!empty($_REQUEST["lattesID"])) {
 
           <?php endif; ?>
 
+          <?php if(!empty($profile['orientacoesconcluidas'] )): ?>
+          
+          
+          <hr class="u-line" />
+          <?php 
+              $orientacoes_concluidas_labels = ['Supervisão de pós-doutorado', 'Tese de doutorado', 'Dissertação de mestrado'];
+              foreach ($orientacoes_concluidas_labels as $orientacao_concluidas_label) {
+                $i_orientacao_concluidas = 0;
+                foreach ($profile['orientacoesconcluidas'] as $orientacao_concluidas) {                    
+                  if ($orientacao_concluidas['natureza'] == $orientacao_concluidas_label) {
+                    $orientacao_concluidas_array[$orientacao_concluidas_label][$i_orientacao_concluidas] = $orientacao_concluidas;
+                  }
+                  $i_orientacao_concluidas++;
+                }
+                if(isset($orientacao_concluidas_array)) {
+                if(count($orientacao_concluidas_array[$orientacao_concluidas_label]) > 0) {
+                  echo '<h4 class="ty ty-title u-spacer-2">'.$orientacao_concluidas_label.' concluídas</h4><ul class="orientation">';
+                  foreach ($orientacao_concluidas_array[$orientacao_concluidas_label] as $orientacao_concluidas_echo) {
+                    //var_dump($orientacao_concluidas_echo);
+                    echo '
+                    <li>
+                    <div class="u-grid">
+                      <div class="u-grid-left">
+                        <img class="pi-iconlang" src="../inc/images/icons/orientation.svg" />
+                      </div>
+  
+                      <div class="u-grid-right">
+  
+                        <p class="ty ty-item">
+                          <a class="ty-itemLink" href="http://lattes.cnpq.br/'.$orientacao_concluidas_echo["numeroIDOrientado"].'" target="_blank">
+                          '.$orientacao_concluidas_echo["nomeDoOrientando"].'
+                          </a>
+                          <span class="ty u-date-range">'.$orientacao_concluidas_echo["ano"].'</span>
+                        </p>
+  
+                        <p class="ty ty-gray">';
+                        (!empty($orientacao_concluidas_echo["titulo"])) ? print_r('<b class="ty-subItem">Título:</b> '.$orientacao_concluidas_echo["titulo"]) : "";
+                        echo'
+                        </p>
+  
+                        <p class="ty u-spacer-1">'.$orientacao_concluidas_echo["nomeDaInstituicao"].'';
+                        (!empty($orientacao_concluidas_echo["nomeDoCurso"])) ? print_r(' — <b class="ty-subItem">Curso:</b> '.$orientacao_concluidas_echo["nomeDoCurso"]) : "";
+                        
+                        ($orientacao_concluidas_echo["flagBolsa"] == "SIM") ? print_r('<br/><b class="ty-subItem">Bolsa:</b> '.$orientacao_concluidas_echo["nomeDaAgencia"].'') : "";
+                        echo '</p>
 
+  
+                      </div> <!-- end-grid-right -->
+  
+                    </div><!-- end-grid -->
+  
+                  </li>
+                    
+                    ';
+                  }
+                  echo '</ul>';
+                }
+                unset($orientacao_concluidas_array);
+              }
+              }    
+          ?>
+
+        <?php endif; ?>
 
           <!--
 

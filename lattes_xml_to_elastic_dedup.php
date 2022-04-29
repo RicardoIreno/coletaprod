@@ -897,6 +897,49 @@ if (isset($curriculo->{'DADOS-COMPLEMENTARES'}->{'ORIENTACOES-EM-ANDAMENTO'})) {
     }
 }
 
+// Orientações concluídas
+
+if (isset($curriculo->{'OUTRA-PRODUCAO'}->{'ORIENTACOES-CONCLUIDAS'})) {
+    //var_dump($curriculo->{'OUTRA-PRODUCAO'}->{'ORIENTACOES-CONCLUIDAS'});
+    $i_orientacao_concluida = 0;
+    if (isset($curriculo->{'OUTRA-PRODUCAO'}->{'ORIENTACOES-CONCLUIDAS'}->{'ORIENTACOES-CONCLUIDAS-PARA-MESTRADO'})) {
+        foreach ($curriculo->{'OUTRA-PRODUCAO'}->{'ORIENTACOES-CONCLUIDAS'}->{'ORIENTACOES-CONCLUIDAS-PARA-MESTRADO'} as $orientacao_concluida) {
+            $orientacao_concluida = get_object_vars($orientacao_concluida);
+            $dadosBasicosDaOrientacao = get_object_vars($orientacao_concluida["DADOS-BASICOS-DE-ORIENTACOES-CONCLUIDAS-PARA-MESTRADO"]);
+            $detalhamentoDaOrientacao = get_object_vars($orientacao_concluida["DETALHAMENTO-DE-ORIENTACOES-CONCLUIDAS-PARA-MESTRADO"]);
+            $doc_curriculo_array["doc"]["orientacoesconcluidas"][$i_orientacao_concluida]["natureza"]=$dadosBasicosDaOrientacao['@attributes']["NATUREZA"];
+            $doc_curriculo_array["doc"]["orientacoesconcluidas"][$i_orientacao_concluida]["titulo"]=$dadosBasicosDaOrientacao['@attributes']["TITULO"];
+            $doc_curriculo_array["doc"]["orientacoesconcluidas"][$i_orientacao_concluida]["ano"]=$dadosBasicosDaOrientacao['@attributes']["ANO"];
+            $doc_curriculo_array["doc"]["orientacoesconcluidas"][$i_orientacao_concluida]["tipoDeOrientacao"]=$detalhamentoDaOrientacao['@attributes']["TIPO-DE-ORIENTACAO"];
+            $doc_curriculo_array["doc"]["orientacoesconcluidas"][$i_orientacao_concluida]["nomeDoOrientando"]=$detalhamentoDaOrientacao['@attributes']["NOME-DO-ORIENTADO"];
+            $doc_curriculo_array["doc"]["orientacoesconcluidas"][$i_orientacao_concluida]["nomeDaInstituicao"]=$detalhamentoDaOrientacao['@attributes']["NOME-DA-INSTITUICAO"];
+            $doc_curriculo_array["doc"]["orientacoesconcluidas"][$i_orientacao_concluida]["nomeDoCurso"]=$detalhamentoDaOrientacao['@attributes']["NOME-DO-CURSO"];
+            $doc_curriculo_array["doc"]["orientacoesconcluidas"][$i_orientacao_concluida]["flagBolsa"]=$detalhamentoDaOrientacao['@attributes']["FLAG-BOLSA"];
+            $doc_curriculo_array["doc"]["orientacoesconcluidas"][$i_orientacao_concluida]["nomeDaAgencia"]=$detalhamentoDaOrientacao['@attributes']["NOME-DA-AGENCIA"];
+            $doc_curriculo_array["doc"]["orientacoesconcluidas"][$i_orientacao_concluida]["numeroIDOrientado"]=$detalhamentoDaOrientacao['@attributes']["NUMERO-ID-ORIENTADO"];
+            $i_orientacao_concluida++;
+        }
+    }
+    if (isset($curriculo->{'OUTRA-PRODUCAO'}->{'ORIENTACOES-CONCLUIDAS'}->{'ORIENTACOES-CONCLUIDAS-PARA-DOUTORADO'})) {
+        foreach ($curriculo->{'OUTRA-PRODUCAO'}->{'ORIENTACOES-CONCLUIDAS'}->{'ORIENTACOES-CONCLUIDAS-PARA-DOUTORADO'} as $orientacao_concluida) {
+            $orientacao_concluida = get_object_vars($orientacao_concluida);
+            $dadosBasicosDaOrientacao = get_object_vars($orientacao_concluida["DADOS-BASICOS-DE-ORIENTACOES-CONCLUIDAS-PARA-DOUTORADO"]);
+            $detalhamentoDaOrientacao = get_object_vars($orientacao_concluida["DETALHAMENTO-DE-ORIENTACOES-CONCLUIDAS-PARA-DOUTORADO"]);
+            $doc_curriculo_array["doc"]["orientacoesconcluidas"][$i_orientacao_concluida]["natureza"]=$dadosBasicosDaOrientacao['@attributes']["NATUREZA"];
+            $doc_curriculo_array["doc"]["orientacoesconcluidas"][$i_orientacao_concluida]["titulo"]=$dadosBasicosDaOrientacao['@attributes']["TITULO"];
+            $doc_curriculo_array["doc"]["orientacoesconcluidas"][$i_orientacao_concluida]["ano"]=$dadosBasicosDaOrientacao['@attributes']["ANO"];
+            $doc_curriculo_array["doc"]["orientacoesconcluidas"][$i_orientacao_concluida]["tipoDeOrientacao"]=$detalhamentoDaOrientacao['@attributes']["TIPO-DE-ORIENTACAO"];
+            $doc_curriculo_array["doc"]["orientacoesconcluidas"][$i_orientacao_concluida]["nomeDoOrientando"]=$detalhamentoDaOrientacao['@attributes']["NOME-DO-ORIENTADO"];
+            $doc_curriculo_array["doc"]["orientacoesconcluidas"][$i_orientacao_concluida]["nomeDaInstituicao"]=$detalhamentoDaOrientacao['@attributes']["NOME-DA-INSTITUICAO"];
+            $doc_curriculo_array["doc"]["orientacoesconcluidas"][$i_orientacao_concluida]["nomeDoCurso"]=$detalhamentoDaOrientacao['@attributes']["NOME-DO-CURSO"];
+            $doc_curriculo_array["doc"]["orientacoesconcluidas"][$i_orientacao_concluida]["flagBolsa"]=$detalhamentoDaOrientacao['@attributes']["FLAG-BOLSA"];
+            $doc_curriculo_array["doc"]["orientacoesconcluidas"][$i_orientacao_concluida]["nomeDaAgencia"]=$detalhamentoDaOrientacao['@attributes']["NOME-DA-AGENCIA"];
+            $doc_curriculo_array["doc"]["orientacoesconcluidas"][$i_orientacao_concluida]["numeroIDOrientado"]=$detalhamentoDaOrientacao['@attributes']["NUMERO-ID-ORIENTADO"];
+            $i_orientacao_concluida++;
+        }
+    }
+    
+}
 
 $identificador = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
 $doc_curriculo_array["doc"]["lattesID"] = $identificador;
@@ -904,6 +947,7 @@ $doc_curriculo_array["doc"]["dataDeColeta"] = date('Y-m-d');
 $doc_curriculo_array["doc_as_upsert"] = true;
 
 $resultado_curriculo = Elasticsearch::update($identificador, $doc_curriculo_array, $index_cv);
+var_dump($resultado_curriculo);
 
 //Parser de Trabalhos-em-Eventos
 
