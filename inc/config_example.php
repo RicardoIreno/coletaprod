@@ -9,6 +9,8 @@
     $branch_description = "Descrição";
     $url_base = "http://localhost/prodmais";
     $facebook_image = "";
+    $logo_image = "inc/images/logos/prodmais.svg";
+    $logo_navbar = "inc/images/logos/prodmais_navbar.svg";
 
     // Definir Instituição
     $instituicao = "UNIFESP";
