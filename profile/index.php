@@ -106,7 +106,7 @@ if (!empty($_REQUEST["lattesID"])) {
 
 
       <div class="core">
-        <div class="core-one">
+        <div class="cc-coregrid-one">
 
           <div class="co-photo-wrapper">
             <img class="co-bestBagde" src="../inc/images/badges/bolsista-cnpq-1a.svg" />
@@ -130,7 +130,7 @@ if (!empty($_REQUEST["lattesID"])) {
 
         </div> <!-- end core-one -->
 
-        <div class="core-two">
+        <div class="cc-coregrid-two">
           <h1 class="ty-name">
             <?php echo $profile["nome_completo"] ?>
 
@@ -149,16 +149,12 @@ if (!empty($_REQUEST["lattesID"])) {
           <p class="ty ty-prof"><?php echo $profile["departamento"][0] ?></p>
           <?php endif; ?>
           <?php if(!empty($profile["ppg_nome"][0])): ?>
-            <?php foreach ($profile["ppg_nome"] as $key => $ppg_nome): ?>
-              <p class="ty ty-prof">Programa de Pós-Graduação: <?php echo $ppg_nome ?></p>
-            <?php endforeach; ?>
+          <?php foreach ($profile["ppg_nome"] as $key => $ppg_nome): ?>
+          <p class="ty ty-prof">Programa de Pós-Graduação: <?php echo $ppg_nome ?></p>
+          <?php endforeach; ?>
           <?php endif; ?>
           <!-- <p class="ty ty-email">bertola@unifesp.br</p> -->
           <div class="u-spacer-1"></div>
-
-          <h3 class="ty ty-title">Nomes em citações bibliográficas</h3>
-
-          <p class="ty-prof"><?php echo $profile["nome_em_citacoes_bibliograficas"] ?></p>
 
 
           <h3 class="ty ty-title">Perfis na web</h3>
@@ -180,7 +176,7 @@ if (!empty($_REQUEST["lattesID"])) {
 
         </div> <!-- end core-two -->
 
-        <div class="core-three">
+        <div class="cc-coregrid-three">
 
           <div class="co-numbers">
             <span class="co-numbers-number">
@@ -375,9 +371,16 @@ if (!empty($_REQUEST["lattesID"])) {
           <div class="p-description">
             <h3 class="ty ty-title">Resumo</h3>
             <p class="ty">
-            <p><?php echo $profile["resumo_cv"]["texto_resumo_cv_rh"] ?></p>
+              <?php echo $profile["resumo_cv"]["texto_resumo_cv_rh"] ?>
+            </p>
+            <p class="ty-right ty-themeLight">Fonte: Lattes CNPq</p>
+
           </div>
-          <div class="u-spacer-2"></div>
+
+          <h3 class="ty ty-title">Nomes em citações bibliográficas</h3>
+
+          <p class="ty-prof"><?php echo $profile["nome_em_citacoes_bibliograficas"] ?></p>
+
 
 
 
@@ -410,7 +413,7 @@ if (!empty($_REQUEST["lattesID"])) {
             </ul>
           </div> <!-- end p-tags -->
 
-          <hr class="u-line u-margin-b-2" />
+          <hr class="c-line u-margin-b-2" />
 
 
           <?php if(isset($profile["idiomas"])): ?>
@@ -432,6 +435,25 @@ if (!empty($_REQUEST["lattesID"])) {
                     case "Português":
                       echo "<img class='pi-iconlang' src='../inc/images/icons/languages/pt.svg' />";
                       break;
+                    case "Italiano":
+                      echo "<img class='pi-iconlang' src='../inc/images/icons/languages/pt.svg' />";
+                      break;
+                    case "Francês":
+                      echo "<img class='pi-iconlang' src='../inc/images/icons/languages/pt.svg' />";
+                      break;
+                    case "Alemão":
+                      echo "<img class='pi-iconlang' src='../inc/images/icons/languages/pt.svg' />";
+                      break;
+                    case "Russo":
+                      echo "<img class='pi-iconlang' src='../inc/images/icons/languages/pt.svg' />";
+                      break;
+                    case "Mandarin":
+                      echo "<img class='pi-iconlang' src='../inc/images/icons/languages/pt.svg' />";
+                      break;
+                    default:
+                      echo "<img class='pi-iconlang' src='../inc/images/icons/languages/idioma.svg' />";
+                      break;
+
                   }
                 ?>
               </div>
@@ -458,7 +480,7 @@ if (!empty($_REQUEST["lattesID"])) {
           </div> <!-- end p-language -->
           <?php endif; ?>
 
-          <hr class="u-line u-margin-b-2" />
+          <hr class="c-line u-margin-b-2" />
 
           <h3 class="ty ty-title">Formação</h3>
 
@@ -700,9 +722,9 @@ if (!empty($_REQUEST["lattesID"])) {
               if (!empty($works[$i])) {
 
 
-                echo '<hr class="u-line"></hr>
+                echo '<hr class="c-line"></hr>
                 <h3 class="ty-subtitle pi-year">'.$i.'</h3>
-                <hr class="u-line"></hr> ';
+                <hr class="c-line"></hr> ';
 
                 foreach ($works[$i] as $key => $work) {
 
@@ -756,7 +778,7 @@ if (!empty($_REQUEST["lattesID"])) {
                                 alt="representação de um link"
                               />
                               
-                              <a href="'.$work['_source']['url'].'" target="blank">Acessar o conteúdo</a>
+                              <a href="'.$work['_source']['url'].'" target="blank">Conteúdo completo</a>
                             </div>
                           ';
                         }
@@ -771,7 +793,7 @@ if (!empty($_REQUEST["lattesID"])) {
                             alt="logo DOI"
                             />
                             
-                            <a href="https://doi.org/'.$work['_source']['doi'].'"> Acessar o DOI</a>
+                            <a href="https://doi.org/'.$work['_source']['doi'].'"> DOI</a>
                           </div>';
                         };
                           
@@ -806,7 +828,7 @@ if (!empty($_REQUEST["lattesID"])) {
         <div id="tab-three" class="tab-content" v-if="tabOpened == '3'">
           <h3 class="ty ty-title u-spacer-2">Projetos de Pesquisa</h3>
 
-          <hr class="u-line u-spacer-2">
+          <hr class="c-line u-spacer-2">
 
           <div class="u-grid">
             <div class="u-grid-left">
@@ -849,9 +871,9 @@ if (!empty($_REQUEST["lattesID"])) {
           <h3 class="ty ty-title u-spacer-2">Orientações e supervisões</h3>
 
           <?php if(!empty($profile['orientacoes'] )): ?>
-          
-            <hr class="u-line" />
-            <?php 
+
+          <hr class="c-line" />
+          <?php 
                 $orientacoes_andamento_labels = ['Supervisão de pós-doutorado', 'Tese de doutorado', 'Dissertação de mestrado'];
                 foreach ($orientacoes_andamento_labels as $orientacao_andamento_label) {
                   $i_orientacao_andamento = 0;
@@ -867,6 +889,7 @@ if (!empty($_REQUEST["lattesID"])) {
                       //var_dump($orientacao_andamento_echo);
                       echo '
                       <li>
+                      <hr class="pi-separator-ln u-spacer-2"></hr>
                       <div class="u-grid">
                         <div class="u-grid-left">
                           <img class="pi-iconlang" src="../inc/images/icons/orientation.svg" />
@@ -882,7 +905,7 @@ if (!empty($_REQUEST["lattesID"])) {
                           </p>
     
                           <p class="ty ty-gray">';
-                          (!empty($orientacao_andamento_echo["titulo"])) ? print_r('<b class="ty-subItem">Título:</b> '.$orientacao_andamento_echo["titulo"]) : "";
+                          (!empty($orientacao_andamento_echo["titulo"])) ? print_r(''.$orientacao_andamento_echo["titulo"]) : "";
                           echo'
                           </p>
     
@@ -910,9 +933,9 @@ if (!empty($_REQUEST["lattesID"])) {
           <?php endif; ?>
 
           <?php if(!empty($profile['orientacoesconcluidas'] )): ?>
-          
-          
-          <hr class="u-line" />
+
+
+          <hr class="c-line" />
           <?php 
               $orientacoes_concluidas_labels = ['Supervisão de pós-doutorado', 'Tese de doutorado', 'Dissertação de mestrado'];
               foreach ($orientacoes_concluidas_labels as $orientacao_concluidas_label) {
@@ -930,6 +953,7 @@ if (!empty($_REQUEST["lattesID"])) {
                     //var_dump($orientacao_concluidas_echo);
                     echo '
                     <li>
+                    <hr class="pi-separator-ln u-spacer-2"></hr>
                     <div class="u-grid">
                       <div class="u-grid-left">
                         <img class="pi-iconlang" src="../inc/images/icons/orientation.svg" />
@@ -945,7 +969,7 @@ if (!empty($_REQUEST["lattesID"])) {
                         </p>
   
                         <p class="ty ty-gray">';
-                        (!empty($orientacao_concluidas_echo["titulo"])) ? print_r('<b class="ty-subItem">Título:</b> '.$orientacao_concluidas_echo["titulo"]) : "";
+                        (!empty($orientacao_concluidas_echo["titulo"])) ? print_r(''.$orientacao_concluidas_echo["titulo"]) : "";
                         echo'
                         </p>
   
@@ -971,11 +995,11 @@ if (!empty($_REQUEST["lattesID"])) {
               }    
           ?>
 
-        <?php endif; ?>
+          <?php endif; ?>
 
           <!--
 
-          <hr class="u-line" />
+          <hr class="c-line" />
           <h4 class="ty ty-title u-spacer-2">Supervisões de pós-doutorado em andamento</h4>
 
 
@@ -1010,7 +1034,7 @@ if (!empty($_REQUEST["lattesID"])) {
           <div class="u-spacer-2"></div>
 
 
-          <hr class="u-line" />
+          <hr class="c-line" />
           <h4 class="ty ty-title u-spacer-2">Dissertações de mestrado concluídas</h4>
 
           <ul class="orientation">
@@ -1048,7 +1072,7 @@ if (!empty($_REQUEST["lattesID"])) {
 
 
 
-          <hr class="u-line" />
+          <hr class="c-line" />
           <h4 class="ty ty-title u-spacer-2">Teses de doutorado concluídas</h4>
 
 
@@ -1081,7 +1105,7 @@ if (!empty($_REQUEST["lattesID"])) {
           </div>
 
 
-          <hr class="u-line" />
+          <hr class="c-line" />
           <h4 class="ty ty-title u-spacer-2">Iniciações científicas concluídas</h4>
 
 
@@ -1115,7 +1139,7 @@ if (!empty($_REQUEST["lattesID"])) {
 
 
 
-          <hr class="u-line" />
+          <hr class="c-line" />
           <h4 class="ty ty-title u-spacer-2">Orientações de outra natureza concluídas</h4>
 
 

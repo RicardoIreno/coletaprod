@@ -229,7 +229,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
   text-align: right;
 }
 
-.siteFooter {
+.sitefooter {
   left: 0;
   right: 0;
   bottom: 0;
@@ -244,13 +244,13 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
   align-content: center;
   flex-wrap: wrap;
 }
-.siteFooter-contacts {
+.sitefooter-contacts {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.siteFooter-link {
+.sitefooter-link {
   display: block;
   color: #EAEAEA;
   margin: 0.5rem;
@@ -258,44 +258,44 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
   font-size: 18px;
   font-weight: 600;
 }
-.siteFooter-link:hover {
+.sitefooter-link:hover {
   color: #D4DFD8;
 }
-.siteFooter-logos {
+.sitefooter-logos {
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
 }
-.siteFooter-logo {
+.sitefooter-logo {
   width: 100px;
   margin: 1rem;
 }
-.siteFooter-det {
+.sitefooter-det {
   display: none;
 }
 
 @media (min-width: 56.25em) {
-  .siteFooter {
+  .sitefooter {
     flex-direction: row;
     justify-content: space-evenly;
   }
-  .siteFooter-contacts {
+  .sitefooter-contacts {
     width: 50%;
     flex-direction: row;
     align-items: center;
   }
-  .siteFooter-logos {
+  .sitefooter-logos {
     width: 30%;
     flex-direction: row;
     align-items: center;
     justify-content: end;
   }
-  .siteFooter-det {
+  .sitefooter-det {
     display: inline-block;
   }
 }
-.siteHeader {
+.siteheader {
   display: flex;
   top: 0;
   right: 0;
@@ -310,26 +310,26 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
   box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.5);
 }
-.siteHeader-logo {
+.siteheader-logo {
   height: 50px;
   margin: 0.3rem 0;
   fill: #fff;
   transition: all 0.25s ease-in-out;
 }
-.siteHeader-logo:hover {
+.siteheader-logo:hover {
   fill: #7fd1f5;
 }
 
 @media (min-width: 42.5em) {
-  .siteHeader {
+  .siteheader {
     justify-content: space-between;
     flex-direction: row;
   }
-  .siteHeader-header {
+  .siteheader-header {
     max-height: 30px;
   }
 }
-.mainMenu {
+.sitemenu {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -339,7 +339,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
   list-style: none;
   height: 100%;
 }
-.mainMenu-link {
+.sitemenu-link {
   display: flex;
   position: relative;
   flex-direction: column;
@@ -348,13 +348,13 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
   background-color: transparent;
   border: none;
 }
-.mainMenu-link:hover {
+.sitemenu-link:hover {
   transition: all 0.4s 0s ease;
 }
-.mainMenu-link:hover .mainMenu-ico {
+.sitemenu-link:hover .sitemenu-ico {
   fill: #7fd1f5;
 }
-.mainMenu-ico {
+.sitemenu-ico {
   width: 30px;
   margin: 0.25rem;
   background-color: none;
@@ -364,7 +364,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
 }
 
 @media (max-width: 42.4375em) {
-  .mainMenu {
+  .sitemenu {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -376,16 +376,16 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
   }
 }
 @media (min-width: 42.5em) {
-  .mainMenu {
+  .sitemenu {
     width: 600px;
   }
-  .mainMenu-link {
+  .sitemenu-link {
     display: flex;
     flex-direction: row;
     align-items: center;
     color: #000;
   }
-  .mainMenu-link:hover .mainMenu-bubble {
+  .sitemenu-link:hover .sitemenu-bubble {
     display: block;
     position: absolute;
     top: calc(100% + 0.25rem);
@@ -672,7 +672,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
   font-size: 2rem;
 }
 
-.btnSearch {
+.btn-search {
   fill: #1C9AD1;
   background-color: transparent;
   border: none;
@@ -681,17 +681,17 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
   -moz-user-select: none;
   user-select: none;
 }
-.btnSearch-ico {
+.btn-search-ico {
   margin: 2rem;
   width: 35px;
 }
-.btnSearch:focus {
+.btn-search:focus {
   outline: none;
 }
-.btnSearch:hover, .btnSearch:focus {
+.btn-search:hover, .btn-search:focus {
   border: none;
 }
-.btnSearch:hover .btnSearch-ico, .btnSearch:focus .btnSearch-ico {
+.btn-search:hover .btn-search-ico, .btn-search:focus .btn-search-ico {
   fill: #7fd1f5;
 }
 
@@ -1042,7 +1042,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
   text-align: center;
 }
 
-.u-line {
+.c-line {
   border-top: #7fd1f5;
   width: 100%;
 }
@@ -1169,7 +1169,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
 }
 
 .graph-unit[data-weight="3"] {
-  background-color: #7fa8c9;
+  background-color: #527ba0;
 }
 
 .graph-unit[data-weight="4"] {

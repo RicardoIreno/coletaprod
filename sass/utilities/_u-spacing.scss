@@ -1,0 +1,101 @@
+
+$spaceAmounts: (1, 2, 3, 4, 5, 6, 7, 8, auto);
+
+@each $space in $spaceAmounts {
+  @if $space==auto {
+    .u-m#{$space} {
+      margin: #{$space};
+    }
+
+    .u-mx-#{$space} {
+      margin-left: #{$space};
+      margin-right: #{$space};
+    }
+
+    .u-my-#{$space} {
+      margin-top: #{$space};
+      margin-bottom: #{$space};
+
+    }
+
+    .u-ml-#{$space} {
+      margin-left: #{$space};
+    }
+
+    .u-mr-#{$space} {
+      margin-right: #{$space};
+    }
+
+    .u-mb-#{$space} {
+      margin-bottom: #{$space};
+    }
+
+    .u-mt-#{$space} {
+      margin-top: #{$space};
+    }
+  }
+
+  @else {
+    .u-m#{$space} {
+      margin: #{$space}rem;
+    }
+
+    .u-mx-#{$space} {
+      margin-left: #{$space}rem;
+      margin-right: #{$space}rem;
+    }
+
+    .u-my-#{$space} {
+      margin-top: #{$space}rem;
+      margin-bottom: #{$space}rem;
+
+    }
+
+    .u-ml-#{$space} {
+      margin-left: #{$space}rem;
+    }
+
+    .u-mr-#{$space} {
+      margin-right: #{$space}rem;
+    }
+
+    .u-mb-#{$space} {
+      margin-bottom: #{$space}rem;
+    }
+
+    .u-mt-#{$space} {
+      margin-top: #{$space}rem;
+    }
+
+    .u-p-#{$space} {
+      padding: #{$space}rem;
+    }
+
+    .u-px-#{$space} {
+      padding-left: #{$space}rem;
+      padding-right: #{$space}rem;
+    }
+
+    .u-py-#{$space} {
+      padding-top: #{$space}rem;
+      padding-bottom: #{$space}rem;
+
+    }
+
+    .u-pl-#{$space} {
+      padding-left: #{$space}rem;
+    }
+
+    .u-pr-#{$space} {
+      padding-right: #{$space}rem;
+    }
+
+    .u-pb-#{$space} {
+      padding-bottom: #{$space}rem;
+    }
+
+    .u-pt-#{$space} {
+      padding-top: #{$space}rem;
+    }
+  }
+}

@@ -144,8 +144,8 @@ com este programa, Se não, veja <http://www.gnu.org/licenses/>.
 
         </div> <!-- advanced -->
 
-        <button type="submit" class="btnSearch" title="Buscar">
-          <svg class="btnSearch-ico" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 100 100">
+        <button type="submit" class="btn-search" title="Buscar">
+          <svg class="btn-search-ico" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 100 100">
             <path
               d="M98.6,86.5L79.2,67c-0.9-0.9-2.1-1.4-3.3-1.4h-3.2c5.4-6.9,8.6-15.6,8.6-25C81.3,18.2,63.1,0,40.6,0
                 S0,18.2,0,40.6s18.2,40.6,40.6,40.6c9.4,0,18.1-3.2,25-8.6v3.2c0,1.3,0.5,2.4,1.4,3.3l19.5,19.5c1.8,1.8,4.8,1.8,6.6,0l5.5-5.5

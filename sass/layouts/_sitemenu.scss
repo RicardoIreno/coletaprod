@@ -1,6 +1,6 @@
 // == MENUS == // 
 
-.mainMenu {
+.sitemenu {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -22,7 +22,7 @@
     &:hover {
       transition: all 0.4s 0s ease;
       
-      .mainMenu-ico {
+      .sitemenu-ico {
         fill: _palette(theme-light);
       }
     }
@@ -39,7 +39,7 @@
 }
 
 @include breakpoint(sm-only) {
-  .mainMenu {
+  .sitemenu {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -52,7 +52,7 @@
 }
 
 @include breakpoint(sm-up) {
-  .mainMenu {
+  .sitemenu {
     width: 600px;
 
     &-link {
@@ -62,7 +62,7 @@
       color: #000;
       
       &:hover {
-        .mainMenu-bubble{
+        .sitemenu-bubble{
           display: block;
           position: absolute;
           top: calc(100% + .25rem);
