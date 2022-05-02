@@ -421,9 +421,9 @@ if (!empty($_REQUEST["lattesID"])) {
             <h3 class="ty ty-title">Idiomas</h3>
             <?php foreach ($profile["idiomas"] as $key => $idioma): ?>
 
-            <div class="u-grid">
+            <div class="s-list">
 
-              <div class="u-grid-left">
+              <div class="s-list-ico">
                 <?php 
                   switch ($idioma["descricaoDoIdioma"]) {
                     case "Inglês":
@@ -458,7 +458,7 @@ if (!empty($_REQUEST["lattesID"])) {
                 ?>
               </div>
 
-              <div class="u-grid-right">
+              <div class="s-list-content">
                 <p class="ty ty-item"><?php echo $idioma["descricaoDoIdioma"] ?></p>
                 <p class="ty" style="margin-bottom:10px;">
 
@@ -475,7 +475,7 @@ if (!empty($_REQUEST["lattesID"])) {
                 </p>
 
               </div>
-            </div> <!-- end u-grid -->
+            </div> <!-- end s-list -->
             <?php endforeach; ?>
           </div> <!-- end p-language -->
           <?php endif; ?>
@@ -490,12 +490,12 @@ if (!empty($_REQUEST["lattesID"])) {
           <?php foreach ($profile["formacao_academica_titulacao_livreDocencia"] as $key => $livreDocencia): ?>
 
           <div class="formation-container">
-            <div class="u-grid">
-              <div class="u-grid-left">
+            <div class="s-list">
+              <div class="s-list-ico">
                 <img class="pi-icon" src="../inc/images/icons/academic.svg" />
               </div>
 
-              <div class="u-grid-right">
+              <div class="s-list-content">
                 <div class="formation">
                   <p class="ty-item">Livre Docência
                     <span class="ty u-date-range"><?php echo $livreDocencia["anoDeObtencaoDoTitulo"] ?></span>
@@ -533,8 +533,8 @@ if (!empty($_REQUEST["lattesID"])) {
                   <?php endif; ?>
 
                 </div> <!-- end formation -->
-              </div> <!-- end u-grid-right -->
-            </div> <!-- end u-grid -->
+              </div> <!-- end s-list-content -->
+            </div> <!-- end s-list -->
           </div> <!-- end formation-container -->
           <?php endforeach; ?>
           <?php endif; ?>
@@ -547,11 +547,11 @@ if (!empty($_REQUEST["lattesID"])) {
           <?php foreach ($profile["formacao_academica_titulacao_doutorado"] as $key => $doutorado): ?>
 
           <div class="formation-container">
-            <div class="u-grid">
-              <div class="u-grid-left">
+            <div class="s-list">
+              <div class="s-list-ico">
                 <img class="pi-icon" src="../inc/images/icons/academic.svg" />
               </div>
-              <div class="u-grid-right">
+              <div class="s-list-content">
                 <div class="formation">
                   <p class="ty-item">Doutorado em <?php echo $doutorado["nomeCurso"] ?>
                     <span class="ty u-date-range"><?php echo $doutorado["anoDeInicio"] ?> -
@@ -594,8 +594,8 @@ if (!empty($_REQUEST["lattesID"])) {
                   </p>
                   <?php endif; ?>
                 </div> <!-- end formation -->
-              </div> <!-- end u-grid-right -->
-            </div> <!-- end u-grid -->
+              </div> <!-- end s-list-content -->
+            </div> <!-- end s-list -->
           </div> <!-- end formation-container -->
           <?php endforeach; ?>
           <?php endif; ?>
@@ -608,12 +608,12 @@ if (!empty($_REQUEST["lattesID"])) {
           <?php foreach ($profile["formacao_academica_titulacao_mestrado"] as $key => $mestrado): ?>
 
           <div class="formation-container">
-            <div class="u-grid">
-              <div class="u-grid-left">
+            <div class="s-list">
+              <div class="s-list-ico">
                 <img class="pi-icon" src="../inc/images/icons/academic.svg" />
               </div>
 
-              <div class="u-grid-right">
+              <div class="s-list-content">
                 <div class="formation">
                   <p class="ty-item">Mestrado em <?php echo $mestrado["nomeCurso"] ?>
                     <span class="ty u-date-range"><?php echo $mestrado["anoDeInicio"] ?> -
@@ -659,8 +659,8 @@ if (!empty($_REQUEST["lattesID"])) {
                   <?php endif; ?>
 
                 </div> <!-- end formation -->
-              </div> <!-- end u-grid-right -->
-            </div> <!-- end u-grid -->
+              </div> <!-- end s-list-content -->
+            </div> <!-- end s-list -->
           </div> <!-- end formation-container -->
           <?php endforeach; ?>
           <?php endif; ?>
@@ -673,12 +673,12 @@ if (!empty($_REQUEST["lattesID"])) {
           <?php foreach ($profile["formacao_academica_titulacao_graduacao"] as $key => $graduacao): ?>
 
           <div class="formation-container">
-            <div class="u-grid">
-              <div class="u-grid-left">
+            <div class="s-list">
+              <div class="s-list-ico">
                 <img class="pi-icon" src="../inc/images/icons/academic.svg" />
               </div>
 
-              <div class="u-grid-right">
+              <div class="s-list-content">
                 <div class="formation">
                   <p class="ty-item">Graduação em <?php echo $graduacao["nomeCurso"] ?>
                     <span class="ty u-date-range"><?php echo $graduacao["anoDeInicio"] ?> -
@@ -699,8 +699,8 @@ if (!empty($_REQUEST["lattesID"])) {
                   </p>
                   <?php endif; ?>
                 </div> <!-- end formation -->
-              </div> <!-- end u-grid-right -->
-            </div> <!-- end u-grid -->
+              </div> <!-- end s-list-content -->
+            </div> <!-- end s-list -->
           </div> <!-- end formation-container -->
           <?php endforeach; ?>
           <?php endif; ?>
@@ -734,15 +734,15 @@ if (!empty($_REQUEST["lattesID"])) {
                   
                   echo '<div class="pi">
                   
-                    <div class="u-grid">
+                    <div class="s-list">
 
-                      <div class="u-grid-left">        
+                      <div class="s-list-ico">        
                         
                           <img class="pi-icon" src="../inc/images/icons/article-published.svg" />            
 
                       </div>            
 
-                      <div class="u-grid-right">
+                      <div class="s-list-content">
 
                         <div class="pi-separator">
                           <span class="pi-type">'.$work['_source']['tipo'].'</span> 
@@ -830,12 +830,12 @@ if (!empty($_REQUEST["lattesID"])) {
 
           <hr class="c-line u-spacer-2">
 
-          <div class="u-grid">
-            <div class="u-grid-left">
+          <div class="s-list">
+            <div class="s-list-ico">
               <img class='pi-iconlang' src='../inc/images/icons/research.svg' />
             </div>
 
-            <div class="u-grid-right">
+            <div class="s-list-content">
 
               <p class="ty ty-item u-spacer-1">Projeto de Pesquisa X <span class="ty u-date-range"> 2019 - 2022</span>
               </p>
@@ -890,12 +890,12 @@ if (!empty($_REQUEST["lattesID"])) {
                       echo '
                       <li>
                       <hr class="pi-separator-ln u-spacer-2"></hr>
-                      <div class="u-grid">
-                        <div class="u-grid-left">
+                      <div class="s-list">
+                        <div class="s-list-ico">
                           <img class="pi-iconlang" src="../inc/images/icons/orientation.svg" />
                         </div>
     
-                        <div class="u-grid-right">
+                        <div class="s-list-content">
     
                           <p class="ty ty-item">
                             <a class="ty-itemLink" href="http://lattes.cnpq.br/'.$orientacao_andamento_echo["numeroIDOrientado"].'" target="_blank">
@@ -954,12 +954,12 @@ if (!empty($_REQUEST["lattesID"])) {
                     echo '
                     <li>
                     <hr class="pi-separator-ln u-spacer-2"></hr>
-                    <div class="u-grid">
-                      <div class="u-grid-left">
+                    <div class="s-list">
+                      <div class="s-list-ico">
                         <img class="pi-iconlang" src="../inc/images/icons/orientation.svg" />
                       </div>
   
-                      <div class="u-grid-right">
+                      <div class="s-list-content">
   
                         <p class="ty ty-item">
                           <a class="ty-itemLink" href="http://lattes.cnpq.br/'.$orientacao_concluidas_echo["numeroIDOrientado"].'" target="_blank">
@@ -1003,12 +1003,12 @@ if (!empty($_REQUEST["lattesID"])) {
           <h4 class="ty ty-title u-spacer-2">Supervisões de pós-doutorado em andamento</h4>
 
 
-          <div class="u-grid">
-            <div class="u-grid-left">
+          <div class="s-list">
+            <div class="s-list-ico">
               <img class='pi-iconlang' src='../inc/images/icons/orientation.svg' />
             </div>
 
-            <div class="u-grid-right">
+            <div class="s-list-content">
 
               <p class="ty ty-item">
                 <a href="http://lattes.cnpq.br/4527664839744803" target="blank">
@@ -1039,12 +1039,12 @@ if (!empty($_REQUEST["lattesID"])) {
 
           <ul class="orientation">
             <li>
-              <div class="u-grid">
-                <div class="u-grid-left">
+              <div class="s-list">
+                <div class="s-list-ico">
                   <img class='pi-iconlang' src='../inc/images/icons/orientation.svg' />
                 </div>
 
-                <div class="u-grid-right">
+                <div class="s-list-content">
 
                   <p class="ty ty-item">
                     <a class="ty-itemLink" href="http://lattes.cnpq.br/4527664839744803" target="blank">
@@ -1076,12 +1076,12 @@ if (!empty($_REQUEST["lattesID"])) {
           <h4 class="ty ty-title u-spacer-2">Teses de doutorado concluídas</h4>
 
 
-          <div class="u-grid">
-            <div class="u-grid-left">
+          <div class="s-list">
+            <div class="s-list-ico">
               <img class='pi-iconlang' src='../inc/images/icons/orientation.svg' />
             </div>
 
-            <div class="u-grid-right">
+            <div class="s-list-content">
 
               <p class="ty ty-item">
                 <a href="http://lattes.cnpq.br/4527664839744803" target="blank">
@@ -1109,12 +1109,12 @@ if (!empty($_REQUEST["lattesID"])) {
           <h4 class="ty ty-title u-spacer-2">Iniciações científicas concluídas</h4>
 
 
-          <div class="u-grid">
-            <div class="u-grid-left">
+          <div class="s-list">
+            <div class="s-list-ico">
               <img class='pi-iconlang' src='../inc/images/icons/orientation.svg' />
             </div>
 
-            <div class="u-grid-right">
+            <div class="s-list-content">
 
               <p class="ty ty-item">
                 <a href="http://lattes.cnpq.br/4527664839744803" target="blank">
@@ -1143,12 +1143,12 @@ if (!empty($_REQUEST["lattesID"])) {
           <h4 class="ty ty-title u-spacer-2">Orientações de outra natureza concluídas</h4>
 
 
-          <div class="u-grid">
-            <div class="u-grid-left">
+          <div class="s-list">
+            <div class="s-list-ico">
               <img class='pi-iconlang' src='../inc/images/icons/orientation.svg' />
             </div>
 
-            <div class="u-grid-right">
+            <div class="s-list-content">
 
               <p class="ty ty-item">
                 <a href="http://lattes.cnpq.br/4527664839744803" target="blank">

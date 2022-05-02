@@ -1,24 +1,29 @@
 
-.u-grid-left {
-  display: none;
+.u-grid {
+  width: 100%;
+  margin: 0 auto;
+  
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  [class^="u-col-"] {
+      float: left;
+      padding: 1rem;
+  }
 }
 
-@include breakpoint(md-up) {
-  .u-grid {
-    display: grid;
-    grid-template-columns: 10% 90%;
-    grid-template-areas: "left right"; 
-
-    &-left {
-      display: flex;
-      align-items: flex-start;
-      grid-area: left;
-      justify-content: flex-end;
-      padding-right: 1rem;
+$cols: 5;
+$jc: 1;
+@for $i from 1 through $cols {
+    @for $j from $jc through $cols {
+        @if $i != $j { 
+          .u-col-#{$i}-of-#{$j} {
+            width: calc(#{$i} * (100% / #{$j}));
+          }
+        }
     }
-
-    &-right {
-      grid-area: right;
-    }
-  }
+    $jc: $jc + 1
 }
