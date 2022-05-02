@@ -51,6 +51,47 @@
 	}
 }
 	
+.btn {
+	// &-back {
+	// 	color: _palette(main);
+	// 	font-size: 1.2rem;
+	// 	margin: 2rem;
+	
+	// 	&:before {
+	// 		content: "\02190";
+	// 		color: _palette(main);
+	// 		font-size: 2rem;
+	// 	}
+	// }
+		
+	&-search {
+		fill: _palette(fg-primary);
+		background-color: transparent;
+		border: none;
+		cursor: pointer;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		user-select: none;
+	
+		&-ico {
+			margin: 2rem;
+			width: 35px;
+		}
+	
+		&:focus {
+			outline: none;
+		}
+			
+		&:hover,&:focus {
+			border: none;
+			
+			.btn-search-ico {
+				fill: _palette(theme-light);
+			} 
+		} 
+	}
+
+}
 	
 	
 

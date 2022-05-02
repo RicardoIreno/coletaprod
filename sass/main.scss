@@ -1,4 +1,4 @@
-
+ 
 @import 'abstracts/functions';
 @import 'abstracts/breakpoint';
 @import 'abstracts/flex';
@@ -7,23 +7,21 @@
 @import 'base/normalize';
 @import 'base/typography';
 
-@import 'blocks/footer';
-@import 'blocks/header';
-@import 'blocks/mainMenu';
-@import 'blocks/profile-core';
-@import 'blocks/profile-about';
-@import 'blocks/profile-education';
-@import 'blocks/profile-orientation';
-@import 'blocks/profile-pi';
-@import 'blocks/profile-pp';
+@import 'layouts/profile-core';
+@import 'layouts/profile-about';
+@import 'layouts/profile-education';
+@import 'layouts/profile-orientation';
+@import 'layouts/profile-pi';
+@import 'layouts/sitefooter';
+@import 'layouts/siteheader';
+@import 'layouts/sitemenu';
 
 @import 'components/btn';
-@import 'components/btnBack';
-@import 'components/btnSearch';
 @import 'components/wrapper';
 @import 'components/search';
 @import 'components/tab';
 @import 'components/tag';
+@import 'utilities/c-line';
 
 @import 'pages/about';
 @import 'pages/home';
@@ -37,8 +35,6 @@
 @import 'utilities/u-grid';
 @import 'utilities/u-icontext';
 @import 'utilities/u-info';
-@import 'utilities/u-line';
-@import 'utilities/u-li';
 @import 'utilities/u-margin';
 @import 'utilities/u-right';
 @import 'utilities/u-skip';

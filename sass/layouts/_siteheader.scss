@@ -1,6 +1,6 @@
 // == HEADER == // 
   
-.siteHeader{
+.siteheader{
   display: flex;
   top: 0;
   right: 0;
@@ -28,7 +28,7 @@
 }
 
 @include breakpoint(sm-up) {
-  .siteHeader {
+  .siteheader {
     justify-content: space-between;
     flex-direction: row;
     
