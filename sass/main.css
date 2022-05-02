@@ -1010,24 +1010,24 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
     align-items: center;
   }
 }
-.u-grid-left {
+.s-list-ico {
   display: none;
 }
 
 @media (min-width: 56.25em) {
-  .u-grid {
+  .s-list {
     display: grid;
     grid-template-columns: 10% 90%;
     grid-template-areas: "left right";
   }
-  .u-grid-left {
+  .s-list-ico {
     display: flex;
     align-items: flex-start;
     grid-area: left;
     justify-content: flex-end;
     padding-right: 1rem;
   }
-  .u-grid-right {
+  .s-list-content {
     grid-area: right;
   }
 }
