@@ -324,12 +324,26 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
   flex-wrap: wrap;
   margin-block: 0.8rem;
 }
-
-.cc-badgeicons-icon {
-  width: 25px;
+.cc-badgeicons-icon, .cc-socialicons-icon {
   margin: 0 0.2rem;
 }
 
+.cc-badgeicons-icon {
+  width: 25px;
+}
+
+.cc-socialicons-icon {
+  width: 30px;
+}
+
+@media (min-width: 56.25em) {
+  .cc-socialicons {
+    justify-content: flex-start;
+  }
+  .cc-socialicons-icon {
+    margin: 0 0.5rem 0 0;
+  }
+}
 .cc-numbers-number {
   display: flex;
   flex-direction: row;
@@ -343,14 +357,6 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
   margin-right: 0.5rem;
 }
 
-@media (min-width: 56.25em) {
-  .cc-academicicons, .cc-socialicons {
-    justify-content: flex-start;
-  }
-  .cc-academicicons-icon, .cc-socialicons-icon {
-    margin: 0 0.5rem 0 0;
-  }
-}
 .country-flag {
   width: 24px;
   border-radius: 50%;
@@ -855,8 +861,12 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
   }
 }
 .c-line {
-  border-top: #7fd1f5;
-  width: 100%;
+  width: 85%;
+  border-top: 1px dashed #7fd1f5;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  transform: translateY(2px);
 }
 
 .about {

@@ -113,14 +113,29 @@
   justify-content: center;
   flex-wrap: wrap;
   margin-block: .8rem;
+  
+  &-icon {
+    margin: 0 .2rem; 
+  }
+}
+
+.cc-badgeicons-icon {
+  width: 25px;
+}
+
+.cc-socialicons-icon {
+  width: 30px;
 }
 
 
-.cc {  
-  &-badgeicons {
-    &-icon {
-      width: 25px;
-      margin: 0 .2rem; 
+@include breakpoint(md-up) {
+  .cc {
+    &-socialicons {
+      justify-content: flex-start;
+      
+      &-icon {
+        margin: 0 .5rem 0 0; 
+      }
     }
   }
 }
@@ -146,18 +161,6 @@
 }
 
 
-@include breakpoint(md-up) {
-  .cc {
-    &-academicicons, 
-    &-socialicons {
-      justify-content: flex-start;
-      
-      &-icon {
-        margin: 0 .5rem 0 0; 
-      }
-    }
-  }
-}
 
 .country-flag {
   width: 24px;
