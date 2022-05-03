@@ -23,12 +23,10 @@
   &-three {
     align-items: center;
     display: flex;
-    margin-top: 2rem;
+    flex-direction: row; 
     justify-content: space-around;
-
+    margin-top: 2rem;
   }
-
-
 }
 
 // @media (min-width: 56.25em) and (max-width: 68.6875em) 
@@ -76,44 +74,20 @@
       text-align: start;
     }
 
-    &-three {
-      justify-content: space-between;
-
-    }
-
   }
 }
 
-
 // PROFILE-CORE THINGS  
 
-.co {
-  &-photo {
-    // width: 100%;
-    // // margin: 0 auto;
-    // box-sizing: border-box;
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-    
-    &-container, &-wrapper {
-      width: 200px;
-      height: 200px;
-      justify-content: center;
-      margin: 0 auto;
-      position: relative;
-      justify-content: center;
-    }
+.cc-display {
+  width: 200px;
+  height: 200px;
+  justify-content: center;
+  margin: 0 auto;
+  position: relative;
+  justify-content: center;
 
-    &-container {
-      border-radius: 50%;
-      overflow: hidden;
-    }
-
-  }
-
-  
-  &-bestBagde {
+  &-badge {
     position: absolute;
     width: 50px;
     top: 150px;
@@ -121,29 +95,38 @@
     z-index: 999;
   }
   
-  &-badgeIcons, 
-  &-socialIcons {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-block: .8rem;
-  } 
+  &-mask {
+    border-radius: 50%;
+    overflow: hidden;
+  }
 
-  &-badgeIcons {
+  &-photo {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.cc-badgeicons, .cc-socialicons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-block: .8rem;
+}
+
+
+.cc {  
+  &-badgeicons {
     &-icon {
       width: 25px;
       margin: 0 .2rem; 
     }
   }
+}
 
-  &-lastUpdate {
-    color: _palette(theme-light);
-    font-size: .8rem;
-    font-style: italic;
-    text-align: right;
-  }
 
+.cc {  
   &-numbers {
     // margin-top: 2.5rem;
 
@@ -160,25 +143,13 @@
       margin-right: .5rem;
     }
   }
-
-  &-socialIcons {
-    &-icon {
-      width: 25px;
-      margin: 0 .5rem; 
-    }
-  }
-
-
 }
 
 
-
-
-
 @include breakpoint(md-up) {
-  .co {
-    &-academicIcons, 
-    &-socialIcons {
+  .cc {
+    &-academicicons, 
+    &-socialicons {
       justify-content: flex-start;
       
       &-icon {
@@ -187,7 +158,6 @@
     }
   }
 }
-
 
 .country-flag {
   width: 24px;
