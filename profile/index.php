@@ -105,28 +105,28 @@ if (!empty($_REQUEST["lattesID"])) {
 
 
 
-      <div class="core">
+      <div class="cc-coregrid">
         <div class="cc-coregrid-one">
 
-          <div class="co-photo-wrapper">
-            <img class="co-bestBagde" src="../inc/images/badges/bolsista-cnpq-1a.svg" />
-            <div class="co-photo-container">
-              <img class="co-photo"
+          <div class="cc-display">
+            <img class="cc-display-badge" src="../inc/images/badges/bolsista-cnpq-1a.svg" />
+            <div class="cc-display-mask">
+              <img class="cc-display-photo"
                 src="http://servicosweb.cnpq.br/wspessoa/servletrecuperafoto?tipo=1&amp;bcv=true&amp;id=<?php echo $lattesID10; ?>" />
             </div>
-          </div> <!-- end co-photo-wrapper -->
+          </div> <!-- end cc-photo-wrapper -->
 
 
-          <div class="co-badgeIcons">
-            <img class="co-badgeIcons-icon" src="../inc/images/badges/bolsista-cnpq-1a.svg" alt="Bolsista CNPQ nível 1A"
+          <div class="cc-badgeicons">
+            <img class="cc-badgeicons-icon" src="../inc/images/badges/bolsista-cnpq-1a.svg" alt="Bolsista CNPQ nível 1A"
               title="Bolsista CNPQ nível 1A" />
 
-            <img class="co-badgeIcons-icon" src="../inc/images/badges/member.svg" alt="Membro de conselho ou comissão"
+            <img class="cc-badgeicons-icon" src="../inc/images/badges/member.svg" alt="Membro de conselho ou comissão"
               title="Membro de conselho ou comissão" />
 
-            <img class="co-badgeIcons-icon" src="../inc/images/badges/leader.svg" alt="Exercedor de cargo de chefia"
+            <img class="cc-badgeicons-icon" src="../inc/images/badges/leader.svg" alt="Exercedor de cargo de chefia"
               title="Exercedor de cargo de chefia" />
-          </div> <!-- end co-badgeIcons -->
+          </div> <!-- end cc-badgeicons -->
 
         </div> <!-- end core-one -->
 
@@ -158,49 +158,49 @@ if (!empty($_REQUEST["lattesID"])) {
 
 
           <h3 class="ty ty-title">Perfis na web</h3>
-          <div class="co-socialIcons">
+          <div class="cc-socialicons">
 
             <?php if(!empty($profile['lattesID'])) : ?>
 
             <a href="https://lattes.cnpq.br/<?php echo $profile['lattesID']; ?>" target="_blank" rel="external"><img
-                class="co-socialIcons-icon" src="../inc/images/academic_plataforms/logo_lattes.svg" alt="Lattes"
+                class="cc-socialicons-icon" src="../inc/images/academic_plataforms/logo_lattes.svg" alt="Lattes"
                 title="Lattes" /></a>
             <?php endif; ?>
             <?php if(!empty($profile['orcid_id'])) : ?>
             <a href="<?php echo $profile['orcid_id']; ?>" target="_blank" rel="external"><img
-                class="co-socialIcons-icon" src="../inc/images/academic_plataforms/logo_research_id.svg" alt="ORCID"
+                class="cc-socialicons-icon" src="../inc/images/academic_plataforms/logo_research_id.svg" alt="ORCID"
                 title="ORCID" /></a>
             <?php endif; ?>
 
-          </div> <!-- end co-socialIcons -->
+          </div> <!-- end cc-socialicons -->
 
         </div> <!-- end core-two -->
 
         <div class="cc-coregrid-three">
 
-          <div class="co-numbers">
-            <span class="co-numbers-number">
-              <img class="co-numbers-icon" src="../inc/images/icons/article-published.svg" alt="Artigos publicados" />
+          <div class="cc-numbers">
+            <span class="cc-numbers-number">
+              <img class="cc-numbers-icon" src="../inc/images/icons/article-published.svg" alt="Artigos publicados" />
               45
             </span>
 
-            <span class="co-numbers-number">
-              <img class="co-numbers-icon" src="../inc/images/icons/article-aproved.svg" alt="Artigos aprovados" />
+            <span class="cc-numbers-number">
+              <img class="cc-numbers-icon" src="../inc/images/icons/article-aproved.svg" alt="Artigos aprovados" />
               35
             </span>
 
-            <span class="co-numbers-number">
-              <img class="co-numbers-icon" src="../inc/images/icons/orientation.svg" alt="Orientações" />
+            <span class="cc-numbers-number">
+              <img class="cc-numbers-icon" src="../inc/images/icons/orientation.svg" alt="Orientações" />
               12
             </span>
 
-            <span class="co-numbers-number">
-              <img class="co-numbers-icon" src="../inc/images/icons/research.svg" alt="Pesquisas" />
+            <span class="cc-numbers-number">
+              <img class="cc-numbers-icon" src="../inc/images/icons/research.svg" alt="Pesquisas" />
               15
             </span>
 
-            <span class="co-numbers-number">
-              <img class="co-numbers-icon" src="../inc/images/icons/event.svg" alt="Eventos participados" />
+            <span class="cc-numbers-number">
+              <img class="cc-numbers-icon" src="../inc/images/icons/event.svg" alt="Eventos participados" />
               41
             </span>
 
@@ -345,7 +345,7 @@ if (!empty($_REQUEST["lattesID"])) {
         </div> <!-- end core-three -->
 
 
-      </div> <!-- end core -->
+      </div> <!-- end cc-coregrid  -->
 
 
       <span class="u-skip" id="skipgraph”" class="ty ty-lastUpdate">Atualizado em
