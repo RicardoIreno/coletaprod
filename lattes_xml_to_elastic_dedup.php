@@ -777,7 +777,35 @@ if (isset($curriculo->{'DADOS-GERAIS'}->{'FORMACAO-ACADEMICA-TITULACAO'}->{'LIVR
 // Projetos de pesquisa
 if (isset($curriculo->{'DADOS-GERAIS'}->{'ATUACOES-PROFISSIONAIS'})) {
     foreach ($curriculo->{'DADOS-GERAIS'}->{'ATUACOES-PROFISSIONAIS'}->{'ATUACAO-PROFISSIONAL'} as $atuacao_profissional) {
-        $atuacao_profissional = get_object_vars($atuacao_profissional);
+        $atuacao_profissional_array = get_object_vars($atuacao_profissional);
+        $atuacao['nomeInstituicao'] = $atuacao_profissional_array['@attributes']['NOME-INSTITUICAO'];
+        //echo "<pre>".print_r($atuacao_profissional, true)."</pre>";
+        
+        if(isset($atuacao_profissional->{'ATIVIDADES-DE-PARTICIPACAO-EM-PROJETO'})) {
+            foreach ($atuacao_profissional->{'ATIVIDADES-DE-PARTICIPACAO-EM-PROJETO'} as $participacao_projeto) {
+                $participacao_projeto_array = get_object_vars($participacao_projeto->{'PARTICIPACAO-EM-PROJETO'});
+                //echo "<pre>".print_r($participacao_projeto_array, true)."</pre>";
+                $atuacao['nomeOrgao'] = $participacao_projeto_array['@attributes']['NOME-ORGAO'];
+                $atuacao['nomeUnidade'] = $participacao_projeto_array['@attributes']['NOME-UNIDADE'];
+                $atuacao['anoInicio'] = $participacao_projeto_array['@attributes']['ANO-INICIO'];
+                $atuacao['anoFim'] = $participacao_projeto_array['@attributes']['ANO-FIM'];
+                $atuacao['flagPeriodo'] = $participacao_projeto_array['@attributes']['FLAG-PERIODO'];
+                //echo "<pre>".print_r($participacao_projeto, true)."</pre>";
+                //echo "<br/><br/><br/>";
+                $i_projeto_de_pesquisa = 0;
+                foreach ($participacao_projeto->{'PARTICIPACAO-EM-PROJETO'}->{'PROJETO-DE-PESQUISA'} as $projeto_de_pesquisa) {
+                    echo "<pre>".print_r($atuacao, true)."</pre>";
+                    $projeto_de_pesquisa_array = get_object_vars($projeto_de_pesquisa);
+                    echo "<pre>".print_r($projeto_de_pesquisa_array['@attributes'], true)."</pre>";
+                    echo "<br/><br/><br/>";
+                    echo "<pre>".print_r($projeto_de_pesquisa, true)."</pre>";
+                    echo "<br/><br/><br/>";
+                    $i_projeto_de_pesquisa++;
+                }
+                unset($atuacao);
+            }
+            
+        }
     }
 }
 
@@ -937,8 +965,7 @@ if (isset($curriculo->{'OUTRA-PRODUCAO'}->{'ORIENTACOES-CONCLUIDAS'})) {
             $doc_curriculo_array["doc"]["orientacoesconcluidas"][$i_orientacao_concluida]["numeroIDOrientado"]=$detalhamentoDaOrientacao['@attributes']["NUMERO-ID-ORIENTADO"];
             $i_orientacao_concluida++;
         }
-    }
-    
+    }    
 }
 
 $identificador = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
