@@ -861,8 +861,12 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
   }
 }
 .c-line {
-  border-top: #7fd1f5;
-  width: 100%;
+  width: 85%;
+  border-top: 1px dashed #7fd1f5;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  transform: translateY(2px);
 }
 
 .about {
