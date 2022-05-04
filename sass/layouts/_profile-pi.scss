@@ -49,15 +49,6 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-  
-    &-ln {
-      width: 85%;
-      border-top: 1px dashed _palette(theme-light);
-      border-bottom: none;
-      border-left: none;
-      border-right: none;
-      transform: translateY(2px);
-    }
   }
   
   &-type {

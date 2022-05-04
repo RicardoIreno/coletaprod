@@ -10,6 +10,7 @@ $palette: (
 	fg-primary:		#1C9AD1,
 	titles: 			#1C9AD1,
 	link: 				#1C9AD1,
+	logobg: 			#E0F7FA,
 
   // navbar
 	nav-link:     #fff,
@@ -32,6 +33,10 @@ $palette: (
 
 );
 
+$effects: (
+	shadow: 0 0 15px 0 rgba(0,0,0,.5),
+
+);
 
 
 // body {
@@ -49,3 +54,32 @@ $palette: (
 h1, h2, h3, h4, h5 {
 	color: _palette(titles);
 }
+
+
+// vue transitions
+
+
+//Search
+
+.homeeffect-enter {
+  max-height: 1px !important;
+  opacity: 0 !important;
+}
+
+.homeeffect-enter-active,
+.homeeffect-leave-active {
+  transition: all .3s ease;
+}
+
+.homeeffect-enter-from,
+.homeeffect-leave-to {
+  transform: translateY(-10px);
+  opacity: 0;
+}
+
+
+// images
+
+$icon-closed:  url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{_palette(theme)}'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !default;
+$icon-opened:  url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{_palette(theme)}'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !default;
+$logo-bg:  url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30' fill='#{_palette(logobg)}'><path class='cls-1' d='M15,25.88H11.47a.27.27,0,0,1-.28-.28V22.34a3.84,3.84,0,0,1-3.53-3.53H4.4a3.81,3.81,0,0,1-.28-7.61,7.35,7.35,0,0,1,11.15-6,5.57,5.57,0,0,1,8.45,2.47h.12a5.58,5.58,0,0,1,0,11.16H18.71l-3.46,6.92A.29.29,0,0,1,15,25.88Zm-3.26-.55h3.09l3.46-6.92a.28.28,0,0,1,.24-.15h5.31a5,5,0,0,0,0-10h-.31A.28.28,0,0,1,23.27,8a5,5,0,0,0-7.82-2.29.29.29,0,0,1-.32,0,6.69,6.69,0,0,0-3.66-1.08,6.81,6.81,0,0,0-6.8,6.8.27.27,0,0,1-.27.27,3.26,3.26,0,0,0,0,6.52H7.93a.28.28,0,0,1,.28.27,3.26,3.26,0,0,0,3.26,3.26.28.28,0,0,1,.27.28Z'/><path class='cls-1' d='M15,22.21H11.47a3.68,3.68,0,1,1,0-7.35H15a.14.14,0,0,1,.14.14v7.07A.14.14,0,0,1,15,22.21Zm-3.53-7.07a3.4,3.4,0,1,0,0,6.79h3.39V15.14Z'/><path class='cls-1' d='M18.53,18.67H4.4a.14.14,0,0,1-.14-.14V11.47a7.21,7.21,0,1,1,14.41,0v7.06A.14.14,0,0,1,18.53,18.67Zm-14-.27H18.4V11.47a6.94,6.94,0,1,0-13.87,0Z'/><path class='cls-1' d='M15,25.74H11.47a.14.14,0,0,1-.14-.14V18.53a.13.13,0,0,1,.14-.13h7.06a.13.13,0,0,1,.12.06.14.14,0,0,1,0,.14l-3.54,7.07A.14.14,0,0,1,15,25.74Zm-3.4-.27h3.31l3.4-6.8H11.6Z'/><path class='cls-1' d='M7.93,18.67H4.4a3.67,3.67,0,1,1,0-7.34H7.93a.14.14,0,0,1,.14.14v7.06A.14.14,0,0,1,7.93,18.67ZM4.4,11.6a3.4,3.4,0,0,0,0,6.8H7.79V11.6Z'/><path class='cls-1' d='M23.84,18.67H18.53a.13.13,0,0,1-.13-.14V7.93a.13.13,0,0,1,.13-.14h5.31a5.44,5.44,0,1,1,0,10.88Zm-5.17-.27h5.17a5.17,5.17,0,0,0,0-10.33H18.67Z'/><path class='cls-1' d='M23.84,15.14H13.23a.14.14,0,0,1-.14-.14V9.7A5.44,5.44,0,1,1,24,9.7V15A.13.13,0,0,1,23.84,15.14Zm-10.47-.28H23.7V9.7a5.17,5.17,0,1,0-10.33,0Z'/></svg>") !default;

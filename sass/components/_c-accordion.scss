@@ -1,0 +1,34 @@
+.c-accordion {
+  transition: 0.4s;
+
+  &::after {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    margin-left: 10px;
+    content: " ";
+    background-image: escape-svg($icon-closed);
+    background-repeat: no-repeat;
+    background-size: 16px;
+  }
+
+  // &:not(.collapsed) {
+  //   &::after {
+  //     background-image: escape-svg($icon-opened);
+  //   }
+  // }
+
+  &-body {
+    border: 1px dashed _palette(theme-light);
+    border-radius: 20px;
+    padding: 1rem;
+    width: fit-content;
+  }
+
+  &-itemlist {
+    list-style-type: none;
+    padding-top: 0.2rem;
+
+  }
+}
+  

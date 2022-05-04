@@ -78,7 +78,7 @@
       <p>Clicando em uma tag, o <em>dashboard</em> se atualiza com as novas informações.</p>
 
 
-      <div class="u-spacer-2"></div>
+      <div class="u-mb-2"></div>
       <?php require './manual-menu.php'; ?>
     </div> <!-- manual wrapper -->
   </main>

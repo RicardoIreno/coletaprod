@@ -140,7 +140,7 @@ if (!empty($_REQUEST["lattesID"])) {
             <?php endif; ?>
           </h1>
 
-          <!-- <div class="u-spacer-2  "></div> -->
+          <!-- <div class="u-mb-2  "></div> -->
           <h2 class="ty ty-prof">Universidade Federal de São Paulo</h2>
           <?php if(!empty($profile["unidade"][0])) : ?>
           <p class="ty ty-prof"><?php echo $profile["unidade"][0] ?></p>
@@ -154,7 +154,7 @@ if (!empty($_REQUEST["lattesID"])) {
           <?php endforeach; ?>
           <?php endif; ?>
           <!-- <p class="ty ty-email">bertola@unifesp.br</p> -->
-          <div class="u-spacer-1"></div>
+          <div class="u-mb-1"></div>
 
 
           <h3 class="ty ty-title">Perfis na web</h3>
@@ -413,7 +413,7 @@ if (!empty($_REQUEST["lattesID"])) {
             </ul>
           </div> <!-- end p-tags -->
 
-          <hr class="c-line u-margin-b-2" />
+          <hr class="c-line u-my-2" />
 
 
           <?php if(isset($profile["idiomas"])): ?>
@@ -480,7 +480,7 @@ if (!empty($_REQUEST["lattesID"])) {
           </div> <!-- end p-language -->
           <?php endif; ?>
 
-          <hr class="c-line u-margin-b-2" />
+          <hr class="c-line u-my-2" />
 
           <h3 class="ty ty-title">Formação</h3>
 
@@ -498,10 +498,10 @@ if (!empty($_REQUEST["lattesID"])) {
               <div class="s-list-content">
                 <div class="formation">
                   <p class="ty-item">Livre Docência
-                    <span class="ty u-date-range"><?php echo $livreDocencia["anoDeObtencaoDoTitulo"] ?></span>
+                    <span class="ty c-date-range"><?php echo $livreDocencia["anoDeObtencaoDoTitulo"] ?></span>
                   </p>
                   <p class="ty"><?php echo $livreDocencia["nomeInstituicao"] ?></p>
-                  <div class="u-spacer-1"></div>
+                  <div class="u-mb-1"></div>
                   <p class="ty">
                     <b class="ty-subItem">Título:</b>
                     <?php echo $livreDocencia["tituloDoTrabalho"] ?>
@@ -554,11 +554,11 @@ if (!empty($_REQUEST["lattesID"])) {
               <div class="s-list-content">
                 <div class="formation">
                   <p class="ty-item">Doutorado em <?php echo $doutorado["nomeCurso"] ?>
-                    <span class="ty u-date-range"><?php echo $doutorado["anoDeInicio"] ?> -
+                    <span class="ty c-date-range"><?php echo $doutorado["anoDeInicio"] ?> -
                       <?php echo $doutorado["anoDeConclusao"] ?></span>
                   </p>
                   <p class="ty"><?php echo $doutorado["nomeInstituicao"] ?></p>
-                  <div class="u-spacer-1"></div>
+                  <div class="u-mb-1"></div>
 
                   <p class="ty">
                     <b class="ty-subItem">Título:</b> <?php echo $doutorado["tituloDaDissertacaoTese"] ?>
@@ -616,11 +616,11 @@ if (!empty($_REQUEST["lattesID"])) {
               <div class="s-list-content">
                 <div class="formation">
                   <p class="ty-item">Mestrado em <?php echo $mestrado["nomeCurso"] ?>
-                    <span class="ty u-date-range"><?php echo $mestrado["anoDeInicio"] ?> -
+                    <span class="ty c-date-range"><?php echo $mestrado["anoDeInicio"] ?> -
                       <?php echo $mestrado["anoDeConclusao"] ?></span>
                   </p>
                   <p class="ty"><?php echo $mestrado["nomeInstituicao"] ?></p>
-                  <div class="u-spacer-1"></div>
+                  <div class="u-mb-1"></div>
 
                   <p class="ty">
                     <b class="ty-subItem">Título:</b>
@@ -681,11 +681,11 @@ if (!empty($_REQUEST["lattesID"])) {
               <div class="s-list-content">
                 <div class="formation">
                   <p class="ty-item">Graduação em <?php echo $graduacao["nomeCurso"] ?>
-                    <span class="ty u-date-range"><?php echo $graduacao["anoDeInicio"] ?> -
+                    <span class="ty c-date-range"><?php echo $graduacao["anoDeInicio"] ?> -
                       <?php echo $graduacao["anoDeConclusao"] ?></span>
                   </p>
                   <p class="ty"><?php echo $graduacao["nomeInstituicao"] ?></p>
-                  <div class="u-spacer-1"></div>
+                  <div class="u-mb-1"></div>
                   <?php if(!empty($graduacao["tituloDoTrabalhoDeConclusaoDeCurso"])): ?>
                   <p class="ty">
                     <b class="ty-subItem">Título:</b>
@@ -733,21 +733,16 @@ if (!empty($_REQUEST["lattesID"])) {
                   }
                   
                   echo '<div class="pi">
-                  
+            
                     <div class="s-list">
-
                       <div class="s-list-ico">        
-                        
                           <img class="pi-icon" src="../inc/images/icons/article-published.svg" />            
 
                       </div>            
 
                       <div class="s-list-content">
+                        <span class="pi-type">'.$work['_source']['tipo'].'</span> 
 
-                        <div class="pi-separator">
-                          <span class="pi-type">'.$work['_source']['tipo'].'</span> 
-                          <hr class="pi-separator-ln"></hr>
-                        </div>
                         <h5 class="ty-item">'.$work['_source']['name'].'</h5>
                         
                         <span class="u-sr-only">Autores</span>
@@ -808,6 +803,7 @@ if (!empty($_REQUEST["lattesID"])) {
                         echo '
                         </p>
                             
+                        <hr class="c-line"/>
                       </div>
 
                     </div>
@@ -826,9 +822,9 @@ if (!empty($_REQUEST["lattesID"])) {
 
 
         <div id="tab-three" class="tab-content" v-if="tabOpened == '3'">
-          <h3 class="ty ty-title u-spacer-2">Projetos de Pesquisa</h3>
+          <h3 class="ty ty-title u-mb-2">Projetos de Pesquisa</h3>
 
-          <hr class="c-line u-spacer-2">
+          <hr class="c-line u-mb-2">
 
           <div class="s-list">
             <div class="s-list-ico">
@@ -837,9 +833,9 @@ if (!empty($_REQUEST["lattesID"])) {
 
             <div class="s-list-content">
 
-              <p class="ty ty-item u-spacer-1">Projeto de Pesquisa X <span class="ty u-date-range"> 2019 - 2022</span>
+              <p class="ty ty-item u-mb-1">Projeto de Pesquisa X <span class="ty c-date-range"> 2019 - 2022</span>
               </p>
-              <p class="ty u-spacer-1">
+              <p class="ty u-mb-1">
                 <b class="ty-subItem">Sobre o projeto:</b>
                 A infertilidade masculina é multifatorial. Diversos estudos de nossos e outros grupos
                 demonstraram que a varicocele, por exemplo, diminui a qualidade seminal, a qualidade funcional dos
@@ -850,7 +846,7 @@ if (!empty($_REQUEST["lattesID"])) {
                 transporte e transferência proteica.
               </p>
 
-              <p class="ty u-spacer-1">
+              <p class="ty u-mb-1">
                 <b class="ty-subItem">Integrantes:</b>
                 <span class="ty-gray">
                   Ricardo Pimenta Bertolla - Coordenador / Mariana Camargo - Integrante / Paula Intasqui Lopes -
@@ -868,7 +864,7 @@ if (!empty($_REQUEST["lattesID"])) {
 
         <div id="tab-four" class="tab-content" v-if="tabOpened == '4'">
 
-          <h3 class="ty ty-title u-spacer-2">Orientações e supervisões</h3>
+          <h3 class="ty ty-title u-mb-2">Orientações e supervisões</h3>
 
           <?php if(!empty($profile['orientacoes'] )): ?>
 
@@ -884,12 +880,12 @@ if (!empty($_REQUEST["lattesID"])) {
                     $i_orientacao_andamento++;
                   }
                   if(count($orientacao_andamento_array[$orientacao_andamento_label]) > 0) {
-                    echo '<h4 class="ty ty-title u-spacer-2">'.$orientacao_andamento_label.' em andamento</h4><ul class="orientation">';
+                    echo '<h4 class="ty ty-title u-mb-2">'.$orientacao_andamento_label.' em andamento</h4><ul class="orientation">';
                     foreach ($orientacao_andamento_array[$orientacao_andamento_label] as $orientacao_andamento_echo) {
                       //var_dump($orientacao_andamento_echo);
                       echo '
                       <li>
-                      <hr class="pi-separator-ln u-spacer-2"></hr>
+                      <hr class="c-line u-mb-2"></hr>
                       <div class="s-list">
                         <div class="s-list-ico">
                           <img class="pi-iconlang" src="../inc/images/icons/orientation.svg" />
@@ -901,7 +897,7 @@ if (!empty($_REQUEST["lattesID"])) {
                             <a class="ty-itemLink" href="http://lattes.cnpq.br/'.$orientacao_andamento_echo["numeroIDOrientado"].'" target="_blank">
                             '.$orientacao_andamento_echo["nomeDoOrientando"].'
                             </a>
-                            <span class="ty u-date-range">'.$orientacao_andamento_echo["ano"].' - Em andamento</span>
+                            <span class="ty c-date-range">'.$orientacao_andamento_echo["ano"].' - Em andamento</span>
                           </p>
     
                           <p class="ty ty-gray">';
@@ -909,7 +905,7 @@ if (!empty($_REQUEST["lattesID"])) {
                           echo'
                           </p>
     
-                          <p class="ty u-spacer-1">'.$orientacao_andamento_echo["nomeDaInstituicao"].'';
+                          <p class="ty u-mb-1">'.$orientacao_andamento_echo["nomeDaInstituicao"].'';
                           (!empty($orientacao_andamento_echo["nomeDoCurso"])) ? print_r(' — <b class="ty-subItem">Curso:</b> '.$orientacao_andamento_echo["nomeDoCurso"]) : "";
                           
                           ($orientacao_andamento_echo["flagBolsa"] == "SIM") ? print_r('<br/><b class="ty-subItem">Bolsa:</b> '.$orientacao_andamento_echo["nomeDaAgencia"].'') : "";
@@ -948,12 +944,12 @@ if (!empty($_REQUEST["lattesID"])) {
                 }
                 if(isset($orientacao_concluidas_array)) {
                 if(count($orientacao_concluidas_array[$orientacao_concluidas_label]) > 0) {
-                  echo '<h4 class="ty ty-title u-spacer-2">'.$orientacao_concluidas_label.' concluídas</h4><ul class="orientation">';
+                  echo '<h4 class="ty ty-title u-mb-2">'.$orientacao_concluidas_label.' concluídas</h4><ul class="orientation">';
                   foreach ($orientacao_concluidas_array[$orientacao_concluidas_label] as $orientacao_concluidas_echo) {
                     //var_dump($orientacao_concluidas_echo);
                     echo '
                     <li>
-                    <hr class="pi-separator-ln u-spacer-2"></hr>
+                    <hr class="c-line u-mb-2"></hr>
                     <div class="s-list">
                       <div class="s-list-ico">
                         <img class="pi-iconlang" src="../inc/images/icons/orientation.svg" />
@@ -965,7 +961,7 @@ if (!empty($_REQUEST["lattesID"])) {
                           <a class="ty-itemLink" href="http://lattes.cnpq.br/'.$orientacao_concluidas_echo["numeroIDOrientado"].'" target="_blank">
                           '.$orientacao_concluidas_echo["nomeDoOrientando"].'
                           </a>
-                          <span class="ty u-date-range">'.$orientacao_concluidas_echo["ano"].'</span>
+                          <span class="ty c-date-range">'.$orientacao_concluidas_echo["ano"].'</span>
                         </p>
   
                         <p class="ty ty-gray">';
@@ -973,7 +969,7 @@ if (!empty($_REQUEST["lattesID"])) {
                         echo'
                         </p>
   
-                        <p class="ty u-spacer-1">'.$orientacao_concluidas_echo["nomeDaInstituicao"].'';
+                        <p class="ty u-mb-1">'.$orientacao_concluidas_echo["nomeDaInstituicao"].'';
                         (!empty($orientacao_concluidas_echo["nomeDoCurso"])) ? print_r(' — <b class="ty-subItem">Curso:</b> '.$orientacao_concluidas_echo["nomeDoCurso"]) : "";
                         
                         ($orientacao_concluidas_echo["flagBolsa"] == "SIM") ? print_r('<br/><b class="ty-subItem">Bolsa:</b> '.$orientacao_concluidas_echo["nomeDaAgencia"].'') : "";
@@ -1000,7 +996,7 @@ if (!empty($_REQUEST["lattesID"])) {
           <!--
 
           <hr class="c-line" />
-          <h4 class="ty ty-title u-spacer-2">Supervisões de pós-doutorado em andamento</h4>
+          <h4 class="ty ty-title u-mb-2">Supervisões de pós-doutorado em andamento</h4>
 
 
           <div class="s-list">
@@ -1014,14 +1010,14 @@ if (!empty($_REQUEST["lattesID"])) {
                 <a href="http://lattes.cnpq.br/4527664839744803" target="blank">
                   Mika Alexia Miyazaki.
                 </a>
-                <span class="ty u-date-range">2019</span>
+                <span class="ty c-date-range">2019</span>
               </p>
 
               <p class="ty ty-gray">
                 INFLUÊNCIA DA FRAGMENTAÇÃO DE DNA ESPERMÁTICO NO INÍCIO DO DESENVOLVIMENTO EMBRIONÁRIO INICIAL.
               </p>
 
-              <p class="ty u-spacer-1">
+              <p class="ty u-mb-1">
                 Universidade Federal de São Paulo —
                 <b class="ty-subItem">Curso:</b>
                 Medicina (Urologia)
@@ -1031,11 +1027,11 @@ if (!empty($_REQUEST["lattesID"])) {
 
           </div>
 
-          <div class="u-spacer-2"></div>
+          <div class="u-mb-2"></div>
 
 
           <hr class="c-line" />
-          <h4 class="ty ty-title u-spacer-2">Dissertações de mestrado concluídas</h4>
+          <h4 class="ty ty-title u-mb-2">Dissertações de mestrado concluídas</h4>
 
           <ul class="orientation">
             <li>
@@ -1050,14 +1046,14 @@ if (!empty($_REQUEST["lattesID"])) {
                     <a class="ty-itemLink" href="http://lattes.cnpq.br/4527664839744803" target="blank">
                       Mika Alexia Miyazaki
                     </a>
-                    <span class="ty u-date-range">2019</span>
+                    <span class="ty c-date-range">2019</span>
                   </p>
 
                   <p class="ty ty-gray">
                     INFLUÊNCIA DA FRAGMENTAÇÃO DE DNA ESPERMÁTICO NO INÍCIO DO DESENVOLVIMENTO EMBRIONÁRIO INICIAL.
                   </p>
 
-                  <p class="ty u-spacer-1">
+                  <p class="ty u-mb-1">
                     Universidade Federal de São Paulo —
                     <b class="ty-subItem">Curso:</b>
                     Medicina (Urologia)
@@ -1073,7 +1069,7 @@ if (!empty($_REQUEST["lattesID"])) {
 
 
           <hr class="c-line" />
-          <h4 class="ty ty-title u-spacer-2">Teses de doutorado concluídas</h4>
+          <h4 class="ty ty-title u-mb-2">Teses de doutorado concluídas</h4>
 
 
           <div class="s-list">
@@ -1087,14 +1083,14 @@ if (!empty($_REQUEST["lattesID"])) {
                 <a href="http://lattes.cnpq.br/4527664839744803" target="blank">
                   Mika Alexia Miyazaki.
                 </a>
-                <span class="ty u-date-range">2019</span>
+                <span class="ty c-date-range">2019</span>
               </p>
 
               <p class="ty ty-gray">
                 INFLUÊNCIA DA FRAGMENTAÇÃO DE DNA ESPERMÁTICO NO INÍCIO DO DESENVOLVIMENTO EMBRIONÁRIO INICIAL.
               </p>
 
-              <p class="ty u-spacer-1">
+              <p class="ty u-mb-1">
                 Universidade Federal de São Paulo —
                 <b class="ty-subItem">Curso:</b>
                 Medicina (Urologia)
@@ -1106,7 +1102,7 @@ if (!empty($_REQUEST["lattesID"])) {
 
 
           <hr class="c-line" />
-          <h4 class="ty ty-title u-spacer-2">Iniciações científicas concluídas</h4>
+          <h4 class="ty ty-title u-mb-2">Iniciações científicas concluídas</h4>
 
 
           <div class="s-list">
@@ -1120,14 +1116,14 @@ if (!empty($_REQUEST["lattesID"])) {
                 <a href="http://lattes.cnpq.br/4527664839744803" target="blank">
                   Mika Alexia Miyazaki.
                 </a>
-                <span class="ty u-date-range">2019</span>
+                <span class="ty c-date-range">2019</span>
               </p>
 
               <p class="ty ty-gray">
                 INFLUÊNCIA DA FRAGMENTAÇÃO DE DNA ESPERMÁTICO NO INÍCIO DO DESENVOLVIMENTO EMBRIONÁRIO INICIAL.
               </p>
 
-              <p class="ty u-spacer-1">
+              <p class="ty u-mb-1">
                 Universidade Federal de São Paulo —
                 <b class="ty-subItem">Curso:</b>
                 Medicina (Urologia)
@@ -1140,7 +1136,7 @@ if (!empty($_REQUEST["lattesID"])) {
 
 
           <hr class="c-line" />
-          <h4 class="ty ty-title u-spacer-2">Orientações de outra natureza concluídas</h4>
+          <h4 class="ty ty-title u-mb-2">Orientações de outra natureza concluídas</h4>
 
 
           <div class="s-list">
@@ -1154,14 +1150,14 @@ if (!empty($_REQUEST["lattesID"])) {
                 <a href="http://lattes.cnpq.br/4527664839744803" target="blank">
                   Mika Alexia Miyazaki.
                 </a>
-                <span class="ty u-date-range">2019</span>
+                <span class="ty c-date-range">2019</span>
               </p>
 
               <p class="ty ty-gray">
                 INFLUÊNCIA DA FRAGMENTAÇÃO DE DNA ESPERMÁTICO NO INÍCIO DO DESENVOLVIMENTO EMBRIONÁRIO INICIAL.
               </p>
 
-              <p class="ty u-spacer-1">
+              <p class="ty u-mb-1">
                 Universidade Federal de São Paulo —
                 <b class="ty-subItem">Curso:</b>
                 Medicina (Urologia)
