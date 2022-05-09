@@ -779,9 +779,9 @@ if (isset($curriculo->{'DADOS-GERAIS'}->{'ATUACOES-PROFISSIONAIS'})) {
     foreach ($curriculo->{'DADOS-GERAIS'}->{'ATUACOES-PROFISSIONAIS'}->{'ATUACAO-PROFISSIONAL'} as $atuacao_profissional) {
         $atuacao_profissional_array = get_object_vars($atuacao_profissional);
         $atuacao['nomeInstituicao'] = $atuacao_profissional_array['@attributes']['NOME-INSTITUICAO'];
-        //echo "<pre>".print_r($atuacao_profissional, true)."</pre>";
-        
+        //echo "<pre>".print_r($atuacao_profissional, true)."</pre>";        
         if(isset($atuacao_profissional->{'ATIVIDADES-DE-PARTICIPACAO-EM-PROJETO'})) {
+            $i_participacao_projeto = 0;
             foreach ($atuacao_profissional->{'ATIVIDADES-DE-PARTICIPACAO-EM-PROJETO'} as $participacao_projeto) {
                 $participacao_projeto_array = get_object_vars($participacao_projeto->{'PARTICIPACAO-EM-PROJETO'});
                 //echo "<pre>".print_r($participacao_projeto_array, true)."</pre>";
@@ -792,18 +792,29 @@ if (isset($curriculo->{'DADOS-GERAIS'}->{'ATUACOES-PROFISSIONAIS'})) {
                 $atuacao['flagPeriodo'] = $participacao_projeto_array['@attributes']['FLAG-PERIODO'];
                 //echo "<pre>".print_r($participacao_projeto, true)."</pre>";
                 //echo "<br/><br/><br/>";
+                $doc_curriculo_array["doc"]["participacaoProjeto"][$i_participacao_projeto] = $atuacao;
                 $i_projeto_de_pesquisa = 0;
                 foreach ($participacao_projeto->{'PARTICIPACAO-EM-PROJETO'}->{'PROJETO-DE-PESQUISA'} as $projeto_de_pesquisa) {
-                    echo "<pre>".print_r($atuacao, true)."</pre>";
+                    // echo "<pre>".print_r($atuacao, true)."</pre>";
                     $projeto_de_pesquisa_array = get_object_vars($projeto_de_pesquisa);
-                    echo "<pre>".print_r($projeto_de_pesquisa_array['@attributes'], true)."</pre>";
-                    echo "<br/><br/><br/>";
-                    echo "<pre>".print_r($projeto_de_pesquisa, true)."</pre>";
-                    echo "<br/><br/><br/>";
+                    // echo "<pre>".print_r($projeto_de_pesquisa_array['@attributes'], true)."</pre>";
+                    // echo "<br/><br/><br/>";
+                    // echo "<pre>".print_r($projeto_de_pesquisa, true)."</pre>";
+                    // echo "<br/><br/><br/>";
+                    //echo "<pre>".print_r($projeto_de_pesquisa->{'EQUIPE-DO-PROJETO'}, true)."</pre>";
+                    //echo "<br/><br/><br/>";
+                    $doc_curriculo_array["doc"]["participacaoProjeto"][$i_participacao_projeto]["projetoDePesquisa"][$i_projeto_de_pesquisa] = $projeto_de_pesquisa_array['@attributes'];
+                    $doc_curriculo_array["doc"]["participacaoProjeto"][$i_participacao_projeto]["projetoDePesquisa"][$i_projeto_de_pesquisa]['EQUIPE-DO-PROJETO'] = $projeto_de_pesquisa->{'EQUIPE-DO-PROJETO'};
+                    $doc_curriculo_array["doc"]["participacaoProjeto"][$i_participacao_projeto]["projetoDePesquisa"][$i_projeto_de_pesquisa]['FINANCIADORES-DO-PROJETO'] = $projeto_de_pesquisa->{'FINANCIADORES-DO-PROJETO'};
                     $i_projeto_de_pesquisa++;
                 }
+                $i_participacao_projeto++;
                 unset($atuacao);
+                unset($i_projeto_de_pesquisa);
             }
+            //echo "<pre>".print_r($doc_curriculo_array["doc"]["participacaoProjeto"], true)."</pre>";
+            //unset($doc_curriculo_array["doc"]["participacaoProjeto"]);
+            unset($i_participacao_projeto);
             
         }
     }
