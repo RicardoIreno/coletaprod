@@ -56,7 +56,6 @@ com este programa, Se não, veja <http://www.gnu.org/licenses/>.
   <!-- Facebook Tags - END -->
 
   <link rel="stylesheet" href="sass/main.css" />
-  <!-- <link rel="stylesheet" href="inc/css/style.css" /> -->
 
   <script src="inc/js/vue.js"></script><!-- https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js -->
   <script src="inc/js/axios.min.js"></script><!-- https://unpkg.com/axios/dist/axios.min.js -->
@@ -75,7 +74,7 @@ com este programa, Se não, veja <http://www.gnu.org/licenses/>.
   <?php require 'inc/navbar.php'; ?>
   <!-- /NAV -->
 
-  <main class="wrapper home" id="home">
+  <main class="c-wrapper home" id="home">
 
     <?php require $logo_image; ?>
 
@@ -89,22 +88,23 @@ com este programa, Se não, veja <http://www.gnu.org/licenses/>.
     </div>
     <?php endif; ?>
 
-    <div class="search">
+    <div class="cc-search">
 
-      <form class="search-form" class="" action="result.php" title="Pesquisa simples">
+      <form class="cc-search-form" class="" action="result.php" title="Pesquisa simples">
 
-        <input class="search-input" type="search" placeholder="Pesquise por palavra chave" aria-label="Pesquisar"
+        <input class="cc-search-input" type="search" placeholder="Pesquise por palavra chave" aria-label="Pesquisar"
           name="search">
 
-        <button type="button" v-on:click="changeSearchMode()" class="btn search-btn" title="Alternar modo de pesquisa">
+        <button type="button" v-on:click="changeSearchMode()" class="c-btn cc-search-btn"
+          title="Alternar modo de pesquisa">
           <span v-if="searchPage == 'simple'">
-            <svg class="btn-ico" x="0px" y="0px" viewBox="0 0 80 48">
+            <svg class="c-btn-ico" x="0px" y="0px" viewBox="0 0 80 48">
               <path class="st0" d="M7.7,10c0.7,0,1.5,0.2,2.2,0.5L39.7,25l30.6-14c2.5-1.1,5.5,0,6.6,2.5c1.1,2.5,0,5.5-2.5,6.6l-32.7,15
                   c-1.4,0.6-2.9,0.6-4.3-0.1l-32-15.6C3,18.2,2,15.2,3.2,12.8C4,11,5.8,10,7.7,10z" />
             </svg>
           </span>
           <span v-if="searchPage == 'advanced'">
-            <svg class="btn-ico" x="0px" y="0px" viewBox="0 0 80 48">
+            <svg class="c-btn-ico" x="0px" y="0px" viewBox="0 0 80 48">
               <path class="st0" d="M72.3,35.5c-0.7,0-1.5-0.2-2.2-0.5L40.3,20.5l-30.6,14c-2.5,1.1-5.5,0-6.6-2.5c-1.1-2.5,0-5.5,2.5-6.6l32.7-15
                   c1.4-0.6,2.9-0.6,4.3,0.1l32,15.6c2.5,1.2,3.5,4.2,2.3,6.7C76,34.5,74.2,35.5,72.3,35.5z" />
             </svg>
@@ -112,38 +112,38 @@ com este programa, Se não, veja <http://www.gnu.org/licenses/>.
         </button>
 
         <transition name="homeeffect">
-          <div class="u-div-v" v-if="searchPage == 'advanced'">
+          <div class="u-dv" v-if="searchPage == 'advanced'">
 
             <label class="c-info">Mais opções de pesquisa:</label>
 
             <?php paginaInicial::filter_select("vinculo.ppg_nome"); ?>
 
-            <input class="search-input" type="search"
+            <input class="cc-search-input" type="search"
               placeholder="Filtrar por Nome do Programa de Pós-Graduação (Opcional)" aria-label="Mudar" name="search">
 
-            <input class="search-input" list="datalistOptions" id="authorsDataList"
+            <input class="cc-search-input" list="datalistOptions" id="authorsDataList"
               placeholder="Filtrar por nome ou ID Lattes do autor" name="filter[]" v-model="query" @input="searchCV()">
 
-            <datalist class="search-input" id="datalistOptions">
+            <datalist class="cc-search-input" id="datalistOptions">
               <option v-for="author in authors" :key="author._id" :value="'vinculo.lattes_id:' + author._id">
                 {{author._source.nome_completo}}
               </option>
             </datalist>
 
             <label class="c-info">Filtrar por data:</label>
-            <div class="u-div-h">
-              <input type="text" class="search-date" id="initialYear" name="initialYear" pattern="\d{4}"
+            <div class="u-dh">
+              <input type="text" class="cc-search-date" id="initialYear" name="initialYear" pattern="\d{4}"
                 placeholder="Data inicial" />
               <span> à </span>
-              <input type="text" class="search-date" id="finalYear" name="finalYear" pattern="\d{4}"
+              <input type="text" class="cc-search-date" id="finalYear" name="finalYear" pattern="\d{4}"
                 placeholder="Data final" />
             </div>
           </div> <!-- end advanced -->
         </transition>
       </form>
 
-      <button type="submit" class="btn-search" title="Buscar">
-        <svg class="btn-search-ico" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 100 100">
+      <button type="submit" class="c-btn-search" title="Buscar">
+        <svg class="c-btn-search-ico" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 100 100">
           <path
             d="M98.6,86.5L79.2,67c-0.9-0.9-2.1-1.4-3.3-1.4h-3.2c5.4-6.9,8.6-15.6,8.6-25C81.3,18.2,63.1,0,40.6,0
                 S0,18.2,0,40.6s18.2,40.6,40.6,40.6c9.4,0,18.1-3.2,25-8.6v3.2c0,1.3,0.5,2.4,1.4,3.3l19.5,19.5c1.8,1.8,4.8,1.8,6.6,0l5.5-5.5
@@ -154,11 +154,11 @@ com este programa, Se não, veja <http://www.gnu.org/licenses/>.
     </div><!-- end search -->
 
     <div class="options">
-      <button class="btn" v-on:click="showTips = !showTips" title="Mostrar dicas de pesquisa">
+      <button class="c-btn" v-on:click="showTips = !showTips" title="Mostrar dicas de pesquisa">
         Mostrar dicas de pesquisa
       </button>
 
-      <button class="btn" v-on:click="showCategories = !showCategories">
+      <button class="c-btn" v-on:click="showCategories = !showCategories">
         Mostrar pesquisa por categorias
       </button>
     </div>
@@ -174,10 +174,10 @@ com este programa, Se não, veja <http://www.gnu.org/licenses/>.
     </transition>
 
     <transition name="homeeffect">
-      <div class="searchcategories" v-if="showCategories">
+      <div class="u-dh u-dt" v-if="showCategories">
 
         <div>
-          <button class="btn c-accordion" v-on:click="openAccordion('1')"
+          <button class=" c-btn c-accordion" v-on:click="openAccordion('1')"
             aria-describedb="Lista de tipos de pós-graduação ">Programa de Pós-Graduação </button>
           <transition name="homeeffect">
             <div class="c-accordion-body" v-if="accOpened == '1'">
@@ -189,7 +189,7 @@ com este programa, Se não, veja <http://www.gnu.org/licenses/>.
         </div>
 
         <div>
-          <button class="btn c-accordion" v-on:click="openAccordion('2')">Tipo de material </button>
+          <button class="c-btn c-accordion" v-on:click="openAccordion('2')">Tipo de material </button>
           <transition name="homeeffect">
             <div class="c-accordion-body" v-if="accOpened == '2'">
               <ul class="list-group">
@@ -200,7 +200,7 @@ com este programa, Se não, veja <http://www.gnu.org/licenses/>.
         </div>
 
         <div>
-          <button class="btn c-accordion" v-on:click="openAccordion('3')">Tipo de cínculo </button>
+          <button class="c-btn c-accordion" v-on:click="openAccordion('3')">Tipo de cínculo </button>
           <transition name="homeeffect">
             <div class="c-accordion-body" v-if="accOpened == '3'">
               <ul class="list-group">
@@ -211,7 +211,7 @@ com este programa, Se não, veja <http://www.gnu.org/licenses/>.
         </div>
 
         <div>
-          <button class="btn c-accordion" v-on:click="openAccordion('4')">Tipo de material </button>
+          <button class="c-btn c-accordion" v-on:click="openAccordion('4')">Tipo de material </button>
           <transition name="homeeffect">
             <div class="c-accordion-body" v-if="accOpened == '4'">
               <ul class="list-group">
@@ -222,7 +222,7 @@ com este programa, Se não, veja <http://www.gnu.org/licenses/>.
         </div>
 
         <div>
-          <button class="btn c-accordion" v-on:click="openAccordion('5')">Base de dados </button>
+          <button class="c-btn c-accordion" v-on:click="openAccordion('5')">Base de dados </button>
           <transition name="homeeffect">
             <div class="c-accordion-body" v-if="accOpened == '5'">
               <ul class="list-group">

@@ -1,0 +1,26 @@
+.s-line {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-content: start;
+
+  &-item {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin-right: 1rem;
+  }
+
+  &-icon {
+    width: 30px;
+    margin-right: .25rem;
+  }
+}
+
+@include breakpoint(md-up) {
+  .s-line {
+    flex-direction: row;
+  }
+}

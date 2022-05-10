@@ -578,7 +578,7 @@ class paginaInicial {
             'body' => $query
         ];
         $response = $client->search($params);
-        echo '<select class="search-input" name="filter[]" aria-label="Filtro">
+        echo '<select class="cc-search-input" name="filter[]" aria-label="Filtro">
         <option value="" selected>Escolha o nome do programa de pós-graduação</option>';
         foreach ($response["aggregations"]["group_by_state"]["buckets"] as $facets) {
             echo '<option value="'.$field.':'.$facets['key'].'">'.$facets['key'].'</option>';

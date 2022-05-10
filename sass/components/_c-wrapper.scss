@@ -1,4 +1,4 @@
-.wrapper {
+.c-wrapper {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -9,7 +9,7 @@
 
 }
 @include breakpoint(md-up) {
-  .wrapper {
+  .c-wrapper {
     padding: 1rem 2rem 2rem 2rem;
   }
 }

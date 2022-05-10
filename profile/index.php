@@ -207,17 +207,17 @@ if (!empty($_REQUEST["lattesID"])) {
           </div> <!-- end profile-numbers -->
 
 
-          <a class="u-skip" href=”#skipgraph”>Pular gráfico</a>
+          <a class="u-skip" href=”#skipcc-graph”>Pular gráfico</a>
 
-          <div class="graph">
+          <div class="cc-graph">
 
-            <div class="graph-line">
-              <span class="graph-label">Artigos publicados</span>
+            <div class="cc-graph-line">
+              <span class="cc-graph-label">Artigos publicados</span>
               <?php 
                 foreach ($artigos_publicados as $i => $j) {
                   echo 
                   "<div 
-                    class='graph-unit' 
+                    class='cc-graph-unit' 
                     data-weight='{$j['total']}'
                     title='{$j['year']} — total: {$j['total']}'
                   ></div>";
@@ -227,13 +227,13 @@ if (!empty($_REQUEST["lattesID"])) {
               ?>
             </div>
 
-            <div class="graph-line">
-              <span class="graph-label">Livros e capítulos</span>
+            <div class="cc-graph-line">
+              <span class="cc-graph-label">Livros e capítulos</span>
               <?php 
                 foreach ($livros_e_capitulos as $i => $j) {
                   echo 
                     "<div 
-                      class='graph-unit' 
+                      class='cc-graph-unit' 
                       data-weight='{$j['total']}'
                       title='{$j['year']} — total: {$j['total']}'
                     ></div>";
@@ -243,13 +243,13 @@ if (!empty($_REQUEST["lattesID"])) {
               ?>
             </div>
 
-            <div class="graph-line graph-division">
-              <span class="graph-label">Orientações de mestrado</span>
+            <div class="cc-graph-line cc-graph-division">
+              <span class="cc-graph-label">Orientações de mestrado</span>
               <?php 
                 foreach ($orientacoes_mestrado as $i => $j) {
                   echo 
                     "<div 
-                      class='graph-unit' 
+                      class='cc-graph-unit' 
                       data-weight='{$j['total']}'
                       title='{$j['year']} — total: {$j['total']}'
                     ></div>";
@@ -259,13 +259,13 @@ if (!empty($_REQUEST["lattesID"])) {
               ?>
             </div>
 
-            <div class="graph-line">
-              <span class="graph-label">Orientações de doutorado</span>
+            <div class="cc-graph-line">
+              <span class="cc-graph-label">Orientações de doutorado</span>
               <?php 
                 foreach ($orientacoes_doutorado as $i => $j) {
                   echo 
                     "<div 
-                      class='graph-unit' 
+                      class='cc-graph-unit' 
                       data-weight='{$j['total']}'
                       title='{$j['year']} — total: {$j['total']}'
                     ></div>";
@@ -275,13 +275,13 @@ if (!empty($_REQUEST["lattesID"])) {
               ?>
             </div>
 
-            <div class="graph-line">
-              <span class="graph-label">Ensino</span>
+            <div class="cc-graph-line">
+              <span class="cc-graph-label">Ensino</span>
               <?php 
                 foreach ($ensino as $i => $j) {
                   echo 
                     "<div 
-                      class='graph-unit' 
+                      class='cc-graph-unit' 
                       data-weight='{$j['total']}'
                       title='{$j['year']} — total: {$j['total']}'
                     ></div>";
@@ -291,13 +291,13 @@ if (!empty($_REQUEST["lattesID"])) {
               ?>
             </div>
 
-            <div class="graph-line graph-division">
-              <span class="graph-label">Softwares e patentes</span>
+            <div class="cc-graph-line cc-graph-division">
+              <span class="cc-graph-label">Softwares e patentes</span>
               <?php 
                 foreach ($softwares_patentes as $i => $j) {
                   echo 
                     "<div 
-                      class='graph-unit' 
+                      class='cc-graph-unit' 
                       data-weight='{$j['total']}'
                       title='{$j['year']} — total: {$j['total']}'
                     ></div>";
@@ -307,13 +307,13 @@ if (!empty($_REQUEST["lattesID"])) {
               ?>
             </div>
 
-            <div class="graph-line">
-              <span class="graph-label">Participações em eventos</span>
+            <div class="cc-graph-line">
+              <span class="cc-graph-label">Participações em eventos</span>
               <?php 
                 foreach ($participacoes_eventos as $i => $j) {
                 echo 
                   "<div 
-                    class='graph-unit' 
+                    class='cc-graph-unit' 
                     data-weight='{$j['total']}'
                     title='{$j['year']} — total: {$j['total']}'
                   ></div>";
@@ -323,22 +323,22 @@ if (!empty($_REQUEST["lattesID"])) {
               ?>
             </div>
 
-            <div class="graph-line">
-              <div class="graph-icon"></div>
-              <div class="graph-label">2021 ————— 2015</div>
+            <div class="cc-graph-line">
+              <div class="cc-graph-icon"></div>
+              <div class="cc-graph-label">2021 ————— 2015</div>
             </div>
 
-          </div> <!-- end graph -->
+          </div> <!-- end cc-graph -->
 
 
-          <div class="graph-info">
-            <span class="graph-info-label">+</span>
-            <div class="graph-unit" data-weight="4"></div>
-            <div class="graph-unit" data-weight="3"></div>
-            <div class="graph-unit" data-weight="2"></div>
-            <div class="graph-unit" data-weight="1"></div>
-            <div class="graph-unit" data-weight="0"></div>
-            <span class="graph-info-label">-</span>
+          <div class="cc-graph-info">
+            <span class="cc-graph-info-label">+</span>
+            <div class="cc-graph-unit" data-weight="4"></div>
+            <div class="cc-graph-unit" data-weight="3"></div>
+            <div class="cc-graph-unit" data-weight="2"></div>
+            <div class="cc-graph-unit" data-weight="1"></div>
+            <div class="cc-graph-unit" data-weight="0"></div>
+            <span class="cc-graph-info-label">-</span>
           </div>
 
 
@@ -348,7 +348,7 @@ if (!empty($_REQUEST["lattesID"])) {
       </div> <!-- end cc-coregrid  -->
 
 
-      <span class="u-skip" id="skipgraph”" class="ty ty-lastUpdate">Atualizado em
+      <span class="u-skip" id="skipcc-graph”" class="ty ty-lastUpdate">Atualizado em
         <?php echo $profile['data_atualizacao']; ?></span>
 
 
@@ -356,19 +356,19 @@ if (!empty($_REQUEST["lattesID"])) {
       <div id="tabs" class="profile-tabs">
 
 
-        <div class="tab-bar">
-          <button id="tab-btn-1" class="tab-btn" v-on:click="changeTab('1')">Sobre Mim</button>
-          <button id="tab-btn-2" class="tab-btn" v-on:click="changeTab('2')">Produção Intelectual</button>
-          <button id="tab-btn-3" class="tab-btn" v-on:click="changeTab('3')">Pesquisa</button>
-          <button id="tab-btn-4" class="tab-btn" v-on:click="changeTab('4')">Orientações</button>
+        <div class="cc-tab-bar">
+          <button id="tab-btn-1" class="cc-tab-btn" v-on:click="changeTab('1')">Sobre Mim</button>
+          <button id="tab-btn-2" class="cc-tab-btn" v-on:click="changeTab('2')">Produção Intelectual</button>
+          <button id="tab-btn-3" class="cc-tab-btn" v-on:click="changeTab('3')">Pesquisa</button>
+          <button id="tab-btn-4" class="cc-tab-btn" v-on:click="changeTab('4')">Orientações</button>
         </div>
 
 
 
-        <div id="tab-one" class="tab-content" v-if="tabOpened == '1'">
+        <div id="tab-one" class="cc-tab-content" v-if="tabOpened == '1'">
 
 
-          <div class="p-description">
+          <div class="u-justify">
             <h3 class="ty ty-title">Resumo</h3>
             <p class="ty">
               <?php echo $profile["resumo_cv"]["texto_resumo_cv_rh"] ?>
@@ -397,7 +397,7 @@ if (!empty($_REQUEST["lattesID"])) {
               shuffle($resultaboutfacet);
           ?>
 
-          <div class="p-tags">
+          <div>
             <ul class="tag-cloud" role="navigation" aria-label="Tags mais usadas">
               <?php foreach ($resultaboutfacet as $t=> $tag) {
                 echo
@@ -411,47 +411,47 @@ if (!empty($_REQUEST["lattesID"])) {
                 unset($amount);
                 ?>
             </ul>
-          </div> <!-- end p-tags -->
+          </div> <!-- end -->
 
           <hr class="c-line u-my-2" />
 
 
           <?php if(isset($profile["idiomas"])): ?>
-          <div class=" p-language">
+          <div class=" u-left">
             <h3 class="ty ty-title">Idiomas</h3>
             <?php foreach ($profile["idiomas"] as $key => $idioma): ?>
 
             <div class="s-list">
 
-              <div class="s-list-ico">
+              <div class="s-list-bullet">
                 <?php 
                   switch ($idioma["descricaoDoIdioma"]) {
                     case "Inglês":
-                      echo "<img class='pi-iconlang' src='../inc/images/icons/languages/en.svg' />";
+                      echo "<img class='c-iconlang' src='../inc/images/icons/languages/en.svg' />";
                       break;
                     case "Espanhol":
-                      echo "<img class='pi-iconlang' src='../inc/images/icons/languages/es.svg' />";
+                      echo "<img class='c-iconlang' src='../inc/images/icons/languages/es.svg' />";
                       break;
                     case "Português":
-                      echo "<img class='pi-iconlang' src='../inc/images/icons/languages/pt.svg' />";
+                      echo "<img class='c-iconlang' src='../inc/images/icons/languages/pt.svg' />";
                       break;
                     case "Italiano":
-                      echo "<img class='pi-iconlang' src='../inc/images/icons/languages/pt.svg' />";
+                      echo "<img class='c-iconlang' src='../inc/images/icons/languages/pt.svg' />";
                       break;
                     case "Francês":
-                      echo "<img class='pi-iconlang' src='../inc/images/icons/languages/pt.svg' />";
+                      echo "<img class='c-iconlang' src='../inc/images/icons/languages/pt.svg' />";
                       break;
                     case "Alemão":
-                      echo "<img class='pi-iconlang' src='../inc/images/icons/languages/pt.svg' />";
+                      echo "<img class='c-iconlang' src='../inc/images/icons/languages/pt.svg' />";
                       break;
                     case "Russo":
-                      echo "<img class='pi-iconlang' src='../inc/images/icons/languages/pt.svg' />";
+                      echo "<img class='c-iconlang' src='../inc/images/icons/languages/pt.svg' />";
                       break;
                     case "Mandarin":
-                      echo "<img class='pi-iconlang' src='../inc/images/icons/languages/pt.svg' />";
+                      echo "<img class='c-iconlang' src='../inc/images/icons/languages/pt.svg' />";
                       break;
                     default:
-                      echo "<img class='pi-iconlang' src='../inc/images/icons/languages/idioma.svg' />";
+                      echo "<img class='c-iconlang' src='../inc/images/icons/languages/idioma.svg' />";
                       break;
 
                   }
@@ -477,7 +477,7 @@ if (!empty($_REQUEST["lattesID"])) {
               </div>
             </div> <!-- end s-list -->
             <?php endforeach; ?>
-          </div> <!-- end p-language -->
+          </div> <!-- end u-left -->
           <?php endif; ?>
 
           <hr class="c-line u-my-2" />
@@ -491,8 +491,8 @@ if (!empty($_REQUEST["lattesID"])) {
 
           <div class="formation-container">
             <div class="s-list">
-              <div class="s-list-ico">
-                <img class="pi-icon" src="../inc/images/icons/academic.svg" />
+              <div class="s-list-bullet">
+                <img class="s-list-ico" src="../inc/images/icons/academic.svg" />
               </div>
 
               <div class="s-list-content">
@@ -548,8 +548,8 @@ if (!empty($_REQUEST["lattesID"])) {
 
           <div class="formation-container">
             <div class="s-list">
-              <div class="s-list-ico">
-                <img class="pi-icon" src="../inc/images/icons/academic.svg" />
+              <div class="s-list-bullet">
+                <img class="s-list-ico" src="../inc/images/icons/academic.svg" />
               </div>
               <div class="s-list-content">
                 <div class="formation">
@@ -609,8 +609,8 @@ if (!empty($_REQUEST["lattesID"])) {
 
           <div class="formation-container">
             <div class="s-list">
-              <div class="s-list-ico">
-                <img class="pi-icon" src="../inc/images/icons/academic.svg" />
+              <div class="s-list-bullet">
+                <img class="s-list-ico" src="../inc/images/icons/academic.svg" />
               </div>
 
               <div class="s-list-content">
@@ -674,8 +674,8 @@ if (!empty($_REQUEST["lattesID"])) {
 
           <div class="formation-container">
             <div class="s-list">
-              <div class="s-list-ico">
-                <img class="pi-icon" src="../inc/images/icons/academic.svg" />
+              <div class="s-list-bullet">
+                <img class="s-list-ico" src="../inc/images/icons/academic.svg" />
               </div>
 
               <div class="s-list-content">
@@ -708,7 +708,7 @@ if (!empty($_REQUEST["lattesID"])) {
         </div> <!-- end tab-one -->
 
 
-        <div id="tab-two" class="tab-content" v-if="tabOpened == '2'">
+        <div id="tab-two" class="cc-tab-content" v-if="tabOpened == '2'">
           <div class="profile-pi">
 
             <h2 class="ty ty-title">Produção Intelecual</h2>
@@ -723,7 +723,7 @@ if (!empty($_REQUEST["lattesID"])) {
 
 
                 echo '<hr class="c-line"></hr>
-                <h3 class="ty-subtitle pi-year">'.$i.'</h3>
+                <h3 class="ty-subtitle c-pi-year">'.$i.'</h3>
                 <hr class="c-line"></hr> ';
 
                 foreach ($works[$i] as $key => $work) {
@@ -732,43 +732,42 @@ if (!empty($_REQUEST["lattesID"])) {
                     $authors[] = $author["person"]["name"];
                   }
                   
-                  echo '<div class="pi">
+                  echo '<div class="c-pi">
             
                     <div class="s-list">
-                      <div class="s-list-ico">        
-                          <img class="pi-icon" src="../inc/images/icons/article-published.svg" />            
-
+                      <div class="s-list-bullet">        
+                          <img class="s-list-ico" src="../inc/images/icons/article-published.svg" />            
                       </div>            
 
                       <div class="s-list-content">
-                        <span class="pi-type">'.$work['_source']['tipo'].'</span> 
+                        <span class="c-typetag">'.$work['_source']['tipo'].'</span> 
 
                         <h5 class="ty-item">'.$work['_source']['name'].'</h5>
                         
                         <span class="u-sr-only">Autores</span>
                         <p class="ty-gray">' . implode('; ', $authors) . '</p>
                                     
-                        <div class="pi-moreinfo">
+                        <div class="s-line">
                           
                           <!--
-                          <div class="pi-moreinfo-item"> 
-                            <img class="pi-moreinfo-icon"
+                          <div class="s-line-item"> 
+                            <img class="s-line-icon"
                               src="../inc/images/icons/citation.svg" 
                               alt="representação de citação" 
                             />
                             
-                            <span class="pi-citations">Web Of Science: 12</span>
+                            <span class="c-pi-citations">Web Of Science: </span>
                             
-                            <span class="pi-citations">Scopus 8</span>
+                            <span class="c-pi-citations">Scopus </span>
                             
                           </div>
                           -->
                           ';
                           if (!empty($work['_source']['url'])) {
                             echo '              
-                            <div class="pi-moreinfo-item"> 
+                            <div class="s-line-item"> 
                               <img 
-                                class="pi-moreinfo-icon"
+                                class="s-line-icon"
                                 src="../inc/images/icons/link.svg" 
                                 alt="representação de um link"
                               />
@@ -780,10 +779,10 @@ if (!empty($_REQUEST["lattesID"])) {
                         
                         if (!empty($work['_source']['doi'])) {
                           echo '
-                          <div class="pi-moreinfo-item">
+                          <div class="s-line-item">
 
                             <img 
-                            class="pi-moreinfo-icon"
+                            class="s-line-icon"
                             src="../inc/images/logos/doi.svg" 
                             alt="logo DOI"
                             />
@@ -821,14 +820,14 @@ if (!empty($_REQUEST["lattesID"])) {
         </div> <!-- end tab-two -->
 
 
-        <div id="tab-three" class="tab-content" v-if="tabOpened == '3'">
+        <div id="tab-three" class="cc-tab-content" v-if="tabOpened == '3'">
           <h3 class="ty ty-title u-mb-2">Projetos de Pesquisa</h3>
 
           <hr class="c-line u-mb-2">
 
           <div class="s-list">
-            <div class="s-list-ico">
-              <img class='pi-iconlang' src='../inc/images/icons/research.svg' />
+            <div class="s-list-bullet">
+              <img class='c-iconlang' src='../inc/images/icons/research.svg' />
             </div>
 
             <div class="s-list-content">
@@ -862,7 +861,7 @@ if (!empty($_REQUEST["lattesID"])) {
         </div> <!-- end tab-three -->
 
 
-        <div id="tab-four" class="tab-content" v-if="tabOpened == '4'">
+        <div id="tab-four" class="cc-tab-content" v-if="tabOpened == '4'">
 
           <h3 class="ty ty-title u-mb-2">Orientações e supervisões</h3>
 
@@ -880,15 +879,15 @@ if (!empty($_REQUEST["lattesID"])) {
                     $i_orientacao_andamento++;
                   }
                   if(count($orientacao_andamento_array[$orientacao_andamento_label]) > 0) {
-                    echo '<h4 class="ty ty-title u-mb-2">'.$orientacao_andamento_label.' em andamento</h4><ul class="orientation">';
+                    echo '<h4 class="ty ty-title u-mb-2">'.$orientacao_andamento_label.' em andamento</h4><ul class="s-nobullet">';
                     foreach ($orientacao_andamento_array[$orientacao_andamento_label] as $orientacao_andamento_echo) {
                       //var_dump($orientacao_andamento_echo);
                       echo '
                       <li>
                       <hr class="c-line u-mb-2"></hr>
                       <div class="s-list">
-                        <div class="s-list-ico">
-                          <img class="pi-iconlang" src="../inc/images/icons/orientation.svg" />
+                        <div class="s-list-bullet">
+                          <img class="c-iconlang" src="../inc/images/icons/orientation.svg" />
                         </div>
     
                         <div class="s-list-content">
@@ -944,15 +943,15 @@ if (!empty($_REQUEST["lattesID"])) {
                 }
                 if(isset($orientacao_concluidas_array)) {
                 if(count($orientacao_concluidas_array[$orientacao_concluidas_label]) > 0) {
-                  echo '<h4 class="ty ty-title u-mb-2">'.$orientacao_concluidas_label.' concluídas</h4><ul class="orientation">';
+                  echo '<h4 class="ty ty-title u-mb-2">'.$orientacao_concluidas_label.' concluídas</h4><ul class="s-nobullet">';
                   foreach ($orientacao_concluidas_array[$orientacao_concluidas_label] as $orientacao_concluidas_echo) {
                     //var_dump($orientacao_concluidas_echo);
                     echo '
                     <li>
                     <hr class="c-line u-mb-2"></hr>
                     <div class="s-list">
-                      <div class="s-list-ico">
-                        <img class="pi-iconlang" src="../inc/images/icons/orientation.svg" />
+                      <div class="s-list-bullet">
+                        <img class="c-iconlang" src="../inc/images/icons/orientation.svg" />
                       </div>
   
                       <div class="s-list-content">
@@ -993,181 +992,6 @@ if (!empty($_REQUEST["lattesID"])) {
 
           <?php endif; ?>
 
-          <!--
-
-          <hr class="c-line" />
-          <h4 class="ty ty-title u-mb-2">Supervisões de pós-doutorado em andamento</h4>
-
-
-          <div class="s-list">
-            <div class="s-list-ico">
-              <img class='pi-iconlang' src='../inc/images/icons/orientation.svg' />
-            </div>
-
-            <div class="s-list-content">
-
-              <p class="ty ty-item">
-                <a href="http://lattes.cnpq.br/4527664839744803" target="blank">
-                  Mika Alexia Miyazaki.
-                </a>
-                <span class="ty c-date-range">2019</span>
-              </p>
-
-              <p class="ty ty-gray">
-                INFLUÊNCIA DA FRAGMENTAÇÃO DE DNA ESPERMÁTICO NO INÍCIO DO DESENVOLVIMENTO EMBRIONÁRIO INICIAL.
-              </p>
-
-              <p class="ty u-mb-1">
-                Universidade Federal de São Paulo —
-                <b class="ty-subItem">Curso:</b>
-                Medicina (Urologia)
-              </p>
-
-            </div> 
-
-          </div>
-
-          <div class="u-mb-2"></div>
-
-
-          <hr class="c-line" />
-          <h4 class="ty ty-title u-mb-2">Dissertações de mestrado concluídas</h4>
-
-          <ul class="orientation">
-            <li>
-              <div class="s-list">
-                <div class="s-list-ico">
-                  <img class='pi-iconlang' src='../inc/images/icons/orientation.svg' />
-                </div>
-
-                <div class="s-list-content">
-
-                  <p class="ty ty-item">
-                    <a class="ty-itemLink" href="http://lattes.cnpq.br/4527664839744803" target="blank">
-                      Mika Alexia Miyazaki
-                    </a>
-                    <span class="ty c-date-range">2019</span>
-                  </p>
-
-                  <p class="ty ty-gray">
-                    INFLUÊNCIA DA FRAGMENTAÇÃO DE DNA ESPERMÁTICO NO INÍCIO DO DESENVOLVIMENTO EMBRIONÁRIO INICIAL.
-                  </p>
-
-                  <p class="ty u-mb-1">
-                    Universidade Federal de São Paulo —
-                    <b class="ty-subItem">Curso:</b>
-                    Medicina (Urologia)
-                  </p>
-
-                </div> 
-
-              </div>
-
-            </li>
-          </ul>
-
-
-
-          <hr class="c-line" />
-          <h4 class="ty ty-title u-mb-2">Teses de doutorado concluídas</h4>
-
-
-          <div class="s-list">
-            <div class="s-list-ico">
-              <img class='pi-iconlang' src='../inc/images/icons/orientation.svg' />
-            </div>
-
-            <div class="s-list-content">
-
-              <p class="ty ty-item">
-                <a href="http://lattes.cnpq.br/4527664839744803" target="blank">
-                  Mika Alexia Miyazaki.
-                </a>
-                <span class="ty c-date-range">2019</span>
-              </p>
-
-              <p class="ty ty-gray">
-                INFLUÊNCIA DA FRAGMENTAÇÃO DE DNA ESPERMÁTICO NO INÍCIO DO DESENVOLVIMENTO EMBRIONÁRIO INICIAL.
-              </p>
-
-              <p class="ty u-mb-1">
-                Universidade Federal de São Paulo —
-                <b class="ty-subItem">Curso:</b>
-                Medicina (Urologia)
-              </p>
-
-            </div> 
-
-          </div>
-
-
-          <hr class="c-line" />
-          <h4 class="ty ty-title u-mb-2">Iniciações científicas concluídas</h4>
-
-
-          <div class="s-list">
-            <div class="s-list-ico">
-              <img class='pi-iconlang' src='../inc/images/icons/orientation.svg' />
-            </div>
-
-            <div class="s-list-content">
-
-              <p class="ty ty-item">
-                <a href="http://lattes.cnpq.br/4527664839744803" target="blank">
-                  Mika Alexia Miyazaki.
-                </a>
-                <span class="ty c-date-range">2019</span>
-              </p>
-
-              <p class="ty ty-gray">
-                INFLUÊNCIA DA FRAGMENTAÇÃO DE DNA ESPERMÁTICO NO INÍCIO DO DESENVOLVIMENTO EMBRIONÁRIO INICIAL.
-              </p>
-
-              <p class="ty u-mb-1">
-                Universidade Federal de São Paulo —
-                <b class="ty-subItem">Curso:</b>
-                Medicina (Urologia)
-              </p>
-
-            </div> 
-
-          </div>
-
-
-
-          <hr class="c-line" />
-          <h4 class="ty ty-title u-mb-2">Orientações de outra natureza concluídas</h4>
-
-
-          <div class="s-list">
-            <div class="s-list-ico">
-              <img class='pi-iconlang' src='../inc/images/icons/orientation.svg' />
-            </div>
-
-            <div class="s-list-content">
-
-              <p class="ty ty-item">
-                <a href="http://lattes.cnpq.br/4527664839744803" target="blank">
-                  Mika Alexia Miyazaki.
-                </a>
-                <span class="ty c-date-range">2019</span>
-              </p>
-
-              <p class="ty ty-gray">
-                INFLUÊNCIA DA FRAGMENTAÇÃO DE DNA ESPERMÁTICO NO INÍCIO DO DESENVOLVIMENTO EMBRIONÁRIO INICIAL.
-              </p>
-
-              <p class="ty u-mb-1">
-                Universidade Federal de São Paulo —
-                <b class="ty-subItem">Curso:</b>
-                Medicina (Urologia)
-              </p>
-
-            </div> 
-
-          </div> -->
-
-
         </div> <!-- end tab-four -->
 
 
@@ -1194,12 +1018,12 @@ if (!empty($_REQUEST["lattesID"])) {
     methods: {
       changeTab(tab) {
         this.tabOpened = tab
-        var tabs = document.getElementsByClassName("tab-btn")
+        var tabs = document.getElementsByClassName("cc-tab-btn")
 
         for (i = 0; i < tabs.length; i++)
           tabs[i].className = tabs[i].className.replace("tab-active", "")
 
-        tabs[Number(tab) - 1].className += " tab-active"
+        tabs[Number(tab) - 1].className += " cc-tab-active"
       }
     }
   })

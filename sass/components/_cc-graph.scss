@@ -1,14 +1,9 @@
 // GRAPH
 
-// @for $i from 1 through 100 {
-//   .graph-unit[data-weight="#{$i}"] { width: calc(#{$i} * .25rem); }
-// }
-
-$graph-labels-color: rgb(109, 109, 109);
 $unit: 15px;
 $gap: 2px;
 
-.graph {
+.cc-graph {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -28,14 +23,14 @@ $gap: 2px;
 
     &-label {
       text-align: center;
-      color: $graph-labels-color;
+      color: _palette(theme-light-1);
       font-weight: 700;
       font-size: 1.2rem;
     }
   }
 
   &-label {
-    color: $graph-labels-color;
+    color: _palette(theme-light-1);
     justify-content: center;
     font-size: .8rem;
     margin-right: .5rem;
@@ -57,22 +52,26 @@ $gap: 2px;
     height: $unit;
     margin-inline: $gap;
     border-radius: 2px;
-    background-color: #ededed;
+    background-color: _palette(g0);
   }
 }
 
 
 $gColor: (
-  0: #ededed,
-	1: #acd5f2,
-	2: #7fa8c9,
-	3: #527ba0,
-	4: #254e77,
+  0: _palette(g0),
+	1: _palette(g1),
+	2: _palette(g2),
+	3: _palette(g3),
+	4: _palette(g4),
 
 ); 
 
 @each $n, $color in $gColor {
-  .graph-unit[data-weight="#{$n}"] {
+  .cc-graph-unit[data-weight="#{$n}"] {
      background-color: $color;
   }
 }
+
+// @for $i from 1 through 100 {
+//   .graph-unit[data-weight="#{$i}"] { width: calc(#{$i} * .25rem); }
+// }

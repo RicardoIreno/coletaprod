@@ -1,12 +1,8 @@
 // == PAGE HOME == // 
 
-.home {
-  background-image: escape-svg($logo-bg);
-  background-repeat: no-repeat;
-  background-position: right top;
-  background-size: 30%;
+// .home {
 
-}
+// }
 
 .logo {
   &-home {
@@ -22,10 +18,10 @@
       max-width: 230px;
       margin-top: 3rem;
     } 
-    }
+  }
 }
 
-.searchcategories, .options {
+.c-searchcategories, .options {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
