@@ -8,8 +8,9 @@
     display: grid;
     grid-template-columns: 10% 90%;
     grid-template-areas: "left right"; 
+    list-style: none;
 
-    &-ico {
+    &-bullet {
       display: flex;
       align-items: flex-start;
       grid-area: left;
@@ -17,8 +18,16 @@
       padding-right: 1rem;
     }
 
+    &-ico {
+      width: 50px;
+    }
+
     &-content {
       grid-area: right;
     }
   }
+}
+
+.s-nobullet {
+  list-style: none;
 }

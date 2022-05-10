@@ -1,28 +1,29 @@
  
 @import 'abstracts/functions';
-@import 'abstracts/breakpoint';
-@import 'abstracts/flex';
+@import 'abstracts/mixin_breakpoint';
+@import 'abstracts/mixin_flex';
 
 @import 'base/theme';
 @import 'base/normalize';
 @import 'base/typography';
 
-@import 'layouts/profile-core';
-@import 'layouts/profile-about';
-@import 'layouts/profile-education';
-@import 'layouts/profile-orientation';
-@import 'layouts/profile-pi';
 @import 'layouts/sitefooter';
 @import 'layouts/siteheader';
 @import 'layouts/sitemenu';
 
-@import 'components/btn';
-@import 'components/wrapper';
-@import 'components/search';
-@import 'components/tab';
-@import 'components/tag';
-@import 'components/s-list';
+@import 'components/c-accordion';
+@import 'components/c-btn';
+@import 'components/c-date-range';
 @import 'components/c-line';
+@import 'components/c-info';
+@import 'components/c-textbox';
+@import 'components/c-wrapper';
+@import 'components/cc-graph';
+@import 'components/cc-search';
+@import 'components/cc-tab';
+@import 'components/tag';
+@import 'components/s-line';
+@import 'components/s-list';
 
 @import 'pages/about';
 @import 'pages/home';
@@ -31,19 +32,9 @@
 @import 'pages/pre-dash';
 @import 'pages/profile';
 
-@import 'utilities/u-date-range';
-@import 'utilities/u-div';
-@import 'utilities/u-icontext';
+@import 'utilities/u-alignaments';
+@import 'utilities/u-containers';
 @import 'utilities/u-grid';
-@import 'utilities/u-info';
-@import 'utilities/u-margin';
-@import 'utilities/u-right';
 @import 'utilities/u-skip';
-@import 'utilities/u-spacer';
+@import 'utilities/u-spacing';
 @import 'utilities/u-sr-only';
-@import 'utilities/u-textbox';
-@import 'utilities/u-vseparator';
-
-@import 'components/graph';
-
-

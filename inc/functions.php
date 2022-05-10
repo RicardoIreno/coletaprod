@@ -474,7 +474,7 @@ class paginaInicial {
 
         $response = $client->search($params);
         foreach ($response["aggregations"]["group_by_state"]["buckets"] as $facets) {
-            echo '<li class="list-group-item"><a href="result.php?filter[]=source:&quot;'.$facets['key'].'&quot;">'.$facets['key'].' ('.number_format($facets['doc_count'],0,',','.').')</a></li>';
+            echo '<li class="c-accordion-itemlist"><a href="result.php?filter[]=source:&quot;'.$facets['key'].'&quot;">'.$facets['key'].' ('.number_format($facets['doc_count'],0,',','.').')</a></li>';
         }   
 
     }
@@ -510,7 +510,7 @@ class paginaInicial {
 
         $response = $client->search($params);
         foreach ($response["aggregations"]["group_by_state"]["buckets"] as $facets) {
-            echo '<li class="list-group-item"><a href="result.php?filter[]=tipo:&quot;'.$facets['key'].'&quot;">'.$facets['key'].' ('.number_format($facets['doc_count'],0,',','.').')</a></li>';
+            echo '<li class="c-accordion-itemlist"><a href="result.php?filter[]=tipo:&quot;'.$facets['key'].'&quot;">'.$facets['key'].' ('.number_format($facets['doc_count'],0,',','.').')</a></li>';
         }   
 
     }
@@ -546,7 +546,7 @@ class paginaInicial {
 
         $response = $client->search($params);
         foreach ($response["aggregations"]["group_by_state"]["buckets"] as $facets) {
-            echo '<li class="list-group-item"><a href="result.php?filter[]='.$field.':&quot;'.$facets['key'].'&quot;">'.$facets['key'].' ('.number_format($facets['doc_count'],0,',','.').')</a></li>';
+            echo '<li class="c-accordion-itemlist"><a href="result.php?filter[]='.$field.':&quot;'.$facets['key'].'&quot;">'.$facets['key'].' ('.number_format($facets['doc_count'],0,',','.').')</a></li>';
         }   
 
     }
@@ -578,7 +578,7 @@ class paginaInicial {
             'body' => $query
         ];
         $response = $client->search($params);
-        echo '<select class="search-input" name="filter[]" aria-label="Filtro">
+        echo '<select class="cc-search-input" name="filter[]" aria-label="Filtro">
         <option value="" selected>Escolha o nome do programa de pós-graduação</option>';
         foreach ($response["aggregations"]["group_by_state"]["buckets"] as $facets) {
             echo '<option value="'.$field.':'.$facets['key'].'">'.$facets['key'].'</option>';

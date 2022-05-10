@@ -1,3 +1,7 @@
+// Utility grid system
+// container: u-grid
+// columns: u-col-X-of-Y
+$cols: 5;
 
 .u-grid {
   width: 100%;
@@ -15,7 +19,6 @@
   }
 }
 
-$cols: 5;
 $jc: 1;
 @for $i from 1 through $cols {
     @for $j from $jc through $cols {

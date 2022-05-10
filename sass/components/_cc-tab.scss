@@ -1,19 +1,19 @@
 
-.tab {
+.cc-tab {
   &-bar {
     display: flex;
     flex-direction: row;
     margin-top: 1rem;
     width: 100%;
     border: none;
-    border-bottom: 1px solid _palette(theme-light);
+    border-bottom: 1px solid _palette(theme-light-1);
   }
 
   &-btn {
     background-color: _palette(bg-primary);
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
-    border: 1px solid _palette(theme-light);
+    border: 1px solid _palette(theme-light-1);
     color: _palette(theme);
     cursor: pointer;
     display: flex;
@@ -29,7 +29,7 @@
   
     &:hover {
       background-color: _palette(theme-light-2);
-      color: #000;
+      color: _palette(title);
       transition: all 0.4s 0s ease;
     }
   }
@@ -42,6 +42,6 @@
     background-color: _palette(bg-primary);
     border: 2px solid _palette(theme);
     border-bottom: none;
-    color: #000;
+    color: _palette(title);
   }
 }

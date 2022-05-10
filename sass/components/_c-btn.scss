@@ -1,15 +1,15 @@
 // == BUTTONS == // 
 
 @mixin hover-btn {
-	background-color: _palette(btn-hover);
-  border-color: _palette(btn-hover);  
+	background-color: _palette(btn-bg-hover);
+  border-color: _palette(btn-bg-hover);  
   -webkit-box-shadow: 0px 5px 10px -10px rgba(0,0,0,0.57);
   -moz-box-shadow: 0px 5px 410px -10px rgba(0,0,0,0.57);
   box-shadow: 5px 10px -10px rgba(0,0,0,0.57);
   transition: all 0.2s ease 0s;
 }
   
-.btn {
+.c-btn {
 	align-items: center;
 	background: none;
 	border: 3px solid _palette(btn-fg);
@@ -43,15 +43,15 @@
 	
 	&:hover,&:focus {
 		@include hover-btn;
-		color: #fff;
+		color: _palette(btn-fg-hover);
 
 		.btn-ico {
-			fill: #fff;
+			fill: _palette(btn-fg-hover);
 		}
 	}
 }
 	
-.btn {
+.c-btn {
 	// &-back {
 	// 	color: _palette(main);
 	// 	font-size: 1.2rem;
@@ -65,7 +65,7 @@
 	// }
 		
 	&-search {
-		fill: _palette(fg-primary);
+		fill: _palette(theme);
 		background-color: transparent;
 		border: none;
 		cursor: pointer;
@@ -74,7 +74,7 @@
 		user-select: none;
 	
 		&-ico {
-			margin: 2rem;
+			margin: 1rem;
 			width: 35px;
 		}
 	
@@ -86,7 +86,7 @@
 			border: none;
 			
 			.btn-search-ico {
-				fill: _palette(theme-light);
+				fill: _palette(theme-light-1);
 			} 
 		} 
 	}

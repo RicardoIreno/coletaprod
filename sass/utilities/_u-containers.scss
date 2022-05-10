@@ -1,25 +1,22 @@
-// DIV UTILITY //
+// Utility div containers
 
-.u-div-h, .u-div-v {
+.u-dh, .u-dv {
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  
-  &-s {
-    justify-content: start;
-  }
 }
 
 @include breakpoint(md-up) {
-  .u-div-h {
+  .u-dh {
     flex-direction: row;
     align-items: center;
   }
 }
 
-  
-  
+.u-dt {
+  align-items: flex-start;
+}
   
   
   

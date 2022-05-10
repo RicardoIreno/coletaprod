@@ -12,8 +12,8 @@
   justify-items: center;
   background-color: _palette(theme);
   border-bottom: 6px solid _palette(theme-dark);
-  box-shadow: 0 0 15px 0 rgba(0,0,0,.5);
-  -webkit-box-shadow: 0 0 15px 0 rgba(0,0,0,.5); 
+  box-shadow: _effects(shadow);
+  -webkit-box-shadow: _effects(shadow); 
 
   &-logo {
     height: 50px;
@@ -22,7 +22,7 @@
     transition: all 0.25s ease-in-out;
 
     &:hover {
-      fill: _palette(theme-light);
+      fill: _palette(theme-light-1);
     }
   }
 }

@@ -3,6 +3,7 @@
 <html lang="pt-br">
 
 <head>
+  <?php require 'inc/functions.php';?>
   <title>Prod Mais</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -44,7 +45,19 @@
       resultados com o apoio das diversas opções de filtros que a ferramenta possui. Também permite efetuar buscas por
       pesquisadores, e possui filtragens por área de atuação, Campus, idioma, data da publicação, nível de formação,
       enfim, várias opções. É possível exportar os resultados utilizando formatos suportados por diversos softwares
-      bibliográficos, e também é possível exportar toda a informação de um perfil para o ORCID.</p>
+      bibliográficos, e também é possível exportar toda a informação de um perfil para o ORCID.
+    </p>
+
+
+    <h4 class="about-titles">
+      Base de dados atual
+    </h4>
+    <p>
+      <?php echo paginaInicial::contar_registros_indice($index); ?> registros
+    </p>
+    <p>
+      <?php echo paginaInicial::contar_registros_indice($index_cv); ?> currículos
+    </p>
 
 
     <h3 class="about-titles">
