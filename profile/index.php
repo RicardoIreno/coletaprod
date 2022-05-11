@@ -73,8 +73,20 @@ if (!empty($_REQUEST["lattesID"])) {
 
 
     $lattesID10 = lattesID10($_GET["lattesID"]);
+
+    // Totals
+
+    $totalOrientacoes = 0;
+    if(isset($profile['orientacoes'])) {
+      $totalOrientacoes = $totalOrientacoes + count($profile['orientacoes']);
+    }
+    if(isset($profile['orientacoesconcluidas'])) {
+      $totalOrientacoes = $totalOrientacoes + count($profile['orientacoesconcluidas']);
+    }
+
+
 } else {
-    header("Location: https://unifesp.br/prodmais/index.php");
+    echo '<script>window.location.href = "../index.php";</script>';
     die();
 }
 //echo "<pre>".print_r($profile, true)."</pre>";
@@ -180,20 +192,16 @@ if (!empty($_REQUEST["lattesID"])) {
 
           <div class="cc-numbers">
             <span class="cc-numbers-number">
-              <img class="cc-numbers-icon" src="../inc/images/icons/article-published.svg" alt="Artigos publicados" />
-              45
-            </span>
-
-            <span class="cc-numbers-number">
-              <img class="cc-numbers-icon" src="../inc/images/icons/article-aproved.svg" alt="Artigos aprovados" />
-              35
+              <img class="cc-numbers-icon" src="../inc/images/icons/article-published.svg" alt="Trabalhos publicados" />
+              <?php echo $totalWorks; ?>
             </span>
 
             <span class="cc-numbers-number">
               <img class="cc-numbers-icon" src="../inc/images/icons/orientation.svg" alt="Orientações" />
-              12
+              <?php echo $totalOrientacoes; ?>
             </span>
-
+            
+            <!--
             <span class="cc-numbers-number">
               <img class="cc-numbers-icon" src="../inc/images/icons/research.svg" alt="Pesquisas" />
               15
@@ -203,6 +211,7 @@ if (!empty($_REQUEST["lattesID"])) {
               <img class="cc-numbers-icon" src="../inc/images/icons/event.svg" alt="Eventos participados" />
               41
             </span>
+            -->
 
           </div> <!-- end profile-numbers -->
 
@@ -820,43 +829,65 @@ if (!empty($_REQUEST["lattesID"])) {
         </div> <!-- end tab-two -->
 
 
-        <div id="tab-three" class="cc-tab-content" v-if="tabOpened == '3'">
-          <h3 class="ty ty-title u-mb-2">Projetos de Pesquisa</h3>
+        <div id="tab-three" class="tab-content" v-if="tabOpened == '3'">
 
-          <hr class="c-line u-mb-2">
+          <h3 class="ty ty-title u-spacer-2">Projetos de Pesquisa</h3>
+          <?php //echo "<pre>".print_r($profile['atuacoes_profissionais'], true)."</pre>"; ?>
+          <?php foreach($profile['atuacoes_profissionais'] as $key => $atuacoes_profissionais): ?>
+            <?php //echo "<pre>".print_r($atuacoes_profissionais, true)."</pre>"; ?>
+            
+            <?php foreach($atuacoes_profissionais as $key => $atuacao_profissional): ?>
+              <h4 class="ty ty-title u-spacer-2"><?php echo $atuacao_profissional['@attributes']['NOME-INSTITUICAO']; ?></h4>
+              <?php //echo "<pre>".(count($atuacao_profissional['VINCULOS']))."</pre>"; ?>
+              <?php //echo "<pre>".print_r($atuacao_profissional['VINCULOS'], true)."</pre><br/><br/><br/>"; ?>
 
-          <div class="s-list">
-            <div class="s-list-bullet">
-              <img class='c-iconlang' src='../inc/images/icons/research.svg' />
-            </div>
+              <?php if(count($atuacao_profissional['VINCULOS']) == 1): ?>
 
-            <div class="s-list-content">
+                <p class="ty ty-item u-spacer-1">
+                  <?php echo $atuacao_profissional['VINCULOS']['@attributes']['OUTRO-ENQUADRAMENTO-FUNCIONAL-INFORMADO']; ?>
+                  <?php echo $atuacao_profissional['VINCULOS']['@attributes']['OUTRO-VINCULO-INFORMADO']; ?>
+                  <span class="ty u-date-range"> 
+                    <?php echo $atuacao_profissional['VINCULOS']['@attributes']['ANO-INICIO']; ?> - 
+                    <?php echo $atuacao_profissional['VINCULOS']['@attributes']['ANO-FIM']; ?>
+                  </span>
+                </p>
 
-              <p class="ty ty-item u-mb-1">Projeto de Pesquisa X <span class="ty c-date-range"> 2019 - 2022</span>
-              </p>
-              <p class="ty u-mb-1">
-                <b class="ty-subItem">Sobre o projeto:</b>
-                A infertilidade masculina é multifatorial. Diversos estudos de nossos e outros grupos
-                demonstraram que a varicocele, por exemplo, diminui a qualidade seminal, a qualidade funcional dos
-                espermatozoides e altera o perfil proteômico do plasma seminal. Comisso, torna-se fundamental
-                compreender quais são os mecanismos intrínsecos da transferência proteica presentes no sêmen. Os
-                espermatozoides são expostos a microvesículas e exossomos durante o trânsito epididimário e após a
-                ejaculação. Essas microvesículas apresentamcomposição proteica própria o que pode ser fundamental para o
-                transporte e transferência proteica.
-              </p>
+              <?php else: ?>                
 
-              <p class="ty u-mb-1">
-                <b class="ty-subItem">Integrantes:</b>
-                <span class="ty-gray">
-                  Ricardo Pimenta Bertolla - Coordenador / Mariana Camargo - Integrante / Paula Intasqui Lopes -
-                  Integrante / ANTONIASSI, M. P. - Integrante / Larissa Berloffa Belardin
-                </span>
-              </p>
+                <?php for ($i_atuacao_profissional = 0; $i_atuacao_profissional <= (count($atuacao_profissional['VINCULOS']) - 1); $i_atuacao_profissional++): ?>
 
+                  <p class="ty ty-item u-spacer-1">
+                    <?php echo $atuacao_profissional['VINCULOS'][$i_atuacao_profissional]['@attributes']['OUTRO-ENQUADRAMENTO-FUNCIONAL-INFORMADO']; ?>
+                    <?php echo $atuacao_profissional['VINCULOS'][$i_atuacao_profissional]['@attributes']['OUTRO-VINCULO-INFORMADO']; ?>
+                    <span class="ty u-date-range"> 
+                      <?php echo $atuacao_profissional['VINCULOS'][$i_atuacao_profissional]['@attributes']['ANO-INICIO']; ?> - 
+                      <?php echo $atuacao_profissional['VINCULOS'][$i_atuacao_profissional]['@attributes']['ANO-FIM']; ?>
+                    </span>
+                  </p>
 
-            </div> <!-- end-grid-right -->
+                  <?php //echo "<pre>".print_r($atuacao_profissional, true)."</pre><br/><br/><br/>"; ?>
 
-          </div><!-- end-grid -->
+                  <?php if(isset($atuacao_profissional['ATIVIDADES-DE-PARTICIPACAO-EM-PROJETO']['PARTICIPACAO-EM-PROJETO'])): ?>
+                    <?php //echo "<pre>".(count($atuacao_profissional['ATIVIDADES-DE-PARTICIPACAO-EM-PROJETO']['PARTICIPACAO-EM-PROJETO']))."</pre>"; ?>
+
+                    <?php //echo "<pre>".print_r($atuacao_profissional['ATIVIDADES-DE-PARTICIPACAO-EM-PROJETO']['PARTICIPACAO-EM-PROJETO'], true)."</pre><br/><br/><br/>"; ?>
+
+                    <?php foreach($atuacao_profissional['ATIVIDADES-DE-PARTICIPACAO-EM-PROJETO']['PARTICIPACAO-EM-PROJETO'] as $key => $participacao_em_projeto): ?>
+
+                      <?php echo "<pre>".print_r($participacao_em_projeto, true)."</pre><br/><br/><br/>"; ?>
+
+                    <?php endforeach; ?>
+
+                  <?php endif; ?>
+                  
+                <?php endfor; ?>
+
+              <?php endif; ?>
+
+            <?php endforeach; ?>
+
+          <?php endforeach; ?>
+
 
         </div> <!-- end tab-three -->
 
@@ -878,48 +909,50 @@ if (!empty($_REQUEST["lattesID"])) {
                     }
                     $i_orientacao_andamento++;
                   }
-                  if(count($orientacao_andamento_array[$orientacao_andamento_label]) > 0) {
-                    echo '<h4 class="ty ty-title u-mb-2">'.$orientacao_andamento_label.' em andamento</h4><ul class="s-nobullet">';
-                    foreach ($orientacao_andamento_array[$orientacao_andamento_label] as $orientacao_andamento_echo) {
-                      //var_dump($orientacao_andamento_echo);
-                      echo '
-                      <li>
-                      <hr class="c-line u-mb-2"></hr>
-                      <div class="s-list">
-                        <div class="s-list-bullet">
-                          <img class="c-iconlang" src="../inc/images/icons/orientation.svg" />
-                        </div>
-    
-                        <div class="s-list-content">
-    
-                          <p class="ty ty-item">
-                            <a class="ty-itemLink" href="http://lattes.cnpq.br/'.$orientacao_andamento_echo["numeroIDOrientado"].'" target="_blank">
-                            '.$orientacao_andamento_echo["nomeDoOrientando"].'
-                            </a>
-                            <span class="ty c-date-range">'.$orientacao_andamento_echo["ano"].' - Em andamento</span>
-                          </p>
-    
-                          <p class="ty ty-gray">';
-                          (!empty($orientacao_andamento_echo["titulo"])) ? print_r(''.$orientacao_andamento_echo["titulo"]) : "";
-                          echo'
-                          </p>
-    
-                          <p class="ty u-mb-1">'.$orientacao_andamento_echo["nomeDaInstituicao"].'';
-                          (!empty($orientacao_andamento_echo["nomeDoCurso"])) ? print_r(' — <b class="ty-subItem">Curso:</b> '.$orientacao_andamento_echo["nomeDoCurso"]) : "";
-                          
-                          ($orientacao_andamento_echo["flagBolsa"] == "SIM") ? print_r('<br/><b class="ty-subItem">Bolsa:</b> '.$orientacao_andamento_echo["nomeDaAgencia"].'') : "";
-                          echo '</p>
-
-    
-                        </div> <!-- end-grid-right -->
-    
-                      </div><!-- end-grid -->
-    
-                    </li>
-                      
-                      ';
+                  if(isset($orientacao_andamento_array[$orientacao_andamento_label])) {
+                    if(count($orientacao_andamento_array[$orientacao_andamento_label]) > 0) {
+                      echo '<h4 class="ty ty-title u-mb-2">'.$orientacao_andamento_label.' em andamento</h4><ul class="s-nobullet">';
+                      foreach ($orientacao_andamento_array[$orientacao_andamento_label] as $orientacao_andamento_echo) {
+                        //var_dump($orientacao_andamento_echo);
+                        echo '
+                        <li>
+                        <hr class="c-line u-mb-2"></hr>
+                        <div class="s-list">
+                          <div class="s-list-bullet">
+                            <img class="c-iconlang" src="../inc/images/icons/orientation.svg" />
+                          </div>
+      
+                          <div class="s-list-content">
+      
+                            <p class="ty ty-item">
+                              <a class="ty-itemLink" href="http://lattes.cnpq.br/'.$orientacao_andamento_echo["numeroIDOrientado"].'" target="_blank">
+                              '.$orientacao_andamento_echo["nomeDoOrientando"].'
+                              </a>
+                              <span class="ty c-date-range">'.$orientacao_andamento_echo["ano"].' - Em andamento</span>
+                            </p>
+      
+                            <p class="ty ty-gray">';
+                            (!empty($orientacao_andamento_echo["titulo"])) ? print_r(''.$orientacao_andamento_echo["titulo"]) : "";
+                            echo'
+                            </p>
+      
+                            <p class="ty u-mb-1">'.$orientacao_andamento_echo["nomeDaInstituicao"].'';
+                            (!empty($orientacao_andamento_echo["nomeDoCurso"])) ? print_r(' — <b class="ty-subItem">Curso:</b> '.$orientacao_andamento_echo["nomeDoCurso"]) : "";
+                            
+                            ($orientacao_andamento_echo["flagBolsa"] == "SIM") ? print_r('<br/><b class="ty-subItem">Bolsa:</b> '.$orientacao_andamento_echo["nomeDaAgencia"].'') : "";
+                            echo '</p>
+  
+      
+                          </div> <!-- end-grid-right -->
+      
+                        </div><!-- end-grid -->
+      
+                      </li>
+                        
+                        ';
+                      }
+                      echo '</ul>';
                     }
-                    echo '</ul>';
                   }
                   unset($orientacao_andamento_array);
                 }    
@@ -1011,7 +1044,7 @@ if (!empty($_REQUEST["lattesID"])) {
   var app = new Vue({
     el: '#tabs',
     data: {
-      tabOpened: '4',
+      tabOpened: '1',
       isActive: false
 
     },
