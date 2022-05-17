@@ -778,10 +778,6 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
     flex-direction: row;
   }
 }
-.s-list-ico {
-  display: none;
-}
-
 @media (min-width: 56.25em) {
   .s-list {
     display: grid;
