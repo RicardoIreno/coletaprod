@@ -876,110 +876,119 @@ if (!empty($_REQUEST["lattesID"])) {
 
                       <?php foreach($atuacao_profissional['ATIVIDADES-DE-PARTICIPACAO-EM-PROJETO']['PARTICIPACAO-EM-PROJETO'] as $key => $participacao_em_projeto): ?>
 
+                        <?php if(isset($participacao_em_projeto['@attributes']['NOME-ORGAO'])): ?>
+
+                          <p class="ty ty-item u-spacer-1">
+                            Nome do Órgão: <?php echo $participacao_em_projeto['@attributes']['NOME-ORGAO']; ?>
+                            Nome da Unidade: <?php echo $participacao_em_projeto['@attributes']['NOME-UNIDADE']; ?>
+                            <span class="ty u-date-range"> 
+                              <?php echo $participacao_em_projeto['@attributes']['ANO-INICIO']; ?> - 
+                              <?php echo $participacao_em_projeto['@attributes']['ANO-FIM']; ?>
+                            </span>
+                          </p>
                         
+                        <?php endif; ?>
 
-                        <p class="ty ty-item u-spacer-1">
-                          Nome do Órgão: <?php echo $participacao_em_projeto['@attributes']['NOME-ORGAO']; ?>
-                          Nome da Unidade: <?php echo $participacao_em_projeto['@attributes']['NOME-UNIDADE']; ?>
-                          <span class="ty u-date-range"> 
-                            <?php echo $participacao_em_projeto['@attributes']['ANO-INICIO']; ?> - 
-                            <?php echo $participacao_em_projeto['@attributes']['ANO-FIM']; ?>
-                          </span>
-                        </p>
+                        <?php if(isset($participacao_em_projeto['PROJETO-DE-PESQUISA'])): ?>
+                          <?php foreach($participacao_em_projeto['PROJETO-DE-PESQUISA'] as $key => $projeto_de_pesquisa): ?>
 
-                        <?php foreach($participacao_em_projeto['PROJETO-DE-PESQUISA'] as $key => $projeto_de_pesquisa): ?>
+                            <?php if(!empty($projeto_de_pesquisa['@attributes'])): ?>                            
 
-                          <?php if(!empty($projeto_de_pesquisa['@attributes'])): ?>                            
+                              <div class="s-list">
+                                <div class="s-list-bullet">
+                                  <img class='c-iconlang' src='../inc/images/icons/research.svg' />
+                                </div>
 
-                            <div class="s-list">
-                              <div class="s-list-bullet">
-                                <img class='c-iconlang' src='../inc/images/icons/research.svg' />
-                              </div>
+                                <div class="s-list-content">
 
-                              <div class="s-list-content">
-
-                                <p class="ty ty-item u-mb-1"><?php echo $projeto_de_pesquisa['@attributes']['NOME-DO-PROJETO']; ?> <span class="ty c-date-range"> 
-                                  <?php echo $projeto_de_pesquisa['@attributes']['ANO-INICIO']; ?> - <?php echo $projeto_de_pesquisa['@attributes']['ANO-FIM']; ?></span>
-                                </p>
-                                <?php if(!empty($projeto_de_pesquisa['@attributes']['DESCRICAO-DO-PROJETO'])): ?>
-                                  <p class="ty u-mb-1">
-                                    <b class="ty-subItem">Sobre o projeto:</b>
-                                    <?php echo $projeto_de_pesquisa['@attributes']['DESCRICAO-DO-PROJETO']; ?>
+                                  <p class="ty ty-item u-mb-1"><?php echo $projeto_de_pesquisa['@attributes']['NOME-DO-PROJETO']; ?> <span class="ty c-date-range"> 
+                                    <?php echo $projeto_de_pesquisa['@attributes']['ANO-INICIO']; ?> - <?php echo $projeto_de_pesquisa['@attributes']['ANO-FIM']; ?></span>
                                   </p>
-                                <?php endif; ?>
+                                  <?php if(!empty($projeto_de_pesquisa['@attributes']['DESCRICAO-DO-PROJETO'])): ?>
+                                    <p class="ty u-mb-1">
+                                      <b class="ty-subItem">Sobre o projeto:</b>
+                                      <?php echo $projeto_de_pesquisa['@attributes']['DESCRICAO-DO-PROJETO']; ?>
+                                    </p>
+                                  <?php endif; ?>
 
-                                <?php
-                                  unset($integrantes_do_projeto);
-                                  foreach($projeto_de_pesquisa['EQUIPE-DO-PROJETO']['INTEGRANTES-DO-PROJETO'] as $key => $integrante_do_projeto){
-                                    //echo "<pre>".print_r($integrante_do_projeto, true)."</pre>";                                    
-                                    $integrantes_do_projeto[] = $integrante_do_projeto['@attributes']['NOME-COMPLETO']; 
-                                  }
-                                ?>
-
-                                <p class="ty u-mb-1">
-                                  <b class="ty-subItem">Integrantes:</b>
-                                  <span class="ty-gray"><?php echo implode(', ', $integrantes_do_projeto); ?></span>
-                                </p>
-
-
-                              </div> <!-- end-grid-right -->
-
-                            </div><!-- end-grid -->
-
-
-
-                            <?php //echo "<pre>".print_r($projeto_de_pesquisa, true)."</pre><br/><br/><br/>"; ?>
-                          
-                            <?php else: ?>
-                              <?php
-                                  if(isset($projeto_de_pesquisa['INTEGRANTES-DO-PROJETO'])) {
+                                  <?php
                                     unset($integrantes_do_projeto);
-                                    //echo "<pre>".print_r($projeto_de_pesquisa['INTEGRANTES-DO-PROJETO'], true)."</pre>";
-                                    foreach($projeto_de_pesquisa['INTEGRANTES-DO-PROJETO'] as $key => $integrante_do_projeto){
-                                                                          
+                                    foreach($projeto_de_pesquisa['EQUIPE-DO-PROJETO']['INTEGRANTES-DO-PROJETO'] as $key => $integrante_do_projeto){
+                                      //echo "<pre>".print_r($integrante_do_projeto, true)."</pre>";                                    
                                       $integrantes_do_projeto[] = $integrante_do_projeto['@attributes']['NOME-COMPLETO']; 
                                     }
-                                  }
-                              ?>
-                              <?php if(isset($projeto_de_pesquisa['NOME-DO-PROJETO'])): ?>
+                                  ?>
 
-                                <div class="s-list">
-                                  <div class="s-list-bullet">
-                                    <img class='c-iconlang' src='../inc/images/icons/research.svg' />
-                                  </div>
+                                  <p class="ty u-mb-1">
+                                    <b class="ty-subItem">Integrantes:</b>
+                                    <span class="ty-gray"><?php echo implode(', ', $integrantes_do_projeto); ?></span>
+                                  </p>
 
-                                  <div class="s-list-content">
 
-                                    <p class="ty ty-item u-mb-1"><?php echo $projeto_de_pesquisa['NOME-DO-PROJETO']; ?> <span class="ty c-date-range"> 
-                                      <?php echo $projeto_de_pesquisa['ANO-INICIO']; ?> - <?php echo $projeto_de_pesquisa['ANO-FIM']; ?></span>
-                                    </p>
-                                    <?php if(!empty($projeto_de_pesquisa['DESCRICAO-DO-PROJETO'])): ?>
-                                      <p class="ty u-mb-1">
-                                        <b class="ty-subItem">Sobre o projeto:</b>
-                                        <?php echo $projeto_de_pesquisa['DESCRICAO-DO-PROJETO']; ?>
+                                </div> <!-- end-grid-right -->
+
+                              </div><!-- end-grid -->
+
+
+
+                              <?php //echo "<pre>".print_r($projeto_de_pesquisa, true)."</pre><br/><br/><br/>"; ?>
+                            
+                              <?php else: ?>
+                                <?php
+                                    if(isset($projeto_de_pesquisa['INTEGRANTES-DO-PROJETO'])) {
+                                      unset($integrantes_do_projeto);
+                                      //echo "<pre>".print_r($projeto_de_pesquisa['INTEGRANTES-DO-PROJETO'], true)."</pre>";
+                                      if (isset($projeto_de_pesquisa['INTEGRANTES-DO-PROJETO']['@attributes'])) {
+                                        $integrantes_do_projeto[] = $projeto_de_pesquisa['INTEGRANTES-DO-PROJETO']['@attributes']['NOME-COMPLETO'];
+                                      } else {
+                                        foreach($projeto_de_pesquisa['INTEGRANTES-DO-PROJETO'] as $key => $integrante_do_projeto){                                                                            
+                                          $integrantes_do_projeto[] = $integrante_do_projeto['@attributes']['NOME-COMPLETO']; 
+                                        }
+                                      }
+
+                                    }
+                                ?>
+                                <?php if(isset($projeto_de_pesquisa['NOME-DO-PROJETO'])): ?>
+
+                                  <div class="s-list">
+                                    <div class="s-list-bullet">
+                                      <img class='c-iconlang' src='../inc/images/icons/research.svg' />
+                                    </div>
+
+                                    <div class="s-list-content">
+
+                                      <p class="ty ty-item u-mb-1"><?php echo $projeto_de_pesquisa['NOME-DO-PROJETO']; ?> <span class="ty c-date-range"> 
+                                        <?php echo $projeto_de_pesquisa['ANO-INICIO']; ?> - <?php echo $projeto_de_pesquisa['ANO-FIM']; ?></span>
                                       </p>
-                                    <?php endif; ?>
+                                      <?php if(!empty($projeto_de_pesquisa['DESCRICAO-DO-PROJETO'])): ?>
+                                        <p class="ty u-mb-1">
+                                          <b class="ty-subItem">Sobre o projeto:</b>
+                                          <?php echo $projeto_de_pesquisa['DESCRICAO-DO-PROJETO']; ?>
+                                        </p>
+                                      <?php endif; ?>
 
 
+                                      <?php if(isset($integrantes_do_projeto)): ?>
+                                        <p class="ty u-mb-1">
+                                          <b class="ty-subItem">Integrantes:</b>
+                                          <span class="ty-gray"><?php echo implode(', ', $integrantes_do_projeto); ?></span>
+                                        </p>
+                                      <?php endif; ?>
 
-                                    <p class="ty u-mb-1">
-                                      <b class="ty-subItem">Integrantes:</b>
-                                      <span class="ty-gray"><?php echo implode(', ', $integrantes_do_projeto); ?></span>
-                                    </p>
+
+                                    </div> <!-- end-grid-right -->
+                                  </div><!-- end-grid -->
+
+                                <?php endif; ?>
+                                <?php //echo "<pre>".print_r($projeto_de_pesquisa)."</pre>"; ?>
 
 
-                                  </div> <!-- end-grid-right -->
-                                </div><!-- end-grid -->
-
+                                
                               <?php endif; ?>
-                              <?php //echo "<pre>".print_r($projeto_de_pesquisa)."</pre>"; ?>
 
 
-                              
-                            <?php endif; ?>
-
-
-                        <?php endforeach; ?>
+                          <?php endforeach; ?>
+                        <?php endif; ?>
 
 
 
