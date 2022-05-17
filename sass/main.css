@@ -1218,6 +1218,10 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
   height: auto;
 }
 
+.u-mb-1h {
+  margin-bottom: 1.5rem;
+}
+
 .u-m1 {
   margin: 1rem;
 }

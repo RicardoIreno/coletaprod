@@ -1,5 +1,9 @@
 // Utilities for spacing
 
+.u-mb-1h {
+  margin-bottom: 1.5rem;
+}
+
 $spaceAmounts: (1, 2, 3, 4, auto);
 
 @each $space in $spaceAmounts {
