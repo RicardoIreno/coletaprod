@@ -1,8 +1,4 @@
 
-.s-list-ico {
-  display: none;
-}
-
 @include breakpoint(md-up) {
   .s-list {
     display: grid;
