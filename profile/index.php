@@ -877,9 +877,35 @@ if (!empty($_REQUEST["lattesID"])) {
 
                     <?php if(isset($atuacao_profissional['ATIVIDADES-DE-DIRECAO-E-ADMINISTRACAO'])): ?>
 
+                      <h5 class="ty ty-title u-mb-2">Atividades de direção e administração</h5>
+
                       <?php foreach($atuacao_profissional['ATIVIDADES-DE-DIRECAO-E-ADMINISTRACAO']['DIRECAO-E-ADMINISTRACAO'] as $key => $direcao_e_administracao): ?>
 
-                        <?php echo "<pre>".print_r($direcao_e_administracao, true)."</pre><br/><br/><br/>"; ?>
+                        <?php //echo "<pre>".print_r($direcao_e_administracao, true)."</pre><br/><br/><br/>"; ?>
+
+
+                        <div class="s-list">
+                          <div class="s-list-bullet">
+                              <img class='c-iconlang' src='../inc/images/icons/research.svg' />
+                          </div>
+
+                          <div class="s-list-content">
+
+                              <p class="ty ty-item u-mb-1"><?php echo $direcao_e_administracao['@attributes']['CARGO-OU-FUNCAO']; ?> <span
+                                      class="ty c-date-range">
+                                      <?php echo $direcao_e_administracao['@attributes']['ANO-INICIO']; ?> -
+                                      <?php echo $direcao_e_administracao['@attributes']['ANO-FIM']; ?></span>
+                              </p>
+                              <?php if(!empty($direcao_e_administracao['@attributes']['NOME-UNIDADE'])): ?>
+                                <p>Unidade: <?php echo $direcao_e_administracao['@attributes']['NOME-UNIDADE']; ?></p>
+                              <?php endif; ?>
+
+                              <?php if(!empty($direcao_e_administracao['@attributes']['NOME-ORGAO'])): ?>
+                                <p>Órgão: <?php echo $direcao_e_administracao['@attributes']['NOME-ORGAO']; ?></p>
+                              <?php endif; ?>
+
+                          </div> <!-- end-grid-right -->
+                      </div><!-- end-grid -->
 
                       <?php endforeach; ?>
 
