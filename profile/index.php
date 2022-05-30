@@ -370,8 +370,10 @@ if (!empty($_REQUEST["lattesID"])) {
                 <div class="cc-tab-bar">
                     <button id="tab-btn-1" class="cc-tab-btn" v-on:click="changeTab('1')">Sobre Mim</button>
                     <button id="tab-btn-2" class="cc-tab-btn" v-on:click="changeTab('2')">Produção Intelectual</button>
-                    <button id="tab-btn-3" class="cc-tab-btn" v-on:click="changeTab('3')">Pesquisa</button>
-                    <button id="tab-btn-4" class="cc-tab-btn" v-on:click="changeTab('4')">Orientações</button>
+                    <button id="tab-btn-3" class="cc-tab-btn" v-on:click="changeTab('3')">Atuações profissionais</button>
+                    <?php if ($totalOrientacoes != 0): ?>
+                      <button id="tab-btn-4" class="cc-tab-btn" v-on:click="changeTab('4')">Orientações</button>
+                    <?php endif; ?>
                 </div>
 
 
@@ -836,7 +838,7 @@ if (!empty($_REQUEST["lattesID"])) {
 
                 <div id="tab-three" class="tab-content" v-if="tabOpened == '3'">
 
-                    <h3 class="ty ty-title u-mb-2">Projetos de Pesquisa</h3>
+                    <h3 class="ty ty-title u-mb-2">Atuações profissionais</h3>
                     <?php //echo "<pre>".print_r($profile['atuacoes_profissionais'], true)."</pre>"; ?>
                     <?php foreach($profile['atuacoes_profissionais'] as $key => $atuacoes_profissionais): ?>
                     <?php //echo "<pre>".print_r($atuacoes_profissionais, true)."</pre>"; ?>
@@ -916,6 +918,7 @@ if (!empty($_REQUEST["lattesID"])) {
                     <?php //echo "<pre>".(count($atuacao_profissional['ATIVIDADES-DE-PARTICIPACAO-EM-PROJETO']['PARTICIPACAO-EM-PROJETO']))."</pre>"; ?>
 
                     <?php //echo "<pre>".print_r($atuacao_profissional['ATIVIDADES-DE-PARTICIPACAO-EM-PROJETO']['PARTICIPACAO-EM-PROJETO'], true)."</pre><br/><br/><br/>"; ?>
+                    <h5 class="ty ty-title u-mb-2">Projetos de pesquisa</h5>
 
                     <?php foreach($atuacao_profissional['ATIVIDADES-DE-PARTICIPACAO-EM-PROJETO']['PARTICIPACAO-EM-PROJETO'] as $key => $participacao_em_projeto): ?>
 
