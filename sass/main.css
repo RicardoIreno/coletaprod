@@ -678,9 +678,6 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
   color: #000;
   transition: all 0.4s 0s ease;
 }
-.cc-tab-content {
-  padding-top: 2rem;
-}
 .cc-tab-active {
   background-color: #fff;
   border: 2px solid #1C9AD1;
