@@ -6,12 +6,14 @@
 @import 'base/theme';
 @import 'base/normalize';
 @import 'base/typography';
+@import 'base/transitions';
 
 @import 'layouts/sitefooter';
 @import 'layouts/siteheader';
 @import 'layouts/sitemenu';
 
 @import 'components/c-accordion';
+@import 'components/c-back-to-top';
 @import 'components/c-btn';
 @import 'components/c-infotag';
 @import 'components/c-line';

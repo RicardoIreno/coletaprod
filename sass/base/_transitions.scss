@@ -1,0 +1,40 @@
+// vue transitions
+
+
+// Search
+
+.homeeffect-enter {
+  max-height: 1px !important;
+  opacity: 0 !important;
+}
+
+.homeeffect-enter-active,
+.homeeffect-leave-active {
+  transition: all .3s ease;
+}
+
+.homeeffect-enter-from,
+.homeeffect-leave-to {
+  transform: translateY(-10px);
+  opacity: 0;
+}
+
+// Profile tabs
+
+.tabeffect-enter {
+  max-height: 1px !important;
+  opacity: 0 !important;
+}
+
+.tabeffect-enter-active,
+.tabeffect-leave-active {
+  transition: all .2s ease;
+}
+
+.tabeffect-enter-from,
+.tabeffect-leave-to {
+  opacity: 0;
+}
+
+
+

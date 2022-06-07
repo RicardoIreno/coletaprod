@@ -55,27 +55,6 @@ h1, h2, h3, h4, h5 {
 }
 
 
-// vue transitions
-
-
-//Search
-
-.homeeffect-enter {
-  max-height: 1px !important;
-  opacity: 0 !important;
-}
-
-.homeeffect-enter-active,
-.homeeffect-leave-active {
-  transition: all .3s ease;
-}
-
-.homeeffect-enter-from,
-.homeeffect-leave-to {
-  transform: translateY(-10px);
-  opacity: 0;
-}
-
 
 // some icons
 $icon-closed:  url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{_palette(theme)}'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !default;
