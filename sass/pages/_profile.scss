@@ -15,6 +15,11 @@
   position: relative;
 }
 
+.profile-tabs {
+  padding: 2rem;
+}
+
+
 @include breakpoint(md-up) {
   .profile-wrapper {
     margin: 4rem;
@@ -24,7 +29,7 @@
 
 @include breakpoint(md-up) {
   .profile-tabs {
-    padding-inline: 4rem;
+    padding: 4rem;
   }
 }
 
@@ -219,22 +224,7 @@
   width: 50px;
 }
 
-.c-typetag {
-  color: _palette(theme-light);
-  font-size: .9rem;
-  white-space: nowrap;
-  overflow: visible;
-  padding: .2rem;
-  border: 1px dashed _palette(theme-light-1);
-  border-radius: 10px;
-}
-
 // PI - PRODUÇÃO INTELECTUAL
-
-.c-pi {
-  margin-block: 2rem; 
-
-}
 
 .c-pi-citations {
   margin-right: .5rem;
@@ -244,6 +234,7 @@
 
 .c-pi-year {
   text-align: center;
+  margin-top: .7rem;
 }
 
 @include breakpoint(md-up) {

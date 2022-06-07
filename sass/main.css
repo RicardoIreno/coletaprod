@@ -190,6 +190,9 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
 .ty-name {
   margin-top: 0.7rem;
 }
+.ty-item {
+  margin-bottom: 0.5rem;
+}
 .ty-itemLink {
   color: #000;
   transition: border-bottom-color 0.25s ease-in-out;
@@ -204,7 +207,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
   text-align: end;
 }
 .ty-subItem {
-  font-weight: 600;
+  font-style: italic;
   color: #1C9AD1;
 }
 .ty-subItem-light {
@@ -502,11 +505,13 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
   fill: #7fd1f5;
 }
 
-.c-date-range {
+.c-infotag {
   border: 1px solid #7fd1f5;
   border-radius: 20px;
-  padding: 0.25rem 0.75rem;
   margin-left: 0.75rem;
+  overflow: visible;
+  padding: 0.2rem 0.75rem;
+  white-space: nowrap;
 }
 
 .c-line {
@@ -651,6 +656,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
   display: flex;
   flex-direction: row;
   margin-top: 1rem;
+  margin-bottom: 3rem;
   width: 100%;
   border: none;
   border-bottom: 1px solid #7fd1f5;
@@ -666,11 +672,11 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
   font-family: "Lato", sans-serif;
   font-weight: 700;
   font-size: 0.95rem;
-  height: 32px;
+  height: fit-content;
   justify-content: center;
-  padding-top: 0.3rem;
+  padding: 0.3rem 1rem 0.3rem 1rem;
   transform: translateY(1px);
-  width: 180px;
+  width: fit-content;
   z-index: 999;
 }
 .cc-tab-btn:hover {
@@ -788,6 +794,11 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
   }
   .s-list-content {
     grid-area: right;
+    border-left: 3px solid #7fd1f5;
+    border-bottom: 1px dashed #7fd1f5;
+    padding-left: 0.5rem;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
   }
 }
 .s-nobullet {
@@ -927,6 +938,10 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
   position: relative;
 }
 
+.profile-tabs {
+  padding: 2rem;
+}
+
 @media (min-width: 56.25em) {
   .profile-wrapper {
     margin: 4rem;
@@ -935,7 +950,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
 }
 @media (min-width: 56.25em) {
   .profile-tabs {
-    padding-inline: 4rem;
+    padding: 4rem;
   }
 }
 .cc-coregrid {
@@ -1085,19 +1100,6 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
   width: 50px;
 }
 
-.c-typetag {
-  font-size: 0.9rem;
-  white-space: nowrap;
-  overflow: visible;
-  padding: 0.2rem;
-  border: 1px dashed #7fd1f5;
-  border-radius: 10px;
-}
-
-.c-pi {
-  margin-block: 2rem;
-}
-
 .c-pi-citations {
   margin-right: 0.5rem;
   color: #1C9AD1;
@@ -1106,6 +1108,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a {
 
 .c-pi-year {
   text-align: center;
+  margin-top: 0.7rem;
 }
 
 @media (min-width: 56.25em) {

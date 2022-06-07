@@ -20,6 +20,12 @@
 
     &-content {
       grid-area: right;
+      border-left: 3px solid _palette(theme-light-1);
+      border-bottom: 1px dashed _palette(theme-light-1);;
+      padding-left: .5rem;
+      padding-bottom: 1rem;
+      margin-bottom: 1.5rem;
+
     }
   }
 }
