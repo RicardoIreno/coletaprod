@@ -1,0 +1,114 @@
+.cc-profmenu {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  // justify-content: space-around;
+  align-items: flex-start;
+  border-radius: 40px;
+  padding-top: 1rem;
+
+  &-btn {
+    align-items: center;
+    position: relative;
+    background-color: _palette(theme-light-1);
+    border: none;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    height: 70px;
+    justify-content: center;
+    padding: .7rem .9rem 0 .9rem;
+    transition: all 0.3s ease 0s;
+
+    &:hover,
+    &:focus {
+      background-color: _palette(theme-light-2);
+      transition: all 0.2s ease 0s;
+
+      .cc-profmenu-ico {
+        background-color: #fff;
+      }
+
+    }
+  }
+}
+
+// .arrow {
+//   border-color: transparent transparent _palette(theme-light-1) _palette(theme-light-1);
+//   border-style: solid;
+//   border-width: 35px 35px 35px 35px;
+//   // border-radius: 10px;
+//   height: 0;
+//   width: 0;
+//   position: absolute;
+//   bottom: 0px;
+//   right: -55px;
+// }
+
+.cc-profmenu-ico {
+  width: 40px;
+  height: 40px;
+  transition: all 0.3s ease 0s;
+  background-color: #fff;
+
+  &-1,
+  &-2,
+  &-3,
+  &-4,
+  &-5,
+  &-6 {
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &-1 {
+    -webkit-mask-image: escape-svg($icon-profmenu-1);
+    mask-image: escape-svg($icon-profmenu-1);
+  }
+
+  &-2 {
+    mask-image: escape-svg($icon-profmenu-2);
+  }
+
+  &-3 {
+    mask-image: escape-svg($icon-profmenu-3);
+  }
+
+  &-4 {
+    mask-image: escape-svg($icon-profmenu-4);
+  }
+
+  &-5 {
+    mask-image: escape-svg($icon-profmenu-5);
+  }
+
+  &-6 {
+    mask-image: escape-svg($icon-profmenu-6);
+  }
+}
+
+.cc-profmenu-active {
+  background-color: _palette(bg-primary) !important;
+
+  .cc-profmenu-ico {
+    background-color: _palette(theme) !important;
+  }
+}
+
+
+
+@include breakpoint(md-up) {
+  .cc-profmenu {
+    &-btn {
+      padding: .7rem 1.2rem 0 1.2rem;
+    }
+
+    &-ico {
+      width: 50px;
+      height: 50px;
+    }
+  }
+}

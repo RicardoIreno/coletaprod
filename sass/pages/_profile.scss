@@ -4,34 +4,47 @@
   width: 100%;
   margin: 0;
 }
+
 .profile-wrapper {
   background-color: _palette(bg-primary);
   border-radius: 50px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   margin: 1rem;
-  padding: 1rem;
   position: relative;
 }
 
-.profile-tabs {
-  padding: 2rem;
+.profile-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem;
 }
+
+.profile-inner-menu {
+  display: flex;
+  background: linear-gradient(90deg, _palette(theme-light-2) 0%, _palette(theme-light-3) 100%);
+  // background-color: _palette(theme-light-1);
+}
+
+// .profile-tabs {
+//   padding: 2rem;
+// }
 
 
 @include breakpoint(md-up) {
   .profile-wrapper {
     margin: 4rem;
+  }
+
+  .profile-inner {
     padding: 4rem 3rem 3rem 2rem;
   }
 }
 
-@include breakpoint(md-up) {
-  .profile-tabs {
-    padding: 4rem;
-  }
-}
+// @include breakpoint(md-up) {
+//   .profile-tabs {
+//     padding: 4rem;
+//   }
+// }
 
 // SEÇÕES
 
@@ -49,7 +62,7 @@
     text-align: center;
     justify-content: baseline;
   }
-  
+
   &-two {
     display: flex;
     flex-direction: column;
@@ -60,7 +73,7 @@
   &-three {
     align-items: center;
     display: flex;
-    flex-direction: row; 
+    flex-direction: row;
     justify-content: space-around;
     margin-top: 2rem;
   }
@@ -71,9 +84,10 @@
   .cc-coregrid {
 
     grid-template-areas: "one two two"
-                        "three three three";
+      "three three three";
 
     column-gap: 1rem;
+
     &-one {
       position: relative;
       grid-area: one;
@@ -110,6 +124,7 @@
       justify-content: flex-start;
       text-align: start;
     }
+
     &-three {
       justify-content: flex-end;
     }
@@ -134,7 +149,7 @@
     right: 20px;
     z-index: 999;
   }
-  
+
   &-mask {
     border-radius: 50%;
     overflow: hidden;
@@ -147,15 +162,16 @@
   }
 }
 
-.cc-badgeicons, .cc-socialicons {
+.cc-badgeicons,
+.cc-socialicons {
   display: flex;
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
   margin-block: .3rem;
-  
+
   &-icon {
-    margin: 0 .2rem; 
+    margin: 0 .2rem;
   }
 }
 
@@ -172,16 +188,16 @@
   .cc {
     &-socialicons {
       justify-content: flex-start;
-      
+
       &-icon {
-        margin: 0 .5rem 0 0; 
+        margin: 0 .5rem 0 0;
       }
     }
   }
 }
 
 
-.cc {  
+.cc {
   &-numbers {
     display: flex;
     flex-direction: row;
@@ -192,9 +208,10 @@
       flex-direction: column;
       justify-content: center;
       font-size: 1.1rem;
-      font-weight: 600  ;
+      font-weight: 600;
       margin-right: 1rem;
     }
+
     &-icon {
       width: 30px;
       margin: 0 auto;
@@ -213,11 +230,11 @@
 
 // Seção Sobre Mim
 
-.formation {  
+.formation {
   &-container {
     margin-bottom: 2rem;
   }
- 
+
 }
 
 .c-iconlang {
