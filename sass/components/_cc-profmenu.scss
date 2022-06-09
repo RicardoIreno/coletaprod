@@ -6,22 +6,26 @@
   // justify-content: space-around;
   align-items: flex-start;
   border-radius: 40px;
-  padding-top: 1rem;
+  padding: 1rem 2rem 0 2rem;
 
   &-btn {
     align-items: center;
     position: relative;
     background-color: _palette(theme-light-1);
     border: none;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
     cursor: pointer;
     display: flex;
     flex-direction: column;
-    height: 70px;
+    width: 120px;
+    height: 80px;
     justify-content: center;
     padding: .7rem .9rem 0 .9rem;
     transition: all 0.3s ease 0s;
+    mask-image: escape-svg($tabshape);
+    mask-repeat: no-repeat;
+    mask-position: 100% 100%;
+    background-size: cover;
+    margin-inline: -15px;
 
     &:hover,
     &:focus {
@@ -53,6 +57,7 @@
   height: 40px;
   transition: all 0.3s ease 0s;
   background-color: #fff;
+  z-index: 2;
 
   &-1,
   &-2,
@@ -92,9 +97,11 @@
 
 .cc-profmenu-active {
   background-color: _palette(bg-primary) !important;
+  z-index: 3;
 
   .cc-profmenu-ico {
     background-color: _palette(theme) !important;
+    z-index: 4;
   }
 }
 

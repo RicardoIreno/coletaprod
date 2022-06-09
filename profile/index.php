@@ -326,7 +326,7 @@ if (!empty($_REQUEST["lattesID"])) {
       </div><!-- end profile-inner  -->
 
 
-      <div id="tabs" class="profile-tabs">
+      <div id="tabs" class="profile-tabs" onload="changeTab('1')">
         <div class="profile-inner-menu">
           <div id="top"></div>
 
@@ -1739,7 +1739,10 @@ if (!empty($_REQUEST["lattesID"])) {
 
           tabs[Number(tab) - 1].className += " cc-profmenu-active"
         }
-      }
+      },
+      mounted: function() {
+        this.changeTab(1)
+      },
     })
   </script>
 
