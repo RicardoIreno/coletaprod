@@ -6,8 +6,10 @@
 }
 
 .profile-wrapper {
+  position: relative;
   background-color: _palette(bg-primary);
   border-radius: 50px;
+  padding-bottom: 2rem;
   margin: 1rem;
   position: relative;
 }
@@ -19,14 +21,9 @@
   padding: 1rem;
 }
 
-.profile-inner-menu {
-  display: flex;
-
+.profile-tabs-inner {
+  padding: 2rem;
 }
-
-// .profile-tabs {
-//   padding: 2rem;
-// }
 
 
 @include breakpoint(md-up) {

@@ -4,11 +4,17 @@
   margin-bottom: 1.5rem;
 }
 
-$spaceAmounts: (1, 2, 3, 4, auto);
+$spaceAmounts: (
+  1,
+  2,
+  3,
+  4,
+  auto
+);
 
 @each $space in $spaceAmounts {
   @if $space==auto {
-    .u-m#{$space} {
+    .u-m-#{$space} {
       margin: #{$space};
     }
 
@@ -22,6 +28,7 @@ $spaceAmounts: (1, 2, 3, 4, auto);
       margin-bottom: #{$space};
 
     }
+
     .u-mb-#{$space} {
       margin-bottom: #{$space};
     }
@@ -32,7 +39,7 @@ $spaceAmounts: (1, 2, 3, 4, auto);
   }
 
   @else {
-    .u-m#{$space} {
+    .u-m-#{$space} {
       margin: #{$space}rem;
     }
 
@@ -46,6 +53,7 @@ $spaceAmounts: (1, 2, 3, 4, auto);
       margin-bottom: #{$space}rem;
 
     }
+
     .u-mb-#{$space} {
       margin-bottom: #{$space}rem;
     }
