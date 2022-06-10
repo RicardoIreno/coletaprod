@@ -1,7 +1,7 @@
 .s-list {
   display: grid;
   grid-template-columns: 10% 90%;
-  grid-template-areas: "left right"; 
+  grid-template-areas: "left right";
   list-style: none;
 
   &-bullet {
@@ -16,15 +16,15 @@
     width: 50px;
   }
 
-  
+
   &-ico-mini {
     width: 30px;
   }
 
   &-content {
     grid-area: right;
-    border-left: 3px solid _palette(theme-light-1);
-    border-bottom: 1px dashed _palette(theme-light-1);
+    border-left: 3px solid _palette(theme-light-2);
+    border-bottom: 1px dashed _palette(theme-light-2);
     padding-left: .5rem;
     padding-bottom: 1rem;
     margin-bottom: 1.5rem;
@@ -33,7 +33,7 @@
 
   &-content-mini {
     grid-area: right;
-    border-left: 3px solid _palette(theme-light-1);
+    border-left: 3px solid _palette(theme-light-2);
     padding-left: .5rem;
     padding-bottom: .5rem;
     margin-bottom: .5rem;
@@ -59,15 +59,15 @@
 //       width: 50px;
 //     }
 
-    
+
 //     &-ico-mini {
 //       width: 30px;
 //     }
 
 //     &-content {
 //       grid-area: right;
-//       border-left: 3px solid _palette(theme-light-1);
-//       border-bottom: 1px dashed _palette(theme-light-1);
+//       border-left: 3px solid _palette(theme-light-2);
+//       border-bottom: 1px dashed _palette(theme-light-2);
 //       padding-left: .5rem;
 //       padding-bottom: 1rem;
 //       margin-bottom: 1.5rem;
@@ -76,7 +76,7 @@
 
 //     &-content-mini {
 //       grid-area: right;
-//       border-left: 3px solid _palette(theme-light-1);
+//       border-left: 3px solid _palette(theme-light-2);
 //       padding-left: .5rem;
 //       padding-bottom: .5rem;
 //       margin-bottom: .5rem;

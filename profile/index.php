@@ -333,7 +333,6 @@ if (!empty($_REQUEST["lattesID"])) {
           <div class="cc-profmenu">
             <button id="tab-btn-1" class="cc-profmenu-btn" v-on:click="changeTab('1')" title="Sobre mim" alt="Sobre mim">
               <div class="cc-profmenu-ico cc-profmenu-ico-1"></div>
-              <div class="arrow"></div>
             </button>
 
             <button id="tab-btn-2" class="cc-profmenu-btn" v-on:click="changeTab('2')" title="Produção Intelectual" alt="Produção Intelectual">
@@ -343,6 +342,7 @@ if (!empty($_REQUEST["lattesID"])) {
             <button id="tab-btn-3" class="cc-profmenu-btn" v-on:click="changeTab('3')" title="Atuações profissionais" alt="Atuações profissionais">
               <div class="cc-profmenu-ico cc-profmenu-ico-3"></div>
             </button>
+
             <?php if ($totalOrientacoes != 0) : ?>
               <button id="tab-btn-4" class="cc-profmenu-btn" v-on:click="changeTab('4')" title="Ensino" alt="Ensino">
                 <div class="cc-profmenu-ico cc-profmenu-ico-4"></div>
@@ -352,9 +352,9 @@ if (!empty($_REQUEST["lattesID"])) {
             <button id="tab-btn-5" class="cc-profmenu-btn" v-on:click="changeTab('5')" title="Gestão" alt="Gestão">
               <div class="cc-profmenu-ico cc-profmenu-ico-5"></div>
             </button>
+
             <button id="tab-btn-6" class="cc-profmenu-btn" v-on:click="changeTab('6')" title="Pesquisa" alt="Pesquisa">
               <div class="cc-profmenu-ico cc-profmenu-ico-6"></div>
-              <div class="arrow"></div>
             </button>
             <!-- <button id="tab-btn-7" class="cc-profmenu-btn" v-on:click="changeTab('7')" title="" alt="">
               bkp atuações

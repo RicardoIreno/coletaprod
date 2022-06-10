@@ -1,4 +1,3 @@
-
 .about {
   display: flex;
   flex-direction: column;
@@ -13,7 +12,7 @@
     margin: 1rem auto;
 
     &:hover {
-      fill: _palette(theme-light-1);
+      fill: _palette(theme-light-2);
     }
   }
 
