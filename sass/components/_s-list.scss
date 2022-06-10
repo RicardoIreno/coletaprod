@@ -1,28 +1,88 @@
+.s-list {
+  display: grid;
+  grid-template-columns: 10% 90%;
+  grid-template-areas: "left right"; 
+  list-style: none;
 
-@include breakpoint(md-up) {
-  .s-list {
-    display: grid;
-    grid-template-columns: 10% 90%;
-    grid-template-areas: "left right"; 
-    list-style: none;
+  &-bullet {
+    display: flex;
+    align-items: flex-start;
+    grid-area: left;
+    justify-content: flex-end;
+    padding-right: 1rem;
+  }
 
-    &-bullet {
-      display: flex;
-      align-items: flex-start;
-      grid-area: left;
-      justify-content: flex-end;
-      padding-right: 1rem;
-    }
+  &-ico {
+    width: 50px;
+  }
 
-    &-ico {
-      width: 50px;
-    }
+  
+  &-ico-mini {
+    width: 30px;
+  }
 
-    &-content {
-      grid-area: right;
-    }
+  &-content {
+    grid-area: right;
+    border-left: 3px solid _palette(theme-light-1);
+    border-bottom: 1px dashed _palette(theme-light-1);
+    padding-left: .5rem;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+
+  }
+
+  &-content-mini {
+    grid-area: right;
+    border-left: 3px solid _palette(theme-light-1);
+    padding-left: .5rem;
+    padding-bottom: .5rem;
+    margin-bottom: .5rem;
   }
 }
+
+// @include breakpoint(md-up) {
+//   .s-list {
+//     display: grid;
+//     grid-template-columns: 10% 90%;
+//     grid-template-areas: "left right"; 
+//     list-style: none;
+
+//     &-bullet {
+//       display: flex;
+//       align-items: flex-start;
+//       grid-area: left;
+//       justify-content: flex-end;
+//       padding-right: 1rem;
+//     }
+
+//     &-ico {
+//       width: 50px;
+//     }
+
+    
+//     &-ico-mini {
+//       width: 30px;
+//     }
+
+//     &-content {
+//       grid-area: right;
+//       border-left: 3px solid _palette(theme-light-1);
+//       border-bottom: 1px dashed _palette(theme-light-1);
+//       padding-left: .5rem;
+//       padding-bottom: 1rem;
+//       margin-bottom: 1.5rem;
+
+//     }
+
+//     &-content-mini {
+//       grid-area: right;
+//       border-left: 3px solid _palette(theme-light-1);
+//       padding-left: .5rem;
+//       padding-bottom: .5rem;
+//       margin-bottom: .5rem;
+//     }
+//   }
+// }
 
 .s-nobullet {
   list-style: none;
