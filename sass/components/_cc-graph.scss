@@ -23,26 +23,26 @@ $gap: 2px;
 
   //   &-label {
   //     text-align: center;
-  //     color: _palette(theme-light-1);
+  //     color: _palette(theme-light-2);
   //     font-weight: 700;
   //     font-size: 1.2rem;
   //   }
   // }
 
   &-label {
-    color: _palette(theme-light-1);
+    color: _palette(theme-light-2);
     justify-content: center;
     font-size: .8rem;
     margin-right: .5rem;
   }
-  
+
   &-line {
     display: flex;
     align-items: center;
     flex-direction: row;
     margin-bottom: 4px;
   }
-  
+
   &-unit {
     background-color: _palette(g0);
     border-radius: 2px;
@@ -55,20 +55,21 @@ $gap: 2px;
 
 $gColor: (
   0: _palette(g0),
-	1: _palette(g1),
-	2: _palette(g2),
-	3: _palette(g3),
-	4: _palette(g4),
+  1: _palette(g1),
+  2: _palette(g2),
+  3: _palette(g3),
+  4: _palette(g4),
 
-); 
+);
 
-@each $n, $color in $gColor {
+@each $n,
+$color in $gColor {
   .cc-graph-unit[data-weight="#{$n}"] {
-     background-color: $color;
+    background-color: $color;
   }
 }
 
-@include breakpoint(lg-up){
+@include breakpoint(lg-up) {
   .cc-graph-unit {
     width: $unit;
     height: $unit;

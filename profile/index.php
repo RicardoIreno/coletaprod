@@ -113,6 +113,7 @@ if (!empty($_REQUEST["lattesID"])) {
   <main class="profile-container">
     <div class="profile-wrapper">
       <div class="profile-inner">
+        <div id="top"></div>
         <div class="cc-coregrid">
           <div class="cc-coregrid-one">
 
@@ -327,42 +328,40 @@ if (!empty($_REQUEST["lattesID"])) {
 
 
       <div id="tabs" class="profile-tabs" onload="changeTab('1')">
-        <div class="profile-inner-menu">
-          <div id="top"></div>
 
-          <div class="cc-profmenu">
-            <button id="tab-btn-1" class="cc-profmenu-btn" v-on:click="changeTab('1')" title="Sobre mim" alt="Sobre mim">
-              <div class="cc-profmenu-ico cc-profmenu-ico-1"></div>
-              <div class="arrow"></div>
-            </button>
+        <div class="cc-profmenu">
+          <button id="tab-btn-1" class="cc-profmenu-btn" v-on:click="changeTab('1')" title="Sobre mim" alt="Sobre mim">
+            <div class="cc-profmenu-ico cc-profmenu-ico-1"></div>
+          </button>
 
-            <button id="tab-btn-2" class="cc-profmenu-btn" v-on:click="changeTab('2')" title="Produção Intelectual" alt="Produção Intelectual">
-              <div class="cc-profmenu-ico cc-profmenu-ico-2"></div>
-            </button>
+          <button id="tab-btn-2" class="cc-profmenu-btn" v-on:click="changeTab('2')" title="Produção Intelectual" alt="Produção Intelectual">
+            <div class="cc-profmenu-ico cc-profmenu-ico-2"></div>
+          </button>
 
-            <button id="tab-btn-3" class="cc-profmenu-btn" v-on:click="changeTab('3')" title="Atuações profissionais" alt="Atuações profissionais">
-              <div class="cc-profmenu-ico cc-profmenu-ico-3"></div>
-            </button>
-            <?php if ($totalOrientacoes != 0) : ?>
-              <button id="tab-btn-4" class="cc-profmenu-btn" v-on:click="changeTab('4')" title="Ensino" alt="Ensino">
-                <div class="cc-profmenu-ico cc-profmenu-ico-4"></div>
-              </button>
-            <?php endif; ?>
+          <button id="tab-btn-3" class="cc-profmenu-btn" v-on:click="changeTab('3')" title="Atuações profissionais" alt="Atuações profissionais">
+            <div class="cc-profmenu-ico cc-profmenu-ico-3"></div>
+          </button>
 
-            <button id="tab-btn-5" class="cc-profmenu-btn" v-on:click="changeTab('5')" title="Gestão" alt="Gestão">
-              <div class="cc-profmenu-ico cc-profmenu-ico-5"></div>
+          <?php if ($totalOrientacoes != 0) : ?>
+            <button id="tab-btn-4" class="cc-profmenu-btn" v-on:click="changeTab('4')" title="Ensino" alt="Ensino">
+              <div class="cc-profmenu-ico cc-profmenu-ico-4"></div>
             </button>
-            <button id="tab-btn-6" class="cc-profmenu-btn" v-on:click="changeTab('6')" title="Pesquisa" alt="Pesquisa">
-              <div class="cc-profmenu-ico cc-profmenu-ico-6"></div>
-              <div class="arrow"></div>
-            </button>
-            <!-- <button id="tab-btn-7" class="cc-profmenu-btn" v-on:click="changeTab('7')" title="" alt="">
+          <?php endif; ?>
+
+          <button id="tab-btn-5" class="cc-profmenu-btn" v-on:click="changeTab('5')" title="Gestão" alt="Gestão">
+            <div class="cc-profmenu-ico cc-profmenu-ico-5"></div>
+          </button>
+
+          <button id="tab-btn-6" class="cc-profmenu-btn" v-on:click="changeTab('6')" title="Pesquisa" alt="Pesquisa">
+            <div class="cc-profmenu-ico cc-profmenu-ico-6"></div>
+          </button>
+          <!-- <button id="tab-btn-7" class="cc-profmenu-btn" v-on:click="changeTab('7')" title="" alt="">
               bkp atuações
             </button> -->
-          </div><!-- end cc-menu  -->
-        </div><!-- end profile-inner-menu  -->
+        </div><!-- end cc-menu  -->
 
-        <div class="profile-inner">
+
+        <div class="profile-inner u-m-2">
           <transition name="tabeffect">
             <div id="tab-one" class="cc-tab-content" v-if="tabOpened == '1'">
 
@@ -739,9 +738,7 @@ if (!empty($_REQUEST["lattesID"])) {
               <?php endif; ?>
 
 
-              <div class="u-center">
-                <a class="c-btn c-back-to-top" href="#top">Voltar ao topo</a>
-              </div>
+
             </div> <!-- end tab-one -->
           </transition>
 
@@ -921,9 +918,7 @@ if (!empty($_REQUEST["lattesID"])) {
 
               </div> <!-- end profile-pi -->
 
-              <div class="u-center">
-                <a class="c-btn c-back-to-top" href="#top">Voltar ao topo</a>
-              </div>
+
             </div> <!-- end tab-two -->
           </transition>
 
@@ -1004,9 +999,7 @@ if (!empty($_REQUEST["lattesID"])) {
               <?php endforeach; ?>
               <!-- (tab-three) end foreach 1 -->
 
-              <div class="u-center">
-                <a class="c-btn c-back-to-top" href="#top">Voltar ao topo</a>
-              </div>
+
             </div> <!-- end tab-three -->
           </transition>
 
@@ -1167,9 +1160,7 @@ if (!empty($_REQUEST["lattesID"])) {
 
               <?php endif; ?>
 
-              <div class="u-center">
-                <a class="c-btn c-back-to-top" href="#top">Voltar ao topo</a>
-              </div>
+
             </div> <!-- end tab-four -->
           </transition>
 
@@ -1270,9 +1261,7 @@ if (!empty($_REQUEST["lattesID"])) {
               <h2 class="ty ty-title u-mb-2">Serviço Técnico Especializado</h2>
               <p class="u-mb-2"> listar </p>
 
-              <div class="u-center">
-                <a class="c-btn c-back-to-top" href="#top">Voltar ao topo</a>
-              </div>
+
             </div> <!-- end tab-five -->
           </transition>
 
@@ -1441,9 +1430,7 @@ if (!empty($_REQUEST["lattesID"])) {
               <h3 class="ty ty-title u-mb-2">Outras atividades técnico científicas</h3>
 
 
-              <div class="u-center">
-                <a class="c-btn c-back-to-top" href="#top">Voltar ao topo</a>
-              </div>
+
             </div> <!-- end tab-six -->
           </transition>
 
@@ -1701,18 +1688,20 @@ if (!empty($_REQUEST["lattesID"])) {
               <!-- (tab-seven) end foreach 1 -->
 
 
-              <div class="u-center">
-                <a class="c-btn c-back-to-top" href="#top">Voltar ao topo</a>
-              </div>
+
             </div> <!-- end tab seven -->
           </transition>
 
+          <p class="ty ty-lastUpdate u-right">Atualização Lattes em
+            <?php echo $profile['data_atualizacao']; ?></p>
+          <p class="ty ty-lastUpdate u-right">Processado em 2022-0X</p>
         </div> <!-- end profile-inner -->
       </div> <!-- end #tabs -->
 
-      <p class="ty ty-lastUpdate u-right">Atualização Lattes em
-        <?php echo $profile['data_atualizacao']; ?></p>
-      <p class="ty ty-lastUpdate u-right">Processado em 2022-0X</p>
+      <a class="c-back-to-top" href="#top" title="Voltar ao topo">
+        <div class="back-to"></div>
+      </a>
+
     </div> <!-- end profile-wrapper -->
   </main>
 
