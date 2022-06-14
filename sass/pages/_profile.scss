@@ -133,28 +133,29 @@
 .cc-display {
   width: 200px;
   height: 200px;
-  justify-content: center;
-  margin: 0 auto;
+  margin: 0rem auto;
+  // padding-bottom: 1rem;
   position: relative;
-  justify-content: center;
 
   &-badge {
     position: absolute;
     width: 50px;
-    top: 150px;
-    right: 20px;
+    top: 70%;
+    right: 5%;
     z-index: 999;
   }
 
-  &-mask {
-    border-radius: 50%;
-    overflow: hidden;
-  }
+  $circle: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 200 200'><circle cx='100' cy='100' r='100'/></svg>");
 
-  &-photo {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
+  &-pic {
+    mask-image: $circle;
+    mask-repeat: no-repeat;
+    mask-position: start;
+    mask-size: 100% 100%;
+    -webkit-mask-image: $circle;
+    -webkit-mask-position: start;
+    -webkit-mask-size: 100% 100%;
+    height: 200px;
   }
 }
 
@@ -182,6 +183,8 @@
 
 @include breakpoint(md-up) {
   .cc {
+
+    &-badgeicons,
     &-socialicons {
       justify-content: flex-start;
 
