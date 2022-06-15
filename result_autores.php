@@ -4,16 +4,6 @@
 require 'inc/config.php';
 require 'inc/functions.php';
 
-if (!empty($_POST)) {
-    foreach ($_POST as $key => $value) {
-        $var_concluido["doc"]["concluido"] = $value;
-        $var_concluido["doc"]["doc_as_upsert"] = true;
-        Elasticsearch::update($key, $var_concluido);
-    }
-    sleep(6);
-    header("Refresh:0");
-}
-
 if (isset($_GET["filter"])) {
     if (!in_array("type:\"Curriculum\"", $_GET["filter"])) {
         $_GET["filter"][] = "type:\"Curriculum\"";
