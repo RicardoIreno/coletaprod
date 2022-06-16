@@ -5,9 +5,9 @@
 //     header('Location: ' . $location);
 //     exit;
 // }
-if ($_SERVER["REQUEST_URI"] == "/") {
-  header("Location: https://unifesp.br/prodmais/index.php");
-}
+// if ($_SERVER["REQUEST_URI"] == "/") {
+//   header("Location: https://unifesp.br/prodmais/index.php");
+// }
 
 /*
 
