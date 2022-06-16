@@ -83,7 +83,7 @@ $get_data = $_POST;
         <div class="col-md-8">
 
           <!-- Navegador de resultados - Início -->
-          <?php ui::pagination($page, $total, $limit, $_POST); ?>
+          <?php ui::pagination($page, $total, $limit, $_POST, false); ?>
           <!-- Navegador de resultados - Fim -->
 
 
@@ -192,7 +192,7 @@ $get_data = $_POST;
 
 
           <!-- Navegador de resultados - Início -->
-          <?php ui::pagination($page, $total, $limit, $_POST); ?>
+          <?php ui::pagination($page, $total, $limit, $_POST, false); ?>
           <!-- Navegador de resultados - Fim -->
 
         </div>
