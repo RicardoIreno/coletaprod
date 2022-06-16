@@ -106,7 +106,7 @@ $get_data = $_GET;
           </form>
 
           <!-- Navegador de resultados - Início -->
-          <?php ui::pagination($page, $total, $limit, $_POST, true); ?>
+          <?php ui::pagination($page, $total, $limit, $_POST, 'result_autores'); ?>
           <!-- Navegador de resultados - Fim -->
 
           <?php foreach ($cursor["hits"]["hits"] as $r) : ?>
@@ -131,7 +131,7 @@ $get_data = $_GET;
 
 
           <!-- Navegador de resultados - Início -->
-          <?php ui::pagination($page, $total, $limit, $_POST, true); ?>
+          <?php ui::pagination($page, $total, $limit, $_POST, 'result_autores'); ?>
           <!-- Navegador de resultados - Fim -->
 
         </div>
