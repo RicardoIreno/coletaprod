@@ -1247,7 +1247,8 @@ if (!empty($_REQUEST["lattesID"])) {
 
               <?php endforeach; ?>
               <!-- (tab-five) end foreach 1 -->
-
+              
+              <!--
               <h2 class="ty ty-title u-mb-2">Conselhos, Comissões e Consultoria</h2>
 
               <div class="s-list">
@@ -1287,6 +1288,7 @@ if (!empty($_REQUEST["lattesID"])) {
                   <p class="ty ty-gray">Alguma outra coisa</p>
                 </div>
               </div>
+              -->
 
 
             </div> <!-- end tab-five -->
