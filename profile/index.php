@@ -118,7 +118,7 @@ if (!empty($_REQUEST["lattesID"])) {
           <div class="cc-coregrid-one">
 
             <div class="cc-display">
-              <img class="cc-display-badge" src="../inc/images/icons/badges/bolsista-cnpq-1a.svg" />
+              <!-- <img class="cc-display-badge" src="../inc/images/icons/badges/bolsista-cnpq-1a.svg" /> -->
               <img class="cc-display-pic" src="http://servicosweb.cnpq.br/wspessoa/servletrecuperafoto?tipo=1&amp;bcv=true&amp;id=<?php echo $lattesID10; ?>" />
             </div> <!-- end cc-photo-wrapper -->
 
@@ -146,12 +146,13 @@ if (!empty($_REQUEST["lattesID"])) {
                 <p class="ty ty-prof">Programa de Pós-Graduação: <?php echo $ppg_nome ?></p>
               <?php endforeach; ?>
             <?php endif; ?>
-
+            <!--
             <div class="cc-badgeicons">
               <img class="cc-badgeicons-icon" src="../inc/images/icons/badges/bolsista-cnpq-1a.svg" alt="Bolsista CNPQ nível 1A" title="Bolsista CNPQ nível 1A" />
               <img class="cc-badgeicons-icon" src="../inc/images/icons/badges/member.svg" alt="Membro de conselho ou comissão" title="Membro de conselho ou comissão" />
               <img class="cc-badgeicons-icon" src="../inc/images/icons/badges/leader.svg" alt="Exercedor de cargo de chefia" title="Exercedor de cargo de chefia" />
-            </div> <!-- end cc-badgeicons -->
+            </div>
+            --> <!-- end cc-badgeicons -->
             <!-- <p class="ty ty-email">bertola@unifesp.br</p> -->
 
             <hr class="c-line" />
@@ -181,7 +182,7 @@ if (!empty($_REQUEST["lattesID"])) {
             </div> <!-- end cc-numbers -->
 
           </div> <!-- end core-two -->
-
+          <!--
           <div class="cc-coregrid-three">
             <a class="u-skip" href=”#skipcc-graph”>Pular gráfico</a>
 
@@ -193,7 +194,7 @@ if (!empty($_REQUEST["lattesID"])) {
 
               <div class="cc-graph-line">
                 <span class="cc-graph-label">Artigos publicados</span>
-                <?php
+                < ?php
                 foreach ($artigos_publicados as $i => $j) {
                   echo
                   "<div 
@@ -209,7 +210,7 @@ if (!empty($_REQUEST["lattesID"])) {
 
               <div class="cc-graph-line">
                 <span class="cc-graph-label">Livros e capítulos</span>
-                <?php
+                < ?php
                 foreach ($livros_e_capitulos as $i => $j) {
                   echo
                   "<div 
@@ -225,7 +226,7 @@ if (!empty($_REQUEST["lattesID"])) {
 
               <div class="cc-graph-line cc-graph-division">
                 <span class="cc-graph-label">Orientações de mestrado</span>
-                <?php
+                < ?php
                 foreach ($orientacoes_mestrado as $i => $j) {
                   echo
                   "<div 
@@ -241,7 +242,7 @@ if (!empty($_REQUEST["lattesID"])) {
 
               <div class="cc-graph-line">
                 <span class="cc-graph-label">Orientações de doutorado</span>
-                <?php
+                < ?php
                 foreach ($orientacoes_doutorado as $i => $j) {
                   echo
                   "<div 
@@ -257,7 +258,7 @@ if (!empty($_REQUEST["lattesID"])) {
 
               <div class="cc-graph-line">
                 <span class="cc-graph-label">Ensino</span>
-                <?php
+                < ?php
                 foreach ($ensino as $i => $j) {
                   echo
                   "<div 
@@ -273,7 +274,7 @@ if (!empty($_REQUEST["lattesID"])) {
 
               <div class="cc-graph-line cc-graph-division">
                 <span class="cc-graph-label">Softwares e patentes</span>
-                <?php
+                < ?php
                 foreach ($softwares_patentes as $i => $j) {
                   echo
                   "<div 
@@ -289,7 +290,7 @@ if (!empty($_REQUEST["lattesID"])) {
 
               <div class="cc-graph-line">
                 <span class="cc-graph-label">Participações em eventos</span>
-                <?php
+                < ?php
                 foreach ($participacoes_eventos as $i => $j) {
                   echo
                   "<div 
@@ -313,10 +314,10 @@ if (!empty($_REQUEST["lattesID"])) {
               </div>
 
 
-            </div> <!-- end cc-graph -->
+            </div> //<//!-- end cc-graph --//>
 
 
-            <!-- <div class="cc-graph-info">
+            <div class="cc-graph-info">
             <span class="cc-graph-info-label">+</span>
             <div class="cc-graph-unit" data-weight="4"></div>
             <div class="cc-graph-unit" data-weight="3"></div>
@@ -324,11 +325,11 @@ if (!empty($_REQUEST["lattesID"])) {
             <div class="cc-graph-unit" data-weight="1"></div>
             <div class="cc-graph-unit" data-weight="0"></div>
             <span class="cc-graph-info-label">-</span>
-          </div> -->
+          </div>
 
 
             <span class="u-skip" id="skipcc-graph”"></span>
-          </div> <!-- end core-three -->
+          </div> --> <!-- end core-three -->
 
         </div> <!-- end cc-coregrid  -->
       </div><!-- end profile-inner  -->
@@ -1720,7 +1721,7 @@ if (!empty($_REQUEST["lattesID"])) {
 
           <p class="ty ty-lastUpdate u-right">Atualização Lattes em
             <?php echo $profile['data_atualizacao']; ?></p>
-          <p class="ty ty-lastUpdate u-right">Processado em 2022-0X</p>
+          <p class="ty ty-lastUpdate u-right">Processado em <?php echo $profile['dataDeColeta']; ?></p>
         </div> <!-- end profile-inner -->
       </div> <!-- end #tabs -->
 
