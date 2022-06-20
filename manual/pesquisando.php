@@ -187,7 +187,7 @@
     </div> <!-- manual-wrapper -->
   </main>
 
-  <?php require '../inc/footer.php'; ?>
+  <?php require 'footer.php'; ?>
 </body>
 
 </html>
