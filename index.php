@@ -195,7 +195,7 @@ com este programa, Se não, veja <http://www.gnu.org/licenses/>.
         </div>
 
         <div>
-          <button class="c-btn c-accordion" v-on:click="openAccordion('3')">Tipo de cínculo </button>
+          <button class="c-btn c-accordion" v-on:click="openAccordion('3')">Tipo de vínculo </button>
           <transition name="homeeffect">
             <div class="c-accordion-body" v-if="accOpened == '3'">
               <ul class="list-group">
