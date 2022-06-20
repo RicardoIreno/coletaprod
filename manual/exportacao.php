@@ -35,7 +35,7 @@
 <body class="manual-body">
 
   <!-- NAV -->
-  <?php require '../inc/navbar.php'; ?>
+  <?php require 'navbar_manual.php'; ?>
   <!-- /NAV -->
 
 
