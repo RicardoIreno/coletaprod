@@ -474,7 +474,16 @@ class paginaInicial {
 
         $response = $client->search($params);
         foreach ($response["aggregations"]["group_by_state"]["buckets"] as $facets) {
-            echo '<li class="c-accordion-itemlist"><a href="result.php?filter[]=source:&quot;'.$facets['key'].'&quot;">'.$facets['key'].' ('.number_format($facets['doc_count'],0,',','.').')</a></li>';
+            echo '<li class="c-accordion-itemlist">';
+            echo '<form action="result.php" method="post">';
+                echo '<input type="hidden" name="search" value="">';
+                echo '<input type="hidden" name="filter[]" value="source:'.$facets['key'].'">';
+                echo '<input class="list-group-item d-flex justify-content-between align-items-center" style="text-decoration: none; color: initial;" type="submit" value="'.$facets['key'].'" />';
+            echo '</form>';
+
+            echo '<span class="badge bg-primary badge-pill">'.number_format($facets['doc_count'], 0, ',', '.').'</span>';
+            echo '</li>';
+
         }   
 
     }
@@ -510,7 +519,16 @@ class paginaInicial {
 
         $response = $client->search($params);
         foreach ($response["aggregations"]["group_by_state"]["buckets"] as $facets) {
-            echo '<li class="c-accordion-itemlist"><a href="result.php?filter[]=tipo:&quot;'.$facets['key'].'&quot;">'.$facets['key'].' ('.number_format($facets['doc_count'],0,',','.').')</a></li>';
+            echo '<li class="c-accordion-itemlist">';
+                echo '<form action="result.php" method="post">';
+                    echo '<input type="hidden" name="search" value="">';
+                    echo '<input type="hidden" name="filter[]" value="tipo:'.$facets['key'].'">';
+                    echo '<input class="list-group-item d-flex justify-content-between align-items-center" style="text-decoration: none; color: initial;" type="submit" value="'.$facets['key'].'" />';
+                echo '</form>';
+
+                echo '<span class="badge bg-primary badge-pill">'.number_format($facets['doc_count'], 0, ',', '.').'</span>';
+            echo '</li>';
+
         }   
 
     }
@@ -546,7 +564,16 @@ class paginaInicial {
 
         $response = $client->search($params);
         foreach ($response["aggregations"]["group_by_state"]["buckets"] as $facets) {
-            echo '<li class="c-accordion-itemlist"><a href="result.php?filter[]='.$field.':&quot;'.$facets['key'].'&quot;">'.$facets['key'].' ('.number_format($facets['doc_count'],0,',','.').')</a></li>';
+
+            echo '<li class="c-accordion-itemlist">';
+                echo '<form action="result.php" method="post">';
+                    echo '<input type="hidden" name="search" value="">';
+                    echo '<input type="hidden" name="filter[]" value="'.$field.':'.$facets['key'].'">';
+                    echo '<input class="list-group-item d-flex justify-content-between align-items-center" style="text-decoration: none; color: initial;" type="submit" value="'.$facets['key'].'" />';
+                echo '</form>';
+                echo '<span class="badge bg-primary badge-pill">'.number_format($facets['doc_count'], 0, ',', '.').'</span>';
+            echo '</li>';
+
         }   
 
     }
