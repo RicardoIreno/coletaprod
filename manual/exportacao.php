@@ -141,7 +141,7 @@
 
 
       <div class="u-mb-2"></div>
-      <?php require './manual-menu.php'; ?>
+      <?php require 'manual-menu.php'; ?>
     </div>
     </div> <!-- manual-wrapper -->
   </main>
