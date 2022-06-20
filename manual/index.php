@@ -55,7 +55,7 @@
 
 
   </div>
-  <?php require '../inc/footer.php'; ?>
+  <?php require 'footer.php'; ?>
 
 </body>
 
