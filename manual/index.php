@@ -35,7 +35,7 @@
 <body class="manualHome">
 
   <!-- NAV -->
-  <?php require '../inc/navbar.php'; ?>
+  <?php require 'navbar_manual.php'; ?>
   <!-- /NAV -->
 
   <div class="manual-container">
