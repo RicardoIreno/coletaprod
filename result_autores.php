@@ -121,7 +121,7 @@ $get_data = $_GET;
               <div class="d-flex bd-highlight">
                 <div class="p-2 flex-grow-1 bd-highlight">
                   <h5 class="card-title"><a class="text-dark"
-                      href="profile/index.php?lattesID=<?php echo $r['_source']['lattesID']; ?>"><?php echo $r["_source"]['nome_completo']; ?></a>
+                      href="profile.php?lattesID=<?php echo $r['_source']['lattesID']; ?>"><?php echo $r["_source"]['nome_completo']; ?></a>
                   </h5>
                 </div>
               </div>
