@@ -691,27 +691,31 @@ h5 a {
 table {
   border-collapse: collapse;
   border-spacing: 0;
-  width: 90%;
-  transition: all .3s ease;
-  margin: .5rem auto;
-  overflow: hidden;
   border-radius: 25px;
   -webkit-border-radius: 25px;
   -moz-border-radius: 25px;
+  margin: .5rem auto;
+  overflow: hidden;
+  transition: all .3s ease;
+  width: 90%;
 }
 
 td,
 th {
-  border: 1px solid #ddd;
+  border: none;
   padding: 8px;
 }
 
 .thead {
-  background-color: #c4edff;
+  background-color: #7fd1f5;
 }
 
-tbody tr:nth-child(2n) {
+tbody tr:nth-child(even) {
   background-color: #E0F7FA;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #f7fcfd;
 }
 
 th {
