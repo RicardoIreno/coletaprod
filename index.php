@@ -172,60 +172,66 @@ com este programa, Se não, veja <http://www.gnu.org/licenses/>.
     <transition name="homeeffect">
       <div class="u-dh u-dt" v-if="showCategories">
 
-        <div>
-          <button class=" c-btn c-accordion" v-on:click="openAccordion('1')" aria-describedb="Lista de tipos de pós-graduação ">Programa de Pós-Graduação </button>
-          <transition name="homeeffect">
-            <div class="c-accordion-body" v-if="accOpened == '1'">
-              <ul class="list-group">
-                <?php paginaInicial::unidade_inicio("vinculo.ppg_nome"); ?>
-              </ul>
-            </div>
-          </transition>
-        </div>
+        <table>
+          <thead>
+            <tr class="thead">
+              <th>Tipo</th>
+              <th>Categorias</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Programa de Pós-Graduação</th>
+              <th>
+                <ul class="list-group">
+                  <?php paginaInicial::unidade_inicio("vinculo.ppg_nome"); ?>
+                </ul>
+              </th>
+            </tr>
+            <tr>
+              <th>Tipo de material</th>
+              <th>
+                <ul class="list-group">
+                  <?php paginaInicial::tipo_inicio(); ?>
+                </ul>
+              </th>
+            </tr>
+            <tr>
+              <th>Tipo de vínculo</th>
+              <th>
+                <ul class="list-group">
+                  <?php paginaInicial::unidade_inicio("vinculo.tipvin"); ?>
+                </ul>
+              </th>
+            </tr>
+            <tr>
+              <th>Tipo de material </th>
+              <th>
+                <ul class="list-group">
+                  <?php paginaInicial::tipo_inicio(); ?>
+                </ul>
+              </th>
+            </tr>
+            <tr>
+              <th>Base de dados </th>
+              <th>
+                <ul class="list-group">
+                  <?php paginaInicial::fonte_inicio(); ?>
+                </ul>
+              </th>
+            </tr>
+          </tbody>
+        </table>
 
-        <div>
-          <button class="c-btn c-accordion" v-on:click="openAccordion('2')">Tipo de material </button>
-          <transition name="homeeffect">
-            <div class="c-accordion-body" v-if="accOpened == '2'">
-              <ul class="list-group">
-                <?php paginaInicial::tipo_inicio(); ?>
-              </ul>
-            </div>
-          </transition>
-        </div>
-
-        <div>
-          <button class="c-btn c-accordion" v-on:click="openAccordion('3')">Tipo de vínculo </button>
-          <transition name="homeeffect">
-            <div class="c-accordion-body" v-if="accOpened == '3'">
-              <ul class="list-group">
-                <?php paginaInicial::unidade_inicio("vinculo.tipvin"); ?>
-              </ul>
-            </div>
-          </transition>
-        </div>
-
-        <div>
-          <button class="c-btn c-accordion" v-on:click="openAccordion('4')">Tipo de material </button>
-          <transition name="homeeffect">
-            <div class="c-accordion-body" v-if="accOpened == '4'">
-              <ul class="list-group">
-                <?php paginaInicial::tipo_inicio(); ?>
-              </ul>
-            </div>
-          </transition>
-        </div>
-
-        <div>
+        <!-- <div>
           <button class="c-btn c-accordion" v-on:click="openAccordion('5')">Base de dados </button>
           <transition name="homeeffect">
             <div class="c-accordion-body" v-if="accOpened == '5'">
               <ul class="list-group">
-                <?php paginaInicial::fonte_inicio(); ?>
               </ul>
             </div>
           </transition>
-        </div>
+        </div> -->
 
       </div>
     </transition>
