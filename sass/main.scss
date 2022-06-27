@@ -5,6 +5,8 @@
 @import 'base/normalize';
 @import 'base/typography';
 @import 'base/transitions';
+@import 'layouts/result';
+@import 'layouts/resultmenu';
 @import 'layouts/sitefooter';
 @import 'layouts/siteheader';
 @import 'layouts/sitemenu';
@@ -17,6 +19,7 @@
 @import 'components/c-textbox';
 @import 'components/c-wrapper';
 @import 'components/cc-graph';
+@import 'components/cc-navigator';
 @import 'components/cc-search';
 @import 'components/cc-tab';
 @import 'components/cc-profmenu';
