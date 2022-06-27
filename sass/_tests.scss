@@ -14,3 +14,12 @@
     color: _palette(theme-light-2);
   }
 }
+
+
+.testfacetwrap {
+  white-space: nowrap;
+  width: 80%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border: 1px solid #000000;
+}

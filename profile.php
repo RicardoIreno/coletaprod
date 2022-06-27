@@ -753,7 +753,7 @@ if (!empty($_REQUEST["lattesID"])) {
             <div id="tab-two" class="cc-tab-content" v-if="tabOpened == '2'">
               <div class="profile-pi">
 
-                <h2 class="ty ty-title u-mb-2">Produção Intelecual</h2>
+                <h2 class="ty ty-title u-mb-2">Produção Intelectual</h2>
 
                 <?php
                 foreach ($cursor_works['hits']['hits'] as $key => $work) {
