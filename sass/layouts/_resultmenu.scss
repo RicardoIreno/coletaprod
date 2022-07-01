@@ -43,7 +43,7 @@ details[open] .cc-fbloc-name--header:before {
 
 @mixin filterhover() {
   transition: all .2s ease;
-  background-color: _palette(theme-light-2);
+background-color: _palette(theme-light-2);
   color: _palette(bg-primary);
 }
 

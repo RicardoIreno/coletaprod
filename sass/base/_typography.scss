@@ -178,6 +178,10 @@ h5 a {
     color: _palette(ty-gray)
   }
 
+  &-black {
+    color: #000 !important;
+  }
+
   &-name {
     font-size: 2rem;
     line-height: 2.2rem;

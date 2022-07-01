@@ -300,6 +300,10 @@ h5 a {
   color: #8B8B8B;
 }
 
+.ty-black {
+  color: #000 !important;
+}
+
 .ty-name {
   font-size: 2rem;
   line-height: 2.2rem;
@@ -1968,5 +1972,15 @@ th {
   overflow: hidden;
   text-overflow: ellipsis;
   border: 1px solid #000000;
+}
+
+.c-collapsetwo {
+  border: 1px dashed #7fd1f5;
+  margin: 1rem;
+  padding: .5rem;
+}
+
+.c-collapsetwo-summary {
+  color: #1C9AD1;
 }
 /*# sourceMappingURL=main.css.map */
