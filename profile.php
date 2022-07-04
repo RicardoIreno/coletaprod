@@ -3,6 +3,8 @@
 // Include essencial files
 require 'inc/config.php';
 require 'inc/functions.php';
+require 'components/Production.php';
+require 'components/SList.php';
 include_once '_fakedata.php';
 
 function lattesID10($lattesID16)
@@ -151,7 +153,8 @@ if (!empty($_REQUEST["lattesID"])) {
               <img class="cc-badgeicons-icon" src="inc/images/icons/badges/member.svg" alt="Membro de conselho ou comissão" title="Membro de conselho ou comissão" />
               <img class="cc-badgeicons-icon" src="inc/images/icons/badges/leader.svg" alt="Exercedor de cargo de chefia" title="Exercedor de cargo de chefia" />
             </div>
-            --> <!-- end cc-badgeicons -->
+            -->
+            <!-- end cc-badgeicons -->
             <!-- <p class="ty ty-email">bertola@unifesp.br</p> -->
 
             <hr class="c-line" />
@@ -328,7 +331,8 @@ if (!empty($_REQUEST["lattesID"])) {
 
 
             <span class="u-skip" id="skipcc-graph”"></span>
-          </div> --> <!-- end core-three -->
+          </div> -->
+          <!-- end core-three -->
 
         </div> <!-- end cc-coregrid  -->
       </div><!-- end profile-inner  -->
@@ -337,15 +341,15 @@ if (!empty($_REQUEST["lattesID"])) {
       <div id="tabs" class="profile-tabs" onload="changeTab('1')">
 
         <div class="cc-profmenu">
-          <button id="tab-btn-1" class="cc-profmenu-btn" v-on:click="changeTab('1')" title="Sobre mim" alt="Sobre mim">
+          <button id="tab-btn-1" class="cc-profmenu-btn" v-on:click="changeTab('1')" title="Sobre" alt="Sobre">
             <div class="cc-profmenu-ico cc-profmenu-ico-1"></div>
           </button>
 
-          <button id="tab-btn-2" class="cc-profmenu-btn" v-on:click="changeTab('2')" title="Produção Intelectual" alt="Produção Intelectual">
+          <button id="tab-btn-2" class="cc-profmenu-btn" v-on:click="changeTab('2')" title="Produção" alt="Produção">
             <div class="cc-profmenu-ico cc-profmenu-ico-2"></div>
           </button>
 
-          <button id="tab-btn-3" class="cc-profmenu-btn" v-on:click="changeTab('3')" title="Atuações profissionais" alt="Atuações profissionais">
+          <button id="tab-btn-3" class="cc-profmenu-btn" v-on:click="changeTab('3')" title="Atuação" alt="Atuação">
             <div class="cc-profmenu-ico cc-profmenu-ico-3"></div>
           </button>
 
@@ -454,19 +458,19 @@ if (!empty($_REQUEST["lattesID"])) {
                             echo "<img class='c-iconlang' src='inc/images/icons/languages/pt.svg' />";
                             break;
                           case "Italiano":
-                            echo "<img class='c-iconlang' src='inc/images/icons/languages/pt.svg' />";
+                            echo "<img class='c-iconlang' src='inc/images/icons/languages/it.svg' />";
                             break;
                           case "Francês":
-                            echo "<img class='c-iconlang' src='inc/images/icons/languages/pt.svg' />";
+                            echo "<img class='c-iconlang' src='inc/images/icons/languages/fr.svg' />";
                             break;
                           case "Alemão":
-                            echo "<img class='c-iconlang' src='inc/images/icons/languages/pt.svg' />";
+                            echo "<img class='c-iconlang' src='inc/images/icons/languages/de.svg' />";
                             break;
                           case "Russo":
-                            echo "<img class='c-iconlang' src='inc/images/icons/languages/pt.svg' />";
+                            echo "<img class='c-iconlang' src='inc/images/icons/languages/ru.svg' />";
                             break;
                           case "Mandarin":
-                            echo "<img class='c-iconlang' src='inc/images/icons/languages/pt.svg' />";
+                            echo "<img class='c-iconlang' src='inc/images/icons/languages/zh.svg' />";
                             break;
                           default:
                             echo "<img class='c-iconlang' src='inc/images/icons/languages/idioma.svg' />";
@@ -753,7 +757,7 @@ if (!empty($_REQUEST["lattesID"])) {
             <div id="tab-two" class="cc-tab-content" v-if="tabOpened == '2'">
               <div class="profile-pi">
 
-                <h2 class="ty ty-title u-mb-2">Produção Intelectual</h2>
+                <h2 class="ty ty-title u-mb-2">Produção</h2>
 
                 <?php
                 foreach ($cursor_works['hits']['hits'] as $key => $work) {
@@ -774,147 +778,23 @@ if (!empty($_REQUEST["lattesID"])) {
                         $authors[] = $author["person"]["name"];
                       }
 
-                      echo '<div class="c-pi">
-            
-                    <div class="s-list">
-                      <div class="s-list-bullet">';
-                      switch ($work['_source']['tipo']) {
-                        case "Artigo publicado":
-                          echo '<img class="s-list-ico" 
-                                  src="inc/images/icons/article-published.svg" 
-                                  title="Artigo publicado"
-                                  />';
-                          break;
+                      Production::IntelectualProduction(
+                        $type = $work['_source']['tipo'],
+                        $name = $work['_source']['name'],
+                        $nAuthors = $authors,
+                        $url = $work['_source']['url'],
+                        $doi = $work['_source']['doi'],
+                        $issn = '',
+                        $refName =  $work['_source']['isPartOf']['name'],
+                        $refVol = $work['_source']['isPartOf']['volume'],
+                        $refFascicle =  $work['_source']['isPartOf']['fasciculo'],
+                        $refPage = $work['_source']['pageStart'],
+                        $event = '',
+                        $evento = '',
+                        $datePublished = '',
+                        $id = ''
+                      );
 
-                        case "Capítulo de livro publicado":
-                          echo '<img class="s-list-ico" 
-                                  src="inc/images/icons/chapter.svg"
-                                  title="Capítulo de livro publicado"
-                                  />';
-                          break;
-
-                        case "Livro publicado ou organizado":
-                          echo '<img class="s-list-ico" 
-                                  src="inc/images/icons/book.svg"
-                                  title="Livro publicado ou organizado"
-                                  />';
-                          break;
-
-                        case "Patente":
-                          echo '<img class="s-list-ico" 
-                                  src="inc/images/icons/patent.svg"
-                                  title="Patente"
-                                  />';
-                          break;
-
-                        case "Software":
-                          echo '<img class="s-list-ico" 
-                                  src="inc/images/icons/softwares.svg"
-                                  title="Software"
-                                  />';
-                          break;
-
-                        case "Textos em jornais de notícias/revistas":
-                          echo '<img class="s-list-ico" 
-                                  src="inc/images/icons/papers.svg"
-                                  title="Textos em jornais de notícias/revistas"
-                                  />';
-                          break;
-
-                        case "Trabalhos em eventos":
-                          echo '<img class="s-list-ico" 
-                                  src="inc/images/icons/event.svg"
-                                  title="Trabalhos em eventos"
-                                  />';
-                          break;
-
-                        case "Tradução":
-                          echo '<img class="s-list-ico" 
-                            src="inc/images/icons/book.svg"
-                            title="Tradução"
-                            />';
-                          break;
-
-                        default:
-                          echo '<img class="s-list-ico" 
-                                  src="inc/images/icons/default.svg"
-                                  title="Item"
-                                  />';
-                      }
-
-                      echo '</div>            
-
-                      <div class="s-list-content">
-
-                        <p class="ty-item">'
-                        . $work['_source']['name'] . ' 
-                         <i> — ' . $work['_source']['tipo'] . '</i > 
-                         </p>
-                      
-                        <p class="ty-gray"> 
-                        <b class="ty-subItem">Autores: </b>' . implode('; ', $authors) . '</p>
-                                    
-                        <div class="s-line">
-                          
-                          <!--
-                          <div class="s-line-item"> 
-                            <img class="s-line-icon"
-                              src="inc/images/icons/citation.svg" 
-                              alt="representação de citação" 
-                            />
-                            
-                            <span class="c-pi-citations">Web Of Science: </span>
-                            
-                            <span class="c-pi-citations">Scopus </span>
-                            
-                          </div>
-                          -->
-                          ';
-                      if (!empty($work['_source']['url'])) {
-                        echo '              
-                            <div class="s-line-item"> 
-                              <img 
-                                class="s-line-icon"
-                                src="inc/images/icons/link.svg" 
-                                alt="representação de um link"
-                              />
-                              
-                              <a href="' . $work['_source']['url'] . '" target="blank">Conteúdo completo</a>
-                            </div>
-                          ';
-                      }
-
-                      if (!empty($work['_source']['doi'])) {
-                        echo '
-                          <div class="s-line-item">
-
-                            <img 
-                            class="s-line-icon"
-                            src="inc/images/logos/doi.svg" 
-                            alt="logo DOI"
-                            />
-                            
-                            <a href="https://doi.org/' . $work['_source']['doi'] . '"> DOI</a>
-                          </div>';
-                      };
-
-                      echo '
-                          
-                        </div>
-                        <p class="ty-right ty-themeLight">Fonte: ';
-                      echo (!empty($work['_source']['isPartOf']['name'])) ? $work['_source']['isPartOf']['name'] : '';
-                      echo (!empty($work['_source']['isPartOf']['volume'])) ? ', v.' . $work['_source']['isPartOf']['volume'] : '';
-                      echo (!empty($work['_source']['isPartOf']['fasciculo'])) ? ', n.' . $work['_source']['isPartOf']['fasciculo'] : '';
-                      echo (!empty($work['_source']['pageStart'])) ? ', p.' . $work['_source']['pageStart'] : '';
-                      echo '
-                        </p>
-                            
-                        
-                      </div>
-
-                    </div>
-                      
-                  </div>';
                       //echo "<pre>".print_r($work, true)."</pre>";
 
                     }
@@ -932,80 +812,52 @@ if (!empty($_REQUEST["lattesID"])) {
           <transition name="tabeffect">
             <div id="tab-three" class="cc-tab-content" v-if="tabOpened == '3'">
 
-              <h2 class="ty ty-title u-mb-2">Atuações profissionais</h2>
+              <h2 class="ty ty-title u-mb-2">Atuações</h2>
 
-              <!-- (tab-three) foreach 1 -->
-              <?php foreach ($profile['atuacoes_profissionais'] as $key => $atuacoes_profissionais) : ?>
+              <?php
 
-                <!-- (tab-three) foreach 2 -->
-                <?php foreach ($atuacoes_profissionais as $key => $atuacao_profissional) : ?>
+              foreach ($profile['atuacoes_profissionais'] as $key => $atuacoes_profissionais) {
 
-                  <h4 class="ty ty-title u-my-2">
-                    <?php echo $atuacao_profissional['@attributes']['NOME-INSTITUICAO']; ?>
-                  </h4>
+                foreach ($atuacoes_profissionais as $key => $atuacao_profissional) {
+                  echo '<h4>' . $atuacao_profissional['@attributes']['NOME-INSTITUICAO'] . '</h4>';
 
-                  <!-- (tab-three) if 1 -->
-                  <?php if (isset($atuacao_profissional['VINCULOS'])) : ?>
+                  if (isset($atuacao_profissional['VINCULOS'])) {
+                    if (count($atuacao_profissional['VINCULOS']) == 1) {
 
-                    <!-- (tab-three) if 2 -->
-                    <?php if (count($atuacao_profissional['VINCULOS']) == 1) : ?>
+                      SList::genericItem(
+                        $type = "professional",
+                        $itemName = $atuacao_profissional['VINCULOS']['@attributes']['OUTRO-ENQUADRAMENTO-FUNCIONAL-INFORMADO'],
+                        $itemNameLink = '',
+                        $itemInfoA = $atuacao_profissional['VINCULOS']['@attributes']['OUTRO-VINCULO-INFORMADO'],
+                        $itemInfoB = '',
+                        $itemInfoC = '',
+                        $itemInfoD = '',
+                        $authors = '',
+                        $yearStart = $atuacao_profissional['VINCULOS']['@attributes']['ANO-INICIO'],
+                        $yearEnd = $atuacao_profissional['VINCULOS']['@attributes']['ANO-FIM']
+                      );
+                    } else {
+                      for ($i_atuacao_profissional = 0; $i_atuacao_profissional <= (count($atuacao_profissional['VINCULOS']) - 1); $i_atuacao_profissional++) {
 
+                        SList::genericItem(
+                          $type = "professional",
+                          $itemName = $atuacao_profissional['VINCULOS'][$i_atuacao_profissional]['@attributes']['OUTRO-ENQUADRAMENTO-FUNCIONAL-INFORMADO'],
+                          $itemNameLink = '',
+                          $itemInfoA = $atuacao_profissional['VINCULOS'][$i_atuacao_profissional]['@attributes']['OUTRO-VINCULO-INFORMADO'],
+                          $itemInfoB = '',
+                          $itemInfoC = '',
+                          $itemInfoD = '',
+                          $authors = '',
+                          $yearStart = $atuacao_profissional['VINCULOS'][$i_atuacao_profissional]['@attributes']['ANO-INICIO'],
+                          $yearEnd = $atuacao_profissional['VINCULOS'][$i_atuacao_profissional]['@attributes']['ANO-FIM']
+                        );
+                      }
+                    };
+                  };
+                };
+              };
 
-                      <div class="s-list">
-                        <div class="s-list-bullet">
-                          <img class='s-list-ico-mini' src='inc/images/icons/professional.svg' />
-                        </div>
-                        <div class="s-list-content-mini">
-                          <p class="ty ty-item">
-                            <?php echo $atuacao_profissional['VINCULOS']['@attributes']['OUTRO-ENQUADRAMENTO-FUNCIONAL-INFORMADO']; ?>
-                            <?php echo $atuacao_profissional['VINCULOS']['@attributes']['OUTRO-VINCULO-INFORMADO']; ?>
-                            <i> —
-                              <?php echo $atuacao_profissional['VINCULOS']['@attributes']['ANO-INICIO']; ?> -
-                              <?php echo $atuacao_profissional['VINCULOS']['@attributes']['ANO-FIM']; ?>
-                            </i>
-                          </p>
-                        </div>
-                      </div>
-
-                    <?php else : ?>
-                      <!-- (tab-three) else if 2 -->
-
-                      <!-- (tab-three) for 1 -->
-                      <?php for ($i_atuacao_profissional = 0; $i_atuacao_profissional <= (count($atuacao_profissional['VINCULOS']) - 1); $i_atuacao_profissional++) : ?>
-
-                        <div class="s-list">
-                          <div class="s-list-bullet">
-                            <img class='s-list-ico-mini' src='inc/images/icons/professional.svg' />
-                          </div>
-                          <div class="s-list-content-mini">
-                            <p class="ty ty-item">
-                              <?php echo $atuacao_profissional['VINCULOS'][$i_atuacao_profissional]['@attributes']['OUTRO-ENQUADRAMENTO-FUNCIONAL-INFORMADO']; ?>
-                              <?php echo $atuacao_profissional['VINCULOS'][$i_atuacao_profissional]['@attributes']['OUTRO-VINCULO-INFORMADO']; ?>
-                              <i>
-                                <?php echo $atuacao_profissional['VINCULOS'][$i_atuacao_profissional]['@attributes']['ANO-INICIO']; ?>
-                                -
-                                <?php echo $atuacao_profissional['VINCULOS'][$i_atuacao_profissional]['@attributes']['ANO-FIM']; ?>
-                              </i>
-                            </p>
-                          </div>
-                        </div>
-
-                      <?php endfor; ?>
-                      <!-- (tab-three) end for 1 -->
-
-                    <?php endif; ?>
-                    <!-- (tab-three) end if 2 -->
-
-                  <?php endif; ?>
-                  <!-- (tab-three) end if 1 -->
-
-                  <hr class="c-line" />
-                <?php endforeach; ?>
-                <!-- (tab-three) end foreach 2 -->
-
-              <?php endforeach; ?>
-              <!-- (tab-three) end foreach 1 -->
-
+              ?>
 
             </div> <!-- end tab-three -->
           </transition>
@@ -1018,10 +870,10 @@ if (!empty($_REQUEST["lattesID"])) {
 
               <h3 class="ty ty-title u-mb-2">Orientações e supervisões</h3>
 
-              <?php if (!empty($profile['orientacoes'])) : ?>
+              <?php
 
+              if (!empty($profile['orientacoes'])) {
 
-                <?php
                 $orientacoes_andamento_labels = ['Supervisão de pós-doutorado', 'Tese de doutorado', 'Dissertação de mestrado'];
                 foreach ($orientacoes_andamento_labels as $orientacao_andamento_label) {
                   $i_orientacao_andamento = 0;
@@ -1033,66 +885,33 @@ if (!empty($_REQUEST["lattesID"])) {
                   }
                   if (isset($orientacao_andamento_array[$orientacao_andamento_label])) {
                     if (count($orientacao_andamento_array[$orientacao_andamento_label]) > 0) {
-                      echo '<h4 class="ty ty-title u-mb-2">' . $orientacao_andamento_label . ' em andamento</h4><ul class="s-nobullet">';
+                      echo '<h4 class="ty ty-title u-mb-2">' . $orientacao_andamento_label . ' em andamento</h4>';
                       foreach ($orientacao_andamento_array[$orientacao_andamento_label] as $orientacao_andamento_echo) {
                         //var_dump($orientacao_andamento_echo);
-                        echo '
-                      <li>
-                        <div class="s-list">
-                          <div class="s-list-bullet">
-                            <img class="c-iconlang" src="inc/images/icons/orientation.svg" />
-                          </div>
-      
-                          <div class="s-list-content">
-      
-                            <p class="ty ty-item">
-                              <a class="ty-itemLink" href="http://lattes.cnpq.br/' . $orientacao_andamento_echo["numeroIDOrientado"] . '" target="_blank">
-                              ' . $orientacao_andamento_echo["nomeDoOrientando"] . '
-                              </a>
-                              <i> — ' . $orientacao_andamento_echo["ano"] . ' - Em andamento</i>
-                            </p>
-      
-                            <p class="ty">';
-                        (!empty($orientacao_andamento_echo["titulo"])) ?
-                          print_r('' . $orientacao_andamento_echo["titulo"]) : "";
-                        echo '
-                            </p>
-                            <p class="ty ty-gray">';
-                        (!empty($orientacao_andamento_echo["nomeDoCurso"])) ?
-                          print_r('' . $orientacao_andamento_echo["nomeDoCurso"]) : "";
 
-                        if (
-                          $orientacao_andamento_echo["nomeDoCurso"] &&
-                          $orientacao_andamento_echo["flagBolsa"] == "SIM"
-                        )
-                          print_r(', ');
-
-                        ($orientacao_andamento_echo["flagBolsa"] == "SIM") ?
-                          print_r('' . $orientacao_andamento_echo["nomeDaAgencia"] . '') : "";
-
-                        echo '</p>';
-                        echo '<p class="ty ty-gray">' . $orientacao_andamento_echo["nomeDaInstituicao"] . '';
-
-
-                        echo '
-                          </div> <!-- end-grid-right -->
-                        </div><!-- end-grid -->
-                      </li>';
+                        SList::genericItem(
+                          $type = 'orientation',
+                          $itemName = $orientacao_andamento_echo["nomeDoOrientando"],
+                          $itemNameLink = "http://lattes.cnpq.br/" . $orientacao_andamento_echo["numeroIDOrientado"],
+                          $itemInfoA = $orientacao_andamento_echo["titulo"],
+                          $itemInfoB = $orientacao_andamento_echo["nomeDoCurso"],
+                          $itemInfoC = $orientacao_andamento_echo["nomeDaAgencia"],
+                          $itemInfoD = $orientacao_andamento_echo["nomeDaInstituicao"],
+                          $authors = '',
+                          $yearStart = $orientacao_andamento_echo["ano"],
+                          $yearEnd = ''
+                        );
                       }
-                      echo '</ul>';
                     }
                   }
                   unset($orientacao_andamento_array);
                 }
-                ?>
+              }
+              ?>
 
-              <?php endif; ?>
+              <?php
+              if (!empty($profile['orientacoesconcluidas'])) {
 
-              <?php if (!empty($profile['orientacoesconcluidas'])) : ?>
-
-
-
-                <?php
                 $orientacoes_concluidas_labels = ['Supervisão de pós-doutorado', 'Tese de doutorado', 'Dissertação de mestrado'];
                 foreach ($orientacoes_concluidas_labels as $orientacao_concluidas_label) {
                   $i_orientacao_concluidas = 0;
@@ -1104,69 +923,29 @@ if (!empty($_REQUEST["lattesID"])) {
                   }
                   if (isset($orientacao_concluidas_array)) {
                     if (count($orientacao_concluidas_array[$orientacao_concluidas_label]) > 0) {
-                      echo '<h4 class="ty ty-title u-mb-2">' . $orientacao_concluidas_label . ' concluídas</h4><ul class="s-nobullet">';
+                      echo '<h4 class="ty ty-title u-mb-2">' . $orientacao_concluidas_label . ' concluídas</h4>';
                       foreach ($orientacao_concluidas_array[$orientacao_concluidas_label] as $orientacao_concluidas_echo) {
                         //var_dump($orientacao_concluidas_echo);
-                        echo '
-                    <li>
-                    
-                    <div class="s-list">
-                      <div class="s-list-bullet">
-                        <img class="s-list-ico" src="inc/images/icons/orientation.svg" />
-                      </div>
-  
-                      <div class="s-list-content">
-  
-                        <p class="ty ty-item">
-                          <a class="ty-itemLink" href="http://lattes.cnpq.br/' . $orientacao_concluidas_echo["numeroIDOrientado"] . '" target="_blank">
-                          ' . $orientacao_concluidas_echo["nomeDoOrientando"] . '
-                          </a>
-                          <i> — ' . $orientacao_concluidas_echo["ano"] . '</i>
-                        </p>
-  
-                        <p class="ty">';
-                        (!empty($orientacao_concluidas_echo["titulo"])) ?
-                          print_r('' . $orientacao_concluidas_echo["titulo"]) : "";
-                        echo '
-                        </p>
-                        <p class="ty ty-gray">';
 
-                        (!empty($orientacao_concluidas_echo["nomeDoCurso"])) ?
-                          print_r('' . $orientacao_concluidas_echo["nomeDoCurso"]) : "";
-
-                        if (
-                          $orientacao_concluidas_echo["nomeDoCurso"] &&
-                          $orientacao_concluidas_echo["flagBolsa"] == "SIM"
-                        )
-                          print_r(', ');
-
-                        ($orientacao_concluidas_echo["flagBolsa"] == "SIM") ?
-                          print_r('' . $orientacao_concluidas_echo["nomeDaAgencia"] . '') : "";
-
-                        echo '
-                        </p>';
-
-                        echo '<p class="ty ty-gray">' . $orientacao_concluidas_echo["nomeDaInstituicao"] . '</p>';
-
-                        echo '
-
-                      </div> <!-- end-grid-right -->
-  
-                    </div><!-- end-grid -->
-  
-                  </li>
-                    
-                    ';
+                        SList::genericItem(
+                          $type = 'orientation',
+                          $itemName = $orientacao_concluidas_echo["nomeDoOrientando"],
+                          $itemNameLink = "http://lattes.cnpq.br/" . $orientacao_concluidas_echo["numeroIDOrientado"],
+                          $itemInfoA = $orientacao_concluidas_echo["titulo"],
+                          $itemInfoB = $orientacao_concluidas_echo["nomeDoCurso"],
+                          $itemInfoC = $orientacao_concluidas_echo["nomeDaAgencia"],
+                          $itemInfoD = $orientacao_concluidas_echo["nomeDaInstituicao"],
+                          $authors = '',
+                          $yearStart = $orientacao_concluidas_echo["ano"],
+                          $yearEnd = ''
+                        );
                       }
-                      echo '</ul>';
                     }
                     unset($orientacao_concluidas_array);
                   }
                 }
-                ?>
-
-              <?php endif; ?>
-
+              }
+              ?>
 
             </div> <!-- end tab-four -->
           </transition>
@@ -1174,7 +953,7 @@ if (!empty($_REQUEST["lattesID"])) {
           <transition name="tabeffect">
             <div id="tab-five" class="cc-tab-content" v-if="tabOpened == '5'">
 
-              <h2 class="ty ty-title u-mb-2">Atividades de gestão</h2>
+              <h2 class="ty ty-title u-mb-2">Gestão</h2>
 
               <!-- (tab-five) foreach 1 -->
               <?php foreach ($profile['atuacoes_profissionais'] as $key => $atuacoes_profissionais) : ?>
@@ -1202,30 +981,22 @@ if (!empty($_REQUEST["lattesID"])) {
                         <!-- (tab-five) foreach 3 -->
                         <?php foreach ($atuacao_profissional['ATIVIDADES-DE-DIRECAO-E-ADMINISTRACAO']['DIRECAO-E-ADMINISTRACAO'] as $key => $direcao_e_administracao) : ?>
 
-                          <div class="s-list u-mb-2">
-                            <div class="s-list-bullet">
-                              <img class='c-iconlang' src='inc/images/icons/managing.svg' />
-                            </div>
-
-                            <div class="s-list-content">
-
-                              <p class="ty ty-item"><?php echo $direcao_e_administracao['@attributes']['CARGO-OU-FUNCAO']; ?>
-                                <i> —
-                                  <?php echo $direcao_e_administracao['@attributes']['ANO-INICIO']; ?> -
-                                  <?php echo $direcao_e_administracao['@attributes']['ANO-FIM']; ?></i>
-                              </p>
-
-                              <?php if (!empty($direcao_e_administracao['@attributes']['NOME-ORGAO'])) : ?>
-                                <p class="ty ty-gray"><?php echo $direcao_e_administracao['@attributes']['NOME-ORGAO']; ?></p>
-                              <?php endif; ?>
-
-                              <?php if (!empty($direcao_e_administracao['@attributes']['NOME-UNIDADE'])) : ?>
-                                <p class="ty ty-gray"><?php echo $direcao_e_administracao['@attributes']['NOME-UNIDADE']; ?></p>
-                              <?php endif; ?>
-
-
-                            </div>
-                          </div>
+                          <ul>
+                            <?php
+                            SList::genericItem(
+                              $type = 'managing',
+                              $itemName = $direcao_e_administracao['@attributes']['CARGO-OU-FUNCAO'],
+                              $itemNameLink = "http://lattes.cnpq.br/" . $orientacao_andamento_echo["numeroIDOrientado"],
+                              $itemInfoA = '',
+                              $itemInfoB = $direcao_e_administracao['@attributes']['NOME-ORGAO'],
+                              $itemInfoC = $direcao_e_administracao['@attributes']['NOME-UNIDADE'],
+                              $itemInfoD = '',
+                              $authors  = '',
+                              $yearStart = $direcao_e_administracao['@attributes']['ANO-INICIO'],
+                              $yearEnd = $direcao_e_administracao['@attributes']['ANO-FIM']
+                            );
+                            ?>
+                          </ul>
 
                         <?php endforeach; ?>
                         <!-- (tab-five) end foreach 3 -->
@@ -1246,48 +1017,6 @@ if (!empty($_REQUEST["lattesID"])) {
 
               <?php endforeach; ?>
               <!-- (tab-five) end foreach 1 -->
-              
-              <!--
-              <h2 class="ty ty-title u-mb-2">Conselhos, Comissões e Consultoria</h2>
-
-              <div class="s-list">
-                <div class="s-list-bullet">
-                  <img class='s-list-ico' src='inc/images/icons/reunion.svg' />
-                </div>
-                <div class="s-list-content">
-                  <p class="ty ty-item">titulo — 2000 - 2001</p>
-                  <p class="ty">Alguma coisa</p>
-                  <p class="ty ty-gray">Alguma outra coisa</p>
-                </div>
-              </div>
-
-
-              <h2 class="ty ty-title u-mb-2">Estágio</h2>
-
-              <div class="s-list">
-                <div class="s-list-bullet">
-                  <img class='s-list-ico' src='inc/images/icons/internship.svg' />
-                </div>
-                <div class="s-list-content">
-                  <p class="ty ty-item">titulo — 2000 - 2001</p>
-                  <p class="ty">Alguma coisa</p>
-                  <p class="ty ty-gray">Alguma outra coisa</p>
-                </div>
-              </div>
-
-              <h2 class="ty ty-title u-mb-2">Serviço Técnico Especializado</h2>
-
-              <div class="s-list">
-                <div class="s-list-bullet">
-                  <img class='s-list-ico' src='inc/images/icons/specialist.svg' />
-                </div>
-                <div class="s-list-content">
-                  <p class="ty ty-item">titulo — 2000 - 2001</p>
-                  <p class="ty">Alguma coisa</p>
-                  <p class="ty ty-gray">Alguma outra coisa</p>
-                </div>
-              </div>
-              -->
 
 
             </div> <!-- end tab-five -->
@@ -1296,89 +1025,50 @@ if (!empty($_REQUEST["lattesID"])) {
           <transition name="tabeffect">
             <div id="tab-six" class="cc-tab-content" v-if="tabOpened == '6'">
 
-              <h2 class="ty ty-title u-mb-2">Projetos de pesquisa</h2>
+              <h2 class="ty ty-title u-mb-2">Pesquisa</h2>
 
-              <!-- (tab-six) foreach 1 -->
-              <?php foreach ($profile['atuacoes_profissionais'] as $key => $atuacoes_profissionais) : ?>
+              <?php
+              foreach ($profile['atuacoes_profissionais'] as $key => $atuacoes_profissionais) {
 
-                <!-- (tab-six) foreach 2 -->
-                <?php foreach ($atuacoes_profissionais as $key => $atuacao_profissional) : ?>
+                foreach ($atuacoes_profissionais as $key => $atuacao_profissional) {
 
+                  if (isset($atuacao_profissional['ATIVIDADES-DE-PARTICIPACAO-EM-PROJETO']['PARTICIPACAO-EM-PROJETO'])) {
 
-                  <!-- (tab-six) if 4 -->
-                  <?php if (isset($atuacao_profissional['ATIVIDADES-DE-PARTICIPACAO-EM-PROJETO']['PARTICIPACAO-EM-PROJETO'])) : ?>
+                    echo '<h4 class="ty ty-title u-my-2">' . $atuacao_profissional['@attributes']['NOME-INSTITUICAO'] . '</h4>';
 
+                    for ($i_atuacao_profissional = 0; $i_atuacao_profissional <= (count($atuacao_profissional['VINCULOS']) - 1); $i_atuacao_profissional++) {
 
+                      foreach ($atuacao_profissional['ATIVIDADES-DE-PARTICIPACAO-EM-PROJETO']['PARTICIPACAO-EM-PROJETO'] as $key => $participacao_em_projeto) {
 
-                    <!-- <h4 class="ty ty-title u-my-2">
-            <?php echo $atuacao_profissional['@attributes']['NOME-INSTITUICAO']; ?>
-          </h4> -->
+                        if (isset($participacao_em_projeto['PROJETO-DE-PESQUISA'])) {
 
+                          foreach ($participacao_em_projeto['PROJETO-DE-PESQUISA'] as $key => $projeto_de_pesquisa) {
 
-                    <!-- (tab-six) for 1 -->
-                    <?php for ($i_atuacao_profissional = 0; $i_atuacao_profissional <= (count($atuacao_profissional['VINCULOS']) - 1); $i_atuacao_profissional++) : ?>
+                            if (!empty($projeto_de_pesquisa['@attributes'])) {
 
+                              foreach ($projeto_de_pesquisa['EQUIPE-DO-PROJETO']['INTEGRANTES-DO-PROJETO'] as $key => $integrante_do_projeto) {
+                                if (isset($integrante_do_projeto['@attributes']['NOME-COMPLETO'])) {
+                                  $integrantes_do_projeto[] = $integrante_do_projeto['@attributes']['NOME-COMPLETO'];
+                                }
+                              }
 
-                      <!-- (tab-six) foreach 4 -->
-                      <?php foreach ($atuacao_profissional['ATIVIDADES-DE-PARTICIPACAO-EM-PROJETO']['PARTICIPACAO-EM-PROJETO'] as $key => $participacao_em_projeto) : ?>
+                              SList::genericItem(
+                                $type = 'research',
+                                $itemName = $projeto_de_pesquisa['@attributes']['NOME-DO-PROJETO'],
+                                $itemNameLink = '',
+                                $itemInfoA = $projeto_de_pesquisa['@attributes']['DESCRICAO-DO-PROJETO'],
+                                $itemInfoB = '',
+                                $itemInfoC = '',
+                                $itemInfoD = '',
+                                $authors = implode(', ', $integrantes_do_projeto),
+                                $yearStart = $projeto_de_pesquisa['@attributes']['ANO-INICIO'],
+                                $yearEnd = $projeto_de_pesquisa['@attributes']['ANO-FIM']
+                              );
 
-
-                        <!-- (tab-six) if 6 -->
-                        <?php if (isset($participacao_em_projeto['PROJETO-DE-PESQUISA'])) : ?>
-
-                          <!-- (tab-six) foreach 5 -->
-                          <?php foreach ($participacao_em_projeto['PROJETO-DE-PESQUISA'] as $key => $projeto_de_pesquisa) : ?>
-
-
-                            <!-- (tab-six) if 7 -->
-                            <?php if (!empty($projeto_de_pesquisa['@attributes'])) : ?>
-
-                              <div class="s-list u-mb-2">
-                                <div class="s-list-bullet">
-                                  <img class='s-list-ico' src='inc/images/icons/research.svg' />
-                                </div>
-                                <div class="s-list-content">
-
-                                  <p class="ty ty-item">
-                                    <?php echo $projeto_de_pesquisa['@attributes']['NOME-DO-PROJETO']; ?>
-                                    <i> —
-                                      <?php echo $projeto_de_pesquisa['@attributes']['ANO-INICIO']; ?> -
-                                      <?php echo $projeto_de_pesquisa['@attributes']['ANO-FIM']; ?>
-                                    </i>
-                                  </p>
-                                  <?php if (!empty($projeto_de_pesquisa['@attributes']['DESCRICAO-DO-PROJETO'])) : ?>
-                                    <p class="ty u-mb-1">
-                                      <?php echo $projeto_de_pesquisa['@attributes']['DESCRICAO-DO-PROJETO']; ?>
-                                    </p>
-                                  <?php endif; ?>
-
-                                  <?php
-                                  unset($integrantes_do_projeto);
-                                  foreach ($projeto_de_pesquisa['EQUIPE-DO-PROJETO']['INTEGRANTES-DO-PROJETO'] as $key => $integrante_do_projeto) {
-                                    //echo "<pre>".print_r($integrante_do_projeto, true)."</pre>"; 
-                                    if (isset($integrante_do_projeto['@attributes']['NOME-COMPLETO'])) {
-                                      $integrantes_do_projeto[] = $integrante_do_projeto['@attributes']['NOME-COMPLETO'];
-                                    }
-                                  }
-                                  ?>
-
-                                  <?php if (!empty($integrantes_do_projeto)) : ?>
-                                    <p class="ty u-mb-1">
-                                      <b class="ty-subItem">Integrantes:</b>
-                                      <span class="ty-gray"><?php echo implode(', ', $integrantes_do_projeto); ?></span>
-                                    </p>
-                                  <?php endif; ?>
-
-                                </div> <!-- end-grid-right -->
-
-                              </div><!-- end-grid -->
-
-                              <!-- else do if 7 -->
-                            <?php else : ?>
-                              <?php
+                              unset($integrantes_do_projeto);
+                            } else {
                               if (isset($projeto_de_pesquisa['INTEGRANTES-DO-PROJETO'])) {
                                 unset($integrantes_do_projeto);
-                                //echo "<pre>".print_r($projeto_de_pesquisa['INTEGRANTES-DO-PROJETO'], true)."</pre>";
                                 if (isset($projeto_de_pesquisa['INTEGRANTES-DO-PROJETO']['@attributes'])) {
                                   $integrantes_do_projeto[] = $projeto_de_pesquisa['INTEGRANTES-DO-PROJETO']['@attributes']['NOME-COMPLETO'];
                                 } else {
@@ -1387,337 +1077,38 @@ if (!empty($_REQUEST["lattesID"])) {
                                   }
                                 }
                               }
-                              ?>
-                              <!-- end else do if 7 -->
+
+                              if (isset($projeto_de_pesquisa['NOME-DO-PROJETO'])) {
+
+                                (isset($integrantes_do_projeto)) ? $integrantesDoProjeto = implode(', ', $integrantes_do_projeto) : $integrantesDoProjeto = '';
 
 
-                              <!-- (tab-six) if 8 -->
-                              <?php if (isset($projeto_de_pesquisa['NOME-DO-PROJETO'])) : ?>
-
-                                <div class="s-list">
-                                  <div class="s-list-bullet">
-                                    <img class='c-iconlang' src='inc/images/icons/research.svg' />
-                                  </div>
-
-                                  <div class="s-list-content">
-
-                                    <p class="ty ty-item"><?php echo $projeto_de_pesquisa['NOME-DO-PROJETO']; ?>
-                                      <i> —
-                                        <?php echo $projeto_de_pesquisa['ANO-INICIO']; ?> -
-                                        <?php echo $projeto_de_pesquisa['ANO-FIM']; ?>
-                                      </i>
-                                    </p>
-                                    <?php if (!empty($projeto_de_pesquisa['DESCRICAO-DO-PROJETO'])) : ?>
-                                      <p class="ty u-mb-1">
-                                        <?php echo $projeto_de_pesquisa['DESCRICAO-DO-PROJETO']; ?>
-                                      </p>
-                                    <?php endif; ?>
-
-
-                                    <?php if (isset($integrantes_do_projeto)) : ?>
-                                      <p class="ty u-mb-1">
-                                        <b class="ty-subItem">Integrantes:</b>
-                                        <span class="ty-gray"><?php echo implode(', ', $integrantes_do_projeto); ?></span>
-                                      </p>
-                                    <?php endif; ?>
-
-
-                                  </div> <!-- end-grid-right -->
-                                </div><!-- end-grid -->
-
-                              <?php endif; ?>
-                              <!-- (tab-six) end if 8 -->
-
-
-                            <?php endif; ?>
-                            <!-- (tab-six) end if 7 -->
-
-                          <?php endforeach; ?>
-                          <!-- (tab-six) end foreach 5 -->
-
-                        <?php endif; ?>
-                        <!-- (tab-six) end if 6 -->
-
-                      <?php endforeach; ?>
-                      <!-- (tab-six) end foreach 4 -->
-
-
-                    <?php endfor; ?>
-                    <!-- (tab-six) end for 1 -->
-
-                  <?php endif; ?>
-                  <!-- (tab-six) end if 4 -->
-
-
-                <?php endforeach; ?>
-                <!-- (tab-six) end foreach 2 -->
-
-              <?php endforeach; ?>
-              <!-- (tab-six) end foreach 1 -->
+                                SList::genericItem(
+                                  $type = 'research',
+                                  $itemName = $projeto_de_pesquisa['NOME-DO-PROJETO'],
+                                  $itemNameLink = '',
+                                  $itemInfoA = $projeto_de_pesquisa['DESCRICAO-DO-PROJETO'],
+                                  $itemInfoB = '',
+                                  $itemInfoC = '',
+                                  $itemInfoD = '',
+                                  $authors = $integrantesDoProjeto,
+                                  $yearStart = $projeto_de_pesquisa['ANO-INICIO'],
+                                  $yearEnd = $projeto_de_pesquisa['ANO-FIM']
+                                );
+                              }
+                            }
+                          }
+                        }
+                      } //foreach 3 - foreach ($atuacao_profissional['ATIVIDADES
+                    } // for
+                  } // if 1 - if (isset($atuacao_profissional['ATIVIDADES...
+                } // foreach2 - foreach ($atuacoes_profissionais as $key
+              } // foreach 1 - foreach ($profile['atuacoes_profissionais']
+              ?>
 
               <h3 class="ty ty-title u-mb-2">Outras atividades técnico científicas</h3>
 
-
-
             </div> <!-- end tab-six -->
-          </transition>
-
-          <transition name="tabeffect">
-            <div id="tab-seven" class="cc-tab-content" v-if="tabOpened == '7'">
-
-              <h2 class="ty ty-title u-mb-2">Atuações profissionais</h2>
-
-              <!-- (tab-seven) foreach 1 -->
-              <?php foreach ($profile['atuacoes_profissionais'] as $key => $atuacoes_profissionais) : ?>
-
-                <!-- (tab-seven) foreach 2 -->
-                <?php foreach ($atuacoes_profissionais as $key => $atuacao_profissional) : ?>
-
-
-                  <h4 class="ty ty-title u-my-2">
-                    <?php echo $atuacao_profissional['@attributes']['NOME-INSTITUICAO']; ?>
-                  </h4>
-
-                  <!-- (tab-seven) if 1 -->
-                  <?php if (isset($atuacao_profissional['VINCULOS'])) : ?>
-
-                    <!-- (tab-seven) if 2 -->
-                    <?php if (count($atuacao_profissional['VINCULOS']) == 1) : ?>
-
-                      <p class="ty ty-item u-mb-2">
-                        <?php echo $atuacao_profissional['VINCULOS']['@attributes']['OUTRO-ENQUADRAMENTO-FUNCIONAL-INFORMADO']; ?>
-                        <?php echo $atuacao_profissional['VINCULOS']['@attributes']['OUTRO-VINCULO-INFORMADO']; ?>
-                        <i> —
-                          <?php echo $atuacao_profissional['VINCULOS']['@attributes']['ANO-INICIO']; ?> -
-                          <?php echo $atuacao_profissional['VINCULOS']['@attributes']['ANO-FIM']; ?>
-                        </i>
-                      </p>
-
-                    <?php else : ?>
-                      <!-- (tab-seven) else if 2 -->
-
-                      <!-- (tab-seven) for 1 -->
-                      <?php for ($i_atuacao_profissional = 0; $i_atuacao_profissional <= (count($atuacao_profissional['VINCULOS']) - 1); $i_atuacao_profissional++) : ?>
-
-                        <p class="ty ty-item">
-                          <?php echo $atuacao_profissional['VINCULOS'][$i_atuacao_profissional]['@attributes']['OUTRO-ENQUADRAMENTO-FUNCIONAL-INFORMADO']; ?>
-                          <?php echo $atuacao_profissional['VINCULOS'][$i_atuacao_profissional]['@attributes']['OUTRO-VINCULO-INFORMADO']; ?>
-                          <i> —
-                            <?php echo $atuacao_profissional['VINCULOS'][$i_atuacao_profissional]['@attributes']['ANO-INICIO']; ?>
-                            -
-                            <?php echo $atuacao_profissional['VINCULOS'][$i_atuacao_profissional]['@attributes']['ANO-FIM']; ?>
-                          </i>
-                        </p>
-
-                        <!-- (tab-seven) if 3 -->
-                        <?php if (isset($atuacao_profissional['ATIVIDADES-DE-DIRECAO-E-ADMINISTRACAO'])) : ?>
-
-                          <h6 class="ty ty-title u-mb-2">Atividades de gestão</h6>
-
-                          <!-- (tab-seven) foreach 3 -->
-                          <?php foreach ($atuacao_profissional['ATIVIDADES-DE-DIRECAO-E-ADMINISTRACAO']['DIRECAO-E-ADMINISTRACAO'] as $key => $direcao_e_administracao) : ?>
-
-                            <div class="s-list u-mb-2">
-                              <div class="s-list-bullet">
-                                <img class='c-iconlang' src='inc/images/icons/managing.svg' />
-                              </div>
-
-                              <div class="s-list-content">
-
-                                <p class="ty ty-item"><?php echo $direcao_e_administracao['@attributes']['CARGO-OU-FUNCAO']; ?>
-                                  <i> —
-                                    <?php echo $direcao_e_administracao['@attributes']['ANO-INICIO']; ?> -
-                                    <?php echo $direcao_e_administracao['@attributes']['ANO-FIM']; ?>
-                                  </i>
-                                </p>
-                                <?php if (!empty($direcao_e_administracao['@attributes']['NOME-UNIDADE'])) : ?>
-                                  <p>Unidade: <?php echo $direcao_e_administracao['@attributes']['NOME-UNIDADE']; ?></p>
-                                <?php endif; ?>
-
-                                <?php if (!empty($direcao_e_administracao['@attributes']['NOME-ORGAO'])) : ?>
-                                  <p>Órgão: <?php echo $direcao_e_administracao['@attributes']['NOME-ORGAO']; ?></p>
-                                <?php endif; ?>
-
-                              </div> <!-- end-grid-right -->
-                            </div><!-- end-grid -->
-
-                          <?php endforeach; ?>
-                          <!-- (tab-seven) end foreach 3 -->
-
-                        <?php endif; ?>
-                        <!-- (tab-seven) end if 3 -->
-
-                        <!-- (tab-seven) if 4 -->
-                        <?php if (isset($atuacao_profissional['ATIVIDADES-DE-PARTICIPACAO-EM-PROJETO']['PARTICIPACAO-EM-PROJETO'])) : ?>
-
-                          <h5 class="ty ty-title u-mb-2">Projetos de pesquisa</h5>
-
-                          <!-- (tab-seven) foreach 4 -->
-                          <?php foreach ($atuacao_profissional['ATIVIDADES-DE-PARTICIPACAO-EM-PROJETO']['PARTICIPACAO-EM-PROJETO'] as $key => $participacao_em_projeto) : ?>
-
-                            <!-- (tab-seven) if 5 -->
-                            <?php if (isset($participacao_em_projeto['@attributes']['NOME-ORGAO'])) : ?>
-
-
-
-                              <p class="ty ty-item">
-                                <?php if (!empty($participacao_em_projeto['@attributes']['NOME-ORGAO'])) : ?>
-                                  <?php echo $participacao_em_projeto['@attributes']['NOME-ORGAO']; ?>
-                                <?php endif; ?>
-                                <?php if (!empty($participacao_em_projeto['@attributes']['NOME-UNIDADE'])) : ?>
-                                  — <?php echo $participacao_em_projeto['@attributes']['NOME-UNIDADE']; ?>
-                                <?php endif; ?>
-                                <i> —
-                                  <?php echo $participacao_em_projeto['@attributes']['ANO-INICIO']; ?> -
-                                  <?php echo $participacao_em_projeto['@attributes']['ANO-FIM']; ?>
-                                </i>
-                              </p>
-
-
-
-                            <?php endif; ?>
-                            <!-- (tab-seven) end if 5 -->
-
-                            <!-- (tab-seven) if 6 -->
-                            <?php if (isset($participacao_em_projeto['PROJETO-DE-PESQUISA'])) : ?>
-
-                              <!-- (tab-seven) foreach 5 -->
-                              <?php foreach ($participacao_em_projeto['PROJETO-DE-PESQUISA'] as $key => $projeto_de_pesquisa) : ?>
-
-
-                                <!-- (tab-seven) if 7 -->
-                                <?php if (!empty($projeto_de_pesquisa['@attributes'])) : ?>
-
-                                  <div class="s-list u-mb-2">
-                                    <div class="s-list-bullet">
-                                      <img class='c-iconlang' src='inc/images/icons/research.svg' />
-                                    </div>
-
-                                    <div class="s-list-content">
-
-                                      <p class="ty ty-item">
-                                        <?php echo $projeto_de_pesquisa['@attributes']['NOME-DO-PROJETO']; ?>
-                                        <i> —
-                                          <?php echo $projeto_de_pesquisa['@attributes']['ANO-INICIO']; ?> -
-                                          <?php echo $projeto_de_pesquisa['@attributes']['ANO-FIM']; ?>
-                                        </i>
-                                      </p>
-                                      <?php if (!empty($projeto_de_pesquisa['@attributes']['DESCRICAO-DO-PROJETO'])) : ?>
-                                        <p class="ty u-mb-1">
-                                          <?php echo $projeto_de_pesquisa['@attributes']['DESCRICAO-DO-PROJETO']; ?>
-                                        </p>
-                                      <?php endif; ?>
-
-                                      <?php
-                                      unset($integrantes_do_projeto);
-                                      foreach ($projeto_de_pesquisa['EQUIPE-DO-PROJETO']['INTEGRANTES-DO-PROJETO'] as $key => $integrante_do_projeto) {
-                                        //echo "<pre>".print_r($integrante_do_projeto, true)."</pre>"; 
-                                        if (isset($integrante_do_projeto['@attributes']['NOME-COMPLETO'])) {
-                                          $integrantes_do_projeto[] = $integrante_do_projeto['@attributes']['NOME-COMPLETO'];
-                                        }
-                                      }
-                                      ?>
-
-                                      <?php if (!empty($integrantes_do_projeto)) : ?>
-                                        <p class="ty u-mb-1">
-                                          <b class="ty-subItem">Integrantes:</b>
-                                          <span class="ty-gray"><?php echo implode(', ', $integrantes_do_projeto); ?></span>
-                                        </p>
-                                      <?php endif; ?>
-
-                                    </div> <!-- end-grid-right -->
-
-                                  </div><!-- end-grid -->
-
-                                  <!-- else do if 7 -->
-                                <?php else : ?>
-                                  <?php
-                                  if (isset($projeto_de_pesquisa['INTEGRANTES-DO-PROJETO'])) {
-                                    unset($integrantes_do_projeto);
-                                    //echo "<pre>".print_r($projeto_de_pesquisa['INTEGRANTES-DO-PROJETO'], true)."</pre>";
-                                    if (isset($projeto_de_pesquisa['INTEGRANTES-DO-PROJETO']['@attributes'])) {
-                                      $integrantes_do_projeto[] = $projeto_de_pesquisa['INTEGRANTES-DO-PROJETO']['@attributes']['NOME-COMPLETO'];
-                                    } else {
-                                      foreach ($projeto_de_pesquisa['INTEGRANTES-DO-PROJETO'] as $key => $integrante_do_projeto) {
-                                        $integrantes_do_projeto[] = $integrante_do_projeto['@attributes']['NOME-COMPLETO'];
-                                      }
-                                    }
-                                  }
-                                  ?>
-                                  <!-- end else do if 7 -->
-
-
-                                  <!-- (tab-seven) if 8 -->
-                                  <?php if (isset($projeto_de_pesquisa['NOME-DO-PROJETO'])) : ?>
-
-                                    <div class="s-list">
-                                      <div class="s-list-bullet">
-                                        <img class='c-iconlang' src='inc/images/icons/research.svg' />
-                                      </div>
-
-                                      <div class="s-list-content">
-
-                                        <p class="ty ty-item"><?php echo $projeto_de_pesquisa['NOME-DO-PROJETO']; ?>
-                                          <i> —
-                                            <?php echo $projeto_de_pesquisa['ANO-INICIO']; ?> -
-                                            <?php echo $projeto_de_pesquisa['ANO-FIM']; ?>
-                                          </i>
-                                        </p>
-                                        <?php if (!empty($projeto_de_pesquisa['DESCRICAO-DO-PROJETO'])) : ?>
-                                          <p class="ty u-mb-1">
-                                            <?php echo $projeto_de_pesquisa['DESCRICAO-DO-PROJETO']; ?>
-                                          </p>
-                                        <?php endif; ?>
-
-
-                                        <?php if (isset($integrantes_do_projeto)) : ?>
-                                          <p class="ty u-mb-1">
-                                            <b class="ty-subItem">Integrantes:</b>
-                                            <span class="ty-gray"><?php echo implode(', ', $integrantes_do_projeto); ?></span>
-                                          </p>
-                                        <?php endif; ?>
-
-
-                                      </div> <!-- end-grid-right -->
-                                    </div><!-- end-grid -->
-
-                                  <?php endif; ?>
-                                  <!-- (tab-seven) end if 8 -->
-
-
-                                <?php endif; ?>
-                                <!-- (tab-seven) end if 7 -->
-
-                              <?php endforeach; ?>
-                              <!-- (tab-seven) end foreach 5 -->
-
-                            <?php endif; ?>
-                            <!-- (tab-seven) end if 6 -->
-
-                          <?php endforeach; ?>
-                          <!-- (tab-seven) end foreach 4 -->
-
-                        <?php endif; ?>
-                        <!-- (tab-seven) end if 4 -->
-
-                      <?php endfor; ?>
-                      <!-- (tab-seven) end for 1 -->
-
-                    <?php endif; ?>
-                    <!-- (tab-seven) end if 2 -->
-
-                  <?php endif; ?>
-                  <!-- (tab-seven) end if 1 -->
-
-                <?php endforeach; ?>
-                <!-- (tab-seven) end foreach 2 -->
-
-              <?php endforeach; ?>
-              <!-- (tab-seven) end foreach 1 -->
-
-
-
-            </div> <!-- end tab seven -->
           </transition>
 
           <p class="ty ty-lastUpdate u-right">Atualização Lattes em
@@ -1742,7 +1133,7 @@ if (!empty($_REQUEST["lattesID"])) {
     var app = new Vue({
       el: '#tabs',
       data: {
-        tabOpened: '1',
+        tabOpened: '2',
         isActive: false
 
       },

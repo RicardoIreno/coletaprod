@@ -43,7 +43,7 @@ details[open] .cc-fbloc-name--header:before {
 
 @mixin filterhover() {
   transition: all .2s ease;
-background-color: _palette(theme-light-2);
+  background-color: _palette(theme-light-2);
   color: _palette(bg-primary);
 }
 
@@ -100,7 +100,7 @@ background-color: _palette(theme-light-2);
 
   &-header {
     font-size: 1.1rem;
-    padding: .2rem .2rem .2rem 1.5rem;
+    padding: .7rem .2rem .7rem 1.5rem;
     border-radius: .5rem;
     cursor: pointer;
     line-height: 1rem;
@@ -137,6 +137,16 @@ background-color: _palette(theme-light-2);
   &-name {
     grid-area: nome;
     margin-inline: .7 rem;
+    background-color: transparent;
+    border: none;
+    overflow: hidden;
+    word-wrap: break-word;
+
+    &:hover {
+      color: _palette(bg-primary);
+      transition: .2s all ease;
+
+    }
 
     &--header::before {
       content: "›";
