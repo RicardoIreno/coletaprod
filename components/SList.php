@@ -31,7 +31,7 @@ class SList
   {
     $output = '';
     if (!empty($yearStart)) {
-      !empty($yearEnd) ? $output = "$yearStart a $yearEnd"  : $output = $yearStart;
+      !empty($yearEnd) ? $output = "$yearStart a $yearEnd"  : $output = "Desde $yearStart";
       return  $output;
     } else {
       return  $output;

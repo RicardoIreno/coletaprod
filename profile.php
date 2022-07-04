@@ -955,34 +955,23 @@ if (!empty($_REQUEST["lattesID"])) {
 
               <h2 class="ty ty-title u-mb-2">Gestão</h2>
 
-              <!-- (tab-five) foreach 1 -->
-              <?php foreach ($profile['atuacoes_profissionais'] as $key => $atuacoes_profissionais) : ?>
+              <?php
+              foreach ($profile['atuacoes_profissionais'] as $key => $atuacoes_profissionais) {
 
-                <!-- (tab-five) foreach 2 -->
-                <?php foreach ($atuacoes_profissionais as $key => $atuacao_profissional) : ?>
+                foreach ($atuacoes_profissionais as $key => $atuacao_profissional) {
 
-                  <!-- (tab-five) if 3 -->
-                  <?php if (isset($atuacao_profissional['ATIVIDADES-DE-DIRECAO-E-ADMINISTRACAO'])) : ?>
+                  if (isset($atuacao_profissional['ATIVIDADES-DE-DIRECAO-E-ADMINISTRACAO'])) {
 
+                    echo '<h4>' . $atuacao_profissional['@attributes']['NOME-INSTITUICAO'] . '</h4>';
 
-                    <h4 class="ty ty-title u-my-2">
-                      <?php echo $atuacao_profissional['@attributes']['NOME-INSTITUICAO']; ?>
-                    </h4>
+                    if (isset($atuacao_profissional['VINCULOS'])) {
 
-                    <!-- (tab-five) if 1 -->
-                    <?php if (isset($atuacao_profissional['VINCULOS'])) : ?>
+                      for ($i_atuacao_profissional = 0; $i_atuacao_profissional <= (count($atuacao_profissional['VINCULOS']) - 1); $i_atuacao_profissional++) {
 
+                        foreach ($atuacao_profissional['ATIVIDADES-DE-DIRECAO-E-ADMINISTRACAO']['DIRECAO-E-ADMINISTRACAO'] as $key => $direcao_e_administracao) {
 
-                      <!-- (tab-five) for 1 -->
-                      <?php for ($i_atuacao_profissional = 0; $i_atuacao_profissional <= (count($atuacao_profissional['VINCULOS']) - 1); $i_atuacao_profissional++) : ?>
+                          echo '<ul>';
 
-
-
-                        <!-- (tab-five) foreach 3 -->
-                        <?php foreach ($atuacao_profissional['ATIVIDADES-DE-DIRECAO-E-ADMINISTRACAO']['DIRECAO-E-ADMINISTRACAO'] as $key => $direcao_e_administracao) : ?>
-
-                          <ul>
-                            <?php
                             SList::genericItem(
                               $type = 'managing',
                               $itemName = $direcao_e_administracao['@attributes']['CARGO-OU-FUNCAO'],
@@ -995,29 +984,16 @@ if (!empty($_REQUEST["lattesID"])) {
                               $yearStart = $direcao_e_administracao['@attributes']['ANO-INICIO'],
                               $yearEnd = $direcao_e_administracao['@attributes']['ANO-FIM']
                             );
-                            ?>
-                          </ul>
 
-                        <?php endforeach; ?>
-                        <!-- (tab-five) end foreach 3 -->
+                          echo '</ul>';
 
-
-                      <?php endfor; ?>
-                      <!-- (tab-five) end for 1 -->
-
-
-                    <?php endif; ?>
-                    <!-- (tab-five) end if 1 -->
-
-                  <?php endif; ?>
-                  <!-- (tab-five) end if 3 -->
-
-                <?php endforeach; ?>
-                <!-- (tab-five) end foreach 2 -->
-
-              <?php endforeach; ?>
-              <!-- (tab-five) end foreach 1 -->
-
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+              ?>
 
             </div> <!-- end tab-five -->
           </transition>
