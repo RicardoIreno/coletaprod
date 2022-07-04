@@ -777,7 +777,7 @@ if (!empty($_REQUEST["lattesID"])) {
                       foreach ($work["_source"]["author"] as $author) {
                         $authors[] = $author["person"]["name"];
                       }
-
+                      echo '<ul>';
                       Production::IntelectualProduction(
                         $type = $work['_source']['tipo'],
                         $name = $work['_source']['name'],
@@ -794,9 +794,7 @@ if (!empty($_REQUEST["lattesID"])) {
                         $datePublished = '',
                         $id = ''
                       );
-
-                      //echo "<pre>".print_r($work, true)."</pre>";
-
+                      echo '</ul>';
                     }
                     unset($authors);
                   }
@@ -824,6 +822,7 @@ if (!empty($_REQUEST["lattesID"])) {
                   if (isset($atuacao_profissional['VINCULOS'])) {
                     if (count($atuacao_profissional['VINCULOS']) == 1) {
 
+                      echo '<ul>';
                       SList::genericItem(
                         $type = "professional",
                         $itemName = $atuacao_profissional['VINCULOS']['@attributes']['OUTRO-ENQUADRAMENTO-FUNCIONAL-INFORMADO'],
@@ -836,9 +835,12 @@ if (!empty($_REQUEST["lattesID"])) {
                         $yearStart = $atuacao_profissional['VINCULOS']['@attributes']['ANO-INICIO'],
                         $yearEnd = $atuacao_profissional['VINCULOS']['@attributes']['ANO-FIM']
                       );
+
+                      echo '</ul>';
                     } else {
                       for ($i_atuacao_profissional = 0; $i_atuacao_profissional <= (count($atuacao_profissional['VINCULOS']) - 1); $i_atuacao_profissional++) {
 
+                        echo '<ul>';
                         SList::genericItem(
                           $type = "professional",
                           $itemName = $atuacao_profissional['VINCULOS'][$i_atuacao_profissional]['@attributes']['OUTRO-ENQUADRAMENTO-FUNCIONAL-INFORMADO'],
@@ -851,6 +853,8 @@ if (!empty($_REQUEST["lattesID"])) {
                           $yearStart = $atuacao_profissional['VINCULOS'][$i_atuacao_profissional]['@attributes']['ANO-INICIO'],
                           $yearEnd = $atuacao_profissional['VINCULOS'][$i_atuacao_profissional]['@attributes']['ANO-FIM']
                         );
+
+                        echo '</ul>';
                       }
                     };
                   };
@@ -889,6 +893,7 @@ if (!empty($_REQUEST["lattesID"])) {
                       foreach ($orientacao_andamento_array[$orientacao_andamento_label] as $orientacao_andamento_echo) {
                         //var_dump($orientacao_andamento_echo);
 
+                        echo '<ul>';
                         SList::genericItem(
                           $type = 'orientation',
                           $itemName = $orientacao_andamento_echo["nomeDoOrientando"],
@@ -901,6 +906,7 @@ if (!empty($_REQUEST["lattesID"])) {
                           $yearStart = $orientacao_andamento_echo["ano"],
                           $yearEnd = ''
                         );
+                        echo '</ul>';
                       }
                     }
                   }
@@ -927,6 +933,7 @@ if (!empty($_REQUEST["lattesID"])) {
                       foreach ($orientacao_concluidas_array[$orientacao_concluidas_label] as $orientacao_concluidas_echo) {
                         //var_dump($orientacao_concluidas_echo);
 
+                        echo '<ul>';
                         SList::genericItem(
                           $type = 'orientation',
                           $itemName = $orientacao_concluidas_echo["nomeDoOrientando"],
@@ -939,6 +946,8 @@ if (!empty($_REQUEST["lattesID"])) {
                           $yearStart = $orientacao_concluidas_echo["ano"],
                           $yearEnd = ''
                         );
+
+                        echo '</ul>';
                       }
                     }
                     unset($orientacao_concluidas_array);
@@ -972,21 +981,20 @@ if (!empty($_REQUEST["lattesID"])) {
 
                           echo '<ul>';
 
-                            SList::genericItem(
-                              $type = 'managing',
-                              $itemName = $direcao_e_administracao['@attributes']['CARGO-OU-FUNCAO'],
-                              $itemNameLink = "http://lattes.cnpq.br/" . $orientacao_andamento_echo["numeroIDOrientado"],
-                              $itemInfoA = '',
-                              $itemInfoB = $direcao_e_administracao['@attributes']['NOME-ORGAO'],
-                              $itemInfoC = $direcao_e_administracao['@attributes']['NOME-UNIDADE'],
-                              $itemInfoD = '',
-                              $authors  = '',
-                              $yearStart = $direcao_e_administracao['@attributes']['ANO-INICIO'],
-                              $yearEnd = $direcao_e_administracao['@attributes']['ANO-FIM']
-                            );
+                          SList::genericItem(
+                            $type = 'managing',
+                            $itemName = $direcao_e_administracao['@attributes']['CARGO-OU-FUNCAO'],
+                            $itemNameLink = "http://lattes.cnpq.br/" . $orientacao_andamento_echo["numeroIDOrientado"],
+                            $itemInfoA = '',
+                            $itemInfoB = $direcao_e_administracao['@attributes']['NOME-ORGAO'],
+                            $itemInfoC = $direcao_e_administracao['@attributes']['NOME-UNIDADE'],
+                            $itemInfoD = '',
+                            $authors  = '',
+                            $yearStart = $direcao_e_administracao['@attributes']['ANO-INICIO'],
+                            $yearEnd = $direcao_e_administracao['@attributes']['ANO-FIM']
+                          );
 
                           echo '</ul>';
-
                         }
                       }
                     }
@@ -1027,7 +1035,7 @@ if (!empty($_REQUEST["lattesID"])) {
                                   $integrantes_do_projeto[] = $integrante_do_projeto['@attributes']['NOME-COMPLETO'];
                                 }
                               }
-
+                              echo '<ul>';
                               SList::genericItem(
                                 $type = 'research',
                                 $itemName = $projeto_de_pesquisa['@attributes']['NOME-DO-PROJETO'],
@@ -1041,6 +1049,7 @@ if (!empty($_REQUEST["lattesID"])) {
                                 $yearEnd = $projeto_de_pesquisa['@attributes']['ANO-FIM']
                               );
 
+                              echo '</ul>';
                               unset($integrantes_do_projeto);
                             } else {
                               if (isset($projeto_de_pesquisa['INTEGRANTES-DO-PROJETO'])) {
@@ -1059,6 +1068,7 @@ if (!empty($_REQUEST["lattesID"])) {
                                 (isset($integrantes_do_projeto)) ? $integrantesDoProjeto = implode(', ', $integrantes_do_projeto) : $integrantesDoProjeto = '';
 
 
+                                echo '<ul>';
                                 SList::genericItem(
                                   $type = 'research',
                                   $itemName = $projeto_de_pesquisa['NOME-DO-PROJETO'],
@@ -1071,6 +1081,8 @@ if (!empty($_REQUEST["lattesID"])) {
                                   $yearStart = $projeto_de_pesquisa['ANO-INICIO'],
                                   $yearEnd = $projeto_de_pesquisa['ANO-FIM']
                                 );
+
+                                echo '</ul>';
                               }
                             }
                           }
