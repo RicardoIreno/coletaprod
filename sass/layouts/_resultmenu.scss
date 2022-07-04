@@ -100,7 +100,7 @@ details[open] .cc-fbloc-name--header:before {
 
   &-header {
     font-size: 1.1rem;
-    padding: .2rem .2rem .2rem 1.5rem;
+    padding: .7rem .2rem .7rem 1.5rem;
     border-radius: .5rem;
     cursor: pointer;
     line-height: 1rem;
@@ -137,6 +137,16 @@ details[open] .cc-fbloc-name--header:before {
   &-name {
     grid-area: nome;
     margin-inline: .7 rem;
+    background-color: transparent;
+    border: none;
+    overflow: hidden;
+    word-wrap: break-word;
+
+    &:hover {
+      color: _palette(bg-primary);
+      transition: .2s all ease;
+
+    }
 
     &--header::before {
       content: "›";

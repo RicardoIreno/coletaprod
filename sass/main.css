@@ -300,6 +300,10 @@ h5 a {
   color: #8B8B8B;
 }
 
+.ty-black {
+  color: #000 !important;
+}
+
 .ty-name {
   font-size: 2rem;
   line-height: 2.2rem;
@@ -464,7 +468,7 @@ details[open] .cc-fbloc-name--header:before {
 
 .cc-fbloc-header {
   font-size: 1.1rem;
-  padding: .2rem .2rem .2rem 1.5rem;
+  padding: .7rem .2rem .7rem 1.5rem;
   border-radius: .5rem;
   cursor: pointer;
   line-height: 1rem;
@@ -502,6 +506,15 @@ details[open] .cc-fbloc-name--header:before {
 .cc-fbloc-name {
   grid-area: nome;
   margin-inline: .7 rem;
+  background-color: transparent;
+  border: none;
+  overflow: hidden;
+  word-wrap: break-word;
+}
+
+.cc-fbloc-name:hover {
+  color: #fff;
+  transition: .2s all ease;
 }
 
 .cc-fbloc-name--header::before {
@@ -1046,6 +1059,7 @@ th {
   width: fit-content;
   min-width: 6rem;
   font-size: 2rem;
+  font-weight: 8  00;
 }
 
 .cc-navigator-btn:hover {
@@ -1968,5 +1982,21 @@ th {
   overflow: hidden;
   text-overflow: ellipsis;
   border: 1px solid #000000;
+}
+
+.c-collapsetwo {
+  border: 1px dashed #7fd1f5;
+  margin: 1rem;
+  padding: .5rem;
+}
+
+.c-collapsetwo-summary {
+  color: #1C9AD1;
+}
+
+.c-testfind {
+  color: red;
+  background-color: transparent;
+  border: none;
 }
 /*# sourceMappingURL=main.css.map */

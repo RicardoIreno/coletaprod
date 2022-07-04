@@ -23,3 +23,24 @@
   text-overflow: ellipsis;
   border: 1px solid #000000;
 }
+
+
+
+// ========================
+
+.c-collapsetwo {
+  border: 1px dashed _palette(theme-light-2);
+  margin: 1rem;
+  padding: .5rem;
+
+  &-summary {
+    color: _palette(theme);
+
+  }
+}
+
+.c-testfind {
+  color: red;
+  background-color: transparent;
+  border: none;
+}
