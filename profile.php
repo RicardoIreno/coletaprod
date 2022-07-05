@@ -549,247 +549,121 @@ if (!empty($_REQUEST["lattesID"])) {
               <h3 class="ty ty-title">Formação</h3>
 
               <!-- Livre Docência -->
-              <?php if (isset($profile["formacao_academica_titulacao_livreDocencia"])) : ?>
+              <?php
 
-              <?php foreach ($profile["formacao_academica_titulacao_livreDocencia"] as $key => $livreDocencia) : ?>
+                if (isset($profile["formacao_academica_titulacao_livreDocencia"])) {
 
-              <div class="formation-container">
-                <div class="s-list">
-                  <div class="s-list-bullet">
-                    <img class="s-list-ico" src="inc/images/icons/academic.svg" />
-                  </div>
+                  foreach ($profile["formacao_academica_titulacao_livreDocencia"] as $key => $livreDocencia) {
 
-                  <div class="s-list-content">
-                    <div class="formation">
-                      <p class="ty-item">Livre Docência
-                        <i> —
-                          <?php echo $livreDocencia["anoDeObtencaoDoTitulo"] ?>
-                        </i>
-                      </p>
+                    !empty($livreDocencia["area_do_conhecimento"][0]["nomeDaEspecialidade"]) ?
+                      $b = $livreDocencia["area_do_conhecimento"][0]["nomeDaEspecialidade"] : $b = '';
 
-                      <p class="ty">
-                        <?php echo $livreDocencia["tituloDoTrabalho"] ?>
-                      </p>
+                    !empty($livreDocencia["area_do_conhecimento"][0]["nomeDaSubAreaDoConhecimento"]) ?
+                      $c = $livreDocencia["area_do_conhecimento"][0]["nomeDaSubAreaDoConhecimento"] : $c = '';
+                
+                    SList::genericItem(
+                      $type = 'formation',
+                      $itemName = 'Livre Docência',
+                      $itemNameLink = '',
+                      $itemInfoA = $livreDocencia["tituloDoTrabalho"],
+                      $itemInfoB = $b,
+                      $itemInfoC = $c,
+                      $itemInfoD = $livreDocencia["nomeInstituicao"],
+                      $itemInfoE = '',
+                      $authors = '',
+                      $yearStart = '',
+                      $yearEnd = $livreDocencia["anoDeObtencaoDoTitulo"]
+                    );
+                  }
+                }
 
-                      <p class="ty ty-gray">
-                        <?php if (!empty($livreDocencia["area_do_conhecimento"][0]["nomeDaEspecialidade"])) : ?>
-                        <?php echo $livreDocencia["area_do_conhecimento"][0]["nomeDaEspecialidade"] ?>
-                        <?php endif; ?>
-
-                        <?php if (
-                              !empty($livreDocencia["area_do_conhecimento"][0]["nomeDaEspecialidade"]) &&
-                              !empty($livreDocencia["area_do_conhecimento"][0]["nomeDaSubAreaDoConhecimento"])
-                            ) : ?>
-                        <?php echo ', ' ?>
-                        <?php endif; ?>
-
-                        <?php if (!empty($livreDocencia["area_do_conhecimento"][0]["nomeDaSubAreaDoConhecimento"])) : ?>
-                        <?php echo $livreDocencia["area_do_conhecimento"][0]["nomeDaSubAreaDoConhecimento"] ?>
-                        <?php endif; ?>
-                      </p>
-
-                      <p class="ty"><?php echo $livreDocencia["nomeInstituicao"] ?></p>
-
-                      <!-- <?php if (!empty($livreDocencia["area_do_conhecimento"][0]["nomeDaAreaDoConhecimento"])) : ?>
-                            <p class="ty">
-                              <b class="ty-subItem">Área do conhecimento:</b>
-                              <?php echo $livreDocencia["area_do_conhecimento"][0]["nomeDaAreaDoConhecimento"] ?>
-                            </p>
-                          <?php endif; ?> -->
-
-                      <!-- <?php if (!empty($livreDocencia["area_do_conhecimento"][0]["nomeGrandeAreaDoConhecimento"])) : ?>
-                            <p class="ty">
-                              <b class="ty-subItem">Grande área:</b>
-                              <?php echo $livreDocencia["area_do_conhecimento"][0]["nomeGrandeAreaDoConhecimento"] ?>
-                            </p>
-                          <?php endif; ?> -->
-
-                    </div> <!-- end formation -->
-                  </div> <!-- end s-list-content -->
-                </div> <!-- end s-list -->
-              </div> <!-- end formation-container -->
-              <?php endforeach; ?>
-              <?php endif; ?>
-
+                ?>
 
 
               <!-- Doutorado -->
-              <?php if (isset($profile["formacao_academica_titulacao_doutorado"])) : ?>
+              <?php
+              if (isset($profile["formacao_academica_titulacao_doutorado"])) {
+                foreach ($profile["formacao_academica_titulacao_doutorado"] as $key => $doutorado) {
 
-              <?php foreach ($profile["formacao_academica_titulacao_doutorado"] as $key => $doutorado) : ?>
+                  !empty($doutorado["area_do_conhecimento"][0]["nomeDaEspecialidade"]) ?
+                    $especialidade = $doutorado["area_do_conhecimento"][0]["nomeDaEspecialidade"] : $especialidade = '';
 
-              <div class="formation-container">
-                <div class="s-list">
-                  <div class="s-list-bullet">
-                    <img class="s-list-ico" src="inc/images/icons/academic.svg" />
-                  </div>
-                  <div class="s-list-content">
-                    <div class="formation">
-                      <p class="ty-item">Doutorado em <?php echo $doutorado["nomeCurso"] ?>
-                        <i> —
-                          <?php echo $doutorado["anoDeInicio"] ?> -
-                          <?php echo $doutorado["anoDeConclusao"] ?>
-                        </i>
-                      </p>
-                      <p class="ty">
-                        <?php echo $doutorado["tituloDaDissertacaoTese"] ?>
-                      </p>
+                  !empty($doutorado["area_do_conhecimento"][0]["nomeDaSubAreaDoConhecimento"]) ?
+                    $subArea = $doutorado["area_do_conhecimento"][0]["nomeDaSubAreaDoConhecimento"] : $subArea = '';
 
-
-                      <p class="ty ty-gray">
-
-                        <?php if (!empty($doutorado["area_do_conhecimento"][0]["nomeDaEspecialidade"])) : ?>
-                        <?php echo $doutorado["area_do_conhecimento"][0]["nomeDaEspecialidade"] ?>
-                        <?php endif; ?>
-
-                        <?php if (
-                              !empty($doutorado["area_do_conhecimento"][0]["nomeDaEspecialidade"]) &&
-                              !empty($doutorado["area_do_conhecimento"][0]["nomeDaSubAreaDoConhecimento"])
-                            ) : ?>
-                        <?php echo ',' ?>
-                        <?php endif; ?>
-
-                        <?php if (!empty($doutorado["area_do_conhecimento"][0]["nomeDaSubAreaDoConhecimento"])) : ?>
-                        <?php echo $doutorado["area_do_conhecimento"][0]["nomeDaSubAreaDoConhecimento"] ?>
-                        <?php endif; ?>
-                      </p>
-
-                      <p class="ty ty-gray">
-                        <i>Orientador(a):</i>
-                        <?php echo $doutorado["nomeDoOrientador"] ?>,
-                        <?php echo $doutorado["nomeInstituicao"] ?>
-                      </p>
-
-                      <!-- <?php if (!empty($doutorado["area_do_conhecimento"][0]["nomeGrandeAreaDoConhecimento"])) : ?>
-                            <p class="ty">
-                              <b class="ty-subItem">Grande área:</b>
-                              <?php echo $doutorado["area_do_conhecimento"][0]["nomeGrandeAreaDoConhecimento"] ?>
-                            </p>
-                          <?php endif; ?> -->
-
-                      <!-- <?php if (!empty($doutorado["area_do_conhecimento"][0]["nomeDaAreaDoConhecimento"])) : ?>
-                            <p class="ty">
-                              <b class="ty-subItem">Área do conhecimento:</b>
-                              <?php echo $doutorado["area_do_conhecimento"][0]["nomeDaAreaDoConhecimento"] ?>
-                            </p>
-                          <?php endif; ?> -->
-
-                    </div> <!-- end formation -->
-                  </div> <!-- end s-list-content -->
-                </div> <!-- end s-list -->
-              </div> <!-- end formation-container -->
-              <?php endforeach; ?>
-              <?php endif; ?>
-
-
+                  SList::genericItem(
+                    $type = 'formation',
+                    $itemName = 'Doutorado em ' . $doutorado["nomeCurso"],
+                    $itemNameLink = '',
+                    $itemInfoA = $doutorado["tituloDaDissertacaoTese"],
+                    $itemInfoB = $especialidade,
+                    $itemInfoC = $subArea,
+                    $itemInfoD = 'Orientação: '.$doutorado["nomeDoOrientador"],
+                    $itemInfoE = $doutorado["nomeInstituicao"],
+                    $authors = '',
+                    $yearStart = $doutorado["anoDeInicio"],
+                    $yearEnd = $doutorado["anoDeConclusao"]
+                  );
+                }
+              }
+              ?>
 
               <!-- Mestrado -->
-              <?php if (isset($profile["formacao_academica_titulacao_mestrado"])) : ?>
+              <?php
+              if (isset($profile["formacao_academica_titulacao_mestrado"])) {
+                foreach ($profile["formacao_academica_titulacao_mestrado"] as $key => $mestrado) {
 
-              <?php foreach ($profile["formacao_academica_titulacao_mestrado"] as $key => $mestrado) : ?>
+                  !empty($mestrado["area_do_conhecimento"][0]["nomeDaEspecialidade"]) ?
+                    $especialidade = $mestrado["area_do_conhecimento"][0]["nomeDaEspecialidade"] : $especialidade = '';
 
-              <div class="formation-container">
-                <div class="s-list">
-                  <div class="s-list-bullet">
-                    <img class="s-list-ico" src="inc/images/icons/academic.svg" />
-                  </div>
+                  !empty($mestrado["area_do_conhecimento"][0]["nomeDaSubAreaDoConhecimento"]) ?
+                    $subArea = $mestrado["area_do_conhecimento"][0]["nomeDaSubAreaDoConhecimento"] : $subArea = '';
 
-                  <div class="s-list-content">
-                    <div class="formation">
-                      <p class="ty-item">Mestrado em <?php echo $mestrado["nomeCurso"] ?>
-                        <i> —
-                          <?php echo $mestrado["anoDeInicio"] ?> -
-                          <?php echo $mestrado["anoDeConclusao"] ?>
-                        </i>
-                      </p>
-
-                      <p class="ty">
-                        <?php echo $mestrado["tituloDaDissertacaoTese"] ?>
-                      </p>
-
-                      <p class="ty ty-gray">
-                        <?php if (!empty($mestrado["area_do_conhecimento"][0]["nomeDaSubAreaDoConhecimento"])) : ?>
-                        <?php echo $mestrado["area_do_conhecimento"][0]["nomeDaSubAreaDoConhecimento"] ?>
-                        <?php endif; ?>
-
-                        <?php if (
-                              !empty($mestrado["area_do_conhecimento"][0]["nomeDaSubAreaDoConhecimento"]) &&
-                              !empty($mestrado["area_do_conhecimento"][0]["nomeDaEspecialidade"])
-                            ) : ?>
-                        <?php echo ',' ?>
-                        <?php endif; ?>
-
-                        <?php if (!empty($mestrado["area_do_conhecimento"][0]["nomeDaEspecialidade"])) : ?>
-                        <?php echo $mestrado["area_do_conhecimento"][0]["nomeDaEspecialidade"] ?>
-                        <?php endif; ?>
-                      </p>
-
-                      <p class="ty ty-gray">
-                        <i>Orientador(a): </i>
-                        <?php echo $mestrado["nomeDoOrientador"] ?>,
-                        <?php echo $mestrado["nomeInstituicao"] ?>
-                      </p>
-
-                      <!-- <?php if (!empty($mestrado["area_do_conhecimento"][0]["nomeGrandeAreaDoConhecimento"])) : ?>
-                            <p class="ty">
-                              <b class="ty-subItem">Grande área: </b>
-                              <?php echo $mestrado["area_do_conhecimento"][0]["nomeGrandeAreaDoConhecimento"] ?>
-                            </p>
-                          <?php endif; ?>
-
-                          <?php if (!empty($mestrado["area_do_conhecimento"][0]["nomeDaAreaDoConhecimento"])) : ?>
-                            <p class="ty">
-                              <b class="ty-subItem">Área do conhecimento:</b>
-                              <?php echo $mestrado["area_do_conhecimento"][0]["nomeDaAreaDoConhecimento"] ?>
-                            </p>
-                          <?php endif; ?> -->
-
-                    </div> <!-- end formation -->
-                  </div> <!-- end s-list-content -->
-                </div> <!-- end s-list -->
-              </div> <!-- end formation-container -->
-              <?php endforeach; ?>
-              <?php endif; ?>
+                  SList::genericItem(
+                    $type = 'formation',
+                    $itemName = 'Doutorado em ' . $mestrado["nomeCurso"],
+                    $itemNameLink = '',
+                    $itemInfoA = $mestrado["tituloDaDissertacaoTese"],
+                    $itemInfoB = $especialidade,
+                    $itemInfoC = $subArea,
+                    $itemInfoD = 'Orientação: '.$mestrado["nomeDoOrientador"],
+                    $itemInfoE = $mestrado["nomeInstituicao"],
+                    $authors = '',
+                    $yearStart = $mestrado["anoDeInicio"],
+                    $yearEnd = $mestrado["anoDeConclusao"]
+                  );
+                }
+              }
+              ?>
 
 
 
               <!-- Graduação -->
-              <?php if (isset($profile["formacao_academica_titulacao_graduacao"])) : ?>
+              <?php
+              if (isset($profile["formacao_academica_titulacao_graduacao"])) {
+                foreach ($profile["formacao_academica_titulacao_graduacao"] as $key => $graduacao) {
 
-              <?php foreach ($profile["formacao_academica_titulacao_graduacao"] as $key => $graduacao) : ?>
+                  $orientador = '';
+                  !empty($graduacao["nomeDoOrientador"]) ?
+                    $orientador = 'Orientação: ' . $graduacao["nomeDoOrientador"] : $orientador = '';
 
-              <div class="formation-container">
-                <div class="s-list">
-                  <div class="s-list-bullet">
-                    <img class="s-list-ico" src="inc/images/icons/academic.svg" />
-                  </div>
 
-                  <div class="s-list-content">
-                    <div class="formation">
-                      <p class="ty-item">Graduação em <?php echo $graduacao["nomeCurso"] ?>
-                        <i> —
-                          <?php echo $graduacao["anoDeInicio"] ?> -
-                          <?php echo $graduacao["anoDeConclusao"] ?>
-                        </i>
-                      </p>
-                      <p class="ty"><?php echo $graduacao["nomeInstituicao"] ?></p>
-                      <?php if (!empty($graduacao["tituloDoTrabalhoDeConclusaoDeCurso"])) : ?>
-                      <p class="ty ty-gray">
-                        <?php echo $graduacao["tituloDoTrabalhoDeConclusaoDeCurso"] ?>
-                      </p>
-                      <?php endif; ?>
-                      <?php if (!empty($graduacao["nomeDoOrientador"])) : ?>
-                      <p class="ty ty-gray">
-                        <i>Orientador(a): </i>
-                        <?php echo $graduacao["nomeDoOrientador"] ?>
-                      </p>
-                      <?php endif; ?>
-                    </div> <!-- end formation -->
-                  </div> <!-- end s-list-content -->
-                </div> <!-- end s-list -->
-              </div> <!-- end formation-container -->
-              <?php endforeach; ?>
-              <?php endif; ?>
+                  SList::genericItem(
+                    $type = 'formation',
+                    $itemName = 'Graduação em ' . $graduacao["nomeCurso"],
+                    $itemNameLink = '',
+                    $itemInfoA = $graduacao["tituloDoTrabalhoDeConclusaoDeCurso"],
+                    $itemInfoB = $orientador,
+                    $itemInfoC = $graduacao["nomeInstituicao"],
+                    $itemInfoD = '',
+                    $itemInfoE = '',
+                    $authors = '',
+                    $yearStart = $graduacao["anoDeInicio"],
+                    $yearEnd = $graduacao["anoDeConclusao"]
+                  );
+                }
+              }
+              ?>
 
 
 
@@ -810,13 +684,13 @@ if (!empty($_REQUEST["lattesID"])) {
                 for ($i = 2040; $i >= 1900; $i -= 1) {
                   if (!empty($works[$i])) {
 
-
                     echo '<hr class="c-line"></hr>
-                <h3 class="ty-subtitle c-pi-year">' . $i . '</h3>
-                <hr class="c-line u-mb-2"></hr> ';
+                            <h3 class="ty-subtitle c-pi-year">' . $i . '</h3>
+                          <hr class="c-line u-mb-2"></hr> ';
 
                     foreach ($works[$i] as $key => $work) {
 
+                      $authors = [];
                       foreach ($work["_source"]["author"] as $author) {
                         $authors[] = $author["person"]["name"];
                       }
@@ -874,6 +748,7 @@ if (!empty($_REQUEST["lattesID"])) {
                         $itemInfoB = '',
                         $itemInfoC = '',
                         $itemInfoD = '',
+                        $itemInfoE = '',
                         $authors = '',
                         $yearStart = $atuacao_profissional['VINCULOS']['@attributes']['ANO-INICIO'],
                         $yearEnd = $atuacao_profissional['VINCULOS']['@attributes']['ANO-FIM']
@@ -892,6 +767,7 @@ if (!empty($_REQUEST["lattesID"])) {
                           $itemInfoB = '',
                           $itemInfoC = '',
                           $itemInfoD = '',
+                          $itemInfoE = '',
                           $authors = '',
                           $yearStart = $atuacao_profissional['VINCULOS'][$i_atuacao_profissional]['@attributes']['ANO-INICIO'],
                           $yearEnd = $atuacao_profissional['VINCULOS'][$i_atuacao_profissional]['@attributes']['ANO-FIM']
@@ -945,6 +821,7 @@ if (!empty($_REQUEST["lattesID"])) {
                           $itemInfoB = $orientacao_andamento_echo["nomeDoCurso"],
                           $itemInfoC = $orientacao_andamento_echo["nomeDaAgencia"],
                           $itemInfoD = $orientacao_andamento_echo["nomeDaInstituicao"],
+                          $itemInfoE = '',
                           $authors = '',
                           $yearStart = $orientacao_andamento_echo["ano"],
                           $yearEnd = ''
@@ -985,6 +862,7 @@ if (!empty($_REQUEST["lattesID"])) {
                           $itemInfoB = $orientacao_concluidas_echo["nomeDoCurso"],
                           $itemInfoC = $orientacao_concluidas_echo["nomeDaAgencia"],
                           $itemInfoD = $orientacao_concluidas_echo["nomeDaInstituicao"],
+                          $itemInfoE = '',
                           $authors = '',
                           $yearStart = $orientacao_concluidas_echo["ano"],
                           $yearEnd = ''
@@ -1032,6 +910,7 @@ if (!empty($_REQUEST["lattesID"])) {
                             $itemInfoB = $direcao_e_administracao['@attributes']['NOME-ORGAO'],
                             $itemInfoC = $direcao_e_administracao['@attributes']['NOME-UNIDADE'],
                             $itemInfoD = '',
+                            $itemInfoE = '',
                             $authors  = '',
                             $yearStart = $direcao_e_administracao['@attributes']['ANO-INICIO'],
                             $yearEnd = $direcao_e_administracao['@attributes']['ANO-FIM']
@@ -1087,6 +966,7 @@ if (!empty($_REQUEST["lattesID"])) {
                                 $itemInfoB = '',
                                 $itemInfoC = '',
                                 $itemInfoD = '',
+                                $itemInfoE = '',
                                 $authors = implode(', ', $integrantes_do_projeto),
                                 $yearStart = $projeto_de_pesquisa['@attributes']['ANO-INICIO'],
                                 $yearEnd = $projeto_de_pesquisa['@attributes']['ANO-FIM']
@@ -1120,6 +1000,7 @@ if (!empty($_REQUEST["lattesID"])) {
                                   $itemInfoB = '',
                                   $itemInfoC = '',
                                   $itemInfoD = '',
+                                  $itemInfoE = '',
                                   $authors = $integrantesDoProjeto,
                                   $yearStart = $projeto_de_pesquisa['ANO-INICIO'],
                                   $yearEnd = $projeto_de_pesquisa['ANO-FIM']
