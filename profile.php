@@ -194,7 +194,7 @@ if (!empty($_REQUEST["lattesID"])) {
               </span>
 
               <span class="cc-numbers-number">
-                <img class="cc-numbers-icon" src="inc/images/icons/orientation.svg" alt="Orientações" title="Oirentações" />
+                <img class="cc-numbers-icon" src="inc/images/icons/orientation.svg" alt="Orientações" title="Orientações" />
                 <?php echo $totalOrientacoes; ?>
               </span>
 
