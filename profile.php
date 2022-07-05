@@ -75,6 +75,32 @@ if (!empty($_REQUEST["lattesID"])) {
 
   //echo "<pre>".print_r($cursor_works["aggregations"], true)."</pre>";
 
+  if (isset($cursor_works["aggregations"])) {
+    $works = $cursor_works["aggregations"]["counts"]["buckets"];
+    $years_ok = [];
+    for ($i = date("Y"); $i >= date("Y",strtotime("-4 year")); $i--) {
+
+      for ($j = 0; $j < count($works); $j++) {
+        if ($works[$j]["key"] == $i) {
+          $trabalhos_publicados[] = [
+            "year" => $i,
+            "total" => $works[$j]["doc_count"]
+          ];
+          $years_ok[] = $i;
+        }
+      }
+      if (in_array($i, $years_ok)) {
+        continue;
+      } else {
+        $trabalhos_publicados[] = [
+          "year" => $i,
+          "total" => 0
+        ];
+      }
+    }
+    //var_dump($trabalhos_publicados);
+  }
+
   $lattesID10 = lattesID10($_GET["lattesID"]);
 
   // Totals
@@ -186,7 +212,7 @@ if (!empty($_REQUEST["lattesID"])) {
             </div> <!-- end cc-numbers -->
 
           </div> <!-- end core-two -->
-          <!--
+          
           <div class="cc-coregrid-three">
             <a class="u-skip" href=”#skipcc-graph”>Pular gráfico</a>
 
@@ -197,9 +223,9 @@ if (!empty($_REQUEST["lattesID"])) {
               </div>
 
               <div class="cc-graph-line">
-                <span class="cc-graph-label">Artigos publicados</span>
-                < ?php
-                foreach ($artigos_publicados as $i => $j) {
+                <span class="cc-graph-label">Trabalhos publicados</span>
+                <?php
+                foreach ($trabalhos_publicados as $i => $j) {
                   echo
                   "<div 
                     class='cc-graph-unit' 
@@ -212,6 +238,7 @@ if (!empty($_REQUEST["lattesID"])) {
                 ?>
               </div>
 
+              <!--
               <div class="cc-graph-line">
                 <span class="cc-graph-label">Livros e capítulos</span>
                 < ?php
@@ -307,6 +334,7 @@ if (!empty($_REQUEST["lattesID"])) {
                 unset($j);
                 ?>
               </div>
+              -->
 
               <div class="cc-graph-line u-mt-1">
                 <div class="cc-graph-icon"></div>
@@ -318,7 +346,7 @@ if (!empty($_REQUEST["lattesID"])) {
               </div>
 
 
-            </div> //<//!-- end cc-graph --//>
+            </div> <!-- end cc-graph -->
 
 
             <div class="cc-graph-info">
@@ -333,7 +361,7 @@ if (!empty($_REQUEST["lattesID"])) {
 
 
             <span class="u-skip" id="skipcc-graph”"></span>
-          </div> -->
+          </div>
           <!-- end core-three -->
 
         </div> <!-- end cc-coregrid  -->
