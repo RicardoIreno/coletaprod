@@ -694,17 +694,27 @@ if (!empty($_REQUEST["lattesID"])) {
                       foreach ($work["_source"]["author"] as $author) {
                         $authors[] = $author["person"]["name"];
                       }
+
+                      !empty($work['_source']['doi']) ? 
+                      $doi = $work['_source']['doi'] : $doi = '';
+                    
+                      !empty($work['_source']['isPartOf']['volume']) ? 
+                        $vol = $work['_source']['isPartOf']['volume'] : $vol = '';
+                      
+                      !empty($work['_source']['isPartOf']['fasciculo']) ? 
+                        $fascicle = $work['_source']['isPartOf']['fasciculo'] : $fascicle = '';
+                        
                       echo '<ul>';
                       Production::IntelectualProduction(
                         $type = $work['_source']['tipo'],
                         $name = $work['_source']['name'],
                         $nAuthors = $authors,
                         $url = $work['_source']['url'],
-                        $doi = $work['_source']['doi'],
+                        $doi = $doi,
                         $issn = '',
                         $refName =  $work['_source']['isPartOf']['name'],
-                        $refVol = $work['_source']['isPartOf']['volume'],
-                        $refFascicle =  $work['_source']['isPartOf']['fasciculo'],
+                        $refVol = $vol,
+                        $refFascicle =  $fascicle,
                         $refPage = $work['_source']['pageStart'],
                         $event = '',
                         $evento = '',
