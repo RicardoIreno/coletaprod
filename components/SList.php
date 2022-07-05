@@ -20,6 +20,9 @@ class SList
       case "research":
         $img = 'research';
         break;
+      case "formation":
+        $img = 'academic';
+        break;
       default:
         $img = 'default';
     }
@@ -31,9 +34,10 @@ class SList
   {
     $output = '';
     if (!empty($yearStart)) {
-      !empty($yearEnd) ? $output = "$yearStart a $yearEnd"  : $output = "Desde $yearStart";
+      !empty($yearEnd) ? $output = "$yearStart a $yearEnd" : $output = "Desde $yearStart";
       return  $output;
     } else {
+      !empty($yearEnd) ? $output = "$yearEnd"  : $output = "";
       return  $output;
     }
   }
@@ -47,6 +51,7 @@ class SList
     $itemInfoB,
     $itemInfoC,
     $itemInfoD,
+    $itemInfoE,
     $authors,
     $yearStart,
     $yearEnd
@@ -78,6 +83,7 @@ class SList
 					<p class='ty ty-gray'>$itemInfoB $sepataror $itemInfoC</p>
 					<p class='ty ty-gray'>$itemInfoC</p>
 					<p class='ty ty-gray'>$itemInfoD</p>
+					<p class='ty ty-gray'>$itemInfoE</p>
 					<p class='ty ty-gray'>$aut</p>		
 					<p class='ty ty-gray'>$date</p>			
 				</div>
