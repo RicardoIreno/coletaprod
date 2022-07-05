@@ -1,4 +1,4 @@
-.back-to {
+.back-to-top {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -32,6 +32,8 @@
 }
 
 @include breakpoint(md-up) {
-  bottom: 70px;
-  right: 50px;
+  .back-to-top {
+    bottom: 70px;
+    right: 50px;
+  }
 }
