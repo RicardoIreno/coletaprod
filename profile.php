@@ -64,14 +64,16 @@ if (!empty($_REQUEST["lattesID"])) {
   $result_get_works = Requests::getParser($filter_works);
   $params_works = [];
   $params_works["index"] = $index;
-  $params_works["body"] = $result_get_works['query'];
+  $params_works["body"] = $result_get_works['query'];  
 
   $worksTotal = $client->count($params_works);
   $totalWorks = $worksTotal["count"];
 
   $params_works["size"] = 9999;
+  $params_works["body"]["aggs"]["counts"]["terms"]["field"] = "datePublished.keyword";
   $cursor_works = $client->search($params_works);
 
+  //echo "<pre>".print_r($cursor_works["aggregations"], true)."</pre>";
 
   $lattesID10 = lattesID10($_GET["lattesID"]);
 
