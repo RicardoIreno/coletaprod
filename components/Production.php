@@ -78,7 +78,7 @@ class Production
   static function IntelectualProduction(
     $type,
     $name,
-    $nAuthors,
+    $authors,
     $doi,
     $url,
     $issn,
@@ -101,7 +101,7 @@ class Production
     !empty($refFascicle) ? $refFascicle = ", n. $refFascicle" : '';
     !empty($refPage) ? $refPage = ", p. $refPage" : '';
 
-    $authorsRendered = implode('; ', $nAuthors);
+    $authorsRendered = implode('; ', $authors);
 
     // (!empty($datePublished) && !empty($id)) ? $query = DadosInternos::queryProdmais($name, $datePublished, $id) : $query = '';
 
