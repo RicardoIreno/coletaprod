@@ -817,8 +817,6 @@ if (!empty($_REQUEST["lattesID"])) {
             <div id="tab-four" class="cc-tab-content" v-if="tabOpened == '4'">
               <h2 class="ty ty-title u-mb-2">Ensino</h2>
 
-              <p>Aqui vão as atividades de ensino</p>
-
               <h3 class="ty ty-title u-mb-2">Orientações e supervisões</h3>
 
               <?php
