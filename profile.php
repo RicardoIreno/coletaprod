@@ -71,6 +71,7 @@ if (!empty($_REQUEST["lattesID"])) {
 
   $params_works["size"] = 9999;
   $params_works["body"]["aggs"]["counts"]["terms"]["field"] = "datePublished.keyword";
+  $params_works["body"]["aggs"]["counts"]["terms"]["order"]["_key"] = "desc";
   $cursor_works = $client->search($params_works);
 
   //echo "<pre>".print_r($cursor_works["aggregations"], true)."</pre>";
@@ -78,6 +79,7 @@ if (!empty($_REQUEST["lattesID"])) {
   if (isset($cursor_works["aggregations"])) {
     $works = $cursor_works["aggregations"]["counts"]["buckets"];
     $years_ok = [];
+    $years_array_values = [];
     for ($i = date("Y"); $i >= date("Y",strtotime("-4 year")); $i--) {
 
       for ($j = 0; $j < count($works); $j++) {
@@ -86,6 +88,7 @@ if (!empty($_REQUEST["lattesID"])) {
             "year" => $i,
             "total" => $works[$j]["doc_count"]
           ];
+          $years_array_values[] = $works[$j]["doc_count"];
           $years_ok[] = $i;
         }
       }
@@ -98,6 +101,7 @@ if (!empty($_REQUEST["lattesID"])) {
         ];
       }
     }
+    $years_array_max = max($years_array_values);
     //var_dump($trabalhos_publicados);
   }
 
@@ -223,22 +227,36 @@ if (!empty($_REQUEST["lattesID"])) {
             <div class="cc-graph">
               <div class="cc-graph-line">
                 <div class="cc-graph-icon"></div>
-                <div class="cc-graph-label">...2021</div>
+                <div class="cc-graph-label"><?php echo date("Y"); ?>...<?php echo date("Y",strtotime("-4 year")); ?></div>
               </div>
 
               <div class="cc-graph-line">
                 <span class="cc-graph-label">Trabalhos publicados</span>
                 <?php
                 foreach ($trabalhos_publicados as $i => $j) {
+                  
+                  if ($j['total'] / $years_array_max <= 1 && $j['total'] / $years_array_max > 0.8) {
+                    $weight = 4;
+                  } elseif ($j['total'] / $years_array_max <= 0.8 && $j['total'] / $years_array_max > 0.6) {
+                    $weight = 3;
+                  } elseif ($j['total'] / $years_array_max <= 0.6 && $j['total'] / $years_array_max > 0.4) {
+                    $weight = 2;
+                  } elseif ($j['total'] / $years_array_max <= 0.4 && $j['total'] / $years_array_max > 0.2) {
+                    $weight = 1;
+                  } else {
+                    $weight = 0;
+                  }
+
                   echo
                   "<div 
                     class='cc-graph-unit' 
-                    data-weight='{$j['total']}'
+                    data-weight='{$weight}'
                     title='{$j['year']} — total: {$j['total']}'
                   ></div>";
                 }
                 unset($i);
                 unset($j);
+                unset($weight);
                 ?>
               </div>
 
