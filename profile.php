@@ -152,7 +152,8 @@ if (!empty($_REQUEST["lattesID"])) {
 
             <div class="cc-display">
               <!-- <img class="cc-display-badge" src="inc/images/icons/badges/bolsista-cnpq-1a.svg" /> -->
-              <img class="cc-display-pic" src="http://servicosweb.cnpq.br/wspessoa/servletrecuperafoto?tipo=1&amp;bcv=true&amp;id=<?php echo $lattesID10; ?>" />
+              <img class="cc-display-pic"
+                src="http://servicosweb.cnpq.br/wspessoa/servletrecuperafoto?tipo=1&amp;bcv=true&amp;id=<?php echo $lattesID10; ?>" />
             </div> <!-- end cc-photo-wrapper -->
 
           </div> <!-- end core-one -->
@@ -162,22 +163,23 @@ if (!empty($_REQUEST["lattesID"])) {
               <?php echo $profile["nome_completo"] ?>
 
               <?php if ($profile["nacionalidade"] == "B") : ?>
-                <img class="country-flag" src="inc/images/icons/country_flags/br.svg" alt="nacionalidade brasileira" title="nacionalidade brasileira" />
+              <img class="country-flag" src="inc/images/icons/country_flags/br.svg" alt="nacionalidade brasileira"
+                title="nacionalidade brasileira" />
               <?php endif; ?>
             </h1>
 
             <!-- <div class="u-mb-2  "></div> -->
             <h2 class="ty ty-prof">Universidade Federal de São Paulo</h2>
             <?php if (!empty($profile["unidade"][0])) : ?>
-              <p class="ty ty-prof"><?php echo $profile["unidade"][0] ?></p>
+            <p class="ty ty-prof"><?php echo $profile["unidade"][0] ?></p>
             <?php endif; ?>
             <?php if (!empty($profile["departamento"][0])) : ?>
-              <p class="ty ty-prof"><?php echo $profile["departamento"][0] ?></p>
+            <p class="ty ty-prof"><?php echo $profile["departamento"][0] ?></p>
             <?php endif; ?>
             <?php if (!empty($profile["ppg_nome"][0])) : ?>
-              <?php foreach ($profile["ppg_nome"] as $key => $ppg_nome) : ?>
-                <p class="ty ty-prof">Programa de Pós-Graduação: <?php echo $ppg_nome ?></p>
-              <?php endforeach; ?>
+            <?php foreach ($profile["ppg_nome"] as $key => $ppg_nome) : ?>
+            <p class="ty ty-prof">Programa de Pós-Graduação: <?php echo $ppg_nome ?></p>
+            <?php endforeach; ?>
             <?php endif; ?>
             <!--
             <div class="cc-badgeicons">
@@ -193,12 +195,14 @@ if (!empty($_REQUEST["lattesID"])) {
 
             <div class="cc-numbers">
               <span class="cc-numbers-number">
-                <img class="cc-numbers-icon" src="inc/images/icons/article-published.svg" alt="Trabalhos publicados" title="Trabalhos publicados" />
+                <img class="cc-numbers-icon" src="inc/images/icons/article-published.svg" alt="Trabalhos publicados"
+                  title="Trabalhos publicados" />
                 <?php echo $totalWorks; ?>
               </span>
 
               <span class="cc-numbers-number">
-                <img class="cc-numbers-icon" src="inc/images/icons/orientation.svg" alt="Orientações" title="Orientações" />
+                <img class="cc-numbers-icon" src="inc/images/icons/orientation.svg" alt="Orientações"
+                  title="Orientações" />
                 <?php echo $totalOrientacoes; ?>
               </span>
 
@@ -223,7 +227,8 @@ if (!empty($_REQUEST["lattesID"])) {
             <div class="cc-graph">
               <div class="cc-graph-line">
                 <div class="cc-graph-icon"></div>
-                <div class="cc-graph-label"><?php echo date("Y"); ?>...<?php echo date("Y", strtotime("-4 year")); ?></div>
+                <div class="cc-graph-label"><?php echo date("Y"); ?>...<?php echo date("Y", strtotime("-4 year")); ?>
+                </div>
               </div>
 
               <div class="cc-graph-line">
@@ -405,10 +410,10 @@ if (!empty($_REQUEST["lattesID"])) {
           </button>
 
           <?php if ($totalOrientacoes != 0) : ?>
-            <button id="tab-btn-4" class="cc-profmenu-btn" v-on:click="changeTab('4')" title="Ensino" alt="Ensino">
-              <div class="cc-profmenu-ico cc-profmenu-ico-4"></div>
-              <span class="cc-profmenu-text">Ensino</span>
-            </button>
+          <button id="tab-btn-4" class="cc-profmenu-btn" v-on:click="changeTab('4')" title="Ensino" alt="Ensino">
+            <div class="cc-profmenu-ico cc-profmenu-ico-4"></div>
+            <span class="cc-profmenu-text">Ensino</span>
+          </button>
           <?php endif; ?>
 
           <button id="tab-btn-5" class="cc-profmenu-btn" v-on:click="changeTab('5')" title="Gestão" alt="Gestão">
@@ -450,10 +455,14 @@ if (!empty($_REQUEST["lattesID"])) {
 
                 <?php if (!empty($profile['lattesID'])) : ?>
 
-                  <a href="https://lattes.cnpq.br/<?php echo $profile['lattesID']; ?>" target="_blank" rel="external"><img class="cc-socialicons-icon" src="inc/images/icons/academic_plataforms/logo_lattes.svg" alt="Lattes" title="Lattes" /></a>
+                <a href="https://lattes.cnpq.br/<?php echo $profile['lattesID']; ?>" target="_blank" rel="external"><img
+                    class="cc-socialicons-icon" src="inc/images/icons/academic_plataforms/logo_lattes.svg" alt="Lattes"
+                    title="Lattes" /></a>
                 <?php endif; ?>
                 <?php if (!empty($profile['orcid_id'])) : ?>
-                  <a href="<?php echo $profile['orcid_id']; ?>" target="_blank" rel="external"><img class="cc-socialicons-icon" src="inc/images/icons/academic_plataforms/logo_research_id.svg" alt="ORCID" title="ORCID" /></a>
+                <a href="<?php echo $profile['orcid_id']; ?>" target="_blank" rel="external"><img
+                    class="cc-socialicons-icon" src="inc/images/icons/academic_plataforms/logo_research_id.svg"
+                    alt="ORCID" title="ORCID" /></a>
                 <?php endif; ?>
 
               </div> <!-- end cc-socialicons -->
@@ -492,14 +501,14 @@ if (!empty($_REQUEST["lattesID"])) {
 
 
               <?php if (isset($profile["idiomas"])) : ?>
-                <div class=" u-left">
-                  <h3 class="ty ty-title">Idiomas</h3>
-                  <?php foreach ($profile["idiomas"] as $key => $idioma) : ?>
+              <div class=" u-left">
+                <h3 class="ty ty-title">Idiomas</h3>
+                <?php foreach ($profile["idiomas"] as $key => $idioma) : ?>
 
-                    <div class="s-list">
+                <div class="s-list">
 
-                      <div class="s-list-bullet">
-                        <?php
+                  <div class="s-list-bullet">
+                    <?php
                         switch ($idioma["descricaoDoIdioma"]) {
                           case "Inglês":
                             echo "<img class='c-iconlang' src='inc/images/icons/languages/en.svg' />";
@@ -530,28 +539,28 @@ if (!empty($_REQUEST["lattesID"])) {
                             break;
                         }
                         ?>
-                      </div>
+                  </div>
 
-                      <div class="s-list-content">
-                        <p class="ty ty-item"><?php echo $idioma["descricaoDoIdioma"] ?></p>
-                        <p class="ty" style="margin-bottom:10px;">
+                  <div class="s-list-content">
+                    <p class="ty ty-item"><?php echo $idioma["descricaoDoIdioma"] ?></p>
+                    <p class="ty" style="margin-bottom:10px;">
 
-                          Compreende <?php echo strtolower($idioma["proficienciaDeCompreensao"]) ?>
-                          <b class="ty-subItem-light">,</b>
+                      Compreende <?php echo strtolower($idioma["proficienciaDeCompreensao"]) ?>
+                      <b class="ty-subItem-light">,</b>
 
-                          Fala <?php echo strtolower($idioma["proficienciaDeFala"]) ?>
-                          <b class="ty-subItem-light">,</b>
+                      Fala <?php echo strtolower($idioma["proficienciaDeFala"]) ?>
+                      <b class="ty-subItem-light">,</b>
 
-                          Lê <?php echo strtolower($idioma["proficienciaDeLeitura"]) ?>
-                          <b class="ty-subItem-light">,</b>
+                      Lê <?php echo strtolower($idioma["proficienciaDeLeitura"]) ?>
+                      <b class="ty-subItem-light">,</b>
 
-                          Escreve <?php echo strtolower($idioma["proficienciaDeEscrita"]) ?>
-                        </p>
+                      Escreve <?php echo strtolower($idioma["proficienciaDeEscrita"]) ?>
+                    </p>
 
-                      </div>
-                    </div> <!-- end s-list -->
-                  <?php endforeach; ?>
-                </div> <!-- end u-left -->
+                  </div>
+                </div> <!-- end s-list -->
+                <?php endforeach; ?>
+              </div> <!-- end u-left -->
               <?php endif; ?>
 
               <hr class="c-line u-my-2" />
@@ -709,7 +718,7 @@ if (!empty($_REQUEST["lattesID"])) {
                         !empty($work['_source']['url']) ?
                           $url = $work['_source']['doi'] : $url = '';
                       } else {
-                        $url = '';s
+                        $url = '';
                       }
 
                       !empty($work['_source']['doi']) ?
@@ -1073,28 +1082,28 @@ if (!empty($_REQUEST["lattesID"])) {
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 
   <script>
-    var app = new Vue({
-      el: '#tabs',
-      data: {
-        tabOpened: '2',
-        isActive: false
+  var app = new Vue({
+    el: '#tabs',
+    data: {
+      tabOpened: '2',
+      isActive: false
 
-      },
-      methods: {
-        changeTab(tab) {
-          this.tabOpened = tab
-          var tabs = document.getElementsByClassName("cc-profmenu-btn")
+    },
+    methods: {
+      changeTab(tab) {
+        this.tabOpened = tab
+        var tabs = document.getElementsByClassName("cc-profmenu-btn")
 
-          for (i = 0; i < tabs.length; i++)
-            tabs[i].className = tabs[i].className.replace("cc-profmenu-active", "")
+        for (i = 0; i < tabs.length; i++)
+          tabs[i].className = tabs[i].className.replace("cc-profmenu-active", "")
 
-          tabs[Number(tab) - 1].className += " cc-profmenu-active"
-        }
-      },
-      mounted: function() {
-        this.changeTab(1)
-      },
-    })
+        tabs[Number(tab) - 1].className += " cc-profmenu-active"
+      }
+    },
+    mounted: function() {
+      this.changeTab(1)
+    },
+  })
   </script>
 
 </body>
