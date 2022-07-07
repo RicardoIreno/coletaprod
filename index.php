@@ -74,13 +74,10 @@ com este programa, Se não, veja <http://www.gnu.org/licenses/>.
   <?php require 'inc/navbar.php'; ?>
   <!-- /NAV -->
 
-  <main class="c-wrapper home" id="home">
+  <main class="home-wrapper" id="home">
 
     <?php require $logo_image; ?>
-
-    <h2 class="c-textbox">
-      Uma ferramenta de busca da produção científica de pesquisadores da UNIFESP.
-    </h2>
+    <h2 class="c-slogan"><?php echo ($slogan); ?></h2>
 
     <?php if (paginaInicial::contar_registros_indice($index) == 0) : ?>
       <div class="alert alert-warning" role="alert">

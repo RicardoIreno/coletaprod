@@ -1,14 +1,16 @@
 // == SEARCH == // 
-   
+
 .cc-search {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-  max-width: 800px;  
+  width: 90%;
+  max-width: 800px;
+  transition: all .3s ease;
+  padding: 1rem;
 
   &-btn {
-    margin: 1rem auto;
+    margin: .5rem auto;
   }
 
   &-form {
@@ -20,7 +22,8 @@
     margin: 0 auto;
   }
 
-  &-input, &-date {
+  &-input,
+  &-date {
     width: 100%;
     vertical-align: middle;
     height: 2.4rem;
@@ -32,20 +35,26 @@
     padding: .5rem;
     margin: .5rem 0;
     transition: all 0.3s ease 0s;
-    
+
     &:hover {
       border: #1C9AD1 3px solid;
       letter-spacing: 1px;
-      -webkit-box-shadow: 0px 5px 10px -10px rgba(0,0,0,0.57);
-      -moz-box-shadow: 0px 5px 410px -10px rgba(0,0,0,0.57);
-      box-shadow: 5px 10px -10px rgba(0,0,0,0.57);
+      -webkit-box-shadow: 0px 5px 10px -10px rgba(0, 0, 0, 0.57);
+      -moz-box-shadow: 0px 5px 410px -10px rgba(0, 0, 0, 0.57);
+      box-shadow: 5px 10px -10px rgba(0, 0, 0, 0.57);
       transition: all 0.3s ease 0s;
     }
-      
+
   }
 
   &-date {
     max-width: 120px;
     margin: 1rem;
-  }    
+  }
+}
+
+@include breakpoint(md-up) {
+  .cc-search {
+    margin: 1rem auto;
+  }
 }

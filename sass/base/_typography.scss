@@ -1,7 +1,4 @@
 // == TYPOGRAPHY == // 
-
-
-
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400&display=swap');
 
 body,
@@ -16,13 +13,6 @@ p {
   letter-spacing: 0.0375em;
   line-height: 1.5;
 }
-
-
-
-// p {
-//     margin: 0 0 2rem 0;
-// }
-
 
 strong,
 b {
@@ -44,40 +34,8 @@ h5 {
   margin-bottom: .6rem;
 }
 
-$sizeH: (
-  1: 1.7rem,
-  2: 1.5rem,
-  3: 1.3rem,
-  4: 1.2rem,
-  5: 1.1rem
-);
 
-$sizeHSmall: (
-  1: 1.7rem,
-  2: 1.5rem,
-  3: 1.3rem,
-  4: 1.2rem,
-  5: 1.1rem
-);
-
-@each $n,
-$size in $sizeH {
-  h#{$n} {
-    font-size: $size;
-  }
-}
-
-@include breakpoint(sm-only) {
-
-  @each $n,
-  $size in $sizeHSmall {
-    h#{$n} {
-      font-size: $size;
-    }
-  }
-}
-
-
+// LINKS
 a {
   transition: border-bottom-color 0.25s ease-in-out;
   text-decoration: none;
@@ -101,7 +59,7 @@ h5 a {
   text-decoration: none;
 }
 
-
+//---
 
 // GENERAL
 
@@ -209,4 +167,44 @@ h5 a {
     font-style: italic;
     text-align: right;
   }
+}
+
+// MANUAL
+
+$sizeH: (
+  1: 1.7rem,
+  2: 1.5rem,
+  3: 1.3rem,
+  4: 1.2rem,
+  5: 1.1rem
+);
+
+$sizeHSmall: (
+  1: 1.7rem,
+  2: 1.5rem,
+  3: 1.3rem,
+  4: 1.2rem,
+  5: 1.1rem
+);
+
+@each $n,
+$size in $sizeH {
+  .ty-manual-h#{$n} {
+    font-size: $size;
+  }
+}
+
+@include breakpoint(sm-only) {
+
+  @each $n,
+  $size in $sizeHSmall {
+    .ty-manual-h#{$n} {
+      font-size: $size;
+    }
+  }
+}
+
+
+.ty-manual-p {
+  font-size: 1rem;
 }
