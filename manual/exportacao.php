@@ -42,9 +42,9 @@
   <main class="manual-wrapper" aria-label="Content">
     <div class="manual-wrapper">
 
-      <h1 id="exportacao">Manual — Exportação</h1>
+      <h1 class="ty ty-manual-h1 id="exportacao">Manual — Exportação</h1>
 
-      <p>O Prodmais permite a exportação dos metadados da sua pesquisa nos formatos RIS, BIBTEX e diferentes formatações
+      <p class="ty ty-manual-p>O Prodmais permite a exportação dos metadados da sua pesquisa nos formatos RIS, BIBTEX e diferentes formatações
         de CSV. Uma vez feita a pesquisa, as opções de exportação aparecem ao final da seção de filtros no lado direito
         da página. Basta deslizar até o final da página e escolher um formato de exportação.</p>
 
@@ -52,19 +52,19 @@
         <img class="manual-img" src="assets/img/manual/como_expotar_1.jpg" />
       </center>
 
-      <p>Você encontrará as opções de exportação na parte inferior direita da página, logo abaixo das opções de
+      <p class="ty ty-manual-p>Você encontrará as opções de exportação na parte inferior direita da página, logo abaixo das opções de
         filtragem:</p>
 
       <center>
         <img class="manual-img" src="assets/img/manual/como_expotar_2.jpg" />
       </center>
 
-      <h2 id="os-formatos-disponíveis">Os formatos disponíveis:</h2>
-      <p><br /></p>
+      <h2 class="ty ty-manual-h2 id="os-formatos-disponíveis">Os formatos disponíveis:</h2>
+      <p class="ty ty-manual-p><br /></p>
 
-      <h3 id="ris">RIS</h3>
+      <h3 class="ty ty-manual-h3 id="ris">RIS</h3>
 
-      <p>Um arquivo RIS é um arquivo de citação bibliográfica salvo em um formato desenvolvido pela Research Information
+      <p class="ty ty-manual-p>Um arquivo RIS é um arquivo de citação bibliográfica salvo em um formato desenvolvido pela Research Information
         Systems (RIS). Os arquivos RIS são salvos em um formato de texto ASCII, e são suportados por programas com o
         EndNote, Wandora e BibDesk.</p>
 
@@ -91,9 +91,9 @@
         </tbody>
       </table>
 
-      <h3 id="bibtex">BIBTEX</h3>
+      <h3 class="ty ty-manual-h3 id="bibtex">BIBTEX</h3>
 
-      <p>BibTeX é uma ferramenta de formatação usada em documentos LaTeX. Ela foi criada para facilitar a separação da
+      <p class="ty ty-manual-p>BibTeX é uma ferramenta de formatação usada em documentos LaTeX. Ela foi criada para facilitar a separação da
         bibliografia com a apresentação do texto, seguindo o mesmo conceito da distinção do conteúdo com o estilo do
         texto utilizada no próprio LaTeX e XHTML.</p>
 
@@ -120,17 +120,17 @@
         </tbody>
       </table>
 
-      <h3 id="csv">CSV</h3>
+      <h3 class="ty ty-manual-h3 id="csv">CSV</h3>
 
-      <p>Um arquivo CSV é um formato extremamente de arquivo de valores separados por vírgula normalmente usado por
+      <p class="ty ty-manual-p>Um arquivo CSV é um formato extremamente de arquivo de valores separados por vírgula normalmente usado por
         diversos tipos de programas, desde os mais simples, como o Bloco de Notas, até editores de planilhas como o
         Microsoft Excel ou o OpenOffice Calc.</p>
 
-      <p>No Prodmais é possível exportar os dados em CSV formatados para o DSpace, o CapesPrint, e o Gephi.</p>
+      <p class="ty ty-manual-p>No Prodmais é possível exportar os dados em CSV formatados para o DSpace, o CapesPrint, e o Gephi.</p>
 
-      <h2 id="exportação-dos-dados-do-lattes-para-o-orcid">Exportação dos dados do Lattes para o ORCID</h2>
+      <h2 class="ty ty-manual-h2 id="exportação-dos-dados-do-lattes-para-o-orcid">Exportação dos dados do Lattes para o ORCID</h2>
 
-      <p>Manter o currículo Lattes e o ORCID igualmente atualizados é uma tarefa trabalhosa. O Prodmais oferece uma
+      <p class="ty ty-manual-p>Manter o currículo Lattes e o ORCID igualmente atualizados é uma tarefa trabalhosa. O Prodmais oferece uma
         forma fácil de transferir os dados do currículo Lattes para o ORCID através de uma exportação em formato BibTeX.
         E de uma forma simples. Basta usar a opção <em>Exportar para ORCID (Formato BibTeX)</em> na página do seu perfil
         de pesquisador, que pode ser pesquisada a partir da aba Pesquisadores:</p>
