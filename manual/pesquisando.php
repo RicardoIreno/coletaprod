@@ -41,31 +41,31 @@
   <main class="manual-wrapper" aria-label="Content">
       <div class="manual-wrapper">
 
-      <h1 class="ty ty-manual-h1 id="realizando-pesquisas">Manual — Realizando Pesquisas</h1>
+      <h1 id="realizando-pesquisas">Manual — Realizando Pesquisas</h1>
 
-      <p class="ty ty-manual-p>Na tela inicial do Prodmais, é possível alternar entre pesquisa simples e pesquisa avançada:</p>
+      <p>Na tela inicial do Prodmais, é possível alternar entre pesquisa simples e pesquisa avançada:</p>
 
-      <h3 class="ty ty-manual-h3 id="pesquisa-simples">Pesquisa simples por palavra chave</h3>
+      <h3 id="pesquisa-simples">Pesquisa simples por palavra chave</h3>
 
       <center>
         <img class="manual-img" src="assets/img/manual/busca_simples.png" />
       </center>
 
-      <h3 class="ty ty-manual-h3 id="pesquisa-avancada">Pesquisando pela busca avançada</h3>
+      <h3 id="pesquisa-avancada">Pesquisando pela busca avançada</h3>
 
       <center>
         <img class="manual-img" src="assets/img/manual/busca_avancada.png" />
       </center>
 
-      <h4 class="ty ty-manual-h4 id="como-o-resultado-é-mostrado">Como o resultado é mostrado</h4>
+      <h4 id="como-o-resultado-é-mostrado">Como o resultado é mostrado</h4>
 
-      <p class="ty ty-manual-p>Cada item retornado da pesquisa será mostrado assim:</p>
+      <p>Cada item retornado da pesquisa será mostrado assim:</p>
 
       <center>
         <img class="manual-img" src="assets/img/manual/resultado.png" />
       </center>
 
-      <p class="ty ty-manual-p>Oferecendo informações sobre:</p>
+      <p>Oferecendo informações sobre:</p>
 
       <ul>
         <li>Título</li>
@@ -77,15 +77,15 @@
         <li>URL</li>
       </ul>
 
-      <h4 class="ty ty-manual-h4 id="opções-de-filtragem-na-página-de-pesquisa-por-palavra-chave">Opções de filtragem na página de pesquisa por palavra chave</h4>
+      <h4 id="opções-de-filtragem-na-página-de-pesquisa-por-palavra-chave">Opções de filtragem na página de pesquisa por palavra chave</h4>
 
-      <p class="ty ty-manual-p>Existem muitos outros filtros disponíveis ao lado direito da página de resultados:</p>
+      <p>Existem muitos outros filtros disponíveis ao lado direito da página de resultados:</p>
 
       <center>
         <img class="manual-img-nb" src="assets/img/manual/filtros.png" />
       </center>
 
-      <p class="ty ty-manual-p><strong>Os filtros disponíveis são:</strong></p>
+      <p><strong>Os filtros disponíveis são:</strong></p>
 
       <ul>
         <li>Filtrar por intervalo de data de publicação</li>
@@ -112,19 +112,19 @@
         <li>Meio de divulgação</li>
       </ul>
 
-      <h3 class="ty ty-manual-h3 id="pesquisa-autor">Pesquisando por autor</h3>
+      <h3 id="pesquisa-autor">Pesquisando por autor</h3>
 
-      <p class="ty ty-manual-p>No cabeçalho do site do Prodmais, ao lado direito, há também a opção “Pesquisadores”.</p>
+      <p>No cabeçalho do site do Prodmais, ao lado direito, há também a opção “Pesquisadores”.</p>
 
       <center>
         <img class="manual-img" src="assets/img/manual/pesquisadores.jpg" />
       </center>
 
-      <p class="ty ty-manual-p>Clicando nela, você terá uma lista em ordem alfabética dos presquisadores cadastrados na base de dados. A partir daí, é possível refinar a sua pesquisa através dos filtros disponíveis.</p>
+      <p>Clicando nela, você terá uma lista em ordem alfabética dos presquisadores cadastrados na base de dados. A partir daí, é possível refinar a sua pesquisa através dos filtros disponíveis.</p>
 
-      <p class="ty ty-manual-p>Na página do autor você encontra uma breve descrição</p>
+      <p>Na página do autor você encontra uma breve descrição</p>
 
-      <p class="ty ty-manual-p><strong>Os filtros disponíveis são:</strong></p>
+      <p><strong>Os filtros disponíveis são:</strong></p>
 
       <ul>
         <li>Campus</li>
@@ -160,15 +160,15 @@
         <li>Filtrar por ano da publicação</li>
       </ul>
 
-      <h3 class="ty ty-manual-h3 id="pesquisa-topicos-home">Pesquisando por tópicos na página principal</h3>
+      <h3 id="pesquisa-topicos-home">Pesquisando por tópicos na página principal</h3>
 
-      <p class="ty ty-manual-p>Também é o possível realizar a pesquisa a partir dos principais tópcios que se encontram na parte inferior da página inicial.</p>
+      <p>Também é o possível realizar a pesquisa a partir dos principais tópcios que se encontram na parte inferior da página inicial.</p>
 
       <center>
         <img class="manual-img" src="assets/img/manual/outras_opcoes.png" />
       </center>
 
-      <p class="ty ty-manual-p>Nela, é possível navegar pela base através dos seguintes caminhos:</p>
+      <p>Nela, é possível navegar pela base através dos seguintes caminhos:</p>
 
       <ul>
         <li>Programa de Pós-Graduação</li>
