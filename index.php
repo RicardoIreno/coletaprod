@@ -87,7 +87,7 @@ com este programa, Se não, veja <http://www.gnu.org/licenses/>.
 
     <div class="cc-search">
 
-      <form class="cc-search-form" class="" action="result_test.php" title="Pesquisa simples" method="post">
+      <form class="cc-search-form" class="" action="result.php" title="Pesquisa simples" method="post">
 
         <input class="cc-search-input" type="search" placeholder="Pesquise por palavra chave" aria-label="Pesquisar" name="search">
 
