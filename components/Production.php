@@ -97,6 +97,7 @@ class Production
     !empty($doi) ? $doiRendered = Production::sLineItem($doi, 'doi') : $doiRendered = '';
     !empty($url) ? $urlRendered = Production::sLineItem($url, 'link') : $urlRendered = '';
     !empty($evento) ? $eventoRendered = Production::sLineItem($evento, 'evento') : $eventoRendered = '';
+    !empty($refName) ? $refName = $refName : '';
     !empty($refVol) ? $refVol = ", v. $refVol" : '';
     !empty($refFascicle) ? $refFascicle = ", n. $refFascicle" : '';
     !empty($refPage) ? $refPage = ", p. $refPage" : '';
