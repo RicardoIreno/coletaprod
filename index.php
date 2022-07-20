@@ -85,6 +85,7 @@ com este programa, Se não, veja <http://www.gnu.org/licenses/>.
       </div>
     <?php endif; ?>
 
+
     <div class="cc-search">
 
       <form class="cc-search-form" class="" action="result.php" title="Pesquisa simples" method="post">
@@ -167,7 +168,7 @@ com este programa, Se não, veja <http://www.gnu.org/licenses/>.
     </transition>
 
     <transition name="homeeffect">
-      <div class="u-dh u-dt" v-if="showCategories">
+      <div class="u-dh u-dt u-mb-1" v-if="showCategories">
 
         <table>
           <thead>
