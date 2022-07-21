@@ -23,6 +23,10 @@
     @media (min-width: 81.1625em)
       @content
 
+  @else if $point == lgg-up
+    @media (min-width: 100.25em)
+      @content
+
   @else
     @media (min-width: ($point / 16) + 'em')
       @content

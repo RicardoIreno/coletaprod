@@ -5,8 +5,6 @@
 @import 'base/normalize';
 @import 'base/typography';
 @import 'base/transitions';
-@import 'layouts/result';
-@import 'layouts/resultmenu';
 @import 'layouts/sitefooter';
 @import 'layouts/siteheader';
 @import 'layouts/sitemenu';
@@ -32,6 +30,7 @@
 @import 'pages/manual-home';
 @import 'pages/pre-dash';
 @import 'pages/profile';
+@import 'pages/result';
 @import 'utilities/u-alignaments';
 @import 'utilities/u-containers';
 @import 'utilities/u-grid';
