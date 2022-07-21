@@ -137,9 +137,12 @@
       ?>
 
         </main>
+
         <details id="fbar" class="cc-fbar" onload="resizeMenu">
           <summary class="cc-fbar-header">
-            <h3>Refinar resultados</h3>
+            <h3 class="cc-fbar-title">Refinar resultados</h3>
+            <!-- <div class="cc-fbar-arrow"></div> -->
+            <svg class="cc-fbar-arrow" xmlns='http://www.w3.org/2000/svg' width='100' height='15' viewBox='0 0 27 4'><path d='M -0.01265394,0.14177403 13.243005,2.082092 26.44568,0.14177403 26.42274,1.4634269 13.243005,3.4026049 -0.01265394,1.4646869 Z'/></svg>
           </summary>
 
           <nav class="">

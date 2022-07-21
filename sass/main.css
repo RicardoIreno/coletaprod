@@ -1603,7 +1603,6 @@ details[open] .cc-fbloc-name--header:before {
   display: none;
 }
 .cc-fbar-header {
-  display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1.2rem;
@@ -1613,6 +1612,21 @@ details[open] .cc-fbloc-name--header:before {
   border-bottom: 2px solid #1C9AD1;
   padding-block: 0.5rem;
   text-align: center;
+}
+.cc-fbar-header:hover .cc-fbar-title {
+  color: #7fd1f5;
+  transition: all 0.3s ease 0s;
+}
+.cc-fbar-header:hover .cc-fbar-arrow {
+  transform: translateY(5px);
+  fill: #7fd1f5;
+  transition: all 0.3s ease 0s;
+}
+.cc-fbar-arrow {
+  width: 100px;
+  height: 15px;
+  fill: #1C9AD1;
+  z-index: 999;
 }
 
 .cc-fbloc {
