@@ -1,26 +1,30 @@
 @mixin breakpoint($point)
   @if $point == sm-only
-    @media (max-width: 42.4375em)
+    @media (max-width: 679px)
       @content
 
   @else if $point == sm-up
-    @media (min-width: 42.5em)
+    @media (min-width: 680px)
       @content
 
   @else if $point == md-only
-    @media (max-width: 56.1875em)
+    @media (max-width: 899px)
       @content
 
   @else if $point == md-up
-    @media (min-width: 56.25em)
+    @media (min-width: 900px)
       @content
 
   @else if $point == lg-only
-    @media (max-width: 81.5em)
+    @media (max-width: 1299)
       @content
 
   @else if $point == lg-up
-    @media (min-width: 81.1625em)
+    @media (min-width: 1300px)
+      @content
+
+  @else if $point == lgg-up
+    @media (min-width: 1600px)
       @content
 
   @else

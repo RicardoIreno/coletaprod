@@ -8,8 +8,12 @@
   border-block: 1px solid _palette(theme-light-2);
 
   &-btn {
-    @include btn;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
     font-size: 2rem;
-    font-weight: 8  00;
+    font-weight: 800;
   }
 }
+
+
