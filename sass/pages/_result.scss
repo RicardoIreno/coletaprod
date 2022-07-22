@@ -158,21 +158,14 @@ $arrowDown: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg
     height: 15px;
     fill: _palette(theme);
     z-index: 999;
-
-  
-    // mask-image: $arrowDown;
-    // mask-repeat: no-repeat;
-    // mask-position: center;
-    // mask-size: 100% 100%;
-    // -webkit-mask-image: $arrowDown;
-    // -webkit-mask-repeat: no-repeat;
-    // -webkit-mask-position: center;
-    // -webkit-mask-size: 100% 100%;
-  
   }
 }
 
-
+@include breakpoint(lg-up) {
+  .cc-fbar-arrow {
+    display: none;
+  }
+}
 
 // .cc-fbloc - used at UL
 .cc-fbloc {

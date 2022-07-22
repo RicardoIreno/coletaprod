@@ -28,7 +28,15 @@
 	}
 }
 
+.c-btn {
+  &-fc1 {
+    color: _palette(theme);  
+  }
 
+  &--disabled {
+    color: _palette(ty-gray-light);
+  }
+}
 
 .c-btn {
 	@include btn();
@@ -60,18 +68,6 @@
 }
 
 .c-btn {
-	// &-back {
-	// 	color: _palette(main);
-	// 	font-size: 1.2rem;
-	// 	margin: 2rem;
-
-	// 	&:before {
-	// 		content: "\02190";
-	// 		color: _palette(main);
-	// 		font-size: 2rem;
-	// 	}
-	// }
-
 	&-search {
 		fill: _palette(theme);
 		background-color: transparent;

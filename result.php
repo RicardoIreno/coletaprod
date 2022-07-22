@@ -232,7 +232,7 @@
 
         openCloseMenu() {
           console.log('disparou o resize')
-          if ( window.matchMedia("(min-width: 1203.03px)").matches ) document.getElementById("fbar").open = true; 
+          if ( window.matchMedia("(min-width: 1300px)").matches ) document.getElementById("fbar").open = true; 
           else document.getElementById("fbar").open = false; 
         },
 
@@ -245,11 +245,28 @@
     </script>
     <script>
       let ffbar = window.matchMedia('(min-width: 1203.03px)')
+      
       function screenTest(e) {
-        if (e.matches) document.getElementById("fbar").open = true;
-        else document.getElementById("fbar").open = false; 
+        if (e.matches) {
+          document.getElementById("fbar").open = true
+          fArrow.style.display = "none"
+        } 
+        else {
+          document.getElementById("fbar").open = false
+          fArrow.style.display = "block"
+        }
       }
-      ffbar.addEventListener('change', screenTest);
+      
+      function showHideFbarBtn() {
+        let fArrow = document.getElementByClassName("cc-fbar-arrow")
+        boo = document.getElementById("fbar")
+        boo.open === true ? fArrow.style.display = "none" : fArrow.style.display = "block" ;
+        fArrow.style.display === "none" ? 
+
+      }
+
+      ffbar.addEventListener('change', screenTest)
+      ffbar.addEventListener('change', showHideFbarBtn)
     </script>
 </body>
 
