@@ -137,15 +137,15 @@ if (!empty($_REQUEST["lattesID"])) {
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 
-<body class="profile-body">
+<body class="cc-wrapper-body">
 
   <!-- NAV -->
   <?php require 'inc/navbar.php'; ?>
   <!-- /NAV -->
 
-  <main class="profile-container">
-    <div class="profile-wrapper">
-      <div class="profile-inner">
+  <main class="cc-wrapper-container">
+    <div class="cc-wrapper-paper">
+      <div class="cc-wrapper-inner">
         <div id="top"></div>
         <div class="cc-coregrid">
           <div class="cc-coregrid-one">
@@ -430,7 +430,7 @@ if (!empty($_REQUEST["lattesID"])) {
         </div><!-- end cc-menu  -->
 
 
-        <div class="profile-inner u-m-2">
+        <div class="cc-wrapper-inner u-m-2">
           <transition name="tabeffect">
             <div id="tab-one" class="cc-tab-content" v-if="tabOpened == '1'">
 
