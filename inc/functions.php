@@ -3073,7 +3073,7 @@ class UI {
     {
         echo '<div class="cc-navigator">';
         if ($page == 1) {
-            echo '«';
+            echo '<button class="cc-navigator-btn c-btn--c1">|</button>';
         } else {
             $last_page = $page-1;
 
@@ -3087,7 +3087,7 @@ class UI {
                         }
                     }
                 }
-                echo '<button class="cc-navigator-btn">«</button>';
+                echo '<button class="cc-navigator-btn c-btn--c1">ᐊ</button>';
             echo '</form>';
 
         }
@@ -3105,11 +3105,11 @@ class UI {
                     }
                 }
             }
-            echo '<button class="cc-navigator-btn">»</button>';
+            echo '<button class="cc-navigator-btn c-btn--c1">ᐅ</button>';
             echo '</form>';
 
         } else {
-            echo '»';
+            echo '<button class="cc-navigator-btn c-btn--disabled">|</button>';
         }
         echo '</div>';
     }

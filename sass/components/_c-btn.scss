@@ -1,36 +1,36 @@
 // == BUTTONS == // 
 @mixin hover-btn {
-	color: _palette(bg-primary);
-	background-color: _palette(btn-bg-hover);
-	border-color: _palette(btn-bg-hover);
-	-webkit-box-shadow: 0px 5px 10px -10px rgba(0, 0, 0, 0.57);
-	-moz-box-shadow: 0px 5px 410px -10px rgba(0, 0, 0, 0.57);
-	box-shadow: 5px 10px -10px rgba(0, 0, 0, 0.57);
-	transition: all 0.2s ease 0s;
+  color: _palette(bg-primary);
+  background-color: _palette(btn-bg-hover);
+  border-color: _palette(btn-bg-hover);
+  -webkit-box-shadow: 0px 5px 10px -10px rgba(0, 0, 0, 0.57);
+  -moz-box-shadow: 0px 5px 410px -10px rgba(0, 0, 0, 0.57);
+  box-shadow: 5px 10px -10px rgba(0, 0, 0, 0.57);
+  transition: all 0.2s ease 0s;
 }
 
 @mixin btn {
-	align-items: center;
-	background: none;
-	border: 3px solid _palette(btn-fg);
-	border-radius: 40px;
-	color: _palette(btn-fg);
-	cursor: pointer;
-	justify-content: center;
-	text-align: center;
-	text-decoration: none;
-	vertical-align: middle;
-	width: fit-content;
-	min-width: 6rem;
+  align-items: center;
+  background: none;
+  border: 3px solid _palette(btn-fg);
+  border-radius: 40px;
+  color: _palette(btn-fg);
+  cursor: pointer;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  width: fit-content;
+  min-width: 6rem;
 
-	&:hover {
-		@include hover-btn;
-	}
+  &:hover {
+    @include hover-btn;
+  }
 }
 
 .c-btn {
-  &-fc1 {
-    color: _palette(theme);  
+  &--c1 {
+    color: _palette(theme);
   }
 
   &--disabled {
@@ -39,61 +39,61 @@
 }
 
 .c-btn {
-	@include btn();
-	font-weight: 500;
-	margin: .5rem;
-	padding: 8px;
+  @include btn();
+  font-weight: 500;
+  margin: .5rem;
+  padding: 8px;
 
-	&-ico {
-		fill: _palette(theme);
-		transition: all 0.2s ease 0s;
-		vertical-align: middle;
-		width: 30px;
-		margin: .25rem;
-	}
+  &-ico {
+    fill: _palette(theme);
+    transition: all 0.2s ease 0s;
+    vertical-align: middle;
+    width: 30px;
+    margin: .25rem;
+  }
 
-	&:focus {
-		outline: none;
-	}
+  &:focus {
+    outline: none;
+  }
 
-	&:hover,
-	&:focus {
-		@include hover-btn;
-		color: _palette(btn-fg-hover);
+  &:hover,
+  &:focus {
+    @include hover-btn;
+    color: _palette(btn-fg-hover);
 
-		.btn-ico {
-			fill: _palette(btn-fg-hover);
-		}
-	}
+    .btn-ico {
+      fill: _palette(btn-fg-hover);
+    }
+  }
 }
 
 .c-btn {
-	&-search {
-		fill: _palette(theme);
-		background-color: transparent;
-		border: none;
-		cursor: pointer;
-		-webkit-user-select: none;
-		-moz-user-select: none;
-		user-select: none;
+  &-search {
+    fill: _palette(theme);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
 
-		&-ico {
-			margin: 1rem;
-			width: 35px;
-		}
+    &-ico {
+      margin: 1rem;
+      width: 35px;
+    }
 
-		&:focus {
-			outline: none;
-		}
+    &:focus {
+      outline: none;
+    }
 
-		&:hover,
-		&:focus {
-			border: none;
+    &:hover,
+    &:focus {
+      border: none;
 
-			.btn-search-ico {
-				fill: _palette(theme-light-2);
-			}
-		}
-	}
+      .btn-search-ico {
+        fill: _palette(theme-light-2);
+      }
+    }
+  }
 
 }
