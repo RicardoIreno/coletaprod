@@ -1,47 +1,3 @@
-// PROFILE LAYOUTS
-
-.profile-container {
-  width: 100%;
-  margin: 0;
-}
-
-.profile-wrapper {
-  position: relative;
-  background-color: _palette(bg-primary);
-  border-radius: 50px;
-  padding-bottom: 2rem;
-  margin: 1rem;
-  position: relative;
-}
-
-.profile-inner {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 1rem;
-}
-
-.profile-tabs-inner {
-  padding: 2rem;
-}
-
-
-@include breakpoint(md-up) {
-  .profile-wrapper {
-    margin: 4rem;
-  }
-
-  .profile-inner {
-    padding: 4rem 3rem 3rem 2rem;
-  }
-}
-
-// @include breakpoint(md-up) {
-//   .profile-tabs {
-//     padding: 4rem;
-//   }
-// }
-
 // SEÇÕES
 
 // PROFILE CORE
@@ -129,35 +85,6 @@
 }
 
 // PROFILE-CORE THINGS  
-
-.cc-display {
-  width: 200px;
-  height: 200px;
-  margin: 0rem auto;
-  // padding-bottom: 1rem;
-  position: relative;
-
-  &-badge {
-    position: absolute;
-    width: 50px;
-    top: 70%;
-    right: 5%;
-    z-index: 999;
-  }
-
-  $circle: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 200 200'><circle cx='100' cy='100' r='100'/></svg>");
-
-  &-pic {
-    mask-image: $circle;
-    mask-repeat: no-repeat;
-    mask-position: start;
-    mask-size: 100% 100%;
-    -webkit-mask-image: $circle;
-    -webkit-mask-position: start;
-    -webkit-mask-size: 100% 100%;
-    height: 200px;
-  }
-}
 
 .cc-badgeicons,
 .cc-socialicons {

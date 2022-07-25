@@ -16,11 +16,13 @@
 @import 'components/c-tables';
 @import 'components/c-textbox';
 @import 'components/c-wrapper';
+@import 'components/cc-display';
 @import 'components/cc-graph';
 @import 'components/cc-navigator';
 @import 'components/cc-search';
 @import 'components/cc-tab';
 @import 'components/cc-profmenu';
+@import 'components/cc-wrapper';
 @import 'components/tag';
 @import 'components/s-line';
 @import 'components/s-list';
@@ -28,6 +30,7 @@
 @import 'pages/home';
 @import 'pages/manual';
 @import 'pages/manual-home';
+@import 'pages/ppg';
 @import 'pages/pre-dash';
 @import 'pages/profile';
 @import 'pages/result';

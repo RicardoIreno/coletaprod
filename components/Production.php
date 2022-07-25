@@ -122,7 +122,7 @@ class Production
             $eventoRendered					
 					</div>
 					
-					<p class='ty-right ty-themeLight'>
+					<p class='ty ty-themeLight'>
 						Fonte: $refName $refVol $refFascicle $refPage
 					</p>
 					

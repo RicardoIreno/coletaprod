@@ -1,0 +1,49 @@
+.cc-wrapper {
+  &-body {
+    background-color: _palette(bg-secondary);
+  }
+
+  &-container {
+    width: 100%;
+    margin: 0;
+  }
+
+  &-paper {
+    position: relative;
+    background-color: _palette(bg-primary);
+    border-radius: 50px;
+    padding-bottom: 2rem;
+    margin: 1rem;
+    position: relative;
+  }
+
+  &-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+  }
+
+  &-tabs-inner {
+    padding: 2rem;
+  }
+
+}
+
+@include breakpoint(md-up) {
+  .cc-wrapper {
+    &-paper {
+      margin: 4rem;
+    }
+
+    &-inner {
+      padding: 4rem 3rem 3rem 2rem;
+    }
+  }
+}
+
+// @include breakpoint(md-up) {
+//   .profile-tabs {
+//     padding: 4rem;
+//   }
+// }

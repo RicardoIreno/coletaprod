@@ -12,3 +12,5 @@ tools/reindex.sh
 data/
 backup/
 tools/data/
+_rascunhos/
+start.sh
