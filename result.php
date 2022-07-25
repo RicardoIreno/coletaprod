@@ -72,7 +72,14 @@
     <div class="result-container">
 
         <main class="result-main">
-            <div class="c-searchterm">Termo pesquisado: </div>
+            <?php if(!empty($_REQUEST['search'])): ?>
+              <div class="c-searchterm">Termo pesquisado: <?php print_r($_REQUEST['search']); ?></div>
+            <?php endif ?>
+            <?php 
+            if (isset($_REQUEST['filter'])) {
+              echo '<div class="c-searchterm">Filtro: ' . $_REQUEST['filter'][0] . '</div>';
+            }
+            ?>
 
             <?php ui::newpagination($page, $total, $limit, $_POST, 'result'); ?>
             <br />
@@ -139,16 +146,20 @@
         </main>
 
         <details id="fbar" class="cc-fbar" onload="resizeMenu">
-          <summary class="cc-fbar-header">
-            <h3 class="cc-fbar-title">Refinar resultados</h3>
-            <!-- <div class="cc-fbar-arrow"></div> -->
-            <svg class="cc-fbar-arrow" xmlns='http://www.w3.org/2000/svg' width='100' height='15' viewBox='0 0 27 4'><path d='M -0.01265394,0.14177403 13.243005,2.082092 26.44568,0.14177403 26.42274,1.4634269 13.243005,3.4026049 -0.01265394,1.4646869 Z'/></svg>
-          </summary>
+            <summary class="cc-fbar-header">
+                <h3 class="cc-fbar-title">Refinar resultados</h3>
+                <!-- <div class="cc-fbar-arrow"></div> -->
+                <svg class="cc-fbar-arrow" xmlns='http://www.w3.org/2000/svg' width='100' height='15'
+                    viewBox='0 0 27 4'>
+                    <path
+                        d='M -0.01265394,0.14177403 13.243005,2.082092 26.44568,0.14177403 26.42274,1.4634269 13.243005,3.4026049 -0.01265394,1.4646869 Z' />
+                </svg>
+            </summary>
 
-          <nav class="">
-            <div class="cc-fbloc-wrapper">
-              
-              <?php
+            <nav class="">
+                <div class="cc-fbloc-wrapper">
+
+                    <?php
                 $facets = new FacetsNew();
                 $facets->query = $result_post['query'];
 
@@ -204,69 +215,69 @@
                 
                ?>
 
-            </div> <!-- end cc-fbloc -->
-          </nav> <!-- end cc-fbar -->
-      </details>
+                </div> <!-- end cc-fbloc -->
+            </nav> <!-- end cc-fbar -->
+        </details>
     </div> <!-- end result-container -->
-    
+
     <?php include('inc/footer.php'); ?>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script>
-      var app = new Vue({
-      el: '#fbar',
-      methods: {
-        createMenuButtons() {
-          let fblocs = document.getElementsByClassName('cc-fbloc')
+    var app = new Vue({
+        el: '#fbar',
+        methods: {
+            createMenuButtons() {
+                let fblocs = document.getElementsByClassName('cc-fbloc')
 
-          for (let i = 0; i < fblocs.length; i++) {
-            const newBtn = document.createElement('button')
-            newBtn.classList.add('cc-fbloc-btn')
-            newBtn.innerHTML =
-                "<svg class='cc-fbloc-btn-ico' x='0px' y='0px' viewBox='0 0 80 48'> <path d='M72.3,35.5c-0.7,0-1.5-0.2-2.2-0.5L40.3,20.5l-30.6,14c-2.5,1.1-5.5,0-6.6-2.5c-1.1-2.5,0-5.5,2.5-6.6l32.7-15 c1.4-0.6,2.9-0.6,4.3,0.1l32,15.6c2.5,1.2,3.5,4.2,2.3,6.7C76,34.5,74.2,35.5,72.3,35.5z' /> </svg>"
-            newBtn.addEventListener("click", function() {
-                this.parentNode.removeAttribute("open")
-            })
-            fblocs[i].appendChild(newBtn)
-          }
+                for (let i = 0; i < fblocs.length; i++) {
+                    const newBtn = document.createElement('button')
+                    newBtn.classList.add('cc-fbloc-btn')
+                    newBtn.innerHTML =
+                        "<svg class='cc-fbloc-btn-ico' x='0px' y='0px' viewBox='0 0 80 48'> <path d='M72.3,35.5c-0.7,0-1.5-0.2-2.2-0.5L40.3,20.5l-30.6,14c-2.5,1.1-5.5,0-6.6-2.5c-1.1-2.5,0-5.5,2.5-6.6l32.7-15 c1.4-0.6,2.9-0.6,4.3,0.1l32,15.6c2.5,1.2,3.5,4.2,2.3,6.7C76,34.5,74.2,35.5,72.3,35.5z' /> </svg>"
+                    newBtn.addEventListener("click", function() {
+                        this.parentNode.removeAttribute("open")
+                    })
+                    fblocs[i].appendChild(newBtn)
+                }
+            },
+
+            openCloseMenu() {
+                console.log('disparou o resize')
+                if (window.matchMedia("(min-width: 1300px)").matches) document.getElementById("fbar").open =
+                    true;
+                else document.getElementById("fbar").open = false;
+            },
+
         },
-
-        openCloseMenu() {
-          console.log('disparou o resize')
-          if ( window.matchMedia("(min-width: 1300px)").matches ) document.getElementById("fbar").open = true; 
-          else document.getElementById("fbar").open = false; 
+        mounted: function() {
+            this.createMenuButtons(),
+                this.openCloseMenu()
         },
-
-      },
-      mounted: function() {
-        this.createMenuButtons(),
-        this.openCloseMenu()
-      },
     });
     </script>
     <script>
-      let ffbar = window.matchMedia('(min-width: 1203.03px)')
-      
-      function screenTest(e) {
+    let ffbar = window.matchMedia('(min-width: 1203.03px)')
+
+    function screenTest(e) {
         if (e.matches) {
-          document.getElementById("fbar").open = true
-          fArrow.style.display = "none"
-        } 
-        else {
-          document.getElementById("fbar").open = false
-          fArrow.style.display = "block"
+            document.getElementById("fbar").open = true
+            fArrow.style.display = "none"
+        } else {
+            document.getElementById("fbar").open = false
+            fArrow.style.display = "block"
         }
-      }
-      
-      function showHideFbarBtn() {
+    }
+
+    function showHideFbarBtn() {
         let fArrow = document.getElementByClassName("cc-fbar-arrow")
         boo = document.getElementById("fbar")
-        boo.open === true ? fArrow.style.display = "none" : fArrow.style.display = "block" ;
-        fArrow.style.display === "none" ? 
+        boo.open === true ? fArrow.style.display = "none" : fArrow.style.display = "block";
+        fArrow.style.display === "none" ?
 
-      }
+    }
 
-      ffbar.addEventListener('change', screenTest)
-      ffbar.addEventListener('change', showHideFbarBtn)
+    ffbar.addEventListener('change', screenTest)
+    ffbar.addEventListener('change', showHideFbarBtn)
     </script>
 </body>
 
