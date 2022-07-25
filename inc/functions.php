@@ -2754,8 +2754,8 @@ class FacetsNew
             $facet_array[] = '<input type="hidden" name="search" value="'.$get_search["search"].'">';
             $facet_array[] = '<input type="hidden" name="filter[]" value="'.$field.':'.str_replace('&', '%26', $facets['key']).'">';
 
-            if(isset($get_search['filter'])){
-                if (count($get_search['filter']) < 0) {
+            if(isset($get_search['filter'])){              
+                if (count($get_search['filter']) > 0) {
                     foreach ($get_search['filter'] as $filter) {
                         $facet_array[] = '<input type="hidden" name="filter[]" value="'.$filter.'">';
                     }
