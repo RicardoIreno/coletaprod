@@ -1,5 +1,11 @@
-// vue transitions
+// transitions
 
+@mixin transition() {
+  transition: all 0.2s ease 0s;
+}
+
+
+// vue transitions
 
 // Search
 
@@ -35,6 +41,3 @@
 .tabeffect-leave-to {
   opacity: 0;
 }
-
-
-

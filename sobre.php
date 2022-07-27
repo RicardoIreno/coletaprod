@@ -75,19 +75,19 @@
 
     <h3 id="créditos">Créditos</h3>
 
-    <p class="ty ty-item">Universidade Federal de São Paulo - Unifesp</p>
+    <p class="ty ty-b">Universidade Federal de São Paulo - Unifesp</p>
     <p class="ty">Superintendência de Tecnologia da Informação - STI</p>
 
-    <p class="ty ty-item">Lidiane Cristina da Silva</p>
+    <p class="ty ty-b">Lidiane Cristina da Silva</p>
     <p class="ty"><em>Superintendência de Tecnologia da Informação</em></p>
 
-    <p class="ty ty-item">Alexandro Cardoso Carvalho</p>
+    <p class="ty ty-b">Alexandro Cardoso Carvalho</p>
     <p class="ty"><em>Chefe da Divisão de Gestão da Informação</em></p>
 
-    <p class="ty ty-item">Tiago Rodrigo Marçal Murakami</p>
+    <p class="ty ty-b">Tiago Rodrigo Marçal Murakami</p>
     <p class="ty"><em>Bolsista FAP UNIFESP</em></p>
 
-    <p class="ty ty-item">Ricardo Ireno</p>
+    <p class="ty ty-b">Ricardo Ireno</p>
     <p class="ty"><em>Bolsista FAPESP</em></p>
 
   </main>

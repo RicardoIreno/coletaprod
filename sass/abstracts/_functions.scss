@@ -4,7 +4,7 @@ $escaped-characters: (
   ("#", "%23"),
   ("(", "%28"),
   (")", "%29"),
-) !default;
+  ) !default;
 
 
 
@@ -17,31 +17,35 @@ $escaped-characters: (
 
   $result: null;
 
-  @if type-of($index) != number {
+  @if type-of($index) !=number {
     @warn "$index: #{quote($index)} is not a number for `remove-nth`.";
   }
-  @else if $index == 0 {
+
+  @else if $index ==0 {
     @warn "List index 0 must be a non-zero integer for `remove-nth`.";
   }
-  @else if abs($index) > length($list) {
+
+  @else if abs($index)>length($list) {
     @warn "List index is #{$index} but list is only #{length($list)} item long for `remove-nth`.";
   }
+
   @else {
 
-    $result: ();
-    $index: if($index < 0, length($list) + $index + 1, $index);
+    $result: (
+  );
+  $index: if($index < 0, length($list) + $index + 1, $index);
 
-    @for $i from 1 through length($list) {
+  @for $i from 1 through length($list) {
 
-      @if $i != $index {
-        $result: append($result, nth($list, $i));
-      }
-
+    @if $i  !=$index {
+      $result: append($result, nth($list, $i));
     }
 
   }
 
-  @return $result;
+}
+
+@return $result;
 
 }
 
@@ -56,7 +60,7 @@ $escaped-characters: (
   $index: str-index($string, $search);
 
   @if $index {
-    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+    @return str-slice($string, 1, $index - 1)+$replace +str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
   }
 
   @return $string;
@@ -85,7 +89,7 @@ $escaped-characters: (
 /// @return {string} Value.
 @function val($map, $keys...) {
 
-  @if nth($keys, 1) == null {
+  @if nth($keys, 1)==null {
     $keys: remove-nth($keys, 1);
   }
 
@@ -98,22 +102,26 @@ $escaped-characters: (
 }
 
 
-/// Gets a palette value.
+
 @function _palette($keys...) {
-	@return val($palette, $keys...);
+  @return val($palette, $keys...);
 }
 
-/// Gets a size value.
+@function _icons($keys...) {
+  @return val($palette, $keys...);
+}
+
+
 @function _size($keys...) {
-	@return val($size, $keys...);
+  @return val($size, $keys...);
 }
 
 @function _sizeH($keys...) {
-	@return val($size, $keys...);
+  @return val($size, $keys...);
 }
 
 @function _sizeHSmall($keys...) {
-	@return val($size, $keys...);
+  @return val($size, $keys...);
 }
 
 $rem-base: 16px !default;
@@ -126,11 +134,11 @@ $rem-base: 16px !default;
   $rem-values: ();
   $count: length($values);
 
-  @if $base == null {
+  @if $base ==null {
     $base: $rem-base;
   }
 
-  @if $count == 1 {
+  @if $count ==1 {
     @return -zf-to-rem($values, $base);
   }
 
@@ -143,8 +151,9 @@ $rem-base: 16px !default;
 
 // Converts a unitless, pixel, or rem value to em, for use in breakpoints.
 @function -zf-bp-to-em($value) {
+
   // Pixel and unitless values are converted to rems
-  @if unit($value) == 'px' or unit($value) == '' {
+  @if unit($value)=='px' or unit($value)=='' {
     $value: rem($value);
   }
 
@@ -157,14 +166,17 @@ $rem-base: 16px !default;
 /// @returns {Number} A number in rems, calculated based on the given value and the base pixel value. rem values are passed through as is.
 /// @access private
 @function -zf-to-rem($value, $base: $rem-base) {
+
   // Calculate rem if units for $value is not rem
-  @if (unit($value) != 'rem') {
+  @if (unit($value) !='rem') {
     $value: strip-unit($value) / strip-unit($base) * 1rem;
   }
 
   // Turn 0rem into 0
   /* stylelint-disable-next-line length-zero-no-unit */
-  @if ($value == 0) { $value: 0; }
+  @if ($value ==0) {
+    $value: 0;
+  }
 
   @return $value;
 }
@@ -177,11 +189,16 @@ $rem-base: 16px !default;
 
 @function escape-svg($string) {
   @if str-index($string, "data:image/svg+xml") {
-    @each $char, $encoded in $escaped-characters {
+
+    @each $char,
+    $encoded in $escaped-characters {
+
       // Do not escape the url brackets
-      @if str-index($string, "url(") == 1 {
+      @if str-index($string, "url(")==1 {
         $string: url("#{str-replace(str-slice($string, 6, -3), $char, $encoded)}");
-      } @else {
+      }
+
+      @else {
         $string: str-replace($string, $char, $encoded);
       }
     }
@@ -189,4 +206,3 @@ $rem-base: 16px !default;
 
   @return $string;
 }
-

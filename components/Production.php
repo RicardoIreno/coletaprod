@@ -9,7 +9,7 @@ class Production
     $img = '';
     switch ($tipo) {
       case "Artigo publicado":
-        $img = 'article-published';
+        $img = 'articlePublished';
         break;
       case "Capítulo de livro publicado":
         $img = 'chapter';
@@ -33,47 +33,37 @@ class Production
         $img = 'book';
         break;
       default:
-        $img = 'default';
+        $img = 'defaultProduction';
     }
-    return "<img class='s-list-ico' title='{$tipo}' src='inc/images/icons/$img.svg'/>";
+    return "<i class='i i-$img s-list-ico' title='$tipo'></i>";
   }
 
-  static function sLineItem($url, $type)
+
+  static function doiRendered($url) 
   {
-    switch ($type) {
-      case "doi":
-        $path = "<a href='https://doi.org/$url' target='blank'></a>";
-        $title = "doi";
-        break;
-      case "link":
-        $path = "<a href='$url' target='blank'>Conteúdo completo</a>";
-        $title = "conteúdo completo";
-        break;
-      case "issn":
-        $path = "<a href='$url' target='blank'>$type</a>";
-        $title = "issn";
-        break;
-      case "evento":
-        $path = "<a href=''>Evento: $url</a>";
-        $title = "Evento";
-    }
-
-    if (!empty($url)) {
-      $output = <<<TEXT
-			<div class="s-line-item">
-				<img 
-					class="s-line-icon" 
-					src="inc/images/icons/$type.svg" 
-					title= "$title" 
-					alt="$title" />
-					$path
-			</div>
-			TEXT;
-    }
-
-    return $output;
+    return "
+        <a class='ty ty-a u-icon-text' href='https://doi.org/$url' target='blank'>
+        <img class='i-doi' src='inc/images/logos/doi.svg' title='doi' alt='doi' />
+        </a>";
   }
 
+  static function urlRendered($url)
+  {
+    return "
+        <a class='ty ty-a u-icon-text' href='$url' target='blank'> 
+          <i class='i i-link i-link' title='Conteúdo completo' alt='Conteúdo completo'></i>
+          Conteúdo completo
+        </a>";
+  }
+
+  static function issnRendered($url)
+  {
+    return "
+        <a class='ty ty-a u-icon-text' href='$url' target='blank'> 
+          <i class='i i-link i-link' title='ISSN' alt='ISSN'></i>
+          ISSN: $url
+        </a>";
+  }
 
   static function IntelectualProduction(
     $type,
@@ -92,17 +82,15 @@ class Production
   ) {
 
     $bullet = Production::bullet($type);
+    $authorsRendered = implode('; ', $authors);
 
-
-    !empty($doi) ? $doiRendered = Production::sLineItem($doi, 'doi') : $doiRendered = '';
-    !empty($url) ? $urlRendered = Production::sLineItem($url, 'link') : $urlRendered = '';
-    !empty($evento) ? $eventoRendered = Production::sLineItem($evento, 'evento') : $eventoRendered = '';
+    !empty($doi) ? $doiRendered = Production::doiRendered($doi) : $doiRendered = '';
+    !empty($url) ? $urlRendered = Production::urlRendered($url) : $urlRendered = '';
+    !empty($issn) ? $issnRendered = Production::issnRendered($issn) : $issnRendered = '';
     !empty($refName) ? $refName = $refName : '';
     !empty($refVol) ? $refVol = ", v. $refVol" : '';
     !empty($refFascicle) ? $refFascicle = ", n. $refFascicle" : '';
     !empty($refPage) ? $refPage = ", p. $refPage" : '';
-
-    $authorsRendered = implode('; ', $authors);
 
     // (!empty($datePublished) && !empty($id)) ? $query = DadosInternos::queryProdmais($name, $datePublished, $id) : $query = '';
 
@@ -113,16 +101,16 @@ class Production
 				</div>
 
 				<div class='s-list-content'>
-					<p class='ty-item'>$name<i> — $type </i ></p>
+					<p class='ty-b'>$name<i> — $type </i ></p>
 					<p class='ty-gray'><b class='ty-subItem'>Autores: </b> $authorsRendered </p>
 					
-					<div class='s-line'>
+					<div class='u-linewrap ty-gray'>
             $doiRendered
             $urlRendered	
-            $eventoRendered					
+            $issnRendered					
 					</div>
 					
-					<p class='ty ty-themeLight'>
+					<p class='ty ty-light'>
 						Fonte: $refName $refVol $refFascicle $refPage
 					</p>
 					
