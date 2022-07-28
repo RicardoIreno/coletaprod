@@ -80,7 +80,7 @@ class SList
 					<p class='ty ty-b'>$header</p>
 					<p class='ty'>$itemInfoA</p>
 
-					<p class='ty ty-gray'>$itemInfoB $sepataror $itemInfoC</p>
+					<p class='ty ty-gray'>$itemInfoB</p>
 					<p class='ty ty-gray'>$itemInfoC</p>
 					<p class='ty ty-gray'>$itemInfoD</p>
 					<p class='ty ty-gray'>$itemInfoE</p>
