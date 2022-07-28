@@ -8,14 +8,14 @@ class SList
   {
     $img = '';
     switch ($tipo) {
-      case "atuacoes":
-        $img = 'professional';
+      case "professional":
+        $img = 'working';
         break;
       case "orientation":
         $img = 'orientation';
         break;
       case "managing":
-        $img = 'managing';
+        $img = 'managment';
         break;
       case "research":
         $img = 'research';
@@ -24,9 +24,9 @@ class SList
         $img = 'academic';
         break;
       default:
-        $img = 'default';
+        $img = 'defaultProduction';
     }
-    return "<img class='s-list-ico' title='{$tipo}' src='inc/images/icons/$img.svg'/>";
+    return "<i class='i i-$img s-list-ico' title='$tipo'></i>";
   }
 
 
@@ -61,9 +61,9 @@ class SList
     $date = SList::date($yearStart, $yearEnd);
 
     if (!empty($itemNameLink)) {
-      $header = "<p class='ty ty-item'><a class='ty-itemLink' href='$itemNameLink'> $itemName </a></p>";
+      $header = "<p class='ty ty-b'><a class='ty-a' href='$itemNameLink'> $itemName </a></p>";
     } else {
-      $header = "<p class='ty ty-item'> $itemName </a></p>";
+      $header = "<p class='ty ty-b'> $itemName </a></p>";
     }
 
     !empty($itemInfoB) && !empty($itemInfoC) ? $sepataror = ', ' : $sepataror = '';
@@ -77,7 +77,7 @@ class SList
 				</div>
 
 				<div class='s-list-content'>
-					<p class='ty ty-item'>$header</p>
+					<p class='ty ty-b'>$header</p>
 					<p class='ty'>$itemInfoA</p>
 
 					<p class='ty ty-gray'>$itemInfoB $sepataror $itemInfoC</p>

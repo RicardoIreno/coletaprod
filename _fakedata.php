@@ -1,5 +1,45 @@
 <?php 
 
+$infosToGraph = [
+  [
+    "year" =>  2018,
+    "infoA" =>  2,
+    "infoB" =>  1,
+    "infoC" =>  3,
+    "infoD" =>  2
+  ],
+  [
+    "year" =>  2019,
+    "infoA" =>  2,
+    "infoB" =>  3,
+    "infoC" =>  4,
+    "infoD" =>  1
+  ],
+  [
+    "year" =>  2020,
+    "infoA" =>  4,
+    "infoB" =>  5,
+    "infoC" =>  6,
+    "infoD" =>  4
+  ],
+  [
+    "year" =>  2021,
+    "infoA" =>  3,
+    "infoB" =>  4,
+    "infoC" =>  5,
+    "infoD" =>  6
+  ],
+  [
+    "year" =>  2022,
+    "infoA" =>  4,
+    "infoB" =>  5,
+    "infoC" =>  4,
+    "infoD" =>  4
+  ],
+
+];
+
+
 $tagsFake = [
   [
     "tag" =>  'Test',

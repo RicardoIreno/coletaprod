@@ -28,13 +28,13 @@
     }
   }
 
-  &-ico {
+  &-icons {
     width: 30px;
+    height: 30px;
     margin: .25rem;
-    background-color: none;
     vertical-align: middle;
     transition: all 0.2s ease 0s;
-    fill: _palette(theme-light-3);
+    background-color: _palette(theme-light-3);
   }
 }
 

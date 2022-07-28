@@ -140,7 +140,9 @@
 
     &-icon {
       width: 30px;
+      height: 30px;
       margin: 0 auto;
+      background-color: _palette(theme-light-2);
     }
   }
 }
@@ -163,9 +165,6 @@
 
 }
 
-.c-iconlang {
-  width: 50px;
-}
 
 // PI - PRODUÇÃO INTELECTUAL
 

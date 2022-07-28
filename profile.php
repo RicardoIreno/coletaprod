@@ -159,17 +159,17 @@ if (!empty($_REQUEST["lattesID"])) {
           </div> <!-- end core-one -->
 
           <div class="cc-coregrid-two">
-            <h1 class="ty-name">
+            <h1 class="ty-h1">
               <?php echo $profile["nome_completo"] ?>
 
               <?php if ($profile["nacionalidade"] == "B") : ?>
-              <img class="country-flag" src="inc/images/icons/country_flags/br.svg" alt="nacionalidade brasileira"
+              <img class="country-flag" src="inc/images/country_flags/br.svg" alt="nacionalidade brasileira"
                 title="nacionalidade brasileira" />
               <?php endif; ?>
             </h1>
 
             <!-- <div class="u-mb-2  "></div> -->
-            <h2 class="ty ty-prof">Universidade Federal de São Paulo</h2>
+            <h3 class="ty ty-prof">Universidade Federal de São Paulo</h3>
             <?php if (!empty($profile["unidade"][0])) : ?>
             <p class="ty ty-prof"><?php echo $profile["unidade"][0] ?></p>
             <?php endif; ?>
@@ -195,28 +195,16 @@ if (!empty($_REQUEST["lattesID"])) {
 
             <div class="cc-numbers">
               <span class="cc-numbers-number">
-                <img class="cc-numbers-icon" src="inc/images/icons/article-published.svg" alt="Trabalhos publicados"
-                  title="Trabalhos publicados" />
+                <i class="i i-articlePublished cc-numbers-icon" title="Trabalhos publicados"
+                  alt="Trabalhos publicados"></i>
                 <?php echo $totalWorks; ?>
               </span>
 
               <span class="cc-numbers-number">
-                <img class="cc-numbers-icon" src="inc/images/icons/orientation.svg" alt="Orientações"
-                  title="Orientações" />
+                <i class="i i-orientation cc-numbers-icon" title="Orientações " alt="Orientações"></i>
                 <?php echo $totalOrientacoes; ?>
               </span>
 
-              <!--
-              <span class="cc-numbers-number">
-                <img class="cc-numbers-icon" src="inc/images/icons/research.svg" alt="Pesquisas" />
-                15
-              </span>
-
-              <span class="cc-numbers-number">
-                <img class="cc-numbers-icon" src="inc/images/icons/event.svg" alt="Eventos participados" />
-                41
-              </span>
-              -->
             </div> <!-- end cc-numbers -->
 
           </div> <!-- end core-two -->
@@ -395,33 +383,33 @@ if (!empty($_REQUEST["lattesID"])) {
 
         <div class="cc-profmenu">
           <button id="tab-btn-1" class="cc-profmenu-btn" v-on:click="changeTab('1')" title="Sobre" alt="Sobre">
-            <div class="cc-profmenu-ico cc-profmenu-ico-1"></div>
+            <i class="i i-aboutme cc-profmenu-ico"></i>
             <span class="cc-profmenu-text">Sobre</span>
           </button>
 
           <button id=" tab-btn-2" class="cc-profmenu-btn" v-on:click="changeTab('2')" title="Produção" alt="Produção">
-            <div class="cc-profmenu-ico cc-profmenu-ico-2"></div>
+            <i class="i i-prodsymbol cc-profmenu-ico"></i>
             <span class="cc-profmenu-text">Produção</span>
           </button>
 
           <button id="tab-btn-3" class="cc-profmenu-btn" v-on:click="changeTab('3')" title="Atuação" alt="Atuação">
-            <div class="cc-profmenu-ico cc-profmenu-ico-3"></div>
+            <i class="i i-working cc-profmenu-ico"></i>
             <span class="cc-profmenu-text">Atuação</span>
           </button>
 
           <?php if ($totalOrientacoes != 0) : ?>
           <button id="tab-btn-4" class="cc-profmenu-btn" v-on:click="changeTab('4')" title="Ensino" alt="Ensino">
-            <div class="cc-profmenu-ico cc-profmenu-ico-4"></div>
+            <i class="i i-teaching cc-profmenu-ico"></i>
             <span class="cc-profmenu-text">Ensino</span>
           </button>
           <?php endif; ?>
 
           <button id="tab-btn-5" class="cc-profmenu-btn" v-on:click="changeTab('5')" title="Gestão" alt="Gestão">
-            <div class="cc-profmenu-ico cc-profmenu-ico-5"></div>
+            <div class="i i-managment cc-profmenu-ico"></div>
             <span class="cc-profmenu-text">Gestão</span>
           </button>
           <button id="tab-btn-6" class="cc-profmenu-btn" v-on:click="changeTab('6')" title="Pesquisa" alt="Pesquisa">
-            <div class="cc-profmenu-ico cc-profmenu-ico-6"></div>
+            <div class="i i-research cc-profmenu-ico"></div>
             <span class="cc-profmenu-text">Pesquisa</span>
           </button>
           <!-- <button id="tab-btn-7" class="cc-profmenu-btn" v-on:click="changeTab('7')" title="" alt="">
@@ -440,7 +428,7 @@ if (!empty($_REQUEST["lattesID"])) {
                 <p class="ty">
                   <?php echo $profile["resumo_cv"]["texto_resumo_cv_rh"] ?>
                 </p>
-                <p class="ty-right ty-themeLight">Fonte: Lattes CNPq</p>
+                <p class="ty-right ty-light">Fonte: Lattes CNPq</p>
 
               </div>
 
@@ -450,19 +438,19 @@ if (!empty($_REQUEST["lattesID"])) {
 
               <hr class="c-line u-my-2" />
 
-              <p class="ty ty-subtitle">Perfis na web</p>
+              <p class="ty ty-b">Perfis na web</p>
               <div class="cc-socialicons">
 
                 <?php if (!empty($profile['lattesID'])) : ?>
 
                 <a href="https://lattes.cnpq.br/<?php echo $profile['lattesID']; ?>" target="_blank" rel="external"><img
-                    class="cc-socialicons-icon" src="inc/images/icons/academic_plataforms/logo_lattes.svg" alt="Lattes"
+                    class="cc-socialicons-icon" src="inc/images/academic_plataforms/logo_lattes.svg" alt="Lattes"
                     title="Lattes" /></a>
                 <?php endif; ?>
                 <?php if (!empty($profile['orcid_id'])) : ?>
                 <a href="<?php echo $profile['orcid_id']; ?>" target="_blank" rel="external"><img
-                    class="cc-socialicons-icon" src="inc/images/icons/academic_plataforms/logo_research_id.svg"
-                    alt="ORCID" title="ORCID" /></a>
+                    class="cc-socialicons-icon" src="inc/images/academic_plataforms/logo_research_id.svg" alt="ORCID"
+                    title="ORCID" /></a>
                 <?php endif; ?>
 
               </div> <!-- end cc-socialicons -->
@@ -511,38 +499,41 @@ if (!empty($_REQUEST["lattesID"])) {
                     <?php
                         switch ($idioma["descricaoDoIdioma"]) {
                           case "Inglês":
-                            echo "<img class='c-iconlang' src='inc/images/icons/languages/en.svg' />";
+                            $lang = 'en';
                             break;
                           case "Espanhol":
-                            echo "<img class='c-iconlang' src='inc/images/icons/languages/es.svg' />";
+                            $lang = 'es';
                             break;
                           case "Português":
-                            echo "<img class='c-iconlang' src='inc/images/icons/languages/pt.svg' />";
+                            $lang = 'pt';
                             break;
                           case "Italiano":
-                            echo "<img class='c-iconlang' src='inc/images/icons/languages/it.svg' />";
+                            $lang = 'it';
                             break;
                           case "Francês":
-                            echo "<img class='c-iconlang' src='inc/images/icons/languages/fr.svg' />";
+                            $lang = 'fr';
                             break;
                           case "Alemão":
-                            echo "<img class='c-iconlang' src='inc/images/icons/languages/de.svg' />";
+                            $lang = 'de';
                             break;
                           case "Russo":
-                            echo "<img class='c-iconlang' src='inc/images/icons/languages/ru.svg' />";
+                            $lang = 'ru';
                             break;
                           case "Mandarin":
-                            echo "<img class='c-iconlang' src='inc/images/icons/languages/zh.svg' />";
+                            $lang = 'zh';
                             break;
                           default:
-                            echo "<img class='c-iconlang' src='inc/images/icons/languages/idioma.svg' />";
+                            $lang = 'idioma';
                             break;
-                        }
+                        };
+                        $idi = $idioma["descricaoDoIdioma"];
+
+                        echo "<i class='i i-lang-$lang i-lang' title='$idi' alt='$idi'></i>"
                         ?>
                   </div>
 
                   <div class="s-list-content">
-                    <p class="ty ty-item"><?php echo $idioma["descricaoDoIdioma"] ?></p>
+                    <p class="ty ty-b"><?php echo $idioma["descricaoDoIdioma"] ?></p>
                     <p class="ty" style="margin-bottom:10px;">
 
                       Compreende <?php echo strtolower($idioma["proficienciaDeCompreensao"]) ?>
@@ -693,7 +684,7 @@ if (!empty($_REQUEST["lattesID"])) {
             <div id="tab-two" class="cc-tab-content" v-if="tabOpened == '2'">
               <div class="profile-pi">
 
-                <h2 class="ty ty-title u-mb-2">Produção</h2>
+                <h3 class="ty ty-title u-mb-2">Produção</h3>
 
                 <?php
                 foreach ($cursor_works['hits']['hits'] as $key => $work) {
@@ -704,7 +695,7 @@ if (!empty($_REQUEST["lattesID"])) {
                   if (!empty($works[$i])) {
 
                     echo '<hr class="c-line"></hr>
-                            <h3 class="ty-subtitle c-pi-year">' . $i . '</h3>
+                            <h3 class="ty-b c-pi-year">' . $i . '</h3>
                           <hr class="c-line u-mb-2"></hr> ';
 
                     foreach ($works[$i] as $key => $work) {
@@ -769,14 +760,14 @@ if (!empty($_REQUEST["lattesID"])) {
           <transition name="tabeffect">
             <div id="tab-three" class="cc-tab-content" v-if="tabOpened == '3'">
 
-              <h2 class="ty ty-title u-mb-2">Atuações</h2>
+              <h3 class="ty ty-title u-mb-2">Atuações</h3>
 
               <?php
 
               foreach ($profile['atuacoes_profissionais'] as $key => $atuacoes_profissionais) {
 
                 foreach ($atuacoes_profissionais as $key => $atuacao_profissional) {
-                  echo '<h4>' . $atuacao_profissional['@attributes']['NOME-INSTITUICAO'] . '</h4>';
+                  echo '<h4 class="ty ty-subtitle">' . $atuacao_profissional['@attributes']['NOME-INSTITUICAO'] . '</h4>';
 
                   if (isset($atuacao_profissional['VINCULOS'])) {
                     if (count($atuacao_profissional['VINCULOS']) == 1) {
@@ -829,7 +820,7 @@ if (!empty($_REQUEST["lattesID"])) {
 
           <transition name="tabeffect">
             <div id="tab-four" class="cc-tab-content" v-if="tabOpened == '4'">
-              <h2 class="ty ty-title u-mb-2">Ensino</h2>
+              <h3 class="ty ty-title u-mb-2">Ensino</h3>
 
               <h3 class="ty ty-title u-mb-2">Orientações e supervisões</h3>
 
@@ -848,7 +839,7 @@ if (!empty($_REQUEST["lattesID"])) {
                   }
                   if (isset($orientacao_andamento_array[$orientacao_andamento_label])) {
                     if (count($orientacao_andamento_array[$orientacao_andamento_label]) > 0) {
-                      echo '<h4 class="ty ty-title u-mb-2">' . $orientacao_andamento_label . ' em andamento</h4>';
+                      echo '<h4 class="ty ty-subtitle u-mb-2">' . $orientacao_andamento_label . ' em andamento</h4>';
                       foreach ($orientacao_andamento_array[$orientacao_andamento_label] as $orientacao_andamento_echo) {
                         //var_dump($orientacao_andamento_echo);
 
@@ -889,7 +880,7 @@ if (!empty($_REQUEST["lattesID"])) {
                   }
                   if (isset($orientacao_concluidas_array)) {
                     if (count($orientacao_concluidas_array[$orientacao_concluidas_label]) > 0) {
-                      echo '<h4 class="ty ty-title u-mb-2">' . $orientacao_concluidas_label . ' concluídas</h4>';
+                      echo '<h4 class="ty ty-subtitle u-mb-2">' . $orientacao_concluidas_label . ' concluídas</h4>';
                       foreach ($orientacao_concluidas_array[$orientacao_concluidas_label] as $orientacao_concluidas_echo) {
                         //var_dump($orientacao_concluidas_echo);
 
@@ -923,7 +914,7 @@ if (!empty($_REQUEST["lattesID"])) {
           <transition name="tabeffect">
             <div id="tab-five" class="cc-tab-content" v-if="tabOpened == '5'">
 
-              <h2 class="ty ty-title u-mb-2">Gestão</h2>
+              <h3 class="ty ty-title u-mb-2">Gestão</h3>
 
               <?php
               foreach ($profile['atuacoes_profissionais'] as $key => $atuacoes_profissionais) {
@@ -932,7 +923,7 @@ if (!empty($_REQUEST["lattesID"])) {
 
                   if (isset($atuacao_profissional['ATIVIDADES-DE-DIRECAO-E-ADMINISTRACAO'])) {
 
-                    echo '<h4>' . $atuacao_profissional['@attributes']['NOME-INSTITUICAO'] . '</h4>';
+                    echo '<h4 class="ty ty-subtitle">' . $atuacao_profissional['@attributes']['NOME-INSTITUICAO'] . '</h4>';
 
                     if (isset($atuacao_profissional['VINCULOS'])) {
 
@@ -971,7 +962,7 @@ if (!empty($_REQUEST["lattesID"])) {
           <transition name="tabeffect">
             <div id="tab-six" class="cc-tab-content" v-if="tabOpened == '6'">
 
-              <h2 class="ty ty-title u-mb-2">Pesquisa</h2>
+              <h3 class="ty ty-title u-mb-2">Pesquisa</h3>
 
               <?php
               foreach ($profile['atuacoes_profissionais'] as $key => $atuacoes_profissionais) {
@@ -980,7 +971,7 @@ if (!empty($_REQUEST["lattesID"])) {
 
                   if (isset($atuacao_profissional['ATIVIDADES-DE-PARTICIPACAO-EM-PROJETO']['PARTICIPACAO-EM-PROJETO'])) {
 
-                    echo '<h4 class="ty ty-title u-my-2">' . $atuacao_profissional['@attributes']['NOME-INSTITUICAO'] . '</h4>';
+                    echo '<h4 class="ty ty-subtitle u-my-2">' . $atuacao_profissional['@attributes']['NOME-INSTITUICAO'] . '</h4>';
 
                     for ($i_atuacao_profissional = 0; $i_atuacao_profissional <= (count($atuacao_profissional['VINCULOS']) - 1); $i_atuacao_profissional++) {
 

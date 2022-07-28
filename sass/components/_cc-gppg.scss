@@ -1,0 +1,146 @@
+$gppg-gap: 10px;
+$gppg-width: 50px;
+$graduation: 30px;
+
+@for $i from 1 through 12 {
+  .cc-gppg-bar[data-weight="#{$i}"] {
+    --sizebar: #{$i};
+  }
+}
+
+.cc-gppg {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  &-plot,
+  &-slice,
+  &-slice-zero,
+  &-level,
+  &-bars {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+
+  &-plot {
+    border: 1px solid _palette(theme);
+    padding: 2rem 5rem 0 5rem;
+    border-radius: 30px;
+    position: relative;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    z-index: 5;
+  }
+
+  &-slice,
+  &-slice-zero,
+  &-bars {
+    flex-direction: column;
+  }
+
+  &-slice-zero {
+    flex-direction: column-reverse;
+  }
+
+  &-slice {
+    margin-inline: $gppg-gap;
+  }
+
+  &-level {
+    height: $graduation;
+    color: _palette(theme-light-1);
+    font-size: .7rem;
+  }
+
+  &-bars {
+    flex-direction: column;
+  }
+
+  &-bar {
+    --sizebar: 2;
+    width: $gppg-width;
+    height: calc(var(--sizebar) * 1rem);
+    z-index: 10;
+  }
+
+  &-bar[data-type="article"],
+  &-label-a {
+    background-color: _palette(theme-light-1);
+  }
+
+  &-bar[data-type="magazine"],
+  &-label-b {
+    background-color: _palette(theme-light-2);
+  }
+
+  &-bar[data-type="event"],
+  &-label-c {
+    background-color: _palette(theme-light-3);
+  }
+
+  &-bar[data-type="other"],
+  &-label-d {
+    background-color: _palette(theme-dark);
+  }
+
+
+
+  &-label-a,
+  &-label-b,
+  &-label-c,
+  &-label-d {
+    padding: .2rem .7rem;
+    border-radius: 12px;
+    color: #fff;
+    font-weight: 600;
+    margin: .5rem;
+    font-size: .9rem;
+  }
+
+  &-year {
+    width: $gppg-width;
+    height: $graduation;
+    text-align: center;
+    color: _palette(theme);
+    font-size: .7rem;
+  }
+
+
+
+  &-grid {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    z-index: 2;
+
+
+    &-line {
+      width: 100%;
+      border-top: 1px dashed _palette(theme-light-2);
+      border-bottom: none;
+      border-left: none;
+      border-right: none;
+      margin-top: $graduation;
+    }
+  }
+
+  &-linezero {
+    height: $graduation;
+  }
+
+  &-labels {
+    padding: 10px;
+    border: 1px solid _palette(theme);
+    background-color: _palette(bg-primary);
+    border-radius: 30px;
+    z-index: 5;
+    margin: 0 4rem 0 0;
+    transform: translateY(-50%);
+  }
+
+}

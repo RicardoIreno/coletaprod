@@ -9,11 +9,6 @@
     display: none;
   }
 
-
-  &-ico-mini {
-    width: 30px;
-  }
-
   &-content {
     border-left: 1px solid _palette(theme-light-2);
     border-bottom: 1px dashed _palette(theme-light-2);
@@ -37,7 +32,7 @@
     grid-template-columns: 10% 90%;
     grid-template-areas: "left right";
     list-style: none;
-  
+
     &-bullet {
       display: flex;
       align-items: flex-start;
@@ -45,21 +40,18 @@
       justify-content: flex-end;
       padding-right: 1rem;
     }
-  
+
     &-ico {
       display: block;
       width: 50px;
+      height: 50px;
+      background-color: _palette(theme-light-2);
     }
-  
-  
-    &-ico-mini {
-      width: 30px;
-    }
-  
+
     &-content {
       grid-area: right;
     }
-  
+
     &-content-mini {
       grid-area: right;
     }

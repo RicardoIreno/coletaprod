@@ -5,6 +5,7 @@
 @import 'base/normalize';
 @import 'base/typography';
 @import 'base/transitions';
+@import 'base/icons';
 @import 'layouts/sitefooter';
 @import 'layouts/siteheader';
 @import 'layouts/sitemenu';
@@ -18,13 +19,13 @@
 @import 'components/c-wrapper';
 @import 'components/cc-display';
 @import 'components/cc-graph';
+@import 'components/cc-gppg';
 @import 'components/cc-navigator';
 @import 'components/cc-search';
 @import 'components/cc-tab';
 @import 'components/cc-profmenu';
 @import 'components/cc-wrapper';
 @import 'components/tag';
-@import 'components/s-line';
 @import 'components/s-list';
 @import 'pages/about';
 @import 'pages/home';
@@ -37,6 +38,8 @@
 @import 'utilities/u-alignaments';
 @import 'utilities/u-containers';
 @import 'utilities/u-grid';
+@import 'utilities/u-icon-text';
+@import 'utilities/u-linewrap';
 @import 'utilities/u-skip';
 @import 'utilities/u-spacing';
 @import 'utilities/u-sr-only';

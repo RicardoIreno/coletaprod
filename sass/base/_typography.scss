@@ -63,44 +63,47 @@ h5 a {
 
 // GENERAL
 
+
 .ty {
   font-family: "Lato", sans-serif;
+  // margin-bottom: .5rem;
 
-  &-center {
-    text-align: center;
-  }
 
-  &-name,
+  &-h1,
+  &-h2,
   &-title,
   &-subtitle,
-  &-item {
+  &-b {
     font-weight: 700;
     color: _palette(title);
   }
 
-  &-name {
+  &-h1,
+  &-h2 {
+    margin-bottom: .2rem;
+  }
+
+  &-h1 {
     margin-top: .7rem;
+    font-size: 1.5rem;
   }
 
-  &-item {
-    margin-bottom: .5rem;
+  &-h2 {
+    font-size: 1.3rem;
   }
 
-  &-itemLink {
-    color: _palette(title);
-    transition: border-bottom-color 0.25s ease-in-out;
-
-    &:hover {
-      color: rgb(52, 52, 52);
-    }
-
-    &:visited {
-      color: _palette(title);
-    }
+  &-title {
+    font-size: 1.3rem;
   }
 
-  &-right {
-    text-align: end;
+  &-subtitle {
+    font-size: 1.3rem;
+    color: _palette(theme);
+  }
+
+
+  &-b {
+    margin-bottom: .3rem;
   }
 
   &-subItem {
@@ -113,14 +116,34 @@ h5 a {
     }
   }
 
-  &-subtitle {
-    font-size: 1.1rem;
-    margin-block: .5rem;
+  &-center {
+    text-align: center;
   }
 
+  &-right {
+    text-align: end;
+  }
 
-  &-themeLight {
-    color: _palette(theme-light-2);
+  &-light {
+    color: _palette(theme-light-1);
+  }
+
+  &-gray {
+    color: _palette(ty-gray);
+    margin-bottom: .3rem;
+  }
+
+  &-a {
+    color: _palette(theme);
+    transition: border-bottom-color 0.25s ease-in-out;
+
+    &:hover {
+      color: rgb(52, 52, 52);
+    }
+
+    &:visited {
+      color: _palette(title);
+    }
   }
 }
 
@@ -132,9 +155,7 @@ h5 a {
     font-weight: 700;
   }
 
-  &-gray {
-    color: _palette(ty-gray)
-  }
+
 
   &-black {
     color: #000 !important;
