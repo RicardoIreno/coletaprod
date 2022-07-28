@@ -8,6 +8,7 @@
   require 'inc/functions.php';
   require 'components/Production.php';
   require 'components/ProfilePic.php';
+  require 'components/GraphBar.php';
   require '_fakedata.php';
   ?>
   <meta charset="utf-8" />
@@ -45,11 +46,11 @@
           <div class="ppg-header-side2">
 
             <div class="u-icon-text ppg-header-infos">
-              <i class="i i-star4 ppg-header-i"></i> Mestrado acadêmico
+              <i class="i i-star4 ppg-header-i"></i> Mestrado acadêmico 7
             </div>
 
             <div class="u-icon-text ppg-header-infos">
-              <i class="i i-star5 ppg-header-i"></i> Doutorado acadêmico
+              <i class="i i-star5 ppg-header-i"></i> Doutorado acadêmico 3
             </div>
 
             <div class="u-icon-text ppg-header-infos">
@@ -81,7 +82,11 @@
         <hr class="c-line  u-my-2" />
 
         <section class="l-ppg">
-          gráfico
+          <?php
+            GraphBar::graph(
+              $arr = $infosToGraph
+            );
+          ?>
         </section>
 
         <hr class="c-line u-my-2" />
@@ -106,7 +111,7 @@
         <hr class="c-line u-my-2" />
 
         <section class="l-ppg">
-          <h3 class='ty'>Nossos orientadores</h3>
+          <h3 class='ty'>Nossos pesquisadores</h3>
 
           <ul class="ppg-orientadores">
             <li>
