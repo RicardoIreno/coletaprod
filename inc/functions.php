@@ -608,7 +608,7 @@ class paginaInicial
       'body' => $query
     ];
     $response = $client->search($params);
-    echo '<select class="cc-search-input" name="filter[]" aria-label="Filtro">
+    echo '<select class="c-search-input" name="filter[]" aria-label="Filtro">
         <option value="" selected>Escolha o nome do programa de pós-graduação</option>';
     foreach ($response["aggregations"]["group_by_state"]["buckets"] as $facets) {
       echo '<option value="' . $field . ':' . $facets['key'] . '">' . $facets['key'] . '</option>';
@@ -661,9 +661,9 @@ class DadosInternos
 
             <div id="collapse' . $match["_id"] . '">';
 
-          echo '<p class="ty ty-gray"> Proximidade: ' . toPercent($match["_score"]);
+          echo '<p class="t t-gray"> Proximidade: ' . toPercent($match["_score"]);
 
-          echo '<p class="ty ty-gray"> <a class="ty" href="http://localhost/coletaprod/item/' . $match["_id"] . '" target="_blank">' . $match["_source"]["tipo"] . ' - ' . $match["_source"]["name"] . ' (' . $match["_source"]["datePublished"] . ')</a></p>';
+          echo '<p class="t t-gray"> <a class="t" href="http://localhost/coletaprod/item/' . $match["_id"] . '" target="_blank">' . $match["_source"]["tipo"] . ' - ' . $match["_source"]["name"] . ' (' . $match["_source"]["datePublished"] . ')</a></p>';
 
           echo '<p';
           foreach ($match["_source"]['author'] as $autores) {
@@ -673,12 +673,12 @@ class DadosInternos
           echo '</p>';
 
           if (isset($match["_source"]["doi"])) {
-            echo '<p class="ty ty-gray">DOI: <a href="https://doi.org/' . $match["_source"]["doi"] . '">' . $match["_source"]["doi"] . '</a></p>';
+            echo '<p class="t t-gray">DOI: <a href="https://doi.org/' . $match["_source"]["doi"] . '">' . $match["_source"]["doi"] . '</a></p>';
             $doc["doc"]["bdpi"]["doi_bdpi"] = $match["_source"]["doi"];
           }
           echo '</p>';
 
-          echo '<p class="ty ty-gray"> Fonte: ' . $match["_source"]["source"] . '<p/>';
+          echo '<p class="t t-gray"> Fonte: ' . $match["_source"]["source"] . '<p/>';
 
           unset($autArray);
           echo '</div>';
@@ -2737,14 +2737,14 @@ class FacetsNew
         $result_count = count($response["aggregations"]["counts"]["buckets"]);
 
         $facet_array = array();
-        $facet_array[] = '<details class="cc-fbloc">';
-        $facet_array[] = '<summary class="cc-fbloc-header"><span class="cc-fbloc-name--header">'.$field_name.'</span></summary>';
-        $facet_array[] = '<ul class="cc-fbloc-content" name="bloc1">';
+        $facet_array[] = '<details class="c-fbloc">';
+        $facet_array[] = '<summary class="c-fbloc-header"><span class="c-fbloc-name--header">'.$field_name.'</span></summary>';
+        $facet_array[] = '<ul class="c-fbloc-content" name="bloc1">';
 
         foreach ($response["aggregations"]["counts"]["buckets"] as $facets) {
 
-            $facet_array[] = '<li class="cc-fbloc-item">';
-            $facet_array[] = '<span class="cc-fbloc-name">';
+            $facet_array[] = '<li class="c-fbloc-item">';
+            $facet_array[] = '<span class="c-fbloc-name">';
 
             if ($alternative_index == false) {
                 $facet_array[] = '<form action="result.php" method="post">';
@@ -2766,7 +2766,7 @@ class FacetsNew
 
 
             $facet_array[] = '</span>';
-            $facet_array[] = '<span class="cc-fbloc-number">'.number_format($facets['doc_count'], 0, ',', '.').'</span>';
+            $facet_array[] = '<span class="c-fbloc-number">'.number_format($facets['doc_count'], 0, ',', '.').'</span>';
             $facet_array[] = '</li>';
 
         }
@@ -3071,9 +3071,9 @@ class UI {
 
     static function newpagination($page, $total, $limit, $post, $type_of_page)
     {
-        echo '<div class="cc-navigator">';
+        echo '<div class="c-navigator">';
         if ($page == 1) {
-            echo '<button class="cc-navigator-btn c-btn--c1">|</button>';
+            echo '<button class="c-navigator-btn c-btn--c1">|</button>';
         } else {
             $last_page = $page-1;
 
@@ -3087,7 +3087,7 @@ class UI {
                         }
                     }
                 }
-                echo '<button class="cc-navigator-btn c-btn--c1">ᐊ</button>';
+                echo '<button class="c-navigator-btn c-btn--c1">ᐊ</button>';
             echo '</form>';
 
         }
@@ -3105,11 +3105,11 @@ class UI {
                     }
                 }
             }
-            echo '<button class="cc-navigator-btn c-btn--c1">ᐅ</button>';
+            echo '<button class="c-navigator-btn c-btn--c1">ᐅ</button>';
             echo '</form>';
 
         } else {
-            echo '<button class="cc-navigator-btn c-btn--disabled">|</button>';
+            echo '<button class="c-navigator-btn c-btn--disabled">|</button>';
         }
         echo '</div>';
     }

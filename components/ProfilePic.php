@@ -10,9 +10,9 @@ class ProfilePic
     echo ("
       
     <a href='$link' target='blank'/>
-      <div class='cc-profilex'>
-      <img class='cc-profilex-photo' src=$picture />
-      <b class='cc-profilex-name'>$name</b>
+      <div class='c-profilex'>
+      <img class='c-profilex-photo' src=$picture />
+      <b class='c-profilex-name'>$name</b>
       </div>
     </a>
     ");

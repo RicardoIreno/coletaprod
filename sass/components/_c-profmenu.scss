@@ -2,7 +2,7 @@ $tabshape-desk: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000
 $tabshape-mini: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 85 45'><path d='M56.4,0H43.7h-1.2v0h-1.2H28.6C8.5,0,15.3,33.8,0,45h41.4h1.1v0h1.1H85C69.7,33.8,76.5,0,56.4,0z' /> </svg>");
 
 
-.cc-profmenu {
+.c-profmenu {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -12,7 +12,7 @@ $tabshape-mini: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000
   background: linear-gradient(90deg, _palette(theme-light-3) 0%, _palette(theme-light-4) 100%);
 }
 
-.cc-profmenu-btn {
+.c-profmenu-btn {
   color: _palette(theme-light-3);
   font-weight: 600;
   align-items: center;
@@ -41,14 +41,14 @@ $tabshape-mini: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000
   }
 
   &:hover {
-    .cc-profmenu-ico {
+    .c-profmenu-ico {
       background-color: _palette(bg-primary);
     }
   }
 
 }
 
-.cc-profmenu-ico {
+.c-profmenu-ico {
   width: 40px;
   height: 40px;
   background-color: #fff;
@@ -62,17 +62,17 @@ $tabshape-mini: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000
   }
 }
 
-.cc-profmenu-text {
+.c-profmenu-text {
   display: none;
 }
 
 @include breakpoint(md-up) {
-  .cc-profmenu-btn {
+  .c-profmenu-btn {
     width: 160px;
     @include ico($tabshape-desk);
   }
 
-  .cc-profmenu-text {
+  .c-profmenu-text {
     display: block;
     transform: translateX(-4px);
   }
@@ -80,11 +80,11 @@ $tabshape-mini: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000
 
 
 
-.cc-profmenu-active {
+.c-profmenu-active {
   background-color: _palette(bg-primary) !important;
   z-index: 3;
 
-  .cc-profmenu-ico {
+  .c-profmenu-ico {
     background-color: #4eb3de !important;
     z-index: 4;
   }

@@ -64,7 +64,7 @@ h5 a {
 // GENERAL
 
 
-.ty {
+.t {
   font-family: "Lato", sans-serif;
   // margin-bottom: .5rem;
 
@@ -156,13 +156,11 @@ h5 a {
 
 
 // PROFILE 
-.ty {
+.t {
   &-author {
     color: _palette(normal);
     font-weight: 700;
   }
-
-
 
   &-black {
     color: #000 !important;
@@ -220,7 +218,7 @@ $sizeHSmall: (
 
 @each $n,
 $size in $sizeH {
-  .ty-manual-h#{$n} {
+  .t-manual-h#{$n} {
     font-size: $size;
   }
 }
@@ -229,13 +227,13 @@ $size in $sizeH {
 
   @each $n,
   $size in $sizeHSmall {
-    .ty-manual-h#{$n} {
+    .t-manual-h#{$n} {
       font-size: $size;
     }
   }
 }
 
 
-.ty-manual-p {
+.t-manual-p {
   font-size: 1rem;
 }

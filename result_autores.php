@@ -121,11 +121,11 @@ $get_data = $_GET;
 
         </main>
 
-        <nav class="cc-fbar">
-            <div class="cc-fbar-header">
-                <b class="ty">Refinar Resultados</b>
+        <nav class="c-fbar">
+            <div class="c-fbar-header">
+                <b class="t">Refinar Resultados</b>
             </div>
-            <div class="cc-fbloc-wrapper">
+            <div class="c-fbloc-wrapper">
 
                 <?php
                     $facets = new FacetsNew();

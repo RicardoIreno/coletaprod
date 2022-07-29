@@ -2,7 +2,7 @@
 
 // PROFILE CORE
 
-.cc-coregrid {
+.c-coregrid {
   display: grid;
   padding: 0 2rem;
   align-content: flex-start;
@@ -33,7 +33,7 @@
 
 // @media (min-width: 56.25em) and (max-width: 68.6875em) 
 @include breakpoint(md-up) {
-  .cc-coregrid {
+  .c-coregrid {
 
     grid-template-areas: "one two two"
       "three three three";
@@ -64,7 +64,7 @@
 }
 
 @include breakpoint(lg-up) {
-  .cc-coregrid {
+  .c-coregrid {
     grid-template-columns: 300px 1fr 1fr;
     grid-template-areas: "one two three";
 
@@ -86,8 +86,8 @@
 
 // PROFILE-CORE THINGS  
 
-.cc-badgeicons,
-.cc-socialicons {
+.c-badgeicons,
+.c-socialicons {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -99,11 +99,11 @@
   }
 }
 
-.cc-badgeicons-icon {
+.c-badgeicons-icon {
   width: 25px;
 }
 
-.cc-socialicons-icon {
+.c-socialicons-icon {
   width: 30px;
 }
 

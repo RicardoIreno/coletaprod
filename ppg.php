@@ -20,35 +20,35 @@
   <link rel="stylesheet" href="sass/main.css" />
 </head>
 
-<body class="cc-wrapper-body">
+<body class="c-wrapper-body">
   <?php if(file_exists('inc/google_analytics.php')){include 'inc/google_analytics.php';}?>
 
   <?php require 'inc/navbar.php'; ?>
-  <main class="cc-wrapper-container">
-    <div class="cc-wrapper-paper">
+  <main class="c-wrapper-container">
+    <div class="c-wrapper-paper">
 
-      <div class="cc-wrapper-inner">
+      <div class="c-wrapper-inner">
 
         <section class="ppg-header">
 
           <div class="ppg-header-side1">
             <i class="i i-ppg-ico ppg-ico"></i>
 
-            <h1 class="ty ty-h1">PPG Letras</h1>
-            <h2 class="ty ty-h2">Programa de Pós Graduação em Letras</h2>
-            <p class="ty ty-b ty-light">
+            <h1 class="t t-h1">PPG Letras</h1>
+            <h2 class="t t-h2">Programa de Pós Graduação em Letras</h2>
+            <p class="t t-b ty-light">
               <span>Campus Guarulhos</span>
               <span>Escola de Filosofia, Letras e ciências Humanas</span>
             </p>
 
-            <p class="ty ty-b ty-gray">Estrada do Caminho Velho nª 123 - Bairro, Cidade - SP</p>
-            <p class="ty ty-gray">email@email.com</p>
+            <p class="t t-b ty-gray">Estrada do Caminho Velho nª 123 - Bairro, Cidade - SP</p>
+            <p class="t t-gray">email@email.com</p>
           </div>
 
           <div class="u-grid">
 
             <div class="u-col-1-of-2">
-              <p class="ty ty-b">Avaliação CAPES</p>
+              <p class="t t-b">Avaliação CAPES</p>
               <div class="u-icon-text ppg-header-infos">
                 <i class="i i-star4 ppg-header-i"></i> Nota 7 em mestrado acadêmico
               </div>
@@ -59,7 +59,7 @@
 
             </div>
             <div class="u-col-1-of-2">
-              <p class="ty ty-b">Nossos números</p>
+              <p class="t t-b">Nossos números</p>
               <div class="u-icon-text ppg-header-infos">
                 <i class="i i-book-school ppg-header-i"></i> 30 alunos em curso
               </div>
@@ -78,7 +78,7 @@
         <hr class="c-line u-my-2" />
 
         <section class="l-ppg">
-          <h3 class="ty ty-title">Coordenação</h3>
+          <h3 class="t t-title">Coordenação</h3>
 
           <?php
             ProfilePic::ppg(
@@ -113,7 +113,7 @@
 
 
         <section class="l-ppg">
-          <h3 class="ty ty-title">Tags</h3>
+          <h3 class="t t-title">Tags</h3>
 
           <div>
             <ul class="tag-cloud" role="navigation" aria-label="Tags mais usadas">
@@ -131,7 +131,7 @@
         <hr class="c-line u-my-2" />
 
         <section class="l-ppg">
-          <h3 class='ty ty-title'>Nossos pesquisadores</h3>
+          <h3 class='t t-title'>Nossos pesquisadores</h3>
 
           <ul class="ppg-orientadores">
             <li>
@@ -174,9 +174,9 @@
 
         </section>
 
-      </div> <!-- cc-wrapper-inner -->
-    </div> <!-- cc-wrapper-paper -->
-  </main> <!-- cc-wrapper-container -->
+      </div> <!-- c-wrapper-inner -->
+    </div> <!-- c-wrapper-paper -->
+  </main> <!-- c-wrapper-container -->
 
 
   </div> <!-- end result-container -->

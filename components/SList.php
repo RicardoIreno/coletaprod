@@ -61,13 +61,13 @@ class SList
     $date = SList::date($yearStart, $yearEnd);
 
     if (!empty($itemNameLink)) {
-      $header = "<p class='ty ty-b'><a class='ty-a' href='$itemNameLink'> $itemName </a></p>";
+      $header = "<p class='t t-b'><a class='t-a' href='$itemNameLink'> $itemName </a></p>";
     } else {
-      $header = "<p class='ty ty-b'> $itemName </a></p>";
+      $header = "<p class='t t-b'> $itemName </a></p>";
     }
 
     !empty($itemInfoB) && !empty($itemInfoC) ? $sepataror = ', ' : $sepataror = '';
-    !empty($authors) ? $aut = "<b class='ty-subItem'>Autores: </b> $authors </p>" : $aut = '';
+    !empty($authors) ? $aut = "<b class='t-subItem'>Autores: </b> $authors </p>" : $aut = '';
 
     echo ("
     <li class='s-nobullet'>
@@ -77,15 +77,15 @@ class SList
 				</div>
 
 				<div class='s-list-content'>
-					<p class='ty ty-b'>$header</p>
+					<p class='t t-b'>$header</p>
 					<p class='ty'>$itemInfoA</p>
 
-					<p class='ty ty-gray'>$itemInfoB</p>
-					<p class='ty ty-gray'>$itemInfoC</p>
-					<p class='ty ty-gray'>$itemInfoD</p>
-					<p class='ty ty-gray'>$itemInfoE</p>
-					<p class='ty ty-gray'>$aut</p>		
-					<p class='ty ty-gray'>$date</p>			
+					<p class='t t-gray'>$itemInfoB</p>
+					<p class='t t-gray'>$itemInfoC</p>
+					<p class='t t-gray'>$itemInfoD</p>
+					<p class='t t-gray'>$itemInfoE</p>
+					<p class='t t-gray'>$aut</p>		
+					<p class='t t-gray'>$date</p>			
 				</div>
 			</div>
     </li>

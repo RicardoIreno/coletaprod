@@ -8,12 +8,12 @@ $graduation: 20px;
 }
 
 @for $i from 1 through 12 {
-  .cc-gppg-bar[data-weight="#{$i}"] {
+  .c-gppg-bar[data-weight="#{$i}"] {
     --sizebar: #{$i};
   }
 }
 
-.cc-gppg {
+.c-gppg {
   position: relative;
   width: fit-content;
   display: flex;
@@ -166,7 +166,7 @@ $graduation: 20px;
 }
 
 @include breakpoint(md-up) {
-  .cc-gppg {
+  .c-gppg {
     flex-direction: row;
 
     &-plot {

@@ -1,4 +1,3 @@
-
 /* === LAYOUT === */
 
 $filterbar-width-desk: 420px;
@@ -22,7 +21,8 @@ $filterbar-width-mob: 100%;
   text-align: center;
   color: _palette(theme);
 }
-.cc-fbar {
+
+.c-fbar {
   display: block;
   width: $filterbar-width-mob;
 
@@ -36,17 +36,17 @@ $filterbar-width-mob: 100%;
     grid-template-columns: 1fr $filterbar-width-desk;
     column-gap: 1rem;
   }
-  
+
   .result-main {
     width: 100%;
     margin: 2rem 1rem;
   }
 
-  .cc-fbar {
+  .c-fbar {
     width: $filterbar-width-desk;
 
   }
-  
+
 }
 
 
@@ -64,7 +64,7 @@ summary::marker {
   display: none;
 }
 
-details > summary {
+details>summary {
   list-style: none;
 }
 
@@ -99,7 +99,7 @@ details[open]>*:not(summary) {
   color: inherit;
 }
 
-details[open] .cc-fbloc-name--header:before {
+details[open] .c-fbloc-name--header:before {
   transform: rotate(90deg);
   transition: .3s transform ease;
 }
@@ -113,7 +113,7 @@ details[open] .cc-fbloc-name--header:before {
 $arrowDown: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 15'><path d='M -0.01265394,0.14177403 13.243005,2.082092 26.44568,0.14177403 26.42274,1.4634269 13.243005,3.4026049 -0.01265394,1.4646869 Z'/></svg>");
 
 
-.cc-fbar {
+.c-fbar {
   grid-area: filterbar;
   box-sizing: border-box;
   position: relative;
@@ -140,12 +140,12 @@ $arrowDown: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg
     text-align: center;
 
     &:hover {
-      .cc-fbar-title {
+      .c-fbar-title {
         color: _palette(theme-light-2);
         transition: all 0.3s ease 0s;
       }
 
-      .cc-fbar-arrow {
+      .c-fbar-arrow {
         transform: translateY(5px);
         fill: _palette(theme-light-2);
         transition: all 0.3s ease 0s;
@@ -162,13 +162,13 @@ $arrowDown: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg
 }
 
 @include breakpoint(lg-up) {
-  .cc-fbar-arrow {
+  .c-fbar-arrow {
     display: none;
   }
 }
 
-// .cc-fbloc - used at UL
-.cc-fbloc {
+// .c-fbloc - used at UL
+.c-fbloc {
   margin: .5rem;
 
   &-wrapper,
@@ -297,7 +297,7 @@ $arrowDown: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg
 
 
 
-// .cc-fbloc--expanded {
+// .c-fbloc--expanded {
 //   display: inline-block;
 //   height: fit-content;
 //   transform: translateY(10)
