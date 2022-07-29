@@ -31,7 +31,9 @@
 
         <section class="ppg-header">
 
-          <div class=".ppg-header-side1">
+          <div class="ppg-header-side1">
+            <i class="i i-ppg-ico ppg-ico"></i>
+
             <h1 class="ty ty-h1">PPG Letras</h1>
             <h2 class="ty ty-h2">Programa de Pós Graduação em Letras</h2>
             <p class="ty ty-b ty-light">
@@ -43,23 +45,32 @@
             <p class="ty ty-gray">email@email.com</p>
           </div>
 
-          <div class="ppg-header-side2">
+          <div class="u-grid">
 
-            <div class="u-icon-text ppg-header-infos">
-              <i class="i i-star4 ppg-header-i"></i> Mestrado acadêmico 7
+            <div class="u-col-1-of-2">
+              <p class="ty ty-b">Avaliação CAPES</p>
+              <div class="u-icon-text ppg-header-infos">
+                <i class="i i-star4 ppg-header-i"></i> Nota 7 em mestrado acadêmico
+              </div>
+
+              <div class="u-icon-text ppg-header-infos">
+                <i class="i i-star5 ppg-header-i"></i> Nota 4 em doutorado acadêmico
+              </div>
+
+            </div>
+            <div class="u-col-1-of-2">
+              <p class="ty ty-b">Nossos números</p>
+              <div class="u-icon-text ppg-header-infos">
+                <i class="i i-book-school ppg-header-i"></i> 30 alunos em curso
+              </div>
+
+              <div class="u-icon-text ppg-header-infos">
+                <i class="i i-shool-hat ppg-header-i"></i> 130 alunos formados
+              </div>
+
             </div>
 
-            <div class="u-icon-text ppg-header-infos">
-              <i class="i i-star5 ppg-header-i"></i> Doutorado acadêmico 3
-            </div>
 
-            <div class="u-icon-text ppg-header-infos">
-              <i class="i i-book-school ppg-header-i"></i> 30 alunos em curso
-            </div>
-
-            <div class="u-icon-text ppg-header-infos">
-              <i class="i i-shool-hat ppg-header-i"></i> 130 alunos formados
-            </div>
 
           </div>
 
@@ -67,7 +78,7 @@
         <hr class="c-line u-my-2" />
 
         <section class="l-ppg">
-          <h3>Coordenação</h3>
+          <h3 class="ty ty-title">Coordenação</h3>
 
           <?php
             ProfilePic::ppg(
@@ -79,12 +90,21 @@
 
         </section>
 
-        <hr class="c-line  u-my-2" />
+        <hr class="c-line u-my-2" />
 
         <section class="l-ppg">
           <?php
+            $legends = array(
+              "Artigos publicados",
+              "Textos em jornais e revistas",
+              "Participação em eventos",
+              "Outras produçõe"
+            );
+
             GraphBar::graph(
-              $arr = $infosToGraph
+              $title = 'Produção nos últimos anos',
+              $arrData = $infosToGraph,
+              $arrLegends = $legends
             );
           ?>
         </section>
@@ -93,7 +113,7 @@
 
 
         <section class="l-ppg">
-          <h3>Tags</h3>
+          <h3 class="ty ty-title">Tags</h3>
 
           <div>
             <ul class="tag-cloud" role="navigation" aria-label="Tags mais usadas">
@@ -111,7 +131,7 @@
         <hr class="c-line u-my-2" />
 
         <section class="l-ppg">
-          <h3 class='ty'>Nossos pesquisadores</h3>
+          <h3 class='ty ty-title'>Nossos pesquisadores</h3>
 
           <ul class="ppg-orientadores">
             <li>
@@ -153,8 +173,6 @@
           </ul>
 
         </section>
-
-
 
       </div> <!-- cc-wrapper-inner -->
     </div> <!-- cc-wrapper-paper -->

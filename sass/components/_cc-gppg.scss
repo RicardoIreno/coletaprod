@@ -1,6 +1,11 @@
 $gppg-gap: 10px;
 $gppg-width: 50px;
-$graduation: 30px;
+$graduation: 20px;
+
+@mixin GraphBarBorder() {
+  border: 1px solid _palette(theme);
+  border-radius: 30px;
+}
 
 @for $i from 1 through 12 {
   .cc-gppg-bar[data-weight="#{$i}"] {
@@ -10,32 +15,35 @@ $graduation: 30px;
 
 .cc-gppg {
   position: relative;
-  width: 100%;
+  width: fit-content;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 4rem 2rem 2rem 2rem;
+  @include GraphBarBorder();
 
   &-plot,
   &-slice,
   &-slice-zero,
-  &-level,
+  &-legends,
   &-bars {
     display: flex;
     justify-content: center;
     align-items: flex-end;
+    box-sizing: border-box;
   }
 
   &-plot {
-    border: 1px solid _palette(theme);
-    padding: 2rem 5rem 0 5rem;
-    border-radius: 30px;
+    @include GraphBarBorder();
+    padding: 2rem 1rem 0 1rem;
     position: relative;
     flex-wrap: nowrap;
     flex-direction: row;
     z-index: 5;
   }
 
+  &-legends,
   &-slice,
   &-slice-zero,
   &-bars {
@@ -47,6 +55,7 @@ $graduation: 30px;
   }
 
   &-slice {
+    width: min-content;
     margin-inline: $gppg-gap;
   }
 
@@ -62,37 +71,38 @@ $graduation: 30px;
 
   &-bar {
     --sizebar: 2;
-    width: $gppg-width;
-    height: calc(var(--sizebar) * 1rem);
+    width: 100%;
+    height: calc(var(--sizebar) * $graduation);
     z-index: 10;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+
   }
 
-  &-bar[data-type="article"],
-  &-label-a {
+  &-bar[data-type="1"],
+  &-legend[data-number="1"] {
     background-color: _palette(theme-light-1);
   }
 
-  &-bar[data-type="magazine"],
-  &-label-b {
+  &-bar[data-type="2"],
+  &-legend[data-number="2"] {
     background-color: _palette(theme-light-2);
   }
 
-  &-bar[data-type="event"],
-  &-label-c {
+  &-bar[data-type="3"],
+  &-legend[data-number="3"] {
     background-color: _palette(theme-light-3);
   }
 
-  &-bar[data-type="other"],
-  &-label-d {
+  &-bar[data-type="4"],
+  &-legend[data-number="4"] {
     background-color: _palette(theme-dark);
   }
 
-
-
-  &-label-a,
-  &-label-b,
-  &-label-c,
-  &-label-d {
+  &-legend {
     padding: .2rem .7rem;
     border-radius: 12px;
     color: #fff;
@@ -100,6 +110,8 @@ $graduation: 30px;
     margin: .5rem;
     font-size: .9rem;
   }
+
+
 
   &-year {
     width: $gppg-width;
@@ -117,30 +129,52 @@ $graduation: 30px;
     flex-direction: column;
     position: absolute;
     z-index: 2;
+    margin-bottom: $graduation;
 
 
     &-line {
       width: 100%;
-      border-top: 1px dashed _palette(theme-light-2);
-      border-bottom: none;
+      border-bottom: 1px dashed _palette(theme-light-2);
+      border-top: none;
       border-left: none;
       border-right: none;
-      margin-top: $graduation;
+      margin: calc($graduation - 1px) 0 0 0;
+      padding: 0;
+      box-sizing: border-box;
+
     }
   }
 
-  &-linezero {
-    height: $graduation;
+  &-title {
+    position: absolute;
+    top: 1rem;
+    color: _palette(theme);
+    text-align: center;
+    font-weight: 600;
   }
 
-  &-labels {
-    padding: 10px;
-    border: 1px solid _palette(theme);
+  &-legends {
+    @include GraphBarBorder();
+    position: relative;
     background-color: _palette(bg-primary);
-    border-radius: 30px;
     z-index: 5;
-    margin: 0 4rem 0 0;
-    transform: translateY(-50%);
+    margin: 2rem;
+    top: 50%;
+    padding: 10px;
   }
 
+}
+
+@include breakpoint(md-up) {
+  .cc-gppg {
+    flex-direction: row;
+
+    &-plot {
+      padding: 2rem 5rem 0 5rem;
+    }
+
+    &-bar {
+      width: $gppg-width;
+    }
+  }
 }

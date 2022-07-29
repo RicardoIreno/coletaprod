@@ -2,18 +2,32 @@
 
 $infosToGraph = [
   [
-    "year" =>  2018,
-    "infoA" =>  2,
+    "year" =>  2016,
+    "infoA" =>  1,
     "infoB" =>  1,
-    "infoC" =>  3,
-    "infoD" =>  2
+    "infoC" =>  1,
+    "infoD" =>  1
+  ],
+  [
+    "year" =>  2017,
+    "infoA" =>  1,
+    "infoB" =>  1,
+    "infoC" =>  1,
+    "infoD" =>  1
+  ],
+  [
+    "year" =>  2018,
+    "infoA" =>  1,
+    "infoB" =>  1,
+    "infoC" =>  1,
+    "infoD" =>  1
   ],
   [
     "year" =>  2019,
     "infoA" =>  2,
-    "infoB" =>  3,
-    "infoC" =>  4,
-    "infoD" =>  1
+    "infoB" =>  2,
+    "infoC" =>  2,
+    "infoD" =>  2
   ],
   [
     "year" =>  2020,

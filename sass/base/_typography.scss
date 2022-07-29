@@ -145,6 +145,13 @@ h5 a {
       color: _palette(title);
     }
   }
+
+  &-note {
+    font-weight: 700;
+    font-style: italic;
+    font-size: 1.3rem;
+    margin-left: .5rem;
+  }
 }
 
 
