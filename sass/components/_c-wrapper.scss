@@ -8,9 +8,9 @@
   padding: .5rem;
 
 }
+
 @include breakpoint(md-up) {
   .c-wrapper {
     padding: 1rem 2rem 2rem 2rem;
   }
 }
-  

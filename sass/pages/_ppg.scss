@@ -1,16 +1,25 @@
 // $icon-profmenu-1: url("data:image/svg+xml;utf8, ");
 $imgTestIcon: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M16 8C16 10.21 14.21 12 12 12C9.79 12 8 10.21 8 8L8.11 7.06L5 5.5L12 2L19 5.5V10.5H18V6L15.89 7.06L16 8M12 14C16.42 14 20 15.79 20 18V20H4V18C4 15.79 7.58 14 12 14Z' /></svg>");
 
+.ppg {
+  &-ico {
+    width: 70px;
+    height: 70px;
+    background-color: _palette(theme);
+  }
+}
 
 .ppg-header {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: .5rem;
-  align-content: flex-start;
 
   &-side1,
   &-side2 {
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
 
   &-side2 {
@@ -18,8 +27,8 @@ $imgTestIcon: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/s
   }
 
   &-i {
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
     margin-right: .25rem;
     background-color: _palette(theme-light-1);
   }
@@ -27,7 +36,7 @@ $imgTestIcon: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/s
   &-infos {
     color: _palette(theme);
     font-style: italic;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin-bottom: .3rem;
   }
 }
@@ -35,7 +44,13 @@ $imgTestIcon: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/s
 
 @include breakpoint(md-up) {
   .ppg-header {
+    display: grid;
     grid-template-areas: "s1 s2";
+
+    &-side1,
+    &-side2 {
+      align-items: flex-start;
+    }
 
     &-side1 {
       grid-area: s1;
