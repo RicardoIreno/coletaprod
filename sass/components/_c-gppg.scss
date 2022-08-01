@@ -20,8 +20,6 @@ $graduation: 20px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 4rem 2rem 2rem 2rem;
-  @include GraphBarBorder();
 
   &-plot,
   &-slice,
@@ -41,6 +39,7 @@ $graduation: 20px;
     flex-wrap: nowrap;
     flex-direction: row;
     z-index: 5;
+    overflow: hidden;
   }
 
   &-legends,
@@ -52,6 +51,7 @@ $graduation: 20px;
 
   &-slice-zero {
     flex-direction: column-reverse;
+    margin-right: 2rem;
   }
 
   &-slice {
@@ -60,6 +60,9 @@ $graduation: 20px;
   }
 
   &-level {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
     height: $graduation;
     color: _palette(theme-light-1);
     font-size: .7rem;
@@ -170,7 +173,7 @@ $graduation: 20px;
     flex-direction: row;
 
     &-plot {
-      padding: 2rem 5rem 0 5rem;
+      padding: 2rem 1rem 0 .5rem;
     }
 
     &-bar {

@@ -1180,9 +1180,6 @@ th {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 4rem 2rem 2rem 2rem;
-  border: 1px solid #1C9AD1;
-  border-radius: 30px;
 }
 .c-gppg-plot, .c-gppg-slice, .c-gppg-slice-zero, .c-gppg-legends, .c-gppg-bars {
   display: flex;
@@ -1198,12 +1195,14 @@ th {
   flex-wrap: nowrap;
   flex-direction: row;
   z-index: 5;
+  overflow: hidden;
 }
 .c-gppg-legends, .c-gppg-slice, .c-gppg-slice-zero, .c-gppg-bars {
   flex-direction: column;
 }
 .c-gppg-slice-zero {
   flex-direction: column-reverse;
+  margin-right: 2rem;
 }
 .c-gppg-slice {
   width: -webkit-min-content;
@@ -1212,6 +1211,9 @@ th {
   margin-inline: 10px;
 }
 .c-gppg-level {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
   height: 20px;
   color: #51b7e3;
   font-size: 0.7rem;
@@ -1298,7 +1300,7 @@ th {
     flex-direction: row;
   }
   .c-gppg-plot {
-    padding: 2rem 5rem 0 5rem;
+    padding: 2rem 1rem 0 0.5rem;
   }
   .c-gppg-bar {
     width: 50px;

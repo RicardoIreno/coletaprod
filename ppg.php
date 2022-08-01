@@ -98,7 +98,7 @@
               "Artigos publicados",
               "Textos em jornais e revistas",
               "Participação em eventos",
-              "Outras produçõe"
+              "Outras produções"
             );
 
             GraphBar::graph(

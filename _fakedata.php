@@ -2,39 +2,81 @@
 
 $infosToGraph = [
   [
-    "year" =>  2016,
+    "year" =>  2010,
     "infoA" =>  1,
     "infoB" =>  1,
     "infoC" =>  1,
     "infoD" =>  1
   ],
   [
-    "year" =>  2017,
-    "infoA" =>  1,
-    "infoB" =>  1,
-    "infoC" =>  1,
-    "infoD" =>  1
-  ],
-  [
-    "year" =>  2018,
-    "infoA" =>  1,
-    "infoB" =>  1,
-    "infoC" =>  1,
-    "infoD" =>  1
-  ],
-  [
-    "year" =>  2019,
+    "year" =>  2011,
     "infoA" =>  2,
     "infoB" =>  2,
     "infoC" =>  2,
     "infoD" =>  2
   ],
   [
-    "year" =>  2020,
+    "year" =>  2012,
+    "infoA" =>  2,
+    "infoB" =>  4,
+    "infoC" =>  3,
+    "infoD" =>  5
+  ],
+  [
+    "year" =>  2013,
+    "infoA" =>  2,
+    "infoB" =>  6,
+    "infoC" =>  8,
+    "infoD" =>  6
+  ],
+  [
+    "year" =>  2014,
     "infoA" =>  4,
-    "infoB" =>  5,
+    "infoB" =>  3,
     "infoC" =>  6,
+    "infoD" =>  6
+  ],
+  [
+    "year" =>  2015,
+    "infoA" =>  3,
+    "infoB" =>  5,
+    "infoC" =>  4,
+    "infoD" =>  3
+  ],
+  [
+    "year" =>  2016,
+    "infoA" =>  3,
+    "infoB" =>  4,
+    "infoC" =>  5,
     "infoD" =>  4
+  ],
+  [
+    "year" =>  2017,
+    "infoA" =>  4,
+    "infoB" =>  3,
+    "infoC" =>  2,
+    "infoD" =>  3
+  ],
+  [
+    "year" =>  2018,
+    "infoA" =>  5,
+    "infoB" =>  6,
+    "infoC" =>  4,
+    "infoD" =>  7
+  ],
+  [
+    "year" =>  2019,
+    "infoA" =>  2,
+    "infoB" =>  3,
+    "infoC" =>  2,
+    "infoD" =>  1
+  ],
+  [
+    "year" =>  2020,
+    "infoA" =>  2,
+    "infoB" =>  3,
+    "infoC" =>  2,
+    "infoD" =>  2
   ],
   [
     "year" =>  2021,
