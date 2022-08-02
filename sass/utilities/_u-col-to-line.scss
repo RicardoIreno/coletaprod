@@ -1,0 +1,12 @@
+.u-col-to-line {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@include breakpoint(md-up) {
+  .u-col-to-line {
+    flex-direction: row;
+  }
+}

@@ -1,0 +1,100 @@
+.c-who,
+.c-whomini {
+  display: flex;
+  margin: 0 auto;
+  padding: 0;
+  position: relative;
+
+  &-photo {
+    margin: 0 auto;
+    mask-image: $circle;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: 100% 100%;
+    -webkit-mask-image: $circle;
+    -webkit-mask-position: center;
+    -webkit-mask-size: 100% 100%;
+  }
+
+}
+
+.c-who {
+  width: 200px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &-photo {
+    width: 100px;
+  }
+
+  &-name {
+    color: #000;
+    font-size: 1.2rem;
+  }
+
+  &-title {
+    color: _palette(t-gray)
+  }
+}
+
+.c-whomini {
+  flex-direction: grid;
+  grid-template-areas: "a b";
+
+  &-photo {
+    grid-area: a;
+    width: 50px;
+    height: 50px;
+    margin: 0 1rem 0 0;
+  }
+
+  &-text {
+    grid-area: b;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+}
+
+@include breakpoint(lg-up) {
+  .c-whomini {
+    width: 100%;
+  }
+}
+
+
+.c-who-s {
+  width: 200px;
+  height: 200px;
+  margin: 0rem auto;
+  // padding-bottom: 1rem;
+  position: relative;
+
+  &-badge {
+    position: absolute;
+    width: 50px;
+    top: 70%;
+    right: 5%;
+    z-index: 999;
+  }
+
+  &-pic {
+    mask-image: $circle;
+    mask-repeat: no-repeat;
+    mask-position: start;
+    mask-size: 100% 100%;
+    -webkit-mask-image: $circle;
+    -webkit-mask-position: start;
+    -webkit-mask-size: 100% 100%;
+    height: 200px;
+  }
+}

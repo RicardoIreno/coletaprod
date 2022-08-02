@@ -104,7 +104,7 @@ class Production
 					<p class='t-b'>$name<i> — $type </i ></p>
 					<p class='t-gray'><b class='t-subItem'>Autores: </b> $authorsRendered </p>
 					
-					<div class='u-linewrap ty-gray'>
+					<div class='u-linewrap t-gray'>
             $doiRendered
             $urlRendered	
             $issnRendered					

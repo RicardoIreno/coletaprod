@@ -26,6 +26,13 @@ class GraphBar {
     return $output;
   }
 
+  static function yearRender($i) {
+    if ($i == strftime("%Y") ) { return $i; } 
+    elseif ($i % 4 == 0 && $i < (strftime("%Y") -3) ) { return $i; }
+    else { return '';}
+
+  }
+
   static function slices(
     $arr
   ) {
@@ -38,7 +45,7 @@ class GraphBar {
 
     foreach ($arr as $i)    
     {
-      $year = $i['year'];
+      $year = GraphBar::yearRender($i['year']);
       $infoA = $i['infoA'];
       $infoB = $i['infoB'];
       $infoC = $i['infoC'];
@@ -46,10 +53,10 @@ class GraphBar {
 
       $output = "$output
       <div class='c-gppg-slice'>
-        <div class='c-gppg-bar' data-type='1' data-weight='$infoA'>$infoA</div>
-        <div class='c-gppg-bar' data-type='2' data-weight='$infoB'>$infoB</div>
-        <div class='c-gppg-bar' data-type='3' data-weight='$infoC'>$infoC</div>
-        <div class='c-gppg-bar' data-type='4' data-weight='$infoD'>$infoD</div>
+        <div class='c-gppg-bar' data-type='1' data-weight='$infoA'></div>
+        <div class='c-gppg-bar' data-type='2' data-weight='$infoB'></div>
+        <div class='c-gppg-bar' data-type='3' data-weight='$infoC'></div>
+        <div class='c-gppg-bar' data-type='4' data-weight='$infoD'></div>
         <span class='c-gppg-year'>$year</span> 
       </div>";
     }
@@ -59,6 +66,56 @@ class GraphBar {
     unset($infoB);
     return $output;
   }
+
+
+  static function triSlices(
+    $arr
+  ) {
+    $year = 0;
+    $infoA = '';
+    $infoB = '';
+    $infoC = '';
+    $infoD = '';
+    $output = '';
+
+    foreach ($arr as $i)    
+    {
+      $year = GraphBar::yearRender($i['year']);
+      $infoA = $i['infoA'];
+      $infoB = $i['infoB'];
+      $infoC = $i['infoC'];
+      $infoD = $i['infoD'];
+      $infoE = $i['infoE'];
+      $infoF = $i['infoF'];
+
+      $output = "$output
+      <div class='c-gppg-slice'>
+        <div class='c-gppg-slice-tri'>
+          <div class='c-gppg-slice'>
+            <div class='c-gppg-bar' data-type='1' data-weight='$infoA'></div>
+            <div class='c-gppg-bar' data-type='2' data-weight='$infoB'></div>
+          </div>
+          <div class='c-gppg-slice'>
+            <div class='c-gppg-bar' data-type='3' data-weight='$infoC'></div>
+            <div class='c-gppg-bar' data-type='4' data-weight='$infoD'></div>
+          </div>
+          <div class='c-gppg-slice'>
+            <div class='c-gppg-bar' data-type='5' data-weight='$infoC'></div>
+            <div class='c-gppg-bar' data-type='6' data-weight='$infoD'></div>
+          </div>
+        </div>
+        <span class='c-gppg-year'>$year</span> 
+      </div>";
+    }
+
+    unset($year);
+    unset($infoA);
+    unset($infoB);
+    return $output;
+  }
+
+
+
 
   static function graph(
     $title,
@@ -72,23 +129,65 @@ class GraphBar {
 
     echo ("
       <div class='c-gppg'>
-        <div class='c-gppg-title'>$title</div>
+      <div class='c-gppg-infos'>
+        <div class='c-gppg-title t-title'>$title</div>
         <div class='c-gppg-legends'>
           $legendsRendered
         </div>
+      </div>
+      
+      <div class='c-gppg-plot'>
 
-        <div class='c-gppg-plot'>
         
-          <div class='c-gppg-slice-zero'>
-            <div class='c-gppg-level'></div>
-            $levelsRendered
-          </div>
-          
-          $slicesRendered
-          
-          <div class='c-gppg-grid'>
-            $linesRendered
-          </div>
+        <div class='c-gppg-slice-zero'>
+          <div class='c-gppg-level'></div>
+          $levelsRendered
+        </div>
+        
+        $slicesRendered
+        
+        <div class='c-gppg-grid'>
+          $linesRendered
+        </div>
+
+        </div>
+      </div>
+    ");
+  }
+
+
+  static function graph3(
+    $title,
+    $arrData,
+    $arrLegends
+  ) {
+    $linesRendered = GraphBar::lines();
+    $levelsRendered = GraphBar::levels();
+    $slicesRendered = GraphBar::triSlices($arrData); 
+    $legendsRendered = GraphBar::legends($arrLegends);
+
+    echo ("
+      <div class='c-gppg'>
+      <div class='c-gppg-infos'>
+        <div class='c-gppg-title t-title'>$title</div>
+        <div class='c-gppg-legends'>
+          $legendsRendered
+        </div>
+      </div>
+      
+      <div class='c-gppg-plot'>
+
+        
+        <div class='c-gppg-slice-zero'>
+          <div class='c-gppg-level'></div>
+          $levelsRendered
+        </div>
+        
+        $slicesRendered
+        
+        <div class='c-gppg-grid'>
+          $linesRendered
+        </div>
 
         </div>
       </div>

@@ -150,9 +150,9 @@ if (!empty($_REQUEST["lattesID"])) {
         <div class="c-coregrid">
           <div class="c-coregrid-one">
 
-            <div class="c-display">
-              <!-- <img class="c-display-badge" src="inc/images/icons/badges/bolsista-cnpq-1a.svg" /> -->
-              <img class="c-display-pic"
+            <div class="c-who-s">
+              <!-- <img class="c-who-s-badge" src="inc/images/icons/badges/bolsista-cnpq-1a.svg" /> -->
+              <img class="c-who-s-pic"
                 src="http://servicosweb.cnpq.br/wspessoa/servletrecuperafoto?tipo=1&amp;bcv=true&amp;id=<?php echo $lattesID10; ?>" />
             </div> <!-- end c-photo-wrapper -->
 
