@@ -86,13 +86,13 @@ com este programa, Se não, veja <http://www.gnu.org/licenses/>.
     <?php endif; ?>
 
 
-    <div class="cc-search">
+    <div class="c-search">
 
-      <form class="cc-search-form" class="" action="result.php" title="Pesquisa simples" method="post">
+      <form class="c-search-form" class="" action="result.php" title="Pesquisa simples" method="post">
 
-        <input class="cc-search-input" type="search" placeholder="Pesquise por palavra chave" aria-label="Pesquisar" name="search">
+        <input class="c-search-input" type="search" placeholder="Pesquise por palavra chave" aria-label="Pesquisar" name="search">
 
-        <button type="button" v-on:click="changeSearchMode()" class="c-btn cc-search-btn" title="Alternar modo de pesquisa">
+        <button type="button" v-on:click="changeSearchMode()" class="c-btn c-search-btn" title="Alternar modo de pesquisa">
           <span v-if="searchPage == 'simple'">
             <svg class="c-btn-ico" x="0px" y="0px" viewBox="0 0 80 48">
               <path d="M7.7,10c0.7,0,1.5,0.2,2.2,0.5L39.7,25l30.6-14c2.5-1.1,5.5,0,6.6,2.5c1.1,2.5,0,5.5-2.5,6.6l-32.7,15
@@ -114,11 +114,11 @@ com este programa, Se não, veja <http://www.gnu.org/licenses/>.
 
             <?php paginaInicial::filter_select("vinculo.ppg_nome"); ?>
 
-            <input class="cc-search-input" type="search" placeholder="Filtrar por Nome do Programa de Pós-Graduação (Opcional)" aria-label="Mudar" name="search">
+            <input class="c-search-input" type="search" placeholder="Filtrar por Nome do Programa de Pós-Graduação (Opcional)" aria-label="Mudar" name="search">
 
-            <input class="cc-search-input" list="datalistOptions" id="authorsDataList" placeholder="Filtrar por nome ou ID Lattes do autor" name="filter[]" v-model="query" @input="searchCV()">
+            <input class="c-search-input" list="datalistOptions" id="authorsDataList" placeholder="Filtrar por nome ou ID Lattes do autor" name="filter[]" v-model="query" @input="searchCV()">
 
-            <datalist class="cc-search-input" id="datalistOptions">
+            <datalist class="c-search-input" id="datalistOptions">
               <option v-for="author in authors" :key="author._id" :value="'vinculo.lattes_id:' + author._id">
                 {{author._source.nome_completo}}
               </option>
@@ -126,9 +126,9 @@ com este programa, Se não, veja <http://www.gnu.org/licenses/>.
 
             <label class="c-info">Filtrar por data:</label>
             <div class="u-dh">
-              <input type="text" class="cc-search-date" id="initialYear" name="initialYear" pattern="\d{4}" placeholder="Data inicial" />
+              <input type="text" class="c-search-date" id="initialYear" name="initialYear" pattern="\d{4}" placeholder="Data inicial" />
               <span> à </span>
-              <input type="text" class="cc-search-date" id="finalYear" name="finalYear" pattern="\d{4}" placeholder="Data final" />
+              <input type="text" class="c-search-date" id="finalYear" name="finalYear" pattern="\d{4}" placeholder="Data final" />
             </div>
           </div> <!-- end advanced -->
         </transition>

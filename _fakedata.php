@@ -1,54 +1,240 @@
 <?php 
 
 $infosToGraph = [
+
   [
-    "year" =>  2016,
+    "year" =>  1996,
     "infoA" =>  1,
     "infoB" =>  1,
     "infoC" =>  1,
-    "infoD" =>  1
+    "infoD" =>  1,
+    "infoE" =>  2,
+    "infoF" =>  2
+  ],
+  [
+    "year" =>  1998,
+    "infoA" =>  2,
+    "infoB" =>  2,
+    "infoC" =>  2,
+    "infoD" =>  2,
+    "infoE" =>  2,
+    "infoF" =>  2
+  ],
+  [
+    "year" =>  1998,
+    "infoA" =>  2,
+    "infoB" =>  3,
+    "infoC" =>  5,
+    "infoD" =>  2,
+    "infoE" =>  2,
+    "infoF" =>  2
+  ],
+  [
+    "year" =>  1999,
+    "infoA" =>  3,
+    "infoB" =>  1,
+    "infoC" =>  4,
+    "infoD" =>  2,
+    "infoE" =>  2,
+    "infoF" =>  2
+  ],
+  [
+    "year" =>  2000,
+    "infoA" =>  4,
+    "infoB" =>  1,
+    "infoC" =>  5,
+    "infoD" =>  6,
+    "infoE" =>  2,
+    "infoF" =>  2
+  ],
+  [
+    "year" =>  2001,
+    "infoA" =>  8,
+    "infoB" =>  8,
+    "infoC" =>  7,
+    "infoD" =>  6,
+    "infoE" =>  2,
+    "infoF" =>  2
+  ],
+  [
+    "year" =>  2002,
+    "infoA" =>  1,
+    "infoB" =>  3,
+    "infoC" =>  4,
+    "infoD" =>  5,
+    "infoE" =>  2,
+    "infoF" =>  2
+  ],
+  [
+    "year" =>  2003,
+    "infoA" =>  5,
+    "infoB" =>  6,
+    "infoC" =>  3,
+    "infoD" =>  2,
+    "infoE" =>  2,
+    "infoF" =>  2
+  ],
+  [
+    "year" =>  2004,
+    "infoA" =>  1,
+    "infoB" =>  2,
+    "infoC" =>  3,
+    "infoD" =>  1,
+    "infoE" =>  2,
+    "infoF" =>  2
+  ],
+  [
+    "year" =>  2005,
+    "infoA" =>  2,
+    "infoB" =>  3,
+    "infoC" =>  5,
+    "infoD" =>  7,
+    "infoE" =>  2,
+    "infoF" =>  2
+  ],
+  [
+    "year" =>  2006,
+    "infoA" =>  6,
+    "infoB" =>  5,
+    "infoC" =>  3,
+    "infoD" =>  1,
+    "infoE" =>  2,
+    "infoF" =>  2
+  ],
+  [
+    "year" =>  2007,
+    "infoA" =>  1,
+    "infoB" =>  3,
+    "infoC" =>  1,
+    "infoD" =>  5,
+    "infoE" =>  2,
+    "infoF" =>  2
+  ],
+  [
+    "year" =>  2008,
+    "infoA" =>  1,
+    "infoB" =>  4,
+    "infoC" =>  5,
+    "infoD" =>  1,
+    "infoE" =>  2,
+    "infoF" =>  2
+  ],
+  [
+    "year" =>  2009,
+    "infoA" =>  3,
+    "infoB" =>  1,
+    "infoC" =>  2,
+    "infoD" =>  1,
+    "infoE" =>  2,
+    "infoF" =>  2
+  ],
+  [
+    "year" =>  2011,
+    "infoA" =>  2,
+    "infoB" =>  2,
+    "infoC" =>  2,
+    "infoD" =>  4,
+    "infoE" =>  2,
+    "infoF" =>  2
+  ],
+  [
+    "year" =>  2012,
+    "infoA" =>  4,
+    "infoB" =>  4,
+    "infoC" =>  5,
+    "infoD" =>  5,
+    "infoE" =>  2,
+    "infoF" =>  2
+  ],
+  [
+    "year" =>  2013,
+    "infoA" =>  2,
+    "infoB" =>  6,
+    "infoC" =>  8,
+    "infoD" =>  6,
+    "infoE" =>  2,
+    "infoF" =>  2
+  ],
+  [
+    "year" =>  2014,
+    "infoA" =>  4,
+    "infoB" =>  3,
+    "infoC" =>  6,
+    "infoD" =>  6,
+    "infoE" =>  2,
+    "infoF" =>  2
+  ],
+  [
+    "year" =>  2015,
+    "infoA" =>  3,
+    "infoB" =>  5,
+    "infoC" =>  4,
+    "infoD" =>  3,
+    "infoE" =>  2,
+    "infoF" =>  2
+  ],
+  [
+    "year" =>  2016,
+    "infoA" =>  3,
+    "infoB" =>  4,
+    "infoC" =>  5,
+    "infoD" =>  4,
+    "infoE" =>  2,
+    "infoF" =>  2
   ],
   [
     "year" =>  2017,
-    "infoA" =>  1,
-    "infoB" =>  1,
-    "infoC" =>  1,
-    "infoD" =>  1
+    "infoA" =>  4,
+    "infoB" =>  3,
+    "infoC" =>  2,
+    "infoD" =>  3,
+    "infoE" =>  2,
+    "infoF" =>  2
   ],
   [
     "year" =>  2018,
-    "infoA" =>  1,
-    "infoB" =>  1,
-    "infoC" =>  1,
-    "infoD" =>  1
+    "infoA" =>  5,
+    "infoB" =>  6,
+    "infoC" =>  4,
+    "infoD" =>  7,
+    "infoE" =>  2,
+    "infoF" =>  2
   ],
   [
     "year" =>  2019,
     "infoA" =>  2,
-    "infoB" =>  2,
+    "infoB" =>  3,
     "infoC" =>  2,
-    "infoD" =>  2
+    "infoD" =>  1,
+    "infoE" =>  2,
+    "infoF" =>  2
   ],
   [
     "year" =>  2020,
-    "infoA" =>  4,
-    "infoB" =>  5,
-    "infoC" =>  6,
-    "infoD" =>  4
+    "infoA" =>  2,
+    "infoB" =>  3,
+    "infoC" =>  2,
+    "infoD" =>  2,
+    "infoE" =>  2,
+    "infoF" =>  2
   ],
   [
     "year" =>  2021,
     "infoA" =>  3,
     "infoB" =>  4,
     "infoC" =>  5,
-    "infoD" =>  6
+    "infoD" =>  6,
+    "infoE" =>  2,
+    "infoF" =>  2
   ],
   [
     "year" =>  2022,
     "infoA" =>  4,
     "infoB" =>  5,
     "infoC" =>  4,
-    "infoD" =>  4
+    "infoD" =>  4,
+    "infoE" =>  2,
+    "infoF" =>  2
   ],
 
 ];

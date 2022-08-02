@@ -10,16 +10,22 @@ table {
   width: 90%;
 }
 
+tbody {
+  color: _palette(theme);
 
+}
 
 td,
 th {
   border: none;
   padding: 8px;
+  text-align: center;
 }
 
 .thead {
+  color: #fff;
   background-color: _palette(theme-light-2);
+  text-align: center;
 }
 
 tbody tr:nth-child(even) {
@@ -31,12 +37,12 @@ tbody tr:nth-child(odd) {
 }
 
 
+
 th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
   font-weight: 600;
-  // color: #000;
 }
 
 @include breakpoint(md-up) {

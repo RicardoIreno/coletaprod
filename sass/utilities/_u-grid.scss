@@ -6,7 +6,7 @@ $cols: 5;
 .u-grid {
   width: 100%;
   margin: 0 auto;
-  
+
   &::after {
     content: "";
     display: table;
@@ -14,19 +14,47 @@ $cols: 5;
   }
 
   [class^="u-col-"] {
-      float: left;
-      padding: 1rem;
+    float: left;
+    padding: 1rem;
   }
 }
 
 $jc: 1;
+
 @for $i from 1 through $cols {
-    @for $j from $jc through $cols {
-        @if $i != $j { 
-          .u-col-#{$i}-of-#{$j} {
-            width: calc(#{$i} * (100% / #{$j}));
-          }
-        }
+  @for $j from $jc through $cols {
+    @if $i  !=$j {
+      .u-col-#{$i}-of-#{$j} {
+        width: calc(#{$i} * (100% / #{$j}));
+      }
     }
-    $jc: $jc + 1
+  }
+
+  $jc: $jc + 1
 }
+
+// .u-grid-duo {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+// }
+
+// @include breakpoint(md-up) {
+//   .u-grid-duo {
+//     display: grid;
+
+
+//   }
+// }
+
+// .u-ctn-col {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+// }
+
+// @include breakpoint(md-up) {
+//   .u-ctn-col {
+//     align-items: flex-start;
+//   }
+// }

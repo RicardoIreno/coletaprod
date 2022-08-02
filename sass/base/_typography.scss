@@ -64,7 +64,7 @@ h5 a {
 // GENERAL
 
 
-.ty {
+.t {
   font-family: "Lato", sans-serif;
   // margin-bottom: .5rem;
 
@@ -129,7 +129,7 @@ h5 a {
   }
 
   &-gray {
-    color: _palette(ty-gray);
+    color: _palette(t-gray);
     margin-bottom: .3rem;
   }
 
@@ -156,13 +156,11 @@ h5 a {
 
 
 // PROFILE 
-.ty {
+.t {
   &-author {
     color: _palette(normal);
     font-weight: 700;
   }
-
-
 
   &-black {
     color: #000 !important;
@@ -186,7 +184,7 @@ h5 a {
   &-position {
     margin: 0 0 .05rem 0;
     font-size: .9rem;
-    color: _palette(ty-gray-dark);
+    color: _palette(t-gray-dark);
   }
 
   &-lastUpdate {
@@ -220,7 +218,7 @@ $sizeHSmall: (
 
 @each $n,
 $size in $sizeH {
-  .ty-manual-h#{$n} {
+  .t-manual-h#{$n} {
     font-size: $size;
   }
 }
@@ -229,13 +227,13 @@ $size in $sizeH {
 
   @each $n,
   $size in $sizeHSmall {
-    .ty-manual-h#{$n} {
+    .t-manual-h#{$n} {
       font-size: $size;
     }
   }
 }
 
 
-.ty-manual-p {
+.t-manual-p {
   font-size: 1rem;
 }

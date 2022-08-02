@@ -1,6 +1,5 @@
-$gppg-gap: 10px;
-$gppg-width: 50px;
-$graduation: 20px;
+$grap-graduation: 20px;
+$grap-gap-min: 2px;
 
 @mixin GraphBarBorder() {
   border: 1px solid _palette(theme);
@@ -8,24 +7,23 @@ $graduation: 20px;
 }
 
 @for $i from 1 through 12 {
-  .cc-gppg-bar[data-weight="#{$i}"] {
+  .c-gppg-bar[data-weight="#{$i}"] {
     --sizebar: #{$i};
   }
 }
 
-.cc-gppg {
+.c-gppg {
   position: relative;
-  width: fit-content;
+  width: 100;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 4rem 2rem 2rem 2rem;
-  @include GraphBarBorder();
+  margin: 0 auto;
 
   &-plot,
   &-slice,
-  &-slice-zero,
+  &-slice-tri,
   &-legends,
   &-bars {
     display: flex;
@@ -34,13 +32,24 @@ $graduation: 20px;
     box-sizing: border-box;
   }
 
+  &-plot,
+  &-slice,
+  &-slice-tri,
+  &-bars,
+  &-bar,
+  &-year {
+    width: 100%;
+  }
+
+
   &-plot {
     @include GraphBarBorder();
-    padding: 2rem 1rem 0 1rem;
+    padding: 4rem 1rem 0 1rem;
     position: relative;
     flex-wrap: nowrap;
     flex-direction: row;
     z-index: 5;
+    overflow: hidden;
   }
 
   &-legends,
@@ -52,15 +61,26 @@ $graduation: 20px;
 
   &-slice-zero {
     flex-direction: column-reverse;
+    margin-right: 1rem;
+    max-width: 15px;
   }
 
   &-slice {
-    width: min-content;
-    margin-inline: $gppg-gap;
+    margin-inline: $grap-gap-min;
   }
 
+  &-slice-tri {
+    margin-inline: $grap-gap-min;
+    width: 100%;
+  }
+
+
+
   &-level {
-    height: $graduation;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    height: $grap-graduation;
     color: _palette(theme-light-1);
     font-size: .7rem;
   }
@@ -72,9 +92,8 @@ $graduation: 20px;
   &-bar {
     --sizebar: 2;
     width: 100%;
-    height: calc(var(--sizebar) * $graduation);
+    height: calc(var(--sizebar) * $grap-graduation);
     z-index: 10;
-    color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -84,23 +103,35 @@ $graduation: 20px;
 
   &-bar[data-type="1"],
   &-legend[data-number="1"] {
-    background-color: _palette(theme-light-1);
+    background-color: _palette(gb1);
   }
 
   &-bar[data-type="2"],
   &-legend[data-number="2"] {
-    background-color: _palette(theme-light-2);
+    background-color: _palette(gb2);
   }
 
   &-bar[data-type="3"],
   &-legend[data-number="3"] {
-    background-color: _palette(theme-light-3);
+    background-color: _palette(gb3);
   }
 
   &-bar[data-type="4"],
   &-legend[data-number="4"] {
-    background-color: _palette(theme-dark);
+    background-color: _palette(gb4);
   }
+
+  &-bar[data-type="5"],
+  &-legend[data-number="4"] {
+    background-color: _palette(gb5);
+  }
+
+  &-bar[data-type="6"],
+  &-legend[data-number="4"] {
+    background-color: _palette(gb6);
+  }
+
+
 
   &-legend {
     padding: .2rem .7rem;
@@ -111,25 +142,13 @@ $graduation: 20px;
     font-size: .9rem;
   }
 
-
-
-  &-year {
-    width: $gppg-width;
-    height: $graduation;
-    text-align: center;
-    color: _palette(theme);
-    font-size: .7rem;
-  }
-
-
-
   &-grid {
     width: 100%;
     display: flex;
     flex-direction: column;
     position: absolute;
     z-index: 2;
-    margin-bottom: $graduation;
+    margin-bottom: $grap-graduation;
 
 
     &-line {
@@ -138,43 +157,51 @@ $graduation: 20px;
       border-top: none;
       border-left: none;
       border-right: none;
-      margin: calc($graduation - 1px) 0 0 0;
+      margin: calc($grap-graduation - 1px) 0 0 0;
       padding: 0;
       box-sizing: border-box;
 
     }
   }
 
+  &-infos {
+    margin: 1rem 2rem;
+  }
+
   &-title {
-    position: absolute;
-    top: 1rem;
-    color: _palette(theme);
     text-align: center;
     font-weight: 600;
+    margin-bottom: 1rem;
   }
 
   &-legends {
-    @include GraphBarBorder();
-    position: relative;
-    background-color: _palette(bg-primary);
-    z-index: 5;
-    margin: 2rem;
-    top: 50%;
-    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  &-year {
+    height: $grap-graduation;
+    text-align: center;
+    color: _palette(theme);
+    font-size: .7rem;
+    border-inline: 1px solid _palette(theme-light-2);
   }
 
 }
 
-@include breakpoint(md-up) {
-  .cc-gppg {
-    flex-direction: row;
+.c-gppg-slice-tri .c-gppg-slice {
+  margin: 0;
+}
 
+@include breakpoint(lg-up) {
+  .c-gppg {
     &-plot {
-      padding: 2rem 5rem 0 5rem;
+      padding: 4rem 1rem 0 .5rem;
     }
 
-    &-bar {
-      width: $gppg-width;
+    &-legends {
+      flex-direction: row;
     }
   }
 }
