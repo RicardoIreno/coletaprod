@@ -5,9 +5,9 @@ class PPGBadges {
     $title
   ) {
     echo 
-    "<div class='p-ppg-badge'>
-      <img class='p-ppg-imgcapes' src='inc/images/badges/capes$rate.svg' />
-      <p class='t t-b'>$title</p>
+    "<div class='u-icon-text c-badge c-badge-line'>
+      <i class='i i-decagram c-badge-i' title='title' alt='imagem $title'>$rate</i>
+      <p class='t t-light c-badge-text2'><b> $title</b></p>
     </div>";
   }
 
@@ -17,9 +17,9 @@ class PPGBadges {
     $ico
   ) {
     echo 
-    "<div class='p-ppg-badge'>
-      <i class='i i-$ico p-ppg-badge-i' title='title' alt='imagem $title'></i>
-      <p class='p-ppg-ratenumber'>$rate</p>
+    "<div class='c-badge c-badge-col'>
+      <i class='i i-$ico c-badge-i' title='title' alt='imagem $title'></i>
+      <p class='c-badge-text1'>$rate</p>
       <p class='t t-light'><b> $title</b></p>
     </div>";
   }
