@@ -25,21 +25,24 @@
         <a class="sitemenu-link" href="index.php" title="Home">
           <i class="i i-home sitemenu-icons"></i>
         </a>
-
       </li>
 
       <li class=" sitemenu-item">
         <a class="sitemenu-link" href="result_autores.php" title="Pesquisadores">
           <i class="i i-aboutme sitemenu-icons"></i>
         </a>
+      </li>
 
+      <li class=" sitemenu-item">
+        <a class="sitemenu-link" href="ppg.php" title="Programas de pós graduação">
+          <i class="i i-ppg-ico sitemenu-icons"></i>
+        </a>
       </li>
 
       <li class="sitemenu-item">
-        <a class="sitemenu-link" href="manual/" title="Manual">
+        <a class="sitemenu-link" href="manual" title="Manual">
           <i class="i i-manual sitemenu-icons"></i>
         </a>
-
       </li>
 
       <li class="sitemenu-item">

@@ -9,78 +9,69 @@ $imgTestIcon: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/s
   flex-direction: column;
   align-items: center;
 
-  &-a {
+  &-one,
+  &-two,
+  &-three,
+  &-four {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
-  &-b {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-  }
-}
-
-.p-ppg-about {
-  grid-area: inner;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 @include breakpoint(lg-up) {
   .p-ppg-header {
-    display: grid;
-    grid-template-areas: "a b";
-    justify-content: space-between;
+    flex-direction: row;
     align-items: flex-start;
 
-    &-a {
-      grid-area: a;
+    &-one,
+    &-two,
+    &-three {
       align-items: flex-start;
-      display: grid;
-      grid-template-areas: "logo about";
-      grid-template-columns: min-content max-content;
-      // border: 1px solid orange;
     }
 
-    &-b {
-      grid-area: b;
-      align-items: flex-start;
-      width: fit-content;
+    &-two,
+    &-three {
+      border-right: 1px dashed _palette(theme-light-2);
+      padding-right: 1.5rem;
+      margin-right: 1.5rem;
+      height: 300px;
     }
-  }
 
-  .p-ppg-about {
-    grid-area: about;
-    align-items: flex-start;
+    &-three {
+      width: 100%;
+      max-width: 350px;
+    }
+
+
+    &-four {
+      flex-direction: column;
+      align-items: flex-start;
+    }
   }
 }
+
+
+
 
 
 
 // Components
 .p-ppg {
-  &-imgcapes {
-    width: 100px;
-    height: 100px;
+  &-logo {
+    width: 70px;
+    height: 70px;
+    background-color: _palette(theme-light-2);
+    margin: 1rem 1rem 0 0;
   }
 
   &-i {
     width: 24px;
     height: 24px;
     margin-right: .7rem;
-    margin-bottom: .4rem;
-    background-color: _palette(theme-light-1);
-  }
-
-  &-logo {
-    width: 70px;
-    height: 70px;
-    background-color: _palette(theme);
-    grid-area: logo;
-    margin: 1rem 1rem 0 0;
+    margin-bottom: .3rem;
+    background-color: _palette(theme-light-2);
   }
 
   &-orientadores {
@@ -94,31 +85,6 @@ $imgTestIcon: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/s
 
   &-plataforms {
     height: 50px;
-  }
-
-  &-badge {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    margin: .5rem;
-
-    &-i {
-      width: 70px;
-      height: 70px;
-      background-color: _palette(theme-light-1);
-      margin-right: .4rem;
-      margin-top: 1rem;
-    }
-  }
-
-  &-ratenumber {
-    color: _palette(theme-light-1);
-    font-size: 2rem;
-    font-weight: 800;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
   }
 
 

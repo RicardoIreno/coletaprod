@@ -8,17 +8,17 @@ class PPG {
     $text = '';
 
     switch ($type) {
-      case 'sucupira':
+      case 'Sucupira':
         $ico = 'sucupira.png';
-        $text = 'Repositório cucupura';
+        $text = '';
         break;
-      case 'dataverse':
+      case 'Repositório de dados de esquisa':
         $ico = 'dataverse.png';
-        $text = 'Repositório Dataverse';
+        $text = 'Repositório de dados de esquisa';
         break;
-      case 'DSpace':
+      case 'Repositório institucional':
         $ico = 'DSpace.svg';
-        $text = 'Repositório DSpace';
+        $text = 'Repositório institucional';
         break;
     }
 
@@ -43,7 +43,7 @@ class PPG {
   require '_fakedata.php';
   ?>
   <meta charset="utf-8" />
-  <title><?php echo $branch; ?> - p-ppg</title>
+  <title><?php echo $branch; ?> - PPG Letras</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <meta name="description" content="Prodmais Unifesp." />
   <meta name="keywords" content="Produção acadêmica, lattes, ORCID" />
@@ -61,40 +61,23 @@ class PPG {
       <div class="c-wrapper-inner">
 
         <section class="p-ppg-header">
+          <div class="p-ppg-header-one">
+            <i class="i i-ppg-logo p-ppg-logo"></i>
+          </div>
 
-          <div class="p-ppg-header-a">
-            <i class="i i-ppg-ico p-ppg-logo"></i>
+          <div class="p-ppg-header-two">
+            <h1 class="t t-h1">PPG Letras</h1>
+            <h2 class="t t-h2">Programa de Pós Graduação em Letras</h2>
+            <p class="t t-b ty-light-a">
+              <span>Campus Guarulhos</span>
+              <span>Escola de Filosofia, Letras e ciências Humanas</span>
+            </p>
+            <div class="u-icon-text t-gray u-mb-1">
+              <i class="i i-mapmarker p-ppg-i"></i>
+              <b>Estrada do Caminho Velho nª 123 - Bairro, Cidade - SP</b>
+            </div>
 
-            <div class="p-ppg-about">
-              <h1 class="t t-h1">PPG Letras</h1>
-              <h2 class="t t-h2">Programa de Pós Graduação em Letras</h2>
-              <p class="t t-b ty-light-a">
-                <span>Campus Guarulhos</span>
-                <span>Escola de Filosofia, Letras e ciências Humanas</span>
-              </p>
-              <p class="t t-b t-gray">Estrada do Caminho Velho nª 123 - Bairro, Cidade - SP</p>
-
-              <p class="t t-gray"><span class="t-b">Secretariado:</span> Maria Oliveira | Olívia Maria</p>
-              <p class="t-b"></p>
-
-
-              <a href="" target="blank">
-                <div class="u-icon-text t-gray">
-                  <i class="i i-mail p-ppg-i"></i> email@email.com
-                </div>
-              </a>
-
-              <div class="u-icon-text t-gray">
-                <i class="i i-phone p-ppg-i"></i> (11) 5555-5555
-              </div>
-
-              <a href="" target="blank">
-                <div class="u-icon-text t-gray">
-                  <i class="i i-web p-ppg-i"></i> www.http://ppg.unifesp.br/alimentosnutricaoesaude
-                </div>
-              </a>
-
-              <?php
+            <?php
               Who::mini(
                 $picture = "inc/images/tmp/profile.jpg",
                 $name = 'Sócrates',
@@ -102,22 +85,43 @@ class PPG {
                 $link = 'https://unifesp.br/prodmais/index.php'
               )
               ?>
+          </diV>
+          <div class="p-ppg-header-three">
 
+            <p class="t t-gray t-b">Secretaria:</p>
+            <p class="t t-gray">Maria Oliveira</p>
+            <p class="t t-gray">Olívia Maria</p>
+
+            <a href="" target="blank">
+              <div class="u-icon-text t-gray">
+                <i class="i i-mail p-ppg-i"></i> email@email.com
+              </div>
+            </a>
+
+            <div class="u-icon-text t-gray">
+              <i class="i i-phone p-ppg-i"></i> (11) 5555-5555
             </div>
+
+            <a href="" target="blank">
+              <div class="u-icon-text t-gray">
+                <i class="i i-web p-ppg-i"></i> site
+              </div>
+            </a>
+
 
           </div>
 
-          <div class="p-ppg-header-b">
-            <div class="u-line-to-col gridside-a">
+          <div class="p-ppg-header-four">
+            <div class="u-line">
               <?php echo PPGBadges::students(
                 $rate = 20,
-                $title = 'Estudantes Em Curso',
-                $ico = 'book'
+                $title = 'Em Curso',
+                $ico = 'student2'
               ); ?>
 
               <?php echo PPGBadges::students(
                 $rate = 100,
-                $title = 'Estudantes Formados',
+                $title = 'Formados',
                 $ico = 'formado'
               ); ?>
             </div>
@@ -141,23 +145,6 @@ class PPG {
           </div>
         </section>
 
-
-        <section class="u-col-to-line">
-          <?php echo PPG::externos(
-            $type = 'sucupira',
-            $link = 'https://repositorio.unifesp.br/handle/11600/6108'
-            ); ?>
-          <?php echo PPG::externos(
-            $type = 'dataverse',
-            $link = 'https://repositoriodedados.unifesp.br/dataverse/eflch'
-            ); ?>
-
-          <?php echo PPG::externos(
-            $type = 'DSpace',
-            $link = 'https://sucupira.capes.gov.br/sucupira/public/consultas/coleta/programa/viewPrograma.xhtml;jsessionid=OLRUfmVYapfO6QJKy+Wf0KS1.sucupira-218?popup=true&cd_programa=33009015089P5'
-            ); ?>
-
-        </section>
 
         <hr class="c-line u-my-2" />
 
@@ -198,7 +185,7 @@ class PPG {
         </section>
 
 
-        <section class="l-ppg">
+        <section class="l-ppg u-mb-3">
           <?php
             $legends2 = array(
               "Artigos publicados",
@@ -208,7 +195,7 @@ class PPG {
             );
 
             GraphBar::graph3(
-              $title = 'Orientações concluídas',
+              $title = 'Orientações',
               $arrData = $infosToGraph,
               $arrLegends = $legends
             );
@@ -218,7 +205,7 @@ class PPG {
         <hr class="c-line u-my-2" />
 
         <section class="l-ppg">
-          <h3 class='t t-title'>Nossos pesquisadores</h3>
+          <h3 class='t t-title'>Nossos orientadores</h3>
 
           <ul class="p-ppg-orientadores">
 
@@ -273,8 +260,27 @@ class PPG {
             <p class="t t-gray u-mt-1"><b>Código CAPES</b></p>
             <p class="t t-gray u-mb-1">33009015088p9</p>
           </div>
+        </section>
 
-          <table>
+        <section class="u-col-to-line">
+          <?php echo PPG::externos(
+            $type = 'Sucupira',
+            $link = 'https://repositorio.unifesp.br/handle/11600/6108'
+            ); ?>
+          <?php echo PPG::externos(
+            $type = 'Repositório de dados de esquisa',
+            $link = 'https://repositoriodedados.unifesp.br/dataverse/eflch'
+            ); ?>
+
+          <?php echo PPG::externos(
+            $type = 'Repositório institucional',
+            $link = 'https://sucupira.capes.gov.br/sucupira/public/consultas/coleta/programa/viewPrograma.xhtml;jsessionid=OLRUfmVYapfO6QJKy+Wf0KS1.sucupira-218?popup=true&cd_programa=33009015089P5'
+            ); ?>
+        </section>
+
+
+
+        <!-- <table>
             <thead>
               <tr class="thead">
                 <th>Avaliação</th>
@@ -299,10 +305,9 @@ class PPG {
                 <th>78</th>
               </tr>
             </tbody>
-          </table>
+          </table> -->
 
 
-        </section>
 
       </div> <!-- c-wrapper-inner -->
     </div> <!-- c-wrapper-paper -->
