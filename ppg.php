@@ -40,6 +40,7 @@ class PPG {
   require 'components/Production.php';
   require 'components/Who.php';
   require 'components/PPGBadges.php';
+  require 'components/TagCloud.php';
   require '_fakedata.php';
   ?>
   <meta charset="utf-8" />
@@ -153,16 +154,11 @@ class PPG {
           <h3 class="t t-title">Tags</h3>
 
           <div>
-            <ul class="tag-cloud" role="navigation" aria-label="Tags mais usadas">
-              <?php foreach ($tagsFake as $tag) {
-                echo "<li> <a class='tag' data-weight={$tag['amount']}> {$tag['tag']}</a> </li>";
-                }
-                unset($tagt);
-                unset($category);
-                unset($amount);
-              ?>
-            </ul>
+            <?php Tag::cloud($categorysFake); ?>
+
           </div> <!-- end -->
+
+
         </section>
 
         <hr class="c-line u-my-2" />
@@ -179,25 +175,26 @@ class PPG {
             GraphBar::graph(
               $title = 'Produção nos últimos anos',
               $arrData = $infosToGraph,
-              $arrLegends = $legends
+              $arrLegends = $legends,
+              $lines = 30
             );
           ?>
         </section>
 
 
-        <section class="l-ppg u-mb-3">
+        <section class="l-ppg u-my-3">
           <?php
             $legends2 = array(
-              "Artigos publicados",
-              "Textos em jornais e revistas",
-              "Participação em eventos",
-              "Outras produções"
+              "Mestrado profissional",
+              "Mestrado acadêmico",
+              "Doutorado acadêmico"
             );
 
             GraphBar::graph3(
               $title = 'Orientações',
-              $arrData = $infosToGraph,
-              $arrLegends = $legends
+              $arrData = $infosToGraph2,
+              $arrLegends = $legends2,
+              $lines = 10
             );
           ?>
         </section>
@@ -205,7 +202,7 @@ class PPG {
         <hr class="c-line u-my-2" />
 
         <section class="l-ppg">
-          <h3 class='t t-title'>Nossos orientadores</h3>
+          <h3 class='t t-title'>Orientadores e orientadoras</h3>
 
           <ul class="p-ppg-orientadores">
 
@@ -214,7 +211,7 @@ class PPG {
                 Who::ppg(
                   $picture = "inc/images/tmp/profile.jpg",
                   $name = 'Sebastião',
-                  $title = 'Professor',
+                  $title = 'Linha de pesquisa',
                   $link = 'https://unifesp.br/prodmais/index.php'
                 )
               ?>
@@ -224,7 +221,7 @@ class PPG {
                 Who::ppg(
                   $picture = "inc/images/tmp/profile.jpg",
                   $name = 'Sócrates',
-                  $title = 'Professor',
+                  $title = 'Linha de pesquisa',
                   $link = 'https://unifesp.br/prodmais/index.php'
                 )
               ?>
@@ -234,7 +231,7 @@ class PPG {
                   Who::ppg(
                     $picture = "inc/images/tmp/profile.jpg",
                     $name = 'Sêneca',
-                    $title = 'Professor',
+                    $title = 'Linha de pesquisa',
                     $link = 'https://unifesp.br/prodmais/index.php'
                   )
                 ?>
@@ -244,7 +241,7 @@ class PPG {
                   Who::ppg(
                     $picture = "inc/images/tmp/profile.jpg",
                     $name = 'Salomão',
-                    $title = 'Professor',
+                    $title = 'Linha de pesquisa',
                     $link = 'https://unifesp.br/prodmais/index.php'
                   )
                 ?>
@@ -307,7 +304,8 @@ class PPG {
             </tbody>
           </table> -->
 
-
+        <p class="t t-lastUpdate u-right">Atualização Lattes em </p>
+        <p class="t t-lastUpdate u-right">Processado em </p>
 
       </div> <!-- c-wrapper-inner -->
     </div> <!-- c-wrapper-paper -->

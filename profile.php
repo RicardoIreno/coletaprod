@@ -5,6 +5,7 @@ require 'inc/config.php';
 require 'inc/functions.php';
 require 'components/Production.php';
 require 'components/SList.php';
+require 'components/TagCloud.php';
 include_once '_fakedata.php';
 
 function lattesID10($lattesID16)
@@ -458,31 +459,20 @@ if (!empty($_REQUEST["lattesID"])) {
               <hr class="c-line u-my-2" />
               <h3 class="t t-title">Tags mais usadas</h3>
               <?php
-              $authorfacets = new AuthorFacets();
-              $authorfacets->query = $result_get['query'];
+                $authorfacets = new AuthorFacets();
+                $authorfacets->query = $result_get['query'];
 
-              if (!isset($_GET)) {
-                $_GET = null;
-              }
+                if (!isset($_GET)) {
+                  $_GET = null;
+                }
 
-              $resultaboutfacet = json_decode($authorfacets->authorfacet(basename(__FILE__), "about", 120, "Palavras-chave do autor", null, "_term", $_GET), true);
-              shuffle($resultaboutfacet);
+                $resultaboutfacet = json_decode($authorfacets->authorfacet(basename(__FILE__), "about", 120, "Palavras-chave do autor", null, "_term", $_GET), true);
+                shuffle($resultaboutfacet);
+
+                Tag::cloud($resultaboutfacet);
               ?>
 
               <div>
-                <ul class="tag-cloud" role="navigation" aria-label="Tags mais usadas">
-                  <?php foreach ($resultaboutfacet as $t => $tag) {
-                    echo
-                    "<li>
-                  <a class='tag' data-weight={$tag['amount']}>
-                    {$tag['category']}</a>
-                </li>";
-                  }
-                  unset($t);
-                  unset($category);
-                  unset($amount);
-                  ?>
-                </ul>
               </div> <!-- end -->
 
               <hr class="c-line u-my-2" />

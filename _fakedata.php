@@ -240,65 +240,227 @@ $infosToGraph = [
 ];
 
 
-$tagsFake = [
+$infosToGraph2 = [
+
   [
-    "tag" =>  'Test',
+    "year" =>  1996,
+    "infoA" =>  1,
+    "infoB" =>  1,
+    "infoC" =>  1
+  ],
+  [
+    "year" =>  1998,
+    "infoA" =>  2,
+    "infoB" =>  2,
+    "infoC" =>  2
+  ],
+  [
+    "year" =>  1998,
+    "infoA" =>  2,
+    "infoB" =>  3,
+    "infoC" =>  5
+  ],
+  [
+    "year" =>  1999,
+    "infoA" =>  3,
+    "infoB" =>  1,
+    "infoC" =>  4
+  ],
+  [
+    "year" =>  2000,
+    "infoA" =>  4,
+    "infoB" =>  1,
+    "infoC" =>  5
+  ],
+  [
+    "year" =>  2001,
+    "infoA" =>  8,
+    "infoB" =>  8,
+    "infoC" =>  7
+  ],
+  [
+    "year" =>  2002,
+    "infoA" =>  1,
+    "infoB" =>  3,
+    "infoC" =>  4
+  ],
+  [
+    "year" =>  2003,
+    "infoA" =>  5,
+    "infoB" =>  6,
+    "infoC" =>  3
+  ],
+  [
+    "year" =>  2004,
+    "infoA" =>  1,
+    "infoB" =>  2,
+    "infoC" =>  3
+  ],
+  [
+    "year" =>  2005,
+    "infoA" =>  2,
+    "infoB" =>  3,
+    "infoC" =>  5
+  ],
+  [
+    "year" =>  2006,
+    "infoA" =>  6,
+    "infoB" =>  5,
+    "infoC" =>  3
+  ],
+  [
+    "year" =>  2007,
+    "infoA" =>  1,
+    "infoB" =>  3,
+    "infoC" =>  1
+  ],
+  [
+    "year" =>  2008,
+    "infoA" =>  1,
+    "infoB" =>  4,
+    "infoC" =>  5
+  ],
+  [
+    "year" =>  2009,
+    "infoA" =>  3,
+    "infoB" =>  1,
+    "infoC" =>  2
+  ],
+  [
+    "year" =>  2011,
+    "infoA" =>  2,
+    "infoB" =>  2,
+    "infoC" =>  2
+  ],
+  [
+    "year" =>  2012,
+    "infoA" =>  4,
+    "infoB" =>  4,
+    "infoC" =>  5
+  ],
+  [
+    "year" =>  2013,
+    "infoA" =>  2,
+    "infoB" =>  6,
+    "infoC" =>  8
+  ],
+  [
+    "year" =>  2014,
+    "infoA" =>  4,
+    "infoB" =>  3,
+    "infoC" =>  6
+  ],
+  [
+    "year" =>  2015,
+    "infoA" =>  3,
+    "infoB" =>  5,
+    "infoC" =>  4
+  ],
+  [
+    "year" =>  2016,
+    "infoA" =>  3,
+    "infoB" =>  4,
+    "infoC" =>  5
+  ],
+  [
+    "year" =>  2017,
+    "infoA" =>  4,
+    "infoB" =>  3,
+    "infoC" =>  2
+  ],
+  [
+    "year" =>  2018,
+    "infoA" =>  5,
+    "infoB" =>  6,
+    "infoC" =>  4
+  ],
+  [
+    "year" =>  2019,
+    "infoA" =>  2,
+    "infoB" =>  3,
+    "infoC" =>  2
+  ],
+  [
+    "year" =>  2020,
+    "infoA" =>  2,
+    "infoB" =>  3,
+    "infoC" =>  2
+  ],
+  [
+    "year" =>  2021,
+    "infoA" =>  3,
+    "infoB" =>  4,
+    "infoC" =>  5
+  ],
+  [
+    "year" =>  2022,
+    "infoA" =>  4,
+    "infoB" =>  5,
+    "infoC" =>  4
+  ],
+
+];
+
+
+$categorysFake = [
+  [
+    "category" =>  'Test',
     "amount" =>  22
   ],
   [
-    "tag" =>  'litertura',
+    "category" =>  'litertura',
     "amount" =>  10
   ],
   [
-    "tag" =>  'conexão',
+    "category" =>  'conexão',
     "amount" =>  6
   ],
   [
-    "tag" =>  'caminhões',
+    "category" =>  'caminhões',
     "amount" =>  14
   ],
   [
-    "tag" =>  'noise cancelling',
+    "category" =>  'noise cancelling',
     "amount" =>  7
   ],
   [
-    "tag" =>  'interpretação',
+    "category" =>  'interpretação',
     "amount" =>  9
   ],
   [
-    "tag" =>  'viagens inerplanetárias',
+    "category" =>  'viagens inerplanetárias',
     "amount" =>  7
   ],
   [
-    "tag" =>  'girafas',
+    "category" =>  'girafas',
     "amount" =>  2
   ],
   [
-    "tag" =>  'golfinhos',
+    "category" =>  'golfinhos',
     "amount" =>  13
   ],
   [
-    "tag" =>  'navios piratas',
+    "category" =>  'navios piratas',
     "amount" =>  7
   ],
   [
-    "tag" =>  'patos',
+    "category" =>  'patos',
     "amount" =>  8
   ],
   [
-    "tag" =>  'gorilas',
+    "category" =>  'gorilas',
     "amount" =>  21
   ],
   [
-    "tag" =>  'genética',
+    "category" =>  'genética',
     "amount" =>  3
   ],
   [
-    "tag" =>  'leitura guiada',
+    "category" =>  'leitura guiada',
     "amount" =>  12
   ],
   [
-    "tag" =>  'concentração',
+    "category" =>  'concentração',
     "amount" =>  16
   ],
 
