@@ -1,16 +1,16 @@
 <?php
 class GraphBar {
-    static function levels(){
+    static function levels($lines){
     $output = '';
-    for ($i = 0; $i <= 24; $i+=1) {
+    for ($i = $lines; $i >= 0 ; $i-=1) {
       $output =  "$output <div class='c-gppg-level'>$i</div>";
     }
     return $output;
   }
 
-  static function lines() {
+  static function lines($lines) {
     $output = '';
-    for ($i = 1; $i <= 25; $i++) {
+    for ($i = 1; $i <= $lines ; $i++) {
       $output =  "$output <hr class='c-gppg-grid-line' />";
     }
     return $output;
@@ -75,7 +75,6 @@ class GraphBar {
     $infoA = '';
     $infoB = '';
     $infoC = '';
-    $infoD = '';
     $output = '';
 
     foreach ($arr as $i)    
@@ -84,24 +83,18 @@ class GraphBar {
       $infoA = $i['infoA'];
       $infoB = $i['infoB'];
       $infoC = $i['infoC'];
-      $infoD = $i['infoD'];
-      $infoE = $i['infoE'];
-      $infoF = $i['infoF'];
 
       $output = "$output
       <div class='c-gppg-slice'>
         <div class='c-gppg-slice-tri'>
           <div class='c-gppg-slice'>
             <div class='c-gppg-bar' data-type='1' data-weight='$infoA'></div>
+          </div>
+          <div class='c-gppg-slice'>
             <div class='c-gppg-bar' data-type='2' data-weight='$infoB'></div>
           </div>
           <div class='c-gppg-slice'>
             <div class='c-gppg-bar' data-type='3' data-weight='$infoC'></div>
-            <div class='c-gppg-bar' data-type='4' data-weight='$infoD'></div>
-          </div>
-          <div class='c-gppg-slice'>
-            <div class='c-gppg-bar' data-type='5' data-weight='$infoC'></div>
-            <div class='c-gppg-bar' data-type='6' data-weight='$infoD'></div>
           </div>
         </div>
         <span class='c-gppg-year'>$year</span> 
@@ -120,10 +113,11 @@ class GraphBar {
   static function graph(
     $title,
     $arrData,
-    $arrLegends
+    $arrLegends,
+    $lines
   ) {
-    $linesRendered = GraphBar::lines();
-    $levelsRendered = GraphBar::levels();
+    $linesRendered = GraphBar::lines($lines);
+    $levelsRendered = GraphBar::levels($lines);
     $slicesRendered = GraphBar::slices($arrData); 
     $legendsRendered = GraphBar::legends($arrLegends);
 
@@ -159,10 +153,11 @@ class GraphBar {
   static function graph3(
     $title,
     $arrData,
-    $arrLegends
+    $arrLegends,
+    $lines
   ) {
-    $linesRendered = GraphBar::lines();
-    $levelsRendered = GraphBar::levels();
+    $linesRendered = GraphBar::lines($lines);
+    $levelsRendered = GraphBar::levels($lines);
     $slicesRendered = GraphBar::triSlices($arrData); 
     $legendsRendered = GraphBar::legends($arrLegends);
 
