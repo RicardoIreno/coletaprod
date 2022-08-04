@@ -40,14 +40,14 @@
       </li>
 
       <li class="sitemenu-item">
-        <a class="sitemenu-link" href="manual" title="Manual">
-          <i class="i i-manual sitemenu-icons"></i>
+        <a class="sitemenu-link" href="pre_dash.php" title="Dashboard">
+          <i class="i i-dashboard sitemenu-icons"></i>
         </a>
       </li>
 
       <li class="sitemenu-item">
-        <a class="sitemenu-link" href="pre_dash.php" title="Dashboard">
-          <i class="i i-dashboard sitemenu-icons"></i>
+        <a class="sitemenu-link" href="manual" title="Manual">
+          <i class="i i-manual sitemenu-icons"></i>
         </a>
       </li>
 

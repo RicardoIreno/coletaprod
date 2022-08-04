@@ -1274,10 +1274,10 @@ th {
   background-color: #51b7e3;
 }
 .c-gppg-bar[data-type="3"], .c-gppg-legend[data-number="3"] {
-  background-color: #DE7EC6;
+  background-color: #7fd1f5;
 }
 .c-gppg-bar[data-type="4"], .c-gppg-legend[data-number="4"] {
-  background-color: #ddb4d3;
+  background-color: #0084ae;
 }
 .c-gppg-bar[data-type="5"], .c-gppg-legend[data-number="4"] {
   background-color: #22C73B;
@@ -1329,7 +1329,6 @@ th {
   text-align: center;
   color: #1C9AD1;
   font-size: 0.7rem;
-  border-inline: 1px solid #7fd1f5;
 }
 
 .c-gppg-slice-tri .c-gppg-slice {
