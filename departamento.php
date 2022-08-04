@@ -2,8 +2,8 @@
 <html lang="pt-br" dir="ltr">
 
 <?php
-class PPG {
-  static function externos($type, $link) {
+class Departamento {
+  static function repos($type, $link) {
     $ico = '';
     $text = '';
 
@@ -40,11 +40,10 @@ class PPG {
   require 'components/Production.php';
   require 'components/Who.php';
   require 'components/PPGBadges.php';
-  require 'components/TagCloud.php';
   require '_fakedata.php';
   ?>
   <meta charset="utf-8" />
-  <title><?php echo $branch; ?> - PPG Letras</title>
+  <title><?php echo $branch; ?> - Departamento Letras</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <meta name="description" content="Prodmais Unifesp." />
   <meta name="keywords" content="Produção acadêmica, lattes, ORCID" />
@@ -67,8 +66,7 @@ class PPG {
           </div>
 
           <div class="p-ppg-header-two">
-            <h1 class="t t-h1">PPG Letras</h1>
-            <h2 class="t t-h2">Programa de Pós Graduação em Letras</h2>
+            <h1 class="t t-h1">Departamento X</h1>
             <p class="t t-b ty-light-a">
               <span>Campus Guarulhos</span>
               <span>Escola de Filosofia, Letras e ciências Humanas</span>
@@ -112,38 +110,6 @@ class PPG {
 
           </div>
 
-          <div class="p-ppg-header-four">
-            <div class="u-line">
-              <?php echo PPGBadges::students(
-                $rate = 20,
-                $title = 'Em Curso',
-                $ico = 'student2'
-              ); ?>
-
-              <?php echo PPGBadges::students(
-                $rate = 100,
-                $title = 'Formados',
-                $ico = 'formado'
-              ); ?>
-            </div>
-
-            <div class="u-line-to-col">
-              <?php echo PPGBadges::capes(
-                $rate = 4,
-                $title = 'Mestrado acadêmico'
-                ); ?>
-
-              <?php echo PPGBadges::capes(
-                $rate = 6,
-                $title = 'Doutorado acadêmico'
-                ); ?>
-
-              <?php echo PPGBadges::capes(
-                $rate = 6,
-                $title = 'Outro '
-                ); ?>
-            </div>
-          </div>
         </section>
 
 
@@ -153,11 +119,7 @@ class PPG {
         <section class="l-ppg">
           <h3 class="t t-title">Tags</h3>
 
-          <div>
-            <?php Tag::cloud($categorysFake); ?>
-
-          </div> <!-- end -->
-
+          <?php Tag::cloud($categorysFake); ?>
 
         </section>
 
