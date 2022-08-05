@@ -923,19 +923,37 @@ if (!empty($_REQUEST["lattesID"])) {
 
                           echo '<ul>';
 
-                          SList::genericItem(
-                            $type = 'managing',
-                            $itemName = $direcao_e_administracao['@attributes']['CARGO-OU-FUNCAO'],
-                            $itemNameLink = "http://lattes.cnpq.br/" . $orientacao_andamento_echo["numeroIDOrientado"],
-                            $itemInfoA = '',
-                            $itemInfoB = $direcao_e_administracao['@attributes']['NOME-ORGAO'],
-                            $itemInfoC = $direcao_e_administracao['@attributes']['NOME-UNIDADE'],
-                            $itemInfoD = '',
-                            $itemInfoE = '',
-                            $authors  = '',
-                            $yearStart = $direcao_e_administracao['@attributes']['ANO-INICIO'],
-                            $yearEnd = $direcao_e_administracao['@attributes']['ANO-FIM']
-                          );
+                          if (isset($direcao_e_administracao['@attributes']['CARGO-OU-FUNCAO'])) {
+                            SList::genericItem(
+                              $type = 'managing',
+                              $itemName = $direcao_e_administracao['@attributes']['CARGO-OU-FUNCAO'],
+                              $itemNameLink = "http://lattes.cnpq.br/" . $orientacao_andamento_echo["numeroIDOrientado"],
+                              $itemInfoA = '',
+                              $itemInfoB = $direcao_e_administracao['@attributes']['NOME-ORGAO'],
+                              $itemInfoC = $direcao_e_administracao['@attributes']['NOME-UNIDADE'],
+                              $itemInfoD = '',
+                              $itemInfoE = '',
+                              $authors  = '',
+                              $yearStart = $direcao_e_administracao['@attributes']['ANO-INICIO'],
+                              $yearEnd = $direcao_e_administracao['@attributes']['ANO-FIM']
+                            );
+                          } else {
+                            SList::genericItem(
+                              $type = 'managing',
+                              $itemName = $direcao_e_administracao['CARGO-OU-FUNCAO'],
+                              $itemNameLink = "http://lattes.cnpq.br/" . $orientacao_andamento_echo["numeroIDOrientado"],
+                              $itemInfoA = '',
+                              $itemInfoB = $direcao_e_administracao['NOME-ORGAO'],
+                              $itemInfoC = $direcao_e_administracao['NOME-UNIDADE'],
+                              $itemInfoD = '',
+                              $itemInfoE = '',
+                              $authors  = '',
+                              $yearStart = $direcao_e_administracao['ANO-INICIO'],
+                              $yearEnd = $direcao_e_administracao['ANO-FIM']
+                            );                            
+                          }
+
+
 
                           echo '</ul>';
                         }
