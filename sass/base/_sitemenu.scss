@@ -4,8 +4,6 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-end;
-  padding: 0 2rem;
   background-color: _palette(theme);
   list-style: none;
   height: 100%;
@@ -70,5 +68,11 @@
         }
       }
     }
+  }
+}
+
+@include breakpoint(md-up) {
+  .sitemenu {
+    justify-content: flex-end;
   }
 }
