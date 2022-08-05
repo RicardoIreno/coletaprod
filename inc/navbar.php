@@ -34,8 +34,8 @@
       </li>
 
       <li class=" sitemenu-item">
-        <a class="sitemenu-link" href="ppg.php" title="Programas de pós graduação">
-          <i class="i i-ppg-ico sitemenu-icons"></i>
+        <a class="sitemenu-link" href="ppgs.php" title="Programas de pós graduação">
+          <i class="i i-ppg-logo sitemenu-icons"></i>
         </a>
       </li>
 
