@@ -23,6 +23,9 @@ class SList
       case "formation":
         $img = 'academic';
         break;
+      case "ppg":
+        $img = 'ppg-logo';
+        break;
       default:
         $img = 'defaultProduction';
     }
