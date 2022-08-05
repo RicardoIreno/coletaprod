@@ -1,5 +1,101 @@
 <?php 
 
+$arrPPGs = [
+  [
+  "campus" => 'Baixada Santista',
+  "unidade" => 'Instituto de Saúde e Sociedade',
+  "programa" => 'Alimentos, Nutrição e Saúde',
+  "capes" => '33009015088P9',
+  ],
+  [
+  "campus" => 'Baixada Santista',
+  "unidade" => 'Instituto de Saúde e Sociedade',
+  "programa" => 'Bioprodutos e Bioprocessos',
+  "capes" => '33009015170P7',
+  ],
+  [
+  "campus" => 'Baixada Santista',
+  "unidade" => 'Instituto de Saúde e Sociedade',
+  "programa" => 'Ciências do Movimento Humano e Reabilitação',
+  "capes" => '33009015175P9',
+  ],
+  [
+  "campus" => 'Baixada Santista',
+  "unidade" => 'Instituto de Saúde e Sociedade',
+  "programa" => 'Interdisciplinar em Ciências da Saúde',
+  "capes" => '33009015070P2',
+  ],
+  [
+  "campus" => 'Baixada Santista',
+  "unidade" => 'Instituto de Saúde e Sociedade',
+  "programa" => 'Saúde da Família',
+  "capes" => '33303002001P9',
+  ],
+  [
+  "campus" => 'Baixada Santista',
+  "unidade" => 'Instituto de Ciências Ambientais, Químicas e Farmacêuticas',
+  "programa" => 'Alimentos, Nutrição e Saúde',
+  "capes" => '33009015088P9',
+  ],
+  [
+  "campus" => 'Baixada Santista',
+  "unidade" => 'Instituto de Ciências Ambientais, Químicas e Farmacêuticas',
+  "programa" => 'Bioprodutos e Bioprocessos',
+  "capes" => '33009015170P7',
+  ],
+  [
+  "campus" => 'Baixada Santista',
+  "unidade" => 'Instituto de Ciências Ambientais, Químicas e Farmacêuticas',
+  "programa" => 'Ciências do Movimento Humano e Reabilitação',
+  "capes" => '33009015175P9',
+  ],
+  [
+  "campus" => 'Baixada Santista',
+  "unidade" => 'Instituto de Ciências Ambientais, Químicas e Farmacêuticas',
+  "programa" => 'Interdisciplinar em Ciências da Saúde',
+  "capes" => '33009015070P2',
+  ],
+  [
+  "campus" => 'Baixada Santista',
+  "unidade" => 'Instituto de Ciências Ambientais, Químicas e Farmacêuticas',
+  "programa" => 'Saúde da Família',
+  "capes" => '33303002001P9',
+  ],
+  [
+  "campus" => 'Diadema',
+  "unidade" => 'Outra Unidade',
+  "programa" => 'Alimentos, Nutrição e Saúde',
+  "capes" => '33009015088P9',
+  ],
+  [
+  "campus" => 'Diadema',
+  "unidade" => 'Outra Unidade',
+  "programa" => 'Bioprodutos e Bioprocessos',
+  "capes" => '33009015170P7',
+  ],
+  [
+  "campus" => 'Diadema',
+  "unidade" => 'Outra Unidade',
+  "programa" => 'Ciências do Movimento Humano e Reabilitação',
+  "capes" => '33009015175P9',
+  ],
+  [
+  "campus" => 'Diadema',
+  "unidade" => 'Outra Unidade',
+  "programa" => 'Interdisciplinar em Ciências da Saúde',
+  "capes" => '33009015070P2',
+  ],
+  [
+  "campus" => 'Diadema',
+  "unidade" => 'Outra Unidade',
+  "programa" => 'Saúde da Família',
+  "capes" => '33303002001P9',
+  ]
+];
+
+
+
+
 $infosToGraph = [
 
   [

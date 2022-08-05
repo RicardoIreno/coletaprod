@@ -151,10 +151,10 @@ class PPG {
 
 
         <section class="l-ppg">
-          <h3 class="t t-title">Tags</h3>
+          <h3 class="t t-title">Palavras chave recorrentes</h3>
 
           <div>
-            <?php Tag::cloud($categorysFake); ?>
+            <?php Tag::cloud( $categorysFake, $hasLink = false ); ?>
 
           </div> <!-- end -->
 
