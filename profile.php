@@ -469,7 +469,7 @@ if (!empty($_REQUEST["lattesID"])) {
                 $resultaboutfacet = json_decode($authorfacets->authorfacet(basename(__FILE__), "about", 120, "Palavras-chave do autor", null, "_term", $_GET), true);
                 shuffle($resultaboutfacet);
 
-                Tag::cloud($resultaboutfacet);
+                Tag::cloud( $resultaboutfacet, $hasLink = false );
               ?>
 
               <div>

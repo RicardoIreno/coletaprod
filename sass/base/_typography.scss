@@ -79,7 +79,8 @@ h5 a {
   }
 
   &-h1,
-  &-h2 {
+  &-h2,
+  &-h3 {
     margin-bottom: .2rem;
   }
 
@@ -90,6 +91,11 @@ h5 a {
 
   &-h2 {
     font-size: 1.3rem;
+  }
+
+  &-h3 {
+    font-size: 1.3rem;
+    background-color: _palette(theme);
   }
 
   &-title {

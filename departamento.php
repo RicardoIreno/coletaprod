@@ -23,8 +23,8 @@ class Departamento {
     }
 
     echo 
-    "<a class='p-ppg-externos' href='$link' target='blank'>
-      <img class='p-ppg-plataforms' src='inc/images/logos/$ico' title='$text'/>
+    "<a class='p-departamento-externos' href='$link' target='blank'>
+      <img class='p-departamento-plataforms' src='inc/images/logos/$ico' title='$text'/>
       <p class='t t-light'><b>$text</b></p>
     </a>";
   }
@@ -40,6 +40,7 @@ class Departamento {
   require 'components/Production.php';
   require 'components/Who.php';
   require 'components/PPGBadges.php';
+  require 'components/TagCloud.php';
   require '_fakedata.php';
   ?>
   <meta charset="utf-8" />
@@ -60,52 +61,57 @@ class Departamento {
 
       <div class="c-wrapper-inner">
 
-        <section class="p-ppg-header">
-          <div class="p-ppg-header-one">
-            <i class="i i-ppg-logo p-ppg-logo"></i>
+        <section class="p-departamento-header">
+          <div class="p-departamento-header-one">
+            <i class="i i-building p-departamento-logo"></i>
           </div>
 
-          <div class="p-ppg-header-two">
+          <div class="p-departamento-header-two">
             <h1 class="t t-h1">Departamento X</h1>
             <p class="t t-b ty-light-a">
               <span>Campus Guarulhos</span>
               <span>Escola de Filosofia, Letras e ciências Humanas</span>
             </p>
             <div class="u-icon-text t-gray u-mb-1">
-              <i class="i i-mapmarker p-ppg-i"></i>
+              <i class="i i-mapmarker p-departamento-i"></i>
               <b>Estrada do Caminho Velho nª 123 - Bairro, Cidade - SP</b>
             </div>
 
-            <?php
+          </diV>
+          <div class="p-departamento-header-three">
+            <div class="p-departamento-header-three-inner">
+              <?php
               Who::mini(
                 $picture = "inc/images/tmp/profile.jpg",
                 $name = 'Sócrates',
                 $title = 'Coordenador',
                 $link = 'https://unifesp.br/prodmais/index.php'
-              )
-              ?>
-          </diV>
-          <div class="p-ppg-header-three">
-
-            <p class="t t-gray t-b">Secretaria:</p>
-            <p class="t t-gray">Maria Oliveira</p>
-            <p class="t t-gray">Olívia Maria</p>
-
-            <a href="" target="blank">
-              <div class="u-icon-text t-gray">
-                <i class="i i-mail p-ppg-i"></i> email@email.com
-              </div>
-            </a>
-
-            <div class="u-icon-text t-gray">
-              <i class="i i-phone p-ppg-i"></i> (11) 5555-5555
+                )
+                ?>
+            </div>
+            <div class="p-departamento-header-three-inner">
+              <p class="t t-gray t-b">Secretaria:</p>
+              <p class="t t-gray">Maria Oliveira</p>
+              <p class="t t-gray">Olívia Maria</p>
             </div>
 
-            <a href="" target="blank">
+            <div class="p-departamento-header-three-inner">
+              <a href="" target="blank">
+                <div class="u-icon-text t-gray">
+                  <i class="i i-mail p-departamento-i"></i> email@email.com
+                </div>
+              </a>
+
               <div class="u-icon-text t-gray">
-                <i class="i i-web p-ppg-i"></i> site
+                <i class="i i-phone p-departamento-i"></i> (11) 5555-5555
               </div>
-            </a>
+
+              <a href="" target="blank">
+                <div class="u-icon-text t-gray">
+                  <i class="i i-web p-departamento-i"></i> site
+                </div>
+              </a>
+            </div>
 
 
           </div>
@@ -117,9 +123,9 @@ class Departamento {
 
 
         <section class="l-ppg">
-          <h3 class="t t-title">Tags</h3>
+          <h3 class="t t-title">Palavras chave recorrentes</h3>
 
-          <?php Tag::cloud($categorysFake); ?>
+          <?php Tag::cloud( $categorysFake, $hasLink = false ); ?>
 
         </section>
 
@@ -143,30 +149,12 @@ class Departamento {
           ?>
         </section>
 
-
-        <section class="l-ppg u-my-3">
-          <?php
-            $legends2 = array(
-              "Mestrado profissional",
-              "Mestrado acadêmico",
-              "Doutorado acadêmico"
-            );
-
-            GraphBar::graph3(
-              $title = 'Orientações',
-              $arrData = $infosToGraph2,
-              $arrLegends = $legends2,
-              $lines = 10
-            );
-          ?>
-        </section>
-
         <hr class="c-line u-my-2" />
 
         <section class="l-ppg">
           <h3 class='t t-title'>Orientadores e orientadoras</h3>
 
-          <ul class="p-ppg-orientadores">
+          <ul class="p-departamento-orientadores">
 
             <li>
               <?php
@@ -214,57 +202,23 @@ class Departamento {
 
         <hr class="c-line u-my-2" />
 
-        <section>
-          <div class="u-center">
-            <p class="t t-gray u-mt-1"><b>Código CAPES</b></p>
-            <p class="t t-gray u-mb-1">33009015088p9</p>
-          </div>
-        </section>
 
         <section class="u-col-to-line">
-          <?php echo PPG::externos(
+          <?php echo Departamento::repos(
             $type = 'Sucupira',
             $link = 'https://repositorio.unifesp.br/handle/11600/6108'
             ); ?>
-          <?php echo PPG::externos(
+          <?php echo Departamento::repos(
             $type = 'Repositório de dados de esquisa',
             $link = 'https://repositoriodedados.unifesp.br/dataverse/eflch'
             ); ?>
 
-          <?php echo PPG::externos(
+          <?php echo Departamento::repos(
             $type = 'Repositório institucional',
             $link = 'https://sucupira.capes.gov.br/sucupira/public/consultas/coleta/programa/viewPrograma.xhtml;jsessionid=OLRUfmVYapfO6QJKy+Wf0KS1.sucupira-218?popup=true&cd_programa=33009015089P5'
             ); ?>
         </section>
 
-
-
-        <!-- <table>
-            <thead>
-              <tr class="thead">
-                <th>Avaliação</th>
-                <th>MA</th>
-                <th>DO</th>
-                <th>MP</th>
-                <th>Portaria/Parecer</th>
-                <th>Data D.O.U.</th>
-                <th>Seção D.O.U.</th>
-                <th>Página D.O.U.</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th>Quadrienal 2013/2014/2015/2016</th>
-                <th>4</th>
-                <th>3</th>
-                <th>5</th>
-                <th>Portaria MEC 609, de 14/03/2019</th>
-                <th>18/03/2019</th>
-                <th>1</th>
-                <th>78</th>
-              </tr>
-            </tbody>
-          </table> -->
 
         <p class="t t-lastUpdate u-right">Atualização Lattes em </p>
         <p class="t t-lastUpdate u-right">Processado em </p>
