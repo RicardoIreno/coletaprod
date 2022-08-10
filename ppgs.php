@@ -145,24 +145,49 @@ $ppgs = '
       ]
     }
   ]
+}';
+
+class ListPPGs {
+  static function listAll($data) {
+    $arr = json_decode($data);
+    $campus = $arr -> campus;
+   
+    foreach( $campus as $c ) {
+      echo '<h2 class="t t-h2 u-my-2">' . $c -> nome .'<h2>';
+
+      foreach( $c -> unidades as $unidade)
+      {
+        $programas = str_replace(array('{', '}'), array('[',']'), $unidade -> programas);
+
+        echo '
+        <details class="p-ppgs-item">
+          <summary class="p-ppgs-item-header">'
+             . $unidade -> nome .
+          '</summary>
+        ';
+          
+        foreach($programas as $p) 
+          SList::genericItem(
+            $type = 'ppg',
+            $itemName = $p,
+            $itemNameLink = '',
+            $itemInfoA = '',
+            $itemInfoB = 'CAPES 1234566890',
+            $itemInfoC = '',
+            $itemInfoD = '',
+            $itemInfoE = '',
+            $authors = '',
+            $yearStart = '',
+            $yearEnd = ''
+        );
+        
+        echo  '</details>';
+        
+      }
+    }
+
+  }
 }
-';
-
-// $arr = json_decode($ppgs);
-// $campus = $arr -> campus;
-// $bufTags = "<ul class='tag-cloud' role='navigation' aria-label='Tags mais usadas'>";
-
-// foreach( $campus as $c ) {
-//   foreach( $c -> unidades as $unidade) {
-//     $programas = str_replace(array('{', '}'), array('[',']'), $unidade -> programas);
-    
-//     foreach($programas as $p) 
-//     $bufTags = "$bufTags <li><a class='tag' data-weight={random_int(1, 7)}> $p</a> </li>";
-    
-//   }
-// }
-  
-// $bufTags = "$bufTags </ul>";
 
 ?>
 
@@ -173,11 +198,10 @@ $ppgs = '
   require 'inc/functions.php';
   require 'components/SList.php';
   require 'components/TagCloud.php';
-  require 'components/ListPPGs.php';
   require '_fakedata.php';
   ?>
   <meta charset="utf-8" />
-  <title><?php echo $branch; ?> - Departamento Letras</title>
+  <title><?php echo $branch; ?> Programas de Pós-Graduação </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <meta name="description" content="Prodmais Unifesp." />
   <meta name="keywords" content="Produção acadêmica, lattes, ORCID" />
