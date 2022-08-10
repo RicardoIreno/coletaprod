@@ -2,10 +2,10 @@
     RewriteEngine On
     RewriteBase /
 
-# add trailing slash if missing
-    rewriteRule ^(([a-z0-9\-]+/)*[a-z0-9\-]+)$ $1/ [NC,R=301,L]
-
 # redirect to trailing shash (/)
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_URI} !(.*)/$
     RewriteRule ^(.*)$ http://%{HTTP_HOST}/$1/ [L,R=301]
+
+# profile
+    RewriteRule ^profile/([-\w]+)$ profile.php?lattesID=$1 [NC,L]
