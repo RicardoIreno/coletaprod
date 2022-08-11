@@ -54,8 +54,36 @@
   margin: .5rem auto;
 }
 
+
+.p-home-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
+  margin: 0 auto;
+
+  &-btn {
+    margin: .5rem auto;
+  }
+}
+
+.p-home-search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  max-width: 800px;
+  @include transition();
+  padding: 1rem;
+}
+
+@include breakpoint(md-up) {
+  .p-home-search {
+    margin: 1rem auto;
+  }
+}
+
+
 .tips {
   max-width: 900px;
 }
-
-@include breakpoint(md-up) {}

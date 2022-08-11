@@ -2,7 +2,7 @@
 <html lang="pt-br" dir="ltr">
 
 <head>
-    <?php
+  <?php
   require 'inc/config.php';
   require 'inc/meta-header.php';
   require 'inc/functions.php';
@@ -50,64 +50,64 @@
   /*pagination - end*/
 
   ?>
-    <meta charset="utf-8" />
-    <title><?php echo $branch; ?> - Resultado da busca</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <meta name="description" content="Prodmais Unifesp." />
-    <meta name="keywords" content="Produção acadêmica, lattes, ORCID" />
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <link rel="stylesheet" href="sass/main.css" />
+  <meta charset="utf-8" />
+  <title><?php echo $branch; ?> - Resultado da busca</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <meta name="description" content="Prodmais Unifesp." />
+  <meta name="keywords" content="Produção acadêmica, lattes, ORCID" />
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <link rel="stylesheet" href="sass/main.css" />
 </head>
 
 <body>
-    <?php
+  <?php
   if (file_exists('inc/google_analytics.php')) {
     include 'inc/google_analytics.php';
   }
   ?>
-    <!-- NAV -->
-    <?php require 'inc/navbar.php'; ?>
-    <!-- /NAV -->
+  <!-- NAV -->
+  <?php require 'inc/navbar.php'; ?>
+  <!-- /NAV -->
 
-    <div class="result-container">
+  <div class="p-result-container">
 
-        <main class="result-main">
-            <?php if(!empty($_REQUEST['search'])): ?>
-              <div class="c-searchterm">Termo pesquisado: <?php print_r($_REQUEST['search']); ?></div>
-            <?php endif ?>
-            <?php 
+    <main class="p-result-main">
+      <?php if(!empty($_REQUEST['search'])): ?>
+      <div class="c-term">Termo pesquisado: <?php print_r($_REQUEST['search']); ?></div>
+      <?php endif ?>
+      <?php 
             if (isset($_REQUEST['filter'])) {
-              echo '<div class="c-searchterm">Filtro: ' . $_REQUEST['filter'][0] . '</div>';
+              echo '<div class="c-term">Filtro: ' . $_REQUEST['filter'][0] . '</div>';
             }
             ?>
 
-            <?php ui::newpagination($page, $total, $limit, $_POST, 'result'); ?>
-            <br />
+      <?php ui::newpagination($page, $total, $limit, $_POST, 'result'); ?>
+      <br />
 
-            <?php if ($total == 0) : ?>
-            <br />
-            <div class="alert alert-info" role="alert">
-                Sua busca não obteve resultado. Você pode refazer sua busca abaixo:<br /><br />
-                <form action="result.php">
-                    <div class="form-group">
-                        <input type="text" name="search" class="form-control" id="searchQuery"
-                            aria-describedby="searchHelp" placeholder="Pesquise por termo ou autor">
-                        <small id="searchHelp" class="form-text text-muted">Dica: Use * para busca por radical. Ex:
-                            biblio*.</small>
-                        <small id="searchHelp" class="form-text text-muted">Dica 2: Para buscas exatas, coloque entre
-                            ""</small>
-                        <small id="searchHelp" class="form-text text-muted">Dica 3: Você também pode usar operadores
-                            booleanos:
-                            AND, OR</small>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Pesquisar</button>
+      <?php if ($total == 0) : ?>
+      <br />
+      <div class="alert alert-info" role="alert">
+        Sua busca não obteve resultado. Você pode refazer sua busca abaixo:<br /><br />
+        <form action="result.php">
+          <div class="form-group">
+            <input type="text" name="search" class="form-control" id="searchQuery" aria-describedby="searchHelp"
+              placeholder="Pesquise por termo ou autor">
+            <small id="searchHelp" class="form-text text-muted">Dica: Use * para busca por radical. Ex:
+              biblio*.</small>
+            <small id="searchHelp" class="form-text text-muted">Dica 2: Para buscas exatas, coloque entre
+              ""</small>
+            <small id="searchHelp" class="form-text text-muted">Dica 3: Você também pode usar operadores
+              booleanos:
+              AND, OR</small>
+          </div>
+          <button type="submit" class="btn btn-primary">Pesquisar</button>
 
-                </form>
-            </div>
-            <br /><br />
-            <?php endif; ?>
+        </form>
+      </div>
+      <br /><br />
+      <?php endif; ?>
 
-            <?php
+      <?php
 
       foreach ($cursor["hits"]["hits"] as $r) {
         foreach ($r["_source"]["author"] as $author) {
@@ -143,23 +143,22 @@
       ui::newpagination($page, $total, $limit, $_POST, 'result');
       ?>
 
-        </main>
+    </main>
 
-        <details id="fbar" class="c-fbar" onload="resizeMenu">
-            <summary class="c-fbar-header">
-                <h3 class="c-fbar-title">Refinar resultados</h3>
-                <!-- <div class="c-fbar-arrow"></div> -->
-                <svg class="c-fbar-arrow" xmlns='http://www.w3.org/2000/svg' width='100' height='15'
-                    viewBox='0 0 27 4'>
-                    <path
-                        d='M -0.01265394,0.14177403 13.243005,2.082092 26.44568,0.14177403 26.42274,1.4634269 13.243005,3.4026049 -0.01265394,1.4646869 Z' />
-                </svg>
-            </summary>
+    <nav class="p-result-nav">
+      <details id="fbar" class="c-fbar" onload="resizeMenu">
+        <summary class="c-fbar-header">
+          <h3 class="c-fbar-title">Refinar resultados</h3>
+          <!-- <div class="c-fbar-arrow"></div> -->
+          <svg class="c-fbar-arrow" xmlns='http://www.w3.org/2000/svg' width='100' height='15' viewBox='0 0 27 4'>
+            <path
+              d='M -0.01265394,0.14177403 13.243005,2.082092 26.44568,0.14177403 26.42274,1.4634269 13.243005,3.4026049 -0.01265394,1.4646869 Z' />
+          </svg>
+        </summary>
 
-            <nav class="">
-                <div class="c-fbloc-wrapper">
+        <div class="c-fbloc-wrapper">
 
-                    <?php
+          <?php
                 $facets = new FacetsNew();
                 $facets->query = $result_post['query'];
 
@@ -215,70 +214,70 @@
                 
                ?>
 
-                </div> <!-- end c-fbloc -->
-            </nav> <!-- end c-fbar -->
-        </details>
-    </div> <!-- end result-container -->
+        </div> <!-- end c-fbloc -->
+      </details>
+    </nav>
+  </div> <!-- end result-container -->
 
-    <?php include('inc/footer.php'); ?>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script>
-    var app = new Vue({
-        el: '#fbar',
-        methods: {
-            createMenuButtons() {
-                let fblocs = document.getElementsByClassName('c-fbloc')
+  <?php include('inc/footer.php'); ?>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+    el: '#fbar',
+    methods: {
+      createMenuButtons() {
+        let fblocs = document.getElementsByClassName('c-fbloc')
 
-                for (let i = 0; i < fblocs.length; i++) {
-                    const newBtn = document.createElement('button')
-                    newBtn.classList.add('c-fbloc-btn')
-                    newBtn.innerHTML =
-                        "<svg class='c-fbloc-btn-ico' x='0px' y='0px' viewBox='0 0 80 48'> <path d='M72.3,35.5c-0.7,0-1.5-0.2-2.2-0.5L40.3,20.5l-30.6,14c-2.5,1.1-5.5,0-6.6-2.5c-1.1-2.5,0-5.5,2.5-6.6l32.7-15 c1.4-0.6,2.9-0.6,4.3,0.1l32,15.6c2.5,1.2,3.5,4.2,2.3,6.7C76,34.5,74.2,35.5,72.3,35.5z' /> </svg>"
-                    newBtn.addEventListener("click", function() {
-                        this.parentNode.removeAttribute("open")
-                    })
-                    fblocs[i].appendChild(newBtn)
-                }
-            },
-
-            openCloseMenu() {
-                console.log('disparou o resize')
-                if (window.matchMedia("(min-width: 1300px)").matches) document.getElementById("fbar").open =
-                    true;
-                else document.getElementById("fbar").open = false;
-            },
-
-        },
-        mounted: function() {
-            this.createMenuButtons(),
-                this.openCloseMenu()
-        },
-    });
-    </script>
-    <script>
-    let ffbar = window.matchMedia('(min-width: 1203.03px)')
-
-    function screenTest(e) {
-        if (e.matches) {
-            document.getElementById("fbar").open = true
-            fArrow.style.display = "none"
-        } else {
-            document.getElementById("fbar").open = false
-            fArrow.style.display = "block"
+        for (let i = 0; i < fblocs.length; i++) {
+          const newBtn = document.createElement('button')
+          newBtn.classList.add('c-fbloc-btn')
+          newBtn.innerHTML =
+            "<svg class='c-fbloc-btn-ico' x='0px' y='0px' viewBox='0 0 80 48'> <path d='M72.3,35.5c-0.7,0-1.5-0.2-2.2-0.5L40.3,20.5l-30.6,14c-2.5,1.1-5.5,0-6.6-2.5c-1.1-2.5,0-5.5,2.5-6.6l32.7-15 c1.4-0.6,2.9-0.6,4.3,0.1l32,15.6c2.5,1.2,3.5,4.2,2.3,6.7C76,34.5,74.2,35.5,72.3,35.5z' /> </svg>"
+          newBtn.addEventListener("click", function() {
+            this.parentNode.removeAttribute("open")
+          })
+          fblocs[i].appendChild(newBtn)
         }
+      },
+
+      openCloseMenu() {
+        console.log('disparou o resize')
+        if (window.matchMedia("(min-width: 1300px)").matches) document.getElementById("fbar").open =
+          true;
+        else document.getElementById("fbar").open = false;
+      },
+
+    },
+    mounted: function() {
+      this.createMenuButtons(),
+        this.openCloseMenu()
+    },
+  });
+  </script>
+  <script>
+  let ffbar = window.matchMedia('(min-width: 1203.03px)')
+
+  function screenTest(e) {
+    if (e.matches) {
+      document.getElementById("fbar").open = true
+      fArrow.style.display = "none"
+    } else {
+      document.getElementById("fbar").open = false
+      fArrow.style.display = "block"
     }
+  }
 
-    function showHideFbarBtn() {
-        let fArrow = document.getElementByClassName("c-fbar-arrow")
-        boo = document.getElementById("fbar")
-        boo.open === true ? fArrow.style.display = "none" : fArrow.style.display = "block";
-        fArrow.style.display === "none" ?
+  function showHideFbarBtn() {
+    let fArrow = document.getElementByClassName("c-fbar-arrow")
+    boo = document.getElementById("fbar")
+    boo.open === true ? fArrow.style.display = "none" : fArrow.style.display = "block";
+    fArrow.style.display === "none" ?
 
-    }
+  }
 
-    ffbar.addEventListener('change', screenTest)
-    ffbar.addEventListener('change', showHideFbarBtn)
-    </script>
+  ffbar.addEventListener('change', screenTest)
+  ffbar.addEventListener('change', showHideFbarBtn)
+  </script>
 </body>
 
 </html>

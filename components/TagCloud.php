@@ -1,6 +1,6 @@
 <?php 
   class Tag {
-    static function cloud($arr, $hasLink ) {
+    static function cloud($arr, $hasLink = '' ) {
       $buf = '';
 
       // if (array_key_exists('first', $search_array))

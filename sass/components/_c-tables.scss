@@ -6,7 +6,7 @@ table {
   -moz-border-radius: 25px;
   margin: .5rem auto;
   overflow: hidden;
-  transition: all .3s ease;
+  @include transition();
   width: 90%;
 }
 

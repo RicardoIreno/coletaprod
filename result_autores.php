@@ -76,8 +76,8 @@ $get_data = $_GET;
     <!-- /NAV -->
 
 
-    <div class="result-container">
-        <main class="result-main">
+    <div class="p-result-container">
+        <main class="p-result-main">
             <form action="result_autores.php" method="POST" accept-charset="utf-8" enctype="multipart/form-data"
                 id="searchresearchers">
                 <div class="input-group mb-3">

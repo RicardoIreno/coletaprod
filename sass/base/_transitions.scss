@@ -16,7 +16,7 @@
 
 .homeeffect-enter-active,
 .homeeffect-leave-active {
-  transition: all .3s ease;
+  @include transition();
 }
 
 .homeeffect-enter-from,
