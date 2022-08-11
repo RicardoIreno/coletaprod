@@ -928,12 +928,8 @@ if (!empty($_REQUEST["lattesID"])) {
                               $type = 'managing',
                               $itemName = $direcao_e_administracao['@attributes']['CARGO-OU-FUNCAO'],
                               $itemNameLink = "http://lattes.cnpq.br/" . $orientacao_andamento_echo["numeroIDOrientado"],
-                              $itemInfoA = '',
                               $itemInfoB = $direcao_e_administracao['@attributes']['NOME-ORGAO'],
                               $itemInfoC = $direcao_e_administracao['@attributes']['NOME-UNIDADE'],
-                              $itemInfoD = '',
-                              $itemInfoE = '',
-                              $authors  = '',
                               $yearStart = $direcao_e_administracao['@attributes']['ANO-INICIO'],
                               $yearEnd = $direcao_e_administracao['@attributes']['ANO-FIM']
                             );
@@ -942,12 +938,8 @@ if (!empty($_REQUEST["lattesID"])) {
                               $type = 'managing',
                               $itemName = $direcao_e_administracao['CARGO-OU-FUNCAO'],
                               $itemNameLink = "http://lattes.cnpq.br/" . $orientacao_andamento_echo["numeroIDOrientado"],
-                              $itemInfoA = '',
                               $itemInfoB = $direcao_e_administracao['NOME-ORGAO'],
                               $itemInfoC = $direcao_e_administracao['NOME-UNIDADE'],
-                              $itemInfoD = '',
-                              $itemInfoE = '',
-                              $authors  = '',
                               $yearStart = $direcao_e_administracao['ANO-INICIO'],
                               $yearEnd = $direcao_e_administracao['ANO-FIM']
                             );                            
@@ -1002,10 +994,6 @@ if (!empty($_REQUEST["lattesID"])) {
                                 $itemName = $projeto_de_pesquisa['@attributes']['NOME-DO-PROJETO'],
                                 $itemNameLink = '',
                                 $itemInfoA = $projeto_de_pesquisa['@attributes']['DESCRICAO-DO-PROJETO'],
-                                $itemInfoB = '',
-                                $itemInfoC = '',
-                                $itemInfoD = '',
-                                $itemInfoE = '',
                                 $authors = implode(', ', $integrantes_do_projeto),
                                 $yearStart = $projeto_de_pesquisa['@attributes']['ANO-INICIO'],
                                 $yearEnd = $projeto_de_pesquisa['@attributes']['ANO-FIM']
