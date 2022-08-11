@@ -49,15 +49,15 @@ class SList
   static function genericItem(
     $type,
     $itemName,
-    $itemNameLink,
-    $itemInfoA,
-    $itemInfoB,
-    $itemInfoC,
-    $itemInfoD,
-    $itemInfoE,
-    $authors,
-    $yearStart,
-    $yearEnd
+    $itemNameLink = '',
+    $itemInfoA = '',
+    $itemInfoB = '',
+    $itemInfoC = '',
+    $itemInfoD = '',
+    $itemInfoE = '',
+    $authors = '',
+    $yearStart = '',
+    $yearEnd = ''
   ) {
 
     $bullet = SList::bullet($type);
