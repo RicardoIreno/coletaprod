@@ -38,6 +38,11 @@
           <i class="i i-ppg-logo sitemenu-icons"></i>
         </a>
       </li>
+      <li class=" sitemenu-item">
+        <a class="sitemenu-link" href="projetos.php" title="Projetos de pesquisa">
+          <i class="i i-project sitemenu-icons"></i>
+        </a>
+      </li>
 
       <li class="sitemenu-item">
         <a class="sitemenu-link" href="predash.php" title="Dashboard">

@@ -1,0 +1,56 @@
+.p-projeto,
+.p-projeto-header,
+.p-projeto-header-one,
+.p-projeto-header-two,
+.p-projeto-header-three {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+}
+
+@include breakpoint(md-up) {
+	.p-projeto,
+	.p-projeto-header,
+	.p-projeto-header-one,
+	.p-projeto-header-two {
+		text-align: start;
+	}
+
+	.p-projeto,
+	.p-projeto-header {
+		align-items: flex-start;
+	}
+	.p-projeto-header-two {
+		display: block;
+	}
+}
+
+@include breakpoint(md-up) {
+	.p-projeto {
+		&-header {
+			flex-direction: row;
+		}
+	}
+}
+
+.p-projeto {
+	&-logo {
+		background-color: _palette(theme-light-2);
+		height: 50px;
+		margin-right: 1rem;
+		transform: translateY(6px);
+		width: 50px;
+	}
+
+	&-main {
+		padding-inline: 2rem;
+	}
+
+	&-who {
+		align-items: flex-start;
+		display: inline-flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+	}
+}
