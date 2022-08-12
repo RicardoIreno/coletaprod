@@ -1,5 +1,7 @@
 .u-icon-text {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
+	align-items: center;
+	display: inline-flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	width: fit-content;
 }

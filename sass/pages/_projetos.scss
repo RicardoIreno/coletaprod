@@ -1,6 +1,16 @@
-
 .p-projetos {
-  &-lista {
-    padding: 2rem 2rem 3rem 2rem;
-  }
+	&-lista {
+		padding: 2rem 2rem 3rem 2rem;
+	}
+
+	&-inputs {
+		display: flex;
+		justify-content: center;
+		width: 100%;
+
+		& > .c-inputs {
+			max-width: 800px;
+			width: 100%;
+		}
+	}
 }
