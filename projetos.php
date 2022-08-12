@@ -192,7 +192,7 @@ class ListProjetos {
         require '_fakedata.php';
         ?>
   <meta charset="utf-8" />
-  <title><?php echo $branch; ?> - Projetos</title>
+  <title><?php echo $branch; ?> - Projetos de pesquisa</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <meta name="description" content="Prodmais Unifesp." />
   <meta name="keywords" content="Produção acadêmica, lattes, ORCID" />
@@ -208,35 +208,36 @@ class ListProjetos {
   <main class="c-wrapper-container">
     <div class="c-wrapper-paper">
       <div class="c-wrapper-inner">
-        <h1 class=" t t-h1 u-mb-2">Programas de Pós-Graduação</h1>
+        <h1 class=" t t-h1 u-mb-2">Projetos de pesquisa</h1>
 
-        <section class="c-inputs u-lg-up-row">
-          <div class="u-md-up-row">
-            <div class="c-switch-container">
-              <input id="switch-projetos-concluidos" class="c-switch c-switch-shadow" type="checkbox" />
-              <label for="switch-projetos-concluidos"></label>
-              <span class="c-switch-text"> Concluídos </span>
-            </div>
-            <div class="c-switch-container">
-              <input id="switch-projetos-andamento" class="c-switch c-switch-shadow" type="checkbox" />
-              <label for="switch-projetos-andamento"></label>
-              <span class="c-switch-text"> Em andamento </span>
-            </div>
+        <section class="p-projetos-inputs">
+          
+          <div class="c-inputs">
+            <input class="c-input" type="text" />
+            <button class="c-btn">Pesquisar</button>
           </div>
-
-          <input class="c-input" type="text" />
-          <button class="c-btn">Pesquisar</button>
 
         </section>
 
         <section class="u-my-4">
-          <h2 class="t t-h2 u-mb-2">Palavras mais frequentes</h3>
             <?php Tag::cloud($categorysFake) ?>
         </section>
 
         <hr class="c-line u-mb-4" />
 
         <section class=" p-projetos-container">
+            <div class="u-md-up-row">
+              <div class="c-switch-container">
+                <input id="switch-projetos-concluidos" class="c-switch c-switch-shadow" type="checkbox" />
+                <label for="switch-projetos-concluidos"></label>
+                <span class="c-switch-text"> Concluídos </span>
+              </div>
+              <div class="c-switch-container">
+                <input id="switch-projetos-andamento" class="c-switch c-switch-shadow" type="checkbox" />
+                <label for="switch-projetos-andamento"></label>
+                <span class="c-switch-text"> Em andamento </span>
+              </div>
+            </div>
 
           <div class="p-projetos-lista">
             <?php ListProjetos::listAll($arrProjetos); ?>
