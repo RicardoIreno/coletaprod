@@ -1,89 +1,90 @@
-// == PAGE HOME == // 
+// == PAGE HOME == //
 
-.home-wrapper {
-  display: flex;
-  width: 100vw;
-  min-height: 80vh;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.p-home-wrapper {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	min-height: 80vh;
+	width: 100vw;
 }
 
-
+.p-home-info {
+	color: _palette(theme);
+	text-align: center;
+}
 
 .logo {
-  &-home {
-    display: none;
-  }
+	&-home {
+		display: none;
+	}
 }
 
-.c-slogan {
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  padding: .7rem 0.5rem;
-  max-width: 300px;
-  text-align: center;
-  font-size: 1.2rem !important;
+.p-home-slogan {
+	align-content: center;
+	display: flex;
+	flex-direction: column;
+	font-size: 1.2rem !important;
+	max-width: 300px;
+	padding: 0.7rem 0.5rem;
+	text-align: center;
 }
-
 
 @include breakpoint(md-up) {
-  .logo {
-    &-home {
-      display: block;
-      max-width: 150px;
-      margin-bottom: .7rem auto;
-      fill: #1C9AD1;
-    }
-  }
+	.p-home {
+		&-logo {
+			background-color: _palette(theme);
+			display: block;
+			height: 70px;
+			height: 200px;
+			margin-bottom: 0.7rem;
+			width: 240px;
+		}
+	}
 
-  .c-slogan {
-    padding: .5rem 0.5rem;
-    max-width: 800px;
-    font-size: 2rem;
-  }
-
+	.p-home-slogan {
+		font-size: 2rem;
+		max-width: 800px;
+		padding: 0.5rem 0.5rem;
+	}
 }
 
 .c-searchcategories,
 .options {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  margin: .5rem auto;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	margin: 0.5rem auto;
 }
 
-
 .p-home-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  justify-items: center;
-  margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	justify-items: center;
+	margin: 0 auto;
 
-  &-btn {
-    margin: .5rem auto;
-  }
+	&-btn {
+		margin: 0.5rem auto;
+	}
 }
 
 .p-home-search {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 90%;
-  max-width: 800px;
-  @include transition();
-  padding: 1rem;
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	max-width: 800px;
+	padding: 1rem;
+	width: 90%;
+	@include transition();
 }
 
 @include breakpoint(md-up) {
-  .p-home-search {
-    margin: 1rem auto;
-  }
+	.p-home-search {
+		margin: 1rem auto;
+	}
 }
 
-
 .tips {
-  max-width: 900px;
+	max-width: 900px;
 }
