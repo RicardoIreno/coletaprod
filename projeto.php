@@ -69,15 +69,15 @@ $data = '{
   <main class="c-wrapper-container">
     <div class="c-wrapper-paper">
       <div class="c-wrapper-inner">
-        <section class="p-projeto-header">  
-          <div class="p-projeto-header-one">
+        <section class="p-projeto-header">
+          <div class="p-projeto-header-d1">
             <i class="i i-project p-projeto-logo"></i>
           </div>
-          <div class="p-projeto-header-two">
+          <div class="p-projeto-header-d2">
             <h2 class="t t-h5">Projeto de pesquisa</h2>
-            <h1 class="t t-title"> <?php echo $projeto -> nome ?></h1>
-
-              <?php
+            <h1 class="t t-title p-projeto-title"> <?php echo $projeto -> nome ?></h1>
+            <p class="t t-gray t-b">Financiadores: <?php echo $projeto -> financiadores ?></p>
+            <?php
                 Who::mini(
                   $picture = "inc/images/tmp/profile.jpg",
                   $name = $projeto -> coordenacao,
@@ -85,26 +85,29 @@ $data = '{
                   $link = 'https://unifesp.br/prodmais/index.php'
                 )
                 ?>
+          </div>
 
-              <div class="u-icon-text u-mx-1">
-                <i class="i i-production i-icons"></i> 
-                <p class="t t-b t-with-icon"> <?php echo $projeto -> numero_producoes ?></p>
-                <p class="t t-b t-gray u-ml-05">(Número de produções)</p>
-              </div>
-              
-              <div class="u-icon-text u-mx-1">
-                <i class="i i-date i-icons"></i> 
-                <p class="t t-b t-with-icon u-ml-05"> <?php echo $period ?></p>
-              </div>
+          <div class="p-projeto-header-d3">
+            <div class="u-icon-text u-mx-1">
+              <i class="i i-date i-icons"></i>
+              <p class="t t-b t-with-icon u-ml-05"> <?php echo $period ?></p>
+            </div>
+
+            <div class="u-icon-text u-mx-1">
+              <i class="i i-production i-icons"></i>
+              <p class="t t-b t-with-icon"> <?php echo $projeto -> numero_producoes ?></p>
+              <p class="t t-b t-gray u-ml-05">(Número de produções)</p>
+            </div>
 
           </div>
+
         </section>
 
         <hr class="c-line u-my-2" />
 
         <section class="p-projeto-main">
-          
-          
+
+
           <section class="p-projeto-tagcloud">
             <?php Tag::cloud($categorysFake) ?></p>
           </section>
@@ -114,7 +117,7 @@ $data = '{
           <section class="p-projeto-description">
             <p class="t t-title u-mb-2">Sobre o projeto</p>
             <p class="t t-justify"><?php echo $projeto -> descricao ?></p>
-          
+
           </section>
 
           <hr class="c-line u-my-2" />
@@ -136,6 +139,8 @@ $data = '{
           </section>
         </section>
 
+        <p class="t t-lastUpdate u-right u-mt-2">Atualização Lattes em </p>
+        <p class="t t-lastUpdate u-right">Processado em </p>
       </div>
     </div>
   </main>
