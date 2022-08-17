@@ -39,7 +39,7 @@ $arrProjetos = '{
       "financiadores": "Umbrella Academy",
       "Número-producoes": "31",
       "ano_inicial": "2000",
-      "ano_final": "",
+      "ano_final": "2009",
       "integrantes": [
         "José Pires Fonseca",
         "Roberta Melquiades Silva de Andrade",
@@ -139,7 +139,7 @@ $arrProjetos = '{
       "financiadores": "Umbrella Academy",
       "Número-producoes": "31",
       "ano_inicial": "2010",
-      "ano_final": "",
+      "ano_final": "2011",
       "integrantes": [
         "José Henrique Marino",
         "Antônio de Andrade Costa",
@@ -169,10 +169,11 @@ class ListProjetos {
         $itemName = $p -> nome,
         $itemNameLink = '',
         $itemInfoA = substr($p -> descricao, 0, 100) . '...',
-        $itemInfoB = '<i>Financiado por:</i> ' . $p -> financiadores,
-        $itemInfoC = '<i>Coordenação:</i> ' . $p -> coordenacao,
-        $itemInfoD = '<i>Integrantes:</i> ' . implode(', ', $p -> integrantes),
-        $itemInfoE = $concluido,
+        $itemInfoB = '',
+        $itemInfoC = '<i>Coordenação:</i> ' . $p -> coordenacao . '<i> | Integrantes:</i> ' . implode(', ', $p -> integrantes),
+        $itemInfoE = '',
+        $itemInfoD = '',
+        $authors = '',
         $yearStart = $p -> ano_inicial,
         $yearEnd = $p -> ano_final
       );
@@ -210,34 +211,33 @@ class ListProjetos {
       <div class="c-wrapper-inner">
         <h1 class=" t t-h1 u-mb-2">Projetos de pesquisa</h1>
 
-        <section class="p-projetos-inputs">
-          
-          <div class="c-inputs">
-            <input class="c-input" type="text" />
-            <button class="c-btn">Pesquisar</button>
-          </div>
-
-        </section>
-
         <section class="u-my-4">
-            <?php Tag::cloud($categorysFake) ?>
+          <?php Tag::cloud($categorysFake) ?>
         </section>
 
         <hr class="c-line u-mb-4" />
 
-        <section class=" p-projetos-container">
-            <div class="u-md-up-row">
-              <div class="c-switch-container">
-                <input id="switch-projetos-concluidos" class="c-switch c-switch-shadow" type="checkbox" />
-                <label for="switch-projetos-concluidos"></label>
-                <span class="c-switch-text"> Concluídos </span>
-              </div>
-              <div class="c-switch-container">
-                <input id="switch-projetos-andamento" class="c-switch c-switch-shadow" type="checkbox" />
-                <label for="switch-projetos-andamento"></label>
-                <span class="c-switch-text"> Em andamento </span>
-              </div>
+
+
+        <section class="p-projetos-container">
+
+          <div class="u-md-up-row p-projetos-inputs">
+
+            <div class="c-searcher">
+              <input class="" type="text" />
+              <i class="i i-magnifying c-searcher-btn"></i>
             </div>
+            <div class="c-switch-container">
+              <input id="switch-projetos-concluidos" class="c-switch c-switch-shadow" type="checkbox" />
+              <label for="switch-projetos-concluidos"></label>
+              <span class="c-switch-text"> Concluídos </span>
+            </div>
+            <div class="c-switch-container">
+              <input id="switch-projetos-andamento" class="c-switch c-switch-shadow" type="checkbox" />
+              <label for="switch-projetos-andamento"></label>
+              <span class="c-switch-text"> Em andamento </span>
+            </div>
+          </div>
 
           <div class="p-projetos-lista">
             <?php ListProjetos::listAll($arrProjetos); ?>

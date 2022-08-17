@@ -1,7 +1,6 @@
 .c-who,
 .c-whomini {
 	display: flex;
-	margin: 0 auto;
 	padding: 0;
 	position: relative;
 
@@ -74,16 +73,9 @@
 	}
 }
 
-@include breakpoint(lg-up) {
-	.c-whomini {
-		width: 100%;
-	}
-}
-
 .c-who-s {
 	height: 200px;
 	margin: 0rem auto;
-	// padding-bottom: 1rem;
 	position: relative;
 	width: 200px;
 

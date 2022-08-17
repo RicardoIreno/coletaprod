@@ -33,15 +33,15 @@ class SList
   }
 
 
-  static function date($yearStart, $yearEnd)
+  static function date($start, $end)
   {
-    $output = '';
-    if (!empty($yearStart)) {
-      !empty($yearEnd) ? $output = "$yearStart a $yearEnd" : $output = "Desde $yearStart";
-      return  $output;
+    $buf = '';
+    if (!empty($start)) {
+      !empty($end) ? $buf = "$start a $end" : $buf = "Desde $start";
+      return  $buf;
     } else {
-      !empty($yearEnd) ? $output = "$yearEnd"  : $output = "";
-      return  $output;
+      !empty($end) ? $buf = "Concluído em $end"  : $buf = "";
+      return  $buf;
     }
   }
 
