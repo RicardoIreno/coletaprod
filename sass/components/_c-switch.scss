@@ -1,77 +1,71 @@
 // Based on Willian Justen switch button code
 
-$switchHeight: 30px;
-
 .c-switch {
-  position: absolute;
-  margin-left: -9999px;
-  visibility: hidden;
+	margin-left: -9999px;
+	position: absolute;
+	visibility: hidden;
 
-  & + label {
-    display: block;
-    position: relative;
-    cursor: pointer;
-    outline: none;
-    user-select: none;
-  }
+	& + label {
+		cursor: pointer;
+		display: block;
+		outline: none;
+		position: relative;
+		user-select: none;
+	}
 
-  &-shadow {
+	&-shadow {
+		& + label {
+			background-color: #dddddd;
+			border-radius: $switch_height;
+			height: $switch_height;
+			padding: 2px;
+			width: calc($switch_height * 2);
+		}
 
-    &  + label {
-      padding: 2px;
-      width: calc($switchHeight * 2);
-      height: $switchHeight;
-      background-color: #dddddd;
-      border-radius: $switchHeight;
-    }
+		& + label:before,
+		& + label:after {
+			bottom: 1px;
+			content: "";
+			display: block;
+			left: 1px;
+			position: absolute;
+			top: 1px;
+		}
 
-    & + label:before,
-    & + label:after {
-      display: block;
-      position: absolute;
-      top: 1px;
-      left: 1px;
-      bottom: 1px;
-      content: ''; 
-    }
+		& + label:before {
+			background-color: #f1f1f1;
+			border-radius: $switch_height;
+			right: 1px;
+			transition: all 0.4s;
+		}
 
-    & + label:before {
-      right: 1px;
-      background-color: #f1f1f1;
-      border-radius: $switchHeight;
-      transition: all 0.4s;
-    }
+		& + label:after {
+			background-color: #fff;
+			border-radius: 100%;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+			transition: all 0.4s;
+			width: calc($switch_height + 2px);
+		}
 
-    & + label:after {
-      width: calc($switchHeight + 2px);
-      background-color: #fff;
-      border-radius: 100%;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-      transition: all 0.4s;
-    }
+		&:checked + label:before {
+			background-color: _palette(theme-light-2);
+		}
 
-    &:checked + label:before {
-      background-color: _palette(theme-light-2);
-    }
+		&:checked + label:after {
+			transform: translateX($switch_height);
+		}
+	}
 
-    &:checked + label:after {
-      transform: translateX($switchHeight);
-    }
-  }
+	&-container {
+		align-items: center;
+		display: flex;
+		flex-direction: row;
+		margin: $input_margin;
+		margin-inline: 1rem;
+	}
 
-  &-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin: 1rem;
-  }
-
-  &-text {
-    margin-left: 1rem;
-    width: max-content;
-  }
+	&-text {
+		margin-left: 1rem;
+		width: max-content;
+	}
 }
-
-
-
-

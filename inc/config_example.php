@@ -9,8 +9,6 @@ $branch = "Prodmais";
 $branch_description = "Descrição";
 $url_base = "http://localhost/prodmais";
 $facebook_image = "";
-$logo_image = "inc/images/logos/prodmais.svg";
-$logo_navbar = "inc/images/logos/prodmais_navbar.svg";
 $slogan = 'Uma ferramenta de busca da produção científica de pesquisadores da UNIFESP';
 
 // Definir Instituição

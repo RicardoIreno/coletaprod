@@ -13,7 +13,7 @@
 <header class="siteheader">
 
   <a href="index.php">
-    <?php include $logo_navbar; ?>
+    <i class="i i-logo-header siteheader-logo"></i>
   </a>
 
   <a class="u-skip" href="#skipmenu">Pular menu principal</a>

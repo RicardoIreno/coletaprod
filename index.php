@@ -74,15 +74,15 @@ com este programa, Se não, veja <http://www.gnu.org/licenses/>.
   <?php require 'inc/navbar.php'; ?>
   <!-- /NAV -->
 
-  <main class="home-wrapper" id="home">
+  <main class="p-home-wrapper" id="home">
 
-    <?php require $logo_image; ?>
-    <h2 class="c-slogan"><?php echo ($slogan); ?></h2>
+    <i class="i i-logo p-home-logo"></i>
+    <h2 class="p-home-slogan"><?php echo ($slogan); ?></h2>
 
     <?php if (paginaInicial::contar_registros_indice($index) == 0) : ?>
-      <div class="alert alert-warning" role="alert">
-        O Prod+ está em manutenção!
-      </div>
+    <div class="alert alert-warning" role="alert">
+      O Prod+ está em manutenção!
+    </div>
     <?php endif; ?>
 
 
@@ -90,9 +90,11 @@ com este programa, Se não, veja <http://www.gnu.org/licenses/>.
 
       <form class="p-home-form" class="" action="result.php" title="Pesquisa simples" method="post">
 
-        <input class="c-input" type="search" placeholder="Pesquise por palavra chave" aria-label="Pesquisar" name="search">
+        <input class="c-input" type="search" placeholder="Pesquise por palavra chave" aria-label="Pesquisar"
+          name="search">
 
-        <button type="button" v-on:click="changeSearchMode()" class="c-btn p-home-form-btn" title="Alternar modo de pesquisa">
+        <button type="button" v-on:click="changeSearchMode()" class="c-btn p-home-form-btn"
+          title="Alternar modo de pesquisa">
           <span v-if="searchPage == 'simple'">
             <svg class="c-btn-ico" x="0px" y="0px" viewBox="0 0 80 48">
               <path d="M7.7,10c0.7,0,1.5,0.2,2.2,0.5L39.7,25l30.6-14c2.5-1.1,5.5,0,6.6,2.5c1.1,2.5,0,5.5-2.5,6.6l-32.7,15
@@ -110,13 +112,15 @@ com este programa, Se não, veja <http://www.gnu.org/licenses/>.
         <transition name="homeeffect">
           <div class="u-dv" v-if="searchPage == 'advanced'">
 
-            <label class="c-info">Mais opções de pesquisa:</label>
+            <label class="p-home-info">Mais opções de pesquisa:</label>
 
             <?php paginaInicial::filter_select("vinculo.ppg_nome"); ?>
 
-            <input class="c-input" type="search" placeholder="Filtrar por Nome do Programa de Pós-Graduação (Opcional)" aria-label="Mudar" name="search">
+            <input class="c-input" type="search" placeholder="Filtrar por Nome do Programa de Pós-Graduação (Opcional)"
+              aria-label="Mudar" name="search">
 
-            <input class="c-input" list="datalistOptions" id="authorsDataList" placeholder="Filtrar por nome ou ID Lattes do autor" name="filter[]" v-model="query" @input="searchCV()">
+            <input class="c-input" list="datalistOptions" id="authorsDataList"
+              placeholder="Filtrar por nome ou ID Lattes do autor" name="filter[]" v-model="query" @input="searchCV()">
 
             <datalist class="c-input" id="datalistOptions">
               <option v-for="author in authors" :key="author._id" :value="'vinculo.lattes_id:' + author._id">
@@ -124,18 +128,21 @@ com este programa, Se não, veja <http://www.gnu.org/licenses/>.
               </option>
             </datalist>
 
-            <label class="c-info">Filtrar por data:</label>
+            <label class="p-home-info">Filtrar por data:</label>
             <div class="u-dh">
-              <input type="text" class="c-input-date" id="initialYear" name="initialYear" pattern="\d{4}" placeholder="Data inicial" />
+              <input type="text" class="c-input--date" id="initialYear" name="initialYear" pattern="\d{4}"
+                placeholder="Data inicial" />
               <span> à </span>
-              <input type="text" class="c-input-date" id="finalYear" name="finalYear" pattern="\d{4}" placeholder="Data final" />
+              <input type="text" class="c-input--date" id="finalYear" name="finalYear" pattern="\d{4}"
+                placeholder="Data final" />
             </div>
           </div> <!-- end advanced -->
         </transition>
 
         <button type="submit" class="c-btn-search" title="Buscar">
           <svg class="c-btn-search-ico" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 100 100">
-            <path d="M98.6,86.5L79.2,67c-0.9-0.9-2.1-1.4-3.3-1.4h-3.2c5.4-6.9,8.6-15.6,8.6-25C81.3,18.2,63.1,0,40.6,0
+            <path
+              d="M98.6,86.5L79.2,67c-0.9-0.9-2.1-1.4-3.3-1.4h-3.2c5.4-6.9,8.6-15.6,8.6-25C81.3,18.2,63.1,0,40.6,0
                   S0,18.2,0,40.6s18.2,40.6,40.6,40.6c9.4,0,18.1-3.2,25-8.6v3.2c0,1.3,0.5,2.4,1.4,3.3l19.5,19.5c1.8,1.8,4.8,1.8,6.6,0l5.5-5.5
                   C100.5,91.3,100.5,88.3,98.6,86.5z M40.6,65.6c-13.8,0-25-11.2-25-25s11.2-25,25-25s25,11.2,25,25S54.5,65.6,40.6,65.6z" />
           </svg>
@@ -159,10 +166,10 @@ com este programa, Se não, veja <http://www.gnu.org/licenses/>.
 
     <transition name="homeeffect">
       <div class="tips" v-if="showTips">
-        <p class="c-info"><b>Dicas</b></p>
-        <p class="c-info">1: Use * para busca por radical. Ex: biblio*.</p>
-        <p class="c-info">2: Para buscas exatas, coloque entre "". Ex: "Direito civil"</p>
-        <p class="c-info">3: Por padrão, o sistema utiliza o operador booleano OR. Caso necessite deixar a busca
+        <p class="p-home-info"><b>Dicas</b></p>
+        <p class="p-home-info">1: Use * para busca por radical. Ex: biblio*.</p>
+        <p class="p-home-info">2: Para buscas exatas, coloque entre "". Ex: "Direito civil"</p>
+        <p class="p-home-info">3: Por padrão, o sistema utiliza o operador booleano OR. Caso necessite deixar a busca
           mais específica, utilize o operador AND (em maiúscula)</p>
       </div>
     </transition>
@@ -234,60 +241,60 @@ com este programa, Se não, veja <http://www.gnu.org/licenses/>.
   <?php include('inc/footer.php'); ?>
 
   <script>
-    var app = new Vue({
-      el: '#home',
+  var app = new Vue({
+    el: '#home',
 
-      data: {
-        searchPage: 'simple',
-        query: "",
-        message: "Teste",
-        authors: [],
-        showCategories: false,
-        showTips: false,
-        accOpened: '0'
+    data: {
+      searchPage: 'simple',
+      query: "",
+      message: "Teste",
+      authors: [],
+      showCategories: false,
+      showTips: false,
+      accOpened: '0'
 
+    },
+    mounted() {
+      this.searchCV();
+    },
+    methods: {
+      searchCV() {
+        axios.get(
+            'tools/proxy_autocomplete_cv.php?query=' + this.query
+          ).then((response) => {
+            this.authors = response.data.hits.hits;
+          })
+          .catch((error) => {
+            console.log(error);
+            console.error(error);
+            this.errored = true;
+          })
+          .finally(() => (this.loading = false));
       },
-      mounted() {
-        this.searchCV();
+      changeSearchMode() {
+        this.searchPage == 'simple' ? this.searchPage = 'advanced' : this.searchPage = 'simple'
       },
-      methods: {
-        searchCV() {
-          axios.get(
-              'tools/proxy_autocomplete_cv.php?query=' + this.query
-            ).then((response) => {
-              this.authors = response.data.hits.hits;
-            })
-            .catch((error) => {
-              console.log(error);
-              console.error(error);
-              this.errored = true;
-            })
-            .finally(() => (this.loading = false));
-        },
-        changeSearchMode() {
-          this.searchPage == 'simple' ? this.searchPage = 'advanced' : this.searchPage = 'simple'
-        },
-        openAccordion(acc) {
-          this.accOpened == acc ? this.accOpened = '0' : this.accOpened = acc
-        }
-
-
+      openAccordion(acc) {
+        this.accOpened == acc ? this.accOpened = '0' : this.accOpened = acc
       }
-    })
 
-    let acc = document.getElementsByClassName("c-accordion");
-    let i
-    for (i = 0; i < acc.length; i++) {
-      acc[i].addEventListener("click", function() {
-        // this.classList.toggle("opened");
-        var body = this.nextElementSibling;
-        if (body.style.display === "block") {
-          body.style.display = "none";
-        } else {
-          body.style.display = "block";
-        }
-      });
+
     }
+  })
+
+  let acc = document.getElementsByClassName("c-accordion");
+  let i
+  for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+      // this.classList.toggle("opened");
+      var body = this.nextElementSibling;
+      if (body.style.display === "block") {
+        body.style.display = "none";
+      } else {
+        body.style.display = "block";
+      }
+    });
+  }
   </script>
 
 
