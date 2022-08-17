@@ -14,31 +14,37 @@
 }
 
 .c-input,
+.c-input--sm,
 .c-input--mini,
 .c-input--date {
 	@include searchStyle;
-	margin: 0.5rem 0.2rem;
+	margin: $input_margin;
 	outline: 0;
-
 	width: 100%;
 }
 
 .c-input,
+.c-input-sm,
 .c-input--date {
 	font-size: 1.2rem;
 	height: 2.4rem;
-	padding: 1rem 0.5rem 1rem 0.5rem;
+	padding: 1rem 1rem 1rem 0.5rem;
 }
 
-.c-input--date {
-	margin: 1rem;
-	max-width: 120px;
-}
+.c-input {
+	&--date {
+		max-width: 120px;
+	}
 
-.c-input--mini {
-	font-size: 1rem;
-	height: $searcher_heigh_mini;
-	padding: 0.4rem 0.2rem 0.4rem 0.2rem;
+	&--sm {
+		max-width: 240px;
+	}
+
+	&--mini {
+		font-size: 1rem;
+		height: $searcher_heigh_mini;
+		padding: 0.4rem 0.2rem 0.4rem 0.2rem;
+	}
 }
 
 .c-searcher {

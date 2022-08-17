@@ -41,7 +41,7 @@
 .c-btn {
 	@include btn();
 	font-weight: 500;
-	margin: 0.5rem;
+	margin: $input_margin;
 	padding: 8px;
 
 	&-ico {

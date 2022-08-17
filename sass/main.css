@@ -1345,7 +1345,7 @@ h5 a {
   width: -moz-fit-content;
   width: fit-content;
   font-weight: 500;
-  margin: 0.5rem;
+  margin: 0.3rem 1rem;
   padding: 8px;
 }
 .c-btn:hover {
@@ -1621,6 +1621,7 @@ details[open] .c-fbloc-name--header:before {
   }
 }
 .c-input,
+.c-input--sm,
 .c-input--mini,
 .c-input--date {
   background-color: rgb(252, 249, 249);
@@ -1628,11 +1629,12 @@ details[open] .c-fbloc-name--header:before {
   border-radius: 40px;
   vertical-align: middle;
   transition: all 0.2s ease 0s;
-  margin: 0.5rem 0.2rem;
+  margin: 0.3rem 1rem;
   outline: 0;
   width: 100%;
 }
 .c-input:hover,
+.c-input--sm:hover,
 .c-input--mini:hover,
 .c-input--date:hover {
   letter-spacing: 1.2px;
@@ -1640,17 +1642,19 @@ details[open] .c-fbloc-name--header:before {
 }
 
 .c-input,
+.c-input-sm,
 .c-input--date {
   font-size: 1.2rem;
   height: 2.4rem;
-  padding: 1rem 0.5rem 1rem 0.5rem;
+  padding: 1rem 1rem 1rem 0.5rem;
 }
 
 .c-input--date {
-  margin: 1rem;
   max-width: 120px;
 }
-
+.c-input--sm {
+  max-width: 240px;
+}
 .c-input--mini {
   font-size: 1rem;
   height: 2rem;
@@ -2666,6 +2670,13 @@ th {
 }
 .tips {
   max-width: 900px;
+}
+
+.p-inclusao-form {
+  border: 1px dashed #7fd1f5;
+  border-radius: 15px;
+  margin: 1rem;
+  padding: 1rem;
 }
 
 .manual-container {
