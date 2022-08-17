@@ -16,7 +16,7 @@ $data = '{
     "financiadores": "Fundação Carlos Chagas Filho de Amparo à Pesquisa do Estado do RJ",
     "numero_producoes": "31",
     "ano_inicial": "2018",
-    "ano_final": "2022",
+    "ano_final": "",
     "integrantes": [
       "Roberta Melquiades Silva de Andrade",
       "Pedro Paulo Saldanha Coimbra",
@@ -35,7 +35,7 @@ $data = '{
   if (!empty( $projeto -> ano_final )) {
     $period = $period.' a '.$projeto -> ano_final;
   } else {
-    $period = 'Ativo desde '.$period;
+    $period = 'Em andamento desde '.$period;
   }
 
   $integrantes = str_replace(array('{', '}'), array('[',']'), $projeto -> integrantes );
@@ -76,29 +76,19 @@ $data = '{
           <div class="p-projeto-header-d2">
             <h2 class="t t-h5">Projeto de pesquisa</h2>
             <h1 class="t t-title p-projeto-title"> <?php echo $projeto -> nome ?></h1>
-            <p class="t t-gray t-b">Financiadores: <?php echo $projeto -> financiadores ?></p>
-            <?php
-                Who::mini(
-                  $picture = "inc/images/tmp/profile.jpg",
-                  $name = $projeto -> coordenacao,
-                  $title = 'Coordenação',
-                  $link = 'https://unifesp.br/prodmais/index.php'
-                )
-                ?>
-          </div>
 
-          <div class="p-projeto-header-d3">
-            <div class="u-icon-text u-mx-1">
-              <i class="i i-date i-icons"></i>
-              <p class="t t-b t-with-icon u-ml-05"> <?php echo $period ?></p>
+            <div class="u-icon-text">
+              <i class="i i-money i-icons"></i>
+              <p class="t t-gray t-b">Financiadores: <?php echo $projeto -> financiadores ?></p>
             </div>
 
-            <div class="u-icon-text u-mx-1">
+            <div class="p-projeto-header-d4">
+              <i class="i i-date i-icons"></i>
+              <p class="t t-b t-with-icon u-mr-05"> <?php echo $period ?></p>
               <i class="i i-production i-icons"></i>
               <p class="t t-b t-with-icon"> <?php echo $projeto -> numero_producoes ?></p>
               <p class="t t-b t-gray u-ml-05">(Número de produções)</p>
             </div>
-
           </div>
 
         </section>
@@ -115,28 +105,33 @@ $data = '{
           <hr class="c-line u-my-2" />
 
           <section class="p-projeto-description">
-            <p class="t t-title u-mb-2">Sobre o projeto</p>
-            <p class="t t-justify"><?php echo $projeto -> descricao ?></p>
+            <p class="t t-title u-mb-2">Sobre o projeto de pesquisa</p>
+            <p class="t t-justify"><?php echo $projeto -> descricao; ?></p>
 
           </section>
 
           <hr class="c-line u-my-2" />
 
           <p class="t t-title u-mb-2">Integrantes</p>
-          <section class="p-projeto-who">
 
-            <?php
-            foreach($integrantes as $i) {
-              Who::ppg(
-                $picture = "inc/images/tmp/profile.jpg",
-                $name = $i,
-                $title = 'Linha de pesquisa',
-                $link = 'https://unifesp.br/prodmais/index.php'
-              );
-            } 
-            ?>
-
+          <section class="">
+            <ul class='p-projeto-integrantes'>
+              <div class='u-icon-text'>
+                <i class='i i-icons i-people-manager'></i>
+                <li class=''><?php echo $projeto -> coordenacao; ?> <i class="t t-light"> (coordenação)</i></li>
+              </div>
+              <?php
+              foreach($integrantes as $i) {
+                echo("<div class='u-icon-text'>
+                  <i class='i i-icons i-project-participant'></i>
+                  <li class=''>$i</li>
+                </div>");
+              }
+              ?>
+            </ul>
           </section>
+
+
         </section>
 
         <p class="t t-lastUpdate u-right u-mt-2">Atualização Lattes em </p>
