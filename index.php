@@ -130,10 +130,10 @@ com este programa, Se não, veja <http://www.gnu.org/licenses/>.
 
             <label class="p-home-info">Filtrar por data:</label>
             <div class="u-dh">
-              <input type="text" class="c-input-date" id="initialYear" name="initialYear" pattern="\d{4}"
+              <input type="text" class="c-input--date" id="initialYear" name="initialYear" pattern="\d{4}"
                 placeholder="Data inicial" />
               <span> à </span>
-              <input type="text" class="c-input-date" id="finalYear" name="finalYear" pattern="\d{4}"
+              <input type="text" class="c-input--date" id="finalYear" name="finalYear" pattern="\d{4}"
                 placeholder="Data final" />
             </div>
           </div> <!-- end advanced -->
