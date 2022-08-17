@@ -3,14 +3,43 @@
 		padding: 2rem 2rem 3rem 2rem;
 	}
 
-	&-inputs {
+	&-inputs,
+	&-search {
+		align-items: center;
 		display: flex;
+	}
+
+	&-inputs {
+		flex-direction: column;
+		width: 100%;
+	}
+
+	&-search {
+		flex-direction: row;
+		flex-wrap: nowrap;
 		justify-content: center;
+		max-width: 400px;
 		width: 100%;
 
-		& > .c-inputs {
-			max-width: 800px;
-			width: 100%;
+		&-btn {
+			background-color: _palette(theme);
+			height: 45px;
+			width: 45px;
+			@include transition;
+
+			&:hover {
+				background-color: _palette(theme-light-2);
+			}
+		}
+	}
+}
+
+@include breakpoint(md-up) {
+	.p-projetos {
+		&-inputs {
+			flex-direction: row;
+			margin-left: 4rem;
+			max-width: 900px;
 		}
 	}
 }

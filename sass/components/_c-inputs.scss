@@ -1,40 +1,36 @@
-
-  .c-inputs {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 1rem;
-    padding: 1.4rem 1rem 1rem 1rem;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    transition: all .4s ease;
-  }
-
-
-@include breakpoint(lg-up) {
-  .c-inputs {
-    display: flex;
-    margin: 2rem;
-    // flex-direction: row;
-  }
+.c-inputs {
+	align-items: center;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 1rem;
+	padding: 1.4rem 1rem 1rem 1rem;
+	transition: all 0.4s ease;
 }
 
+@include breakpoint(lg-up) {
+	.c-inputs {
+		display: flex;
+		margin: 2rem;
+		// flex-direction: row;
+	}
+}
 
 @include breakpoint(md-up) {
-  .u-md-up {
-    &-row {
-      display: flex;
-      flex-direction: row;
-    }
-  }
+	.u-md-up {
+		&-row {
+			display: flex;
+			flex-direction: row;
+		}
+	}
 }
 
 @include breakpoint(lg-up) {
-  .u-lg-up {
-    &-row {
-      flex-direction: row;
-    }
-  }
+	.u-lg-up {
+		&-row {
+			flex-direction: row;
+		}
+	}
 }
-
