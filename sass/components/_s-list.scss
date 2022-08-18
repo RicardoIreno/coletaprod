@@ -1,64 +1,62 @@
 .s-list {
-  list-style: none;
+	list-style: none;
 
-  &-bullet {
-    display: none;
-  }
+	&-bullet {
+		display: none;
+	}
 
-  &-ico {
-    display: none;
-  }
+	&-ico {
+		display: none;
+	}
 
-  &-content {
-    border-left: 1px solid _palette(theme-light-2);
-    border-bottom: 1px dashed _palette(theme-light-2);
-    padding-inline: .5rem;
-    padding-bottom: 1rem;
-    margin-bottom: 1.5rem;
+	&-content {
+		border-left: 1px solid _palette(theme-light-2);
+		border-bottom: 1px dashed _palette(theme-light-2);
+		padding-inline: 0.5rem;
+		padding-bottom: 1rem;
+		margin-bottom: 1.5rem;
+	}
 
-  }
-
-  &-content-mini {
-    border-left: 3px solid _palette(theme-light-2);
-    padding-inline: .5rem;
-    padding-bottom: .5rem;
-    margin-bottom: .5rem;
-  }
+	&-content-mini {
+		border-left: 3px solid _palette(theme-light-2);
+		padding-inline: 0.5rem;
+		padding-bottom: 0.5rem;
+		margin-bottom: 0.5rem;
+	}
 }
 
-@include breakpoint(md-up) {
-  .s-list {
-    display: grid;
-    grid-template-columns: 10% 90%;
-    grid-template-areas: "left right";
-    list-style: none;
+@include up-to("md") {
+	.s-list {
+		display: grid;
+		grid-template-columns: 10% 90%;
+		grid-template-areas: "left right";
+		list-style: none;
 
-    &-bullet {
-      display: flex;
-      align-items: flex-start;
-      grid-area: left;
-      justify-content: flex-end;
-      padding-right: 1rem;
-    }
+		&-bullet {
+			display: flex;
+			align-items: flex-start;
+			grid-area: left;
+			justify-content: flex-end;
+			padding-right: 1rem;
+		}
 
-    &-ico {
-      display: block;
-      width: 50px;
-      height: 50px;
-      background-color: _palette(theme-light-2);
-    }
+		&-ico {
+			display: block;
+			width: 50px;
+			height: 50px;
+			background-color: _palette(theme-light-2);
+		}
 
-    &-content {
-      grid-area: right;
-    }
+		&-content {
+			grid-area: right;
+		}
 
-    &-content-mini {
-      grid-area: right;
-    }
-  }
-
+		&-content-mini {
+			grid-area: right;
+		}
+	}
 }
 
 .s-nobullet {
-  list-style: none;
+	list-style: none;
 }

@@ -210,25 +210,9 @@ $sizeH: (
 	5: 1.1rem,
 );
 
-$sizeHSmall: (
-	1: 1.7rem,
-	2: 1.5rem,
-	3: 1.3rem,
-	4: 1.2rem,
-	5: 1.1rem,
-);
-
 @each $n, $size in $sizeH {
 	.t-manual-h#{$n} {
 		font-size: $size;
-	}
-}
-
-@include breakpoint(sm-only) {
-	@each $n, $size in $sizeHSmall {
-		.t-manual-h#{$n} {
-			font-size: $size;
-		}
 	}
 }
 

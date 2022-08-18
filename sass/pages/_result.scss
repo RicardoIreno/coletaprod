@@ -30,7 +30,7 @@
 	width: $filterbar_width_mob;
 }
 
-@include breakpoint(lg-up) {
+@include up-to("lg") {
 	.p-result {
 		&-container {
 			display: grid;
