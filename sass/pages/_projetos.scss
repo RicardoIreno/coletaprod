@@ -34,7 +34,7 @@
 	}
 }
 
-@include breakpoint(md-up) {
+@include up-to("md") {
 	.p-projetos {
 		&-inputs {
 			flex-direction: row;

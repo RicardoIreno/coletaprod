@@ -9,7 +9,7 @@
 	text-align: center;
 }
 
-@include breakpoint(lg-up) {
+@include up-to("lg") {
 	.p-projeto,
 	.p-projeto-header,
 	.p-projeto-header-d1,

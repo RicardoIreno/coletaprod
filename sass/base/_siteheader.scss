@@ -28,7 +28,7 @@
 	}
 }
 
-@include breakpoint(sm-up) {
+@include up-to("sm") {
 	.siteheader {
 		flex-direction: row;
 		justify-content: space-between;

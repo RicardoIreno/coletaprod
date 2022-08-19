@@ -30,7 +30,7 @@
 	text-align: center;
 }
 
-@include breakpoint(md-up) {
+@include up-to("md") {
 	.p-home {
 		&-logo {
 			background-color: _palette(theme);
@@ -79,7 +79,7 @@
 	@include transition();
 }
 
-@include breakpoint(md-up) {
+@include up-to("md") {
 	.p-home-search {
 		margin: 1rem auto;
 	}

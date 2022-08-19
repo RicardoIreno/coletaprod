@@ -106,7 +106,7 @@ $arrowDown: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg
 	}
 }
 
-@include breakpoint(lg-up) {
+@include up-to("lg") {
 	.c-fbar-arrow {
 		display: none;
 	}
@@ -236,7 +236,7 @@ $arrowDown: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg
 	}
 }
 
-@include breakpoint(lg-up) {
+@include up-to("lg") {
 	.c-fbar {
 		width: $filterbar_width_desk;
 	}

@@ -31,7 +31,7 @@
 	width: 100%;
 }
 
-@include breakpoint(md-up) {
+@include up-to("md") {
 	.u-dh {
 		align-items: center;
 		flex-direction: row;
@@ -49,7 +49,7 @@
 	justify-content: center;
 }
 
-@include breakpoint(md-up) {
+@include up-to("md") {
 	.u-col-to-line {
 		flex-direction: row;
 	}
@@ -61,7 +61,7 @@
 	justify-content: center;
 }
 
-@include breakpoint(lg-up) {
+@include up-to("lg") {
 	.u-line-to-col {
 		flex-direction: column;
 	}
