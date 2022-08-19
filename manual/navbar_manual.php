@@ -43,7 +43,7 @@
       </li>
 
       <li class="sitemenu-item">
-        <a class="sitemenu-link" href="<?php echo $url_base; ?>/pre_dash.php" title="Dashboard">
+        <a class="sitemenu-link" href="<?php echo $url_base; ?>/predash.php" title="Dashboard">
           <i class="i i-dashboard sitemenu-icons"></i>
         </a>
       </li>

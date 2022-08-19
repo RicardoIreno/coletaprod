@@ -11,8 +11,8 @@
     <meta property="og:locale" content="en_US" />
     <meta name="description" content="Manual do Dashboard do Prodmais" />
     <meta property="og:description" content="Manual do Dashboard do Prodmais" />
-    <link rel="canonical" href="https://unifesp.br/prodmais/pre_dash.php" />
-    <meta property="og:url" content="https://unifesp.br/prodmais/pre_dash.php" />
+    <link rel="canonical" href="https://unifesp.br/prodmais/predash.php" />
+    <meta property="og:url" content="https://unifesp.br/prodmais/predash.php" />
     <meta property="og:site_name" content="Manual do Dashboard do Prodmais" />
     <meta name="twitter:card" content="summary" />
     <meta property="twitter:title" content="Manual do Dashboard do Prodmais" />
@@ -20,7 +20,7 @@
     {
         "@type": "WebPage",
         "description": "Manual do Dashboard do Prodmais",
-        "url": "https://unifesp.br/prodmais/pre_dash.php",
+        "url": "https://unifesp.br/prodmais/predash.php",
         "headline": "Manual do Dashboard do Prodmais",
         "@context": "https://schema.org"
     }

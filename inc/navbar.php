@@ -45,7 +45,7 @@
       </li>
 
       <li class="sitemenu-item">
-        <a class="sitemenu-link" href="pre_dash.php" title="Dashboard">
+        <a class="sitemenu-link" href="predash.php" title="Dashboard">
           <i class="i i-dashboard sitemenu-icons"></i>
         </a>
       </li>

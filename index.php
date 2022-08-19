@@ -194,7 +194,7 @@ com este programa, Se não, veja <http://www.gnu.org/licenses/>.
               </th>
             </tr>
             <tr>
-              <th>Tipo de material</th>
+              <th>Tipo de produção</th>
               <th>
                 <ul class="list-group">
                   <?php paginaInicial::tipo_inicio(); ?>
@@ -206,14 +206,6 @@ com este programa, Se não, veja <http://www.gnu.org/licenses/>.
               <th>
                 <ul class="list-group">
                   <?php paginaInicial::unidade_inicio("vinculo.tipvin"); ?>
-                </ul>
-              </th>
-            </tr>
-            <tr>
-              <th>Tipo de material </th>
-              <th>
-                <ul class="list-group">
-                  <?php paginaInicial::tipo_inicio(); ?>
                 </ul>
               </th>
             </tr>
