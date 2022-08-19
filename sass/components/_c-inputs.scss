@@ -19,7 +19,7 @@
 }
 
 @include up-to("md") {
-	.u-md-up {
+	.d-md-up {
 		&-row {
 			display: flex;
 			flex-direction: row;

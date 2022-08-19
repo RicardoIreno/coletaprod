@@ -1,0 +1,78 @@
+// === CONTAINERS === //
+
+.d-h,
+.d-v {
+	display: flex;
+	width: 100%;
+}
+
+.d-v {
+	flex-direction: column;
+}
+
+/* CONTAINER'S ALIGNAMENTS
+ * d-ht - horizontal top
+ * d-hb - horizontal bottom
+ * d-hc - horizontal center
+ * d-hr - horizontal right
+ * ...
+ */
+@each $align, $al_value in $alignaments {
+	@each $axis, $ax_value in $axies {
+		.d-#{$axis}#{$align} {
+			@include adjustAxis($axis, $al_value);
+		}
+	}
+}
+
+/* BREAKPOINS DIRECTIONS
+ * d-sm-h - small horizontal
+ * d-sm-v - small vertical
+ * d-md-h - mediun horizontal
+ * ...
+ */
+@each $axis, $ax_value in $axies {
+	@each $bk in $bks {
+		.d-#{$bk}-#{$axis} {
+			@include up-to("#{$bk}") {
+				flex-direction: $ax_value;
+			}
+		}
+	}
+}
+
+/* BREAKPOINS ALIGNAMENTS
+ * d-md-ht - mediun horizontal top
+ * d-md-hb - mediun horizontal bottom
+ * d-md-hc - mediun horizontal center
+ * d-md-hr - mediun horizontal right
+ * ...
+ */
+@each $align, $al_value in $alignaments {
+	@each $axis, $ax_value in $axies {
+		@each $bk in $bks {
+			.d-#{$bk}-#{$axis}#{$align} {
+				@include up-to("#{$bk}") {
+					@include adjustAxis($axis, $al_value);
+				}
+			}
+		}
+	}
+}
+
+// MORE
+
+.d-icon-text {
+	align-items: center;
+	display: inline-flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	min-width: fit-content;
+}
+
+.d-linewrap {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	width: 100%;
+}

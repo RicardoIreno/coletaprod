@@ -1,44 +1,44 @@
 .c-badge {
-  display: flex;
-  margin: .5rem;
+	display: flex;
+	margin: 0.5rem;
 
-  &-col {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
+	&-col {
+		align-items: center;
+		flex-direction: column;
+		text-align: center;
+	}
 
-  &-line {
-    flex-direction: row;
-    align-items: center;
-    flex-wrap: nowrap;
-  }
+	&-line {
+		align-items: center;
+		flex-direction: row;
+		flex-wrap: nowrap;
+	}
 
-  &-i {
-    width: 40px;
-    height: 40px;
-    background-color: _palette(theme-light-2);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-    font-weight: 700;
-    font-size: 1.1rem;
-  }
+	&-i {
+		align-items: center;
+		background-color: _palette(theme-light-2);
+		color: #fff;
+		display: flex;
+		font-size: 1.1rem;
+		font-weight: 700;
+		height: 40px;
+		justify-content: center;
+		width: 40px;
+	}
 
-  &-text1,
-  &-text2 {
-    color: _palette(theme-light-1);
-    font-weight: 600;
-    text-align: center;
+	&-text1,
+	&-text2 {
+		color: _palette(theme-light-1);
+		font-weight: 600;
+		min-width: fit-content;
+		text-align: center;
+	}
 
-  }
+	&-text1 {
+		font-size: 1.3rem;
+	}
 
-  &-text1 {
-    font-size: 1.3rem;
-  }
-
-  &-text2 {
-    font-size: 1rem;
-  }
+	&-text2 {
+		font-size: 1rem;
+	}
 }

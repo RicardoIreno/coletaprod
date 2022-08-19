@@ -42,7 +42,7 @@ class Production
   static function doiRendered($url) 
   {
     return "
-        <a class='t t-a u-icon-text' href='https://doi.org/$url' target='blank'>
+        <a class='t t-a d-icon-text' href='https://doi.org/$url' target='blank'>
         <img class='i-doi' src='inc/images/logos/doi.svg' title='doi' alt='doi' />
         </a>";
   }
@@ -50,7 +50,7 @@ class Production
   static function urlRendered($url)
   {
     return "
-        <a class='t t-a u-icon-text' href='$url' target='blank'> 
+        <a class='t t-a d-icon-text' href='$url' target='blank'> 
           <i class='i i-link i-link' title='Conteúdo completo' alt='Conteúdo completo'></i>
           Conteúdo completo
         </a>";
@@ -59,7 +59,7 @@ class Production
   static function issnRendered($url)
   {
     return "
-        <a class='t t-a u-icon-text' href='$url' target='blank'> 
+        <a class='t t-a d-icon-text' href='$url' target='blank'> 
           <i class='i i-link i-link' title='ISSN' alt='ISSN'></i>
           ISSN: $url
         </a>";
@@ -104,7 +104,7 @@ class Production
 					<p class='t-b'>$name<i> — $type </i ></p>
 					<p class='t-gray'><b class='t-subItem'>Autores: </b> $authorsRendered </p>
 					
-					<div class='u-linewrap t-gray'>
+					<div class='d-linewrap t-gray'>
             $doiRendered
             $urlRendered	
             $issnRendered					

@@ -5,7 +5,7 @@ class PPGBadges {
     $title
   ) {
     echo 
-    "<div class='u-icon-text c-badge c-badge-line'>
+    "<div class='d-icon-text c-badge c-badge-line'>
       <i class='i i-decagram c-badge-i' title='title' alt='imagem $title'>$rate</i>
       <p class='t t-light c-badge-text2'><b> $title</b></p>
     </div>";

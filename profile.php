@@ -182,15 +182,6 @@ if (!empty($_REQUEST["lattesID"])) {
             <p class="t t-prof">Programa de Pós-Graduação: <?php echo $ppg_nome ?></p>
             <?php endforeach; ?>
             <?php endif; ?>
-            <!--
-            <div class="c-badgeicons">
-              <img class="c-badgeicons-icon" src="inc/images/icons/badges/bolsista-cnpq-1a.svg" alt="Bolsista CNPQ nível 1A" title="Bolsista CNPQ nível 1A" />
-              <img class="c-badgeicons-icon" src="inc/images/icons/badges/member.svg" alt="Membro de conselho ou comissão" title="Membro de conselho ou comissão" />
-              <img class="c-badgeicons-icon" src="inc/images/icons/badges/leader.svg" alt="Exercedor de cargo de chefia" title="Exercedor de cargo de chefia" />
-            </div>
-            -->
-            <!-- end c-badgeicons -->
-            <!-- <p class="t t-email">bertola@unifesp.br</p> -->
 
             <hr class="c-line" />
 
@@ -424,7 +415,7 @@ if (!empty($_REQUEST["lattesID"])) {
             <div id="tab-one" class="c-tab-content" v-if="tabOpened == '1'">
 
 
-              <div class="u-justify">
+              <div class="t-justify">
                 <h3 class="t t-title">Resumo</h3>
                 <p class="t">
                   <?php echo $profile["resumo_cv"]["texto_resumo_cv_rh"] ?>
@@ -440,18 +431,17 @@ if (!empty($_REQUEST["lattesID"])) {
               <hr class="c-line u-my-2" />
 
               <p class="t t-b">Perfis na web</p>
-              <div class="c-socialicons">
+              <div class="d-h d-md-hc">
 
                 <?php if (!empty($profile['lattesID'])) : ?>
 
                 <a href="https://lattes.cnpq.br/<?php echo $profile['lattesID']; ?>" target="_blank" rel="external"><img
-                    class="c-socialicons-icon" src="inc/images/academic_plataforms/logo_lattes.svg" alt="Lattes"
+                    class="c-socialicon" src="inc/images/academic_plataforms/logo_lattes.svg" alt="Lattes"
                     title="Lattes" /></a>
                 <?php endif; ?>
                 <?php if (!empty($profile['orcid_id'])) : ?>
-                <a href="<?php echo $profile['orcid_id']; ?>" target="_blank" rel="external"><img
-                    class="c-socialicons-icon" src="inc/images/academic_plataforms/logo_research_id.svg" alt="ORCID"
-                    title="ORCID" /></a>
+                <a href="<?php echo $profile['orcid_id']; ?>" target="_blank" rel="external"><img class="c-socialicon"
+                    src="inc/images/academic_plataforms/logo_research_id.svg" alt="ORCID" title="ORCID" /></a>
                 <?php endif; ?>
 
               </div> <!-- end c-socialicons -->
@@ -1057,9 +1047,9 @@ if (!empty($_REQUEST["lattesID"])) {
             </div> <!-- end tab-six -->
           </transition>
 
-          <p class="t t-lastUpdate u-right">Atualização Lattes em
+          <p class="t t-lastUpdate t-right">Atualização Lattes em
             <?php echo $profile['data_atualizacao']; ?></p>
-          <p class="t t-lastUpdate u-right">Processado em <?php echo $profile['dataDeColeta']; ?></p>
+          <p class="t t-lastUpdate t-right">Processado em <?php echo $profile['dataDeColeta']; ?></p>
         </div> <!-- end profile-inner -->
       </div> <!-- end #tabs -->
 

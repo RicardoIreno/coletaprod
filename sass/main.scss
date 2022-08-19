@@ -1,14 +1,13 @@
 @import "abstracts/vars";
 @import "abstracts/functions";
-@import "abstracts/mixin_breakpoint";
-@import "abstracts/mixin_flex";
-@import "abstracts/mixin_transition";
+@import "abstracts/mixins";
 @import "abstracts/utils";
+@import "base/divs";
 @import "base/theme";
+@import "base/vue-transitions";
 @import "base/svg";
 @import "base/normalize";
 @import "base/typography";
-@import "base/transitions";
 @import "base/sitefooter";
 @import "base/siteheader";
 @import "base/sitemenu";
