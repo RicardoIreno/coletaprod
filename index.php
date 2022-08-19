@@ -110,7 +110,7 @@ com este programa, Se não, veja <http://www.gnu.org/licenses/>.
         </button>
 
         <transition name="homeeffect">
-          <div class="u-dv" v-if="searchPage == 'advanced'">
+          <div class="d-v" v-if="searchPage == 'advanced'">
 
             <label class="p-home-info">Mais opções de pesquisa:</label>
 
@@ -129,7 +129,7 @@ com este programa, Se não, veja <http://www.gnu.org/licenses/>.
             </datalist>
 
             <label class="p-home-info">Filtrar por data:</label>
-            <div class="u-dh">
+            <div class="d-h d-hc">
               <input type="text" class="c-input--date" id="initialYear" name="initialYear" pattern="\d{4}"
                 placeholder="Data inicial" />
               <span> à </span>
@@ -175,7 +175,7 @@ com este programa, Se não, veja <http://www.gnu.org/licenses/>.
     </transition>
 
     <transition name="homeeffect">
-      <div class="u-dh u-dt u-mb-1" v-if="showCategories">
+      <div class="d-h d-ht u-mb-1" v-if="showCategories">
 
         <table>
           <thead>

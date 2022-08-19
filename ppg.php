@@ -73,7 +73,7 @@ class PPG {
               <span>Campus Guarulhos</span>
               <span>Escola de Filosofia, Letras e ciências Humanas</span>
             </p>
-            <div class="u-icon-text t-gray u-mb-1">
+            <div class="d-icon-text t-gray u-mb-1">
               <i class="i i-mapmarker p-ppg-i"></i>
               <b>Estrada do Caminho Velho nª 123 - Bairro, Cidade - SP</b>
             </div>
@@ -94,17 +94,17 @@ class PPG {
             <p class="t t-gray">Olívia Maria</p>
 
             <a href="" target="blank">
-              <div class="u-icon-text t-gray">
+              <div class="d-icon-text t-gray">
                 <i class="i i-mail p-ppg-i"></i> email@email.com
               </div>
             </a>
 
-            <div class="u-icon-text t-gray">
+            <div class="d-icon-text t-gray">
               <i class="i i-phone p-ppg-i"></i> (11) 5555-5555
             </div>
 
             <a href="" target="blank">
-              <div class="u-icon-text t-gray">
+              <div class="d-icon-text t-gray">
                 <i class="i i-web p-ppg-i"></i> site
               </div>
             </a>
@@ -113,7 +113,7 @@ class PPG {
           </div>
 
           <div class="p-ppg-header-four">
-            <div class="u-line">
+            <div class="d-h d-hc">
               <?php echo PPGBadges::students(
                 $rate = 20,
                 $title = 'Em Curso',
@@ -126,8 +126,7 @@ class PPG {
                 $ico = 'formado'
               ); ?>
             </div>
-
-            <div class="u-line-to-col">
+            <div class="d-h d-hc d-lg-v d-sm-v">
               <?php echo PPGBadges::capes(
                 $rate = 4,
                 $title = 'Mestrado acadêmico'
@@ -253,13 +252,13 @@ class PPG {
         <hr class="c-line u-my-2" />
 
         <section>
-          <div class="u-center">
+          <div class="d-v d-vc">
             <p class="t t-gray u-mt-1"><b>Código CAPES</b></p>
             <p class="t t-gray u-mb-1">33009015088p9</p>
           </div>
         </section>
 
-        <section class="u-col-to-line">
+        <section class="d-v d-vc d-md-h d-md-hc">
           <?php echo PPG::externos(
             $type = 'Sucupira',
             $link = 'https://repositorio.unifesp.br/handle/11600/6108'
@@ -304,8 +303,8 @@ class PPG {
             </tbody>
           </table> -->
 
-        <p class="t t-lastUpdate u-right">Atualização Lattes em </p>
-        <p class="t t-lastUpdate u-right">Processado em </p>
+        <p class="t t-lastUpdate t-right">Atualização Lattes em </p>
+        <p class="t t-lastUpdate t-right">Processado em </p>
 
       </div> <!-- c-wrapper-inner -->
     </div> <!-- c-wrapper-paper -->
