@@ -72,7 +72,7 @@ class Departamento {
               <span>Campus Guarulhos</span>
               <span>Escola de Filosofia, Letras e ciências Humanas</span>
             </p>
-            <div class="u-icon-text t-gray u-mb-1">
+            <div class="d-icon-text t-gray u-mb-1">
               <i class="i i-mapmarker p-departamento-i"></i>
               <b>Estrada do Caminho Velho nª 123 - Bairro, Cidade - SP</b>
             </div>
@@ -97,17 +97,17 @@ class Departamento {
 
             <div class="p-departamento-header-three-inner">
               <a href="" target="blank">
-                <div class="u-icon-text t-gray">
+                <div class="d-icon-text t-gray">
                   <i class="i i-mail p-departamento-i"></i> email@email.com
                 </div>
               </a>
 
-              <div class="u-icon-text t-gray">
+              <div class="d-icon-text t-gray">
                 <i class="i i-phone p-departamento-i"></i> (11) 5555-5555
               </div>
 
               <a href="" target="blank">
-                <div class="u-icon-text t-gray">
+                <div class="d-icon-text t-gray">
                   <i class="i i-web p-departamento-i"></i> site
                 </div>
               </a>
@@ -203,7 +203,7 @@ class Departamento {
         <hr class="c-line u-my-2" />
 
 
-        <section class="u-col-to-line">
+        <section class="d-v d-md-h d-vc d-md-hc">
           <?php echo Departamento::repos(
             $type = 'Sucupira',
             $link = 'https://repositorio.unifesp.br/handle/11600/6108'
@@ -220,8 +220,8 @@ class Departamento {
         </section>
 
 
-        <p class="t t-lastUpdate u-right">Atualização Lattes em </p>
-        <p class="t t-lastUpdate u-right">Processado em </p>
+        <p class="t t-lastUpdate t-right">Atualização Lattes em </p>
+        <p class="t t-lastUpdate t-right">Processado em </p>
 
       </div> <!-- c-wrapper-inner -->
     </div> <!-- c-wrapper-paper -->

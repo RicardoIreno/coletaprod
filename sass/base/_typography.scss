@@ -63,6 +63,20 @@ h5 a {
 // GENERAL
 
 .t {
+	&-right {
+		text-align: right;
+	}
+
+	&-center {
+		text-align: center;
+	}
+
+	&-justify {
+		text-align: justify;
+	}
+}
+
+.t {
 	font-family: "Lato", sans-serif;
 	// margin-bottom: .5rem;
 

@@ -77,7 +77,7 @@ $data = '{
             <h2 class="t t-h5">Projeto de pesquisa</h2>
             <h1 class="t t-title p-projeto-title"> <?php echo $projeto -> nome ?></h1>
 
-            <div class="u-icon-text">
+            <div class="d-icon-text">
               <i class="i i-money i-icons"></i>
               <p class="t t-gray t-b">Financiadores: <?php echo $projeto -> financiadores ?></p>
             </div>
@@ -116,13 +116,13 @@ $data = '{
 
           <section class="">
             <ul class='p-projeto-integrantes'>
-              <div class='u-icon-text'>
+              <div class='d-icon-text'>
                 <i class='i i-icons i-people-manager'></i>
                 <li class=''><?php echo $projeto -> coordenacao; ?> <i class="t t-light"> (coordenação)</i></li>
               </div>
               <?php
               foreach($integrantes as $i) {
-                echo("<div class='u-icon-text'>
+                echo("<div class='d-icon-text'>
                   <i class='i i-icons i-project-participant'></i>
                   <li class=''>$i</li>
                 </div>");
@@ -134,8 +134,8 @@ $data = '{
 
         </section>
 
-        <p class="t t-lastUpdate u-right u-mt-2">Atualização Lattes em </p>
-        <p class="t t-lastUpdate u-right">Processado em </p>
+        <p class="t t-lastUpdate t-right u-mt-2">Atualização Lattes em </p>
+        <p class="t t-lastUpdate t-right">Processado em </p>
       </div>
     </div>
   </main>

@@ -1,35 +1,35 @@
 // == FOOTER == //
 
 .sitefooter {
-	left: 0;
-	right: 0;
-	bottom: 0;
-	width: 100%;
-	color: _palette(footer-fg);
+	align-content: center;
 	background-color: _palette(footer-bg);
 	border-top: _palette(footer-border) 0.5rem solid;
+	bottom: 0;
 	box-sizing: border-box;
+	color: _palette(footer-fg);
 
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	align-content: center;
 	flex-wrap: wrap;
+	justify-content: center;
+	left: 0;
+	right: 0;
+	width: 100%;
 
 	&-contacts {
-		width: 100%;
+		align-items: center;
 		display: flex;
 		flex-direction: column;
-		align-items: center;
+		width: 100%;
 	}
 
 	&-link {
-		display: block;
 		color: _palette(footer-fg);
-		margin: 0.5rem;
-		text-align: center;
+		display: block;
 		font-size: 18px;
 		font-weight: 600;
+		margin: 0.5rem;
+		text-align: center;
 
 		&:hover {
 			color: _palette(footer-hover);
@@ -37,12 +37,13 @@
 	}
 
 	&-logos {
-		@include flex(row, space-evenly);
+		display: flex;
+		justify-content: space-evenly;
 	}
 
 	&-logo {
-		width: 100px;
 		margin: 1rem;
+		width: 100px;
 	}
 
 	&-det {
@@ -56,16 +57,16 @@
 		justify-content: space-evenly;
 
 		&-contacts {
-			width: 50%;
-			flex-direction: row;
 			align-items: center;
+			flex-direction: row;
+			width: 50%;
 		}
 
 		&-logos {
-			width: 30%;
-			flex-direction: row;
 			align-items: center;
+			flex-direction: row;
 			justify-content: end;
+			width: 30%;
 		}
 
 		&-det {

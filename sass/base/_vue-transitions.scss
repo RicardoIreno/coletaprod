@@ -1,43 +1,38 @@
 // transitions
 
-@mixin transition() {
-  transition: all 0.2s ease 0s;
-}
-
-
 // vue transitions
 
 // Search
 
 .homeeffect-enter {
-  max-height: 1px !important;
-  opacity: 0 !important;
+	max-height: 1px !important;
+	opacity: 0 !important;
 }
 
 .homeeffect-enter-active,
 .homeeffect-leave-active {
-  @include transition();
+	@include transition();
 }
 
 .homeeffect-enter-from,
 .homeeffect-leave-to {
-  transform: translateY(-10px);
-  opacity: 0;
+	opacity: 0;
+	transform: translateY(-10px);
 }
 
 // Profile tabs
 
 .tabeffect-enter {
-  max-height: 1px !important;
-  opacity: 0 !important;
+	max-height: 1px !important;
+	opacity: 0 !important;
 }
 
 .tabeffect-enter-active,
 .tabeffect-leave-active {
-  transition: all .2s ease;
+	transition: all 0.2s ease;
 }
 
 .tabeffect-enter-from,
 .tabeffect-leave-to {
-  opacity: 0;
+	opacity: 0;
 }

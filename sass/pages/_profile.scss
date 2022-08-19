@@ -83,37 +83,12 @@
 
 // PROFILE-CORE THINGS
 
-.c-badgeicons,
-.c-socialicons {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: center;
-	margin-block: 0.3rem;
-
-	&-icon {
-		margin: 0 0.2rem;
-	}
-}
-
-.c-badgeicons-icon {
-	width: 25px;
-}
-
-.c-socialicons-icon {
+.c-socialicon {
+	margin: 0 0.2rem;
 	width: 30px;
-}
 
-@include up-to("md") {
-	.cc {
-		&-badgeicons,
-		&-socialicons {
-			justify-content: flex-start;
-
-			&-icon {
-				margin: 0 0.5rem 0 0;
-			}
-		}
+	@include up-to("md") {
+		margin: 0 0.5rem 0 0;
 	}
 }
 
