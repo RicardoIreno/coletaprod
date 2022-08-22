@@ -126,7 +126,7 @@ class PPG {
                 $ico = 'formado'
               ); ?>
             </div>
-            <div class="d-h d-hc d-lg-v d-sm-v">
+            <div class="p-ppg-badges">
               <?php echo PPGBadges::capes(
                 $rate = 4,
                 $title = 'Mestrado acadêmico'

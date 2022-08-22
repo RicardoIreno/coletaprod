@@ -57,6 +57,21 @@ $imgTestIcon: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/s
 
 // Components
 .p-ppg {
+	&-badges {
+		display: flex;
+		flex-direction: column;
+		min-width: 250px;
+
+		@include up-to("md") {
+			flex-direction: row;
+			justify-content: center;
+		}
+		@include up-to("lg") {
+			flex-direction: column;
+			justify-content: flex-start;
+		}
+	}
+
 	&-logo {
 		background-color: _palette(theme-light-2);
 		height: 70px;
