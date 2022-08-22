@@ -1,59 +1,30 @@
 // === ALIGNAMENTS === //
 
-.u-left {
-	justify-content: flex-start;
-	text-align: left;
-}
-
 // === SPACING === //
 
-$spaceAmounts: (1, 2, 3, 4, auto);
+$spaceAmounts: (1, 2, 3, 4);
 
 @each $space in $spaceAmounts {
-	@if $space==auto {
-		.u-m-#{$space} {
-			margin: #{$space};
-		}
+	.u-m-#{$space} {
+		margin: #{$space}rem;
+	}
 
-		.u-mx-#{$space} {
-			margin-left: #{$space};
-			margin-right: #{$space};
-		}
+	.u-mx-#{$space} {
+		margin-left: #{$space}rem;
+		margin-right: #{$space}rem;
+	}
 
-		.u-my-#{$space} {
-			margin-bottom: #{$space};
-			margin-top: #{$space};
-		}
+	.u-my-#{$space} {
+		margin-bottom: #{$space}rem;
+		margin-top: #{$space}rem;
+	}
 
-		.u-mb-#{$space} {
-			margin-bottom: #{$space};
-		}
+	.u-mb-#{$space} {
+		margin-bottom: #{$space}rem;
+	}
 
-		.u-mt-#{$space} {
-			margin-top: #{$space};
-		}
-	} @else {
-		.u-m-#{$space} {
-			margin: #{$space}rem;
-		}
-
-		.u-mx-#{$space} {
-			margin-left: #{$space}rem;
-			margin-right: #{$space}rem;
-		}
-
-		.u-my-#{$space} {
-			margin-bottom: #{$space}rem;
-			margin-top: #{$space}rem;
-		}
-
-		.u-mb-#{$space} {
-			margin-bottom: #{$space}rem;
-		}
-
-		.u-mt-#{$space} {
-			margin-top: #{$space}rem;
-		}
+	.u-mt-#{$space} {
+		margin-top: #{$space}rem;
 	}
 }
 
