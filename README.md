@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/RicardoIreno/prodmais/blob/0822c/inc/images/logos/prodmais-center.svg" alt="Prodmais logo" width="300"><br>
+  <img src="https://github.com/RicardoIreno/prodmais/blob/0822c/inc/images/logo-vertical.svg" alt="Prodmais logo" width="300"><br>
     <br>Extração e navegação de registros para a Coleta de Produção Científica das Instituições.<br><br>
     <img src="https://img.shields.io/badge/php-%23777BB4.svg?style=flat-badge&logo=php&logoColor=white" />
     <img src="https://img.shields.io/badge/-ElasticSearch-005571?style=flat-badge&logo=elasticsearch&logoColor=white" />
