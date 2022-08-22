@@ -5,60 +5,6 @@
   text-align: left;
 }
 
-.u-grid {
-  margin: 0 auto;
-  width: 100%;
-}
-.u-grid::after {
-  clear: both;
-  content: "";
-  display: table;
-}
-.u-grid [class^=u-col-] {
-  float: left;
-  padding: 1rem;
-}
-
-.u-col-1-of-2 {
-  width: calc(1 * (100% / 2));
-}
-
-.u-col-1-of-3 {
-  width: calc(1 * (100% / 3));
-}
-
-.u-col-1-of-4 {
-  width: calc(1 * (100% / 4));
-}
-
-.u-col-1-of-5 {
-  width: calc(1 * (100% / 5));
-}
-
-.u-col-2-of-3 {
-  width: calc(2 * (100% / 3));
-}
-
-.u-col-2-of-4 {
-  width: calc(2 * (100% / 4));
-}
-
-.u-col-2-of-5 {
-  width: calc(2 * (100% / 5));
-}
-
-.u-col-3-of-4 {
-  width: calc(3 * (100% / 4));
-}
-
-.u-col-3-of-5 {
-  width: calc(3 * (100% / 5));
-}
-
-.u-col-4-of-5 {
-  width: calc(4 * (100% / 5));
-}
-
 .u-m-1 {
   margin: 1rem;
 }
@@ -469,6 +415,60 @@
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
+}
+
+.u-grid {
+  margin: 0 auto;
+  width: 100%;
+}
+.u-grid::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+.u-grid [class^=u-col-] {
+  float: left;
+  padding: 1rem;
+}
+
+.d-col-1-of-2 {
+  width: calc(1 * (100% / 2));
+}
+
+.d-col-1-of-3 {
+  width: calc(1 * (100% / 3));
+}
+
+.d-col-1-of-4 {
+  width: calc(1 * (100% / 4));
+}
+
+.d-col-1-of-5 {
+  width: calc(1 * (100% / 5));
+}
+
+.d-col-2-of-3 {
+  width: calc(2 * (100% / 3));
+}
+
+.d-col-2-of-4 {
+  width: calc(2 * (100% / 4));
+}
+
+.d-col-2-of-5 {
+  width: calc(2 * (100% / 5));
+}
+
+.d-col-3-of-4 {
+  width: calc(3 * (100% / 4));
+}
+
+.d-col-3-of-5 {
+  width: calc(3 * (100% / 5));
+}
+
+.d-col-4-of-5 {
+  width: calc(4 * (100% / 5));
 }
 
 .manual-body {
@@ -917,6 +917,21 @@ h5 {
 }
 .i-link:hover {
   background-color: #7fd1f5;
+}
+
+.i-s1 {
+  height: 24px;
+  width: 24px;
+}
+
+.i-s2 {
+  height: 32px;
+  width: 32px;
+}
+
+.i-s3 {
+  height: 48px;
+  width: 48px;
 }
 
 html,
@@ -3075,12 +3090,12 @@ th {
   }
 }
 
-.cc-numbers {
+.c-numbers {
   display: flex;
   flex-direction: row;
   padding-block: 10px;
 }
-.cc-numbers-number {
+.c-numbers-number {
   display: flex;
   flex-direction: column;
   font-size: 1.1rem;
@@ -3088,7 +3103,7 @@ th {
   justify-content: center;
   margin-right: 1rem;
 }
-.cc-numbers-icon {
+.c-numbers-icon {
   background-color: #7fd1f5;
   height: 30px;
   margin: 0 auto;
@@ -3176,6 +3191,7 @@ th {
   display: flex;
   flex-direction: column;
   list-style: none;
+  margin-bottom: 2rem;
 }
 .p-projeto-main {
   padding-inline: 2rem;
