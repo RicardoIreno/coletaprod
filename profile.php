@@ -185,19 +185,19 @@ if (!empty($_REQUEST["lattesID"])) {
 
             <hr class="c-line" />
 
-            <div class="c-numbers">
-              <span class="c-numbers-number">
-                <i class="i i-articlePublished c-numbers-icon" title="Trabalhos publicados"
+            <div class="d-h">
+
+              <div class="d-icon-text u-mx-1">
+                <i class="i i-articlePublished i-icons i-s2" title="Trabalhos publicados"
                   alt="Trabalhos publicados"></i>
-                <?php echo $totalWorks; ?>
-              </span>
+                <span class="t"><?php echo $totalWorks; ?></span>
+              </div>
 
-              <span class="c-numbers-number">
-                <i class="i i-orientation c-numbers-icon" title="Orientações " alt="Orientações"></i>
+              <div class="d-icon-text">
+                <i class="i i-orientation i-icons i-s2" title="Orientações " alt="Orientações"></i>
                 <?php echo $totalOrientacoes; ?>
-              </span>
-
-            </div> <!-- end c-numbers -->
+              </div>
+            </div>
 
           </div> <!-- end core-two -->
 
@@ -431,7 +431,7 @@ if (!empty($_REQUEST["lattesID"])) {
               <hr class="c-line u-my-2" />
 
               <p class="t t-b">Perfis na web</p>
-              <div class="d-h d-md-hc">
+              <div class="d-h">
 
                 <?php if (!empty($profile['lattesID'])) : ?>
 

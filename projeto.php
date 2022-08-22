@@ -79,7 +79,11 @@ $data = '{
 
             <div class="d-icon-text">
               <i class="i i-money i-icons"></i>
-              <p class="t t-gray t-b">Financiadores: <?php echo $projeto -> financiadores ?></p>
+              <?php
+                if(!empty($projeto -> financiadores))
+                  echo('<p class="t t-gray t-b">Financiadores:' . $projeto -> financiadores. '</p>');
+              ?>
+
             </div>
 
             <div class="p-projeto-header-d4">
@@ -114,21 +118,38 @@ $data = '{
 
           <p class="t t-title u-mb-2">Integrantes</p>
 
-          <section class="">
-            <ul class='p-projeto-integrantes'>
-              <div class='d-icon-text'>
-                <i class='i i-icons i-people-manager'></i>
-                <li class=''><?php echo $projeto -> coordenacao; ?> <i class="t t-light"> (coordenação)</i></li>
-              </div>
-              <?php
+          <section class="d-v d-md-h">
+            <div class="d-v">
+              <ul class='p-projeto-integrantes'>
+                <div class='d-icon-text'>
+                  <i class='i i-icons i-people-manager'></i>
+                  <li class=''><?php echo $projeto -> coordenacao; ?> <i class="t t-light"> (coordenação)</i></li>
+                </div>
+                <?php
               foreach($integrantes as $i) {
                 echo("<div class='d-icon-text'>
-                  <i class='i i-icons i-project-participant'></i>
-                  <li class=''>$i</li>
+                <i class='i i-icons i-project-participant'></i>
+                <li class=''>$i</li>
                 </div>");
               }
               ?>
-            </ul>
+              </ul>
+            </div>
+
+            <div class="d-v">
+              <div class='d-icon-text'>
+                <i class='i i-icons i-project-participant'></i>
+                <p class="t">Alunos de graduação: <?php echo $projeto -> alunos_graducacao ?></p>
+              </div>
+              <div class='d-icon-text'>
+                <i class='i i-icons i-project-participant'></i>
+                <p class="t">Alunos de mestrado acadêmico: <?php echo $projeto -> alunos_mestrado_academico ?></p>
+              </div>
+              <div class='d-icon-text'>
+                <i class='i i-icons i-project-participant'></i>
+                <p class="t">Alunos de graduação: <?php echo $projeto -> alunos_doutorado ?></p>
+              </div>
+            </div>
           </section>
 
 
