@@ -122,6 +122,7 @@ class GraphBar {
     $legendsRendered = GraphBar::legends($arrLegends);
 
     echo ("
+      <a class='u-skip' href='#skip-graphbar'>Pular nuvens de palavras</a>
       <div class='c-gppg'>
       <div class='c-gppg-infos'>
         <div class='c-gppg-title t-title'>$title</div>
@@ -146,6 +147,7 @@ class GraphBar {
 
         </div>
       </div>
+      <span class='u-skip' id='skip-graphbar'></span>
     ");
   }
 
@@ -162,6 +164,7 @@ class GraphBar {
     $legendsRendered = GraphBar::legends($arrLegends);
 
     echo ("
+      <a class='u-skip' href='#skip-graph3'>Pular nuvens de palavras</a>
       <div class='c-gppg'>
       <div class='c-gppg-infos'>
         <div class='c-gppg-title t-title'>$title</div>
@@ -186,6 +189,7 @@ class GraphBar {
 
         </div>
       </div>
+      <span class='u-skip' id='skip-graph3'></span>
     ");
   }
 }

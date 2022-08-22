@@ -469,7 +469,7 @@ if (!empty($_REQUEST["lattesID"])) {
 
 
               <?php if (isset($profile["idiomas"])) : ?>
-              <div class=" u-left">
+              <div>
                 <h3 class="t t-title">Idiomas</h3>
                 <?php foreach ($profile["idiomas"] as $key => $idioma) : ?>
 
