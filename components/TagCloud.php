@@ -19,6 +19,7 @@
         unset($t);
       }
 
+      echo('<a class="u-skip" href=”#skip-tagcloud”>Pular nuvens de palavras</a>');
 
       echo("
         <ul class='tag-cloud' role='navigation' aria-label='Tags mais usadas'>
@@ -26,6 +27,7 @@
         </ul>
       ");
 
+      echo('<span class="u-skip" id="skip-tagcloud”"></span>');
     }
   }
 ?>
