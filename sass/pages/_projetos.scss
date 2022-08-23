@@ -5,21 +5,20 @@
 
 	&-inputs,
 	&-search {
-		align-items: center;
-		display: flex;
+		@extend .d-h, .d-hc;
 	}
 
 	&-inputs {
-		flex-direction: column;
-		width: 100%;
+		@extend .d-v, .d-vc, .d-md-h;
+		@include up-to("md") {
+			margin-left: 4rem;
+			max-width: 900px;
+		}
 	}
 
 	&-search {
-		flex-direction: row;
-		flex-wrap: nowrap;
-		justify-content: center;
+		@extend .d-h, .d-hc, .d-nowrap;
 		max-width: 400px;
-		width: 100%;
 
 		&-btn {
 			background-color: _palette(theme);
@@ -30,16 +29,6 @@
 			&:hover {
 				background-color: _palette(theme-light-2);
 			}
-		}
-	}
-}
-
-@include up-to("md") {
-	.p-projetos {
-		&-inputs {
-			flex-direction: row;
-			margin-left: 4rem;
-			max-width: 900px;
 		}
 	}
 }

@@ -221,7 +221,7 @@ class ListProjetos {
 
         <section class="p-projetos-container">
 
-          <div class="d-md-up-row p-projetos-inputs">
+          <div class="p-projetos-inputs">
 
             <div class="c-searcher">
               <input class="" type="text" />

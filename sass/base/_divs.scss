@@ -1,13 +1,32 @@
+$axies: (
+	h: row,
+	v: column,
+);
+$bks: ("sm", "md", "lg");
+
+$alignaments: (
+	e: flex-start,
+	c: center,
+	r: flex-end,
+	t: flex-start,
+	b: flex-end,
+);
+
 // === CONTAINERS === //
 
 .d-h,
 .d-v {
+	box-sizing: border-box;
 	display: flex;
 	width: 100%;
+	@include transition;
 }
 
 .d-v {
 	flex-direction: column;
+}
+.d-wrap {
+	flex-wrap: wrap;
 }
 
 /* CONTAINER'S ALIGNAMENTS
@@ -23,6 +42,10 @@
 			@include adjustAxis($axis, $al_value);
 		}
 	}
+}
+
+.d-h-evenly {
+	justify-content: space-evenly;
 }
 
 /* BREAKPOINS DIRECTIONS
@@ -64,6 +87,9 @@
 
 .d-wrap {
 	flex-wrap: wrap;
+}
+.d-nowrap {
+	flex-wrap: nowrap;
 }
 
 .d-icon-text {
