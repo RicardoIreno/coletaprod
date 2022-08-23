@@ -203,7 +203,7 @@ class Departamento {
         <hr class="c-line u-my-2" />
 
 
-        <section class="d-v d-md-h d-vc d-md-hc">
+        <section class="p-departamento-repos">
           <?php echo Departamento::repos(
             $type = 'Sucupira',
             $link = 'https://repositorio.unifesp.br/handle/11600/6108'

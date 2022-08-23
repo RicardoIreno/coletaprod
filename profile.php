@@ -148,8 +148,8 @@ if (!empty($_REQUEST["lattesID"])) {
     <div class="c-wrapper-paper">
       <div class="c-wrapper-inner">
         <div id="top"></div>
-        <div class="c-coregrid">
-          <div class="c-coregrid-one">
+        <div class="p-profile-header">
+          <div class="p-profile-header-one">
 
             <div class="c-who-s">
               <!-- <img class="c-who-s-badge" src="inc/images/icons/badges/bolsista-cnpq-1a.svg" /> -->
@@ -159,7 +159,7 @@ if (!empty($_REQUEST["lattesID"])) {
 
           </div> <!-- end core-one -->
 
-          <div class="c-coregrid-two">
+          <div class="p-profile-header-two">
             <h1 class="t-h1">
               <?php echo $profile["nome_completo"] ?>
 
@@ -185,7 +185,7 @@ if (!empty($_REQUEST["lattesID"])) {
 
             <hr class="c-line" />
 
-            <div class="d-h">
+            <div class="p-profile-header-numbers">
 
               <div class="d-icon-text u-mx-1">
                 <i class="i i-articlePublished i-icons i-s2" title="Trabalhos publicados"
@@ -201,7 +201,7 @@ if (!empty($_REQUEST["lattesID"])) {
 
           </div> <!-- end core-two -->
 
-          <div class="c-coregrid-three">
+          <div class="p-profile-header-three">
             <a class="u-skip" href=”#skipc-graph”>Pular gráfico</a>
 
             <div class="c-graph">
@@ -367,7 +367,7 @@ if (!empty($_REQUEST["lattesID"])) {
           </div>
           <!-- end core-three -->
 
-        </div> <!-- end c-coregrid  -->
+        </div> <!-- end p-profile-header  -->
       </div><!-- end profile-inner  -->
 
 
