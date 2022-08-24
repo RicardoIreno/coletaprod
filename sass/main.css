@@ -143,7 +143,7 @@ h5 {
   color: #1C9AD1;
 }
 
-.d-h, .p-projetos-inputs, .p-projetos-search, .p-profile-header-three, .p-profile-header-numbers, .p-departamento-orientadores,
+.d-h, .p-projetos-inputs, .p-projetos-search, .p-profile-header-three, .p-profile-header-numbers, .p-departamento-orientadores, .s-list-tags,
 .d-v,
 .p-projeto,
 .p-projeto-header,
@@ -174,7 +174,7 @@ h5 {
   flex-direction: column;
 }
 
-.d-wrap, .p-departamento-orientadores, .sitefooter {
+.d-wrap, .p-departamento-orientadores, .s-list-tags, .sitefooter {
   flex-wrap: wrap;
 }
 
@@ -462,7 +462,7 @@ h5 {
   }
 }
 
-.d-wrap, .p-departamento-orientadores, .sitefooter {
+.d-wrap, .p-departamento-orientadores, .s-list-tags, .sitefooter {
   flex-wrap: wrap;
 }
 
@@ -2551,7 +2551,7 @@ th {
 .c-who {
   align-items: center;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   width: 200px;
 }
 .c-who-text {
@@ -2564,6 +2564,7 @@ th {
   text-align: center;
 }
 .c-who-photo {
+  height: 100px;
   width: 100px;
 }
 .c-who-name {
@@ -2691,38 +2692,49 @@ th {
   display: none;
 }
 .s-list-content {
-  border-left: 1px solid #7fd1f5;
   border-bottom: 1px dashed #7fd1f5;
-  padding-inline: 0.5rem;
-  padding-bottom: 1rem;
+  border-left: 1px solid #7fd1f5;
   margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  padding-inline: 0.5rem;
 }
 .s-list-content-mini {
   border-left: 3px solid #7fd1f5;
-  padding-inline: 0.5rem;
-  padding-bottom: 0.5rem;
   margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-inline: 0.5rem;
+}
+.s-list-tags {
+  list-style: none;
+}
+.s-list-tag {
+  background-color: #c4edff;
+  border: 1px solid #51b7e3;
+  border-radius: 10px;
+  color: #1580ad;
+  margin: 0.5rem;
+  padding-inline: 0.7rem;
 }
 
 @media (min-width: 899px) {
   .s-list {
     display: grid;
-    grid-template-columns: 10% 90%;
     grid-template-areas: "left right";
+    grid-template-columns: 10% 90%;
     list-style: none;
   }
   .s-list-bullet {
-    display: flex;
     align-items: flex-start;
+    display: flex;
     grid-area: left;
     justify-content: flex-end;
     padding-right: 1rem;
   }
   .s-list-ico {
-    display: block;
-    width: 50px;
-    height: 50px;
     background-color: #7fd1f5;
+    display: block;
+    height: 50px;
+    width: 50px;
   }
   .s-list-content {
     grid-area: right;
