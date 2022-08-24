@@ -78,14 +78,11 @@ class PPG {
               <b>Estrada do Caminho Velho nª 123 - Bairro, Cidade - SP</b>
             </div>
 
-            <?php
-              Who::mini(
-                $picture = "inc/images/tmp/profile.jpg",
-                $name = 'Sócrates',
-                $title = 'Coordenador',
-                $link = 'https://unifesp.br/prodmais/index.php'
-              )
-              ?>
+            <div class="d-icon-text">
+              <i class='i i-icons i-people-manager'></i>
+              <span class="t t-gray t-b">Coordenação: Nome do coordenador/coordenadora</span>
+            </div>
+
           </diV>
           <div class="p-ppg-header-three">
 

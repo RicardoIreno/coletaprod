@@ -561,6 +561,7 @@ if (!empty($_REQUEST["lattesID"])) {
                     $itemInfoD = $livreDocencia["nomeInstituicao"],
                     $itemInfoE = '',
                     $authors = '',
+                    $tags = '',
                     $yearStart = '',
                     $yearEnd = $livreDocencia["anoDeObtencaoDoTitulo"]
                   );
@@ -619,6 +620,7 @@ if (!empty($_REQUEST["lattesID"])) {
                     $itemInfoD = 'Orientação: ' . $mestrado["nomeDoOrientador"],
                     $itemInfoE = $mestrado["nomeInstituicao"],
                     $authors = '',
+                    $tags = '',
                     $yearStart = $mestrado["anoDeInicio"],
                     $yearEnd = $mestrado["anoDeConclusao"]
                   );
@@ -648,6 +650,7 @@ if (!empty($_REQUEST["lattesID"])) {
                     $itemInfoD = '',
                     $itemInfoE = '',
                     $authors = '',
+                    $tags = '',
                     $yearStart = $graduacao["anoDeInicio"],
                     $yearEnd = $graduacao["anoDeConclusao"]
                   );
@@ -763,6 +766,7 @@ if (!empty($_REQUEST["lattesID"])) {
                         $itemInfoD = '',
                         $itemInfoE = '',
                         $authors = '',
+                        $tags = '',
                         $yearStart = $atuacao_profissional['VINCULOS']['@attributes']['ANO-INICIO'],
                         $yearEnd = $atuacao_profissional['VINCULOS']['@attributes']['ANO-FIM']
                       );
@@ -782,6 +786,7 @@ if (!empty($_REQUEST["lattesID"])) {
                           $itemInfoD = '',
                           $itemInfoE = '',
                           $authors = '',
+                          $tags = '',
                           $yearStart = $atuacao_profissional['VINCULOS'][$i_atuacao_profissional]['@attributes']['ANO-INICIO'],
                           $yearEnd = $atuacao_profissional['VINCULOS'][$i_atuacao_profissional]['@attributes']['ANO-FIM']
                         );
@@ -834,6 +839,7 @@ if (!empty($_REQUEST["lattesID"])) {
                           $itemInfoD = $orientacao_andamento_echo["nomeDaInstituicao"],
                           $itemInfoE = '',
                           $authors = '',
+                          $tags = '',
                           $yearStart = $orientacao_andamento_echo["ano"],
                           $yearEnd = ''
                         );
@@ -875,6 +881,7 @@ if (!empty($_REQUEST["lattesID"])) {
                           $itemInfoD = $orientacao_concluidas_echo["nomeDaInstituicao"],
                           $itemInforE = '',
                           $authors = '',
+                          $tags = '',
                           $yearStart = '',
                           $yearEnd = $orientacao_concluidas_echo["ano"]
                         );
@@ -923,6 +930,7 @@ if (!empty($_REQUEST["lattesID"])) {
                               $itemInfoD = '',
                               $itemInfoE = '',
                               $authors = '',
+                              $tags = '',
                               $yearStart = $direcao_e_administracao['@attributes']['ANO-INICIO'],
                               $yearEnd = $direcao_e_administracao['@attributes']['ANO-FIM']
                             );
@@ -936,6 +944,7 @@ if (!empty($_REQUEST["lattesID"])) {
                               $itemInfoD = '',
                               $itemInfoE = '',
                               $authors = '',
+                              $tags = '',
                               $yearStart = $direcao_e_administracao['ANO-INICIO'],
                               $yearEnd = $direcao_e_administracao['ANO-FIM']
                             );                            
@@ -992,6 +1001,7 @@ if (!empty($_REQUEST["lattesID"])) {
                                 $itemInfoD = '',
                                 $itemInfoE = '',
                                 $authors = implode(', ', $integrantes_do_projeto),
+                                $tags = '',
                                 $yearStart = $projeto_de_pesquisa['@attributes']['ANO-INICIO'],
                                 $yearEnd = $projeto_de_pesquisa['@attributes']['ANO-FIM']
                               );
@@ -1026,6 +1036,7 @@ if (!empty($_REQUEST["lattesID"])) {
                                   $itemInfoD = '',
                                   $itemInfoE = '',
                                   $authors = $integrantesDoProjeto,
+                                  $tags = '',
                                   $yearStart = $projeto_de_pesquisa['ANO-INICIO'],
                                   $yearEnd = $projeto_de_pesquisa['ANO-FIM']
                                 );

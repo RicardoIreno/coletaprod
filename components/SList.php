@@ -45,6 +45,15 @@ class SList
     }
   }
 
+  static function tags($tags)
+  {
+    $buf = '<ul class="s-list-tags">';
+    foreach ($tags as $t) {
+      $buf = "$buf <li class='s-list-tag'>$t</li>";
+    }
+    $buf = "$buf </ul>";
+    return $buf;
+  }
 
   static function genericItem(
     $type,
@@ -56,6 +65,7 @@ class SList
     $itemInfoD = '',
     $itemInfoE = '',
     $authors = '',
+    $tags = '',
     $yearStart = '',
     $yearEnd = ''
   ) {
@@ -71,6 +81,7 @@ class SList
 
     !empty($itemInfoB) && !empty($itemInfoC) ? $sepataror = ', ' : $sepataror = '';
     !empty($authors) ? $aut = "<b class='t-subItem'>Autores: </b> $authors </p>" : $aut = '';
+    !empty($tags) ? $tagsRender = Slist::tags($tags) : $tagsRender = '';
 
     echo ("
     <li class='s-nobullet'>
@@ -87,6 +98,7 @@ class SList
 					<p class='t t-gray'>$itemInfoC</p>
 					<p class='t t-gray'>$itemInfoD</p>
 					<p class='t t-gray'>$itemInfoE</p>
+          $tagsRender
 					<p class='t t-gray'>$aut</p>		
 					<p class='t t-gray'>$date</p>			
 				</div>

@@ -177,6 +177,7 @@ class ListPPGs {
             $itemInfoD = '',
             $itemInfoE = '',
             $authors = '',
+            $tags = '',
             $yearStart = '',
             $yearEnd = ''
         );

@@ -1,34 +1,41 @@
-.about {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-bottom: 3rem;
+.p-about {
+	@extend .d-v, .d-md-h, .d-md-hc;
+	padding-bottom: 3rem;
 
-  &-ico {
-    width: 100px;
-    // fill: _palette(theme);
-    fill: _palette(theme);
-    transition: all 0.25s ease-in-out;
-    margin: 1rem auto;
+	&-side1,
+	&-side2 {
+		@extend .d-v, .d-vc;
+	}
 
-    &:hover {
-      fill: _palette(theme-light-2);
-    }
-  }
+	&-side1 {
+		padding-inline: 2rem;
+		text-align: center;
+	}
 
-  &-textbox {
-    max-width: 1200px;
-    text-align: center;
+	&-ico {
+		// fill: _palette(theme);
+		fill: _palette(theme);
+		margin: 1rem auto;
+		transition: all 0.25s ease-in-out;
+		width: 100px;
 
-  }
+		&:hover {
+			fill: _palette(theme-light-2);
+		}
+	}
 
-  &-titles {
-    margin: 1rem center;
-  }
+	&-titles {
+		margin: 1rem center;
+	}
+
+	&-text {
+		margin-block: 2rem;
+		text-align: justify;
+	}
 }
 
 .logo-about {
-  max-width: 120px;
-  margin: 2rem;
-  fill: #1C9AD1;
+	fill: #1c9ad1;
+	margin: 2rem;
+	max-width: 120px;
 }

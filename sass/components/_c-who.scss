@@ -19,7 +19,7 @@
 .c-who {
 	align-items: center;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: flex-start;
 	width: 200px;
 
 	&-text {
@@ -36,6 +36,7 @@
 	}
 
 	&-photo {
+		height: 100px;
 		width: 100px;
 	}
 
