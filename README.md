@@ -18,24 +18,17 @@
 
 O Prodmais é uma ferramenta que agrega informações sobre produções acadêmicas de diversas fontes, e dentre elas, principalmente a base Lattes. Permite efetuar pesquisas específicas na base de dados e filtrar os resultados com o apoio das diversas opções de filtros que a ferramenta possui. Também permite efetuar buscas por pesquisadores, e possui filtragens por área de atuação, Campus, idioma, data da publicação, nível de formação, enfim, várias opções. É possível exportar os resultados utilizando formatos suportados por diversos softwares bibliográficos, e também é possível exportar toda a informação de um perfil para o ORCID.
 
-<table border="0">
- <tr>
-    <td>
-      | **Fontes possíveis** |
-      | -------------------- |
-      | Base Lattes          |
-      | Web of Science       |
-      | CrossRef (DOI)       |
-    </td>
-    <td>
-      | **Dependências**                                |
-      | ----------------------------------------------- |
-      | Elasticsearch 7.4+                              |
-      | PHP 7.4+                                        |
-      | Dependências do PHP: php-cgi, php-curl, php-xml |
-    </td>
- </tr>
-</table>
+**Fontes possíveis**
+
+- Base Lattes
+- Web of Science
+- CrossRef (DOI)
+
+**Dependências**
+
+- Elasticsearch 7.4+
+- PHP 7.4+
+- Dependências do PHP: php-cgi, php-curl, php-xml
 
 🖥️ [Instalação](/INSTALL.md)
 
