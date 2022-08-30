@@ -118,6 +118,7 @@
         !empty($r["_source"]['doi']) ? $doi = $r["_source"]['doi'] : $doi = '';
         !empty($r['_source']['isPartOf']['issn']) ? $issn = $r['_source']['isPartOf']['issn'] : $issn = '';
         !empty($r['_source']['isPartOf']['name']) ? $refName = $r['_source']['isPartOf']['name'] : $refName = '';
+        !empty($r['_source']['datePublished']) ? $published = $r['_source']['datePublished'] : $published = '';
 
         Production::IntelectualProduction(
           $type = $r['_source']['tipo'],
@@ -132,7 +133,7 @@
           $refPage = '',
           $event = '',
           $evento = '',
-          $datePublished = '',
+          $datePublished = $published,
           $id = ''
         );
         unset($authors);
