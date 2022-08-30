@@ -121,8 +121,8 @@ $get_data = $_GET;
 
         </main>
 
-        <nav class="c-fbar">
-            <div class="c-fbar-header">
+        <nav class="c-filterlist">
+            <div class="c-filterlist-header">
                 <b class="t">Refinar Resultados</b>
             </div>
             <div class="c-fbloc-wrapper">
