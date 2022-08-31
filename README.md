@@ -1,29 +1,34 @@
 <p align="center">
-  <img src="/inc/images/logo-vertical.svg" alt="Prodmais logo" width="300"><br>
-    <br>Extração e navegação de registros para a Coleta de Produção Científica das Instituições.<br><br>
-    <img src="https://img.shields.io/badge/php-%23777BB4.svg?style=flat-badge&logo=php&logoColor=white" />
-    <img src="https://img.shields.io/badge/-ElasticSearch-005571?style=flat-badge&logo=elasticsearch&logoColor=white" />
-    <img src="https://img.shields.io/badge/Sass-CC6699?style=flat-badge&logo=sass&logoColor=white" />
-    <br>
-    <br>
-    <a href="https://unifesp.br/prodmais/index.php">Prodmais UNIFESP</a>
-
+  <img src="/inc/images/logo-vertical.svg" alt="Prodmais logo" width="300" />
+  <br>
+  Extração e navegação de registros para a Coleta de Produção Científica das Instituições.
+  <br>
+  <br>
+  <img src="https://img.shields.io/badge/php-%23777BB4.svg?style=flat-badge&logo=php&logoColor=white" />
+  <img src="https://img.shields.io/badge/-ElasticSearch-005571?style=flat-badge&logo=elasticsearch&logoColor=white" />
+  <img src="https://img.shields.io/badge/Sass-CC6699?style=flat-badge&logo=sass&logoColor=white" />
+  <br>
+  <img alt="License" src="https://img.shields.io/badge/License-GNU%20GPL-blue"/>
+  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/trmurakami/coletaprod?color=5965e0"/>
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/trmurakami/coletaprod?color=5965e0"/>
+  <br>
+  <br>
+  <a href="https://unifesp.br/prodmais/index.php"> Visite o Prodmais UNIFESP</a>
 </p>
 
 O Prodmais é uma ferramenta que agrega informações sobre produções acadêmicas de diversas fontes, e dentre elas, principalmente a base Lattes. Permite efetuar pesquisas específicas na base de dados e filtrar os resultados com o apoio das diversas opções de filtros que a ferramenta possui. Também permite efetuar buscas por pesquisadores, e possui filtragens por área de atuação, Campus, idioma, data da publicação, nível de formação, enfim, várias opções. É possível exportar os resultados utilizando formatos suportados por diversos softwares bibliográficos, e também é possível exportar toda a informação de um perfil para o ORCID.
 
-## Fontes possíveis:
+**Fontes possíveis**
 
 - Base Lattes
 - Web of Science
 - CrossRef (DOI)
 
-## Dependências
+**Dependências**
 
-1. Elasticsearch 7.4 ou superior
-2. PHP 7.4 ou superior
-
-- Dependências do PHP: php-cgi | php-curl | php-xml
+- Elasticsearch 7.4+
+- PHP 7.4+
+- Dependências do PHP: php-cgi, php-curl, php-xml
 
 🖥️ [Instalação](/INSTALL.md)
 
