@@ -43,7 +43,7 @@ class Production
   {
     return "
         <a class='t t-a d-icon-text' href='https://doi.org/$url' target='blank'>
-        <img class='i-doi' src='inc/images/logos/doi.svg' title='doi' alt='doi' />
+        <img class='i-doi' src='../inc/images/logos/doi.svg' title='doi' alt='doi' />
         </a>";
   }
 

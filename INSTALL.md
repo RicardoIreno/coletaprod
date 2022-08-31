@@ -28,6 +28,19 @@ Por padrão, o elasticseach não exige senha na instalação.
     sudo apt update
     sudo apt install apache2
 
+#### Habilitar o mod_rewrite
+
+    sudo a2enmod rewrite
+
+    E adicionar ao apache conf: 
+
+        <Directory /var/www/html/prodmais>
+            Options Indexes FollowSymLinks
+            AllowOverride All
+            Require all granted
+        </Directory>
+
+
 ### Clonagem do repositório do Prodmais
 
 Você pode clonar em qualquer pasta, mas é recomendável clonar na pasta pública do apache (ex. /var/www/html): 

@@ -128,13 +128,20 @@ if (!empty($_REQUEST["lattesID"])) {
 
 <html lang="pt-br">
 
+
+
 <head>
+
+  <?php
+    include 'inc/meta-header.php';
+  ?>
+
   <title>Prodmais — Perfil do usuário - <?php echo $profile["nome_completo"] ?></title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <meta name="description" content="Prodmais Unifesp." />
   <meta name="keywords" content="Produção acadêmica, lattes, ORCID" />
-  <link rel="stylesheet" href="sass/main.css" />
+  <link rel="stylesheet" href="<?php echo $url_base; ?>/sass/main.css" />
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 
@@ -164,7 +171,7 @@ if (!empty($_REQUEST["lattesID"])) {
               <?php echo $profile["nome_completo"] ?>
 
               <?php if ($profile["nacionalidade"] == "B") : ?>
-              <img class="country-flag" src="inc/images/country_flags/br.svg" alt="nacionalidade brasileira"
+              <img class="country-flag" src="<?php echo $url_base; ?>/inc/images/country_flags/br.svg" alt="nacionalidade brasileira"
                 title="nacionalidade brasileira" />
               <?php endif; ?>
             </h1>
@@ -436,12 +443,12 @@ if (!empty($_REQUEST["lattesID"])) {
                 <?php if (!empty($profile['lattesID'])) : ?>
 
                 <a href="https://lattes.cnpq.br/<?php echo $profile['lattesID']; ?>" target="_blank" rel="external"><img
-                    class="c-socialicon" src="inc/images/academic_plataforms/logo_lattes.svg" alt="Lattes"
+                    class="c-socialicon" src="<?php echo $url_base; ?>/inc/images/academic_plataforms/logo_lattes.svg" alt="Lattes"
                     title="Lattes" /></a>
                 <?php endif; ?>
                 <?php if (!empty($profile['orcid_id'])) : ?>
                 <a href="<?php echo $profile['orcid_id']; ?>" target="_blank" rel="external"><img class="c-socialicon"
-                    src="inc/images/academic_plataforms/logo_research_id.svg" alt="ORCID" title="ORCID" /></a>
+                    src="<?php echo $url_base; ?>/inc/images/academic_plataforms/logo_research_id.svg" alt="ORCID" title="ORCID" /></a>
                 <?php endif; ?>
 
               </div> <!-- end c-socialicons -->
