@@ -7,7 +7,6 @@
    # RewriteRule ^(.*)$ http://%{HTTP_HOST}/$1/ [L,R=301]
 
 # profile
-   # RewriteRule ^/profile/([-\d]+)$ /profile/profile.php?lattesID=$1 [NC,L]
 
    RewriteRule ^sobre$ sobre.php [NC]
    RewriteRule ^profile/([-\d]+)$ profile.php?lattesID=$1 [QSA]
