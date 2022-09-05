@@ -48,10 +48,12 @@ class SList
   static function tags($tags)
   {
     $buf = '<ul class="s-list-tags">';
-    foreach ($tags as $t) {
-      $buf = "$buf <li class='s-list-tag'>$t</li>";
+    if (is_array($tags)) {
+      foreach ($tags as $t) {
+        $buf = "$buf <li class='s-list-tag'>$t</li>";
+      }
+      $buf = "$buf </ul>";
     }
-    $buf = "$buf </ul>";
     return $buf;
   }
 
