@@ -915,49 +915,46 @@ if (!empty($_REQUEST["lattesID"])) {
 
                 foreach ($atuacoes_profissionais as $key => $atuacao_profissional) {
 
-                  if (isset($atuacao_profissional['ATIVIDADES-DE-DIRECAO-E-ADMINISTRACAO'])) {
+                  if (isset($atuacao_profissional['ATIVIDADES-DE-DIRECAO-E-ADMINISTRACAO'])) {                    
 
                     echo '<h4 class="t t-subtitle">' . $atuacao_profissional['@attributes']['NOME-INSTITUICAO'] . '</h4>';
 
-                    if (isset($atuacao_profissional['VINCULOS'])) {
+                    if (isset($atuacao_profissional['VINCULOS'])) {                      
 
-                      for ($i_atuacao_profissional = 0; $i_atuacao_profissional <= (count($atuacao_profissional['VINCULOS']) - 1); $i_atuacao_profissional++) {
+                      foreach ($atuacao_profissional['ATIVIDADES-DE-DIRECAO-E-ADMINISTRACAO']['DIRECAO-E-ADMINISTRACAO'] as $key => $direcao_e_administracao) {
 
-                        foreach ($atuacao_profissional['ATIVIDADES-DE-DIRECAO-E-ADMINISTRACAO']['DIRECAO-E-ADMINISTRACAO'] as $key => $direcao_e_administracao) {
+                        echo '<ul>';
 
-                          echo '<ul>';
-
-                          if (isset($direcao_e_administracao['@attributes']['CARGO-OU-FUNCAO'])) {
-                            SList::genericItem(
-                              $type = 'managing',
-                              $itemName = $direcao_e_administracao['@attributes']['CARGO-OU-FUNCAO'],
-                              $itemNameLink = "http://lattes.cnpq.br/" . $orientacao_andamento_echo["numeroIDOrientado"],
-                              $itemInfoB = $direcao_e_administracao['@attributes']['NOME-ORGAO'],
-                              $itemInfoC = $direcao_e_administracao['@attributes']['NOME-UNIDADE'],
-                              $itemInfoD = '',
-                              $itemInfoE = '',
-                              $authors = '',
-                              $tags = '',
-                              $yearStart = $direcao_e_administracao['@attributes']['ANO-INICIO'],
-                              $yearEnd = $direcao_e_administracao['@attributes']['ANO-FIM']
-                            );
-                          } else {
-                            SList::genericItem(
-                              $type = 'managing',
-                              $itemName = $direcao_e_administracao['CARGO-OU-FUNCAO'],
-                              $itemNameLink = "http://lattes.cnpq.br/" . $orientacao_andamento_echo["numeroIDOrientado"],
-                              $itemInfoB = $direcao_e_administracao['NOME-ORGAO'],
-                              $itemInfoC = $direcao_e_administracao['NOME-UNIDADE'],
-                              $itemInfoD = '',
-                              $itemInfoE = '',
-                              $authors = '',
-                              $tags = '',
-                              $yearStart = $direcao_e_administracao['ANO-INICIO'],
-                              $yearEnd = $direcao_e_administracao['ANO-FIM']
-                            );                            
-                          }
-                          echo '</ul>';
+                        if (isset($direcao_e_administracao['@attributes']['CARGO-OU-FUNCAO'])) {
+                          SList::genericItem(
+                            $type = 'managing',
+                            $itemName = $direcao_e_administracao['@attributes']['CARGO-OU-FUNCAO'],
+                            $itemNameLink = "http://lattes.cnpq.br/" . $orientacao_andamento_echo["numeroIDOrientado"],
+                            $itemInfoB = $direcao_e_administracao['@attributes']['NOME-ORGAO'],
+                            $itemInfoC = $direcao_e_administracao['@attributes']['NOME-UNIDADE'],
+                            $itemInfoD = '',
+                            $itemInfoE = '',
+                            $authors = '',
+                            $tags = '',
+                            $yearStart = $direcao_e_administracao['@attributes']['ANO-INICIO'],
+                            $yearEnd = $direcao_e_administracao['@attributes']['ANO-FIM']
+                          );
+                        } else {
+                          SList::genericItem(
+                            $type = 'managing',
+                            $itemName = $direcao_e_administracao['CARGO-OU-FUNCAO'],
+                            $itemNameLink = "http://lattes.cnpq.br/" . $orientacao_andamento_echo["numeroIDOrientado"],
+                            $itemInfoB = $direcao_e_administracao['NOME-ORGAO'],
+                            $itemInfoC = $direcao_e_administracao['NOME-UNIDADE'],
+                            $itemInfoD = '',
+                            $itemInfoE = '',
+                            $authors = '',
+                            $tags = '',
+                            $yearStart = $direcao_e_administracao['ANO-INICIO'],
+                            $yearEnd = $direcao_e_administracao['ANO-FIM']
+                          );                            
                         }
+                        echo '</ul>';
                       }
                     }
                   }
@@ -976,15 +973,15 @@ if (!empty($_REQUEST["lattesID"])) {
               <?php
               foreach ($profile['atuacoes_profissionais'] as $key => $atuacoes_profissionais) {
 
-                foreach ($atuacoes_profissionais as $key => $atuacao_profissional) {
+                foreach ($atuacoes_profissionais as $key => $atuacao_profissional_1) {                  
 
-                  if (isset($atuacao_profissional['ATIVIDADES-DE-PARTICIPACAO-EM-PROJETO']['PARTICIPACAO-EM-PROJETO'])) {
+                  if (isset($atuacao_profissional_1['ATIVIDADES-DE-PARTICIPACAO-EM-PROJETO']['PARTICIPACAO-EM-PROJETO'])) {
 
-                    echo '<h4 class="t t-subtitle u-my-2">' . $atuacao_profissional['@attributes']['NOME-INSTITUICAO'] . '</h4>';
+                    echo '<h4 class="t t-subtitle u-my-2">' . $atuacao_profissional_1['@attributes']['NOME-INSTITUICAO'] . '</h4>';
 
-                    for ($i_atuacao_profissional = 0; $i_atuacao_profissional <= (count($atuacao_profissional['VINCULOS']) - 1); $i_atuacao_profissional++) {
+                    for ($i_atuacao_profissional_1 = 0; $i_atuacao_profissional_1 <= (count($atuacao_profissional_1['VINCULOS']) - 1); $i_atuacao_profissional_1++) {
 
-                      foreach ($atuacao_profissional['ATIVIDADES-DE-PARTICIPACAO-EM-PROJETO']['PARTICIPACAO-EM-PROJETO'] as $key => $participacao_em_projeto) {
+                      foreach ($atuacao_profissional_1['ATIVIDADES-DE-PARTICIPACAO-EM-PROJETO']['PARTICIPACAO-EM-PROJETO'] as $key => $participacao_em_projeto) {
 
                         if (isset($participacao_em_projeto['PROJETO-DE-PESQUISA'])) {
 
