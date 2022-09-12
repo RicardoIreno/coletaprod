@@ -70,7 +70,7 @@
             </form>
 
             <form class="m-3" action="doi_to_elastic.php" method="get">
-                <legend>Inserir um DOI de artigo que queira incluir (sem http://doi.org/)</legend>
+                <legend>Inserir um DOI de artigo que queira incluir (sem https://doi.org/)</legend>
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text">DOI</span>

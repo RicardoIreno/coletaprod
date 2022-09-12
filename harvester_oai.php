@@ -31,8 +31,8 @@ if (isset($_GET["oai"])) {
             } 
             foreach($recs as $rec) {
 
-                $data = $rec->metadata->children('http://www.openarchives.org/OAI/2.0/oai_dc/');
-                $rows = $data->children('http://purl.org/dc/elements/1.1/');
+                $data = $rec->metadata->children('https://www.openarchives.org/OAI/2.0/oai_dc/');
+                $rows = $data->children('https://purl.org/dc/elements/1.1/');
                 //var_dump($rows);
 
 
@@ -136,10 +136,10 @@ if (isset($_GET["oai"])) {
                 $query["doc"]["trabalhoEmEventos"]["volume"] = (string)$rec->{'metadata'}->{'article'}->{'front'}->{'article-meta'}->{'volume'};
                 $query["doc"]["trabalhoEmEventos"]["fasciculo"] = (string)$rec->{'metadata'}->{'article'}->{'front'}->{'article-meta'}->{'issue-id'};
                 $query["doc"]["trabalhoEmEventos"]["nomeDoEvento"] = (string)$rec->{'metadata'}->{'article'}->{'front'}->{'article-meta'}->{'issue-title'};
-                $query["doc"]["url_principal"] = (string)$rec->{'metadata'}->{'article'}->{'front'}->{'article-meta'}->{'self-uri'}->attributes('http://www.w3.org/1999/xlink');
+                $query["doc"]["url_principal"] = (string)$rec->{'metadata'}->{'article'}->{'front'}->{'article-meta'}->{'self-uri'}->attributes('https://www.w3.org/1999/xlink');
                 $query["doc_as_upsert"] = true;
                 foreach ($rec->{'metadata'}->{'article'}->{'front'}->{'article-meta'}->{'self-uri'} as $self_uri) {
-                    $query["doc"]["relation"][]=(string)$self_uri->attributes('http://www.w3.org/1999/xlink');
+                    $query["doc"]["relation"][]=(string)$self_uri->attributes('https://www.w3.org/1999/xlink');
                 }
                 //print_r($query);
                 $resultado = Elasticsearch::update($sha256, $query, $index_source);

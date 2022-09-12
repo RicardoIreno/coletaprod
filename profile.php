@@ -10,13 +10,13 @@ include_once '_fakedata.php';
 
 function lattesID10($lattesID16)
 {
-  $url = 'http://lattes.cnpq.br/' . $lattesID16 . '';
+  $url = 'https://lattes.cnpq.br/' . $lattesID16 . '';
 
   $headers = @get_headers($url);
 
   $lattesID10 = "";
   foreach ($headers as $h) {
-    if (substr($h, 0, 87) == 'Location: http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=') {
+    if (substr($h, 0, 87) == 'Location: https://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=') {
       $lattesID10 = trim(substr($h, 87));
       break;
     }
@@ -161,7 +161,7 @@ if (!empty($_REQUEST["lattesID"])) {
             <div class="c-who-s">
               <!-- <img class="c-who-s-badge" src="inc/images/icons/badges/bolsista-cnpq-1a.svg" /> -->
               <img class="c-who-s-pic"
-                src="http://servicosweb.cnpq.br/wspessoa/servletrecuperafoto?tipo=1&amp;bcv=true&amp;id=<?php echo $lattesID10; ?>" />
+                src="https://servicosweb.cnpq.br/wspessoa/servletrecuperafoto?tipo=1&amp;bcv=true&amp;id=<?php echo $lattesID10; ?>" />
             </div> <!-- end c-photo-wrapper -->
 
           </div> <!-- end core-one -->
@@ -839,7 +839,7 @@ if (!empty($_REQUEST["lattesID"])) {
                         SList::genericItem(
                           $type = 'orientation',
                           $itemName = $orientacao_andamento_echo["nomeDoOrientando"],
-                          $itemNameLink = "http://lattes.cnpq.br/" . $orientacao_andamento_echo["numeroIDOrientado"],
+                          $itemNameLink = "https://lattes.cnpq.br/" . $orientacao_andamento_echo["numeroIDOrientado"],
                           $itemInfoA = $orientacao_andamento_echo["titulo"],
                           $itemInfoB = $orientacao_andamento_echo["nomeDoCurso"],
                           $itemInfoC = $orientacao_andamento_echo["nomeDaAgencia"],
@@ -881,7 +881,7 @@ if (!empty($_REQUEST["lattesID"])) {
                         SList::genericItem(
                           $type = 'orientation',
                           $itemName = $orientacao_concluidas_echo["nomeDoOrientando"],
-                          $itemNameLink = "http://lattes.cnpq.br/" . $orientacao_concluidas_echo["numeroIDOrientado"],
+                          $itemNameLink = "https://lattes.cnpq.br/" . $orientacao_concluidas_echo["numeroIDOrientado"],
                           $itemInfoA = $orientacao_concluidas_echo["titulo"],
                           $itemInfoB = $orientacao_concluidas_echo["nomeDoCurso"],
                           $itemInfoC = $orientacao_concluidas_echo["nomeDaAgencia"],
@@ -929,7 +929,7 @@ if (!empty($_REQUEST["lattesID"])) {
                           SList::genericItem(
                             $type = 'managing',
                             $itemName = $direcao_e_administracao['@attributes']['CARGO-OU-FUNCAO'],
-                            $itemNameLink = "http://lattes.cnpq.br/" . $orientacao_andamento_echo["numeroIDOrientado"],
+                            $itemNameLink = "https://lattes.cnpq.br/" . $orientacao_andamento_echo["numeroIDOrientado"],
                             $itemInfoB = $direcao_e_administracao['@attributes']['NOME-ORGAO'],
                             $itemInfoC = $direcao_e_administracao['@attributes']['NOME-UNIDADE'],
                             $itemInfoD = '',
@@ -943,7 +943,7 @@ if (!empty($_REQUEST["lattesID"])) {
                           SList::genericItem(
                             $type = 'managing',
                             $itemName = $direcao_e_administracao['CARGO-OU-FUNCAO'],
-                            $itemNameLink = "http://lattes.cnpq.br/" . $orientacao_andamento_echo["numeroIDOrientado"],
+                            $itemNameLink = "https://lattes.cnpq.br/" . $orientacao_andamento_echo["numeroIDOrientado"],
                             $itemInfoB = $direcao_e_administracao['NOME-ORGAO'],
                             $itemInfoC = $direcao_e_administracao['NOME-UNIDADE'],
                             $itemInfoD = '',

@@ -58,7 +58,7 @@
           </div>
         </form>
 
-        <h2 class="t t-h3 ">Inserir um DOI de artigo que queira incluir (sem http://doi.org/)</h2>
+        <h2 class="t t-h3 ">Inserir um DOI de artigo que queira incluir (sem https://doi.org/)</h2>
 
         <form class="p-inclusao-form" action="doi_to_elastic.php" method="get">
           <div class="custom-file">

@@ -53,7 +53,7 @@ a qualquer MERCADO ou APLICAÇÃO EM PARTICULAR. Veja a
 Licença Pública Geral GNU para mais detalhes.
 
 Você deve ter recebido uma cópia da Licença Pública Geral GNU junto
-com este programa. Se não, veja <http://www.gnu.org/licenses/>.\*\*
+com este programa. Se não, veja <https://www.gnu.org/licenses/>.\*\*
 
 \*\* Copyright (C) <year> <name of author>
 

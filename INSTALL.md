@@ -48,7 +48,7 @@ Você pode clonar em qualquer pasta, mas é recomendável clonar na pasta públi
 
 Na pasta do repositório, rodar:
 
-    curl -s http://getcomposer.org/installer | php
+    curl -s https://getcomposer.org/installer | php
     php composer.phar install --no-dev
 
 Copiar o arquivo config_example.php para o arquivo config.php
