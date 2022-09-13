@@ -16,7 +16,7 @@ function lattesID10($lattesID16)
 
   $lattesID10 = "";
   foreach ($headers as $h) {
-    if (substr($h, 0, 87) == 'Location: https://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=') {
+    if (substr($h, 0, 87) == 'Location: http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=') {
       $lattesID10 = trim(substr($h, 87));
       break;
     }
