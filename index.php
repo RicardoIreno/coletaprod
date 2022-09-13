@@ -56,8 +56,7 @@ com este programa, Se não, veja <https://www.gnu.org/licenses/>.
   <!-- Facebook Tags - END -->
 
   <link rel="stylesheet" href="sass/main.css" />
-
-  <script src="inc/js/vue.js"></script><!-- https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js -->
+  
   <script src="inc/js/axios.min.js"></script><!-- https://unpkg.com/axios/dist/axios.min.js -->
 
 </head>

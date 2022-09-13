@@ -142,7 +142,7 @@ if (!empty($_REQUEST["lattesID"])) {
   <meta name="description" content="Prodmais Unifesp." />
   <meta name="keywords" content="Produção acadêmica, lattes, ORCID" />
   <link rel="stylesheet" href="<?php echo $url_base; ?>/sass/main.css" />
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
 </head>
 
 <body class="c-wrapper-body">
@@ -1077,8 +1077,6 @@ if (!empty($_REQUEST["lattesID"])) {
 
 
   <?php include('inc/footer.php'); ?>
-
-  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 
   <script>
   var app = new Vue({

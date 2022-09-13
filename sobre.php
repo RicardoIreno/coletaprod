@@ -14,7 +14,7 @@
   <meta name="description" content="Prodmais Unifesp." />
   <meta name="keywords" content="Produção acadêmica, lattes, ORCID" />
   <link rel="stylesheet" href="sass/main.css" />
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
 </head>
 
 <body>
@@ -131,8 +131,6 @@
   </main>
   <?php include('inc/footer.php'); ?>
 
-
-  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 </body>
 
 

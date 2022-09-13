@@ -54,9 +54,9 @@
   <title><?php echo $branch; ?> - Resultado da busca</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <meta name="description" content="Prodmais Unifesp." />
-  <meta name="keywords" content="Produção acadêmica, lattes, ORCID" />
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <meta name="keywords" content="Produção acadêmica, lattes, ORCID" /> 
   <link rel="stylesheet" href="sass/main.css" />
+
 </head>
 
 <body>
@@ -221,7 +221,6 @@
   </div> <!-- end result-container -->
 
   <?php include('inc/footer.php'); ?>
-  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
   <script>
   var app = new Vue({
     el: '#filterlist',
@@ -241,8 +240,7 @@
         }
       },
 
-      openCloseMenu() {
-        console.log('disparou o resize')
+      openCloseMenu() {        
         if (window.matchMedia("(min-width: 1300px)").matches) document.getElementById("filterlist").open =
           true;
         else document.getElementById("filterlist").open = false;
