@@ -33,6 +33,7 @@ com este programa, Se não, veja <https://www.gnu.org/licenses/>.
 <html lang="pt-br" dir="ltr">
 
 <head>
+  <script src="inc/js/axios.min.js"></script><!-- https://unpkg.com/axios/dist/axios.min.js -->
   <?php
   require 'inc/config.php';
   require 'inc/meta-header.php';
@@ -57,7 +58,7 @@ com este programa, Se não, veja <https://www.gnu.org/licenses/>.
 
   <link rel="stylesheet" href="sass/main.css" />
   
-  <script src="inc/js/axios.min.js"></script><!-- https://unpkg.com/axios/dist/axios.min.js -->
+  
 
 </head>
 
