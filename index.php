@@ -57,8 +57,8 @@ com este programa, Se não, veja <https://www.gnu.org/licenses/>.
   <!-- Facebook Tags - END -->
 
   <link rel="stylesheet" href="sass/main.css" />
-  
-  
+
+
 
 </head>
 
@@ -112,7 +112,7 @@ com este programa, Se não, veja <https://www.gnu.org/licenses/>.
         <transition name="homeeffect">
           <div class="d-v" v-if="searchPage == 'advanced'">
 
-            <label class="p-home-info">Mais opções de pesquisa:</label>
+            <label class="p-home-info u-mt-1">Mais opções de pesquisa:</label>
 
             <?php paginaInicial::filter_select("vinculo.ppg_nome"); ?>
 
@@ -128,11 +128,11 @@ com este programa, Se não, veja <https://www.gnu.org/licenses/>.
               </option>
             </datalist>
 
-            <label class="p-home-info">Filtrar por data:</label>
-            <div class="d-h d-hc">
+            <label class="p-home-info u-mt-1">Filtrar por data:</label>
+            <div class="d-h d-hc d-hc">
               <input type="text" class="c-input--date" id="initialYear" name="initialYear" pattern="\d{4}"
                 placeholder="Data inicial" />
-              <span> à </span>
+
               <input type="text" class="c-input--date" id="finalYear" name="finalYear" pattern="\d{4}"
                 placeholder="Data final" />
             </div>
@@ -149,9 +149,6 @@ com este programa, Se não, veja <https://www.gnu.org/licenses/>.
         </button>
 
       </form>
-
-
-
     </div><!-- end search -->
 
     <div class="options">
