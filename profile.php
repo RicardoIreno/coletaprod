@@ -930,7 +930,7 @@ if (!empty($_REQUEST["lattesID"])) {
                           SList::genericItem(
                             $type = 'managing',
                             $itemName = $direcao_e_administracao['@attributes']['CARGO-OU-FUNCAO'],
-                            $itemNameLink = "https://lattes.cnpq.br/" . $orientacao_andamento_echo["numeroIDOrientado"],
+                            $itemNameLink = '',
                             $itemInfoB = $direcao_e_administracao['@attributes']['NOME-ORGAO'],
                             $itemInfoC = $direcao_e_administracao['@attributes']['NOME-UNIDADE'],
                             $itemInfoD = '',
@@ -944,7 +944,7 @@ if (!empty($_REQUEST["lattesID"])) {
                           SList::genericItem(
                             $type = 'managing',
                             $itemName = $direcao_e_administracao['CARGO-OU-FUNCAO'],
-                            $itemNameLink = "https://lattes.cnpq.br/" . $orientacao_andamento_echo["numeroIDOrientado"],
+                            $itemNameLink = '',
                             $itemInfoB = $direcao_e_administracao['NOME-ORGAO'],
                             $itemInfoC = $direcao_e_administracao['NOME-UNIDADE'],
                             $itemInfoD = '',
