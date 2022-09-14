@@ -1,8 +1,8 @@
 <?php
 
-$file="sitemaps.txt";
-header('Content-type: text/plain');
-header("Content-Disposition: attachment; filename=$file");
+//$file="sitemaps.txt";
+//header('Content-type: text/plain');
+//header("Content-Disposition: attachment; filename=$file");
 
 // Set directory to ROOT
 chdir('../');
@@ -22,11 +22,11 @@ $params["body"] = $query;
 $cursor = $client->search($params); 
 
 foreach ($cursor["hits"]["hits"] as $r) {   
-    $record_blob[] = 'https://unifesp.br/prodmais/profile/'.$r['_id'].'\n';
+    $record_blob[] = 'https://unifesp.br/prodmais/profile/'.$r['_id'].'|';
 }
 foreach ($record_blob as $record) {
-    $record_array = explode('\n', $record);
-    echo implode("\n", $record_array);
+    $record_array = explode('|', $record);
+    echo implode("<br/>", $record_array);
 }
 
 ?>
