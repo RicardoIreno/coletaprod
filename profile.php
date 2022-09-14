@@ -142,6 +142,7 @@ if (!empty($_REQUEST["lattesID"])) {
   <meta name="description" content="Prodmais Unifesp." />
   <meta name="keywords" content="Produção acadêmica, lattes, ORCID" />
   <link rel="stylesheet" href="<?php echo $url_base; ?>/sass/main.css" />
+  <script src="../inc/js/vue.min.js"></script>
 
 </head>
 
