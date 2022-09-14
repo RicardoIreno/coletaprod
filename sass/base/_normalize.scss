@@ -1,4 +1,4 @@
-// == NORMALIZE == // 
+// == NORMALIZE == //
 
 html,
 body,
@@ -61,6 +61,7 @@ thead,
 tr,
 th,
 td,
+transition,
 article,
 aside,
 canvas,
@@ -81,38 +82,20 @@ time,
 mark,
 audio,
 video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
 }
 
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
-  display: block;
-}
-
+// BOXSIZING
 html {
-  box-sizing: border-box;
-  overflow-x: hidden;
-}
-
-form {
-  width: inherit;
+	box-sizing: border-box;
 }
 
 *,
 *:before,
 *:after {
-  box-sizing: inherit;
+	box-sizing: inherit;
 }
