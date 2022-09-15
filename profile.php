@@ -980,8 +980,6 @@ if (!empty($_REQUEST["lattesID"])) {
 
                     echo '<h4 class="t t-subtitle u-my-2">' . $atuacao_profissional_1['@attributes']['NOME-INSTITUICAO'] . '</h4>';
 
-                    for ($i_atuacao_profissional_1 = 0; $i_atuacao_profissional_1 <= (count($atuacao_profissional_1['VINCULOS']) - 1); $i_atuacao_profissional_1++) {
-
                       foreach ($atuacao_profissional_1['ATIVIDADES-DE-PARTICIPACAO-EM-PROJETO']['PARTICIPACAO-EM-PROJETO'] as $key => $participacao_em_projeto) {
 
                         if (isset($participacao_em_projeto['PROJETO-DE-PESQUISA'])) {
@@ -1052,7 +1050,6 @@ if (!empty($_REQUEST["lattesID"])) {
                           }
                         }
                       } //foreach 3 - foreach ($atuacao_profissional['ATIVIDADES
-                    } // for
                   } // if 1 - if (isset($atuacao_profissional['ATIVIDADES...
                 } // foreach2 - foreach ($atuacoes_profissionais as $key
               } // foreach 1 - foreach ($profile['atuacoes_profissionais']
