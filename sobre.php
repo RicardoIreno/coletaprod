@@ -91,10 +91,10 @@
       <div class="d-h d-hc d-wrap u-mt-2">
         <?php
         Who::ppg(
-          $picture = "https://souciencia.unifesp.br/images/equipe/LidianeC.png",
+          $picture = "http://servicosweb.cnpq.br/wspessoa/servletrecuperafoto?tipo=1&id=K4525821T0",
           $name = 'Lidiane Cristina da Silva',
-          $title = 'Superintendente',
-          $link = 'https://unifesp.br/prodmais/index.php'
+          $title = 'Superintendente da TI',
+          $link = 'http://lattes.cnpq.br/2259956816336032'
         )
         ?>
 
@@ -103,7 +103,7 @@
           $picture = "https://souciencia.unifesp.br/images/equipe/Alexsandro.jpeg",
           $name = 'Alexandro Cardoso Carvalho',
           $title = 'Chefe da Divisão de Gestão da Informação',
-          $link = 'https://unifesp.br/prodmais/index.php'
+          $link = 'http://lattes.cnpq.br/6792408436784536'
           )
           ?>
       </div>
@@ -114,12 +114,12 @@
           $picture = "https://avatars.githubusercontent.com/u/499115?v=4",
           $name = 'Tiago Rodrigo Marçal Murakami',
           $title = 'Bolsista FAP UNIFESP',
-          $link = 'https://unifesp.br/prodmais/index.php'
+          $link = 'http://lattes.cnpq.br/0306160176168674'
         )
       ?>
         <?php
         Who::ppg(
-          $picture = "https://avatars.githubusercontent.com/u/13210487?v=4",
+          $picture = "https://servicosweb.cnpq.br/wspessoa/servletrecuperafoto?tipo=1&id=K1702294J9",
           $name = 'Ricardo Ireno dos Santos',
           $title = 'Bolsista FAP UNIFESP',
           $link = 'https://unifesp.br/prodmais/index.php'
