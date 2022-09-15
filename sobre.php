@@ -93,7 +93,7 @@
         Who::ppg(
           $picture = "https://souciencia.unifesp.br/images/equipe/LidianeC.png",
           $name = 'Lidiane Cristina da Silva',
-          $title = 'Lidiane Cristina da Silva',
+          $title = 'Superintendente',
           $link = 'https://unifesp.br/prodmais/index.php'
         )
         ?>
