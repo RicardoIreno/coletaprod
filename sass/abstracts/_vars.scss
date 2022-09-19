@@ -3,18 +3,6 @@ $sm: 669px;
 $md: 899px;
 $lg: 1299px;
 
-$breakpoints: (
-	"sm": (
-		min-width: $sm,
-	),
-	"md": (
-		min-width: $md,
-	),
-	"lg": (
-		min-width: $lg,
-	),
-) !default;
-
 $filterbar_width_desk: 420px;
 $filterbar_width_mob: 100%;
 
