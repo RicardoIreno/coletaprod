@@ -19,8 +19,14 @@
 .c-input--date {
 	@include searchStyle;
 	margin: $input_margin;
+	margin: 0.2rem;
 	outline: 0;
 	width: 90%;
+}
+
+.c-input,
+.c-input--sm,
+.c-input--mini {
 	margin: 0.2rem auto;
 }
 

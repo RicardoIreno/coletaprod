@@ -131,6 +131,10 @@
   width: auto;
 }
 
+.u-grayscale {
+  filter: grayscale(100%);
+}
+
 .manual-body {
   background-color: #F1F1F1;
 }
@@ -1889,9 +1893,9 @@ details[open] .c-fbloc-name--header:before {
   vertical-align: middle;
   transition: all 0.4s ease;
   margin: 0.3rem 0.5rem;
+  margin: 0.2rem;
   outline: 0;
   width: 90%;
-  margin: 0.2rem auto;
 }
 .c-input:hover,
 .c-input--sm:hover,
@@ -1899,6 +1903,12 @@ details[open] .c-fbloc-name--header:before {
 .c-input--date:hover {
   letter-spacing: 1.2px;
   transition: all 0.3s ease 0s;
+}
+
+.c-input,
+.c-input--sm,
+.c-input--mini {
+  margin: 0.2rem auto;
 }
 
 .c-input,

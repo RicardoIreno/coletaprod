@@ -129,7 +129,7 @@ com este programa, Se não, veja <https://www.gnu.org/licenses/>.
             </datalist>
 
             <label class="p-home-info u-mt-1">Filtrar por data:</label>
-            <div class="d-h d-hc d-hc">
+            <div class="d-h d-hc">
               <input type="text" class="c-input--date" id="initialYear" name="initialYear" pattern="\d{4}"
                 placeholder="Data inicial" />
 
