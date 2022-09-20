@@ -164,9 +164,7 @@ h5 {
 .p-departamento-header,
 .p-about-side1,
 .p-about-side2,
-.p-about,
-.sitefooter-contacts,
-.sitefooter {
+.p-about {
   box-sizing: border-box;
   display: flex;
   width: 100%;
@@ -177,11 +175,11 @@ h5 {
 .p-projeto-header,
 .p-projeto-header-d2,
 .p-projeto-header-d3, .c-numbers-number, .c-numbers, .p-profile-header-one,
-.p-profile-header-two, .p-departamento-repos, .p-departamento-externos, .p-departamento-header-one, .p-departamento-header-two, .p-departamento-header, .p-about-side1, .p-about-side2, .p-about, .sitefooter-contacts, .sitefooter {
+.p-profile-header-two, .p-departamento-repos, .p-departamento-externos, .p-departamento-header-one, .p-departamento-header-two, .p-departamento-header, .p-about-side1, .p-about-side2, .p-about {
   flex-direction: column;
 }
 
-.d-wrap, .p-departamento-orientadores, .s-list-tags, .sitefooter {
+.d-wrap, .p-departamento-orientadores, .s-list-tags {
   flex-wrap: wrap;
 }
 
@@ -200,7 +198,7 @@ h5 {
   align-items: flex-start;
 }
 
-.d-hc, .p-projetos-inputs, .p-projetos-search, .c-numbers-number, .p-profile-header-three, .p-profile-header-numbers, .p-departamento-orientadores, .sitefooter-contacts {
+.d-hc, .p-projetos-inputs, .p-projetos-search, .c-numbers-number, .p-profile-header-three, .p-profile-header-numbers, .p-departamento-orientadores {
   justify-content: center;
 }
 
@@ -208,7 +206,7 @@ h5 {
 .p-projeto-header,
 .p-projeto-header-d2,
 .p-projeto-header-d3, .p-profile-header-three, .p-profile-header-one,
-.p-profile-header-two, .p-departamento-repos, .p-departamento-externos, .p-departamento-header-three, .p-departamento-header-one, .p-departamento-header-two, .p-departamento-header, .p-about-side1, .p-about-side2, .sitefooter-contacts, .sitefooter {
+.p-profile-header-two, .p-departamento-repos, .p-departamento-externos, .p-departamento-header-three, .p-departamento-header-one, .p-departamento-header-two, .p-departamento-header, .p-about-side1, .p-about-side2 {
   align-items: center;
 }
 
@@ -253,7 +251,7 @@ h5 {
 }
 
 @media (min-width: 899px) {
-  .d-md-h, .p-projetos-inputs, .p-departamento-repos, .p-about, .sitefooter-contacts, .sitefooter {
+  .d-md-h, .p-projetos-inputs, .p-departamento-repos, .p-about {
     flex-direction: row;
   }
 }
@@ -332,7 +330,7 @@ h5 {
 }
 
 @media (min-width: 899px) {
-  .d-md-hc, .p-departamento-repos, .p-about, .sitefooter-contacts, .sitefooter {
+  .d-md-hc, .p-departamento-repos, .p-about {
     justify-content: center;
   }
 }
@@ -350,7 +348,7 @@ h5 {
 }
 
 @media (min-width: 899px) {
-  .d-md-vc, .sitefooter-contacts, .sitefooter {
+  .d-md-vc {
     align-items: center;
   }
 }
@@ -469,7 +467,7 @@ h5 {
   }
 }
 
-.d-wrap, .p-departamento-orientadores, .s-list-tags, .sitefooter {
+.d-wrap, .p-departamento-orientadores, .s-list-tags {
   flex-wrap: wrap;
 }
 
@@ -1385,18 +1383,39 @@ h5 a {
   border-top: #A5C698 0.5rem solid;
   bottom: 0;
   color: #EAEAEA;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  justify-content: center;
   left: 0;
   right: 0;
 }
+@media (min-width: 899px) {
+  .sitefooter {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0.25rem 3rem;
+  }
+}
 .sitefooter-contacts {
-  width: 50%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+@media (min-width: 899px) {
+  .sitefooter-contacts {
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 50%;
+  }
 }
 .sitefooter-link {
   color: #EAEAEA;
   display: block;
   font-size: 18px;
   font-weight: 600;
-  margin: 0.5rem;
+  margin: 0.5rem 1rem;
   text-align: center;
 }
 .sitefooter-link:hover {
@@ -1409,14 +1428,6 @@ h5 a {
 .sitefooter-logo {
   margin: 1rem;
   width: 100px;
-}
-.sitefooter-det {
-  display: none;
-}
-@media (min-width: 899px) {
-  .sitefooter-det {
-    display: inline-block;
-  }
 }
 
 .siteheader {
