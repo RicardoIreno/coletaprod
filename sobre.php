@@ -87,7 +87,7 @@
     <div class="p-about-side2">
 
 
-      <h3 id="créditos" class="t t-h3 u-my-1">Créditos</h3>
+      <h3 id="créditos" class="t t-h3 u-my-1">Equipe</h3>
 
       <p class="t t-title">Universidade Federal de São Paulo</p>
       <p class="t t-title t-gray">Superintendência de Tecnologia da Informação</p>
