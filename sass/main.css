@@ -131,6 +131,10 @@
   width: auto;
 }
 
+.u-grayscale {
+  filter: grayscale(100%);
+}
+
 .manual-body {
   background-color: #F1F1F1;
 }

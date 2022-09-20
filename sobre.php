@@ -93,14 +93,16 @@
       <p class="t t-title t-gray">Superintendência de Tecnologia da Informação</p>
 
       <div class="d-h d-hc d-wrap u-mt-2">
-        <?php
-        Who::ppg(
-          $picture = "http://servicosweb.cnpq.br/wspessoa/servletrecuperafoto?tipo=1&id=K4525821T0",
-          $name = 'Lidiane Cristina da Silva',
-          $title = 'Superintendente da TI',
-          $link = 'http://lattes.cnpq.br/2259956816336032'
-        )
-        ?>
+        <div class="u-grayscale">
+          <?php
+            Who::ppg(
+              $picture = "http://servicosweb.cnpq.br/wspessoa/servletrecuperafoto?tipo=1&id=K4525821T0",
+              $name = 'Lidiane Cristina da Silva',
+              $title = 'Superintendente da TI',
+              $link = 'http://lattes.cnpq.br/2259956816336032'
+              )
+              ?>
+        </div>
 
         <?php
         Who::ppg(
@@ -112,7 +114,7 @@
           ?>
       </div>
 
-      <div class="d-h d-hc d-wrap u-my-1">
+      <div class=" d-h d-hc d-wrap u-my-1">
         <?php
         Who::ppg(
           $picture = "https://avatars.githubusercontent.com/u/499115?v=4",
