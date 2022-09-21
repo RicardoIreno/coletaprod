@@ -620,7 +620,7 @@ if (!empty($_REQUEST["lattesID"])) {
 
                   SList::genericItem(
                     $type = 'formation',
-                    $itemName = 'Doutorado em ' . $mestrado["nomeCurso"],
+                    $itemName = 'Mestrado em ' . $mestrado["nomeCurso"],
                     $itemNameLink = '',
                     $itemInfoA = $mestrado["tituloDaDissertacaoTese"],
                     $itemInfoB = $especialidade,
