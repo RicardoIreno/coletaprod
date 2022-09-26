@@ -1513,6 +1513,10 @@ h5 a {
   }
 }
 
+.sitemenu:focus-within {
+  border: 3px solid orange;
+}
+
 .sitemenu-list {
   list-style: none;
   margin: 0 auto;

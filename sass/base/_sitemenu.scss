@@ -48,6 +48,10 @@
 	}
 }
 
+.sitemenu:focus-within {
+	border: 3px solid orange;
+}
+
 // @media (max-width: $md) {
 // 	.sitemenu {
 // 		height: 90vh;
