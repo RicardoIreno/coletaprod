@@ -144,6 +144,14 @@ if (!empty($_REQUEST["lattesID"])) {
   <link rel="stylesheet" href="<?php echo $url_base; ?>/sass/main.css" />
   <script src="../inc/js/vue.min.js"></script>
 
+  <?php
+  if (file_exists('../inc/js/vue.min.js')) {
+    echo '<script src="../inc/js/vue.min.js"></script>';
+  } elseif (file_exists('inc/js/vue.min.js')) {
+    echo '<script src="inc/js/vue.min.js"></script>';
+  } 
+?>
+
 </head>
 
 <body class="c-wrapper-body">
