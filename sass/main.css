@@ -89,11 +89,11 @@
   --c-pr-5: hsl(280, 76%, 70%);
   --c-pr-6: hsl(280, 76%, 80%);
   --c-pr-7: hsl(280, 76%, 90%);
-  --c-se-0: hsl(0, 0%, 30%);
-  --c-se-1: hsl(0, 0%, 50%);
-  --c-se-2: hsl(0, 0%, 70%);
-  --c-se-3: hsl(0, 0%, 80%);
-  --c-se-4: hsl(0, 0%, 90%);
+  --c-se-0: hsl(280, 20%, 30%);
+  --c-se-1: hsl(280, 20%, 50%);
+  --c-se-2: hsl(280, 20%, 70%);
+  --c-se-3: hsl(280, 20%, 80%);
+  --c-se-4: hsl(280, 20%, 90%);
   --c-ic-0: hsl(280, 76%, 50%);
   --c-ic-1: hsl(280, 76%, 65%);
   --c-ic-2: hsl(280, 76%, 75%);
@@ -1530,12 +1530,12 @@ h5 a {
 }
 
 .sitemenu-btn-ico {
-  color: var(--c-pr-6);
+  color: var(--c-pr-7);
   cursor: pointer;
   transition: all 0.4s ease;
 }
 .sitemenu-btn-ico:hover {
-  color: var(--c-pr-4);
+  color: var(--c-pr-5);
 }
 @media (min-width: 1299px) {
   .sitemenu-btn-ico {
@@ -1583,7 +1583,7 @@ h5 a {
 
 .sitemenu-link {
   align-items: center;
-  color: var(--c-pr-4);
+  color: var(--c-pr-5);
   display: flex;
   font-size: 1.1rem;
   justify-content: space-between;
@@ -1593,13 +1593,13 @@ h5 a {
   transition: all 0.4s ease;
 }
 .sitemenu-link:visited {
-  color: var(--c-pr-4);
+  color: var(--c-pr-5);
 }
 .sitemenu-link:hover {
-  color: var(--c-pr-6);
+  color: var(--c-pr-7);
 }
 .sitemenu-link:hover .sitemenu-ico {
-  background-color: var(--c-pr-6);
+  background-color: var(--c-pr-7);
 }
 @media (min-width: 1299px) {
   .sitemenu-link {
@@ -1609,7 +1609,7 @@ h5 a {
 }
 
 .sitemenu-ico {
-  background-color: var(--c-pr-4);
+  background-color: var(--c-pr-5);
   height: 40px;
   margin-left: 0.5rem;
   width: 40px;
