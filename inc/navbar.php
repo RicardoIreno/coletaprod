@@ -62,12 +62,12 @@
           </a>
         </li>
 
-        <li class="sitemenu-item">
+        <!-- <li class="sitemenu-item">
           <a class="sitemenu-link" href="manual/" title="Manual">
             Manual
             <i class="i i-manual sitemenu-ico"></i>
           </a>
-        </li>
+        </li> -->
 
         <li class="sitemenu-item">
           <a class="sitemenu-link" href="sobre.php" title="Sobre o Prodmais">
