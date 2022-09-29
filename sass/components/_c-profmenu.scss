@@ -2,11 +2,7 @@ $tabshape-desk: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000
 $tabshape-mini: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 85 45'><path d='M56.4,0H43.7h-1.2v0h-1.2H28.6C8.5,0,15.3,33.8,0,45h41.4h1.1v0h1.1H85C69.7,33.8,76.5,0,56.4,0z' /> </svg>");
 
 .c-profmenu {
-	background: linear-gradient(
-		90deg,
-		_palette(theme-light-3) 0%,
-		_palette(theme-light-4) 100%
-	);
+	background: linear-gradient(90deg, var(--c-pr-5) 0%, var(--c-pr-6) 100%);
 	display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
@@ -22,9 +18,9 @@ $tabshape-mini: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000
 
 .c-profmenu-btn {
 	align-items: center;
-	background-color: #4eb3de;
+	background-color: var(--c-pr-5);
 	border: none;
-	color: _palette(theme-light-3);
+	color: var(--c-pr-5);
 	display: flex;
 	display: flex;
 	flex-direction: row;
@@ -44,13 +40,13 @@ $tabshape-mini: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000
 
 	&:hover,
 	&:focus {
-		background-color: _palette(theme-light-2);
-		color: _palette(theme);
+		background-color: var(--c-pr-4);
+		color: var(--c-pr-2);
 	}
 
 	&:hover {
 		.c-profmenu-ico {
-			background-color: _palette(bg-primary);
+			background-color: var(--c-bg-0);
 		}
 	}
 
@@ -62,14 +58,14 @@ $tabshape-mini: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000
 }
 
 .c-profmenu-ico {
-	background-color: #fff;
+	background-color: var(--c-mn-6);
 	height: 40px;
 	transition: all 0.3s ease 0s;
 	width: 40px;
 
 	&:hover,
 	&:focus {
-		background-color: #4eb3de;
+		background-color: var(--c-pr-4);
 	}
 
 	@include up-to("md") {
@@ -87,11 +83,11 @@ $tabshape-mini: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000
 }
 
 .c-profmenu-active {
-	background-color: _palette(bg-primary) !important;
+	background-color: var(--c-bg-0) !important;
 	z-index: 3;
 
 	.c-profmenu-ico {
-		background-color: #4eb3de !important;
+		background-color: var(--c-pr-4) !important;
 		z-index: 4;
 	}
 }

@@ -1,13 +1,17 @@
+.manual-body {
+	background-color: var(--c-bg-1);
+}
+
 .manual {
 	&-container {
-		width: 100%;
 		margin: 0;
+		width: 100%;
 	}
 
 	&-img {
-		max-width: 90%;
 		box-shadow: 3px 3px 13px 3px rgba(0, 0, 0, 0.1);
 		margin: 2rem auto;
+		max-width: 90%;
 	}
 
 	&-img-nb {
@@ -16,7 +20,7 @@
 	}
 
 	&-wrapper {
-		background-color: _palette(bg-primary);
+		background-color: var(--c-bg-0);
 		border-radius: 50px;
 		display: flex;
 		flex-direction: column;
@@ -40,8 +44,8 @@
 		}
 
 		&-page {
-			padding: 6rem;
 			margin: 0 2.5rem;
+			padding: 6rem;
 		}
 	}
 }

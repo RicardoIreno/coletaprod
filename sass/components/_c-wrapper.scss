@@ -1,11 +1,11 @@
 .c-wrapper {
-	width: 100%;
+	align-items: center;
+	background-color: var(--c-pr-2);
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	background-color: _palette(bg-1);
 	min-height: 700px;
 	padding: 0;
+	width: 100%;
 	@include transition();
 }
 
@@ -17,21 +17,21 @@
 
 .c-wrapper {
 	&-body {
-		background-color: _palette(bg-secondary);
-		padding: 0;
+		background-color: var(--c-bg-1);
 		margin: 0;
+		padding: 0;
 	}
 
 	&-container {
-		width: 100%;
 		margin: 0;
+		width: 100%;
 	}
 
 	&-paper {
-		position: relative;
-		background-color: _palette(bg-primary);
+		background-color: var(--c-bg-0);
 		border-radius: 50px;
 		padding-bottom: 2rem;
+		position: relative;
 		position: relative;
 		transition: all 0.4s ease;
 

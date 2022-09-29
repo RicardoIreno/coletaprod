@@ -13,14 +13,12 @@
 	}
 
 	&-ico {
-		// fill: _palette(theme);
-		fill: _palette(theme);
 		margin: 1rem auto;
 		transition: all 0.25s ease-in-out;
 		width: 100px;
 
 		&:hover {
-			fill: _palette(theme-light-2);
+			fill: var(--c-ic-4);
 		}
 	}
 
@@ -35,7 +33,7 @@
 }
 
 .logo-about {
-	fill: #1c9ad1;
+	fill: var(--c-pr-3);
 	margin: 2rem;
 	max-width: 120px;
 }

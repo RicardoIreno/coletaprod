@@ -1,17 +1,16 @@
 .p-ppgs {
+	&-item {
+		padding-right: 4rem;
 
-  &-item {
-    padding-right: 4rem;
-
-    &-header {
-      font-size: 1.1rem;
-      color: _palette(theme-light-1);
-      border-bottom: 1px solid _palette(theme-light-2);
-      border-left: 1px solid _palette(theme-light-2);
-      border-bottom-left-radius: 30px;
-      padding: 1rem;
-      margin-bottom: 2rem;
-      cursor: pointer;
-    }
-  }
+		&-header {
+			font-size: 1.1rem;
+			color: var(--c-pr-3);
+			border-bottom: 1px solid var(--c-pr-4);
+			border-left: 1px solid var(--c-pr-4);
+			border-bottom-left-radius: 30px;
+			padding: 1rem;
+			margin-bottom: 2rem;
+			cursor: pointer;
+		}
+	}
 }

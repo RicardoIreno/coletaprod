@@ -2,7 +2,7 @@ $grap-graduation: 20px;
 $grap-gap-min: 2px;
 
 @mixin GraphBarBorder() {
-	border: 1px solid _palette(theme);
+	border: 1px solid var(--c-pr-2);
 	border-radius: 30px;
 }
 
@@ -13,23 +13,23 @@ $grap-gap-min: 2px;
 }
 
 .c-gppg {
-	position: relative;
-	width: 100;
+	align-items: center;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	align-items: center;
 	margin: 0 auto;
+	position: relative;
+	width: 100;
 
 	&-plot,
 	&-slice,
 	&-slice-tri,
 	&-legends,
 	&-bars {
-		display: flex;
-		justify-content: center;
 		align-items: flex-end;
 		box-sizing: border-box;
+		display: flex;
+		justify-content: center;
 	}
 
 	&-plot,
@@ -43,12 +43,12 @@ $grap-gap-min: 2px;
 
 	&-plot {
 		@include GraphBarBorder();
+		flex-direction: row;
+		flex-wrap: nowrap;
+		overflow: hidden;
 		padding: 4rem 1rem 0 1rem;
 		position: relative;
-		flex-wrap: nowrap;
-		flex-direction: row;
 		z-index: 5;
-		overflow: hidden;
 	}
 
 	&-legends,
@@ -74,12 +74,12 @@ $grap-gap-min: 2px;
 	}
 
 	&-level {
-		display: flex;
-		justify-content: flex-end;
 		align-items: flex-end;
-		height: $grap-graduation;
-		color: _palette(theme-light-1);
+		color: var(--c-pr-3);
+		display: flex;
 		font-size: 0.7rem;
+		height: $grap-graduation;
+		justify-content: flex-end;
 	}
 
 	&-bars {
@@ -88,71 +88,71 @@ $grap-gap-min: 2px;
 
 	&-bar {
 		--sizebar: 2;
-		width: 100%;
-		height: calc(var(--sizebar) * $grap-graduation);
-		z-index: 10;
-		display: flex;
 		align-items: center;
-		justify-content: center;
 		box-sizing: border-box;
+		display: flex;
+		height: calc(var(--sizebar) * $grap-graduation);
+		justify-content: center;
+		width: 100%;
+		z-index: 10;
 	}
 
-	&-bar[data-type="1"],
-	&-legend[data-number="1"] {
-		background-color: _palette(gb1);
-	}
+	// &-bar[data-type="1"],
+	// &-legend[data-number="1"] {
+	// 	background-color: var(--c-gb1);
+	// }
 
-	&-bar[data-type="2"],
-	&-legend[data-number="2"] {
-		background-color: _palette(gb2);
-	}
+	// &-bar[data-type="2"],
+	// &-legend[data-number="2"] {
+	// 	background-color: var(--c-gb2);
+	// }
 
-	&-bar[data-type="3"],
-	&-legend[data-number="3"] {
-		background-color: _palette(gb3);
-	}
+	// &-bar[data-type="3"],
+	// &-legend[data-number="3"] {
+	// 	background-color: var(--c-gb3);
+	// }
 
-	&-bar[data-type="4"],
-	&-legend[data-number="4"] {
-		background-color: _palette(gb4);
-	}
+	// &-bar[data-type="4"],
+	// &-legend[data-number="4"] {
+	// 	background-color: var(--c-gb4);
+	// }
 
-	&-bar[data-type="5"],
-	&-legend[data-number="4"] {
-		background-color: _palette(gb5);
-	}
+	// &-bar[data-type="5"],
+	// &-legend[data-number="5"] {
+	// 	background-color: var(--c-gb5);
+	// }
 
-	&-bar[data-type="6"],
-	&-legend[data-number="4"] {
-		background-color: _palette(gb6);
-	}
+	// &-bar[data-type="6"],
+	// &-legend[data-number="6"] {
+	// 	background-color: var(--c-gb6);
+	// }
 
 	&-legend {
-		padding: 0.2rem 0.7rem;
 		border-radius: 12px;
-		color: #fff;
+		color: var(--c-mn-0);
+		font-size: 0.9rem;
 		font-weight: 600;
 		margin: 0.5rem;
-		font-size: 0.9rem;
+		padding: 0.2rem 0.7rem;
 	}
 
 	&-grid {
-		width: 100%;
 		display: flex;
 		flex-direction: column;
-		position: absolute;
-		z-index: 2;
 		margin-bottom: $grap-graduation;
+		position: absolute;
+		width: 100%;
+		z-index: 2;
 
 		&-line {
-			width: 100%;
-			border-bottom: 1px dashed _palette(theme-light-2);
-			border-top: none;
+			border-bottom: 1px dashed var(--c-pr-4);
 			border-left: none;
 			border-right: none;
+			border-top: none;
+			box-sizing: border-box;
 			margin: calc($grap-graduation - 1px) 0 0 0;
 			padding: 0;
-			box-sizing: border-box;
+			width: 100%;
 		}
 	}
 
@@ -161,9 +161,9 @@ $grap-gap-min: 2px;
 	}
 
 	&-title {
-		text-align: center;
 		font-weight: 600;
 		margin-bottom: 1rem;
+		text-align: center;
 	}
 
 	&-legends {
@@ -173,11 +173,18 @@ $grap-gap-min: 2px;
 	}
 
 	&-year {
+		color: var(--c-pr-2);
+		font-size: 0.7rem;
 		height: $grap-graduation;
 		text-align: center;
-		color: _palette(theme);
-		font-size: 0.7rem;
-		// border-inline: 1px solid _palette(theme-light-2);
+		// border-inline: 1px solid var(--c-pr-4);
+	}
+}
+
+@each $k, $v in $paletteGraph {
+	.c-gppg-bar[data-type="#{$k+1}"],
+	.c-gppg-legend[data-number="#{$k+1}"] {
+		background-color: var(#{$v});
 	}
 }
 

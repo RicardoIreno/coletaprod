@@ -18,11 +18,11 @@
 }
 
 .c-term {
-	border-block: 1px solid _palette(theme-2);
+	border-block: 1px solid var(--c-pr-4);
+	color: var(--c-pr-2);
 	margin-block: 1rem;
 	padding: 0.5rem;
 	text-align: center;
-	color: _palette(theme);
 }
 
 .c-filterlist {
@@ -33,16 +33,16 @@
 @include up-to("lg") {
 	.p-result {
 		&-container {
+			column-gap: 1rem;
 			display: grid;
 			grid-template-areas: "resultmain resultnav";
 			grid-template-columns: 1fr $filterbar_width_desk;
-			column-gap: 1rem;
 		}
 
 		&-main {
 			grid-area: resultmain;
-			width: 100%;
 			margin: 2rem 1rem;
+			width: 100%;
 		}
 
 		&-nav {

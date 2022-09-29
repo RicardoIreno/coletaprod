@@ -25,13 +25,13 @@
 		max-width: 400px;
 
 		&-btn {
-			background-color: _palette(theme);
+			background-color: var(--c-pr-2);
 			height: 45px;
 			width: 45px;
 			@include transition;
 
 			&:hover {
-				background-color: _palette(theme-light-2);
+				background-color: var(--c-pr-4);
 			}
 		}
 	}
