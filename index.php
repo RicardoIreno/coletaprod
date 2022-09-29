@@ -56,13 +56,13 @@ com este programa, Se não, veja <https://www.gnu.org/licenses/>.
   <meta property="og:type" content="website">
   <!-- Facebook Tags - END -->
 
-  <link rel="stylesheet" href="sass/main.css" />
+  
 
 
 
 </head>
 
-<body>
+<body data-theme="<?php echo $theme; ?>">
 
   <?php
   if (file_exists('inc/google_analytics.php')) {

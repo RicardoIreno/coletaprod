@@ -128,8 +128,6 @@ if (!empty($_REQUEST["lattesID"])) {
 
 <html lang="pt-br">
 
-
-
 <head>
 
   <?php
@@ -154,8 +152,8 @@ if (!empty($_REQUEST["lattesID"])) {
 
 </head>
 
-<body class="c-wrapper-body">
-<?php
+<body data-theme="<?php echo $theme; ?>" class="c-wrapper-body">
+  <?php
   if (file_exists('inc/google_analytics.php')) {
     include 'inc/google_analytics.php';
   } elseif (file_exists('../inc/google_analytics.php')) {
@@ -187,8 +185,8 @@ if (!empty($_REQUEST["lattesID"])) {
               <?php echo $profile["nome_completo"] ?>
 
               <?php if ($profile["nacionalidade"] == "B") : ?>
-              <img class="country-flag" src="<?php echo $url_base; ?>/inc/images/country_flags/br.svg" alt="nacionalidade brasileira"
-                title="nacionalidade brasileira" />
+              <img class="country-flag" src="<?php echo $url_base; ?>/inc/images/country_flags/br.svg"
+                alt="nacionalidade brasileira" title="nacionalidade brasileira" />
               <?php endif; ?>
             </h1>
 
@@ -211,13 +209,13 @@ if (!empty($_REQUEST["lattesID"])) {
             <div class="p-profile-header-numbers">
 
               <div class="d-icon-text u-mx-1">
-                <i class="i i-articlePublished i-icons i-s2" title="Trabalhos publicados"
+                <i class="i i-articlePublished i-s2" title="Trabalhos publicados"
                   alt="Trabalhos publicados"></i>
                 <span class="t"><?php echo $totalWorks; ?></span>
               </div>
 
               <div class="d-icon-text">
-                <i class="i i-orientation i-icons i-s2" title="Orientações " alt="Orientações"></i>
+                <i class="i i-orientation i-s2" title="Orientações " alt="Orientações"></i>
                 <?php echo $totalOrientacoes; ?>
               </div>
             </div>
@@ -459,12 +457,13 @@ if (!empty($_REQUEST["lattesID"])) {
                 <?php if (!empty($profile['lattesID'])) : ?>
 
                 <a href="https://lattes.cnpq.br/<?php echo $profile['lattesID']; ?>" target="_blank" rel="external"><img
-                    class="c-socialicon" src="<?php echo $url_base; ?>/inc/images/academic_plataforms/logo_lattes.svg" alt="Lattes"
-                    title="Lattes" /></a>
+                    class="c-socialicon" src="<?php echo $url_base; ?>/inc/images/academic_plataforms/logo_lattes.svg"
+                    alt="Lattes" title="Lattes" /></a>
                 <?php endif; ?>
                 <?php if (!empty($profile['orcid_id'])) : ?>
                 <a href="<?php echo $profile['orcid_id']; ?>" target="_blank" rel="external"><img class="c-socialicon"
-                    src="<?php echo $url_base; ?>/inc/images/academic_plataforms/logo_research_id.svg" alt="ORCID" title="ORCID" /></a>
+                    src="<?php echo $url_base; ?>/inc/images/academic_plataforms/logo_research_id.svg" alt="ORCID"
+                    title="ORCID" /></a>
                 <?php endif; ?>
 
               </div> <!-- end c-socialicons -->

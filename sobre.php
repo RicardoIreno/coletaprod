@@ -13,11 +13,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <meta name="description" content="Prodmais Unifesp." />
   <meta name="keywords" content="Produção acadêmica, lattes, ORCID" />
-  <link rel="stylesheet" href="sass/main.css" />
+  
 
 </head>
 
-<body>
+<body data-theme="<?php echo $theme; ?>">
 
   <!-- NAV -->
   <?php require 'inc/navbar.php'; ?>

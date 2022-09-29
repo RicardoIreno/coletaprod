@@ -26,7 +26,7 @@ class GraphBar {
     return $output;
   }
 
-  static function yearRender($i) {
+  static function RenderYear($i) {
     if ($i == strftime("%Y") ) { return $i; } 
     elseif ($i % 4 == 0 && $i < (strftime("%Y") -3) ) { return $i; }
     else { return '';}
@@ -45,7 +45,7 @@ class GraphBar {
 
     foreach ($arr as $i)    
     {
-      $year = GraphBar::yearRender($i['year']);
+      $year = GraphBar::RenderYear($i['year']);
       $infoA = $i['infoA'];
       $infoB = $i['infoB'];
       $infoC = $i['infoC'];
@@ -79,7 +79,7 @@ class GraphBar {
 
     foreach ($arr as $i)    
     {
-      $year = GraphBar::yearRender($i['year']);
+      $year = GraphBar::RenderYear($i['year']);
       $infoA = $i['infoA'];
       $infoB = $i['infoB'];
       $infoC = $i['infoC'];
@@ -116,10 +116,10 @@ class GraphBar {
     $arrLegends,
     $lines
   ) {
-    $linesRendered = GraphBar::lines($lines);
-    $levelsRendered = GraphBar::levels($lines);
-    $slicesRendered = GraphBar::slices($arrData); 
-    $legendsRendered = GraphBar::legends($arrLegends);
+    $renderLines = GraphBar::lines($lines);
+    $renderLevels = GraphBar::levels($lines);
+    $renderSlices = GraphBar::slices($arrData); 
+    $renderLegends = GraphBar::legends($arrLegends);
 
     echo ("
       <a class='u-skip' href='#skip-graphbar'>Pular nuvens de palavras</a>
@@ -127,7 +127,7 @@ class GraphBar {
       <div class='c-gppg-infos'>
         <div class='c-gppg-title t-title'>$title</div>
         <div class='c-gppg-legends'>
-          $legendsRendered
+          $renderLegends
         </div>
       </div>
       
@@ -136,13 +136,13 @@ class GraphBar {
         
         <div class='c-gppg-slice-zero'>
           <div class='c-gppg-level'></div>
-          $levelsRendered
+          $renderLevels
         </div>
         
-        $slicesRendered
+        $renderSlices
         
         <div class='c-gppg-grid'>
-          $linesRendered
+          $renderLines
         </div>
 
         </div>
@@ -158,10 +158,10 @@ class GraphBar {
     $arrLegends,
     $lines
   ) {
-    $linesRendered = GraphBar::lines($lines);
-    $levelsRendered = GraphBar::levels($lines);
-    $slicesRendered = GraphBar::triSlices($arrData); 
-    $legendsRendered = GraphBar::legends($arrLegends);
+    $renderLines = GraphBar::lines($lines);
+    $renderLevels = GraphBar::levels($lines);
+    $renderSlices = GraphBar::triSlices($arrData); 
+    $renderLegends = GraphBar::legends($arrLegends);
 
     echo ("
       <a class='u-skip' href='#skip-graph3'>Pular nuvens de palavras</a>
@@ -169,7 +169,7 @@ class GraphBar {
       <div class='c-gppg-infos'>
         <div class='c-gppg-title t-title'>$title</div>
         <div class='c-gppg-legends'>
-          $legendsRendered
+          $renderLegends
         </div>
       </div>
       
@@ -178,13 +178,13 @@ class GraphBar {
         
         <div class='c-gppg-slice-zero'>
           <div class='c-gppg-level'></div>
-          $levelsRendered
+          $renderLevels
         </div>
         
-        $slicesRendered
+        $renderSlices
         
         <div class='c-gppg-grid'>
-          $linesRendered
+          $renderLines
         </div>
 
         </div>

@@ -49,10 +49,10 @@ class Departamento {
   <meta name="description" content="Prodmais Unifesp." />
   <meta name="keywords" content="Produção acadêmica, lattes, ORCID" />
 
-  <link rel="stylesheet" href="sass/main.css" />
+  
 </head>
 
-<body class="c-wrapper-body">
+<body data-theme="<?php echo $theme; ?>" class="c-wrapper-body">
   <?php if(file_exists('inc/google_analytics.php')){include 'inc/google_analytics.php';}?>
 
   <?php require 'inc/navbar.php'; ?>

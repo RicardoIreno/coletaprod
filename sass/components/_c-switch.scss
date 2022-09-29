@@ -40,7 +40,7 @@
 		}
 
 		& + label:after {
-			background-color: #fff;
+			background-color: var(--c-mn-6);
 			border-radius: 100%;
 			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 			transition: all 0.4s;
@@ -48,7 +48,7 @@
 		}
 
 		&:checked + label:before {
-			background-color: _palette(theme-light-2);
+			background-color: var(--c-pr-4);
 		}
 
 		&:checked + label:after {

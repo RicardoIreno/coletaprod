@@ -10,15 +10,15 @@
 	}
 
 	&-content {
-		border-bottom: 1px dashed _palette(theme-light-2);
-		border-left: 1px solid _palette(theme-light-2);
+		border-bottom: 1px dashed var(--c-pr-4);
+		border-left: 1px solid var(--c-pr-4);
 		margin-bottom: 1.5rem;
 		padding-bottom: 1rem;
 		padding-inline: 0.5rem;
 	}
 
 	&-content-mini {
-		border-left: 3px solid _palette(theme-light-2);
+		border-left: 3px solid var(--c-pr-4);
 		margin-bottom: 0.5rem;
 		padding-bottom: 0.5rem;
 		padding-inline: 0.5rem;
@@ -30,10 +30,10 @@
 	}
 
 	&-tag {
-		background-color: _palette(theme-light-3);
-		border: 1px solid _palette(theme-light-1);
+		background-color: var(--c-pr-5);
+		border: 1px solid var(--c-pr-3);
 		border-radius: 10px;
-		color: _palette(theme-dark);
+		color: var(--c-pr-1);
 		margin: 0.5rem;
 		padding-inline: 0.7rem;
 	}
@@ -55,7 +55,6 @@
 		}
 
 		&-ico {
-			background-color: _palette(theme-light-2);
 			display: block;
 			height: 50px;
 			width: 50px;

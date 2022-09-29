@@ -16,7 +16,6 @@
 
 	&-i {
 		align-items: center;
-		background-color: _palette(theme-light-2);
 		color: #fff;
 		display: flex;
 		font-size: 1.1rem;
@@ -28,7 +27,7 @@
 
 	&-text1,
 	&-text2 {
-		color: _palette(theme-light-1);
+		color: var(--c-pr-3);
 		font-weight: 600;
 		min-width: fit-content;
 		text-align: center;

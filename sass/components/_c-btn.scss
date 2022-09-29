@@ -1,20 +1,20 @@
 // == BUTTONS == //
 @mixin hover-btn {
-	background-color: _palette(btn-bg-hover);
-	border-color: _palette(btn-bg-hover);
+	background-color: var(--c-pr-4);
+	border-color: var(--c-pr-4);
 	-webkit-box-shadow: 0px 5px 10px -10px rgba(0, 0, 0, 0.57);
 	-moz-box-shadow: 0px 5px 410px -10px rgba(0, 0, 0, 0.57);
 	box-shadow: 5px 10px -10px rgba(0, 0, 0, 0.57);
-	color: _palette(bg-primary);
+	color: var(--c-bg-0);
 	transition: all 0.2s ease 0s;
 }
 
 @mixin btn {
 	align-items: center;
 	background: none;
-	border: 2px solid _palette(btn-fg);
+	border: 2px solid var(--c-pr-2);
 	border-radius: $input_border_radius;
-	color: _palette(btn-fg);
+	color: var(--c-pr-2);
 	cursor: pointer;
 	justify-content: center;
 	min-width: 6rem;
@@ -30,11 +30,11 @@
 
 .c-btn {
 	&--c1 {
-		color: _palette(theme);
+		color: var(--c-pr-2);
 	}
 
 	&--disabled {
-		color: _palette(t-gray-light);
+		color: var(--c-mn-3);
 	}
 }
 
@@ -45,7 +45,7 @@
 	padding: 8px;
 
 	&-ico {
-		fill: _palette(theme);
+		fill: var(--c-pr-2);
 		margin: 0.25rem;
 		transition: all 0.2s ease 0s;
 		vertical-align: middle;
@@ -59,10 +59,10 @@
 	&:hover,
 	&:focus {
 		@include hover-btn;
-		color: _palette(btn-fg-hover);
+		color: var(--c-mn-6);
 
 		.btn-ico {
-			fill: _palette(btn-fg-hover);
+			fill: var(--c-mn-6);
 		}
 	}
 }
@@ -72,7 +72,7 @@
 		background-color: transparent;
 		border: none;
 		cursor: pointer;
-		fill: _palette(theme);
+		fill: var(--c-pr-2);
 		-webkit-user-select: none;
 		-moz-user-select: none;
 		user-select: none;
@@ -91,7 +91,7 @@
 			border: none;
 
 			.btn-search-ico {
-				fill: _palette(theme-light-2);
+				fill: var(--c-pr-4);
 			}
 		}
 	}

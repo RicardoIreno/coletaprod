@@ -54,12 +54,12 @@
   <title><?php echo $branch; ?> - Resultado da busca</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <meta name="description" content="Prodmais Unifesp." />
-  <meta name="keywords" content="Produção acadêmica, lattes, ORCID" /> 
-  <link rel="stylesheet" href="sass/main.css" />
+  <meta name="keywords" content="Produção acadêmica, lattes, ORCID" />
+  
 
 </head>
 
-<body>
+<body data-theme="<?php echo $theme; ?>">
   <?php
   if (file_exists('inc/google_analytics.php')) {
     include 'inc/google_analytics.php';
@@ -75,7 +75,8 @@
         <summary class="c-filterlist-header">
           <h3 class="c-filterlist-title">Refinar resultados</h3>
           <!-- <div class="c-filterlist-arrow"></div> -->
-          <svg class="c-filterlist-arrow" xmlns='https://www.w3.org/2000/svg' width='100' height='15' viewBox='0 0 27 4'>
+          <svg class="c-filterlist-arrow" xmlns='https://www.w3.org/2000/svg' width='100' height='15'
+            viewBox='0 0 27 4'>
             <path
               d='M -0.01265394,0.14177403 13.243005,2.082092 26.44568,0.14177403 26.42274,1.4634269 13.243005,3.4026049 -0.01265394,1.4646869 Z' />
           </svg>
@@ -240,7 +241,7 @@
         }
       },
 
-      openCloseMenu() {        
+      openCloseMenu() {
         if (window.matchMedia("(min-width: 1300px)").matches) document.getElementById("filterlist").open =
           true;
         else document.getElementById("filterlist").open = false;

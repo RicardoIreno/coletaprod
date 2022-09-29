@@ -7,8 +7,8 @@ details[open] .c-fbloc-name--header:before {
 }
 
 @mixin filterhover() {
-	background-color: _palette(theme-light-2);
-	color: _palette(bg-primary);
+	background-color: var(--c-pr-4);
+	color: var(--c-bg-0);
 	transition: all 0.2s ease;
 }
 
@@ -29,7 +29,7 @@ $arrowDown: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg
 
 	&-header {
 		align-items: center;
-		border-bottom: 2px solid _palette(theme);
+		border-bottom: 2px solid var(--c-pr-2);
 		font-size: 1.2rem;
 		justify-content: center;
 		margin: 1rem;
@@ -41,12 +41,12 @@ $arrowDown: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg
 
 		&:hover {
 			.c-filterlist-title {
-				color: _palette(theme-light-2);
+				color: var(--c-pr-4);
 				transition: all 0.3s ease 0s;
 			}
 
 			.c-filterlist-arrow {
-				fill: _palette(theme-light-2);
+				fill: var(--c-pr-4);
 				transform: translateY(5px);
 				transition: all 0.3s ease 0s;
 			}
@@ -54,7 +54,7 @@ $arrowDown: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg
 	}
 
 	&-arrow {
-		fill: _palette(theme);
+		fill: var(--c-pr-2);
 		height: 15px;
 		width: 100px;
 		z-index: 999;
@@ -88,7 +88,7 @@ $arrowDown: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg
 	}
 
 	&-header {
-		background-color: _palette(bg-primary);
+		background-color: var(--c-bg-0);
 
 		border: 1px solid #b9d8ec;
 		border-radius: 0.5rem;
@@ -111,7 +111,7 @@ $arrowDown: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg
 	}
 
 	&-item {
-		border-bottom: 1px solid _palette(theme-light-2);
+		border-bottom: 1px solid var(--c-pr-4);
 		box-sizing: border-box;
 		font-size: 1rem;
 		margin-block: 0.5rem;
@@ -131,12 +131,12 @@ $arrowDown: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg
 		word-wrap: break-word;
 
 		&:hover {
-			color: _palette(bg-primary);
+			color: var(--c-bg-0);
 			transition: 0.2s all ease;
 		}
 
 		&--header::before {
-			color: _palette(theme);
+			color: var(--c-pr-2);
 			content: "›";
 			font-family: "Hiragino Mincho ProN", "Open Sans", sans-serif;
 			font-size: 2rem;
@@ -152,9 +152,9 @@ $arrowDown: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg
 	}
 
 	&-number {
-		background-color: _palette(theme-light-2);
+		background-color: var(--c-pr-4);
 		border-radius: 8px;
-		color: #fff;
+		color: var(--c-mn-6);
 		font-weight: 500;
 		grid-area: number;
 		height: fit-content;
@@ -163,11 +163,9 @@ $arrowDown: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg
 		width: fit-content;
 	}
 
-	$btn-color: #b9d8ec;
-
 	&-btn {
-		background-color: #fff;
-		border: 1px solid $btn-color;
+		background-color: var(--c-mn-6);
+		border: 1px solid var(--c-pr-6);
 		border-radius: 0.5rem;
 		box-sizing: border-box;
 		height: 2rem;
@@ -175,7 +173,7 @@ $arrowDown: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg
 		width: 100%;
 
 		svg {
-			fill: _palette(theme-light-2);
+			fill: var(--c-pr-4);
 			transition: all 0.2s ease 0s;
 			vertical-align: middle;
 			width: 30px;
@@ -185,7 +183,7 @@ $arrowDown: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg
 			@include filterhover();
 
 			svg {
-				fill: _palette(bg-primary);
+				fill: var(--c-bg-0);
 			}
 		}
 	}

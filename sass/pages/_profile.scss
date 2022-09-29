@@ -95,13 +95,6 @@
 			font-weight: 600;
 			margin-right: 1rem;
 		}
-
-		&-icon {
-			background-color: _palette(theme-light-2);
-			height: 30px;
-			margin: 0 auto;
-			width: 30px;
-		}
 	}
 }
 
@@ -116,7 +109,7 @@
 // PI - PRODUÇÃO INTELECTUAL
 
 .c-pi-citations {
-	color: _palette(theme);
+	color: var(--c-pr-2);
 	font-weight: 600;
 	margin-right: 0.5rem;
 }

@@ -48,10 +48,10 @@ class PPG {
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <meta name="description" content="Prodmais Unifesp." />
   <meta name="keywords" content="Produção acadêmica, lattes, ORCID" />
-  <link rel="stylesheet" href="sass/main.css" />
+  
 </head>
 
-<body class="c-wrapper-body">
+<body data-theme="<?php echo $theme; ?>" class="c-wrapper-body">
   <?php if(file_exists('inc/google_analytics.php')){include 'inc/google_analytics.php';}?>
 
   <?php require 'inc/navbar.php'; ?>
@@ -78,7 +78,7 @@ class PPG {
             </div>
 
             <div class="d-icon-text">
-              <i class='i i-icons i-people-manager'></i>
+              <i class='i i-people-manager'></i>
               <span class="t t-gray t-b">Coordenação: Nome do coordenador/coordenadora</span>
             </div>
 

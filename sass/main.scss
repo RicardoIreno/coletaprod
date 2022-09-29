@@ -1,8 +1,8 @@
 @import "abstracts/vars";
 @import "abstracts/functions";
 @import "abstracts/mixins";
-@import "abstracts/utils";
 @import "base/theme";
+@import "abstracts/utils";
 @import "base/divs";
 @import "base/transitions";
 @import "base/vue-transitions";
@@ -41,7 +41,7 @@
 @import "pages/manual-home";
 @import "pages/ppg";
 @import "pages/ppgs";
-@import "pages/pre-dash";
+@import "pages/predash";
 @import "pages/profile";
 @import "pages/projeto";
 @import "pages/projetos";

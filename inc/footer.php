@@ -1,11 +1,10 @@
 <footer class="sitefooter">
 
-
   <div class="sitefooter-contacts">
     <a class="sitefooter-link" href="https://atendimento.unifesp.br/">
-      Fale conosco</a> <span class="sitefooter-det">|</span>
+      Fale conosco</a>
     <a class="sitefooter-link" href="https://atendimento.unifesp.br/">
-      Política de privacidade</a> <span class="sitefooter-det">|</span>
+      Política de privacidade</a>
     <a class="sitefooter-link" target="_blank" href="https://forms.gle/2QRcqg2YfxMvEqVX9">
       Relate erros</a>
 
@@ -19,7 +18,8 @@
 
     <?php if (file_exists("inc/images/logos/unifesp-branco.svg")) : ?>
     <a href="https://unifesp.br/" target="_blank" class="sitefooter-link" title="Visite o site doa Unifesp">
-      <img class="sitefooter-logo" src="<?php echo $url_base; ?>/inc/images/logos/unifesp-branco.svg" alt="Logo da Unifesp"></a>
+      <img class="sitefooter-logo" src="<?php echo $url_base; ?>/inc/images/logos/unifesp-branco.svg"
+        alt="Logo da Unifesp"></a>
     <?php endif ?>
   </div>
 </footer>

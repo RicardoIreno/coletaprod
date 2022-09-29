@@ -11,7 +11,7 @@ table {
 }
 
 tbody {
-	color: _palette(theme);
+	color: var(--c-pr-2);
 }
 
 td,
@@ -23,16 +23,16 @@ th {
 
 .thead {
 	color: #fff;
-	background-color: _palette(theme-light-2);
+	background-color: var(--c-pr-4);
 	text-align: center;
 }
 
 tbody tr:nth-child(even) {
-	background-color: _palette(theme-light-4);
+	background-color: var(--c-pr-6);
 }
 
 tbody tr:nth-child(odd) {
-	background-color: _palette(theme-light-5);
+	background-color: var(--c-pr-7);
 }
 
 th {

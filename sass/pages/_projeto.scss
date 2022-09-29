@@ -51,7 +51,7 @@
 
 .p-projeto {
 	&-logo {
-		background-color: _palette(theme-light-2);
+		background-color: var(--c-pr-4);
 		height: 50px;
 		transform: translateY(6px);
 		width: 50px;
