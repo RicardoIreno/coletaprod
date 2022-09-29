@@ -14,6 +14,10 @@ $slogan = 'Uma ferramenta de busca da produção científica de pesquisadores da
 // Definir Instituição
 $instituicao = "UNIFESP";
 
+// Tema
+$theme = 'default';
+
+
 /* Endereço do server, sem http:// */
 $hosts = ['localhost'];
 
