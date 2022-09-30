@@ -13,7 +13,7 @@
 <header class="siteheader">
 
   <a href="<?php echo $url_base; ?>/index.php">
-    <i class="i i-logo-header siteheader-logo"></i>
+
   </a>
 
   <a class="u-skip" href="#skipmenu">Pular menu principal</a>

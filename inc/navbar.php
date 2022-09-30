@@ -13,7 +13,7 @@
 <header class="siteheader">
 
   <a href="index.php">
-    <i class="i i-logo-header siteheader-logo"></i>
+    <img class="siteheader-logo" src="inc/images/logos/logo_header.svg" loading="lazy" />
   </a>
 
   <div class="sitemenu-container">

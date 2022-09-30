@@ -56,7 +56,7 @@ com este programa, Se não, veja <https://www.gnu.org/licenses/>.
   <meta property="og:type" content="website">
   <!-- Facebook Tags - END -->
 
-  
+
 
 
 
@@ -76,7 +76,7 @@ com este programa, Se não, veja <https://www.gnu.org/licenses/>.
 
   <main class="p-home-wrapper" id="home">
 
-    <i class="i i-logo p-home-logo"></i>
+    <img class="p-home-logo" src="inc/images/logos/logo_main.svg" loading="lazy" />
     <h2 class="p-home-slogan"><?php echo ($slogan); ?></h2>
 
     <?php if (paginaInicial::contar_registros_indice($index) == 0) : ?>
@@ -162,12 +162,22 @@ com este programa, Se não, veja <https://www.gnu.org/licenses/>.
     </div>
 
     <transition name="homeeffect">
-      <div class="tips" v-if="showTips">
-        <p class="p-home-info"><b>Dicas</b></p>
-        <p class="p-home-info">1: Use * para busca por radical. Ex: biblio*.</p>
-        <p class="p-home-info">2: Para buscas exatas, coloque entre "". Ex: "Direito civil"</p>
-        <p class="p-home-info">3: Por padrão, o sistema utiliza o operador booleano OR. Caso necessite deixar a busca
-          mais específica, utilize o operador AND (em maiúscula)</p>
+      <div class="c-tips" v-if="showTips">
+
+        <h3 class="t c-tip-title">Dicas de como pesquisar</h3>
+
+        <p class="t">• Use * para busca por radical. Exemplo: biblio*.</p>
+        <p class="t">• Para buscas exatas, coloque entre "". Exemplo: "Direito civil"</p>
+        <p class="t">• Por padrão, o sistema utiliza o operador booleano OR. Caso necessite deixar a busca
+          mais específica, utilize o operador AND (em maiúscula).</p>
+
+        <h4 class="t c-tip-subtitle">Busca avançada</h4>
+
+        <p>Na busca avançada é possível </p>
+
+        <?php
+        ?>
+
       </div>
     </transition>
 

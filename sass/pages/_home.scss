@@ -24,20 +24,17 @@
 	text-align: center;
 }
 
-.p-home {
-	&-logo {
-		background-color: var(--c-pr-2);
-		display: block;
-		height: 200px;
-		margin-bottom: 0.7rem;
-		width: 240px;
-	}
+.p-home-logo {
+	display: block;
+	margin-bottom: 0.7rem;
+	width: 100%;
+	max-width: 240px;
+}
 
-	.p-home-slogan {
-		font-size: 2rem;
-		max-width: 800px;
-		padding: 0.5rem 0.5rem;
-	}
+.p-home-slogan {
+	font-size: 2rem;
+	max-width: 800px;
+	padding: 0.5rem 0.5rem;
 }
 
 .c-searchcategories,
@@ -75,8 +72,4 @@
 	.p-home-search {
 		margin: 1rem auto;
 	}
-}
-
-.tips {
-	max-width: 900px;
 }
