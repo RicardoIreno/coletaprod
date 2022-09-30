@@ -3,9 +3,9 @@
 // Include essencial files
 require 'inc/config.php';
 require 'inc/functions.php';
-require 'components/Production.php';
-require 'components/SList.php';
-require 'components/TagCloud.php';
+require 'inc/components/Production.php';
+require 'inc/components/SList.php';
+require 'inc/components/TagCloud.php';
 include_once '_fakedata.php';
 
 function lattesID10($lattesID16)

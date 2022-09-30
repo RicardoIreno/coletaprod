@@ -6,7 +6,7 @@
   require 'inc/config.php';
   require 'inc/meta-header.php';
   require 'inc/functions.php';
-  require 'components/Who.php';
+  require 'inc/components/Who.php';
   ?>
   <title>Prod Mais</title>
   <meta charset="utf-8" />
