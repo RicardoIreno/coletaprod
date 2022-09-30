@@ -47,9 +47,9 @@ $data = '{
         require 'inc/config.php';
         require 'inc/meta-header.php';
         require 'inc/functions.php';
-        require 'components/SList.php';
-        require 'components/TagCloud.php';
-        require 'components/Who.php';
+        require 'inc/components/SList.php';
+        require 'inc/components/TagCloud.php';
+        require 'inc/components/Who.php';
         require '_fakedata.php';
         ?>
   <meta charset="utf-8" />

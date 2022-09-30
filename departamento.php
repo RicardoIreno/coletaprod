@@ -36,11 +36,11 @@ class Departamento {
   require 'inc/config.php';
   require 'inc/meta-header.php';
   require 'inc/functions.php';
-  require 'components/GraphBar.php';
-  require 'components/Production.php';
-  require 'components/Who.php';
-  require 'components/PPGBadges.php';
-  require 'components/TagCloud.php';
+  require 'inc/components/GraphBar.php';
+  require 'inc/components/Production.php';
+  require 'inc/components/Who.php';
+  require 'inc/components/PPGBadges.php';
+  require 'inc/components/TagCloud.php';
   require '_fakedata.php';
   ?>
   <meta charset="utf-8" />
@@ -49,7 +49,7 @@ class Departamento {
   <meta name="description" content="Prodmais Unifesp." />
   <meta name="keywords" content="Produção acadêmica, lattes, ORCID" />
 
-  
+
 </head>
 
 <body data-theme="<?php echo $theme; ?>" class="c-wrapper-body">

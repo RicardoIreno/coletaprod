@@ -3,9 +3,9 @@
 // Include essencial files
 require 'inc/config.php';
 require 'inc/functions.php';
-require 'components/Production.php';
-require 'components/SList.php';
-require 'components/TagCloud.php';
+require 'inc/components/Production.php';
+require 'inc/components/SList.php';
+require 'inc/components/TagCloud.php';
 include_once '_fakedata.php';
 
 function lattesID10($lattesID16)
@@ -209,8 +209,7 @@ if (!empty($_REQUEST["lattesID"])) {
             <div class="p-profile-header-numbers">
 
               <div class="d-icon-text u-mx-1">
-                <i class="i i-articlePublished i-s2" title="Trabalhos publicados"
-                  alt="Trabalhos publicados"></i>
+                <i class="i i-articlePublished i-s2" title="Trabalhos publicados" alt="Trabalhos publicados"></i>
                 <span class="t"><?php echo $totalWorks; ?></span>
               </div>
 
@@ -457,12 +456,12 @@ if (!empty($_REQUEST["lattesID"])) {
                 <?php if (!empty($profile['lattesID'])) : ?>
 
                 <a href="https://lattes.cnpq.br/<?php echo $profile['lattesID']; ?>" target="_blank" rel="external"><img
-                    class="c-socialicon" src="<?php echo $url_base; ?>/inc/images/academic_plataforms/logo_lattes.svg"
+                    class="c-socialicon" src="<?php echo $url_base; ?>/inc/images/logos/academic/logo_lattes.svg"
                     alt="Lattes" title="Lattes" /></a>
                 <?php endif; ?>
                 <?php if (!empty($profile['orcid_id'])) : ?>
                 <a href="<?php echo $profile['orcid_id']; ?>" target="_blank" rel="external"><img class="c-socialicon"
-                    src="<?php echo $url_base; ?>/inc/images/academic_plataforms/logo_research_id.svg" alt="ORCID"
+                    src="<?php echo $url_base; ?>/inc/images/logos/academic/logo_research_id.svg" alt="ORCID"
                     title="ORCID" /></a>
                 <?php endif; ?>
 

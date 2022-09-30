@@ -6,7 +6,7 @@
   require 'inc/config.php';
   require 'inc/meta-header.php';
   require 'inc/functions.php';
-  require 'components/Production.php';
+  require 'inc/components/Production.php';
 
   if (isset($fields)) {
     $_POST["fields"] = $fields;
