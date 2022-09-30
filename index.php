@@ -163,21 +163,11 @@ com este programa, Se não, veja <https://www.gnu.org/licenses/>.
 
     <transition name="homeeffect">
       <div class="c-tips" v-if="showTips">
-
-        <h3 class="t c-tip-title">Dicas de como pesquisar</h3>
-
-        <p class="t">• Use * para busca por radical. Exemplo: biblio*.</p>
-        <p class="t">• Para buscas exatas, coloque entre "". Exemplo: "Direito civil"</p>
-        <p class="t">• Por padrão, o sistema utiliza o operador booleano OR. Caso necessite deixar a busca
-          mais específica, utilize o operador AND (em maiúscula).</p>
-
-        <h4 class="t c-tip-subtitle">Busca avançada</h4>
-
-        <p>Na busca avançada é possível </p>
-
         <?php
+        $parsedown = new Parsedown();
+        $txtm = file_get_contents('inc/md/tips_home.md');
+        echo $parsedown->text($txtm);
         ?>
-
       </div>
     </transition>
 
