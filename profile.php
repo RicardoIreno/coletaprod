@@ -139,16 +139,8 @@ if (!empty($_REQUEST["lattesID"])) {
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <meta name="description" content="Prodmais Unifesp." />
   <meta name="keywords" content="Produção acadêmica, lattes, ORCID" />
-  <link rel="stylesheet" href="<?php echo $url_base; ?>/sass/main.css" />
-  <script src="../inc/js/vue.min.js"></script>
-
-  <?php
-  if (file_exists('../inc/js/vue.min.js')) {
-    echo '<script src="../inc/js/vue.min.js"></script>';
-  } elseif (file_exists('inc/js/vue.min.js')) {
-    echo '<script src="inc/js/vue.min.js"></script>';
-  } 
-?>
+  <link rel="stylesheet" href="<?php echo $url_base; ?>/inc/sass/main.css" />
+  <script src="<?php echo $url_base; ?>/inc/js/vue.min.js"></script>
 
 </head>
 
