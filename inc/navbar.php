@@ -27,7 +27,7 @@
       <ul class="sitemenu-list">
 
         <li class="sitemenu-item" title="Home">
-          <a class="sitemenu-link" href="index.php" title="Home">
+          <a class="sitemenu-link" href="<?php echo $url_base; ?>" title="Home">
             Home
             <i class="i i-home sitemenu-ico"></i>
           </a>
