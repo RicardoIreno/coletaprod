@@ -67,6 +67,10 @@ Ao rodar pela primeira vez, o sistema irá criar os índices no elasticsearch.
 
 ### Google Analytics
 
+Criar o arquivo inc/google_analytics.php
+
+    touch inc/google_analytics.php
+
 Copie o código do Google Analytics no arquivo inc/google_analytics.php
 
 ### Inclusão automática
