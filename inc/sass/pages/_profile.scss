@@ -21,7 +21,9 @@
 
 .p-profile-header-one,
 .p-profile-header-two {
-	@extend .d-v, .d-vc;
+	// @extend .d-v, .d-vc;
+	display: flex;
+	flex-direction: column;
 	justify-content: baseline;
 	text-align: center;
 }
@@ -52,18 +54,14 @@
 }
 
 .p-profile-header-three {
-	@extend .d-h, .d-vc, .d-hc;
+	display: flex;
+	justify-content: space-evenly;
 	margin-top: 2rem;
+	width: 100%;
 
 	@include up-to("md") {
-		grid-area: three;
-		justify-content: space-between;
-		margin-top: 0;
-		padding-left: 1rem;
-	}
-
-	@include up-to("lg") {
-		justify-content: flex-end;
+		flex-direction: column;
+		align-items: flex-end;
 	}
 }
 
