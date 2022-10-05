@@ -363,11 +363,11 @@ if (!empty($_REQUEST["lattesID"])) {
               </p>
 
               <div class="c-graph-label"><b>Graduação</b></div>
-              <div class="d-h u-mx-1">
+              <div class="d-h c-graph-label">
                 <span class="c-graph-label">maior produção</span>
                 <div class="c-graph-unit" data-weight="4"></div>
               </div>
-              <div class="d-h u-mx-1">
+              <div class="d-h c-graph-label">
                 <span class="c-graph-label">menor produção</span>
                 <div class="c-graph-unit" data-weight="0"></div>
               </div>
