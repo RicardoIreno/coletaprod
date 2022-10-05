@@ -2,15 +2,24 @@
 <html lang="pt-br" dir="ltr">
 
 <head>
-  <?php
-    require 'inc/config.php';
+  <?php    
     require 'inc/meta-header.php';
     require 'inc/functions.php';
-    ?>
+  ?>
   <title><?php echo $branch ?> - Inclusão</title>
   
 
 </head>
+
+<?php
+require 'inc/config.php';
+
+$username = $login_user;
+$password = $login_password;
+ 
+if(isset($_POST['submit'])){
+    if($_POST['username'] == $username && $_POST['password'] == $password){
+        ?>
 
 <body class="c-wrapper-body">
   <main class="c-wrapper-container">
@@ -138,3 +147,26 @@
 </body>
 
 </html>
+
+
+
+
+        <?php
+        } else {
+        echo "Usuário não encontrado";
+        }
+} else {
+    ?>
+    <body>
+      
+      <form class="p-inclusao-form" method="post">
+        <h1><?php echo $branch ?> - Login</h1>
+        Usuário: <input class="c-input--sm" type="text" name="username" /><br />
+        Senha: <input class="c-input--sm" type="password" name="password" /><br />
+        <input class="c-btn" type='submit' name='submit' value="Login" />
+      </form>
+    </body>
+    <?php
+}
+ 
+?>
