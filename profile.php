@@ -217,14 +217,13 @@ if (!empty($_REQUEST["lattesID"])) {
             <a class="u-skip" href=”#skipc-graph”>Pular gráfico</a>
 
             <div class="c-graph">
-              <div class="c-graph-line">
+              <!-- <div class="c-graph-line">
                 <div class="c-graph-icon"></div>
-                <div class="c-graph-label"><?php echo date("Y"); ?>...<?php echo date("Y", strtotime("-4 year")); ?>
+                <div class="c-graph-label">De <?php echo date("Y", strtotime("-4 year")); ?> a <?php echo date("Y"); ?>
                 </div>
-              </div>
+              </div> -->
 
               <div class="c-graph-line">
-                <span class="c-graph-label">Trabalhos publicados</span>
                 <?php
                 foreach ($trabalhos_publicados as $i => $j) {
 
@@ -251,6 +250,7 @@ if (!empty($_REQUEST["lattesID"])) {
                 unset($j);
                 unset($weight);
                 ?>
+                <span class="c-graph-label">Trabalhos publicados</span>
               </div>
 
               <!--
@@ -351,27 +351,27 @@ if (!empty($_REQUEST["lattesID"])) {
               </div>
               -->
 
-              <div class="c-graph-line u-mt-1">
-                <div class="c-graph-icon"></div>
-                <div class="c-graph-unit" data-weight="0"></div>
-                <div class="c-graph-unit" data-weight="1"></div>
-                <div class="c-graph-unit" data-weight="2"></div>
-                <div class="c-graph-unit" data-weight="3"></div>
-                <div class="c-graph-unit" data-weight="4"></div>
-              </div>
-
-
             </div> <!-- end c-graph -->
 
 
+
             <div class="c-graph-info">
-              <span class="c-graph-info-label">+</span>
-              <div class="c-graph-unit" data-weight="4"></div>
-              <div class="c-graph-unit" data-weight="3"></div>
-              <div class="c-graph-unit" data-weight="2"></div>
-              <div class="c-graph-unit" data-weight="1"></div>
-              <div class="c-graph-unit" data-weight="0"></div>
-              <span class="c-graph-info-label">-</span>
+              <div class="c-graph-label"><b>Informações do gráfico</b></div>
+
+              <p class="c-graph-label">
+                De <?php echo date("Y", strtotime("-4 year")); ?> a <?php echo date("Y"); ?>
+              </p>
+
+              <div class="c-graph-label"><b>Graduação</b></div>
+              <div class="d-h u-mx-1">
+                <span class="c-graph-label">maior produção</span>
+                <div class="c-graph-unit" data-weight="4"></div>
+              </div>
+              <div class="d-h u-mx-1">
+                <span class="c-graph-label">menor produção</span>
+                <div class="c-graph-unit" data-weight="0"></div>
+              </div>
+
             </div>
 
 

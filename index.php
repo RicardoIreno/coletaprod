@@ -136,6 +136,9 @@ com este programa, Se não, veja <https://www.gnu.org/licenses/>.
               <input type="text" class="c-input--date" id="finalYear" name="finalYear" pattern="\d{4}"
                 placeholder="Data final" />
             </div>
+
+
+
           </div> <!-- end advanced -->
         </transition>
 
