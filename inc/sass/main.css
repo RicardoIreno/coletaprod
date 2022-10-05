@@ -1269,7 +1269,7 @@ h5 a {
   text-align: justify;
 }
 
-.t {
+.t, .c-tips p {
   font-family: "Lato", sans-serif;
 }
 
@@ -2434,49 +2434,6 @@ details[open] .c-fbloc-name--header:before {
   width: max-content;
 }
 
-.c-tab-bar {
-  display: flex;
-  flex-direction: row;
-  margin-top: 1rem;
-  margin-bottom: 3rem;
-  width: 100%;
-  border: none;
-  border-bottom: 1px solid var(--c-pr-4);
-}
-.c-tab-btn {
-  background-color: var(--c-bg-0);
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  border: 1px solid var(--c-pr-4);
-  color: var(--c-pr-2);
-  cursor: pointer;
-  display: flex;
-  font-family: "Lato", sans-serif;
-  font-weight: 700;
-  font-size: 0.95rem;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  justify-content: center;
-  padding: 0.3rem 1rem 0.3rem 1rem;
-  transform: translateY(1px);
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  z-index: 999;
-}
-.c-tab-btn:hover {
-  background-color: var(--c-pr-5);
-  color: var(--c-mn-0);
-  transition: all 0.4s 0s ease;
-}
-.c-tab-active {
-  background-color: var(--c-bg-0);
-  border: 2px solid var(--c-pr-2);
-  border-bottom: none;
-  color: var(--c-mn-0);
-}
-
 .c-profmenu {
   background: linear-gradient(90deg, var(--c-pr-5) 0%, var(--c-pr-6) 100%);
   display: flex;
@@ -2495,9 +2452,9 @@ details[open] .c-fbloc-name--header:before {
 
 .c-profmenu-btn {
   align-items: center;
-  background-color: var(--c-pr-5);
+  background-color: var(--c-pr-3);
   border: none;
-  color: var(--c-pr-5);
+  color: var(--c-pr-7);
   display: flex;
   display: flex;
   flex-direction: row;
@@ -2522,6 +2479,10 @@ details[open] .c-fbloc-name--header:before {
 }
 .c-profmenu-btn:hover .c-profmenu-ico {
   background-color: var(--c-bg-0);
+}
+.c-profmenu-btn:active {
+  color: var(--c-pr-3);
+  background-color: var(--c-pr-3);
 }
 @media (min-width: 899px) {
   .c-profmenu-btn {
@@ -2621,6 +2582,18 @@ th {
   flex-direction: column;
   justify-content: center;
   text-align: center;
+  border: 1px solid var(--c-pr-3);
+  border-radius: 12px;
+  padding: 0 1rem 1rem 1rem;
+  margin-bottom: 2rem;
+  background-color: var(--c-pr-7);
+}
+.c-tips h3,
+.c-tips h4 {
+  margin: 2rem auto 1rem auto;
+}
+.c-tips p {
+  color: --var(--c-pr-1);
 }
 
 .c-textbox {

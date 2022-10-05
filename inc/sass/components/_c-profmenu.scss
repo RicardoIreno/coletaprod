@@ -18,9 +18,9 @@ $tabshape-mini: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000
 
 .c-profmenu-btn {
 	align-items: center;
-	background-color: var(--c-pr-5);
+	background-color: var(--c-pr-3);
 	border: none;
-	color: var(--c-pr-5);
+	color: var(--c-pr-7);
 	display: flex;
 	display: flex;
 	flex-direction: row;
@@ -48,6 +48,11 @@ $tabshape-mini: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000
 		.c-profmenu-ico {
 			background-color: var(--c-bg-0);
 		}
+	}
+
+	&:active {
+		color: var(--c-pr-3);
+		background-color: var(--c-pr-3);
 	}
 
 	@include up-to("md") {
