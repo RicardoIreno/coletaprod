@@ -1,1 +1,0 @@
-<?php // Inclua aqui o código do google analytics ?>
