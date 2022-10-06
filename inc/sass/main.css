@@ -233,7 +233,7 @@
   width: auto;
 }
 
-.u-grayscale {
+.u-grayscale, .p-about-team {
   filter: grayscale(100%);
 }
 
@@ -249,10 +249,7 @@
 .p-departamento-externos,
 .p-departamento-header-one,
 .p-departamento-header-two,
-.p-departamento-header,
-.p-about-side1,
-.p-about-side2,
-.p-about {
+.p-departamento-header {
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -262,7 +259,7 @@
 .d-v, .p-projetos-inputs, .p-projeto,
 .p-projeto-header,
 .p-projeto-header-d2,
-.p-projeto-header-d3, .c-numbers-number, .c-numbers, .p-departamento-repos, .p-departamento-externos, .p-departamento-header-one, .p-departamento-header-two, .p-departamento-header, .p-about-side1, .p-about-side2, .p-about {
+.p-projeto-header-d3, .c-numbers-number, .c-numbers, .p-departamento-repos, .p-departamento-externos, .p-departamento-header-one, .p-departamento-header-two, .p-departamento-header {
   flex-direction: column;
 }
 
@@ -292,7 +289,7 @@
 .d-vc, .p-projetos-inputs, .p-projeto,
 .p-projeto-header,
 .p-projeto-header-d2,
-.p-projeto-header-d3, .p-departamento-repos, .p-departamento-externos, .p-departamento-header-three, .p-departamento-header-one, .p-departamento-header-two, .p-departamento-header, .p-about-side1, .p-about-side2 {
+.p-projeto-header-d3, .p-departamento-repos, .p-departamento-externos, .p-departamento-header-three, .p-departamento-header-one, .p-departamento-header-two, .p-departamento-header {
   align-items: center;
 }
 
@@ -337,7 +334,7 @@
 }
 
 @media (min-width: 899px) {
-  .d-md-h, .p-projetos-inputs, .p-departamento-repos, .p-about {
+  .d-md-h, .p-projetos-inputs, .p-departamento-repos {
     flex-direction: row;
   }
 }
@@ -416,7 +413,7 @@
 }
 
 @media (min-width: 899px) {
-  .d-md-hc, .p-departamento-repos, .p-about {
+  .d-md-hc, .p-departamento-repos {
     justify-content: center;
   }
 }
@@ -2895,16 +2892,26 @@ th {
 }
 
 .p-about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding-bottom: 3rem;
 }
-.p-about-side1 {
+.p-about-section1, .p-about-section2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1000px;
+}
+.p-about-section1 {
   padding-inline: 2rem;
   text-align: center;
 }
 .p-about-ico {
   margin: 1rem auto;
   transition: all 0.25s ease-in-out;
-  width: 100px;
+  width: 200px;
 }
 .p-about-ico:hover {
   fill: var(--c-ic-4);
@@ -2915,6 +2922,13 @@ th {
 .p-about-text {
   margin-block: 2rem;
   text-align: justify;
+}
+.p-about-team {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-block: 2rem;
+  width: 100%;
 }
 
 .logo-about {
