@@ -2455,6 +2455,7 @@ details[open] .c-fbloc-name--header:before {
   justify-content: center;
   margin-bottom: 0;
   padding: 0 0.5rem 0 0.5rem;
+  margin-top: 2rem;
   width: 100%;
 }
 @media (min-width: 899px) {
@@ -2954,7 +2955,7 @@ th {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: 80vh;
+  min-height: 100vh;
   width: 100vw;
 }
 
