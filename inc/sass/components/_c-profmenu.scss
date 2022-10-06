@@ -9,6 +9,7 @@ $tabshape-mini: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000
 	justify-content: center;
 	margin-bottom: 0;
 	padding: 0 0.5rem 0 0.5rem;
+	margin-top: 2rem;
 	width: 100%;
 
 	@include up-to("md") {
