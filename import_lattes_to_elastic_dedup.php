@@ -3,6 +3,24 @@
 require 'inc/config.php';
 require 'inc/functions.php';
 
+function get_curriculum($identificador)
+{
+    global $index_cv;
+    global $type;
+    global $client;
+
+    $params = [
+        'index' => $index_cv,
+        'id'    => $identificador
+    ];
+    
+    // Get doc at /my_index/_doc/my_id
+    $response = $client->get($params);
+    
+    return $response;
+
+}
+
 function comparaprod_doi($doi)
 {
     global $index;
@@ -317,7 +335,25 @@ if (isset($_REQUEST['lattesIDBackup'])) {
 }
 
 // Inicio Currículo
+
+$identificador = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
+
+$result_get_curriculo = get_curriculum($identificador);
+
 $doc_curriculo_array = [];
+
+if ($result_get_curriculo["found"] == true) {
+    $ppg_array = $result_get_curriculo["_source"]["ppg_nome"];
+    if (isset($_REQUEST['ppg_nome'])) {
+        $ppg_array[] = $_REQUEST['ppg_nome'];
+    }
+    $doc_curriculo_array['doc']['ppg_nome'] = array_unique($ppg_array);
+} else {
+    if (isset($_REQUEST['ppg_nome'])) {
+        $doc_curriculo_array['doc']['ppg_nome'] = explode("|", $_REQUEST['ppg_nome']);
+    }
+};
+
 $doc_curriculo_array["doc"]["source"] = "Base Lattes";
 $doc_curriculo_array["doc"]["type"] = "Curriculum";
 if (isset($_REQUEST['tag'])) {
@@ -896,7 +932,6 @@ if (isset($curriculo->{'OUTRA-PRODUCAO'}->{'ORIENTACOES-CONCLUIDAS'})) {
     }    
 }
 
-$identificador = (string)$curriculo->attributes()->{'NUMERO-IDENTIFICADOR'};
 $doc_curriculo_array["doc"]["lattesID"] = $identificador;
 $doc_curriculo_array["doc"]["dataDeColeta"] = date('Y-m-d');
 $doc_curriculo_array["doc_as_upsert"] = true;
