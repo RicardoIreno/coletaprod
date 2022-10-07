@@ -5,20 +5,23 @@ require 'inc/functions.php';
 
 function get_curriculum($identificador)
 {
-    global $index_cv;
-    global $type;
-    global $client;
-
-    $params = [
-        'index' => $index_cv,
-        'id'    => $identificador
-    ];
+    try {
+        global $index_cv;
+        global $type;
+        global $client;
     
-    // Get doc at /my_index/_doc/my_id
-    $response = $client->get($params);
-    
-    return $response;
-
+        $params = [
+            'index' => $index_cv,
+            'id'    => $identificador
+        ];
+        
+        // Get doc at /my_index/_doc/my_id
+        $response = $client->get($params);
+        
+        return $response;
+    } catch (\Exception $e) {
+        echo $e->getMessage();
+    }
 }
 
 function comparaprod_doi($doi)
