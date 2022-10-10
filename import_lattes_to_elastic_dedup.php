@@ -7,7 +7,6 @@ function get_curriculum($identificador)
 {
     try {
         global $index_cv;
-        global $type;
         global $client;
     
         $params = [
