@@ -377,9 +377,6 @@ if (isset($_REQUEST['divisao'])) {
 if (isset($_REQUEST['secao'])) {
     $doc_curriculo_array['doc']['secao'] = explode("|", $_REQUEST['secao']);
 }
-if (isset($_REQUEST['ppg_nome'])) {
-    $doc_curriculo_array['doc']['ppg_nome'] = explode("|", $_REQUEST['ppg_nome']);
-}
 if (isset($_REQUEST['ppg_capes'])) {
     $doc_curriculo_array['doc']['ppg_capes'] = explode("|", $_REQUEST['ppg_capes']);
 }
