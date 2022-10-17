@@ -2737,14 +2737,14 @@ class FacetsNew
         $result_count = count($response["aggregations"]["counts"]["buckets"]);
 
         $facet_array = array();
-        $facet_array[] = '<details class="c-fbloc">';
-        $facet_array[] = '<summary class="c-fbloc-header"><span class="c-fbloc-name--header">'.$field_name.'</span></summary>';
-        $facet_array[] = '<ul class="c-fbloc-content" name="bloc1">';
+        $facet_array[] = '<details class="c-filterlist">';
+        $facet_array[] = '<summary class="c-filterlist-header"><span class="c-filterlist-name--header">'.$field_name.'</span></summary>';
+        $facet_array[] = '<ul class="c-filterlist-content" name="bloc1">';
 
         foreach ($response["aggregations"]["counts"]["buckets"] as $facets) {
 
-            $facet_array[] = '<li class="c-fbloc-item">';
-            $facet_array[] = '<span class="c-fbloc-name">';
+            $facet_array[] = '<li class="c-filterlist-item">';
+            $facet_array[] = '<span class="c-filterlist-name">';
 
             if ($alternative_index == false) {
                 $facet_array[] = '<form action="result.php" method="post">';
@@ -2766,7 +2766,7 @@ class FacetsNew
 
 
             $facet_array[] = '</span>';
-            $facet_array[] = '<span class="c-fbloc-number">'.number_format($facets['doc_count'], 0, ',', '.').'</span>';
+            $facet_array[] = '<span class="c-filterlist-number">'.number_format($facets['doc_count'], 0, ',', '.').'</span>';
             $facet_array[] = '</li>';
 
         }
@@ -3073,7 +3073,7 @@ class UI {
     {
         echo '<div class="c-navigator">';
         if ($page == 1) {
-            echo '<button class="c-navigator-btn c-btn--c1">|</button>';
+            echo '';
         } else {
             $last_page = $page-1;
 
@@ -3109,7 +3109,7 @@ class UI {
             echo '</form>';
 
         } else {
-            echo '<button class="c-navigator-btn c-btn--disabled">|</button>';
+            echo '';
         }
         echo '</div>';
     }
