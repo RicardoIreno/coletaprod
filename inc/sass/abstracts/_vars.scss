@@ -3,6 +3,18 @@ $sm: 669px;
 $md: 899px;
 $lg: 1299px;
 
+$breakpointsUp: (
+	"sm": (
+		min-width: $sm,
+	),
+	"md": (
+		min-width: $md,
+	),
+	"lg": (
+		min-width: $lg,
+	),
+) !default;
+
 $filterbar_width_desk: 420px;
 $filterbar_width_mob: 100%;
 
@@ -17,11 +29,10 @@ $fontsize_mobi: 0.9rem;
 $fontsize_desk: 1.2rem;
 
 // ICONS SIZE
-$iconSize: (
-	1: 24,
-	2: 32,
-	3: 48,
-);
+$iSm: 24px;
+$iMd: 32px;
+$iLg: 48px;
+$iLgg: 72px;
 
 // COLORS VALUES
 

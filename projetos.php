@@ -166,7 +166,7 @@ class ListProjetos {
 
             <div class="c-searcher">
               <input class="" type="text" />
-              <i class="i i-magnifying c-searcher-btn"></i>
+              <i class="i i-sm i-magnifying c-searcher-btn"></i>
             </div>
             <div class="c-switch-container">
               <input id="switch-projetos-concluidos" class="c-switch c-switch-shadow" type="checkbox" />

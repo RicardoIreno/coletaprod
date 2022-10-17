@@ -16,13 +16,14 @@
 	z-index: 999;
 
 	&-logo {
+		background-color: var(--c-pr-7);
 		height: 50px;
 		margin: 0.3rem;
 		transition: all 0.25s ease-in-out;
 		width: 170px;
 
 		&:hover {
-			fill: var(--c-pr-4);
+			background-color: var(--c-mn-6);
 		}
 	}
 }

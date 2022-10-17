@@ -70,14 +70,14 @@ $data = '{
       <div class="c-wrapper-inner">
         <section class="p-projeto-header">
           <div class="p-projeto-header-d1">
-            <i class="i i-project p-projeto-logo"></i>
+            <i class="i i-sm i-project p-projeto-logo"></i>
           </div>
           <div class="p-projeto-header-d2">
             <h2 class="t t-h5">Projeto de pesquisa</h2>
             <h1 class="t t-title p-projeto-title"> <?php echo $projeto -> nome ?></h1>
 
             <div class="d-icon-text">
-              <i class="i i-money"></i>
+              <i class="i i-sm i-money"></i>
               <?php
                 if(!empty($projeto -> financiadores))
                   echo('<p class="t t-gray t-b">Financiadores:' . $projeto -> financiadores. '</p>');
@@ -86,9 +86,9 @@ $data = '{
             </div>
 
             <div class="p-projeto-header-d4">
-              <i class="i i-date"></i>
+              <i class="i i-sm i-date"></i>
               <p class="t t-b t-with-icon u-mr-05"> <?php echo $period ?></p>
-              <i class="i i-production"></i>
+              <i class="i i-sm i-production"></i>
               <p class="t t-b t-with-icon"> <?php echo $projeto -> numero_producoes ?></p>
               <p class="t t-b t-gray u-ml-05">(Número de produções)</p>
             </div>

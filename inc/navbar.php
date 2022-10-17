@@ -13,7 +13,8 @@
 <header class="siteheader">
 
   <a href="<?php echo $url_base; ?>">
-    <img class="siteheader-logo" src="<?php echo $url_base; ?>/inc/images/logos/logo_header.svg" loading="lazy" />
+    <!-- <img class="siteheader-logo" src="<?php echo $url_base; ?>/inc/images/logos/logo_header.svg" loading="lazy" /> -->
+    <i class="i i-prodmaisheader siteheader-logo"></i>
   </a>
 
   <div class="sitemenu-container">
