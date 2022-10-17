@@ -1,8 +1,8 @@
 // componente
 $gpaddings: 0.5rem;
 
-details[open] .c-fbloc-name--header:before {
-	transform: rotate(90deg);
+details[open] .c-filterlist-name--header:before {
+	transform: rotate(180deg);
 	transition: 0.3s transform ease;
 }
 
@@ -32,19 +32,12 @@ $arrowDown: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg
 		border-bottom: 2px solid var(--c-pr-2);
 		font-size: 1.2rem;
 		justify-content: center;
-		margin: 1rem;
-		padding: 1rem;
-		padding-top: 2.5rem;
+		margin: 0.2rem;
+		padding: 0.2rem;
 		text-align: center;
-		// padding-bottom: .5rem;
 		text-align: center;
 
 		&:hover {
-			.c-filterlist-title {
-				color: var(--c-pr-4);
-				transition: all 0.3s ease 0s;
-			}
-
 			.c-filterlist-arrow {
 				fill: var(--c-pr-4);
 				transform: translateY(5px);
@@ -67,8 +60,8 @@ $arrowDown: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg
 	}
 }
 
-// .c-fbloc - used at UL
-.c-fbloc {
+// .c-filterlist - used at UL
+.c-filterlist {
 	margin: 0.5rem;
 
 	&-wrapper,
@@ -195,7 +188,7 @@ $arrowDown: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg
 	}
 }
 
-// .c-fbloc--expanded {
+// .c-filterlist--expanded {
 //   display: inline-block;
 //   height: fit-content;
 //   transform: translateY(10)
