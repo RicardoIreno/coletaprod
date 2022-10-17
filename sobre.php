@@ -91,6 +91,19 @@
       <p class="t t-title">Universidade Federal de São Paulo</p>
       <p class="t t-title t-gray">Superintendência de Tecnologia da Informação</p>
 
+      <div class="d-h">
+        <?php if (file_exists("inc/images/logos/sti-branco.svg")) : ?>
+        <a href="https://sti.unifesp.br/" target="_blank" title="Visite o site do STI">
+          <img class="p-about-logos" src="<?php echo $url_base; ?>/inc/images/logos/sti.svg" alt="Logo do STI"></a>
+        <?php endif ?>
+
+        <?php if (file_exists("inc/images/logos/unifesp-branco.svg")) : ?>
+        <a href="https://unifesp.br/" target="_blank" title="Visite o site doa Unifesp">
+          <img class="p-about-logos" src="<?php echo $url_base; ?>/inc/images/logos/unifesp.svg"
+            alt="Logo da Unifesp"></a>
+        <?php endif ?>
+      </div>
+
       <h3 id="créditos" class="t t-h3 u-my-1">Equipe</h3>
 
 
