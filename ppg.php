@@ -48,7 +48,7 @@ class PPG {
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <meta name="description" content="Prodmais Unifesp." />
   <meta name="keywords" content="Produção acadêmica, lattes, ORCID" />
-  
+
 </head>
 
 <body data-theme="<?php echo $theme; ?>" class="c-wrapper-body">
@@ -73,7 +73,7 @@ class PPG {
               <span>Escola de Filosofia, Letras e ciências Humanas</span>
             </p>
             <div class="d-icon-text t-gray u-mb-1">
-              <i class="i i-mapmarker p-ppg-i"></i>
+              <i class="i i-sm i-mapmarker p-ppg-i"></i>
               <b>Estrada do Caminho Velho nª 123 - Bairro, Cidade - SP</b>
             </div>
 
@@ -91,17 +91,17 @@ class PPG {
 
             <a href="" target="blank">
               <div class="d-icon-text t-gray">
-                <i class="i i-mail p-ppg-i"></i> email@email.com
+                <i class="i i-sm i-mail p-ppg-i"></i> email@email.com
               </div>
             </a>
 
             <div class="d-icon-text t-gray">
-              <i class="i i-phone p-ppg-i"></i> (11) 5555-5555
+              <i class="i i-sm i-phone p-ppg-i"></i> (11) 5555-5555
             </div>
 
             <a href="" target="blank">
               <div class="d-icon-text t-gray">
-                <i class="i i-web p-ppg-i"></i> site
+                <i class="i i-sm i-web p-ppg-i"></i> site
               </div>
             </a>
 

@@ -201,12 +201,12 @@ if (!empty($_REQUEST["lattesID"])) {
             <div class="p-profile-header-numbers">
 
               <div class="d-icon-text u-mx-1">
-                <i class="i i-articlePublished i-s2" title="Trabalhos publicados" alt="Trabalhos publicados"></i>
+                <i class="i i-sm i-articlePublished" title="Trabalhos publicados" alt="Trabalhos publicados"></i>
                 <span class="t"><?php echo $totalWorks; ?></span>
               </div>
 
               <div class="d-icon-text">
-                <i class="i i-orientation i-s2" title="Orientações " alt="Orientações"></i>
+                <i class="i i-sm i-orientation" title="Orientações " alt="Orientações"></i>
                 <?php echo $totalOrientacoes; ?>
               </div>
             </div>
@@ -387,33 +387,33 @@ if (!empty($_REQUEST["lattesID"])) {
 
           <div class="c-profmenu">
             <button id="tab-btn-1" class="c-profmenu-btn" v-on:click="changeTab('1')" title="Sobre" alt="Sobre">
-              <i class="i i-aboutme c-profmenu-ico"></i>
+              <i class="i i-sm i-aboutme c-profmenu-ico"></i>
               <span class="c-profmenu-text">Sobre</span>
             </button>
 
             <button id=" tab-btn-2" class="c-profmenu-btn" v-on:click="changeTab('2')" title="Produção" alt="Produção">
-              <i class="i i-prodsymbol c-profmenu-ico"></i>
+              <i class="i i-sm i-prodsymbol c-profmenu-ico"></i>
               <span class="c-profmenu-text">Produção</span>
             </button>
 
             <button id="tab-btn-3" class="c-profmenu-btn" v-on:click="changeTab('3')" title="Atuação" alt="Atuação">
-              <i class="i i-working c-profmenu-ico"></i>
+              <i class="i i-sm i-working c-profmenu-ico"></i>
               <span class="c-profmenu-text">Atuação</span>
             </button>
 
             <?php if ($totalOrientacoes != 0) : ?>
             <button id="tab-btn-4" class="c-profmenu-btn" v-on:click="changeTab('4')" title="Ensino" alt="Ensino">
-              <i class="i i-teaching c-profmenu-ico"></i>
+              <i class="i i-sm i-teaching c-profmenu-ico"></i>
               <span class="c-profmenu-text">Ensino</span>
             </button>
             <?php endif; ?>
 
             <button id="tab-btn-5" class="c-profmenu-btn" v-on:click="changeTab('5')" title="Gestão" alt="Gestão">
-              <div class="i i-managment c-profmenu-ico"></div>
+              <div class="i i-sm i-managment c-profmenu-ico"></div>
               <span class="c-profmenu-text">Gestão</span>
             </button>
             <button id="tab-btn-6" class="c-profmenu-btn" v-on:click="changeTab('6')" title="Pesquisa" alt="Pesquisa">
-              <div class="i i-research c-profmenu-ico"></div>
+              <div class="i i-sm i-research c-profmenu-ico"></div>
               <span class="c-profmenu-text">Pesquisa</span>
             </button>
             <!-- <button id="tab-btn-7" class="c-profmenu-btn" v-on:click="changeTab('7')" title="" alt="">

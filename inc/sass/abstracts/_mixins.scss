@@ -1,14 +1,4 @@
-$breakpointsUp: (
-	"sm": (
-		min-width: $sm,
-	),
-	"md": (
-		min-width: $md,
-	),
-	"lg": (
-		min-width: $lg,
-	),
-) !default;
+// MIXINS
 
 @mixin up-to($breakpoint) {
 	@if map-has-key($breakpointsUp, $breakpoint) {
@@ -39,6 +29,11 @@ $breakpointsUp: (
 		--c-#{$k}-#{$i}: hsl(#{nth($v, 1)}, #{nth($v, 2)}, #{$l});
 		$i: $i + 1;
 	}
+}
+
+@mixin ico($ico) {
+	mask-image: $ico;
+	-webkit-mask-image: $ico;
 }
 
 @mixin progressMonoPallete($lights) {
