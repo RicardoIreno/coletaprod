@@ -58,7 +58,7 @@ $get_data = $_GET;
 
   <title><?php echo $branch; ?> - Resultado da busca por perfil profissional</title>
 
-  
+
   <link rel="stylesheet" href="inc/css/style.css" />
 
 </head>
@@ -78,13 +78,13 @@ $get_data = $_GET;
 
   <div class="p-result-container">
     <main class="p-result-main">
-      <form action="result_autores.php" method="POST" accept-charset="utf-8" enctype="multipart/form-data"
-        id="searchresearchers">
+      <form class="u-mt-1" action="result_autores.php" method="POST" accept-charset="utf-8"
+        enctype="multipart/form-data" id="searchresearchers">
         <div class="input-group mb-3">
           <input name="query" type="text" class="form-control" placeholder="Digite parte do nome do pesquisador"
             aria-label="Digite parte do nome do pesquisador" aria-describedby="button-addon2">
-          <button class="btn btn-outline-secondary" type="submit" form="searchresearchers"
-            value="Submit">Pesquisar</button>
+          <button class="btn btn-outline-secondary" type="submit" form="searchresearchers" value="Submit">Pesquisar
+          </button>
         </div>
       </form>
 
@@ -92,27 +92,30 @@ $get_data = $_GET;
       <?php ui::newpagination($page, $total, $limit, $_POST, 'result_autores'); ?>
       <!-- Navegador de resultados - Fim -->
 
-      <?php foreach ($cursor["hits"]["hits"] as $r) : ?>
-      <?php 
+      <div class="p-result-authors">
+
+        <?php foreach ($cursor["hits"]["hits"] as $r) : ?>
+        <?php 
                     if (empty($r["_source"]['datePublished'])) {
                         $r["_source"]['datePublished'] = "";
                     }
                 ?>
 
-      <div class="card">
-        <div class="card-body">
-          <div class="d-flex bd-highlight">
-            <div class="p-2 flex-grow-1 bd-highlight">
-              <h5 class="card-title">
-                <a class="text-dark" href="profile.php?lattesID=<?php echo $r['_source']['lattesID']; ?>">
-                  <?php echo $r["_source"]['nome_completo']; ?>
-                </a>
-              </h5>
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex bd-highlight">
+              <div class="p-2 flex-grow-1 bd-highlight">
+                <h5 class="card-title">
+                  <a class="text-dark" href="profile.php?lattesID=<?php echo $r['_source']['lattesID']; ?>">
+                    <?php echo $r["_source"]['nome_completo']; ?>
+                  </a>
+                </h5>
+              </div>
             </div>
           </div>
         </div>
+        <?php endforeach; ?>
       </div>
-      <?php endforeach; ?>
 
       <!-- Navegador de resultados - Início -->
       <?php ui::newpagination($page, $total, $limit, $_POST, 'result_autores'); ?>
@@ -124,7 +127,7 @@ $get_data = $_GET;
       <div class="c-filterlist-header">
         <b class="t">Refinar Resultados</b>
       </div>
-      <div class="c-fbloc-wrapper">
+      <div class="c-filterlist-wrapper">
 
         <?php
                     $facets = new FacetsNew();
@@ -184,6 +187,46 @@ $get_data = $_GET;
 
   <?php include('inc/footer.php'); ?>
 
+  <script>
+  var app = new Vue({
+    el: '#filterlist',
+    methods: {
+      createMenuButtons() {
+        let fblocs = document.getElementsByClassName('c-filterlist')
+
+        for (let i = 0; i < fblocs.length; i++) {
+          const newBtn = document.createElement('button')
+          newBtn.classList.add('c-filterlist-btn')
+          newBtn.innerHTML =
+            "<svg class='c-filterlist-btn-ico' x='0px' y='0px' viewBox='0 0 80 48'> <path d='M72.3,35.5c-0.7,0-1.5-0.2-2.2-0.5L40.3,20.5l-30.6,14c-2.5,1.1-5.5,0-6.6-2.5c-1.1-2.5,0-5.5,2.5-6.6l32.7-15 c1.4-0.6,2.9-0.6,4.3,0.1l32,15.6c2.5,1.2,3.5,4.2,2.3,6.7C76,34.5,74.2,35.5,72.3,35.5z' /> </svg>"
+          newBtn.addEventListener("click", function() {
+            this.parentNode.removeAttribute("open")
+          })
+          fblocs[i].appendChild(newBtn)
+        }
+      },
+    }
+  })
+
+  function showHideFilterlistBtn() {
+    let fArrow = document.getElementByClassName("c-filterlist-arrow")
+    boo = document.getElementById("filterlist")
+    boo.open === true ? fArrow.style.display = "none" : fArrow.style.display = "block";
+
+  }
+
+  function screenTest(e) {
+    if (e.matches) {
+      document.getElementById("filterlist").open = true
+      fArrow.style.display = "none"
+    } else {
+      document.getElementById("filterlist").open = false
+      fArrow.style.display = "block"
+    }
+  }
+  ffilterlist.addEventListener('change', screenTest)
+  ffilterlist.addEventListener('change', showHideFilterlistBtn)
+  </script>
 </body>
 
 </html>

@@ -55,7 +55,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <meta name="description" content="Prodmais Unifesp." />
   <meta name="keywords" content="Produção acadêmica, lattes, ORCID" />
-  
+
 
 </head>
 
@@ -82,7 +82,7 @@
           </svg>
         </summary>
 
-        <div class="c-fbloc-wrapper">
+        <div class="c-filterlist-wrapper">
 
           <?php
                 $facets = new FacetsNew();
@@ -140,7 +140,7 @@
                 
                ?>
 
-        </div> <!-- end c-fbloc -->
+        </div> <!-- end c-filterlist -->
       </details>
     </nav>
 
@@ -227,13 +227,13 @@
     el: '#filterlist',
     methods: {
       createMenuButtons() {
-        let fblocs = document.getElementsByClassName('c-fbloc')
+        let fblocs = document.getElementsByClassName('c-filterlist')
 
         for (let i = 0; i < fblocs.length; i++) {
           const newBtn = document.createElement('button')
-          newBtn.classList.add('c-fbloc-btn')
+          newBtn.classList.add('c-filterlist-btn')
           newBtn.innerHTML =
-            "<svg class='c-fbloc-btn-ico' x='0px' y='0px' viewBox='0 0 80 48'> <path d='M72.3,35.5c-0.7,0-1.5-0.2-2.2-0.5L40.3,20.5l-30.6,14c-2.5,1.1-5.5,0-6.6-2.5c-1.1-2.5,0-5.5,2.5-6.6l32.7-15 c1.4-0.6,2.9-0.6,4.3,0.1l32,15.6c2.5,1.2,3.5,4.2,2.3,6.7C76,34.5,74.2,35.5,72.3,35.5z' /> </svg>"
+            "<svg class='c-filterlist-btn-ico' x='0px' y='0px' viewBox='0 0 80 48'> <path d='M72.3,35.5c-0.7,0-1.5-0.2-2.2-0.5L40.3,20.5l-30.6,14c-2.5,1.1-5.5,0-6.6-2.5c-1.1-2.5,0-5.5,2.5-6.6l32.7-15 c1.4-0.6,2.9-0.6,4.3,0.1l32,15.6c2.5,1.2,3.5,4.2,2.3,6.7C76,34.5,74.2,35.5,72.3,35.5z' /> </svg>"
           newBtn.addEventListener("click", function() {
             this.parentNode.removeAttribute("open")
           })
@@ -253,8 +253,7 @@
         this.openCloseMenu()
     },
   });
-  </script>
-  <script>
+
   let ffilterlist = window.matchMedia('(min-width: 1203.03px)')
 
   function screenTest(e) {

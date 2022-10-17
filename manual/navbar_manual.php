@@ -23,34 +23,34 @@
 
       <li class="sitemenu-item" title="Home">
         <a class="sitemenu-link" href="<?php echo $url_base; ?>/index.php" title="Home">
-          <i class="i i-home sitemenu-icons"></i>
+          <i class="i i-sm i-home sitemenu-ico"></i>
         </a>
 
       </li>
 
       <li class="sitemenu-item">
         <a class="sitemenu-link" href="<?php echo $url_base; ?>/result_autores.php" title="Pesquisadores">
-          <i class="i i-aboutme sitemenu-icons"></i>
+          <i class="i i-sm i-aboutme sitemenu-ico"></i>
         </a>
 
       </li>
 
       <li class="sitemenu-item">
         <a class="sitemenu-link" href="<?php echo $url_base; ?>/manual/" title="Manual">
-          <i class="i i-manual sitemenu-icons"></i>
+          <i class="i i-sm i-manual sitemenu-ico"></i>
         </a>
 
       </li>
 
       <li class="sitemenu-item">
         <a class="sitemenu-link" href="<?php echo $url_base; ?>/predash.php" title="Dashboard">
-          <i class="i i-dashboard sitemenu-icons"></i>
+          <i class="i i-sm i-dashboard sitemenu-ico"></i>
         </a>
       </li>
 
       <li class="sitemenu-item">
         <a class="sitemenu-link" href="<?php echo $url_base; ?>/sobre.php" title="Sobre o Prodmais">
-          <i class="i i-about sitemenu-icons"></i>
+          <i class="i i-sm i-about sitemenu-ico"></i>
         </a>
       </li>
     </ul>
