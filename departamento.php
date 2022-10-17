@@ -73,7 +73,7 @@ class Departamento {
               <span>Escola de Filosofia, Letras e ciências Humanas</span>
             </p>
             <div class="d-icon-text t-gray u-mb-1">
-              <i class="i i-mapmarker p-departamento-i"></i>
+              <i class="i i-sm i-mapmarker p-departamento-i"></i>
               <b>Estrada do Caminho Velho nª 123 - Bairro, Cidade - SP</b>
             </div>
 
@@ -98,17 +98,17 @@ class Departamento {
             <div class="p-departamento-header-three-inner">
               <a href="" target="blank">
                 <div class="d-icon-text t-gray">
-                  <i class="i i-mail p-departamento-i"></i> email@email.com
+                  <i class="i i-sm i-mail p-departamento-i"></i> email@email.com
                 </div>
               </a>
 
               <div class="d-icon-text t-gray">
-                <i class="i i-phone p-departamento-i"></i> (11) 5555-5555
+                <i class="i i-sm i-phone p-departamento-i"></i> (11) 5555-5555
               </div>
 
               <a href="" target="blank">
                 <div class="d-icon-text t-gray">
-                  <i class="i i-web p-departamento-i"></i> site
+                  <i class="i i-sm i-web p-departamento-i"></i> site
                 </div>
               </a>
             </div>
