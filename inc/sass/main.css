@@ -1070,6 +1070,11 @@
   background-color: var(--c-ic-4);
 }
 
+.i-arrowOpenMenu {
+  width: 100px;
+  height: 15px;
+}
+
 .country-flag {
   border-radius: 50%;
   width: 24px;
@@ -1820,6 +1825,7 @@ details[open] .c-filterlist-name--header:before {
 }
 
 .c-filterlist {
+  border-radius: 0.5rem;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -1831,108 +1837,131 @@ details[open] .c-filterlist-name--header:before {
 .c-filterlist::-webkit-scrollbar {
   display: none;
 }
-.c-filterlist-header {
+.c-filterlist__header {
   align-items: center;
-  border-bottom: 2px solid var(--c-pr-2);
+  border: 1px solid var(--c-pr-6);
+  border-radius: 0.5rem;
+  cursor: pointer;
   font-size: 1.2rem;
   justify-content: center;
   margin: 0.2rem;
   padding: 0.2rem;
   text-align: center;
-  text-align: center;
 }
-.c-filterlist-header:hover .c-filterlist-arrow {
-  fill: var(--c-pr-4);
-  transform: translateY(5px);
-  transition: all 0.3s ease 0s;
+.c-filterlist__content {
+  padding: 0.5rem;
 }
-.c-filterlist-arrow {
-  fill: var(--c-pr-2);
-  height: 15px;
-  width: 100px;
-  z-index: 999;
+.c-filterlist__title {
+  font-size: 1.2rem;
+  margin: 0.6rem;
+}
+.c-filterlist__title::after {
+  color: var(--c-pr-6);
+  content: "❯";
+  display: inline-block;
+  position: absolute;
+  right: 18px;
+  transform: rotate(90deg);
+}
+
+.c-filterlist[open] .c-filterlist__title::after {
+  transform: rotate(270deg);
 }
 
 @media (min-width: 1299px) {
-  .c-filterlist-arrow {
-    display: none;
+  .c-filterlist {
+    width: 420px;
   }
 }
-.c-filterlist {
+.c-filterlist[open] .c-filterlist__content {
+  -webkit-animation: openFilterlist 0.5s ease;
+  animation: openFilterlist 0.5s ease;
+}
+
+@-webkit-keyframes openFilterlist {
+  from {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes openFilterlist {
+  from {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+@-webkit-keyframes closing {
+  from {
+    transform: scaleY(1);
+  }
+  to {
+    transform: scaleY(0);
+  }
+}
+@keyframes closing {
+  from {
+    transform: scaleY(1);
+  }
+  to {
+    transform: scaleY(0);
+  }
+}
+.c-filterdrop__header {
+  background-color: var(--c-mn-6);
+  border: 1px solid var(--c-pr-6);
+  border-radius: 8px;
+  cursor: pointer;
+  height: 2.3rem;
   margin: 0.5rem;
-}
-.c-filterlist-wrapper, .c-filterlist-header, .c-filterlist-content {
-  box-sizing: border-box;
-}
-.c-filterlist-wrapper {
-  background-color: #fff;
-  border-radius: 0.5rem;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  margin-block: 0.3rem;
+  overflow: hidden;
   padding: 0.5rem;
   position: relative;
-  width: 100%;
+  vertical-align: middle;
+  word-wrap: break-word;
 }
-.c-filterlist-header {
-  background-color: var(--c-bg-0);
-  border: 1px solid #b9d8ec;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  font-size: 1.1rem;
-  line-height: 1rem;
-  padding: 0.7rem 0.2rem 0.7rem 1.5rem;
+.c-filterdrop__header::after {
+  color: var(--c-pr-6);
+  content: "❯";
+  display: inline-block;
+  position: absolute;
+  right: 10px;
+  transform: rotate(90deg);
 }
-.c-filterlist-header:hover {
-  background-color: var(--c-pr-4);
-  color: var(--c-bg-0);
-  transition: all 0.2s ease;
+.c-filterdrop__content {
+  padding: 0.5rem;
 }
-.c-filterlist-item, .c-filterlist-header {
+.c-filterdrop__item {
   align-items: center;
+  border-bottom: 1px solid var(--c-pr-6);
   display: grid;
   grid-template-areas: "nome number";
   grid-template-columns: 9fr 1fr;
+  margin: 0.5rem;
+  transition: 0.2s all ease;
 }
-.c-filterlist-item {
-  border-bottom: 1px solid var(--c-pr-4);
-  box-sizing: border-box;
-  font-size: 1rem;
-  margin-block: 0.5rem;
-  padding-block: 0.5rem;
-}
-.c-filterlist-item:hover {
-  background-color: var(--c-pr-4);
-  color: var(--c-bg-0);
-  transition: all 0.2s ease;
-}
-.c-filterlist-name {
+.c-filterdrop__item-name {
   background-color: transparent;
   border: none;
+  cursor: pointer;
   grid-area: nome;
   margin-inline: 0.7 rem;
   overflow: hidden;
   word-wrap: break-word;
 }
-.c-filterlist-name:hover {
-  color: var(--c-bg-0);
-  transition: 0.2s all ease;
+.c-filterdrop__item-name:hover {
+  background-color: var(--c-pr-7);
+  border-radius: 8px;
 }
-.c-filterlist-name--header::before {
-  color: var(--c-pr-2);
-  content: "›";
-  font-family: "Hiragino Mincho ProN", "Open Sans", sans-serif;
-  font-size: 2rem;
-  left: 10px;
-  line-height: 1rem;
-  position: absolute;
-  top: 0.5rem;
-  transform: rotate(0);
-  transform-origin: center;
-  transition: 0.2s transform ease;
-}
-.c-filterlist-number {
+.c-filterdrop__count {
   background-color: var(--c-pr-4);
   border-radius: 8px;
   color: var(--c-mn-6);
@@ -1947,35 +1976,11 @@ details[open] .c-filterlist-name--header:before {
   width: -moz-fit-content;
   width: fit-content;
 }
-.c-filterlist-btn {
-  background-color: var(--c-mn-6);
-  border: 1px solid var(--c-pr-6);
-  border-radius: 0.5rem;
-  box-sizing: border-box;
-  height: 2rem;
-  margin: 0.5rem auto;
-  width: 100%;
-}
-.c-filterlist-btn svg {
-  fill: var(--c-pr-4);
-  transition: all 0.2s ease 0s;
-  vertical-align: middle;
-  width: 30px;
-}
-.c-filterlist-btn:hover {
-  background-color: var(--c-pr-4);
-  color: var(--c-bg-0);
-  transition: all 0.2s ease;
-}
-.c-filterlist-btn:hover svg {
-  fill: var(--c-bg-0);
+
+.c-filterdrop[open] .c-filterdrop__header::after {
+  transform: rotate(270deg);
 }
 
-@media (min-width: 1299px) {
-  .c-filterlist {
-    width: 420px;
-  }
-}
 .c-input,
 .c-input--sm,
 .c-input--mini,

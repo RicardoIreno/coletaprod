@@ -2737,14 +2737,13 @@ class FacetsNew
         $result_count = count($response["aggregations"]["counts"]["buckets"]);
 
         $facet_array = array();
-        $facet_array[] = '<details class="c-filterlist">';
-        $facet_array[] = '<summary class="c-filterlist-header"><span class="c-filterlist-name--header">'.$field_name.'</span></summary>';
-        $facet_array[] = '<ul class="c-filterlist-content" name="bloc1">';
+        $facet_array[] = '<details class="c-filterdrop">';
+        $facet_array[] = '<summary class="c-filterdrop__header"><span class="c-filterdrop__name">'.$field_name.'</span></summary>';
+        $facet_array[] = '<ul class="c-filterdrop__content" name="bloc1">';
 
         foreach ($response["aggregations"]["counts"]["buckets"] as $facets) {
 
-            $facet_array[] = '<li class="c-filterlist-item">';
-            $facet_array[] = '<span class="c-filterlist-name">';
+            $facet_array[] = '<li class="c-filterdrop__item">';
 
             if ($alternative_index == false) {
                 $facet_array[] = '<form action="result.php" method="post">';
@@ -2754,19 +2753,18 @@ class FacetsNew
             $facet_array[] = '<input type="hidden" name="search" value="'.$get_search["search"].'">';
             $facet_array[] = '<input type="hidden" name="filter[]" value="'.$field.':'.str_replace('&', '%26', $facets['key']).'">';
 
-            if(isset($get_search['filter'])){              
-                if (count($get_search['filter']) > 0) {
-                    foreach ($get_search['filter'] as $filter) {
-                        $facet_array[] = '<input type="hidden" name="filter[]" value="'.$filter.'">';
-                    }
-                }
-            }
-            $facet_array[] = '<input class="testnobtn" style="text-decoration: none; color: initial;" type="submit" value="'.$facets['key'].'" />';
+            // este trecho está imprimindo ' ""=""> ' em cada cada opção do fltro
+            // if(isset($get_search['filter'])){              
+            //     if (count($get_search['filter']) > 0) {
+            //         foreach ($get_search['filter'] as $filter) {
+            //             $facet_array[] = '<input type="hidden" name="filter[]" value="'.$filter.'">';
+            //         }
+            //     }
+            // }
+            $facet_array[] = '<input class="c-filterdrop__item-name" style="text-decoration: none; color: initial;" type="submit" value="'.$facets['key'].'" />';
             $facet_array[] = '</form>';
 
-
-            $facet_array[] = '</span>';
-            $facet_array[] = '<span class="c-filterlist-number">'.number_format($facets['doc_count'], 0, ',', '.').'</span>';
+            $facet_array[] = '<span class="c-filterdrop__count">'.number_format($facets['doc_count'], 0, ',', '.').'</span>';
             $facet_array[] = '</li>';
 
         }
